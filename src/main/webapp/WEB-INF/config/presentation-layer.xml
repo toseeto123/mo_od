@@ -18,7 +18,8 @@
 		</bean>
 		
 		<bean id="login" class="kr.co.user.controller.LoginController"></bean>
-		<bean id="logout" class="com.springbook.view.user.LogoutController"></bean>
+		<bean id="join" class="kr.co.user.controller.JoinController"></bean>
+		<bean id="logout" class="kr.co.user.controller.LogoutController"></bean>
 		
 </beans>		
 
