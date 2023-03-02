@@ -1,14 +1,205 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ page session="false" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
 <html>
 <head>
-	<title>Home</title>
-</head>
-<body>
-<h1>
-	Hello world!  
-</h1>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+@charset "UTF-8";
 
-<P>  The time on the server is ${serverTime}. </P>
-</body>
+/* 비회원 예매하기 */
+.loginPage .loginLink{ border-bottom:1px solid #b8b6aa; margin-bottom:50px; }
+.loginPage .loginLink li{ display:block; margin-right:2px; }
+.loginPage .loginLink li a{ display:block; background: #898987; color: #fdfcf0; text-align: center;	 padding:10px 15px; border-radius: 5px 5px 0 0; }
+.loginPage .loginLink li.on a{ background: #fb4357; color: #ffffff; }
+
+.loginPage .login_con01{ padding-bottom:50px; margin-bottom: 50px; border-bottom: 1px solid #d5d4cd; }
+.loginPage .login_con01:last-child{ padding-bottom:0; margin-bottom: 50px; border-bottom: none; }
+
+.loginPage .privacy_table{ border-top: 2px solid #d5d4cd; border-bottom: 2px solid #d5d4cd;	 margin: 10px 0; }
+.loginPage .privacy_table thead th{ border-bottom: 1px dotted #b8b6aa; background-color: #e2e2e0; padding:10px; }
+.loginPage .privacy_table td:last-child{ border-right: none; }
+.loginPage .privacy_table td{ border-right: 1px dotted #b8b6aa; padding:10px; text-align: center; vertical-align: middle; line-height: 1.5; }
+
+.loginPage .login_box{ margin-top:10px; }
+.loginPage .login_box h4{ background:#e2e2e0; padding: 10px; }
+.loginPage .login_box .input_ul{ width:400px; margin:0 auto; padding:50px 0; }
+.loginPage .login_box .input_li{ margin-bottom: 10px; }
+.loginPage .login_box .input_li .input_box{ border:1px solid #d5d4cd; width:400px; height:30px; margin-top:10px; }
+.loginPage .login_box .bt_submit{ display: block; padding: 10px; color:#ffffff; border: none; margin:30px auto 0;     cursor: pointer; }
+
+.loginPage .warning_box{ padding: 30px; background: #f9f7ec; line-height: 1.5; }
+.loginPage .warning_box ul{ padding-left:20px; }
+.loginPage .warning_box ul li{ list-style: auto; }
+
+
+
+/* 회원 예매 */
+.ps_box{
+   margin-bottom: 10px; 
+}
+.join_row label, .ps_box{
+   display: block;
+}
+
+.container , .content{
+   width: 800px;
+}
+
+
+.join_member{
+   margin: 0 auto;
+   width: 700px;
+}
+
+.bir_wrap{
+   display: table;
+   width: 100%;
+   margin-top: 10px;
+}
+
+.bir_yy , .bir_mm , .bir_dd{
+   display: table-cell;
+   table-layout: fixed;
+}
+.bir_yy input, .bir_mm select, .bir_dd input{
+   border:1px solid #d5d4cd; height:30px; 
+}
+.bir_mm select{ height:34px; }
+
+.join_memeber{
+   margin-top:20px;
+   width: 400px;
+   height: 30px;
+}
+.join_now{ width:100%; }
+
+.int{
+   border:1px solid #d5d4cd;
+   width:100%;
+   height: 35px;
+   margin-top:10px;
+   display:block;
+   box-sizing: border-box;
+}
+.sel{
+   width: 120px;
+   height: 35px;
+   margin: 0 10px 0 10px;
+}
+.birth {
+   width: 400px;
+   height: 30px;
+}
+
+.pwed1 , .pwed2 , .pwed3{
+	width: 400px; 
+	height: 30px;
+	margin-bottom: 10px;
+	margin-top: 5px; 
+}
+.phoneNO{
+	width: 400px; 
+	height: 30px;
+}
+.id_input{width: 299px;float: left;}
+.id_bt{width: 90px;border: none;height: 35px;color: #ffffff;cursor: pointer;float: left;margin-left: 5px;margin-top: 10px;}
+
+.gen{
+   border:1px solid #d5d4cd; width:100%; height:34px; margin-top:10px;
+}
+.int_email{margin-top:10px;}
+.email{ border:1px solid #d5d4cd; width: 400px; height: 30px; }
+.email_line{ border:1px solid #d5d4cd; height: 34px; }
+
+</style>
+</head>
+<section class="subcon wid loginPage">
+   <h2>회원가입</h2>
+   <form action="CinemaServlet" method="post" id="Join" class="member" name="Join">
+    <input type="hidden" name="command" value="join_now">
+      <div class="login_con01">
+         <div class="login_box mBorderColor">
+            <h4>개인정보 입력</h4>
+            <div class="input_ul join_member">
+               <div class="row_group">
+                  <div class="join_row">
+                     <h5 class="join_title">
+                        <label for="id">아이디</label>
+                     </h5>
+                     <div class="ps_box int_id clear"> 
+                     	<input type="text" id="id" name="id" class="int id_input" title="ID" maxlength="20">
+                        <input type="button" value="중복체크" onclick="idCheck()" class="mainBgColor id_bt">
+                     </div>
+                  </div>
+                  <div class="join_row">
+                     <h5 class="join_title">
+                        <label for="pswd1">비밀번호</label>
+                     </h5>
+                     <span class="ps_box int_pass" id="pswdImg"><input type="password" id="pwed1" name="pwed1" class="int" title="비밀번호 입력" maxlength="20"></span>
+                     <h5 class="join_title">
+                        <label for="pswd2">비밀번호 재확인</label>
+                     </h5>
+                     <span class="ps_box int_pass_check" id="pswd2Img"><input type="password" id="pswd2" name="pswd2" class="int" title="비밀번호 재확인 입력" maxlength="20"> 
+                     </span>
+                  </div>
+               </div>
+               <div class="row_group">
+                  <div class="join_row">
+                     <h5 class="join_title">
+                        <label for="name">이름</label>
+                     </h5>
+                     <span class="ps_box box_right_space"><input type="text" id="name" name="name" title="이름" class="int" maxlength="40"></span>
+                  </div>
+                  <div class="join_row join_birthday">
+                     <h5 class="join_title">
+                        <label for="yy">생년월일</label>
+                     </h5>
+                     <div class="bir_wrap">
+                        <div class="bir_yy">
+                           <span class="ps_box"> <input type="date" id="birth"
+                              placeholder="년/일/월" aria-label="년/일/월" class="birth" name="birth"
+                              maxlength="4">
+                           </span>
+                        </div>
+                     </div>
+                     <span class="error_next_box" id="birthMsg" style="display: none" aria-live="assertive"></span>
+                  </div>
+                  <div class="join_row join_sex">
+                     <h5 class=join_title>
+                        <label for="gender">성별</label>
+                     </h5>
+                     <div class="ps_box gender_code">
+                        <select id="gender" name="gender" class="gen" aria-label="성별">
+                           <option selected>성별</option>
+                           <option value="M">남자</option>
+                           <option value="F">여자</option>
+                           <option value="U">선택 안함</option>
+                        </select>
+                     </div>
+                  </div>
+                  <div class="join_row join_email">
+                     <h5 class="join_title">
+                        <label for="email">이메일</label>
+                     </h5>
+                     <span class="ps_box int_email box_right_space"> 
+                     <input type="text" id="email" name="email" placeholder="선택입력" aria-label="선택입력" class="email" maxlength="100">
+                     </span>
+                  </div>
+               </div>
+               <div class="join_row join_mobile" id="moDiv">
+                  <h5 class="join_title">
+                     <label for="phoneNo">휴대전화</label>
+                  </h5>
+                  <span class="ps_box mobile"> 
+                  	<input type="tel" id="phoneNo" name="phoneNo" placeholder="전회번호 입력" aria-label="전화번호입력" class="int" maxlength="16"> 
+                  </span>
+               </div>
+               <input type="submit" value="가입하기" class="join_now bt_submit mainBgColor" onclick="return JoinCheck()">
+            </div>
+         </div>
+      </div>
+   </form>
+</section>
 </html>
