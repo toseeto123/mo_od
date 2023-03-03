@@ -54,7 +54,7 @@
           <li class="dropdown"><a href="#">회원관리</a>
           		
           </li>
-          <li class="dropdown"><a href="#">버킷</a>
+          <li class="dropdown"><a href="admincate.do">버킷</a>
           		
           </li>
           <li class="dropdown"><a href="#">결제</a>

@@ -13,5 +13,10 @@ public class AdminController {
 		return "adminPage/chart";	
 	}
 	
+	@RequestMapping("admincate.do")
+	public String adminCate(){
+		
+		return "adminPage/admincate";
+	}
 	
 }
