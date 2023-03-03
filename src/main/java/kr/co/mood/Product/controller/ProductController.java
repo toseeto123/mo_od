@@ -1,4 +1,4 @@
-package kr.co.mood;
+package kr.co.mood.Product.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,7 +10,7 @@ public class ProductController {
 	@RequestMapping(value = "proDetail.do")
 	public String proDetails() {
 		
-		return "portfolio-details";	
+		return "productDetail";	
 		//return "inner-page";
 	}
 	

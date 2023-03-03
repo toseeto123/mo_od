@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+	<mapper namespace="ProDAO">
+
+	<!-- id명은 BoardDAO 클래스의 method명과 똑같이 해주기 -->
+	<select id="test" resultType="String">
+		select sysdate from dual
+	</select>
+	
+	
+	<insert id="insert" parameterType="kr.co.mood.Product.VO.ProVO">
+ 	insert into product 
+  	(pro_name,pro_desc1,pro_desc2,pro_option1,pro_option2,pro_option3) 
+  	values 
+  	(#{pro_name},#{pro_desc1},#{pro_desc2},#{pro_option1},#{pro_option2},#{pro_option3}); 
+  </insert>
+</mapper>
