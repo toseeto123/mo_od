@@ -112,7 +112,7 @@
                 <p>가구입니다.</p>
                 <div class="portfolio-links">
                   <a href="resources/assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                  <a href="de.do" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="proDetail.do" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>

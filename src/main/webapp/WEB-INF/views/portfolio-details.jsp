@@ -9,7 +9,7 @@
 <title>Portfolio Details - Groovin Bootstrap Template</title>
 <meta content="" name="description">
 <meta content="" name="keywords">
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Favicons -->
 <link href="resources/assets/img/favicon.png" rel="icon">
 <link href="resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -51,12 +51,15 @@
 		<section id="breadcrumbs" class="breadcrumbs">
 			<div class="container">
 
-				<div class="d-flex justify-content-between align-items-center">
-					<h2>상품명</h2>
+				<div class="d-flex align-items-center">
+					
 					<ol>
-						<li><a href="index.html">대카테고리</a></li>
-						<li>중카테고리</li>
+						<li><a href="#">대카테고리</a>&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+						
+						<li><a href="proList.do">중카테고리</a> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+						
 					</ol>
+					<strong>상품명</<strong>
 				</div>
 
 			</div>
@@ -91,23 +94,47 @@
 					</div>
 
 					<div class="col-lg-4">
+					<form>
 						<div class="portfolio-info">
 							<h3>상품명</h3>
 							<ul>
 								<li><strong>서브상세설명</strong>: 매우단단함</li>
 								<li><strong>제품번호</strong>: Aa101</li>
-								<li><strong>가 격</strong>: 120,000원</li>
-					
+								<li><strong>가 격</strong>: 120,000원</li>	
+								<li><strong>옵 션</strong>:
+								<label for="chk_option" ><span class="chk_option">foreach</span></label>
+							<input type="checkbox" value="foreach" id="chk_option">&nbsp;&nbsp;
+							<li>				
 							</ul>
+							
 						</div>
+
 						<div class="portfolio-description">
 							<h2>상세설명-제목</h2>
 							<p>메인상세설명메인상세설명메인상세설명메인상세설명메인상세설명
 							메인상세설명메인상세설명메인상세설명메인상세설명메인상세설명메메인상세설명
 							메인상세설명
 							메인상세설명</p>
+							<input type="submit" value="결제하기" class="payBtn">
 						</div>
 					</div>
+					
+					
+</form>
+
+<style>
+.chk_option{
+	cursor: pointer;
+}
+
+.payBtn{
+	background-color: red;
+	width: 416px;
+	height: 50px;
+	
+	
+}
+</style>
 
 				</div>
 
