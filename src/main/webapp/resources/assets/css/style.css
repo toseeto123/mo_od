@@ -8,6 +8,8 @@
 /*--------------------------------------------------------------
 # General
 --------------------------------------------------------------*/
+
+
 body {
   font-family: "Open Sans", sans-serif;
   color: #444444;
@@ -1458,13 +1460,17 @@ section {
 
 .breadcrumbs ol li+li {
   padding-left: 10px;
+  margin-right : 10px;
 }
+
+
 
 .breadcrumbs ol li+li::before {
   display: inline-block;
   padding-right: 10px;
   color: #444444;
-  content: "/";
+
+  
 }
 
 @media (max-width: 768px) {
@@ -1474,10 +1480,12 @@ section {
 
   .breadcrumbs ol {
     display: block;
+     
   }
 
   .breadcrumbs ol li {
     display: inline-block;
+   
   }
 }
 

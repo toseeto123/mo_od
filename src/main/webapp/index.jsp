@@ -84,6 +84,7 @@
               <li data-filter=".filter-app">조명</li>
               <li data-filter=".filter-card">수납</li>
               <li data-filter=".filter-web">시공</li>
+              <li data-filter=".filter-cate">장바구니</li>
             </ul>
           </div>
         </div>
@@ -112,7 +113,7 @@
                 <p>가구입니다.</p>
                 <div class="portfolio-links">
                   <a href="resources/assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox" title="Web 3"><i class="bx bx-plus"></i></a>
-                  <a href="de.do" title="More Details"><i class="bx bx-link"></i></a>
+                  <a href="proDetail.do" title="More Details"><i class="bx bx-link"></i></a>
                 </div>
               </div>
             </div>
