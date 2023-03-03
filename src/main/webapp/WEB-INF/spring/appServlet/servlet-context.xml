@@ -46,9 +46,13 @@
 	  <mapping path="/**"/>
 	  <!--  interceptor 제외 --> 
 	  <exclude-mapping path="/common/*"/>
+	  <exclude-mapping path="/resources/*"/>
 	  <!-- 적용된 Interceptor -->
 	  <beans:bean id="twoInter" class="kr.co.mood.interceptor.Interceptor"/>
 	 </interceptor>
+	 
+	 
+	 
 	</interceptors>
 	
 	
