@@ -84,6 +84,7 @@
               <li data-filter=".filter-app">조명</li>
               <li data-filter=".filter-card">수납</li>
               <li data-filter=".filter-web">시공</li>
+              <li data-filter=".filter-cate">장바구니</li>
             </ul>
           </div>
         </div>
