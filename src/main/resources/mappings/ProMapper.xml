@@ -5,8 +5,6 @@
 	
 	
 	
-
-	<!-- id명은 BoardDAO 클래스의 method명과 똑같이 해주기 -->
 	<select id="selectProList" resultType="kr.co.mood.Product.VO.ProVO">
 		select * from product
 	</select>

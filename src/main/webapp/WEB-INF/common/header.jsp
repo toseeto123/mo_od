@@ -94,7 +94,9 @@
            <ul>
           <!-- 알아서 이거 활용하자 -->
           <li><a href="#">이건 알지?</a></li>
-          <li><a class="getstarted scrollto" href="#">로그인</a></li>
+          <li><a class="getstarted scrollto" href="join.do">회원가입</a></li>
+          <li><a class="getstarted scrollto" href="login.do">로그인</a></li>
+          <li><a class="getstarted scrollto" href="cate.do">장바구니</a></li>
        </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
               </nav><!-- .navbar -->

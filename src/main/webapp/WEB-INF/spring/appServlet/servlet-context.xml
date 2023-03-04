@@ -9,6 +9,7 @@
 		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.2.xsd">
+	
 	<annotation-driven />
 	
 	<!-- MyBatis 설정  -->
@@ -20,7 +21,7 @@
     </beans:bean>
    
    <beans:bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
- <beans:property name="mapperLocations" value="classpath:/mapping/*.xml" /> 
+		<beans:property name="mapperLocations" value="classpath:/mappings/*.xml" />
       <beans:property name="dataSource" ref="dataSource" />      
    </beans:bean>
    
@@ -28,7 +29,6 @@
       <beans:constructor-arg index="0" ref="sqlSessionFactory" />
    </beans:bean>
 	
-
 	<resources mapping="/resources/**" location="/resources/" />
 
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
