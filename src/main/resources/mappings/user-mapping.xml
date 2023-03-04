@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="UserDAO">
+<!-- 
+   <resultMap id="userResult" type="user">
+      <id property="num" column="NUM" />
+      <result property="id" column="ID" />
+      <result property="pwd" column="PWD" />
+      <result property="name" column="NAME" />
+      <result property="age" column="AGE" />
+      <result property="gender" column="GENDER" />
+      <result property="lev" column="LEV" />
+      <result property="adr" column="ADR" />
+      <result property="email" column="EMAIL" />
+      <result property="phone" column="PHONE" />
+      <result property="day" column="DAY" />
+   </resultMap> -->
+
+	<insert id="insert" parameterType="kr.co.mood.user.dao.UserVO">
+      <![CDATA[
+      INSERT INTO moodjoin VALUES(num, #{id}, #{pwd}, #{name}, #{age}, #{gender}, #{lev}, #{adr}, #{email}, #{phone}, now())
+      ]]>
+   </insert>
+	
+  	
+  </mapper>
