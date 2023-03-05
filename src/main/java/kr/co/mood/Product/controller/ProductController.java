@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.Product.VO.ProVO;
@@ -27,7 +28,7 @@ public class ProductController {
 	}
 	
 	
-	//°í°´ »óÇ°¸®½ºÆ®ÀÌµ¿
+	//ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Æ®ï¿½Ìµï¿½
 	@RequestMapping(value = "proList.do")
 	public String proList(ArrayList<ProVO> vo,Model model) throws Exception{
 		System.out.println(ps.selectProList(vo));
@@ -36,7 +37,11 @@ public class ProductController {
 		return "productList";	
 	}
 	
-	
+	//ê²°ì œí˜ì´ì§€ ì´ë™
+	  @RequestMapping(value = "userPayment.do" , method = RequestMethod.GET)
+	   public String userPayment() {
+	      return "User/userPayment";
+	   }
 	
 	
 }
