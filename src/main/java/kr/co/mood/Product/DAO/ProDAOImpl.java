@@ -14,17 +14,24 @@ public class ProDAOImpl implements ProDAO {
 	@Autowired
 	SqlSessionTemplate session;
 		
+
 	
 	@Override
 	public List<ProVO> selectProList(List<ProVO> vo) throws Exception {
-		// TODO Auto-generated method stub
 		return session.selectList("ProDAO.selectProList", vo);
+		
 	}
 	
 	
 	@Override
 	public void insert(ProVO vo) {
 		session.insert("ProDAO.insert",vo);
+	}
+	
+	@Override
+	public ProVO selectProOne(int pro_number) {
+		
+		return session.selectOne("ProDAO.selectProOne", pro_number);
 	}
 
 }

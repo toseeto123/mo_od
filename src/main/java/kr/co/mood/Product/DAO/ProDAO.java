@@ -8,5 +8,8 @@ import kr.co.mood.Product.VO.ProVO;
 public interface ProDAO {
 	public List<ProVO> selectProList(List<ProVO> vo) throws Exception;
 	public void insert(ProVO vo);
+	public ProVO selectProOne(int pro_number) throws Exception;
+	
+
 	
 }
