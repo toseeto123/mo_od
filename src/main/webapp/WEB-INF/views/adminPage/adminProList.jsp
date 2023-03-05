@@ -9,7 +9,13 @@
 </head>
 <body>
 	<jsp:include page="../../common/adminHeader.jsp" />
-
+		<section id="breadcrumbs" class="breadcrumbs">
+			<div class="container">
+			<div class="d-flex align-items-center">
+					<strong>상품관리 > 상품목록/수정</<strong>
+				</div>
+			</div>
+		</section>
 	<!-- ======= Hero Section ======= -->
 	<section id="hero" style="background: white;">
 		<div class="hero-container">
@@ -49,9 +55,9 @@
 										</tr>
 										<c:forEach var="list" items="${list}">
 										<tr> 
-											<th scope="row">${list.pro_name}</th>
-											<td>${list.pro_number}</td>
+											<th scope="row">${list.pro_number}</th>
 											<td>${list.pro_option1}</td>
+											<td><a href="${path}/mood/adminProUpdate.do/${list.pro_number }">${list.pro_name}</a></td>
 											<td>${list.pro_desc1}</td>
 											<td>${list.pro_option3}</td>
 										</tr>

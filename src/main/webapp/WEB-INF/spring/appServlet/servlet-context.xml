@@ -30,6 +30,7 @@
    </beans:bean>
 	
 	<resources mapping="/resources/**" location="/resources/" />
+	<resources mapping="**/resources/" location="/resources/" />
 
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />

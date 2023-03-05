@@ -29,5 +29,11 @@ public class ProductServiceImpl implements ProductService{
 		dao.insert(vo);
 		
 	}
+	
+	@Override
+	public ProVO selectProOne(int pro_number) throws Exception {
+
+		return session.selectOne("ProDAO.selectProOne", pro_number);
+	}
 
 }
