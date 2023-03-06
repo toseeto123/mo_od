@@ -6,8 +6,8 @@ import kr.co.mood.Product.VO.ProVO;
 
 
 public interface ProductService {
-	public List<ProVO> selectProList(List<ProVO> vo) throws Exception;
+	public List<ProVO> selectProList(List<ProVO> vo);
 	public void insert(ProVO vo);
-	public ProVO selectProOne(int pro_number) throws Exception;
+	public ProVO selectProOne(int pro_number);
 	
 }
