@@ -38,7 +38,6 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-<!-- interceptor 추가 --!>
 	<interceptors>
 	 <interceptor>
 	  <mapping path="/**"/>
