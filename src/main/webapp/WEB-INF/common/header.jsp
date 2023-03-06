@@ -32,8 +32,12 @@
   <link href="resources/assets/css/style.css" rel="stylesheet">
 
 <style>
-   .navbar .headerMain li{ margin-right: 60px;}
+	.navbar .headerMain li{ margin-right: 60px;
+	
+	}
 
+.logo{ font-family:"궁서" }
+.logo2{font-family:"굴림"}
 
 </style>
 
@@ -44,14 +48,14 @@
   <header id="header" class="fixed-top d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index.jsp">묻:mo_od</a></h1>
+      <h1 class="logo"><a href="index.jsp">묻:<span class="logo2">mo_od</span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo"><img src="resources/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
         <ul class="headerMain">
           <li class="dropdown"><a href="#" >가구</a>
-                <ul>
+          		<ul>
                   <li><a href="proList.do">침대 프레임</a></li>
                   <li><a href="proList.do">매트리스</a></li>
                   <li><a href="proList.do">Deep Drop Down 3</a></li>
@@ -60,7 +64,7 @@
                 </ul>
           </li>
           <li class="dropdown"><a href="#">조명</a>
-                <ul>
+          		<ul>
                   <li><a href="#">Deep Drop Down 1</a></li>
                   <li><a href="#">Deep Drop Down 2</a></li>
                   <li><a href="#">Deep Drop Down 3</a></li>
@@ -69,7 +73,7 @@
                 </ul>
           </li>
           <li class="dropdown"><a href="#">수납</a>
-                <ul>
+          		<ul>
                   <li><a href="#">Deep Drop Down 1</a></li>
                   <li><a href="#">Deep Drop Down 2</a></li>
                   <li><a href="#">Deep Drop Down 3</a></li>
@@ -78,7 +82,7 @@
                 </ul>
           </li>
           <li class="dropdown"><a href="#">시공</a>
-                <ul>
+          		<ul>
                   <li><a href="#">Deep Drop Down 1</a></li>
                   <li><a href="#">Deep Drop Down 2</a></li>
                   <li><a href="#">Deep Drop Down 3</a></li>
