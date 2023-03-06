@@ -23,6 +23,12 @@
       INSERT INTO moodjoin VALUES(num, #{id}, #{pwd}, #{name}, #{age}, #{gender}, #{lev}, #{adr}, #{email}, #{phone}, now())
       ]]>
    </insert>
+   
+   <select id="selectId" parameterType="kr.co.mood.user.dao.UserVO" resultType="kr.co.mood.user.dao.UserVO">
+   <![CDATA[
+      select * from moodjoin where id=#{id} and pwd=#{pwd}
+      ]]>
+   </select>
 	
   	
   </mapper>

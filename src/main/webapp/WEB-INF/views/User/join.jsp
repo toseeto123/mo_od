@@ -69,7 +69,7 @@
             <tr class="register">
                 <td class="ID" align="center">*</td>
                 <label><td class="lable_name" alt="회원아이디">회원 ID</td></label>
-                <td><input type="text" name="id" class="ID" maxlength="20" placeholder="아이디">/>&nbsp;<a href="javascript:id_check()">[ID 중복 검사]</a></td>
+                <td><input type="text" name="id" value="${id}" class="ID" maxlength="20" placeholder="아이디">/>&nbsp;<a href="javascript:id_check()">[ID 중복 검사]</a></td>
             </tr>
             <tr class="title2">
                 <td colspan="3"><hr/></td>
@@ -77,7 +77,7 @@
             <tr class="register" height="30">
                 <td class="pwd1" align="center">*</td>
                 <label><td class="lable_name">비밀번호</td></label>
-                <td><input type="password" name="pwd" id="pwd1" onchange="" maxlength="20"/></td>
+                <td><input type="password" name="pwd" value="${pwd}" id="pwd1" onchange="" maxlength="20"/></td>
             </tr>
             <tr class="title2">
                 <td colspan="3"><hr /></td>
