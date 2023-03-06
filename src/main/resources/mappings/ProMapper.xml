@@ -20,4 +20,12 @@
   	values 
   	(#{pro_name},#{pro_desc1},#{pro_desc2},#{pro_option1},#{pro_option2},#{pro_option3}); 
   </insert>
+  
+  <!-- 주문 정보 -->
+	<insert id="payInfo" parameterType="kr.co.mood.Product.VO.paymentVO">
+ 	 insert into payment_list (payment_id,userId,payment_Rec,user_Adr,phone,pro_paycount)
+ 	 value (#{payment_id}, #{userId},#{payment_Rec},#{user_Adr},#{phone},#{pro_paycount})
+   </insert>
+   
+   <!-- 주문 상세정보 추가예정 -->
 </mapper>

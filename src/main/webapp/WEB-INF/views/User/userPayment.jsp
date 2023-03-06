@@ -23,20 +23,29 @@
                 pg : 'nice.nictest00m',  //nicepay=nice.id , kcp=kcp.id, kginicis=html5_inicis.id
                 pay_method : 'card',
                 merchant_uid: "IMP"+makeMerchantUid, 
-                name : '당근 10kg',
-                amount : 1004,
+                name : '상품1',
+                amount : 100, //결제가
                 buyer_email : 'Iamport@chai.finance',
-                buyer_name : '포트원 기술지원팀',
+                buyer_name : 'moodtest',
                 buyer_tel : '010-1234-5678',
                 buyer_addr : '서울특별시 강남구 삼성동',
-                buyer_postcode : '123-456'
-                
+                buyer_postcode : '123-456',
+                m_redirect_url : 'http://localhost:8080/mood/orderCompleteMobile' //mobile에서 결제시 리턴되는 주
             }, function (rsp) { // callback
-                if (rsp.success) {
                     console.log(rsp);
-                } else {
-                    console.log(rsp);
-                }
+                    //결제 검증 
+                    $.ajax({
+                		type:"POST",
+                		url:"/veryfyIamport/" + rsp.imp_uid
+                	}).done(function(data) {
+                		console.log(data);
+              //위의 rsp.paid_amount와 data.response.amount를 비교후 로직실행(import 검증)
+              	if(rsp.paid_amount == data.response.amount){
+              		alert("결제 및 검증완료");
+              	}else {
+              		alert("결제 실패");
+              	}
+            });
             });
         }
     </script>
@@ -156,7 +165,7 @@
 					</div>
 					<!-- 버튼 영역 -->
 					<div class="total_info_btn_div">
-						<a class="order_btn" onclick="requestPay()">결제하기</a>
+				 	<button onclick="requestPay()">결제하기</button>
 						<a class="reset_btn" onclick="reset()">결제취소</a>
 					</div>
 				</div>			
