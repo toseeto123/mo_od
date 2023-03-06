@@ -28,7 +28,7 @@
 		</section>
 <form role="form" method="post" action="">
 <div class="warp">
-
+<c:if test="${list.pro_number eq list.pro_number }">
 <div class="inputArea"> 
  <label>1차 카테고리</label>
  <select class="category1" readonly="readonly">
@@ -43,7 +43,7 @@
 
 <div class="inputArea">
  <label for=""></label>
- <input type="text" id="" name="pro_name" />
+ <input type="text" id="" name="pro_name" value="${list.pro_name}"/>
 </div>
 
 
@@ -54,15 +54,15 @@
 
 <div class="inputArea">
  <label for="">옵션1</label>
- <input type="text" id="" name="pro_option1" />
+ <input type="text" id="" name="pro_option1" value="${list.pro_option1}"/>
 </div>
 <div class="inputArea">
  <label for="">옵션2</label>
- <input type="text" id="" name="pro_option2" />
+ <input type="text" id="" name="pro_option2" value="${list.pro_option2}"/>
 </div>
 <div class="inputArea">
  <label for="">옵션3</label>
- <input type="text" id="" name="pro_option3" />
+ <input type="text" id="" name="pro_option3" value="${list.pro_option3}" />
 </div>
 
 <div class="inputArea">
@@ -88,14 +88,15 @@
 
 <div class="inputArea">
  <label for="">서브상품설명</label>
- <input type="text" id="" name="pro_desc1" />
+ <input type="text" id="" name="pro_desc1" value="${list.pro_desc1}"/>
 </div>
 
 
 <div class="inputArea">
  <label for="">메인상품설명</label>
- <textarea rows="5" cols="50" id="" name="pro_desc2"></textarea>
+ <textarea rows="5" cols="50" id="" name="pro_desc2"> ${list.pro_desc2}</textarea>
 </div>
+</c:if>
 
 <div class="inputArea">
  <button type="submit" id="" class="btn btn-primary">수정완료</button>

@@ -84,13 +84,13 @@
 
 <div class="inputArea">
  <label for="">서브상품설명</label>
- <input type="text" id="" name="pro_desc1" />
+ <input type="text" id="" name="pro_desc2" />
 </div>
 
 
 <div class="inputArea">
  <label for="">메인상품설명</label>
- <textarea rows="5" cols="50" id="" name="pro_desc2"></textarea>
+ <textarea rows="5" cols="50" id="" name="pro_desc1"></textarea>
 </div>
 
 <div class="inputArea">

@@ -57,7 +57,7 @@
                               <tr> 
                                  <th scope="row">${list.pro_number}</th>
                                  <td>${list.pro_option1}</td>
-                                 <td><a href="${list.pro_number }">${list.pro_name}</a></td>
+                                 <td><a href="adminProDetail?pro_number=${list.pro_number}">${list.pro_name}</a></td>
                                  <td>${list.pro_desc1}</td>
                                  <td>${list.pro_option3}</td>
                               </tr>
