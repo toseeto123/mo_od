@@ -46,7 +46,7 @@
 <jsp:include page="/WEB-INF/common/header.jsp" />
 
 	<main id="main">
-
+<c:if test="${list.pro_number eq list.pro_number }">
 		<!-- ======= Breadcrumbs ======= -->
 		<section id="breadcrumbs" class="breadcrumbs">
 			<div class="container">
@@ -59,12 +59,13 @@
 						<li><a href="proList.do">중카테고리</a> <i class="fa fa-angle-right" aria-hidden="true"></i></li>
 						
 					</ol>
-					<strong>상품명</<strong>
+					<strong>${list.pro_name}</<strong>
 				</div>
 
 			</div>
 		</section>
 		<!-- End Breadcrumbs -->
+		
 
 		<!-- ======= Portfolio Details Section ======= -->
 		<section id="portfolio-details" class="portfolio-details">
@@ -96,14 +97,20 @@
 					<div class="col-lg-4">
 					<form>
 						<div class="portfolio-info">
-							<h3>상품명</h3>
+							<h3>${list.pro_name}</h3>
 							<ul>
-								<li><strong>서브상세설명</strong>: 매우단단함</li>
+								<li><strong>서브상세설명</strong>: ${list.pro_desc1}</li>
 								<li><strong>제품번호</strong>: Aa101</li>
-								<li><strong>가 격</strong>: 120,000원</li>	
+								<li><strong>가 격</strong>:${list.pro_price}</li>	
 								<li><strong>옵 션</strong>:
-								<label for="chk_option" ><span class="chk_option">foreach</span></label>
-							<input type="checkbox" value="foreach" id="chk_option">&nbsp;&nbsp;
+								<label for="chk_option" ><span class="chk_option">${list.pro_option1}</span></label>
+								<input type="checkbox" value="daaaa" id="chk_option">&nbsp;&nbsp;
+								
+								<label for="chk_option 2" ><span class="chk_option">${list.pro_option2}</span></label>
+								<input type="checkbox" value="daaaa" id="chk_option 2">&nbsp;&nbsp;
+								
+								<label for="chk_option 3" ><span class="chk_option">${list.pro_option3}</span></label>
+								<input type="checkbox" value="daaaa" id="chk_option 3">&nbsp;&nbsp;
 							<li>				
 							</ul>
 							
@@ -111,15 +118,12 @@
 
 						<div class="portfolio-description">
 							<h2>상세설명-제목</h2>
-							<p>메인상세설명메인상세설명메인상세설명메인상세설명메인상세설명
-							메인상세설명메인상세설명메인상세설명메인상세설명메인상세설명메메인상세설명
-							메인상세설명
-							메인상세설명</p>
+							<p>${list.pro_desc2}</p>
 							<input type="submit" value="결제하기" class="payBtn">
 						</div>
 					</div>
 					
-					
+</c:if>					
 </form>
 
 <style>

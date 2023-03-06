@@ -77,7 +77,7 @@
                   <h4>${list.pro_name}</h4>
                   <span>${list.pro_desc1}</span>
                   <div class="social">
-                    <a href="proDetail.do">상세보기</a>
+                    <a href="${list.pro_number }">상세보기</a>
                   </div>
                 </div>
               </div>

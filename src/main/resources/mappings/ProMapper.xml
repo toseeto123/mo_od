@@ -16,8 +16,8 @@
 	
 	<insert id="insert" parameterType="kr.co.mood.Product.VO.ProVO">
  	insert into product 
-  	(pro_name,pro_desc1,pro_desc2,pro_option1,pro_option2,pro_option3) 
+  	(pro_name,pro_desc1,pro_desc2,pro_option1,pro_option2,pro_option3,pro_price) 
   	values 
-  	(#{pro_name},#{pro_desc1},#{pro_desc2},#{pro_option1},#{pro_option2},#{pro_option3}); 
+  	(#{pro_name},#{pro_desc1},#{pro_desc2},#{pro_option1},#{pro_option2},#{pro_option3},#{pro_price}); 
   </insert>
 </mapper>
