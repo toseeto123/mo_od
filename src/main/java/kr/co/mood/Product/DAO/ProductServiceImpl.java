@@ -12,13 +12,13 @@ import kr.co.mood.Product.VO.ProVO;
 public class ProductServiceImpl implements ProductService{
 	
 	@Autowired
-	private ProDAO dao;
+	private ProDAO prodao;
 	
 	@Autowired
 	SqlSessionTemplate session;
 	
 	@Override
-	public List<ProVO> selectProList(List<ProVO> vo) throws Exception {
+	public List<ProVO> selectProList(List<ProVO> vo){
 		return session.selectList("ProDAO.selectProList", vo);
 	}
 	
@@ -26,12 +26,12 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public void insert(ProVO vo) {
 		
-		dao.insert(vo);
+		prodao.insert(vo);
 		
 	}
 	
 	@Override
-	public ProVO selectProOne(int pro_number) throws Exception {
+	public ProVO selectProOne(int pro_number){
 
 		return session.selectOne("ProDAO.selectProOne", pro_number);
 	}

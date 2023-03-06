@@ -55,7 +55,7 @@ public class AdminController {
 	
 	//관리자 상품리스트 페이지 이동
 	@RequestMapping(value="adminProList.do")
-	public String ProductList(ArrayList<ProVO> vo,Model model) throws Exception{
+	public String ProductList(ArrayList<ProVO> vo,Model model){
 		System.out.println(ps.selectProList(vo));
 		List<ProVO> list = ps.selectProList(vo);
 		model.addAttribute("list", list);
@@ -63,8 +63,8 @@ public class AdminController {
 	}
 	
 	//관리자 상품업데이트 페이지이동
-	@RequestMapping(value="adminProUpdate.do/{pro_number}" ,method=RequestMethod.GET)
-	public String updateProductPage(@PathVariable("pro_number") int pro_number, Model model) throws Exception{
+	@RequestMapping(value="{pro_number}" ,method=RequestMethod.GET)
+	public String updateProductPage(@PathVariable("pro_number") int pro_number, Model model){
 		//mav.setViewName("adminPage/adminProUpdate");
 		//model.addObject("list", ps.selectProOne(pro_number));
 		model.addAttribute("list", ps.selectProOne(pro_number));
