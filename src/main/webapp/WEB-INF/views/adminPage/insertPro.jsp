@@ -13,6 +13,7 @@
 	margin : 0 auto;
 }
 </style>
+
 <body>
 	<jsp:include page="../../common/adminHeader.jsp" />
 	<section id="breadcrumbs" class="breadcrumbs">
@@ -23,29 +24,60 @@
 
 			</div>
 		</section>
-<form role="form" method="post" action="insert.do">
+<form role="form" method="post" action="insert.do"  enctype="multipart/form-data">
 <div class="warp">
 
 <div class="inputArea"> 
- <label>1차 카테고리</label>
- <select class="category1">
-  <option value="">가구</option>
+ <label for="mainCategory">1차 카테고리</label>
+ <select class="category1" id="mainCategory" name="mainCategory" onchange="categoryChange(this)">
+  <option value="A">가구</option>
+  <option value="B">조명</option>
+  <option value="C">수납</option>
+  <option value="D">시공</option>
  </select>
 
- <label>2차 카테고리</label>
- <select class="category2" name="cateCode">
-  <option value="">전체</option>
+ <label for="subCategory">2차 카테고리</label>
+ <select class="category2" name="subCategory" id="subCategory">
+  <option>선택</option>
  </select>
 </div>
+
+<script type="text/javascript">
+
+function categoryChange(e){
+	var gagu = ["매트리스","침대프레임"]
+	var 조명 = ["무드등","스탠스"]
+	var 수납 = ["옷장/행거","서랍"]
+	var 시공 = ["침실","거실","주방","욕실"]
+	var target = document.getElementById("subCategory");
+	
+	if(e.value == "A") var d = gagu;
+	else if (e.value == "B") var d = 조명;
+	else if (e.value == "C") var d = 수납;
+	else if (e.value == "D") var d = 시공;
+	
+	target.options.length=0;
+	
+	for(x in d){
+		var opt = document.createElement("option");
+		opt.value = d[x];
+		opt.innerHTML = d[x];
+		target.appendChild(opt);
+	}
+	
+	
+}
+</script>
 
 <div class="inputArea">
  <label for="">상품명</label>
  <input type="text" id="" name="pro_name" />
 </div>
 
+
 <div class="inputArea">
  <label for="">상품일련번호</label>
- <input type="text" id="" name="" />
+ <input type="text" id="" name="pro_serialnumber" />
 </div>
 
 <div class="inputArea">
@@ -69,15 +101,23 @@
 
 <div class="inputArea">
  <label for="">이미지1</label>
- <input type="file" id="" name="" />
+ <input type="file" id="" name="file" />
 </div>
 <div class="inputArea">
  <label for="">이미지2</label>
- <input type="file" id="" name="" />
+ <input type="file" id="" name="file1" />
 </div>
 <div class="inputArea">
  <label for="">이미지3</label>
- <input type="file" id="" name="" />
+ <input type="file" id="" name="file2" />
+</div>
+<div class="inputArea">
+ <label for="">이미지3</label>
+ <input type="file" id="" name="file3" />
+</div>
+<div class="inputArea">
+ <label for="">이미지3</label>
+ <input type="file" id="" name="file4" />
 </div>
 
 
