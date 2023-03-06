@@ -53,6 +53,6 @@
    
   
 	<context:component-scan base-package="kr.co.*" />
-	
+	<mybatis-spring:scan base-package="kr.co.mood.Payment.DAO" />
 	
 </beans:beans>
