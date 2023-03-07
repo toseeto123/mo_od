@@ -38,7 +38,7 @@ public class UserController {
    public String login() {
       
       return "User/login";
-   }
+      }
   //lsg
    @RequestMapping(value = "/login.do" , method = RequestMethod.POST)
    public String loginAction(UserVO vo) {

@@ -12,4 +12,9 @@ public class CateController {
 		
 		return "cate/cate";
 	}
+	@RequestMapping(value="/cate.do" , method =RequestMethod.POST)
+	public String selectAllList() {
+		
+		return "cate/cate";
+	}
 }
