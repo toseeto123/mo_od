@@ -56,8 +56,9 @@
         <ul class="headerMain">
           <li class="dropdown"><a href="#" >가구</a>
           		<ul>
-                  <li><a href="A0categoryList">침대 프레임</a></li>
-                  <li><a href="A1categoryList">매트리스</a></li>
+          		 <li><a href="A0categoryList">매트리스</a></li>
+                 <li><a href="A1categoryList">침대 프레임</a></li>
+                 
 
                 </ul>
           </li>

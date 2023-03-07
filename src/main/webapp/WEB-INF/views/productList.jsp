@@ -50,9 +50,26 @@
 				<div class="d-flex align-items-center">
 					
 					<ol>
-						<li><a href="#">대카테고리</a>&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+						<li><a href="#">대카테고리</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
 						
-						<li><a href="#">${list.pro_categoryserial }</a></li>
+						<c:if test="${list.pro_categoryserial  eq 'A0' }">
+						<li><a href="#">침대프레임</a></li>
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'A1' }">
+						<li><a href="#">매트리스</a></li>
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'B0' }">
+						<li><a href="#">무드등</a></li>
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'B1' }">
+						<li><a href="#">스탠드조명</a></li>
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'C0' }">
+						<li><a href="#">옷장/행거</a></li>
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'C1' }">
+						<li><a href="#">서랍</a></li>
+						</c:if>
 						
 					</ol>
 				</div>
@@ -66,7 +83,26 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>중카테고리명</h2>
+          
+          
+          <c:if test="${list.pro_categoryserial  eq 'A0' }">
+						<h2>침대프레임</h2>
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'A1' }">
+						<h2>매트리스</h2>
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'B0' }">
+						<h2>무드등</h2>
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'B1' }">
+						<h2>스탠드조명</h2>
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'C0' }">
+						<h2>옷장/행거</h2>
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'C1' }">
+						<h2>서랍</h2>
+						</c:if>
         </div>
 
         <div class="row">
