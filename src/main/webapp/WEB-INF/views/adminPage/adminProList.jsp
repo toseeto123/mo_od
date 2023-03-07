@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,8 +31,8 @@
                         <table class="table">
                            <thead>
                               <tr>
-                                 <th scope="col">상품일련번호</th>
                                  <th scope="col">카테고리</th>
+                                 <th scope="col">상품일련번호</th>
                                  <th scope="col">상품명</th>
                                  <th scope="col">가격</th>
                                  <th scope="col">품절여부(판매여부)</th>
@@ -41,11 +42,38 @@
 
                               <c:forEach var="list" items="${list}">
                               <tr> 
-                                 <th scope="row">${list.pro_serialnumber}</th>
-                                 <td>${list.pro_categoryserial}</td>
+                                 
+                                 
+						<td>                 
+                        <c:if test="${list.pro_categoryserial  eq 'A0' }">
+						가구 > 침대프레임
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'A1' }">
+						가구 > 매트리스
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'B0' }">
+						조명 > 무드등
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'B1' }">
+						조명 > 스탠드조명
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'C0' }">
+						수납 > 옷장/행거
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'C1' }">
+						수납 > 서랍
+						</c:if>
+						</td>
+						<th scope="row">${list.pro_serialnumber}</th>
+                                 
                                  <td><a href="adminProDetail?pro_number=${list.pro_number}">${list.pro_name}</a></td>
-                                 <td>${list.pro_price}</td>
-                                 <td>${list.pro_soldout}</td>
+                                 <td><fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></td>
+                                 <c:if test="${list.pro_soldout eq 0}">
+                                 <td>판매중</td>
+                                 </c:if>
+                                 <c:if test="${list.pro_soldout eq 1}">
+                                 <td>판매중지</td>
+                                 </c:if>
                               </tr>
                               </c:forEach>
                            </tbody>
