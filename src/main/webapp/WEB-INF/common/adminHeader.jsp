@@ -63,7 +63,7 @@
           <li class="dropdown"><a href="#">버킷</a>
           		
           </li>
-          <li class="dropdown"><a href="#">결제</a>
+          <li class="dropdown"><a href="payment.do">결제</a>
           </li>
            </ul>
            <ul>
