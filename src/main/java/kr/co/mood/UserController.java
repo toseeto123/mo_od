@@ -1,11 +1,9 @@
 package kr.co.mood;
 
 
-import org.mybatis.spring.SqlSessionTemplate;
-import java.util.HashMap;
-import java.util.Map;
+import javax.servlet.http.HttpSession;
 
-import javax.servlet.http.HttpServletRequest;
+import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,11 +39,12 @@ public class UserController {
    }
   //lsg
    @RequestMapping(value = "/login.do" , method = RequestMethod.POST)
-   public String loginAction(UserVO vo) {
+   public String loginAction(UserVO vo, HttpSession session) {
+	   session.setAttribute("login_info", vo);
 	  UserVO vo1 =  userservice.selectId(vo);
 	  if(vo1.getId()==null || vo1.getId().equals("")) {
 		  System.out.println("null값이얌");
-		  return "redirect:login.jsp";
+		  return "redirect:User/login.jsp";
 	  } else {
 		  if(vo1.getId().equals("admin")) {
 			  System.out.println("admin 로그인 성공");
@@ -58,5 +57,11 @@ public class UserController {
 	  }
 		
    }
+ 	@RequestMapping("/logout.do")
+ 		public String logout(UserVO vo,HttpSession session) {
+ 			session.setAttribute("login_info", vo);
+ 			session.removeAttribute("login_info");
+ 			return "redirect:index.jsp";
+ 		}
 
 }
