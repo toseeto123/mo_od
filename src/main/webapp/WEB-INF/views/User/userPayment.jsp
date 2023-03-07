@@ -4,6 +4,76 @@
 <!DOCTYPE html>
 <html>
 <head>
+<style>
+dl, ul, ol, li {
+    list-style: none;
+}
+.content_box {
+    float: left;
+    width: 100%;
+    background-color: white;
+}
+.order_wrap {
+	width: 1600px;
+	margin: auto;
+}
+.order_wrap .order_tit {
+    overflow: hidden;
+    border-bottom: 2px solid #c8936ed4;
+}
+.order_wrap .order_tit ol {
+    float: right;
+    line-height: 62px;
+}
+.order_wrap .order_tit h2 {
+    float: left;
+    font-size: 28px;
+    color: #222222;
+}
+.order_wrap .order_tit ol li {
+    float: left;
+    font-size: 14px;
+    color: #d1d1d1;
+}
+.order_wrap .order_tit li span {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.order_wrap .order_tit .page_on {
+    color: #2b2bfc;
+    font-weight: bold;
+}
+.price_sum {
+	margin: 40px 100px 50px ;
+	padding: 20px 40px 25px 40px;
+	border: 2px solid #c8936ed4;
+	border-radius: 5px;
+	height: 300px;
+}
+
+.price_sum_cont {
+	display: table;
+	float: right;
+	text-align: right;
+}
+.price_sum_cont .price_sum_list {
+    position: relative;
+}
+
+.price_sum_cont .price_sum_list dl {
+	display : table-cell;
+	padding: 5px 10px 5px 10px;
+	font-size: 16px;
+	text-align: right;
+	display: table-cell;
+}
+.price_sum_cont .price_sum_list dl{
+	display: block;
+}
+</style>
+
+<script src="https://unpkg.com/phosphor-icons"></script>
 <!-- jQuery -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.4.min.js" ></script>
     <!-- iamport.payment.js -->
@@ -44,134 +114,71 @@
 <title>회원결제</title>
 </head>
 <body>
-<jsp:include page="/WEB-INF/common/header.jsp" />
-<!-- ======= Breadcrumbs ======= -->
-		<section id="breadcrumbs" class="breadcrumbs">
-			<div class="container">
+<jsp:include page="../../common/header.jsp" />
+<section id="hero" style="height: 400px;">
+		<div class="hero-container">
+			<div id="heroCarousel" data-bs-interval="5000"
+				class="carousel slide carousel-fade" data-bs-ride="carousel">
+				<ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
-				<div class="d-flex align-items-center">
-					
-					<ol>
-						<li><a href="#">장바구니 ></a>&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
-						
-						<li><a href="#">주문 내역</a></li>
-						
-					</ol>
+				<div class="carousel-inner" role="listbox">
+
+					<!-- Slide 1 -->
+					<div class="carousel-item active"
+						style="background-image: url(resources/assets/img/slide/cate1.jpg); height: 500px;">
+						<div class="carousel-container">
+							<div class="carousel-content">
+								<h2 class="animate__animated animate__fadeInDown">결제페이지</h2>
+							</div>
+						</div>
+					</div>
 				</div>
-
 			</div>
-		</section>
-		<!-- End Breadcrumbs -->
-		
-		<!-- ======= Team Section ======= -->
-    <section id="team" class="team">
-      <div class="container">
-<!-- 회원 정보 -->
-				<div class="member_info_div">
-					<table class="table_text_align_center memberInfo_table">
-						<tbody>
-							<tr>
-								<th style="width: 25%;">주문자</th>
-								<td style="width: *">회원정보노출구역 ${memberInfo.memberName} | ${memberInfo.memberMail}</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>		
-<!-- 상품 정보 -->
-				<div class="orderGoods_div">
-					<!-- 상품 종류 -->
-					<div class="goods_kind_div">
-						주문상품 <span class="goods_kind_div_kind"></span>종류 <span class="goods_kind_div_count"></span>갯수
-					</div>
-					<!-- 상품 테이블 -->
-					<table class="goods_subject_table">
-						<colgroup>
-							<col width="15%">
-							<col width="45%">
-							<col width="40%">
-						</colgroup>
-						<tbody>
-							<tr>
-								<th>이미지</th>
-								<th>상품 정보</th>
-								<th>판매가</th>
-							</tr>
-						</tbody>
-					</table>
-					<table class="goods_table">
-						<colgroup>
-							<col width="15%">
-							<col width="45%">
-							<col width="40%">
-						</colgroup>					
-						<tbody>
-							<c:forEach items="${orderList}" var="ol">
-								<tr>
-									<td>
-										<div class="image_wrap" data-bookid="${ol.imageList[0].bookId}" data-path="${ol.imageList[0].uploadPath}" data-uuid="${ol.imageList[0].uuid}" data-filename="${ol.imageList[0].fileName}">
-											<img>
-										</div>
-									</td>
-									<td>${ol.bookName}</td>
-									<td class="goods_table_price_td">
-										<fmt:formatNumber value="${ol.salePrice}" pattern="#,### 원" /> | 수량 ${ol.bookCount}개
-										<br><fmt:formatNumber value="${ol.totalPrice}" pattern="#,### 원" />
-										<br>[<fmt:formatNumber value="${ol.totalPoint}" pattern="#,### 원" />P]
-										<input type="hidden" class="individual_bookPrice_input" value="${ol.bookPrice}">
-										<input type="hidden" class="individual_salePrice_input" value="${ol.salePrice}">
-										<input type="hidden" class="individual_bookCount_input" value="${ol.bookCount}">
-										<input type="hidden" class="individual_totalPrice_input" value="${ol.salePrice * ol.bookCount}">
-										<input type="hidden" class="individual_point_input" value="${ol.point}">
-										<input type="hidden" class="individual_totalPoint_input" value="${ol.totalPoint}">
-										<input type="hidden" class="individual_bookId_input" value="${ol.bookId}">
-									</td>
-								</tr>							
-							</c:forEach>
-
-						</tbody>
-					</table>
-				</div>		
-<!-- 주문 종합 정보 -->
-				<div class="total_info_div">
-					<!-- 가격 종합 정보 -->
-					<div class="total_info_price_div">
-						<ul>
-							<li>
-								<span class="price_span_label">상품 금액</span>
-								<span class="totalPrice_span">100000</span>원
-							</li>
-							<li>
-								<span class="price_span_label">수량</span>
-								<span class="delivery_price_span">1</span>
-							</li>
-							<li class="price_total_li">
-								<strong class="price_span_label total_price_label">최종 결제 금액</strong>
-								<strong class="strong_red">
-									<span class="total_price_red finalTotalPrice_span">
-										100000
-									</span>원
-								</strong>
-							</li>
-						</ul>
-					</div>
-					<!-- 버튼 영역 -->
-					<div class="total_info_btn_div">
+		</div>
+	</section>
+	<div class="content_box">
+	<div class="order_wrap">
+	<div class="order_tit">
+		<h2 style="margin-top: 150px;"><b>주문/결제</b></h2>
+			</div>
+		<br>
+		<h3>주문자</h3>
+			이름&nbsp;&nbsp;  <input type="text" placeholder="고객이름"><br><br>
+			이메일&nbsp;<input type="text" placeholder="이메일"><br><br>
+			주소&nbsp;&nbsp;<input type="text" placeholder="주소"><br><br>
+			휴대전화 <input type="text" placeholder="고객이름"><br><br>
+			<p style="text-align: center; margin-top: 30px;">주문 내역에 담긴 상품이 없습니다</p>
+		</div>
+		<div class="price_sum">
+			<div class="price_sum_cont">
+			<div class="price_sum_list">
+				<dl style="font-size: 20px;">
+			
+					<dt>총
+					<strong>0</strong>
+					개의 상품 금액
+					</dt>
+					<dd>
+					<strong>0</strong>
+					원
+					<span><i class="ph-plus-circle" style="font-size: 20px; color:blue;"></i></span>
+					배송비
+					<strong>0</strong>
+					원
+					<span><i class="ph-equals" style="font-size: 20px; color:blue;"></i></span>
+					합계
+					<strong>0</strong>
+					원
+					</dd>
+				</dl>
+				<!-- 버튼 영역 -->
 						<a class="order_btn" onclick="requestPay()">결제하기</a>
 						<a class="reset_btn" onclick="reset()">결제취소</a>
-					</div>
-				</div>			
-		</div>	
-	</section>		
-<!-- 주문 요청 form -->
-			<form class="order_form" action="/order" method="post">
-				<!-- 주문자 회원번호 -->
-				<input name="memberId" value="${memberInfo.memberId}" type="hidden">
-				<!-- 주소록 & 받는이-->
-				<input name="addressee" type="hidden">
-				<input name="memberAddr1" type="hidden">
-				<input name="memberAddr2" type="hidden">
-				<input name="memberAddr3" type="hidden">
-			</form>
+						<a class="apibtn" onclick="kakao()">카카오페이</a>
+			</div>
+		</div>
+	</div>
+</div>		
 <jsp:include page="/WEB-INF/common/footer.jsp" />
 </body>
 </html>

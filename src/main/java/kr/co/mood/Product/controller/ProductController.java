@@ -39,11 +39,6 @@ public class ProductController {
 		return "productList";
 	}
 
-	// 寃곗젣�럹�씠吏� �씠�룞
-	@RequestMapping(value = "userPayment.do", method = RequestMethod.GET)
-	public String userPayment() {
-		return "User/userPayment";
-	}
 
 	@RequestMapping(value = "{pro_number}", method = RequestMethod.GET)
 	public String proDetails(@PathVariable("pro_number") int pro_number, Model model) {
