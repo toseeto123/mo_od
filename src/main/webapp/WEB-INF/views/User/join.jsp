@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <link rel="stylesheet" href="/resources/css/style.css"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,158 +7,298 @@
 <title>Insert title here</title>
 
 <style>
-.map {
+body {
     margin: 0;
-    padding: 0;
-    font-family: sans-serif;
+    height: 100%;
+    background: #f5f6f7;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
-.title{
- width : 800px;
-}
-
-.join1{
-  height: 40px;
-}
-
-.table1{
-   width: 700px;
-   height: 600px;
-   font-size: 9pt;
+#logo {
+    width: 240px;
+    height: 44px;
+    cursor: pointer;
 }
 
-.register{
-   height: 30px;
+#header {
+    padding-top: 62px;
+    padding-bottom: 20px;
+    text-align: center;
+}
+#wrapper {
+    position: relative;
+    height: 100%;
 }
 
-.pwd1,.pwd2, .name, .phoneNo, .email, .adr{
-   width: 5%;
+#content {
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    width: 460px;
 }
 
-.ID{
- width:177px;
- height:22px;
+
+
+
+/* 입력폼 */
+
+
+h3 {
+    margin: 19px 0 8px;
+    font-size: 14px;
+    font-weight: 700;
 }
 
-.gender , .birth{
-   width: 175px;
-   height: 20px;
+
+.box {
+    display: block;
+    width: 100%;
+    height: 51px;
+    border: solid 1px #dadada;
+    padding: 10px 14px 10px 14px;
+    box-sizing: border-box;
+    background: #fff;
+    position: relative;
 }
 
-.lable_name{
- width: 15%;
+.int {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 29px;
+    border: none;
+    background: #fff;
+    font-size: 15px;
 }
 
-.title2{
- height: 7px;
+input {
+    font-family: Dotum,'돋움',Helvetica,sans-serif;    
 }
 
+.box.int_id {
+    padding-right: 110px;
+}
+
+.box.int_pass {
+    padding-right: 40px;
+}
+
+.box.int_pass_check {
+    padding-right: 40px;
+}
+
+.step_url {
+    /*@naver.com*/
+    position: absolute;
+    top: 16px;
+    right: 13px;
+    font-size: 15px;
+    color: #8e8e8e;
+}
+
+.pswdImg {
+    width: 18px;
+    height: 20px;
+    display: inline-block;
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    margin-top: -10px;
+    cursor: pointer;
+}
+
+#bir_wrap {
+    display: table;
+    width: 100%;
+}
+
+#bir_yy {
+    display: table-cell;
+    width: 147px;
+    
+}
+
+#bir_mm {
+    display: table-cell;
+    width: 147px;
+    vertical-align: middle;
+}
+
+#bir_dd {
+    display: table-cell;
+    width: 147px;
+}
+
+#bir_mm, #bir_dd {
+    padding-left: 10px;
+}
+
+select {
+    width: 100%;
+    height: 29px;
+    font-size: 15px;
+    background: #fff url(https://static.nid.naver.com/images/join/pc/sel_arr_2x.gif) 100% 50% no-repeat;
+    background-size: 20px 8px;
+    -webkit-appearance: none;
+    display: inline-block;
+    text-align: start;
+    border: none;
+    cursor: default;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+}
+
+/* 에러메세지 */
+
+.error_next_box {
+    margin-top: 9px;
+    font-size: 12px;
+    color: red;    
+    display: none;
+}
+
+#alertTxt {
+    position: absolute;
+    top: 19px;
+    right: 38px;
+    font-size: 12px;
+    color: red;
+    display: none;
+}
+
+/* 버튼 */
+
+.btn_area {
+    margin: 30px 0 91px;
+}
+
+#btnJoin {
+    width: 100%;
+    padding: 21px 0 17px;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background-color: #08a600;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+}
 </style>
 
 </head>
 <body>
+        <!-- header -->
+        <div id="header">
+            <a href="https://nid.naver.com/user2/V2Join.nhn?m=agree#agreeBottom"><img src="NAVER_CI_Green.png" id="logo"></a>
+        </div>
 
-   <div class="map">
-    <form action="join.do" method="post" name="join">
-        <table class="title">
-            <tr class="join1">
-                <td align="center"><b>[회원가입]</b></td>
-            </tr>
-        </table>    
-        <table class="table1" cellpadding="0" style="border-collapse:collapse; ">
-            <tr class="register">
-                <td class="ID" align="center">*</td>
-                <label><td class="lable_name" alt="회원아이디">회원 ID</td></label>
-                <td><input type="text" name="id" value="${id}" class="ID" maxlength="20" placeholder="아이디">/>&nbsp;<a href="javascript:id_check()">[ID 중복 검사]</a></td>
-            </tr>
-            <tr class="title2">
-                <td colspan="3"><hr/></td>
-            </tr>
-            <tr class="register" height="30">
-                <td class="pwd1" align="center">*</td>
-                <label><td class="lable_name">비밀번호</td></label>
-                <td><input type="password" name="pwd" value="${pwd}" id="pwd1" onchange="" maxlength="20"/></td>
-            </tr>
-            <tr class="title2">
-                <td colspan="3"><hr /></td>
-            </tr>
-            <tr class="register" >
-                <td class="pwd2" align="center">*</td>
-                <label><td class="lable_name">비밀번호 확인</td></label>
-                <td><input type="password" name="pwd2" id="pwd2" onchange="" />&nbsp;&nbsp;<span id="same"></span></td>
-            </tr>
-            <tr class="title2">
-                <td colspan="3"><hr /></td>
-            </tr>
-            <tr class="register" height="30">
-                <td class="name" align="center">*</td>
-                <label><td class="lable_name">이 름</td></label>
-                <td><input type="text" id="name" name="name" /></td>
-            </tr>
-            <tr class="title2">
-                <td colspan="3"><hr /></td>
-            </tr>
-            <tr class="register" height="30">
-                <td class="gender" align="center">*</td>
-                <label><td class="lable_name">성 별</td></label>
-                <td>
-                    <select id="gender" name="gender" class="gender" aria-label="성별">
-                           <option selected>성별</option>
-                           <option value="1">남자</option>
-                           <option value="2">여자</option>
-                           <option value="3">선택 안함</option>
-                        </select>
-                </td>
-            </tr>
-            <tr class="title2">
-                <td colspan="3"><hr /></td>
-            </tr>
-            <tr class="register" height="30">
-                <td class="phoneNo" align="center">*</td>
-                <td class="lable_name">휴대전화</td>
-                <td><input type="tel" name="phone" /></td>
-            </tr>
-            <tr class="title2">
-                <td colspan="3"><hr /></td>
-            </tr>
-            <tr class="register" height="30">
-                <td class="age" align="center">*</td>
-                <label><td class="lable_name">나이</td></label>
-                <td><input type="text" id="birth" class="age" name="age" maxlength="4"></td>
-            </tr>
-            <tr class="title2">
-                <td colspan="3"><hr /></td>
-            </tr>
-            <tr class="register" height="30">
-                <td class="email" align="center">*</td>
-                <label><td class="lable_name">이메일</td></label>
-                <td><input type="email" name="email" /></td>
-            </tr>
-            <tr class="title2">
-                <td colspan="3"><hr/></td>
-            </tr>
-            <tr>
-                <td class="adr" align="center">*</td>
-                <label><td class="lable_name">주 소</td></label>
-                <td>
-                    <input type="text" size="10" name="adr" id="postcode" placeholder="우편번호" value="12345" readonly="readonly" onclick="">
-                    <input type="button" onclick="" value="우편번호 찾기"><br><br />
-                    <input type="text" size="30" name="wRoadAddress" id="roadAddress" placeholder="도로명주소" value="경기도" readonly="readonly" onclick="">
-                    <input type="text" size="30" name="wJibunAddress" id="jibunAddress" placeholder="지번주소" value="구리시"readonly="readonly" onclick="">
-                    <br/><span id="guide" style="color:#999;font-size:10px;"></span>   
-                    <br/><br/><input type="text" name="wRestAddress" placeholder="나머지 주소" value="인창동" size="70" />
-                </td>
-            </tr>
- 
-        </table>
-        <br/>
-        <table>
-            <tr height="40">
-                <td><input type="submit" value="가입하기" class="join_now bt_submit mainBgColor" onclick="return join()"></td>
-                <td><input type="submit" value="취소" class="join_now bt_submit mainBgColor" onclick="return JoinCheck()"></td>
-            </tr>
-        </table>
-    </form>
-</div>
+        <!-- wrapper -->
+        <div id="wrapper">
+         <form action="join.do" method="post" name="join">
+            <!-- content-->
+            <div id="content">
+                <!-- ID -->
+                <div>
+                    <h3 class="lable_name">
+                        <label for="id">아이디</label>
+                    </h3>
+                    <span class="box int_id">
+                        <input type="text" name="id" class="ID" value="${id}" maxlength="20">
+                        
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
 
-</body>
+                <!-- PW1 -->
+                <div>
+                    <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+                    <span class="box int_pass">
+                        <input type="text" id="pswd1" class="int" maxlength="20">
+                        <span id="alertTxt">사용불가</span>
+                        
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+
+                <!-- PW2 -->
+                <div>
+                    <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
+                    <span class="box int_pass_check">
+                        <input type="text" id="pswd2" class="int" maxlength="20">
+                        
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+
+                <!-- NAME -->
+                <div>
+                    <h3 class="join_title"><label for="name">이름</label></h3>
+                    <span class="box int_name">
+                        <input type="text" id="name" class="int" maxlength="20">
+                    </span>
+                    <span class="error_next_box"></span>
+                </div>
+
+                <!-- BIRTH -->
+                <div>
+                    <h3 class="lable_name"><label for="age">연령</label></h3>
+
+                    <div id="bir_wrap">
+                        <!-- BIRTH_YY -->
+                        <div id="age">
+                            <span class="box">
+                                <input type="text" id="age" class="age" name="age" maxlength="4">
+                            </span>
+                        </div>
+                    </div>
+                    <span class="error_next_box"></span>    
+                </div>
+
+                <!-- GENDER -->
+                <div>
+                    <h3 class="lable_name"><label for="gender">성별</label></h3>
+                    <span class="box gender_code">
+                        <select id="gender" class="sel">
+                            <option>성별</option>
+                            <option value="1">남자</option>
+                            <option value="2">여자</option>
+                        </select>                            
+                    </span>
+                    <span class="error_next_box">필수 정보입니다.</span>
+                </div>
+
+                <!-- EMAIL -->
+                <div>
+                    <h3 class="lable_name"><label for="email">본인확인 이메일</label></h3>
+                    <span class="box int_email">
+                        <input type="text" id="email" class="int" maxlength="100" placeholder="선택입력">
+                    </span>
+                    <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>    
+                </div>
+
+                <!-- MOBILE -->
+                <div>
+                    <h3 class="lable_name"><label for="phoneNo">휴대전화</label></h3>
+                    <span class="box int_mobile">
+                        <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
+                    </span>
+                    <span class="error_next_box"></span>    
+                </div>
+
+
+                <!-- JOIN BTN-->
+                <div class="btn_area">
+                    <button type="button" id="btnJoin">
+                        <span>가입하기</span>
+                    </button>
+                </div>
+
+                
+
+            </div> 
+            <!-- content-->
+</form>
+        </div> 
+
+        <!-- wrapper -->
+    <script src="main.js"></script>
+    </body>
 </html>
