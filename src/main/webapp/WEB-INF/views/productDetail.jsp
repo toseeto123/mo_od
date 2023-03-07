@@ -83,11 +83,11 @@
 								</div>
 
 								<div class="swiper-slide">
-									<img src="resources/assets/img/portfolio/portfolio-2.jpg" alt="">
+									<img src="resources/assets/img/product/${list.pro_img2}" alt="">
 								</div>
 
 								<div class="swiper-slide">
-									<img src="resources/assets/img/portfolio/portfolio-3.jpg" alt="">
+									<img src="resources/assets/img/product/${list.pro_img3}" alt="">
 								</div>
 
 							</div>
@@ -105,16 +105,29 @@
 								<li><strong>가 격</strong>: <fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></li>	
 								<li><strong>옵 션</strong>:
 								<label for="chk_option" ><span class="chk_option">선택안함</span></label>
-								<input type="radio" value="daaaa" id="chk_option" name="radioOption">&nbsp;&nbsp;
+								<input type="radio" value="daaaa" id="chk_option" name="radioOption" checked="checked">&nbsp;&nbsp;
 								
+								
+								<c:if test="${!empty list.pro_option1}">
 								<label for="chk_option 1" ><span class="chk_option">${list.pro_option1}</span></label>
 								<input type="radio" value="daaaa" id="chk_option 1" name="radioOption">&nbsp;&nbsp;
+								</c:if>
 								
+								
+						 		<c:if test="${!empty list.pro_option2}">
 								<label for="chk_option 2" ><span class="chk_option">${list.pro_option2}</span></label>
 								<input type="radio" value="daaaa" id="chk_option 2" name="radioOption">&nbsp;&nbsp;
+								</c:if>
 								
+								</c:if>
+								<c:if test="${!empty list.pro_option3}">
 								<label for="chk_option 3" ><span class="chk_option">${list.pro_option3}</span></label>
 								<input type="radio" value="daaaa" id="chk_option 3" name="radioOption">&nbsp;&nbsp;
+								</c:if>
+								
+								
+								
+								
 							<li>				
 							</ul>
 							
@@ -128,7 +141,7 @@
 						</div>
 					</div>
 					
-</c:if>					
+				
 </form>
 
 <style>

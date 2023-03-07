@@ -38,28 +38,14 @@
                               </tr>
                            </thead>
                            <tbody>
-                           
-                              <tr>
-                                 <th scope="row">Aa101</th>
-                                 <td>가구>매트리스</td>
-                                 <td>마약매트리스</td>
-                                 <td>120,000원</td>
-                                 <td>1 or 0</td>
-                              </tr>
-                              <tr>
-                                 <th scope="row">검색기능</th>
-                                 <td>페이징기능</td>
-                                 <td>추가예정</td>
-                                 <td>카테고리별 검색</td>
-                                 <td>상품명검색</td>
-                              </tr>
+
                               <c:forEach var="list" items="${list}">
                               <tr> 
-                                 <th scope="row">${list.pro_number}</th>
-                                 <td>${list.pro_option1}</td>
+                                 <th scope="row">${list.pro_serialnumber}</th>
+                                 <td>${list.pro_categoryserial}</td>
                                  <td><a href="adminProDetail?pro_number=${list.pro_number}">${list.pro_name}</a></td>
-                                 <td>${list.pro_desc1}</td>
-                                 <td>${list.pro_option3}</td>
+                                 <td>${list.pro_price}</td>
+                                 <td>${list.pro_soldout}</td>
                               </tr>
                               </c:forEach>
                            </tbody>

@@ -41,7 +41,8 @@
 
 <body>
 <jsp:include page="/WEB-INF/common/header.jsp" />
-
+<c:forEach var="list" items="${list}">
+<c:if test="${list.pro_categoryserial  eq list.pro_categoryserial }">
 <!-- ======= Breadcrumbs ======= -->
 		<section id="breadcrumbs" class="breadcrumbs">
 			<div class="container">
@@ -51,7 +52,7 @@
 					<ol>
 						<li><a href="#">대카테고리</a>&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
 						
-						<li><a href="#">중카테고리</a></li>
+						<li><a href="#">${list.pro_categoryserial }</a></li>
 						
 					</ol>
 				</div>
@@ -69,10 +70,10 @@
         </div>
 
         <div class="row">
-<c:forEach var="list" items="${list}">
+
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="member">
-              <img src="resources/assets/img/team/team-1.jpg" class="img-fluid" alt="">
+              <img src="resources/assets/img/product/${list.pro_img1}" alt="" class="img-fluid">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>${list.pro_name}</h4>
@@ -84,6 +85,7 @@
               </div>
             </div>
           </div>
+          </c:if>
           </c:forEach>
 
 
