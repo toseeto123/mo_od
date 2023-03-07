@@ -3,28 +3,28 @@ package kr.co.mood.Product.VO;
 import org.springframework.web.multipart.MultipartFile;
 
 public class ProVO {
-	String pro_category1,pro_category2,pro_name,pro_desc1,pro_desc2,pro_option1,pro_option2,pro_option3;
-	
-	int pro_number,pro_paycount,pro_bucketcount,pro_price,pro_Soldout;
-	
-	   private MultipartFile file , file2, file3, file4, file5;
-	   
-	   private String pro_img1 , pro_img2, pro_img3, pro_img4, pro_img5;
+	String pro_serialnumber, pro_categoryserial, pro_name, pro_maindesc, pro_maindesctitle , pro_subdesc, pro_option1, pro_option2, pro_option3;
 
-	public String getPro_category1() {
-		return pro_category1;
+	int pro_number, pro_paycount, pro_bucketcount, pro_price, pro_soldout;
+
+	private MultipartFile file, file2, file3, file4, file5;
+
+	private String pro_img1, pro_img2, pro_img3, pro_img4, pro_img5;
+
+	public String getPro_serialnumber() {
+		return pro_serialnumber;
 	}
 
-	public void setPro_category1(String pro_category1) {
-		this.pro_category1 = pro_category1;
+	public void setPro_serialnumber(String pro_serialnumber) {
+		this.pro_serialnumber = pro_serialnumber;
 	}
 
-	public String getPro_category2() {
-		return pro_category2;
+	public String getPro_categoryserial() {
+		return pro_categoryserial;
 	}
 
-	public void setPro_category2(String pro_category2) {
-		this.pro_category2 = pro_category2;
+	public void setPro_categoryserial(String pro_categoryserial) {
+		this.pro_categoryserial = pro_categoryserial;
 	}
 
 	public String getPro_name() {
@@ -35,20 +35,28 @@ public class ProVO {
 		this.pro_name = pro_name;
 	}
 
-	public String getPro_desc1() {
-		return pro_desc1;
+	public String getPro_maindesc() {
+		return pro_maindesc;
 	}
 
-	public void setPro_desc1(String pro_desc1) {
-		this.pro_desc1 = pro_desc1;
+	public void setPro_maindesc(String pro_maindesc) {
+		this.pro_maindesc = pro_maindesc;
 	}
 
-	public String getPro_desc2() {
-		return pro_desc2;
+	public String getPro_maindesctitle() {
+		return pro_maindesctitle;
 	}
 
-	public void setPro_desc2(String pro_desc2) {
-		this.pro_desc2 = pro_desc2;
+	public void setPro_maindesctitle(String pro_maindesctitle) {
+		this.pro_maindesctitle = pro_maindesctitle;
+	}
+
+	public String getPro_subdesc() {
+		return pro_subdesc;
+	}
+
+	public void setPro_subdesc(String pro_subdesc) {
+		this.pro_subdesc = pro_subdesc;
 	}
 
 	public String getPro_option1() {
@@ -107,12 +115,12 @@ public class ProVO {
 		this.pro_price = pro_price;
 	}
 
-	public int getPro_Soldout() {
-		return pro_Soldout;
+	public int getPro_soldout() {
+		return pro_soldout;
 	}
 
-	public void setPro_Soldout(int pro_Soldout) {
-		this.pro_Soldout = pro_Soldout;
+	public void setPro_soldout(int pro_soldout) {
+		this.pro_soldout = pro_soldout;
 	}
 
 	public MultipartFile getFile() {
@@ -194,9 +202,7 @@ public class ProVO {
 	public void setPro_img5(String pro_img5) {
 		this.pro_img5 = pro_img5;
 	}
-	   
 
-	
 	
 	
 }
