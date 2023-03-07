@@ -48,20 +48,25 @@ public class UserController {
 	  } else {
 		  if(vo1.getId().equals("admin")) {
 			  System.out.println("admin 로그인 성공");
-				return "redirect:adminPage/chart.jsp";
+				return "adminPage/chart";
 			} else {
 				System.out.println("로그인 성공 + " + vo1);
-				
 				return "redirect:index.jsp";
 			}
 	  }
 		
    }
+   
  	@RequestMapping("/logout.do")
  		public String logout(UserVO vo,HttpSession session) {
  			session.setAttribute("login_info", vo);
- 			session.removeAttribute("login_info");
+ 			session.invalidate();
  			return "redirect:index.jsp";
  		}
+ 	@RequestMapping(value = "/mypage.do" , method = RequestMethod.GET)
+    public String mypage() {
+       
+       return "User/mypage";
+       }
 
 }
