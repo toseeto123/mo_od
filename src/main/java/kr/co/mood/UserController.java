@@ -58,28 +58,5 @@ public class UserController {
 	  }
 		
    }
-   //develop
-   @RequestMapping(value = "/login.do" , method = RequestMethod.POST)
-   public String login(HttpServletRequest request){
-       String returnURL = "";
-       //웹페이지에서받은 아이디,패스워드 일치시 admin 세션key 생성
-       if(request.getParameter("id").equals("admin") && request.getParameter("pwd").equals("1234")) {
-           Map<String, Object> map = new HashMap<String,Object>();
-           map.put("admin_id", "admin");
-           map.put("admin_name", "관리자");
-           request.getSession().setAttribute("admin", map);
-           returnURL = "redirect:/admin_main";
-       //일치하지 않으면 로그인페이지 재이동
-       }else {
-           returnURL = "redirect:/mood"; 
-       }
-       return returnURL;
-   }
-
-   @RequestMapping("/admin_main")
-   public String admin_main(){
-       return "adminmain";
-   }
-  
 
 }
