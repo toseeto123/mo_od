@@ -15,7 +15,6 @@ public class AdminPaymentService {
 	
 	public void getPaymentList(Model model) {
 		List<AdminPaymentVO> list = dao.getadminPayment();
-		System.out.println(list.get(0).getUser_name());
 		model.addAttribute("list", list);
 		
 	}

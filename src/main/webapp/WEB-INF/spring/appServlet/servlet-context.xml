@@ -33,6 +33,7 @@
    <resources mapping="/**/resources/" location="/resources/" />
    
 
+
    <beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
       <beans:property name="prefix" value="/WEB-INF/views/" />
       <beans:property name="suffix" value=".jsp" />
@@ -46,6 +47,12 @@
      <beans:bean id="Inter" class="kr.co.mood.interceptor.Interceptor"/>
     </interceptor>
    </interceptors>
+
+	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<beans:property name="prefix" value="/WEB-INF/views/" />
+		<beans:property name="suffix" value=".jsp" />
+	</beans:bean>
+
 
      <beans:bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
       <beans:property name="maxUploadSize" value="200000000" />

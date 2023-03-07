@@ -1,6 +1,6 @@
 package kr.co.mood.Payment.VO;
 
-import lombok.Data;
+
 public class AdminPaymentVO {	
 	 
 	private String user_phone;
@@ -75,6 +75,4 @@ public class AdminPaymentVO {
 	}
 	
 	
-	
-		
 }

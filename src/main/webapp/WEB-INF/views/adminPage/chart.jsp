@@ -21,7 +21,7 @@
 				<div class="carousel-inner">
 
 					<div class="carousel-item active">
-						<div class="carousel-container">
+						<div class="carousel-container" style="background:white;">
 							<div>							
 								<div style="position: absolute; top:15%; left:25%;">
 								<canvas id="myChart1" style="width:300px; height:300px;"></canvas>
