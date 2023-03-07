@@ -126,7 +126,7 @@
 					</div>
 
 					<div class="col-lg-4">
-					<form>
+					<form method="post" action="userPayment.do">
 						<div class="portfolio-info">
 							<h3>${list.pro_name}</h3>
 							<ul>
