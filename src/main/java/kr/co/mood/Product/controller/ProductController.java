@@ -15,46 +15,87 @@ import kr.co.mood.Product.VO.ProVO;
 
 @Controller
 public class ProductController {
-	
 
 	@Autowired
 	ProductService ps;
 
-	
 //	@RequestMapping(value = "proDetail.do")
 //	public String proDetails() {
 //		
 //		return "productDetail";	
 //		//return "inner-page";
 //	}
-	
-	
-	//占쏙옙 占쏙옙품占쏙옙占쏙옙트占싱듸옙
+
+	// 占쏙옙 占쏙옙품占쏙옙占쏙옙트占싱듸옙
 	@RequestMapping(value = "proList.do")
-	public String proList(ArrayList<ProVO> vo,Model model) throws Exception{
+	public String proList(ArrayList<ProVO> vo, Model model) throws Exception {
 		System.out.println(ps.selectProList(vo));
 		List<ProVO> list = ps.selectProList(vo);
 		model.addAttribute("list", list);
-		return "productList";	
+		System.out.println("모델"+model);
+		System.out.println("리스트"+list);
+		System.out.println("ps"+ps.selectProList(vo));
+		
+		return "productList";
+	}
+
+	// 寃곗젣�럹�씠吏� �씠�룞
+	@RequestMapping(value = "userPayment.do", method = RequestMethod.GET)
+	public String userPayment() {
+		return "User/userPayment";
+	}
+
+	@RequestMapping(value = "{pro_number}", method = RequestMethod.GET)
+	public String proDetails(@PathVariable("pro_number") int pro_number, Model model) {
+		// mav.setViewName("adminPage/adminProUpdate");
+		// model.addObject("list", ps.selectProOne(pro_number));
+		model.addAttribute("list", ps.selectProOne(pro_number));
+		System.out.println(ps.selectProOne(pro_number));
+		return "productDetail";
 	}
 	
-	//寃곗젣�럹�씠吏� �씠�룞
-	  @RequestMapping(value = "userPayment.do" , method = RequestMethod.GET)
-	   public String userPayment() {
-	      return "User/userPayment";
-	   }
-	  
-	  
-	  @RequestMapping(value="{pro_number}" ,method=RequestMethod.GET)
-		public String proDetails(@PathVariable("pro_number") int pro_number, Model model){
-			//mav.setViewName("adminPage/adminProUpdate");
-			//model.addObject("list", ps.selectProOne(pro_number));
-			model.addAttribute("list", ps.selectProOne(pro_number));
-			System.out.println(ps.selectProOne(pro_number));
-			return "productDetail";
-		}
-	  
-	  
+	@RequestMapping(value="A0categoryList")
+	public String A0categoryProList(ArrayList<ProVO> vo, Model model) throws Exception {
+		List<ProVO> list = ps.A0selectCategoryProList(vo);
+		model.addAttribute("list", list);
+
+		return "productList";
+	}
+	@RequestMapping(value="A1categoryList")
+	public String A1categoryProList(ArrayList<ProVO> vo, Model model) throws Exception {
+		List<ProVO> list = ps.A1selectCategoryProList(vo);
+		model.addAttribute("list", list);
+
+		return "productList";
+	}
+	@RequestMapping(value="B0categoryList")
+	public String B0categoryProList(ArrayList<ProVO> vo, Model model) throws Exception {
+		List<ProVO> list = ps.B0selectCategoryProList(vo);
+		model.addAttribute("list", list);
+
+		return "productList";
+	}
+	@RequestMapping(value="B1categoryList")
+	public String B1categoryProList(ArrayList<ProVO> vo, Model model) throws Exception {
+		List<ProVO> list = ps.B1selectCategoryProList(vo);
+		model.addAttribute("list", list);
+
+		return "productList";
+	}
+	@RequestMapping(value="C0categoryList")
+	public String C0categoryProList(ArrayList<ProVO> vo, Model model) throws Exception {
+		List<ProVO> list = ps.C0selectCategoryProList(vo);
+		model.addAttribute("list", list);
+
+		return "productList";
+	}
+	@RequestMapping(value="C1categoryList")
+	public String C1categoryProList(ArrayList<ProVO> vo, Model model) throws Exception {
+		List<ProVO> list = ps.C1selectCategoryProList(vo);
+		model.addAttribute("list", list);
+
+		return "productList";
+	}
 	
-	
+
 }

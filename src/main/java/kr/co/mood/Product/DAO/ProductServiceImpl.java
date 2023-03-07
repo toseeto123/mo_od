@@ -20,6 +20,32 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	@Override
+	public List<ProVO> A0selectCategoryProList(List<ProVO> vo) {
+		return prodao.A0selectCategoryProList(vo);
+	}
+	@Override
+	public List<ProVO> A1selectCategoryProList(List<ProVO> vo) {
+		return prodao.A1selectCategoryProList(vo);
+	}
+	@Override
+	public List<ProVO> B0selectCategoryProList(List<ProVO> vo) {
+		return prodao.B0selectCategoryProList(vo);
+	}
+	@Override
+	public List<ProVO> B1selectCategoryProList(List<ProVO> vo) {
+		return prodao.B1selectCategoryProList(vo);
+	}
+	@Override
+	public List<ProVO> C0selectCategoryProList(List<ProVO> vo) {
+		return prodao.C1selectCategoryProList(vo);
+	}
+	@Override
+	public List<ProVO> C1selectCategoryProList(List<ProVO> vo) {
+		return prodao.C0selectCategoryProList(vo);
+	}
+	
+	
+	@Override
 	public void insertPro(ProVO vo) {
 		prodao.insertPro(vo);
 		

@@ -9,6 +9,42 @@
 		select * from product
 	</select>
 	
+	<select id="A0selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select * from product where pro_categoryserial like 'A0%'
+		      ]]>
+	</select>
+	<select id="A1selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select * from product where pro_categoryserial like 'A1%'
+		      ]]>
+	</select>
+	
+	<select id="B0selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select * from product where pro_categoryserial like 'B0%'
+		      ]]>
+	</select>
+	<select id="B1selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select * from product where pro_categoryserial like 'B1%'
+		      ]]>
+	</select>
+	
+	<select id="C0selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select * from product where pro_categoryserial like 'C0%'
+		      ]]>
+	</select>
+	<select id="C1selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select * from product where pro_categoryserial like 'C1%'
+		      ]]>
+	</select>
+	
+	
+	
+	
 	<select id="selectProOne" resultType="kr.co.mood.Product.VO.ProVO">
 		select * from product where pro_number = #{pro_number}
 	</select>

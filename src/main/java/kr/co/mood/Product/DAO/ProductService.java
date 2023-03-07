@@ -10,4 +10,13 @@ public interface ProductService {
 	public void insertPro(ProVO vo);
 	public ProVO selectProOne(int pro_number);
 	
+	
+	public List<ProVO> A0selectCategoryProList(List<ProVO> vo);
+	public List<ProVO> A1selectCategoryProList(List<ProVO> vo);
+	public List<ProVO> B0selectCategoryProList(List<ProVO> vo);
+	public List<ProVO> B1selectCategoryProList(List<ProVO> vo);
+	public List<ProVO> C0selectCategoryProList(List<ProVO> vo);
+	public List<ProVO> C1selectCategoryProList(List<ProVO> vo);
+	
+	
 }

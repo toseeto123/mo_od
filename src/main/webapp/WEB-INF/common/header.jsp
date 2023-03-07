@@ -56,38 +56,30 @@
         <ul class="headerMain">
           <li class="dropdown"><a href="#" >가구</a>
           		<ul>
-                  <li><a href="proList.do">침대 프레임</a></li>
-                  <li><a href="proList.do">매트리스</a></li>
-                  <li><a href="proList.do">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
+                  <li><a href="A0categoryList">침대 프레임</a></li>
+                  <li><a href="A1categoryList">매트리스</a></li>
+
                 </ul>
           </li>
           <li class="dropdown"><a href="#">조명</a>
           		<ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
+                  <li><a href="B0categoryList">무드등</a></li>
+                  <li><a href="B1categoryList">스탠드조명</a></li>
                 </ul>
           </li>
           <li class="dropdown"><a href="#">수납</a>
           		<ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
+                  <li><a href="C1categoryList">옷장/행거</a></li>
+                  <li><a href="C0categoryList">서랍</a></li>
                 </ul>
           </li>
           <li class="dropdown"><a href="#">시공</a>
           		<ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
+                  <li><a href="#">업</a></li>
+                  <li><a href="#">데</a></li>
+                  <li><a href="#">이</a></li>
+                  <li><a href="#">트</a></li>
+                  <li><a href="#">예정</a></li>
                 </ul>
           </li>
            </ul>
