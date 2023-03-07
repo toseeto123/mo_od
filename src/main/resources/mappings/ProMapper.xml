@@ -16,8 +16,12 @@
 	
 	   <insert id="insert" parameterType="kr.co.mood.Product.VO.ProVO">
     insert into product 
-     (pro_name,pro_desc1,pro_desc2,pro_option1,pro_option2,pro_option3,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5,pro_price) 
+     (pro_categoryserial,pro_name,pro_maindesc,pro_maindesctitle,pro_subdesc,pro_option1,pro_option2,pro_option3,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5,pro_price) 
      values
-     (#{pro_name},#{pro_desc1},#{pro_desc2},#{pro_option1},#{pro_option2},#{pro_option3},#{pro_img1},#{pro_img2},#{pro_img3},#{pro_img4},#{pro_img5},#{pro_price}); 
+     (#{pro_categoryserial},#{pro_name},#{pro_maindesc},#{pro_maindesctitle},#{pro_subdesc},#{pro_option1},#{pro_option2},#{pro_option3},#{pro_img1},#{pro_img2},#{pro_img3},#{pro_img4},#{pro_img5},#{pro_price}); 
   </insert>
+  
+  <update id="insertSerialNumber" parameterType="kr.co.mood.Product.VO.ProVO">
+  	update product set pro_serialnumber = concat(pro_categoryserial,pro_number)
+  </update>
 </mapper>

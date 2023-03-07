@@ -77,7 +77,7 @@ public class AdminController {
 	      } catch (Exception e) {
 	         e.printStackTrace();
 	      }
-	      ps.insert(vo);
+	      ps.insertPro(vo);
 	      return "adminPage/chart";
 	   }
 	

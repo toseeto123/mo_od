@@ -14,26 +14,19 @@ public class ProductServiceImpl implements ProductService{
 	@Autowired
 	private ProDAO prodao;
 	
-	@Autowired
-	SqlSessionTemplate session;
-	
 	@Override
 	public List<ProVO> selectProList(List<ProVO> vo){
-		return session.selectList("ProDAO.selectProList", vo);
+		return prodao.selectProList(vo);
 	}
-	
 	
 	@Override
-	public void insert(ProVO vo) {
-		
-		prodao.insert(vo);
+	public void insertPro(ProVO vo) {
+		prodao.insertPro(vo);
 		
 	}
-	
 	@Override
 	public ProVO selectProOne(int pro_number){
-
-		return session.selectOne("ProDAO.selectProOne", pro_number);
+		return prodao.selectProOne(pro_number);
 	}
 
 }

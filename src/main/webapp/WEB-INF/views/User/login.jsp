@@ -1,14 +1,17 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <link rel="stylesheet" href="../../../resources/user/css/login.css"/>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
+
 <head>
+
 <meta charset="UTF-8">
    <title>Home</title>
+    <link rel="stylesheet" href="../../../resources/user/css/login.css"/>
 </head>
 <body>
-<body>
+<jsp:include page="/WEB-INF/common/header.jsp" />
  <div class="wrap">
             <div class="form-wrap">
                 <div class="button-wrap">
@@ -28,5 +31,7 @@
                 </form>
             </div>
         </div>
+        
+<jsp:include page="/WEB-INF/common/footer.jsp" />
 </body>
 </html>
