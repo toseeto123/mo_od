@@ -14,31 +14,47 @@
 	<jsp:include page="../../common/adminHeader.jsp" />
 
 	<!-- ======= Hero Section ======= -->
-	<section id="hero">
-		<div class="hero-container" style=" position:absolute; top:10%; left:50%; transform:translateX(-50%); width:80%;">
-				
-              <table class="table" style="color:white;">
+	<section id="hero" style="height:1000px; overflow:hidden; height:auto;">
+		<div class="hero-container">
+			
+			
+              <table class="table" style="color:white; margin-top:5%; margin-left:15%; width:70%;">
                 <thead>
                 <tr>
-                	<th colspan="4">주문번호 : ${list.get(0).order_no}</th>
+                	<th style="width:20%;">주문번호 : ${list.get(0).order_no}</th>
+                </tr>
+                <tr>
+                <th scope="col">이름 : ${list.get(0).user_name}</th>
+                <th scope="col">주소 : ${list.get(0).user_addr}</th>
+                <th scope="col" style="width:30%;">연락처 : ${list.get(0).user_phone}</th>
                 </tr>
                   <tr>
                     <th scope="col">상품번호</th>
                     <th scope="col">상품명</th>
-                    <th scope="col">연락처</th>
                     <th scope="col">상품가격</th>
                   </tr>
                 </thead>
                 <tbody>
+				<c:forEach var="product" items="${list}">
                   <tr>
-                    <th scope="row">${list.get(0).pd_code}</th>
-                    <td>${list.get(0).pd_name}</td>
-                    <td>${list.get(0).user_phone}</td>
-                    <td>${list.get(0).pd_price }</td>
+                    <th scope="row">${product.pd_code}</th>
+                    <td>${product.pd_name}</td>
+                    <td> &#8361; ${product.pd_price }</td>
+                  </tr>
+                  </c:forEach>
+                  <tr>
+                  	<td colspan="2" style="border-bottom:none;"></td>
+                  	<td>총금액: </td>
                   </tr>
                   <tr>
-                  	<td colspan="3"></td>
-                  	<td>총금액: </td>
+                  <td colspan="2" style="border-bottom:none"></td>
+                  <td style="border-bottom:none">
+                  	<form action="#" method="post">
+                  	<input type="hidden" value="${list.get(0).order_no}">
+                  	<input style="margin-left:15%;" type="submit" value="주문취소">
+                  	<input style="float:right; margin-right:15%;"  type="submit" value="주문확인">
+                  	</form>
+                  	</td>
                   </tr>
                 </tbody>
               </table>
@@ -47,13 +63,10 @@
  
 
 
-			
+			<div style="width:100%"><jsp:include page="../../common/footer.jsp" /></div>
 		</div>
 	</section>
 	<!-- End Hero -->
 
-
-	<jsp:include page="../../common/footer.jsp" />
 </body>
-
 </html>
