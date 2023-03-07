@@ -6,6 +6,7 @@
 <html>
 <head>
 <jsp:include page="../../common/header.jsp" />
+<script src="https://unpkg.com/phosphor-icons"></script>
 <meta charset="UTF-8">
 <title>장바구니</title>
 <style>
@@ -127,16 +128,17 @@ dl, ul, ol, li {
 					<dd>
 					<strong>0</strong>
 					원
-					<span><img src="https://ninezstr5594.cdn-nhncommerce.com/data/skin/front/0782commonstore_CAPY/img/order/order_price_plus.png" alt="더하기"></span>
+					<span><i class="ph-plus-circle" style="font-size: 20px; color:blue;"></i></span>
 					배송비
 					<strong>0</strong>
 					원
-					<span><img src="https://ninezstr5594.cdn-nhncommerce.com/data/skin/front/0782commonstore_CAPY/img/order/order_price_total.png" alt="합계"></span>
+					<span><i class="ph-equals" style="font-size: 20px; color:blue;"></i></span>
 					합계
 					<strong>0</strong>
 					원
 					</dd>
 				</dl>
+				
 			</div>
 		</div>
 	</div>
