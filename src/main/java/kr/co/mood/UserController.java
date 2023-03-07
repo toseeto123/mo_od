@@ -40,7 +40,6 @@ public class UserController {
   //lsg
    @RequestMapping(value = "/login.do" , method = RequestMethod.POST)
    public String loginAction(UserVO vo, HttpSession session) {
-	   session.setAttribute("login_info", vo);
 	  UserVO vo1 =  userservice.selectId(vo);
 	  if(vo1.getId()==null || vo1.getId().equals("")) {
 		  System.out.println("null값이얌");
@@ -48,9 +47,11 @@ public class UserController {
 	  } else {
 		  if(vo1.getId().equals("admin")) {
 			  System.out.println("admin 로그인 성공");
+			  	session.setAttribute("login_info", vo);
 				return "adminPage/chart";
 			} else {
 				System.out.println("로그인 성공 + " + vo1);
+				session.setAttribute("login_info", vo);
 				return "redirect:index.jsp";
 			}
 	  }
