@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class SampleController {
 	
 	@Autowired
-	private userPaymentController kakaopay;
+	private KakaoPay kakaopay;
 	
 	 @RequestMapping(value = "/kakaopay", method = RequestMethod.GET)
 	   public String kakaoPayGet() {
@@ -25,7 +25,7 @@ public class SampleController {
 	      return "redirect:" + kakaopay.kakaoPayReady();
 	   }
 
-	@RequestMapping(value = "/kakaoPaySuccess" )
+	@RequestMapping(value = "/User/kakaoPaySuccess" )
 	public void paySuccess(@RequestParam String pg_token, Model model) {
 		System.out.println("kakaopay success......!!!!!!!! get!!!!");
 		System.out.println("kakaopay success pg_token" + pg_token);

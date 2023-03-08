@@ -2,12 +2,13 @@ package kr.co.mood.Payment.VO;
 
 import java.sql.Date;
 
-public class kakaoPayReadVO {
-	//response 받을 값
-	 private String tid, next_redirect_pc_url;
-	 private Date created_at;
+public class KakaoPayReadyVO {
 	
-	 public String getTid() {
+	//response
+    private String tid, next_redirect_pc_url;
+    private Date created_at;
+    
+	public String getTid() {
 		return tid;
 	}
 	public void setTid(String tid) {
@@ -26,5 +27,5 @@ public class kakaoPayReadVO {
 		this.created_at = created_at;
 	}
 	
-
+    
 }

@@ -38,7 +38,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 
 import kr.co.mood.Payment.VO.KakaoPayApprovalVO;
-import kr.co.mood.Payment.VO.kakaoPayReadVO;
+import kr.co.mood.Payment.VO.KakaoPayReadyVO;
 import kr.co.mood.Payment.VO.userOrderProductListVO;
 import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.Product.VO.ProVO;
@@ -51,7 +51,7 @@ public class userPaymentController {
 	ProductService ps;
 
 	private static final String HOST = "https://kapi.kakao.com";
-	private kakaoPayReadVO kakaoready;
+	private KakaoPayReadyVO kakaoready;
 	private KakaoPayApprovalVO kakaoPayApprovalVO;
 
 	public String kakaoPayReady() {
@@ -77,7 +77,7 @@ public class userPaymentController {
 		HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
 
 		try {
-			kakaoready = restTemplate.postForObject(new URI(HOST + "/v1/payment/ready"), body, kakaoPayReadVO.class);
+			kakaoready = restTemplate.postForObject(new URI(HOST + "/v1/payment/ready"), body, KakaoPayReadyVO.class);
 			System.out.println("" + kakaoready);
 			
 			return kakaoready.getNext_redirect_pc_url();

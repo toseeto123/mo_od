@@ -13,20 +13,20 @@
 <h1>카카오페이 api 사용</h1>
 	<a class="order_btn" >카드결제하기</a>
 	<form method="post" action="/kakaoPay">
-     <button>카카오페이로 결제하기</button>
+     <button id="apibtn">카카오페이로 결제하기</button>
 	</form>
 
     <script>
-	$("#check_module").click(function () {
-		 var IMP = window.IMP; 
-	        IMP.init("imp40061745"); 
-	        var today = new Date();   
-	        var hours = today.getHours(); // 시
-	        var minutes = today.getMinutes();  // 분
-	        var seconds = today.getSeconds();  // 초
-	        var milliseconds = today.getMilliseconds();
-	        var makeMerchantUid = hours +  minutes + seconds + milliseconds;
-	    
+    var IMP = window.IMP; 
+    IMP.init("imp40061745"); 
+    var today = new Date();   
+    var hours = today.getHours(); // 시
+    var minutes = today.getMinutes();  // 분
+    var seconds = today.getSeconds();  // 초
+    var milliseconds = today.getMilliseconds();
+    var makeMerchantUid = hours +  minutes + seconds + milliseconds;
+
+	$("#apibtn").click(function () {
 		// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
 		// ''안에 띄어쓰기 없이 가맹점 식별코드를 붙여넣어주세요. 안그러면 결제창이 안뜹니다.
 		IMP.request_pay({
@@ -55,7 +55,7 @@
 			}
 				alert(msg);
 		});
-	};
+	}); 
 </script>
 </body>
 </html>
