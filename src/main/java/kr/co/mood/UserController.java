@@ -34,12 +34,6 @@ public class UserController {
    public String idchk() {
       return "User/join";
    }
-   @RequestMapping(value = "/join.do" , method = RequestMethod.POST)
-   public String joinAction(UserVO vo) {
-	   userservice.insert(vo);
-      return "User/login";
-   }
-
    
    @RequestMapping(value = "/login.do" , method = RequestMethod.GET)
    public String login() {
