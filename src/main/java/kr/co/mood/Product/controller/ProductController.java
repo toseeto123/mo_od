@@ -3,6 +3,8 @@ package kr.co.mood.Product.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -41,10 +43,11 @@ public class ProductController {
 
 
 	@RequestMapping(value = "{pro_number}", method = RequestMethod.GET)
-	public String proDetails(@PathVariable("pro_number") int pro_number, Model model) {
+	public String proDetails(@PathVariable("pro_number") int pro_number, Model model,HttpSession session) {
 		// mav.setViewName("adminPage/adminProUpdate");
 		// model.addObject("list", ps.selectProOne(pro_number));
 		model.addAttribute("list", ps.selectProOne(pro_number));
+		session.setAttribute("pro_num", ps.selectProOne(pro_number));
 		System.out.println(ps.selectProOne(pro_number));
 		return "Product/productDetail";
 	}
