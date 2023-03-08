@@ -71,7 +71,7 @@
                   <li><a href="/C0categoryList">서랍</a></li>
                 </ul>
           </li>
-          <li class="dropdown"><a href="#">시 공</a>
+          <li class="dropdown"><a href="#">인테리어 시공</a>
                 <ul>
                  <li><a href="/D0categoryList">침 실</a></li>
                   <li><a href="/D1categoryList">거 실</a></li>

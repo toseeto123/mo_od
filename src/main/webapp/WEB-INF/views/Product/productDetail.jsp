@@ -42,12 +42,17 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
-
+<style>
+pre{
+    overflow: auto;
+    white-space: pre-wrap; /* pre tag내에 word wrap */
+}  
+</style>
 <body>
 <jsp:include page="/WEB-INF/common/header.jsp" />
-
-	<main id="main">
 <c:if test="${list.pro_number eq list.pro_number }">
+	<main id="main">
+
 		<!-- ======= Breadcrumbs ======= -->
 		<section id="breadcrumbs" class="breadcrumbs">
 			<div class="container">
@@ -151,7 +156,7 @@
 								<input type="radio" value="daaaa" id="chk_option 2" name="radioOption"><br>
 								</c:if>
 								
-								</c:if>
+								
 								<c:if test="${!empty list.pro_option3}">
 								<label for="chk_option 3" ><span class="chk_option">${list.pro_option3}</span></label>
 								<input type="radio" value="daaaa" id="chk_option 3" name="radioOption"><br>
@@ -288,7 +293,7 @@
     </section><!-- End Team Section -->
 	</main>
 	<!-- End #main -->
-
+</c:if>
 		<jsp:include page="/WEB-INF/common/footer.jsp" />
 
 	<a href="#"
