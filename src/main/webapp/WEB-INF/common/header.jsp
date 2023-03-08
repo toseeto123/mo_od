@@ -34,7 +34,9 @@
 </head>
 <body>
 <!-- ======= Header ======= -->
+
   <header id="header" class="d-flex align-items-center">
+
     <div class="container d-flex align-items-center justify-content-between">
 
       <h1 class="logo" style="font-family:'궁서';"><a href="/index.jsp">묻:<span class="logo2" style="font-family:'굴림';">mo_od</span></a></h1>
