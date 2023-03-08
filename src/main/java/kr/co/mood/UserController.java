@@ -51,7 +51,7 @@ public class UserController {
 				return "adminPage/chart";
 			} else {
 				System.out.println("로그인 성공 + " + vo1);
-				session.setAttribute("login_info", vo);
+				session.setAttribute("login_info", vo1);
 				return "redirect:index.jsp";
 			}
 	  }
