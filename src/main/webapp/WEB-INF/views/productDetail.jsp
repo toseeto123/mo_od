@@ -126,7 +126,7 @@
 					</div>
 
 					<div class="col-lg-4">
-					<form method="post" action="userPayment.do">
+					<form>
 						<div class="portfolio-info">
 							<h3>${list.pro_name}</h3>
 							<ul>
@@ -165,14 +165,18 @@
 							
 						</div>
 
+
+					<form method="get" action="/order/${login_info.userId}" class="order_form">
 						<div class="portfolio-description">
 							<h2>${list.pro_maindesctitle}</h2>
 							<pre>${list.pro_maindesc }</pre>
+							<input type="hidden" name="orders[0].bookId" value="${list.pro_number}">
+							<input type="hidden" name="orders[0].bookCount" value="">
 							<input type="button" value="장바구니" class="cateBtn"><br><br>
 							<input type="submit" value="결제하기" class="payBtn">
 						</div>
 					</div>
-					
+					</form>
 				
 </form>
 
