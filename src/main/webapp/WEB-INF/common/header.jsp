@@ -42,7 +42,9 @@
 </style>
 <body>
 <!-- ======= Header ======= -->
+
   <header id="header" class="d-flex align-items-center">
+
     <div class="container d-flex align-items-center justify-content-between">
 
       <h1 class="logo"><a href="/index.jsp">묻:<span class="logo2">mo_od</span></a></h1>

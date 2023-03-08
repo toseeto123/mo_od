@@ -45,7 +45,9 @@
                 <div>
                     <h3 class="join_title"><label for="pwd1">비밀번호</label></h3>
                     <span class="box int_pass">
+
                         <input type="password" id="pwd1" name="pwd1" class="string" maxlength="20">
+
                         <span id="alertTxt">사용불가</span>
                     </span>
                     <span class="error_next_box"></span>
