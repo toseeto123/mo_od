@@ -11,7 +11,7 @@
 </head>
 
 <body>
-	<jsp:include page="../../common/adminHeader.jsp" />
+	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
 
 	<!-- ======= Hero Section ======= -->
 	<section id="hero">
@@ -23,16 +23,16 @@
 					<div class="carousel-item active">
 						<div class="carousel-container" style="background:white;">
 							<div>							
-								<div style="position: absolute; top:15%; left:25%;">
+								<div style="position: absolute; top:15%; left:25%; width:300px; height:300px;" >
 								<canvas id="myChart1" style="width:300px; height:300px;"></canvas>
 								</div>
-								<div style="position: absolute; top:15%; right:25%;">
+								<div style="position: absolute; top:15%; right:25%;  width:300px; height:300px;">
 								<canvas id="myChart2"  style="width:300px; height:300px"></canvas>
 								</div>								
-								<div style="position: absolute; top:60%; left:25%;">
+								<div style="position: absolute; top:60%; left:25%;  width:300px; height:300px;">
 								<canvas id="myChart3"  style="width:300px; height:300px"></canvas>
 								</div>
-								<div style="position: absolute; top:60%; right:25%;">
+								<div style="position: absolute; top:60%; right:25%;  width:300px; height:300px;">
 								<canvas id="myChart4"  style="width:300px; height:300px"></canvas>
 								</div>
 							</div>
@@ -47,7 +47,7 @@
 	<!-- End Hero -->
 
 
-	<jsp:include page="../../common/footer.jsp" />
+	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" />
 	<script>
 	const ctx1 = document.getElementById('myChart1');
   new Chart(ctx1, {

@@ -38,7 +38,8 @@
       <beans:property name="prefix" value="/WEB-INF/views/" />
       <beans:property name="suffix" value=".jsp" />
    </beans:bean>
-   
+
+   <!-- 
    <interceptors>
     <interceptor>
            <mapping path="/*.do"/>
@@ -48,6 +49,7 @@
      <beans:bean id="Inter" class="kr.co.mood.interceptor.Interceptor"/>
     </interceptor>
    </interceptors>
+    -->
 
 	<beans:bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
 		<beans:property name="prefix" value="/WEB-INF/views/" />

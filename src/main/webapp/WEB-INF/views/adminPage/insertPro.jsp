@@ -10,7 +10,7 @@
 <style type="text/css">
 
 .warp{
-	width: 500px;
+	width: 600px;
 	margin : 0 auto;
 }
 </style>
@@ -30,7 +30,7 @@
 
 <div class="inputArea"> 
  <label for="mainCategory">1차 카테고리</label>
- <select class="category1" id="mainCategory" name="mainCategory" onchange="mainCategoryChange(this)">
+ <select class="category1" id="mainCategory" name="mainCategory" onclick="mainCategoryChange(this)">
   <option value="A">가구</option>
   <option value="B">조명</option>
   <option value="C">수납</option>
@@ -38,14 +38,14 @@
  </select>
 
  <label for="subCategory">2차 카테고리</label>
- <select class="category2" name="subCategory" id="subCategory" onchange="subCategoryChange()">
+ <select class="category2" name="subCategory" id="subCategory" onclick="subCategoryChange()">
   <option>선택</option>
  </select>
 </div>
 
 <script type="text/javascript">
 function mainCategoryChange(e){
-	var 가구 = ["매트리스","침대프레임"]
+	var 가구 = ["매트리스","침대프레임","소파"]
 	var 조명 = ["무드등","스탠스"]
 	var 수납 = ["옷장/행거","서랍"]
 	var 시공 = ["침실","거실","주방","욕실"]
@@ -83,16 +83,14 @@ function subCategoryChange() {
  <label for="">상품명</label>
  <input type="text" id="" name="pro_name" />
 </div>
-
-
 <div class="inputArea">
  <label for="">상품일련번호</label>
- <input type="text" id="categoryserial" name="pro_categoryserial" />
+ <input type="text" id="categoryserial" name="pro_categoryserial" /><span style="color:red; font-size: 5px;">*상품일련번호 추가입력금지</span><br>
 </div>
 
 <div class="inputArea">
  <label for="">옵션1</label>
- <input type="text" id="" name="pro_option1" />
+ <input type="text" id="" name="pro_option1" /><span style="color:red; font-size: 5px;">*옵션 필수아님</span><br>
 </div>
 <div class="inputArea">
  <label for="">옵션2</label>
@@ -104,13 +102,14 @@ function subCategoryChange() {
 </div>
 <div class="inputArea">
  <label for="">상품가격</label>
- <input type="text" id="" name="pro_price" />
+ <input type="text" id="" name="pro_price" /><span style="color:red; font-size: 5px;">*숫자만입력</span><br>
 </div>
 
 
 <div class="inputArea">
+ <span style="color:red;">*이미지 사이즈 정사각형 권장 500px 이상, 800px 이하</span><br>
  <label for="">이미지1</label>
- <input type="file" id="" name="file" />
+ <input type="file" id="" name="file" /><span style="color:red; font-size: 5px;">*이미지1 필수, 제일이쁜사진</span><br>
 </div>
 <div class="inputArea">
  <label for="">이미지2</label>
@@ -121,29 +120,31 @@ function subCategoryChange() {
  <input type="file" id="" name="file2" />
 </div>
 <div class="inputArea">
- <label for="">이미지3</label>
+ <label for="">이미지4</label>
  <input type="file" id="" name="file3" />
 </div>
 <div class="inputArea">
- <label for="">이미지3</label>
+ <label for="">이미지5</label>
  <input type="file" id="" name="file4" />
 </div>
 
 
 
+
 <div class="inputArea">
- <label for="">서브상품설명</label>
+ <label for="">서브상품설명</label><span style="color:red; font-size: 5px;">ex) 수납/감성/공간활용</span><br>
  <input type="text" id="" name="pro_subdesc" />
 </div>
 <div class="inputArea">
- <label for="">메인상품설명제목</label>
+ <label for="">메인상품설명제목</label><span style="color:red; font-size: 5px;">ex) 당신의 잠자리를 포근하게</span><br>
  <input type="text" id="" name="pro_maindesctitle" />
 </div>
 
 <div class="inputArea">
- <label for="">메인상품설명</label>
+ <label for="">메인상품설명</label><span style="color:red; font-size: 5px;">*한문장 쓰고 엔터필수</span><br>
  <textarea rows="5" cols="50" id="" name="pro_maindesc"></textarea>
 </div>
+
 
 <div class="inputArea">
  <button type="submit" id="" class="btn btn-primary">등록</button>

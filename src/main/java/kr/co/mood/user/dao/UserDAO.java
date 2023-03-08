@@ -12,9 +12,7 @@ public class UserDAO {
 	
 	public void insert(UserVO vo) {
 		System.out.println("insert해따");
-		
 		mybatis.insert("UserDAO.insert", vo);
-		
 		System.out.println(vo);
 		
 	}

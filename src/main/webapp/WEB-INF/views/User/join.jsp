@@ -5,15 +5,22 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 <script type="text/javascript" src="/resources/user/js/main.js"></script>
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" href="/resources/user/css/join.css">
+
+
+.logo{ font-family:"궁서" }
+.logo2{font-family:"굴림"}
+</style>
+
 
 </head>
 <body>
         <!-- header -->
         <div id="header">
-            
+        <h1 class="logo"><a href="index.jsp">묻 : <span class="logo2">mo_od</span></a></h1>
         </div>
 	 <!-- wrapper -->
         <div id="wrapper">
@@ -26,10 +33,12 @@
                     <h3 class="join_title">
                         <label for="id">아이디</label>
                     </h3>
+
                     <div class="box string_id">
                         <input type="text" id="id" name="id" class="string" maxlength="20">
                     </div>
                     <button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
+
                 </div>
 
                 <!-- PW1 -->
