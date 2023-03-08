@@ -30,7 +30,7 @@
 
 <div class="inputArea"> 
  <label for="mainCategory">1차 카테고리</label>
- <select class="category1" id="mainCategory" name="mainCategory" onchange="mainCategoryChange(this)">
+ <select class="category1" id="mainCategory" name="mainCategory" onclick="mainCategoryChange(this)">
   <option value="A">가구</option>
   <option value="B">조명</option>
   <option value="C">수납</option>
@@ -38,7 +38,7 @@
  </select>
 
  <label for="subCategory">2차 카테고리</label>
- <select class="category2" name="subCategory" id="subCategory" onchange="subCategoryChange()">
+ <select class="category2" name="subCategory" id="subCategory" onclick="subCategoryChange()">
   <option>선택</option>
  </select>
 </div>
@@ -121,11 +121,11 @@ function subCategoryChange() {
  <input type="file" id="" name="file2" />
 </div>
 <div class="inputArea">
- <label for="">이미지3</label>
+ <label for="">이미지4</label>
  <input type="file" id="" name="file3" />
 </div>
 <div class="inputArea">
- <label for="">이미지3</label>
+ <label for="">이미지5</label>
  <input type="file" id="" name="file4" />
 </div>
 
