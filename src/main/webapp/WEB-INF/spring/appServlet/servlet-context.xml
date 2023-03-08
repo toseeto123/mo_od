@@ -45,6 +45,7 @@
            <mapping path="/*.do"/>
       <exclude-mapping path="/log*.do"/>
       <exclude-mapping path="/join.do"/>
+      <exclude-mapping path="/mypage.do"/>
      <beans:bean id="Inter" class="kr.co.mood.interceptor.Interceptor"/>
     </interceptor>
    </interceptors>

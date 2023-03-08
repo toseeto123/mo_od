@@ -6,7 +6,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.mood.Product.VO.ProVO;
 import kr.co.mood.cate.vo.CateVO;
+import kr.co.mood.user.dao.UserVO;
 
 @Repository
 public class CateDAO {
@@ -14,9 +16,15 @@ public class CateDAO {
 	@Autowired
 	SqlSessionTemplate sql;
 	
-	public List<CateVO> cateselect(List<CateVO> vo) {
-		return sql.selectList("CateVO.selectlist" , vo);
+	public List<CateVO> cateselect(UserVO vo) {
+		return sql.selectList("CateDAO.selectlist" , vo);
 		
 	}
+	
+	public void addcate(CateVO cvo, UserVO uvo, ProVO pvo) {
+		sql.insert("CateDAO.insert",cvo);
+		
+	}
+	
 	
 }
