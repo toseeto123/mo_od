@@ -23,6 +23,12 @@ body {
     padding-top: 62px;
     padding-bottom: 20px;
     text-align: center;
+    color:black;
+}
+#header a {
+	color: black;
+	text-decoration-line:none;
+	font-size:60px;
 }
 #wrapper {
     position: relative;
@@ -181,13 +187,15 @@ select {
     font-weight: 400;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
+.logo{ font-family:"궁서" }
+.logo2{font-family:"굴림"}
 </style>
 
 </head>
 <body>
         <!-- header -->
         <div id="header">
-            <a href="https://nid.naver.com/user2/V2Join.nhn?m=agree#agreeBottom"><img src="NAVER_CI_Green.png" id="logo"></a>
+           <h1 class="logo"><a href="index.jsp">묻 : <span class="logo2">mo_od</span></a></h1>
         </div>
 
         <!-- wrapper -->
@@ -201,7 +209,7 @@ select {
                         <label for="id">아이디</label>
                     </h3>
                     <span class="box int_id">
-                        <input type="text" name="id" class="ID" value="${id}" maxlength="20">
+                        <input type="text" name="id" value="${id}" maxlength="20">
                         
                     </span>
                     <span class="error_next_box"></span>
