@@ -48,9 +48,9 @@
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index.jsp">묻:<span class="logo2">mo_od</span></a></h1>
+      <h1 class="logo"><a href="/index.jsp">묻:<span class="logo2">mo_od</span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="resources/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="/index.html" class="logo"><img src="resources/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
         <ul class="headerMain">
@@ -58,9 +58,7 @@
           		<ul>
           		 <li><a href="/A0categoryList">매트리스</a></li>
                  <li><a href="/A1categoryList">침대 프레임</a></li>
-                  <li><a href="/A2categoryList">소 파</a></li>
-                 
-
+                  <li><a href="/A2categoryList">소 파</a></li>               
                 </ul>
           </li>
           <li class="dropdown"><a href="#">조명</a>
@@ -73,6 +71,8 @@
           		<ul>
                   <li><a href="/C1categoryList">옷장 / 행거</a></li>
                   <li><a href="/C0categoryList">서 랍</a></li>
+                  <li><a href="/C1categoryList">옷장/행거</a></li>
+                  <li><a href="/C0categoryList">서랍</a></li>
                 </ul>
           </li>
           <li class="dropdown"><a href="#">시공</a>
@@ -101,6 +101,9 @@
 							<li><a class="/getstarted scrollto" href="join.do">회원가입</a></li>
 							<li><a class="/getstarted scrollto" href="login.do">로그인</a></li>
 							<li><a class="/getstarted scrollto" href="cate.do">장바구니</a></li>
+							<li><a class="getstarted scrollto" href="/join.do">회원가입</a></li>
+							<li><a class="getstarted scrollto" href="/login.do">로그인</a></li>
+							<li><a class="getstarted scrollto" href="/cate.do">장바구니</a></li>
 			</c:if>
        </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>

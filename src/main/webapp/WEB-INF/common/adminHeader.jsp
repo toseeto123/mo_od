@@ -51,7 +51,10 @@
         <ul class="headerMain">
           <li class="dropdown"><a href="#" >상품관리</a>
 
-                <ul>
+
+
+          		<ul>
+
                   <li><a href="/insert.do">상품등록</a></li>
                   <li><a href="/adminProList.do">상품리스트/수정</a></li>
                 </ul>
