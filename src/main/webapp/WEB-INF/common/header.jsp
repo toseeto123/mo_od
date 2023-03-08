@@ -51,33 +51,32 @@
 
       <nav id="navbar" class="navbar">
         <ul class="headerMain">
-          <li class="dropdown"><a href="#" >가구</a>
+          <li class="dropdown"><a href="#" >가 구</a>
                 <ul>
                  <li><a href="/A0categoryList">매트리스</a></li>
                  <li><a href="/A1categoryList">침대 프레임</a></li>
-                 
+                 <li><a href="/A2categoryList">소 파</a></li>
 
                 </ul>
           </li>
-          <li class="dropdown"><a href="#">조명</a>
+          <li class="dropdown"><a href="#">조 명</a>
                 <ul>
                   <li><a href="/B0categoryList">무드등</a></li>
                   <li><a href="/B1categoryList">스탠드조명</a></li>
                 </ul>
           </li>
-          <li class="dropdown"><a href="#">수납</a>
+          <li class="dropdown"><a href="#">수 납</a>
                 <ul>
                   <li><a href="/C1categoryList">옷장/행거</a></li>
                   <li><a href="/C0categoryList">서랍</a></li>
                 </ul>
           </li>
-          <li class="dropdown"><a href="#">시공</a>
+          <li class="dropdown"><a href="#">시 공</a>
                 <ul>
-                  <li><a href="#">업</a></li>
-                  <li><a href="#">데</a></li>
-                  <li><a href="#">이</a></li>
-                  <li><a href="#">트</a></li>
-                  <li><a href="#">예정</a></li>
+                 <li><a href="/D0categoryList">침 실</a></li>
+                  <li><a href="/D1categoryList">거 실</a></li>
+                  <li><a href="/D2categoryList">주 방</a></li>
+                  <li><a href="/D3categoryList">욕 실</a></li>
                 </ul>
           </li>
            </ul>
