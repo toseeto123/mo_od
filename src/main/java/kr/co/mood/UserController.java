@@ -25,7 +25,10 @@ public class UserController {
    public String join() {
       return "User/join";
    }
-   
+   @RequestMapping(value = "/idchk" , method = RequestMethod.POST)
+   public String idchk() {
+      return "User/join";
+   }
    @RequestMapping(value = "/join.do" , method = RequestMethod.POST)
    public String joinAction(UserVO vo) {
 	   userservice.insert(vo);
@@ -51,7 +54,7 @@ public class UserController {
 				return "adminPage/chart";
 			} else {
 				System.out.println("로그인 성공 + " + vo1);
-				session.setAttribute("login_info", vo);
+				session.setAttribute("login_info", vo1);
 				return "redirect:index.jsp";
 			}
 	  }

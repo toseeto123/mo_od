@@ -7,53 +7,6 @@
 <title>Insert title here</title>
 
 <style>
-body {
-    margin: 0;
-    height: 100%;
-    background: #f5f6f7;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
-}
-#logo {
-    width: 240px;
-    height: 44px;
-    cursor: pointer;
-}
-
-#header {
-    padding-top: 62px;
-    padding-bottom: 20px;
-    text-align: center;
-    color:black;
-}
-#header a {
-	color: black;
-	text-decoration-line:none;
-	font-size:60px;
-}
-#wrapper {
-    position: relative;
-    height: 100%;
-}
-
-#content {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    width: 460px;
-}
-
-
-
-
-/* 입력폼 */
-
-
-h3 {
-    margin: 19px 0 8px;
-    font-size: 14px;
-    font-weight: 700;
-}
-
 
 .box {
     display: block;
@@ -138,69 +91,12 @@ input {
     padding-left: 10px;
 }
 
-select {
-    width: 100%;
-    height: 29px;
-    font-size: 15px;
-    background: #fff url(https://static.nid.naver.com/images/join/pc/sel_arr_2x.gif) 100% 50% no-repeat;
-    background-size: 20px 8px;
-    -webkit-appearance: none;
-    display: inline-block;
-    text-align: start;
-    border: none;
-    cursor: default;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
-}
-
-/* 에러메세지 */
-
-.error_next_box {
-    margin-top: 9px;
-    font-size: 12px;
-    color: red;    
-    display: none;
-}
-
-#alertTxt {
-    position: absolute;
-    top: 19px;
-    right: 38px;
-    font-size: 12px;
-    color: red;
-    display: none;
-}
-
-/* 버튼 */
-
-.btn_area {
-    margin: 30px 0 91px;
-}
-
-#btnJoin {
-    width: 100%;
-    padding: 21px 0 17px;
-    border: 0;
-    cursor: pointer;
-    color: #fff;
-    background-color: #08a600;
-    font-size: 20px;
-    font-weight: 400;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
-}
-.logo{ font-family:"궁서" }
-.logo2{font-family:"굴림"}
 </style>
 
 </head>
 <body>
-        <!-- header -->
-        <div id="header">
-           <h1 class="logo"><a href="index.jsp">묻 : <span class="logo2">mo_od</span></a></h1>
-        </div>
-
-        <!-- wrapper -->
-        <div id="wrapper">
-         <form action="join.do" method="post" name="join">
+<div id="wrapper">
+         <form>
             <!-- content-->
             <div id="content">
                 <!-- ID -->
@@ -298,15 +194,8 @@ select {
                         <span>가입하기</span>
                     </button>
                 </div>
-
-                
-
-            </div> 
-            <!-- content-->
-</form>
-        </div> 
-
-        <!-- wrapper -->
-    <script src="main.js"></script>
-    </body>
+                </div>
+                </form>
+                </div>
+</body>
 </html>
