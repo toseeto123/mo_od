@@ -23,5 +23,12 @@ public class UserDAO {
 		return mybatis.selectOne("UserDAO.selectId",vo);
 		
 	}
+	
+	public int idChk(UserVO vo) throws Exception{
+		int result = mybatis.selectOne("UserDAO.idChk", vo);
+		return result;
+	}
+	
+	
 
 }
