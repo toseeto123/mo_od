@@ -8,10 +8,11 @@
 
 <meta charset="UTF-8">
    <title>Home</title>
-    <link rel="stylesheet" href="../../../resources/user/css/login.css"/>
+    <link rel="stylesheet" href="/resources/user/css/login.css"/>
+   
 </head>
 <body>
-<jsp:include page="/WEB-INF/common/header.jsp" />
+
  <div class="wrap">
             <div class="form-wrap">
                 <div class="button-wrap">
@@ -19,9 +20,9 @@
                     <button type="button" class="togglebtn" onclick="login()">LOG IN</button>
                 </div>
                 <div class="social-icons">
-                    <img src="../../../resources/user/img/fb.png" alt="naver">
-                    <img src="../../../resources/user/img/tw.png" alt="kakao">
-                    <img src="../../../resources/user/img/gl.png" alt="google">
+                    <img src="/resources/user/img/fb.png" alt="naver">
+                    <img src="/resources/user/img/tw.png" alt="kakao">
+                    <img src="/resources/user/img/gl.png" alt="google">
                 </div>
                 <form id="login" action="/login.do" class="input-group" method="post">
                     <input type="text" name="id" class="input-field" placeholder="User name or Email" required>
@@ -32,6 +33,6 @@
             </div>
         </div>
         
-<jsp:include page="/WEB-INF/common/footer.jsp" />
+
 </body>
 </html>
