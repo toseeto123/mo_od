@@ -45,15 +45,15 @@
     <div class="container d-flex align-items-center justify-content-between">
       <h1 class="logo"><a href="/chart.do">묻:mo_od</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="resources/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="/index.html" class="logo"><img src="resources/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
         <ul class="headerMain">
           <li class="dropdown"><a href="#" >상품관리</a>
 
           		<ul>
-                  <li><a href="insert.do">상품등록</a></li>
-                  <li><a href="adminProList.do">상품리스트/수정</a></li>
+                  <li><a href="/insert.do">상품등록</a></li>
+                  <li><a href="/adminProList.do">상품리스트/수정</a></li>
                 </ul>
 
           </li>
@@ -63,7 +63,7 @@
           <li class="dropdown"><a href="#">버킷</a>
           		
           </li>
-          <li class="dropdown"><a href="payment.do">결제</a>
+          <li class="dropdown"><a href="/payment.do">결제</a>
           </li>
            </ul>
            <ul>

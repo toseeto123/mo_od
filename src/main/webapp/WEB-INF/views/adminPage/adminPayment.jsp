@@ -59,8 +59,8 @@ a:hover{
                   <td style="border-bottom:none">
                   	<form action="#" method="post">
                   	<!-- <input type="hidden" value="${list.get(0).order_no}"> -->
-                  	<input style="margin-left:15%;" type="submit" value="주문취소">
-                  	<input style="float:right; margin-right:15%;"  type="submit" value="주문확인">
+                  	<a href="#about" class="btn-get-started animate__animated">주문취소</a>
+                  	<a href="#about" class="btn-get-started animate__animated">주문확인</a>
                   	</form>
                   	</td>
                   </tr>

@@ -1,5 +1,7 @@
 package kr.co.mood;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,7 @@ public class AdminPaymentController {
 	AdminPaymentService adminService;
 
 	@RequestMapping("/payment.do")
-	public String adminPaymentDefault() {
+	public String adminPaymentDefault(HttpServletRequest request) {
 		return "redirect:/payment.do/1";	
 	}
 	
