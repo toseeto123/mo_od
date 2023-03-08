@@ -17,7 +17,32 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<ProVO> selectProList(List<ProVO> vo){
 		return prodao.selectProList(vo);
+	}		
+	@Override
+	public void insertPro(ProVO vo) {
+		prodao.insertPro(vo);
+		
 	}
+	@Override
+	public ProVO selectProOne(int pro_number){
+		return prodao.selectProOne(pro_number);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 	@Override
 	public List<ProVO> A0selectCategoryProList(List<ProVO> vo) {
@@ -26,6 +51,10 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<ProVO> A1selectCategoryProList(List<ProVO> vo) {
 		return prodao.A1selectCategoryProList(vo);
+	}
+	@Override
+	public List<ProVO> A2selectCategoryProList(List<ProVO> vo) {
+		return prodao.A2selectCategoryProList(vo);
 	}
 	@Override
 	public List<ProVO> B0selectCategoryProList(List<ProVO> vo) {
@@ -37,22 +66,27 @@ public class ProductServiceImpl implements ProductService{
 	}
 	@Override
 	public List<ProVO> C0selectCategoryProList(List<ProVO> vo) {
-		return prodao.C1selectCategoryProList(vo);
+		return prodao.C0selectCategoryProList(vo);
 	}
 	@Override
 	public List<ProVO> C1selectCategoryProList(List<ProVO> vo) {
-		return prodao.C0selectCategoryProList(vo);
-	}
-	
-	
-	@Override
-	public void insertPro(ProVO vo) {
-		prodao.insertPro(vo);
-		
+		return prodao.C1selectCategoryProList(vo);
 	}
 	@Override
-	public ProVO selectProOne(int pro_number){
-		return prodao.selectProOne(pro_number);
+	public ProVO D0selectCategoryProList(List<ProVO> vo) {
+		return prodao.D0selectCategoryProList(vo);
+	}
+	@Override
+	public ProVO D1selectCategoryProList(List<ProVO> vo) {
+		return prodao.D1selectCategoryProList(vo);
+	}
+	@Override
+	public ProVO D2selectCategoryProList(List<ProVO> vo) {
+		return prodao.D2selectCategoryProList(vo);
+	}
+	@Override
+	public ProVO D3selectCategoryProList(List<ProVO> vo) {
+		return prodao.D3selectCategoryProList(vo);
 	}
 
 }

@@ -3,7 +3,10 @@
 
 <mapper namespace="CateDAO">
 
-	<select id="selectlist">
-		
-	</select>
+	<insert id="insert">
+
+		insert into cate(pro_number, user_no)
+		values(#{pro_number},#{user_no})
+
+	</insert>
 </mapper>

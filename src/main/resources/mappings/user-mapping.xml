@@ -20,7 +20,7 @@
 
 	<insert id="insert" parameterType="kr.co.mood.user.dao.UserVO">
       <![CDATA[
-      INSERT INTO moodjoin VALUES(no, #{id}, #{pwd}, #{name}, #{age}, #{gender}, #{adr}, #{email}, #{phone}, #{day})
+      INSERT INTO moodjoin VALUES(no, #{id}, #{pwd}, #{name}, #{age}, #{gender}, #{adr}, #{email}, #{phone}, now())
       ]]>
    </insert>
    
@@ -29,6 +29,14 @@
       select * from moodjoin where id=#{id} and pwd=#{pwd}
       ]]>
    </select>
+   
+   <select id="idChk" parameterType="kr.co.mood.user.dao.UserVO" resultType="int">
+		<![CDATA[
+		select count(*) from moodjoin where id=#{id}
+		 ]]>
+	</select>
+   
+   
 	
   	
   </mapper>

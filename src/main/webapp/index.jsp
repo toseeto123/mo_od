@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
+
 <html lang="en">
 <jsp:include page="WEB-INF/common/header.jsp" />
 
@@ -73,18 +74,17 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>추천 이미지</h2>
-          <p>내용 내용 내용 내용 내용</p>
+          <h2>결제후 결제순으로 출력예정</h2>
+          <p>카테고리별 인기상품</p>
         </div>
 
         <div class="row">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">가구</li>
-              <li data-filter=".filter-app">조명</li>
-              <li data-filter=".filter-card">수납</li>
-              <li data-filter=".filter-web">시공</li>
-              <li data-filter=".filter-cate">장바구니</li>
+              <li data-filter="*" class="filter-active">전체보기</li>
+              <li data-filter=".filter-app">가구</li>
+              <li data-filter=".filter-card">조명</li>
+              <li data-filter=".filter-web">수납</li>
             </ul>
           </div>
         </div>
@@ -227,8 +227,8 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>아직 뭐할지 고민중</h2>
-          <p>내용 내용 내용 내용 내용</p>
+          <h2>mo_od 시공</h2>
+          <p>배테랑 직원들의 전문시공</p>
         </div>
 
         <div class="row">
@@ -318,7 +318,7 @@
 
         <div class="section-title">
           <h2>문의사항</h2>
-          <p>시공 관련 문의 사항</p>
+          <p>시공 관련 문의사항 아래연락처로 문의</p>
         </div>
 
         <div class="row contact-info">
@@ -380,6 +380,17 @@
   </main><!-- End #main -->
 	
 	<jsp:include page="WEB-INF/common/footer.jsp" />
+	
+	  <!-- Vendor JS Files -->
+  <script src="${pageContext.request.contextPath}/resources/resources/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="${pageContext.request.contextPath}/resources/resources/assets/vendor/php-email-form/validate.js"></script>
+
+  <!-- Template Main JS File -->
+  <script src="${pageContext.request.contextPath}/resources/resources/assets/js/main.js"></script>
 </body>
 
 </html>
