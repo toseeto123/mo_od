@@ -71,7 +71,7 @@ a:hover{
               <!-- End Default Table Example -->
  
 			<div><div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;"><a href="#">&lt;</a>
-			<c:set var="page" value="${param.num }" />
+			<c:set var="page" value="${num }" />
 			${page }
 			&nbsp;<a href="/payment.do/1">1</a>&nbsp;
 			<a href="#">&gt;</a></div></div>
