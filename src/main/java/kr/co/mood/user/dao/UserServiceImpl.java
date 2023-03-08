@@ -31,5 +31,21 @@ public class UserServiceImpl implements UserService{
 		return userdao.selectId(vo);
 	}
 
+	@Override
+	public int idChk(UserVO vo) throws Exception {
+		int result = userdao.idChk(vo);
+		return result;
+	}
+
+	
+
+	
+	
+
+
+	
+
+	
+
 
 }

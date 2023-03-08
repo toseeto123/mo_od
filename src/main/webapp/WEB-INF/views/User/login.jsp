@@ -11,7 +11,6 @@
     <link rel="stylesheet" href="../../../resources/user/css/login.css"/>
 </head>
 <body>
-<jsp:include page="/WEB-INF/common/header.jsp" />
  <div class="wrap">
             <div class="form-wrap">
                 <div class="button-wrap">
@@ -32,6 +31,5 @@
             </div>
         </div>
         
-<jsp:include page="/WEB-INF/common/footer.jsp" />
 </body>
 </html>
