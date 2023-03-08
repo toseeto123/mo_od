@@ -6,232 +6,58 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
-<style>
-body {
-    margin: 0;
-    height: 100%;
-    background: #f5f6f7;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
-}
-#logo {
-    width: 240px;
-    height: 44px;
-    cursor: pointer;
-}
-
-#header {
-    padding-top: 62px;
-    padding-bottom: 20px;
-    text-align: center;
-    color:black;
-}
-#header a {
-	color: black;
-	text-decoration-line:none;
-	font-size:60px;
-}
-#wrapper {
-    position: relative;
-    height: 100%;
-}
-
-#content {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
-    width: 460px;
-}
+<script type="text/javascript" src="/resources/user/js/main.js"></script>
+<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<link rel="stylesheet" href="/resources/user/css/join.css">
 
 
-
-
-/* 입력폼 */
-
-
-h3 {
-    margin: 19px 0 8px;
-    font-size: 14px;
-    font-weight: 700;
-}
-
-
-.box {
-    display: block;
-    width: 100%;
-    height: 51px;
-    border: solid 1px #dadada;
-    padding: 10px 14px 10px 14px;
-    box-sizing: border-box;
-    background: #fff;
-    position: relative;
-}
-
-.int {
-    display: block;
-    position: relative;
-    width: 100%;
-    height: 29px;
-    border: none;
-    background: #fff;
-    font-size: 15px;
-}
-
-input {
-    font-family: Dotum,'돋움',Helvetica,sans-serif;    
-}
-
-.box.int_id {
-    padding-right: 110px;
-}
-
-.box.int_pass {
-    padding-right: 40px;
-}
-
-.box.int_pass_check {
-    padding-right: 40px;
-}
-
-.step_url {
-    /*@naver.com*/
-    position: absolute;
-    top: 16px;
-    right: 13px;
-    font-size: 15px;
-    color: #8e8e8e;
-}
-
-.pswdImg {
-    width: 18px;
-    height: 20px;
-    display: inline-block;
-    position: absolute;
-    top: 50%;
-    right: 16px;
-    margin-top: -10px;
-    cursor: pointer;
-}
-
-#bir_wrap {
-    display: table;
-    width: 100%;
-}
-
-#bir_yy {
-    display: table-cell;
-    width: 147px;
-    
-}
-
-#bir_mm {
-    display: table-cell;
-    width: 147px;
-    vertical-align: middle;
-}
-
-#bir_dd {
-    display: table-cell;
-    width: 147px;
-}
-
-#bir_mm, #bir_dd {
-    padding-left: 10px;
-}
-
-select {
-    width: 100%;
-    height: 29px;
-    font-size: 15px;
-    background: #fff url(https://static.nid.naver.com/images/join/pc/sel_arr_2x.gif) 100% 50% no-repeat;
-    background-size: 20px 8px;
-    -webkit-appearance: none;
-    display: inline-block;
-    text-align: start;
-    border: none;
-    cursor: default;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
-}
-
-/* 에러메세지 */
-
-.error_next_box {
-    margin-top: 9px;
-    font-size: 12px;
-    color: red;    
-    display: none;
-}
-
-#alertTxt {
-    position: absolute;
-    top: 19px;
-    right: 38px;
-    font-size: 12px;
-    color: red;
-    display: none;
-}
-
-/* 버튼 */
-
-.btn_area {
-    margin: 30px 0 91px;
-}
-
-#btnJoin {
-    width: 100%;
-    padding: 21px 0 17px;
-    border: 0;
-    cursor: pointer;
-    color: #fff;
-    background-color: #08a600;
-    font-size: 20px;
-    font-weight: 400;
-    font-family: Dotum,'돋움',Helvetica,sans-serif;
-}
 .logo{ font-family:"궁서" }
 .logo2{font-family:"굴림"}
 </style>
+
 
 </head>
 <body>
         <!-- header -->
         <div id="header">
-           <h1 class="logo"><a href="index.jsp">묻 : <span class="logo2">mo_od</span></a></h1>
+        <h1 class="logo"><a href="index.jsp">묻 : <span class="logo2">mo_od</span></a></h1>
         </div>
-
-        <!-- wrapper -->
+	 <!-- wrapper -->
         <div id="wrapper">
-         <form action="join.do" method="post" name="join">
+	 <form action="join.do" method="post" name="join">
             <!-- content-->
             <div id="content">
+
                 <!-- ID -->
                 <div>
-                    <h3 class="lable_name">
+                    <h3 class="join_title">
                         <label for="id">아이디</label>
                     </h3>
-                    <span class="box int_id">
-                        <input type="text" name="id" value="${id}" maxlength="20">
-                        
-                    </span>
-                    <span class="error_next_box"></span>
+
+                    <div class="box string_id">
+                        <input type="text" id="id" name="id" class="string" maxlength="20">
+                    </div>
+                    <button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
+
                 </div>
 
                 <!-- PW1 -->
                 <div>
-                    <h3 class="join_title"><label for="pswd1">비밀번호</label></h3>
+                    <h3 class="join_title"><label for="pwd1">비밀번호</label></h3>
                     <span class="box int_pass">
-                        <input type="password" id="pswd1" class="int" maxlength="20">
+
+                        <input type="password" id="pwd1" name="pwd1" class="string" maxlength="20">
+
                         <span id="alertTxt">사용불가</span>
-                        
                     </span>
                     <span class="error_next_box"></span>
                 </div>
 
                 <!-- PW2 -->
                 <div>
-                    <h3 class="join_title"><label for="pswd2">비밀번호 재확인</label></h3>
-                    <span class="box int_pass_check">
-                        <input type="password" id="pswd2" class="int" maxlength="20">
-                        
+                    <h3 class="join_title"><label for="pwd2">비밀번호 재확인</label></h3>
+                    <span class="box int_string_check">
+                        <input type="text" id="pwd2" name="pwd2" class="string" maxlength="20">
                     </span>
                     <span class="error_next_box"></span>
                 </div>
@@ -239,21 +65,20 @@ select {
                 <!-- NAME -->
                 <div>
                     <h3 class="join_title"><label for="name">이름</label></h3>
-                    <span class="box int_name">
-                        <input type="text" id="name" class="int" maxlength="20">
+                    <span class="box string_name">
+                        <input type="text" id="name" name="name" class="string" maxlength="20">
                     </span>
                     <span class="error_next_box"></span>
                 </div>
 
                 <!-- BIRTH -->
                 <div>
-                    <h3 class="lable_name"><label for="age">연령</label></h3>
+                    <h3 class="join_title"><label for="age">연령</label></h3>
 
                     <div id="bir_wrap">
-                        <!-- BIRTH_YY -->
                         <div id="age">
                             <span class="box">
-                                <input type="text" id="age" class="age" name="age" maxlength="4">
+                                <input type="text" id="age" class="string" name="age" maxlength="4">
                             </span>
                         </div>
                     </div>
@@ -262,9 +87,9 @@ select {
 
                 <!-- GENDER -->
                 <div>
-                    <h3 class="lable_name"><label for="gender">성별</label></h3>
+                    <h3 class="join_title"><label for="gender">성별</label></h3>
                     <span class="box gender_code">
-                        <select id="gender" class="sel">
+                        <select id="gender" name="gender" class="sel" aria-label="성별">
                             <option>성별</option>
                             <option value="1">남자</option>
                             <option value="2">여자</option>
@@ -275,38 +100,48 @@ select {
 
                 <!-- EMAIL -->
                 <div>
-                    <h3 class="lable_name"><label for="email">본인확인 이메일</label></h3>
-                    <span class="box int_email">
-                        <input type="text" id="email" class="int" maxlength="100" placeholder="선택입력">
+                    <h3 class="join_title"><label for="email">본인확인 이메일<span class="optional">(선택)</span></label></h3>
+                    <span class="box string_email">
+                        <input type="text" id="email" name="email" class="string" maxlength="100" placeholder="선택입력">
                     </span>
                     <span class="error_next_box">이메일 주소를 다시 확인해주세요.</span>    
                 </div>
 
                 <!-- MOBILE -->
                 <div>
-                    <h3 class="lable_name"><label for="phoneNo">휴대전화</label></h3>
-                    <span class="box int_mobile">
-                        <input type="tel" id="mobile" class="int" maxlength="16" placeholder="전화번호 입력">
+                    <h3 class="join_title"><label for="phone">휴대전화</label></h3>
+                    <span class="box string_mobile">
+                        <input type="tel" id="phone" name="phone" class="string" maxlength="16" placeholder="전화번호 입력">
                     </span>
                     <span class="error_next_box"></span>    
+                </div>
+                
+                <div>
+                	<h3 class="join_title"><label for="adr">우편번호</label></h3>
+                	<input type="text" size="10" name="adr" id="postcode" placeholder="우편번호" value="12345" readonly="readonly" onclick="">
+                    <input type="button" onclick="" value="우편번호 찾기"><br><br />
+                    <input type="text" size="30" name="wRoadAddress" id="roadAddress" placeholder="도로명주소" value="경기도" readonly="readonly" onclick="">
+                    <input type="text" size="30" name="wJibunAddress" id="jibunAddress" placeholder="지번주소" value="구리시"readonly="readonly" onclick="">
+                    <br/><span id="guide" style="color:#999;font-size:10px;"></span>   
+                    <br/><br/><input type="text" name="wRestAddress" placeholder="나머지 주소" value="인창동" size="70" />
                 </div>
 
 
                 <!-- JOIN BTN-->
                 <div class="btn_area">
-                    <button type="button" id="btnJoin">
-                        <span>가입하기</span>
-                    </button>
+                    <input type="submit" value="가입하기" id="btnJoin" class="join_now bt_submit mainBgColor" onclick="return JoinCheck()">
+                    <input type="button" value="취소" class="join_now bt_submit mainBgColor" onclick="return index">
                 </div>
 
                 
 
             </div> 
             <!-- content-->
-</form>
+      </form>
         </div> 
-
         <!-- wrapper -->
-    <script src="main.js"></script>
+    
+        
+  
     </body>
 </html>

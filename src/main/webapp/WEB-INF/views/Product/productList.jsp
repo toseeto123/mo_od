@@ -41,75 +41,81 @@
 
 <body>
 <jsp:include page="/WEB-INF/common/header.jsp" />
-<c:forEach var="list" items="${list}">
-<c:if test="${list.pro_categoryserial  eq list.pro_categoryserial }">
+
+
 <!-- ======= Breadcrumbs ======= -->
-		<section id="breadcrumbs" class="breadcrumbs">
-			<div class="container">
+<c:forEach var="list" items="${list}" begin="0" end="0">
+      <section id="breadcrumbs" class="breadcrumbs">
+         <div class="container">
 
-				<div class="d-flex align-items-center">
-					
-					<ol>
-						<li><a href="#">대카테고리</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
-						
-						<c:if test="${list.pro_categoryserial  eq 'A0' }">
-						<li><a href="#">침대프레임</a></li>
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'A1' }">
-						<li><a href="#">매트리스</a></li>
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'B0' }">
-						<li><a href="#">무드등</a></li>
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'B1' }">
-						<li><a href="#">스탠드조명</a></li>
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'C0' }">
-						<li><a href="#">옷장/행거</a></li>
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'C1' }">
-						<li><a href="#">서랍</a></li>
-						</c:if>
-						
-					</ol>
-				</div>
+            <div class="d-flex align-items-center">
+               
+               <ol>
+                  <li><a href="#">대카테고리</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  
+                  <c:if test="${list.pro_categoryserial  eq 'A0' }">
+                  <li><a href="#">매트리스</a></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'A1' }">
+                  <li><a href="#">침대프레임</a></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'B0' }">
+                  <li><a href="#">무드등</a></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'B1' }">
+                  <li><a href="#">스탠드조명</a></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'C0' }">
+                  <li><a href="#">옷장/행거</a></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'C1' }">
+                  <li><a href="#">서랍</a></li>
+                  </c:if>
+                  
+               </ol>
+            </div>
 
-			</div>
-		</section>
-		<!-- End Breadcrumbs -->
+         </div>
+      </section>
+      </c:forEach>
+      
+      <!-- End Breadcrumbs -->
 
     <!-- ======= Team Section ======= -->
+    <c:forEach var="list" items="${list}" begin="0" end="0">
     <section id="team" class="team">
       <div class="container">
 
         <div class="section-title">
           
           
-          <c:if test="${list.pro_categoryserial  eq 'A0' }">
-						<h2>침대프레임</h2>
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'A1' }">
-						<h2>매트리스</h2>
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'B0' }">
-						<h2>무드등</h2>
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'B1' }">
-						<h2>스탠드조명</h2>
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'C0' }">
-						<h2>옷장/행거</h2>
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'C1' }">
-						<h2>서랍</h2>
-						</c:if>
+          		  <c:if test="${list.pro_categoryserial  eq 'A0' }">
+                  <h2>매트리스</h2>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'A1' }">
+                  <h2>침대프레임</h2>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'B0' }">
+                  <h2>무드등</h2>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'B1' }">
+                  <h2>스탠드조명</h2>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'C0' }">
+                  <h2>옷장/행거</h2>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'C1' }">
+                  <h2>서랍</h2>
+                  </c:if>
         </div>
+        </c:forEach>
 
         <div class="row">
-
+<c:forEach var="list" items="${list}">
           <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="member">
-              <img src="resources/assets/img/product/${list.pro_img1}" alt="" class="img-fluid">
+          
+            <div class="member" style="background-color: white;">  
+ 				<img src="resources/assets/img/product/${list.pro_img1}" alt="" class="img-fluid" style="width: 306px; height: 306px;">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>${list.pro_name}</h4>
@@ -120,8 +126,8 @@
                 </div>
               </div>
             </div>
+            
           </div>
-          </c:if>
           </c:forEach>
 
 

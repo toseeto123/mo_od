@@ -40,67 +40,65 @@
 .logo2{font-family:"굴림"}
 
 </style>
-
-
-</head>
 <body>
 <!-- ======= Header ======= -->
-  <header id="header" class=" d-flex align-items-center">
+
+  <header id="header" class="d-flex align-items-center">
+
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="index.jsp">묻:<span class="logo2">mo_od</span></a></h1>
+      <h1 class="logo"><a href="/index.jsp">묻:<span class="logo2">mo_od</span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="index.html" class="logo"><img src="resources/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      <!-- <a href="/index.html" class="logo"><img src="resources/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
       <nav id="navbar" class="navbar">
         <ul class="headerMain">
-          <li class="dropdown"><a href="#" >가구</a>
-          		<ul>
-          		 <li><a href="A0categoryList">매트리스</a></li>
-                 <li><a href="A1categoryList">침대 프레임</a></li>
-                 
+          <li class="dropdown"><a href="#" >가 구</a>
+                <ul>
+                 <li><a href="/A0categoryList">매트리스</a></li>
+                 <li><a href="/A1categoryList">침대 프레임</a></li>
+                 <li><a href="/A2categoryList">소 파</a></li>
 
                 </ul>
           </li>
-          <li class="dropdown"><a href="#">조명</a>
-          		<ul>
-                  <li><a href="B0categoryList">무드등</a></li>
-                  <li><a href="B1categoryList">스탠드조명</a></li>
+          <li class="dropdown"><a href="#">조 명</a>
+                <ul>
+                  <li><a href="/B0categoryList">무드등</a></li>
+                  <li><a href="/B1categoryList">스탠드조명</a></li>
                 </ul>
           </li>
-          <li class="dropdown"><a href="#">수납</a>
-          		<ul>
-                  <li><a href="C1categoryList">옷장/행거</a></li>
-                  <li><a href="C0categoryList">서랍</a></li>
+          <li class="dropdown"><a href="#">수 납</a>
+                <ul>
+                  <li><a href="/C1categoryList">옷장/행거</a></li>
+                  <li><a href="/C0categoryList">서랍</a></li>
                 </ul>
           </li>
-          <li class="dropdown"><a href="#">시공</a>
-          		<ul>
-                  <li><a href="#">업</a></li>
-                  <li><a href="#">데</a></li>
-                  <li><a href="#">이</a></li>
-                  <li><a href="#">트</a></li>
-                  <li><a href="#">예정</a></li>
+          <li class="dropdown"><a href="#">인테리어 시공</a>
+                <ul>
+                 <li><a href="/D0categoryList">침 실</a></li>
+                  <li><a href="/D1categoryList">거 실</a></li>
+                  <li><a href="/D2categoryList">주 방</a></li>
+                  <li><a href="/D3categoryList">욕 실</a></li>
                 </ul>
           </li>
            </ul>
            <ul>
             
-				<c:if test="${!empty login_info.id}">
-					<li class="login_info">${login_info.name } [ ${login_info.id } ]</li>
-					<li><a href="mypage.do"><span class="getstarted scrollto"> Mypage</span> </a></li>
-					<li><a href="logout.do"><span class="getstarted scrollto">Logout</span></a></li>
-				</c:if>
-				
-		   </ul>
+            <c:if test="${!empty login_info.id}">
+               <li class="/login_info">${login_info.name } [ ${login_info.id } ]</li>
+               <li><a href="/mypage.do"><span class="getstarted scrollto"> Mypage</span> </a></li>
+               <li><a href="/logout.do"><span class="getstarted scrollto">Logout</span></a></li>
+            </c:if>
+            
+         </ul>
           
           <!-- 알아서 이거 활용하자 -->
-         <ul>
+        <ul>
            <c:if test="${empty login_info.id}">
                             <li><a href="#">이건 알지?</a></li>
-							<li><a class="getstarted scrollto" href="join.do">회원가입</a></li>
-							<li><a class="getstarted scrollto" href="login.do">로그인</a></li>
-							<li><a class="getstarted scrollto" href="cate.do">장바구니</a></li>
+							<li><a class="getstarted scrollto" href="/join.do">회원가입</a></li>
+							<li><a class="getstarted scrollto" href="/login.do">로그인</a></li>
+							<li><a class="getstarted scrollto" href="/cate.do">장바구니</a></li>
 			</c:if>
        </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
@@ -110,4 +108,8 @@
   </header><!-- End Header -->
 
 </body>
+
+
+</head>
+
 </html>

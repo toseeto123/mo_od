@@ -8,12 +8,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.mood.user.dao.UserService;
 import kr.co.mood.user.dao.UserVO;
 
 @Controller
+@SessionAttributes("loginUser")
 public class UserController {
 	@Autowired
 	private UserService userservice ;
@@ -25,6 +29,7 @@ public class UserController {
    public String join() {
       return "User/join";
    }
+
    @RequestMapping(value = "/idchk" , method = RequestMethod.POST)
    public String idchk() {
       return "User/join";
@@ -34,6 +39,7 @@ public class UserController {
 	   userservice.insert(vo);
       return "User/login";
    }
+
    
    @RequestMapping(value = "/login.do" , method = RequestMethod.GET)
    public String login() {
@@ -72,5 +78,35 @@ public class UserController {
        
        return "User/mypage";
        }
+ 	
+ 	@ResponseBody
+ 	@RequestMapping(value="/idChk", method = RequestMethod.POST)
+ 	public int idChk(UserVO vo) throws Exception {
+ 		int result = userservice.idChk(vo);
+ 		return result;
+ 	}
+ 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
+ 	public String postRegister(UserVO vo) throws Exception {
+ 		int result = userservice.idChk(vo);
+ 		try {
+ 			if(result == 1) {
+ 				return "/User/join";
+ 			}else if(result == 0) {
+ 				userservice.insert(vo);
+ 			}
+ 			// 요기에서~ 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기 
+ 			// 존재하지 않는다면 -> register
+ 		} catch (Exception e) {
+ 			throw new RuntimeException();
+ 		}
+ 		return "User/login";
+ 	}
+ 	
+ 	
+ 	
+ 	
+
+ 	
+ 	
 
 }

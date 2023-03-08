@@ -13,10 +13,15 @@ public interface ProductService {
 	
 	public List<ProVO> A0selectCategoryProList(List<ProVO> vo);
 	public List<ProVO> A1selectCategoryProList(List<ProVO> vo);
+	public List<ProVO> A2selectCategoryProList(List<ProVO> vo);
 	public List<ProVO> B0selectCategoryProList(List<ProVO> vo);
 	public List<ProVO> B1selectCategoryProList(List<ProVO> vo);
 	public List<ProVO> C0selectCategoryProList(List<ProVO> vo);
 	public List<ProVO> C1selectCategoryProList(List<ProVO> vo);
+	public ProVO D0selectCategoryProList(List<ProVO> vo);
+	public ProVO D1selectCategoryProList(List<ProVO> vo);
+	public ProVO D2selectCategoryProList(List<ProVO> vo);
+	public ProVO D3selectCategoryProList(List<ProVO> vo);
 	
 	
 }
