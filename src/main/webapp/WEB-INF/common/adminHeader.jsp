@@ -32,7 +32,7 @@
   <link href="${pageContext.request.contextPath}/resources/assets/css/style.css" rel="stylesheet">
 
 <style>
-	.navbar .headerMain li{ margin-right: 60px;}
+   .navbar .headerMain li{ margin-right: 60px;}
 
 
 </style>
@@ -41,7 +41,7 @@
 </head>
 <body>
 <!-- ======= Header ======= -->
-  <header id="header" class="fixed-top d-flex align-items-center">
+  <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
       <h1 class="logo"><a href="/chart.do">묻:mo_od</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
@@ -51,17 +51,20 @@
         <ul class="headerMain">
           <li class="dropdown"><a href="#" >상품관리</a>
 
+
+
           		<ul>
+
                   <li><a href="/insert.do">상품등록</a></li>
                   <li><a href="/adminProList.do">상품리스트/수정</a></li>
                 </ul>
 
           </li>
           <li class="dropdown"><a href="#">회원관리</a>
-          		
+                
           </li>
           <li class="dropdown"><a href="#">버킷</a>
-          		
+                
           </li>
           <li class="dropdown"><a href="/payment.do">결제</a>
           </li>

@@ -17,26 +17,6 @@ public class ProDAO {
 	public List<ProVO> selectProList(List<ProVO> vo) {
 		return session.selectList("ProDAO.selectProList", vo);
 	}
-	public List<ProVO> A0selectCategoryProList(List<ProVO> vo){
-		return session.selectList("ProDAO.A0selectCategoryProList", vo);		
-	}
-	public List<ProVO> A1selectCategoryProList(List<ProVO> vo){
-		return session.selectList("ProDAO.A1selectCategoryProList", vo);		
-	}
-	public List<ProVO> B0selectCategoryProList(List<ProVO> vo){
-		return session.selectList("ProDAO.B0selectCategoryProList", vo);		
-	}
-	public List<ProVO> B1selectCategoryProList(List<ProVO> vo){
-		return session.selectList("ProDAO.B1selectCategoryProList", vo);		
-	}
-	
-	public List<ProVO> C0selectCategoryProList(List<ProVO> vo){
-		return session.selectList("ProDAO.C0selectCategoryProList", vo);		
-	}
-	public List<ProVO> C1selectCategoryProList(List<ProVO> vo){
-		return session.selectList("ProDAO.C1selectCategoryProList", vo);		
-	}
-
 	public void insertPro(ProVO vo) {
 		session.insert("ProDAO.insert", vo);
 		session.update("ProDAO.insertSerialNumber", vo);
@@ -45,6 +25,49 @@ public class ProDAO {
 	public ProVO selectProOne(int pro_number) {
 
 		return session.selectOne("ProDAO.selectProOne", pro_number);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	public List<ProVO> A0selectCategoryProList(List<ProVO> vo){
+		return session.selectList("ProDAO.A0selectCategoryProList", vo);		
+	}
+	public List<ProVO> A1selectCategoryProList(List<ProVO> vo){
+		return session.selectList("ProDAO.A1selectCategoryProList", vo);		
+	}
+	public List<ProVO> A2selectCategoryProList(List<ProVO> vo){
+		return session.selectList("ProDAO.A2selectCategoryProList", vo);		
+	}
+	public List<ProVO> B0selectCategoryProList(List<ProVO> vo){
+		return session.selectList("ProDAO.B0selectCategoryProList", vo);		
+	}
+	public List<ProVO> B1selectCategoryProList(List<ProVO> vo){
+		return session.selectList("ProDAO.B1selectCategoryProList", vo);		
+	}
+	public List<ProVO> C0selectCategoryProList(List<ProVO> vo){
+		return session.selectList("ProDAO.C0selectCategoryProList", vo);		
+	}
+	public List<ProVO> C1selectCategoryProList(List<ProVO> vo){
+		return session.selectList("ProDAO.C1selectCategoryProList", vo);		
+	}
+	public List<ProVO> D0selectCategoryProList(List<ProVO> vo){
+		return session.selectList("ProDAO.D0selectCategoryProList", vo);		
+	}
+	public List<ProVO> D1selectCategoryProList(List<ProVO> vo){
+		return session.selectList("ProDAO.D1selectCategoryProList", vo);		
+	}
+	public List<ProVO> D2selectCategoryProList(List<ProVO> vo){
+		return session.selectList("ProDAO.D2selectCategoryProList", vo);		
+	}
+	public List<ProVO> D3selectCategoryProList(List<ProVO> vo){
+		return session.selectList("ProDAO.D3selectCategoryProList", vo);		
 	}
 	
 	
