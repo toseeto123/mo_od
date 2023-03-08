@@ -3,6 +3,8 @@ package kr.co.mood;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.mood.Payment.DAO.AdminPaymentService;
@@ -12,10 +14,15 @@ public class AdminPaymentController {
 	
 	@Autowired
 	AdminPaymentService adminService;
+
+	@RequestMapping("/payment.do")
+	public String adminPaymentDefault() {
+		return "redirect:/payment.do/1";	
+	}
 	
-	@RequestMapping("payment.do")
-	public String adminIndex(Model model) {
-		adminService.getPaymentList(model);
+	@RequestMapping("/payment.do/{num}")
+	public String adminPaymentPaging(@PathVariable("num") String num, Model model) {
+		System.out.println(num);
 		return "adminPage/adminPayment";	
 	}
 	
