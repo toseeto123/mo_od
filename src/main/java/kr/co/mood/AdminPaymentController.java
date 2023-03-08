@@ -22,7 +22,7 @@ public class AdminPaymentController {
 	
 	@RequestMapping("/payment.do/{num}")
 	public String adminPaymentPaging(@PathVariable("num") String num, Model model) {
-		System.out.println(num);
+		model.addAttribute("num", num);
 		return "adminPage/adminPayment";	
 	}
 	

@@ -24,7 +24,7 @@ public class AdminController {
 	@Autowired
 	ProductService ps;
 	
-	@RequestMapping("chart.do")
+	@RequestMapping("/chart.do")
 	public String adminIndex(Model model) {
 		
 		return "adminPage/chart";	
@@ -38,13 +38,13 @@ public class AdminController {
 	}
 	
 	
-	//°ü¸®ÀÚ »óÇ°µî·ÏÆäÀÌÁö ÀÌµ¿
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 	@RequestMapping(value="insert.do" ,method=RequestMethod.GET)
 	public String insertProductPage(){
 		return "adminPage/insertPro";
 	}
 	
-	//°ü¸®ÀÚ »óÇ°µî·Ï
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ï¿½
 	   @RequestMapping(value="insert.do" ,method=RequestMethod.POST)
 	   public String insertProduct(@RequestParam MultipartFile file,
 	                        @RequestParam MultipartFile file1,
@@ -52,20 +52,20 @@ public class AdminController {
 	                        @RequestParam MultipartFile file3,
 	                        @RequestParam MultipartFile file4,
 	                                                      ProVO vo) throws IOException{
-	      String fileRealName1 = file.getOriginalFilename(); //ÆÄÀÏ¸íÀ» ¾ò¾î³¾ ¼ö ÀÖ´Â ¸Þ¼­µå!
+	      String fileRealName1 = file.getOriginalFilename(); //ï¿½ï¿½ï¿½Ï¸ï¿½ï¿½ï¿½ ï¿½ï¿½î³¾ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½Þ¼ï¿½ï¿½ï¿½!
 	      String fileRealName2 = file1.getOriginalFilename();
 	      String fileRealName3 = file2.getOriginalFilename();
 	      String fileRealName4 = file3.getOriginalFilename();
 	      String fileRealName5 = file4.getOriginalFilename();
-//	      long size = file.getSize(); //ÆÄÀÏ »çÀÌÁî
-//	      System.out.println("ÆÄÀÏ¸í : "  + fileRealName1);
-//	      System.out.println("¿ë·®Å©±â(byte) : " + size);
+//	      long size = file.getSize(); //ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+//	      System.out.println("ï¿½ï¿½ï¿½Ï¸ï¿½ : "  + fileRealName1);
+//	      System.out.println("ï¿½ë·®Å©ï¿½ï¿½(byte) : " + size);
 //	      String fileExtension = fileRealName1.substring(fileRealName1.lastIndexOf("."),fileRealName1.length());
 //	      String uploadFolder = "D:/up";
 	      
-//	      File saveFile = new File(uploadFolder+"\\" + fileExtension);  // Àû¿ë ÈÄ
+//	      File saveFile = new File(uploadFolder+"\\" + fileExtension);  // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½
 	      try {
-//	         file.transferTo(saveFile); // ½ÇÁ¦ ÆÄÀÏ ÀúÀå¸Þ¼­µå(filewriter ÀÛ¾÷À» ¼Õ½±°Ô ÇÑ¹æ¿¡ Ã³¸®ÇØÁØ´Ù.)
+//	         file.transferTo(saveFile); // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½Þ¼ï¿½ï¿½ï¿½(filewriter ï¿½Û¾ï¿½ï¿½ï¿½ ï¿½Õ½ï¿½ï¿½ï¿½ ï¿½Ñ¹æ¿¡ Ã³ï¿½ï¿½ï¿½ï¿½ï¿½Ø´ï¿½.)
 	         vo.setPro_img1(fileRealName1);
 	         vo.setPro_img2(fileRealName2);
 	         vo.setPro_img3(fileRealName3);
@@ -84,7 +84,7 @@ public class AdminController {
 
 	
 	
-	//°ü¸®ÀÚ »óÇ°¸®½ºÆ® ÆäÀÌÁö ÀÌµ¿
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ìµï¿½
 	@RequestMapping(value="adminProList.do")
 	public String ProductList(ArrayList<ProVO> vo,Model model){
 		List<ProVO> list = ps.selectProList(vo);
@@ -92,16 +92,16 @@ public class AdminController {
 		return "adminPage/adminProList";
 	}
 	
-	//°ü¸®ÀÚ »óÇ°¾÷µ¥ÀÌÆ® ÆäÀÌÁöÀÌµ¿
+	//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½Ç°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ìµï¿½
 	@RequestMapping(value="adminProDetail" ,method=RequestMethod.GET)
 	public String updateProductPage(int pro_number, Model model, HttpServletRequest request){
 		//mav.setViewName("adminPage/adminProUpdate");
 		//model.addObject("list", ps.selectProOne(pro_number));
 		String id = request.getParameter("pro_number");
-		//System.out.println("ÀÌ°Å :"+id);
+		//System.out.println("ï¿½Ì°ï¿½ :"+id);
 		pro_number = Integer.parseInt(id);
 		
-		//System.out.println("ÀÌ°Å :"+pro_number);
+		//System.out.println("ï¿½Ì°ï¿½ :"+pro_number);
 		
 		model.addAttribute("list", ps.selectProOne(pro_number));
 		return "adminPage/adminProUpdate";
