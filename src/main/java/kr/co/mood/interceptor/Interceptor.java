@@ -11,7 +11,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 public class Interceptor extends HandlerInterceptorAdapter {
 	private static final Logger logger = LoggerFactory.getLogger(Interceptor.class);
 
-	static final String[] EXCLUDE_URL_LIST = { "/login.do", "/join.do", "/proList.do" };
+	static final String[] EXCLUDE_URL_LIST = { "/login.do", "/join.do" };
 
 	@Override
 	public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler)
@@ -25,7 +25,6 @@ public class Interceptor extends HandlerInterceptorAdapter {
 		}
 		HttpSession session = request.getSession();
 		String userId = (String) session.getAttribute("Id");
-		String userPwd = (String) session.getAttribute("Pwd");
 
 		if (userId == null || userId.trim().equals("")) {
 			logger.info(">> interceptor catch!! userId is null..");
@@ -34,10 +33,10 @@ public class Interceptor extends HandlerInterceptorAdapter {
 			return false;
 		}
 
-		if (userId == "admin" && userPwd == "1234") {
+		if (userId == "admin") {
 			logger.info(">> interceptor catch!! userId is null..");
 			session.invalidate();
-			response.sendRedirect(request.getContextPath() + "adminmain");
+			response.sendRedirect(request.getContextPath() + "/chart.do");
 			return false;
 		}
 		return true;
