@@ -46,8 +46,22 @@
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
 </head>
-
+<style>
+pre{
+    overflow: auto;
+    white-space: pre-wrap; /* pre tag내에 word wrap */
+}  
+</style>
 <body>
+<<<<<<< HEAD
+<jsp:include page="/WEB-INF/common/header.jsp" />
+<c:if test="${list.pro_number eq list.pro_number }">
+	<main id="main">
+
+		<!-- ======= Breadcrumbs ======= -->
+		<section id="breadcrumbs" class="breadcrumbs">
+			<div class="container">
+=======
 	<jsp:include page="/WEB-INF/common/header.jsp" />
 
 	<main id="main">
@@ -56,6 +70,7 @@
 				<!-- ======= Breadcrumbs ======= -->
 				<section id="breadcrumbs" class="breadcrumbs">
 					<div class="container">
+>>>>>>> branch 'develop' of https://github.com/toseeto123/mo_od.git
 
 						<div class="d-flex align-items-center">
 
@@ -184,6 +199,106 @@
 
 				</div>
 
+<<<<<<< HEAD
+			</div>
+		</section>
+		<!-- End Breadcrumbs -->
+		
+
+		<!-- ======= Portfolio Details Section ======= -->
+		<section id="portfolio-details" class="portfolio-details">
+			<div class="container">
+
+				<div class="row gy-4">
+
+					<div class="col-lg-8">
+						<div class="portfolio-details-slider swiper">
+							<div class="swiper-wrapper align-items-center">
+
+								<div class="swiper-slide">
+									<img src="resources/assets/img/product/${list.pro_img1}" alt="">
+								</div>
+								<c:if test="${!empty list.pro_img2}">
+								<div class="swiper-slide">
+									<img src="resources/assets/img/product/${list.pro_img2}" alt="">
+								</div>
+								</c:if>
+								<c:if test="${!empty list.pro_img3}">
+								<div class="swiper-slide">
+									<img src="resources/assets/img/product/${list.pro_img3}" alt="">
+								</div>
+								</c:if>
+								<c:if test="${!empty list.pro_img4}">
+								<div class="swiper-slide">
+									<img src="resources/assets/img/product/${list.pro_img4}" alt="">
+								</div>
+								</c:if>
+								<c:if test="${!empty list.pro_img5}">
+								<div class="swiper-slide">
+									<img src="resources/assets/img/product/${list.pro_img5}" alt="">
+								</div>
+								</c:if>
+								
+
+							</div>
+							<div class="swiper-pagination"></div>
+						</div>
+					</div>
+
+					<div class="col-lg-4">
+					<form method="post" action="userPayment.do">
+						<div class="portfolio-info">
+							<h3>${list.pro_name}</h3>
+							<ul>
+								<li><strong>서브상세설명</strong>: ${list.pro_subdesc}</li>
+								<li><strong>제품번호</strong>: ${list.pro_serialnumber }</li>
+								<li><strong>가 격</strong>: <fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></li>	
+								<li><strong>옵 션</strong>:<br>
+								<c:if test="${empty list.pro_option1}">
+								<label for="chk_option" ><span class="chk_option">선택안함</span></label>
+								<input type="radio" value="daaaa" id="chk_option" name="radioOption" checked="checked"><br>
+								</c:if>
+								
+								
+								<c:if test="${!empty list.pro_option1}">
+								<label for="chk_option 1" ><span class="chk_option">${list.pro_option1}</span></label>
+								<input type="radio" value="daaaa" id="chk_option 1" name="radioOption"><br>
+								</c:if>
+								
+								
+						 		<c:if test="${!empty list.pro_option2}">
+								<label for="chk_option 2" ><span class="chk_option">${list.pro_option2}</span></label>
+								<input type="radio" value="daaaa" id="chk_option 2" name="radioOption"><br>
+								</c:if>
+								
+								
+								<c:if test="${!empty list.pro_option3}">
+								<label for="chk_option 3" ><span class="chk_option">${list.pro_option3}</span></label>
+								<input type="radio" value="daaaa" id="chk_option 3" name="radioOption"><br>
+								</c:if>
+								
+								
+								
+								
+							<li>				
+							</ul>
+							
+						</div>
+
+						<div class="portfolio-description">
+							<h2>${list.pro_maindesctitle}</h2>
+							<pre>${list.pro_maindesc }</pre>
+							<input type="button" value="장바구니" class="cateBtn"><br><br>
+							<input type="submit" value="결제하기" class="payBtn">
+						</div>
+					</div>
+					
+				
+</form>
+
+<style>
+.chk_option{
+=======
 				<div class="portfolio-description">
 					<h2>${list.pro_maindesctitle}</h2>
 					<pre>${list.pro_maindesc }</pre>
@@ -194,6 +309,7 @@
 		</form>
 		<style>
 .chk_option {
+>>>>>>> branch 'develop' of https://github.com/toseeto123/mo_od.git
 	cursor: pointer;
 }
 
@@ -306,8 +422,13 @@
 		<!-- End Team Section -->
 	</main>
 	<!-- End #main -->
+<<<<<<< HEAD
+</c:if>
+		<jsp:include page="/WEB-INF/common/footer.jsp" />
+=======
 
 	<jsp:include page="/WEB-INF/common/footer.jsp" />
+>>>>>>> branch 'develop' of https://github.com/toseeto123/mo_od.git
 
 	<a href="#"
 		class="back-to-top d-flex align-items-center justify-content-center"><i

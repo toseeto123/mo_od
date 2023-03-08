@@ -11,7 +11,6 @@ public class UserDAO {
 	
 	
 	public void insert(UserVO vo) {
-		System.out.println("insert해따");
 		mybatis.insert("UserDAO.insert", vo);
 		System.out.println(vo);
 		
@@ -19,7 +18,6 @@ public class UserDAO {
 	
 
 	public UserVO selectId(UserVO vo) {
-		System.out.println("user 가져와따1");
 		return mybatis.selectOne("UserDAO.selectId",vo);
 		
 	}
