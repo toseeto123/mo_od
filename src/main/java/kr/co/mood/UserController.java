@@ -42,16 +42,18 @@ public class UserController {
    
    @RequestMapping(value = "/login.do" , method = RequestMethod.GET)
    public String login() {
-      
+	   
       return "User/login";
       }
   //lsg
    @RequestMapping(value = "/login.do" , method = RequestMethod.POST)
-   public String loginAction(UserVO vo, HttpSession session) {
+   public String loginAction(UserVO vo, HttpSession session , RedirectAttributes rttr) {
 	  UserVO vo1 =  userservice.selectId(vo);
-	  if(vo1.getId()==null || vo1.getId().equals("")) {
-		  System.out.println("null값이얌");
-		  return "redirect:User/login.jsp";
+	  
+	  if(vo1 == null) {
+		  session.setAttribute("login_info", null);
+		  rttr.addFlashAttribute("msg", false);
+		  return "redirect:login.do";
 	  } else {
 		  if(vo1.getId().equals("admin")) {
 			  System.out.println("admin 로그인 성공");
@@ -62,8 +64,7 @@ public class UserController {
 				session.setAttribute("login_info", vo1);
 				return "redirect:index.jsp";
 			}
-	  }
-		
+	  }	
    }
  	@RequestMapping("/logout.do")
  		public String logout(UserVO vo,HttpSession session) {
