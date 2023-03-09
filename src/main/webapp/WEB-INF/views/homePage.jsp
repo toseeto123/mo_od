@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+ <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 
 <html lang="en">
@@ -98,7 +99,7 @@
               <img src="resources/assets/img/product/${Alist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>${Alist.pro_name }</h4>
-                <p>${Alist.pro_price }</p>
+                <p><fmt:formatNumber value="${Alist.pro_price}" type="currency" currencySymbol="₩" /></p>
                 <div class="portfolio-links">
                 </div>
               </div>
@@ -112,7 +113,7 @@
               <img src="resources/assets/img/product/${Blist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>${Blist.pro_name }</h4>
-                <p>${Blist.pro_price }</p>
+                <p><fmt:formatNumber value="${Blist.pro_price}" type="currency" currencySymbol="₩" /></p>
                 <div class="portfolio-links">                
                 </div>
               </div>
@@ -125,7 +126,7 @@
               <img src="resources/assets/img/product/${Clist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>${Clist.pro_name }</h4>
-                <p>${Clist.pro_price }</p>
+                <p><fmt:formatNumber value="${Clist.pro_price}" type="currency" currencySymbol="₩" /></p>
                 <div class="portfolio-links">
                 </div>
               </div>
@@ -139,7 +140,7 @@
               <img src="resources/assets/img/product/${Alist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>${Alist.pro_name }</h4>
-                <p>${Alist.pro_price }</p>
+                <p><fmt:formatNumber value="${Alist.pro_price}" type="currency" currencySymbol="₩" /></p>
                 <div class="portfolio-links">
                 </div>
               </div>
@@ -153,7 +154,7 @@
               <img src="resources/assets/img/product/${Blist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>${Blist.pro_name }</h4>
-                <p>${Blist.pro_price }</p>
+                <p><fmt:formatNumber value="${Blist.pro_price}" type="currency" currencySymbol="₩" /></p>
                 <div class="portfolio-links">   
                 </div>
               </div>
@@ -167,7 +168,7 @@
               <img src="resources/assets/img/product/${Clist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>${Clist.pro_name }</h4>
-                <p>${Clist.pro_price }</p>
+                <p><fmt:formatNumber value="${Clist.pro_price}" type="currency" currencySymbol="₩" /></p>
                 <div class="portfolio-links">
                 </div>
               </div>
@@ -181,7 +182,7 @@
               <img src="resources/assets/img/product/${Blist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>${Blist.pro_name }</h4>
-                <p>${Blist.pro_price }</p>
+                <p><fmt:formatNumber value="${Blist.pro_price}" type="currency" currencySymbol="₩" /></p>
                 <div class="portfolio-links">   
                 </div>
               </div>
@@ -195,7 +196,7 @@
               <img src="resources/assets/img/product/${Clist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>${Clist.pro_name }</h4>
-                <p>${Clist.pro_price }</p>
+                <p><fmt:formatNumber value="${Clist.pro_price}" type="currency" currencySymbol="₩" /></p>
                 <div class="portfolio-links">
                 </div>
               </div>
@@ -209,7 +210,7 @@
               <img src="resources/assets/img/product/${Alist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">
                 <h4>${Alist.pro_name }</h4>
-                <p>${Alist.pro_price }</p>
+                <p><fmt:formatNumber value="${Alist.pro_price}" type="currency" currencySymbol="₩" /></p>
                 <div class="portfolio-links">
                 </div>
               </div>
@@ -232,79 +233,58 @@
         </div>
 
         <div class="row">
-
-          <div class="col-xl-3 col-lg-4 col-md-6">
+<c:if test="${!empty D0.pro_img1 }">
+          <div class="col-xl-3 col-lg-4 col-md-6" onclick="location.href='${D0.pro_number }'" style="cursor: pointer">
             <div class="member">
-              <img src="resources/assets/img/team/team-1.jpg" class="img-fluid" alt="">
+              <img src="resources/assets/img/product/${D0.pro_img1 }" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>Walter White</h4>
-                  <span>Chief Executive Officer</span>
-                  <div class="social">
-                    <a href=""><i class="bi bi-twitter"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
-                  </div>
+                  <h4>침 실</h4>
+                  <span>${D0.pro_maindesctitle}</span>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s">
+          </c:if>
+<c:if test="${!empty D1.pro_img1 }">
+          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s" onclick="location.href='${D1.pro_number }'" style="cursor: pointer">
             <div class="member">
-              <img src="resources/assets/img/team/team-2.jpg" class="img-fluid" alt="">
+              <img src="resources/assets/img/product/${D1.pro_img1 }" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>Sarah Jhonson</h4>
-                  <span>Product Manager</span>
-                  <div class="social">
-                    <a href=""><i class="bi bi-twitter"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
-                  </div>
+                  <h4>거 실</h4>
+                  <span>${D1.pro_maindesctitle}</span>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
+          </c:if>
+<c:if test="${!empty D2.pro_img1 }">
+          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s" onclick="location.href='${D2.pro_number }'" style="cursor: pointer">
             <div class="member">
-              <img src="resources/assets/img/team/team-3.jpg" class="img-fluid" alt="">
+              <img src="resources/assets/img/product/${D2.pro_img1 }" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>William Anderson</h4>
-                  <span>CTO</span>
-                  <div class="social">
-                    <a href=""><i class="bi bi-twitter"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
-                  </div>
+                  <h4>주 방</h4>
+                  <span>${D2.pro_maindesctitle}</span>
                 </div>
               </div>
             </div>
           </div>
-
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
+          </c:if>
+<c:if test="${!empty D3.pro_img1 }">
+          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s" onclick="location.href='${D3.pro_number }'" style="cursor: pointer">
             <div class="member">
-              <img src="resources/assets/img/team/team-4.jpg" class="img-fluid" alt="">
+              <img src="resources/assets/img/product/${D3.pro_img1 }" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>Amanda Jepson</h4>
-                  <span>Accountant</span>
-                  <div class="social">
-                    <a href=""><i class="bi bi-twitter"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
-                  </div>
+                  <h4>욕 실</h4>
+                  <span>${D3.pro_maindesctitle}</span>
                 </div>
               </div>
             </div>
           </div>
-
+</c:if>
         </div>
 
       </div>
@@ -385,16 +365,16 @@
 	
 	<jsp:include page="../../WEB-INF/common/footer.jsp" />
 	
-	  <!-- Vendor JS Files -->
-  <script src="${pageContext.request.contextPath}/resources/resources/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="${pageContext.request.contextPath}/resources/resources/assets/vendor/php-email-form/validate.js"></script>
+  <!-- Vendor JS Files -->
+  <script src="resource/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="resource/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="resource/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="resource/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="resource/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="resource/assets/vendor/php-email-form/validate.js"></script>
 
   <!-- Template Main JS File -->
-  <script src="${pageContext.request.contextPath}/resources/resources/assets/js/main.js"></script>
+  <script src="resource/assets/js/main.js"></script>
 </body>
 
 </html>

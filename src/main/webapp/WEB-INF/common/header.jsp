@@ -106,15 +106,15 @@
 
 
   <!-- Vendor JS Files -->
-  <script src="resources/resources/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="resources/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="resources/resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="resources/resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="resources/resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <script src="resources/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
 
 
   <!-- Template Main JS File -->
-  <script src="resources/resources/assets/js/main.js"></script>
+  <script src="resources/assets/js/main.js"></script>
 </body>
 
 
