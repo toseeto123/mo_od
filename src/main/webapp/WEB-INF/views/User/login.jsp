@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 
@@ -25,14 +26,19 @@
                     <img src="/resources/user/img/gl.png" alt="google">
                 </div>
                 <form id="login" action="/login.do" class="input-group" method="post">
-                    <input type="text" name="id" class="input-field" placeholder="User name or Email" required>
+                    <input type="text" name="id" class="input-field" placeholder="User name or Email" required autofocus>
                     <input type="password" name="pwd" class="input-field" placeholder="Enter Password" required>
-                    <input type="checkbox" class="checkbox"><span>Remember Password</span>
+                    <c:if test="${ msg == false }">
+                    	<br><br>
+                	     <p style="color:red; font-size: 10px;" >존재하지 않는 아이디 입니다</p>
+                    </c:if>
+                    <br><br>
                     <button class="submit">Login</button>
+                    
+                    
                 </form>
             </div>
+             
         </div>
-        
-
 </body>
 </html>

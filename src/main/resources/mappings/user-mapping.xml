@@ -20,7 +20,7 @@
 
 	<insert id="insert" parameterType="kr.co.mood.user.dao.UserVO">
       <![CDATA[
-      INSERT INTO moodjoin VALUES(no, #{id}, #{pwd}, #{name}, #{age}, #{gender}, #{adr}, #{email}, #{phone}, now())
+      INSERT INTO moodjoin VALUES(no, #{id}, #{pwd}, #{name}, #{age}, #{gender}, #{adr}, #{email}, #{phone}, #{day})
       ]]>
    </insert>
    
@@ -36,7 +36,11 @@
 		 ]]>
 	</select>
    
-   
+   <delete id="delete" parameterType="String" >
+		<![CDATA[
+		delete from moodjoin where id=#{id} and pwd=#{pwd}
+		 ]]>
+	</delete>
 	
   	
   </mapper>
