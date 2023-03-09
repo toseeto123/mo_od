@@ -193,19 +193,23 @@ pre{
                      <h2>${list.pro_maindesctitle}</h2>
                      <pre>${list.pro_maindesc }</pre>
                      <input type="submit" value="장바구니" class="cateBtn"><br><br>
-                     <input type="button" value="결제하기" class="payBtn">
+                     <input type="button" value="바로결제하기" class="btn_buy">
                   </div>
                </div>
                
-            
-</form>
+</form>		
 
+	<!-- 주문 form toseet123 생성 -->
+			<form action="/User/userPay/${login_info.no}" method="get" class="order_form">
+				<input type="hidden" name="orders[0].pro_number" value="${list.pro_number}">
+				<input type="hidden" name="orders[0].orderCount" value="">
+			</form>
 <style>
 .chk_option{
    cursor: pointer;
 }
 
-.cateBtn , .payBtn{
+.cateBtn , .btn_buy{
    background-color: #c8936ed4;
    width: 416px;
    height: 50px;
@@ -329,7 +333,17 @@ pre{
 
    <!-- Template Main JS File -->
    <script src="resources/assets/js/main.js"></script>
-
+	
+	
+   <script>
+   /* 바로구매 버튼 */
+	$(".btn_buy").on("click", function(){
+		let orderCount = $(".quantity_input").val();
+		$(".order_form").find("input[name='orders[0].orderCount']").val(orderCount);
+		$(".order_form").submit();
+	});
+   </script>
+	
 </body>
 
 </html>
