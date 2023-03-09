@@ -5,8 +5,34 @@
 
 	<insert id="insert">
 
-		insert into cate(pro_number, user_no)
-		values(#{pro_number},#{user_no})
+		insert into cate(pro_number, user_no ,amount)
+		values(#{pro_number},#{user_no},#{amount})
 
 	</insert>
+
+	<select id="selectlist" resultType="kr.co.mood.cate.vo.CateVO">
+
+		select cate_id, p.pro_number,
+		c.user_no,pro_name ,pro_price,pro_img1,pro_maindesctitle,amount
+		from moodjoin m, cate c, product p
+		where m.no=c.user_no and c.pro_number = p.pro_number and
+		c.user_no=#{userid} order by cate_id
+	</select>
+
+
+	<update id="plusupdate">
+		update cate set amount = amount + #{amount}
+		where user_no = #{user_no} and pro_number = ${pro_number}
+	</update>
+	
+	<update id="minusupdate">
+		update cate set amount = amount - #{amount}
+		where user_no = #{user_no} and pro_number = ${pro_number}
+	</update>
+	
+	<update id="dupcate">
+		select * from cate where user_no = #{user_no} and pro_number = #{pro_number}
+	</update>
+	
+	
 </mapper>
