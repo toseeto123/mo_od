@@ -6,72 +6,13 @@
 	
 	
 	<select id="selectProList" resultType="kr.co.mood.Product.VO.ProVO">
-		select * from product
+		select pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product
 	</select>
-	
-	<select id="A0selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
-	      <![CDATA[
-		select * from product where pro_categoryserial like 'A0%'
-		      ]]>
-	</select>
-	<select id="A1selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
-	      <![CDATA[
-		select * from product where pro_categoryserial like 'A1%'
-		      ]]>
-	</select>
-	<select id="A2selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
-	      <![CDATA[
-		select * from product where pro_categoryserial like 'A2%'
-		      ]]>
-	</select>
-	
-	<select id="B0selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
-	      <![CDATA[
-		select * from product where pro_categoryserial like 'B0%'
-		      ]]>
-	</select>
-	<select id="B1selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
-	      <![CDATA[
-		select * from product where pro_categoryserial like 'B1%'
-		      ]]>
-	</select>
-	<select id="C0selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
-	      <![CDATA[
-		select * from product where pro_categoryserial like 'C0%'
-		      ]]>
-	</select>
-	<select id="C1selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
-	      <![CDATA[
-		select * from product where pro_categoryserial like 'C1%'
-		      ]]>
-	</select>
-	<select id="D0selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
-	      <![CDATA[
-		select * from product where pro_categoryserial like 'D0%'
-		      ]]>
-	</select>
-	<select id="D1selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
-	      <![CDATA[
-		select * from product where pro_categoryserial like 'D1%'
-		      ]]>
-	</select>
-	<select id="D2selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
-	      <![CDATA[
-		select * from product where pro_categoryserial like 'D2%'
-		      ]]>
-	</select>
-	<select id="D3selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
-	      <![CDATA[
-		select * from product where pro_categoryserial like 'D3%'
-		      ]]>
-	</select>
-	
-	
-	
-	
 	
 	<select id="selectProOne" resultType="kr.co.mood.Product.VO.ProVO">
-		select * from product where pro_number = #{pro_number}
+		select pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_number = #{pro_number}
 	</select>
 	
 	
@@ -82,7 +23,101 @@
      (#{pro_categoryserial},#{pro_name},#{pro_maindesc},#{pro_maindesctitle},#{pro_subdesc},#{pro_option1},#{pro_option2},#{pro_option3},#{pro_img1},#{pro_img2},#{pro_img3},#{pro_img4},#{pro_img5},#{pro_price}); 
   		</insert>
   
-  <update id="insertSerialNumber" parameterType="kr.co.mood.Product.VO.ProVO">
+  	<update id="insertSerialNumber" parameterType="kr.co.mood.Product.VO.ProVO">
   	update product set pro_serialnumber = concat(pro_categoryserial,pro_number)
-  </update>
+  	</update>
+  	
+
+  	
+  	<select id="AselectProListByPayCount" resultType="kr.co.mood.Product.VO.ProVO">
+  	<![CDATA[
+			select pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'A%' order by pro_paycount desc
+		  ]]>
+	</select>
+	<select id="BselectProListByPayCount" resultType="kr.co.mood.Product.VO.ProVO">
+			<![CDATA[
+			select pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'B%' order by pro_paycount desc
+		  ]]>
+	</select>
+	<select id="CselectProListByPayCount" resultType="kr.co.mood.Product.VO.ProVO">
+			<![CDATA[
+			select pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'C%' order by pro_paycount desc
+		  ]]>
+	</select>
+  
+  
+
+  
+  
+  
+  <select id="A0selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'A0%'
+		      ]]>
+	</select>
+	<select id="A1selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'A1%'
+		      ]]>
+	</select>
+	<select id="A2selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'A2%'
+		      ]]>
+	</select>
+	
+	<select id="B0selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'B0%'
+		      ]]>
+	</select>
+	<select id="B1selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'B1%'
+		      ]]>
+	</select>
+	<select id="C0selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'C0%'
+		      ]]>
+	</select>
+	<select id="C1selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'C1%'
+		      ]]>
+	</select>
+	<select id="D0selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'D0%'
+		      ]]>
+	</select>
+	<select id="D1selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'D1%'
+		      ]]>
+	</select>
+	<select id="D2selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'D2%'
+		      ]]>
+	</select>
+	<select id="D3selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'D3%'
+		      ]]>
+	</select>
 </mapper>

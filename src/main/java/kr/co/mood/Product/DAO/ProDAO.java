@@ -27,6 +27,16 @@ public class ProDAO {
 		return session.selectOne("ProDAO.selectProOne", pro_number);
 	}
 	
+	public List<ProVO> AselectProListByPayCount(List<ProVO> vo) {
+		return session.selectList("ProDAO.AselectProListByPayCount",vo);
+	}
+	public List<ProVO> BselectProListByPayCount(List<ProVO> vo) {
+		return session.selectList("ProDAO.BselectProListByPayCount",vo);
+	}
+	public List<ProVO> CselectProListByPayCount(List<ProVO> vo) {
+		return session.selectList("ProDAO.CselectProListByPayCount",vo);
+	}
+	
 	
 	
 	
