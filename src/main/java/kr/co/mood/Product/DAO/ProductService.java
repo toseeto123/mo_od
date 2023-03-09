@@ -1,5 +1,6 @@
 package kr.co.mood.Product.DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import kr.co.mood.Product.VO.ProVO;
@@ -9,6 +10,16 @@ public interface ProductService {
 	public List<ProVO> selectProList(List<ProVO> vo);
 	public void insertPro(ProVO vo);
 	public ProVO selectProOne(int pro_number);
+	public List<ProVO> AselectProListByPayCount(List<ProVO> vo);
+	public List<ProVO> BselectProListByPayCount(List<ProVO> vo);
+	public List<ProVO> CselectProListByPayCount(List<ProVO> vo);
+	
+	
+	
+	
+	
+	
+	
 	
 	
 	public List<ProVO> A0selectCategoryProList(List<ProVO> vo);

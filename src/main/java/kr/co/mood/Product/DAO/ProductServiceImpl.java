@@ -28,6 +28,18 @@ public class ProductServiceImpl implements ProductService{
 		return prodao.selectProOne(pro_number);
 	}
 	
+	@Override
+	public List<ProVO> AselectProListByPayCount(List<ProVO> vo) {
+		return prodao.AselectProListByPayCount(vo);
+	}
+	@Override
+	public List<ProVO> BselectProListByPayCount(List<ProVO> vo) {
+		return prodao.BselectProListByPayCount(vo);
+	}
+	@Override
+	public List<ProVO> CselectProListByPayCount(List<ProVO> vo) {
+		return prodao.CselectProListByPayCount(vo);
+	}
 	
 	
 	
