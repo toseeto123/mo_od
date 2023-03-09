@@ -66,7 +66,6 @@ public class UserController {
 			}
 	  }	
    }
-   
  	@RequestMapping("/logout.do")
  		public String logout(UserVO vo,HttpSession session) {
  			session.setAttribute("login_info", vo);
@@ -75,7 +74,6 @@ public class UserController {
  		}
  	@RequestMapping(value = "/mypage.do" , method = RequestMethod.GET)
     public String mypage(UserVO vo,HttpSession session) {
-// 		session.setAttribute("UserVO", vo);
  		session.getAttribute("login_info");
        return "User/mypage";
        }
@@ -86,6 +84,7 @@ public class UserController {
  		int result = userservice.idChk(vo);
  		return result;
  	}
+ 	
  	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
  	public String postRegister(UserVO vo) throws Exception {
  		int result = userservice.idChk(vo);
@@ -95,15 +94,27 @@ public class UserController {
  			}else if(result == 0) {
  				userservice.insert(vo);
  			}
- 			// 요기에서~ 입력된 아이디가 존재한다면 -> 다시 회원가입 페이지로 돌아가기 
- 			// 존재하지 않는다면 -> register
  		} catch (Exception e) {
  			e.printStackTrace();
  		}
  		return "User/login";
  	}
  	
- 	
+ 	 @RequestMapping(value = "/deletemember.do" , method = RequestMethod.GET)
+ 	   public String deletemember(UserVO vo,HttpSession session,RedirectAttributes rttr) throws Exception {
+ 		 UserVO ssvo = (UserVO)session.getAttribute("login_info");
+ 		 String sspwd = ssvo.getPwd();
+ 		 String vopwd = vo.getPwd();
+ 		 String Id = vo.getId();
+ 		 if(!(sspwd.equals(vopwd))) {
+ 			 rttr.addFlashAttribute("msg", false);
+ 			 return "redirect:/User/mypage";
+ 		 }
+ 		 userservice.deleteUser(vo);
+ 		 session.invalidate();
+ 	     return "redirect:index.jsp";
+ 	   }
+ 	   
  	
  	
 

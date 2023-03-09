@@ -55,9 +55,11 @@
                 <!-- PW2 -->
                 <div>
                     <h3 class="join_title"><label for="pwd2">비밀번호 재확인</label></h3>
-                    <span class="box int_string_check" >
-                        <input type="text" id="pwd2" name="pwd2" class="string" maxlength="20" onkeyup="passConfirm()">
-                        <span id="confirmMsg"></span>
+
+                    <span class="box int_string_check">
+                        <input type="password" id="pwd2" name="pwd2" class="string" maxlength="20">
+                         <span id="confirmMsg"></span>
+
                     </span>
                     
                 </div>
@@ -100,7 +102,7 @@
 
                 <!-- EMAIL -->
                 <div>
-                    <h3 class="join_title"><label for="email">본인확인 이메일<span class="optional">(선택)</span></label></h3>
+                    <h3 class="join_title"><label for="email">본인확인 이메일<span class="optional"></span></label></h3>
                     <span class="box string_email">
                         <input type="text" id="email" name="email" class="string" maxlength="100" placeholder="선택입력">
                     </span>

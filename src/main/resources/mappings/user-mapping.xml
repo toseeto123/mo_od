@@ -36,7 +36,11 @@
 		 ]]>
 	</select>
    
-   
+   <delete id="delete" parameterType="String" >
+		<![CDATA[
+		delete from moodjoin where id=#{id} and pwd=#{pwd}
+		 ]]>
+	</delete>
 	
   	
   </mapper>

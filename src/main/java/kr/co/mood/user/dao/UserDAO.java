@@ -1,5 +1,6 @@
 package kr.co.mood.user.dao;
 
+import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -8,6 +9,7 @@ import org.springframework.stereotype.Repository;
 public class UserDAO {
 	@Autowired
 	private SqlSessionTemplate mybatis;
+	private SqlSession session;
 	
 	
 	public void insert(UserVO vo) {
@@ -27,6 +29,10 @@ public class UserDAO {
 		return result;
 	}
 	
+	public void delete(UserVO vo) throws Exception{
+		mybatis.delete("UserDAO.delete", vo);
+		System.out.println(vo);
+	}
 	
 
 }

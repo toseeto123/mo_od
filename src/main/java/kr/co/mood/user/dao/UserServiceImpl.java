@@ -22,11 +22,6 @@ public class UserServiceImpl implements UserService{
 		
 	}
 
-	public void deleteUser(UserVO vo) {
-		
-		
-	}
-
 	public UserVO selectId(UserVO vo) {
 		return userdao.selectId(vo);
 	}
@@ -35,6 +30,11 @@ public class UserServiceImpl implements UserService{
 	public int idChk(UserVO vo) throws Exception {
 		int result = userdao.idChk(vo);
 		return result;
+	}
+
+	@Override
+	public void deleteUser(UserVO vo) throws Exception {
+		userdao.delete(vo);
 	}
 
 	
