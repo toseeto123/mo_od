@@ -46,11 +46,11 @@
 pre{
     overflow: auto;
     white-space: pre-wrap; /* pre tag내에 word wrap */
-}  
+}
 </style>
 <body>
 <jsp:include page="/WEB-INF/common/header.jsp" />
-
+<form method="post" action="cateinsert.do">
    <main id="main">
 <c:if test="${list.pro_number eq list.pro_number }">
       <!-- ======= Breadcrumbs ======= -->
@@ -131,7 +131,7 @@ pre{
                </div>
 
                <div class="col-lg-4">
-               <form method="post" action="userPayment.do">
+
                   <div class="portfolio-info">
                      <h3>${list.pro_name}</h3>
                      <ul>
@@ -164,7 +164,26 @@ pre{
                         
                         
                         
-                        
+                        <li><strong>수 량</strong>: <input type='button' onclick='count("plus")' value='+' /><span id='result'>1</span><input type='button' onclick='count("minus")' value='-' />
+		<script type="text/javascript">
+                  function count(type)  {
+                	  // 결과를 표시할 element
+                	  const resultElement = document.getElementById('result');
+                	  
+                	  // 현재 화면에 표시된 값
+                	  let number = resultElement.innerText;
+                	  
+                	  // 더하기/빼기
+                	  if(type === 'plus') {
+                	    number = parseInt(number) + 1;
+                	  }else if(type === 'minus' && number > 1)  {
+                	    number = parseInt(number) - 1;
+                	  }
+                	  
+                	  // 결과 출력
+                	  resultElement.innerText = number;
+                	}
+                  </script>
                      <li>            
                      </ul>
                      
@@ -173,8 +192,8 @@ pre{
                   <div class="portfolio-description">
                      <h2>${list.pro_maindesctitle}</h2>
                      <pre>${list.pro_maindesc }</pre>
-                     <input type="button" value="장바구니" class="cateBtn"><br><br>
-                     <input type="submit" value="결제하기" class="payBtn">
+                     <input type="submit" value="장바구니" class="cateBtn"><br><br>
+                     <input type="button" value="결제하기" class="payBtn">
                   </div>
                </div>
                
