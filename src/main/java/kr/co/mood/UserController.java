@@ -25,16 +25,20 @@ public class UserController {
 	private UserVO vo;
 	private ModelAndView mav;
 	
+	@RequestMapping(value = "/test.do" , method = RequestMethod.GET)
+	   public String test() {
+	      return "User/NewFile1";
+	   }
+	
    @RequestMapping(value = "/join.do" , method = RequestMethod.GET)
    public String join() {
       return "User/join";
    }
-   
-//   @RequestMapping(value = "/join.do" , method = RequestMethod.POST)
-//   public String joinAction(UserVO vo) {
-//	   userservice.insert(vo);
-//      return "User/login";
-//   }
+
+   @RequestMapping(value = "/idchk" , method = RequestMethod.POST)
+   public String idchk() {
+      return "User/join";
+   }
    
    @RequestMapping(value = "/login.do" , method = RequestMethod.GET)
    public String login() {
@@ -70,8 +74,9 @@ public class UserController {
  			return "redirect:index.jsp";
  		}
  	@RequestMapping(value = "/mypage.do" , method = RequestMethod.GET)
-    public String mypage() {
-       
+    public String mypage(UserVO vo,HttpSession session) {
+// 		session.setAttribute("UserVO", vo);
+ 		session.getAttribute("login_info");
        return "User/mypage";
        }
  	

@@ -57,17 +57,17 @@ public class ProDAO {
 	public List<ProVO> C1selectCategoryProList(List<ProVO> vo){
 		return session.selectList("ProDAO.C1selectCategoryProList", vo);		
 	}
-	public List<ProVO> D0selectCategoryProList(List<ProVO> vo){
-		return session.selectList("ProDAO.D0selectCategoryProList", vo);		
+	public ProVO D0selectCategoryProList(List<ProVO> vo){
+		return session.selectOne("ProDAO.D0selectCategoryProList", vo);		
 	}
-	public List<ProVO> D1selectCategoryProList(List<ProVO> vo){
-		return session.selectList("ProDAO.D1selectCategoryProList", vo);		
+	public ProVO D1selectCategoryProList(List<ProVO> vo){
+		return session.selectOne("ProDAO.D1selectCategoryProList", vo);		
 	}
-	public List<ProVO> D2selectCategoryProList(List<ProVO> vo){
-		return session.selectList("ProDAO.D2selectCategoryProList", vo);		
+	public ProVO D2selectCategoryProList(List<ProVO> vo){
+		return session.selectOne("ProDAO.D2selectCategoryProList", vo);		
 	}
-	public List<ProVO> D3selectCategoryProList(List<ProVO> vo){
-		return session.selectList("ProDAO.D3selectCategoryProList", vo);		
+	public ProVO D3selectCategoryProList(List<ProVO> vo){
+		return session.selectOne("ProDAO.D3selectCategoryProList", vo);		
 	}
 	
 	

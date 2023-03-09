@@ -134,31 +134,31 @@ public class ProductController {
 	}
 	@RequestMapping(value="/D0categoryList")
 	public String D0categoryProList(ArrayList<ProVO> vo, Model model) throws Exception {
-		List<ProVO> list = ps.C1selectCategoryProList(vo);
+		ProVO list = ps.D0selectCategoryProList(vo);
 		model.addAttribute("list", list);
 
-		return "Product/productList";
+		return "Product/interiorDetail";
 	}
 	@RequestMapping(value="/D1categoryList")
 	public String D1categoryProList(ArrayList<ProVO> vo, Model model) throws Exception {
-		List<ProVO> list = ps.C1selectCategoryProList(vo);
+		ProVO list = ps.D1selectCategoryProList(vo);
 		model.addAttribute("list", list);
 
-		return "Product/productList";
+		return "Product/interiorDetail";
 	}
 	@RequestMapping(value="/D2categoryList")
 	public String D2categoryProList(ArrayList<ProVO> vo, Model model) throws Exception {
-		List<ProVO> list = ps.C1selectCategoryProList(vo);
+		ProVO list = ps.D2selectCategoryProList(vo);
 		model.addAttribute("list", list);
 
-		return "Product/productList";
+		return "Product/interiorDetail";
 	}
 	@RequestMapping(value="/D3categoryList")
 	public String D3categoryProList(ArrayList<ProVO> vo, Model model) throws Exception {
-		List<ProVO> list = ps.C1selectCategoryProList(vo);
+		ProVO list = ps.D3selectCategoryProList(vo);
 		model.addAttribute("list", list);
 
-		return "Product/productList";
+		return "Product/interiorDetail";
 	}
 	
 

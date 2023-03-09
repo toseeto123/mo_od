@@ -35,7 +35,6 @@
 		select * from product where pro_categoryserial like 'B1%'
 		      ]]>
 	</select>
-	
 	<select id="C0selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
 	      <![CDATA[
 		select * from product where pro_categoryserial like 'C0%'
@@ -46,6 +45,27 @@
 		select * from product where pro_categoryserial like 'C1%'
 		      ]]>
 	</select>
+	<select id="D0selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select * from product where pro_categoryserial like 'D0%'
+		      ]]>
+	</select>
+	<select id="D1selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select * from product where pro_categoryserial like 'D1%'
+		      ]]>
+	</select>
+	<select id="D2selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select * from product where pro_categoryserial like 'D2%'
+		      ]]>
+	</select>
+	<select id="D3selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	      <![CDATA[
+		select * from product where pro_categoryserial like 'D3%'
+		      ]]>
+	</select>
+	
 	
 	
 	

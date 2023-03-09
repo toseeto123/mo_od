@@ -31,47 +31,43 @@
   <!-- Template Main CSS File -->
   <link href="resources/assets/css/style.css" rel="stylesheet">
 
-<style>
-	.navbar .headerMain li{ margin-right: 60px;
-	
-	}
-
-.logo{ font-family:"궁서" }
-.logo2{font-family:"굴림"}
-
-</style>
+</head>
 <body>
 <!-- ======= Header ======= -->
+
+
   <header id="header" class="d-flex align-items-center">
+
+
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo"><a href="/index.jsp">묻:<span class="logo2">mo_od</span></a></h1>
+      <h1 class="logo" style="font-family:'궁서';"><a href="/index.jsp">묻:<span class="logo2" style="font-family:'굴림';">mo_od</span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="/index.html" class="logo"><img src="resources/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
-      <nav id="navbar" class="navbar">
-        <ul class="headerMain">
-          <li class="dropdown"><a href="#" >가 구</a>
+      <nav id="navbar" class="navbar">   
+       <ul>
+        
+          <li class="dropdown"><a href="#"><span>가 구</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
                  <li><a href="/A0categoryList">매트리스</a></li>
                  <li><a href="/A1categoryList">침대 프레임</a></li>
                  <li><a href="/A2categoryList">소 파</a></li>
-
                 </ul>
           </li>
-          <li class="dropdown"><a href="#">조 명</a>
+          <li class="dropdown"><a href="#">조 명 <i class="bi bi-chevron-down"></i></a>
                 <ul>
                   <li><a href="/B0categoryList">무드등</a></li>
                   <li><a href="/B1categoryList">스탠드조명</a></li>
                 </ul>
           </li>
-          <li class="dropdown"><a href="#">수 납</a>
+          <li class="dropdown"><a href="#">수 납 <i class="bi bi-chevron-down"></i></a>
                 <ul>
                   <li><a href="/C1categoryList">옷장/행거</a></li>
                   <li><a href="/C0categoryList">서랍</a></li>
                 </ul>
           </li>
-          <li class="dropdown"><a href="#">시 공</a>
+          <li class="dropdown"><a href="#">인테리어 시공 <i class="bi bi-chevron-down"></i></a>
                 <ul>
                  <li><a href="/D0categoryList">침 실</a></li>
                   <li><a href="/D1categoryList">거 실</a></li>
@@ -79,21 +75,17 @@
                   <li><a href="/D3categoryList">욕 실</a></li>
                 </ul>
           </li>
-           </ul>
-           <ul>
-            
             <c:if test="${!empty login_info.id}">
                <li class="/login_info">${login_info.name } [ ${login_info.id } ]</li>
                <li><a href="/mypage.do"><span class="getstarted scrollto"> Mypage</span> </a></li>
                <li><a href="/logout.do"><span class="getstarted scrollto">Logout</span></a></li>
             </c:if>
             
-         </ul>
+       
           
           <!-- 알아서 이거 활용하자 -->
-        <ul>
+
            <c:if test="${empty login_info.id}">
-                            <li><a href="#">이건 알지?</a></li>
 							<li><a class="getstarted scrollto" href="/join.do">회원가입</a></li>
 							<li><a class="getstarted scrollto" href="/login.do">로그인</a></li>
 							<li><a class="getstarted scrollto" href="/cate.do">장바구니</a></li>
@@ -105,9 +97,20 @@
     </div>
   </header><!-- End Header -->
 
+
+  <!-- Vendor JS Files -->
+  <script src="resources/resources/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+  <script src="resources/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="resources/resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
+  <script src="resources/resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+  <script src="resources/resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
+
+
+  <!-- Template Main JS File -->
+  <script src="resources/resources/assets/js/main.js"></script>
 </body>
 
 
-</head>
+
 
 </html>
