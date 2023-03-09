@@ -71,24 +71,24 @@ img {
 						<div>
 							<h6 class="my-0">첫번째상품명 리스트로 뿌리기</h6>
 							<small class="text-muted">pro_name가져오기</small>
-						</div> <span class="text-muted">$pro_price 상품금액</span>
+						</div> <span class="text-muted">${map.pro_price} 상품금액</span>
 					</li>
 					<li
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">두번째상품명 리스트로 뿌리</h6>
 							<small class="text-muted">pro_name가져오기</small>
-						</div> <span class="text-muted">$pro_price 상품금액</span>
+						</div> <span class="text-muted">${map.pro_price} 상품금액</span>
 					</li>
 					<li
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">세번째상품들 리스트로뿌리</h6>
 							<small class="text-muted">pro_name가져오기</small>
-						</div> <span class="text-muted">$pro_price 상품금액</span>
+						</div> <span class="text-muted">${map.pro_price} 상품금액</span>
 					</li>
 					<li class="list-group-item d-flex justify-content-between"><span>Total
-							$total_price</span> <strong>$total_price</strong></li>
+							$total_price</span> <strong>${map.total_price}</strong></li>
 				</ul>
 				<form action="/kakaoPay" method="post">
 				<!-- 히든으로 정보담아서 보내기? -->
@@ -102,40 +102,30 @@ img {
 				<form class="needs-validation" novalidate>
 					<div class="row">
 						<div class="col-md-6 mb-3">
-							<label for="firstName">이름</label> <input type="text"
-								class="form-control" id="firstName" placeholder="user.name"
-								value="" required>
-							<div class="invalid-feedback">이름은 필수입력입니다.</div>
+							<label for="firstName">이름</label> 
+							<strong>${map.name}</strong>
 						</div>
 						<div class="col-md-6 mb-3">
-							<label for="lastName">전화번호</label> <input type="text"
-								class="form-control" id="phone" placeholder="user.phone"
-								value="" required>
-							<div class="invalid-feedback">핸드폰 번호는 필수입력입니다.</div>
+							<label for="lastName">전화번호</label>
+							<strong>${map.phone}</strong>
 						</div>
 					</div>
 
 					<div class="mb-3">
-						<label for="username">UserID</label>
+						<label for="username">사용자ID</label>
 						<div class="input-group">
-							<input type="text" class="form-control" id="userId"
-								placeholder="user.id" required>
-							<div class="invalid-feedback" style="width: 100%;">아이디는 필수
-								입력값입니다.</div>
+							<strong>${map.id}</strong>
 						</div>
 					</div>
 
 					<div class="mb-3">
-						<label for="email">이메일 <span class="text-muted">(옵션)</span></label>
-						<input type="email" class="form-control" id="email"
-							placeholder="user.email">
-						<div class="invalid-feedback">이메일 아이디를 올바르게 입력 부탁드립니다.</div>
+						<label for="email">이메일 <span class="text-muted"></span></label>
+						<strong>${map.email}</strong>
 					</div>
 
 					<div class="mb-3">
-						<label for="address">Address</label> <input type="text"
-							class="form-control" id="address" placeholder="user.adr" required>
-						<div class="invalid-feedback">배송입력될 주소칸을 확인해주세요.</div>
+						<label for="address">주소</label> 
+						<strong>${map.adr}</strong>
 					</div>
 
 					<hr class="mb-4">
@@ -144,13 +134,15 @@ img {
 
 					<div class="row">
 						<div class="col-md-6 mb-3">
-							<label for="cc-name"></label> <img
-								src="/resources/assets/img/product/GamsungF1.png"> <small
-								class="text-muted">여기다가 상품디테일명가져오기</small>
+							<label for="cc-name"></label> 
+							<span>${map.img1}</span>
+							 <small
+								class="text-muted">${map.pro_maindesc} 상품디테일명</small>
 						</div>
 						<div class="col-md-6 mb-3">
-							<label for="cc-number">가격정보</label> <input type="text"
-								class="form-control" id="cc-number" placeholder="가격정보" required>
+							<label for="cc-number">가격정보</label> < <small
+								class="text-muted">${map.pro_price} 상품디테일명</small>
+						</div>
 							<div class="invalid-feedback">여기다가 가격정보입력</div>
 						</div>
 					</div>
