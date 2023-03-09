@@ -27,6 +27,25 @@
   	update product set pro_serialnumber = concat(pro_categoryserial,pro_number)
   	</update>
   	
+  	<update id="updatePro" parameterType="kr.co.mood.Product.VO.ProVO">
+  	update product set 
+  	pro_name=#{pro_name},
+  	pro_soldout=#{pro_soldout},
+  	pro_option1=#{pro_option1},
+  	pro_option2=#{pro_option2},
+  	pro_option3=#{pro_option3},
+  	pro_price=#{pro_price},
+  	pro_img1=#{pro_img1},
+  	pro_img2=#{pro_img2},
+  	pro_img3=#{pro_img3},
+  	pro_img4=#{pro_img4},
+  	pro_img5=#{pro_img5},
+  	pro_subdesc=#{pro_subdesc},
+  	pro_maindesctitle=#{pro_maindesctitle},
+  	pro_maindesc=#{pro_maindesc} where pro_number = #{pro_number}
+  	</update>
+  	
+  	
 
   	
   	<select id="AselectProListByPayCount" resultType="kr.co.mood.Product.VO.ProVO">

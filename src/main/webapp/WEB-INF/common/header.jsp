@@ -1,15 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>묻:mo_od</title>
+     <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+  <title>묻:mo_od</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -31,7 +31,14 @@
   <!-- Template Main CSS File -->
   <link href="resources/assets/css/style.css" rel="stylesheet">
 
+  <!-- =======================================================
+  * Template Name: Groovin - v4.10.0
+  * Template URL: https://bootstrapmade.com/groovin-free-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
 </head>
+
 <body>
 <script>
   (function(){var w=window;if(w.ChannelIO){return w.console.error("ChannelIO script included twice.")}var ch=function(){ch.c(arguments)};ch.q=[];ch.c=function(args){ch.q.push(args)};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x)}}if(document.readyState==="complete"){l()}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l)}})();
@@ -40,21 +47,16 @@
     "pluginKey": "efdd564f-7f90-4014-9acf-5cdd2de2f595"
   });
 </script>
-<!-- ======= Header ======= -->
 
-
+  <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
-
-
     <div class="container d-flex align-items-center justify-content-between">
 
-      <h1 class="logo" style="font-family:'궁서';"><a href="/index.jsp">묻:<span class="logo2" style="font-family:'굴림';">mo_od</span></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="/index.html" class="logo"><img src="resources/assets/img/logo.png" alt="" class="img-fluid"></a>-->
+       <h1 class="logo" style="font-family:'궁서';"><a href="/index.jsp">묻:<span class="logo2" style="font-family:'굴림';">mo_od</span></a></h1>
+ 
+      <nav id="navbar" class="navbar">
+        <ul>
 
-      <nav id="navbar" class="navbar">   
-       <ul>
-        
           <li class="dropdown"><a href="#"><span>가 구</span> <i class="bi bi-chevron-down"></i></a>
                 <ul>
                  <li><a href="/A0categoryList">매트리스</a></li>
@@ -82,42 +84,39 @@
                   <li><a href="/D3categoryList">욕 실</a></li>
                 </ul>
           </li>
-            <c:if test="${!empty login_info.id}">
+
+              <c:if test="${!empty login_info.id}">
                <li class="/login_info">${login_info.name } [ ${login_info.id } ]</li>
                <li><a href="/mypage.do"><span class="getstarted scrollto"> Mypage</span> </a></li>
                <li><a href="/logout.do"><span class="getstarted scrollto">Logout</span></a></li>
             </c:if>
             
-       
-          
-          <!-- 알아서 이거 활용하자 -->
+            
+            <!-- 알아서 이거 활용하자 -->
 
            <c:if test="${empty login_info.id}">
 							<li><a class="getstarted scrollto" href="/join.do">회원가입</a></li>
 							<li><a class="getstarted scrollto" href="/login.do">로그인</a></li>
 							<li><a class="getstarted scrollto" href="/cate.do">장바구니</a></li>
 			</c:if>
-       </ul>
+
+
+
+        </ul>
+        
+        
+        
+        
         <i class="bi bi-list mobile-nav-toggle"></i>
-              </nav><!-- .navbar -->
+      </nav><!-- .navbar -->
 
     </div>
   </header><!-- End Header -->
 
-
-  <!-- Vendor JS Files -->
-  <script src="resources/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
+ 
 
 
-  <!-- Template Main JS File -->
-  <script src="resources/assets/js/main.js"></script>
+
 </body>
-
-
-
 
 </html>

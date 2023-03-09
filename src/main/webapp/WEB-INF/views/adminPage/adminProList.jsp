@@ -63,6 +63,18 @@
 						<c:if test="${list.pro_categoryserial  eq 'C1' }">
 						수납 > 서랍
 						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'D0' }">
+						침실시공
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'D1' }">
+						거실시공
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'D2' }">
+						주방시공
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'D3' }">
+						욕조시공
+						</c:if>
 						</td>
 						<th scope="row">${list.pro_serialnumber}</th>
                                  
