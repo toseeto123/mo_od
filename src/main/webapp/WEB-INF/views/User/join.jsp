@@ -10,7 +10,7 @@
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" href="/resources/user/css/join.css">
 
-
+<style>
 .logo{ font-family:"궁서" }
 .logo2{font-family:"굴림"}
 </style>
@@ -24,7 +24,7 @@
         </div>
 	 <!-- wrapper -->
         <div id="wrapper">
-	 <form action="join.do" method="post" name="join">
+	 <form action="join.do" method="post" name="join" id="join">
             <!-- content-->
             <div id="content">
 
@@ -37,27 +37,27 @@
                     <div class="box string_id">
                         <input type="text" id="id" name="id" class="string" maxlength="20">
                     </div>
-                    <button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
-
+                    <button class="idChk" type="button" name="idChk" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
+<!-- 					<input type="hidden" name="checked_id" value=""> -->
                 </div>
 
                 <!-- PW1 -->
                 <div>
-                    <h3 class="join_title"><label for="pwd1">비밀번호</label></h3>
+                    <h3 class="join_title"><label for="pwd">비밀번호</label></h3>
                     <span class="box int_pass">
-                        <input type="password" id="pwd1" name="pwd1" class="string" maxlength="20">
-                        <span id="alertTxt">사용불가</span>
+                        <input type="password" id="pwd" name="pwd" class="string" maxlength="20">
                     </span>
-                    <span class="error_next_box"></span>
+                    
                 </div>
 
                 <!-- PW2 -->
                 <div>
                     <h3 class="join_title"><label for="pwd2">비밀번호 재확인</label></h3>
-                    <span class="box int_string_check">
-                        <input type="text" id="pwd2" name="pwd2" class="string" maxlength="20">
+                    <span class="box int_string_check" >
+                        <input type="text" id="pwd2" name="pwd2" class="string" maxlength="20" onkeyup="passConfirm()">
+                        <span id="confirmMsg"></span>
                     </span>
-                    <span class="error_next_box"></span>
+                    
                 </div>
 
                 <!-- NAME -->
