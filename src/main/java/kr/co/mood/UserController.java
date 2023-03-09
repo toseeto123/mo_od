@@ -25,6 +25,11 @@ public class UserController {
 	private UserVO vo;
 	private ModelAndView mav;
 	
+	@RequestMapping(value = "/test.do" , method = RequestMethod.GET)
+	   public String test() {
+	      return "User/NewFile1";
+	   }
+	
    @RequestMapping(value = "/join.do" , method = RequestMethod.GET)
    public String join() {
       return "User/join";
@@ -68,8 +73,9 @@ public class UserController {
  			return "redirect:index.jsp";
  		}
  	@RequestMapping(value = "/mypage.do" , method = RequestMethod.GET)
-    public String mypage() {
-       
+    public String mypage(UserVO vo,HttpSession session) {
+// 		session.setAttribute("UserVO", vo);
+ 		session.getAttribute("login_info");
        return "User/mypage";
        }
  	

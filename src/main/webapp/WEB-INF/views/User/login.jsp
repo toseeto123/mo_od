@@ -25,7 +25,7 @@
                     <img src="/resources/user/img/gl.png" alt="google">
                 </div>
                 <form id="login" action="/login.do" class="input-group" method="post">
-                    <input type="text" name="id" class="input-field" placeholder="User name or Email" required>
+                    <input type="text" name="id" class="input-field" placeholder="User name or Email" required autofocus>
                     <input type="password" name="pwd" class="input-field" placeholder="Enter Password" required>
                     <input type="checkbox" class="checkbox"><span>Remember Password</span>
                     <button class="submit">Login</button>
