@@ -72,11 +72,16 @@
       <div class="modal-body">
       	탈퇴시 모든 버킷내역 및 주문내역이 삭제됩니다.<br> 
       	또한, 삭제된 정보는 다시 되돌릴 수 없습니다.<br>
-      	탈퇴하시겠습니까?
+      	탈퇴하시겠습니까?<br>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" onclick="DeleteMember">탈퇴하기</button>
+        <button type="submit" class="btn btn-primary" onclick="DeleteMember()">탈퇴하기</button>
         <button type="reset" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+      </div>
+      <div>
+      	<c:if test ="${msg==false}">
+      		비밀번호가 일치하지 않습니다.
+      	</c:if>
       </div>
     </div>
   </div>
@@ -84,7 +89,9 @@
 	</form>
 </fieldset>
 <script type="text/javascript">
-
+function DeleteMember() {
+	location.href="/deletemember.do";
+}
 </script>
 </body>
 </html>
