@@ -10,7 +10,7 @@
 <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" href="/resources/user/css/join.css">
 
-
+<style>
 .logo{ font-family:"궁서" }
 .logo2{font-family:"굴림"}
 </style>
@@ -35,7 +35,7 @@
                     </h3>
 
                     <div class="box string_id">
-                        <input type="text" id="id" name="id" class="string" maxlength="20">
+                        <input type="text" id="id" name="id" class="string" maxlength="20" autofocus>
                     </div>
                     <button class="idChk" type="button" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
 
@@ -73,7 +73,7 @@
 
                 <!-- BIRTH -->
                 <div>
-                    <h3 class="join_title"><label for="age">연령</label></h3>
+                    <h3 class="join_title"><label for="age">나이</label></h3>
 
                     <div id="bir_wrap">
                         <div id="age">
