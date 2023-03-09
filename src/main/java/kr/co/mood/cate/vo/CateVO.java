@@ -9,11 +9,21 @@ public class CateVO {
 	// product
 	private String pro_name;
 	private String pro_price;
-	private String pro_desc1;
-	private String pro_desc2;
+	private String pro_img1;
+	private String pro_maindesctitle;
 	
 	//cate
-	private int totalprice;
+	private int total;
+	private int amount;
+
+	
+	public String getPro_img1() {
+		return pro_img1;
+	}
+
+	public void setPro_img1(String pro_img1) {
+		this.pro_img1 = pro_img1;
+	}
 
 	public int getCate_no() {
 		return cate_no;
@@ -56,28 +66,30 @@ public class CateVO {
 		this.pro_price = pro_price;
 	}
 
-	public String getPro_desc1() {
-		return pro_desc1;
+	
+	public String getPro_maindesctitle() {
+		return pro_maindesctitle;
 	}
 
-	public void setPro_desc1(String pro_desc1) {
-		this.pro_desc1 = pro_desc1;
+	public void setPro_maindesctitle(String pro_maindesctitle) {
+		this.pro_maindesctitle = pro_maindesctitle;
 	}
 
-	public String getPro_desc2() {
-		return pro_desc2;
+	public int getTotal() {
+		return total;
 	}
 
-	public void setPro_desc2(String pro_desc2) {
-		this.pro_desc2 = pro_desc2;
+	public void setTotal(int total) {
+		this.total = total;
 	}
 
-	public int getTotalprice() {
-		return totalprice;
+	public int getAmount() {
+		return amount;
 	}
 
-	public void setTotalprice(int totalprice) {
-		this.totalprice = totalprice;
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
+	
 	
 }

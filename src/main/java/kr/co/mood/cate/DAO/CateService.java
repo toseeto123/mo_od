@@ -8,8 +8,13 @@ import kr.co.mood.user.dao.UserVO;
 
 public interface CateService {
 
-	public List<CateVO> selectCateList(UserVO vo);
+	public List<CateVO> selectCateList(int user_no);
 	
 	public void addcate(CateVO cvo , UserVO uvo , ProVO pvo);
 	
+	public int modifyflashamount(CateVO cvo);
+	
+	public int modifyminusamount(CateVO cvo);
+	
+	public int dupcate(int pro_number , int user_no);
 }

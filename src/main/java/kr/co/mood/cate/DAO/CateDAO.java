@@ -16,8 +16,8 @@ public class CateDAO {
 	@Autowired
 	SqlSessionTemplate sql;
 	
-	public List<CateVO> cateselect(UserVO vo) {
-		return sql.selectList("CateDAO.selectlist" , vo);
+	public List<CateVO> cateselect(int user_no) {
+		return sql.selectList("CateDAO.selectlist" , user_no);
 		
 	}
 	
@@ -25,6 +25,17 @@ public class CateDAO {
 		sql.insert("CateDAO.insert",cvo);
 		
 	}
+	
+	public int modifyflashamount(CateVO cvo) {
+		return sql.update("CateDAO.plusupdate" , cvo);
+	}
+	public int modifyminusamount(CateVO cvo) {
+		return sql.update("CateDAO.minusupdate" , cvo);
+	}
+	public int dupcate(int pro_number , int user_no) {
+		return sql.update("CateDAO.dupcate" , pro_number);
+	}
+	
 	
 	
 }
