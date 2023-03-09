@@ -26,6 +26,13 @@ public class ProDAO {
 
 		return session.selectOne("ProDAO.selectProOne", pro_number);
 	}
+	public void updatePro(ProVO vo) {
+		session.update("ProDAO.updatePro", vo);
+	}
+	
+	
+	
+	
 	
 	public List<ProVO> AselectProListByPayCount(List<ProVO> vo) {
 		return session.selectList("ProDAO.AselectProListByPayCount",vo);
