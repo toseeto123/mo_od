@@ -26,8 +26,8 @@ public class CateDAO {
 		
 	}
 	
-	public int modifyflashamount(CateVO cvo) {
-		return sql.update("CateDAO.plusupdate" , cvo);
+	public int modifyflashamount(int cate_id) {
+		return sql.update("CateDAO.plusupdate" , cate_id);
 	}
 	public int modifyminusamount(CateVO cvo) {
 		return sql.update("CateDAO.minusupdate" , cvo);

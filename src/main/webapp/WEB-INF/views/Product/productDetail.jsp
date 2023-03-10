@@ -161,8 +161,7 @@ pre{
                         <label for="chk_option 3" ><span class="chk_option">${list.pro_option3}</span></label>
                         <input type="radio" value="daaaa" id="chk_option 3" name="radioOption"><br>
                         </c:if>
-                        
-                        <fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" />
+
                         
                         <li><strong>수 량</strong>: <input type='button' onclick='count("plus")' value='+' /><span id='result'>1</span><input type='button' onclick='count("minus")' value='-' />
                          <li><strong>총 금액</strong>: <span id='resultPrice'>${list.pro_price }</span>원</li>
@@ -193,7 +192,7 @@ pre{
                      </ul>
                      
                   </div>
-
+					<input type="hidden" name="${cate_id }"/>
                   <div class="portfolio-description">
                      <h2>${list.pro_maindesctitle}</h2>
                      <pre>${list.pro_maindesc }</pre>
