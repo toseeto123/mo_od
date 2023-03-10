@@ -6,7 +6,7 @@
 	<insert id="insert">
 
 		insert into cate(pro_number, user_no ,amount)
-		values(#{pro_number},#{user_no},#{amount})
+		values(#{pro_number},#{user_no},#{amount}) ON DUPLICATE KEY UPDATE amount = amount+1
 
 	</insert>
 
