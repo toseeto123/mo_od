@@ -87,7 +87,7 @@ public class AdminController {
                            @RequestParam MultipartFile file3,
                            @RequestParam MultipartFile file4,
                                                          ProVO vo) throws IOException{
-         String fileRealName1 = file.getOriginalFilename(); //占쏙옙占싹몌옙占쏙옙 占쏙옙爭  占쏙옙 占쌍댐옙 占쌨쇽옙占쏙옙!
+         String fileRealName1 = file.getOriginalFilename(); 
          String fileRealName2 = file1.getOriginalFilename();
          String fileRealName3 = file2.getOriginalFilename();
          String fileRealName4 = file3.getOriginalFilename();
