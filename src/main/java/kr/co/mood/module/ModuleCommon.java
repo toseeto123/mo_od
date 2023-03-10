@@ -18,7 +18,7 @@ public class ModuleCommon {
    public void pagingModule(Model model, String page, ProPaginVO paginVO, List allList) {
       int getPage = Integer.parseInt(page);
       int startPage = (getPage / 10) * 10 + 1;
-      int count = 10;
+      int count = 7;
       if (getPage % 10 == 0) {
          startPage = startPage - count;
       }

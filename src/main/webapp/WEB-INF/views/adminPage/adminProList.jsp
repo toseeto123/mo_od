@@ -13,7 +13,7 @@
       <section id="breadcrumbs" class="breadcrumbs">
          <div class="container">
          <div class="d-flex align-items-center">
-               <strong>상품관리 > 상품목록/수정</<strong>
+               <strong>상품관리 > 상품목록/수정<strong>
             </div>
          </div>
       </section>
