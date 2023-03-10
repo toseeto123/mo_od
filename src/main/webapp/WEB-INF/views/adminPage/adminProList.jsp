@@ -78,7 +78,7 @@
 						</td>
 						<th scope="row">${list.pro_serialnumber}</th>
                                  
-                                 <td><a href="adminProDetail?pro_number=${list.pro_number}">${list.pro_name}</a></td>
+                                 <td><a href="/adminProDetail?pro_number=${list.pro_number}">${list.pro_name}</a></td>
                                  <td><fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></td>
                                  <c:if test="${list.pro_soldout eq 0}">
                                  <td>판매중</td>
@@ -90,7 +90,11 @@
                               </c:forEach>
                            </tbody>
                         </table>
-
+						<div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;"><a href="#">&lt;</a>
+						<c:forEach items="${ pagingNo }" var="no">
+						&nbsp;<a href="/adminProList.do/${no}">${no}</a>&nbsp;
+						</c:forEach>
+						<a href="#">&gt;</a></div>
                         <div></div>
                      </div>
                   </div>
