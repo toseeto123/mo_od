@@ -1,4 +1,5 @@
 function JoinCheck(){
+
         	if (document.join.id.value == 0) {
         		alert("아이디를 써주세요");
         		join.id.focus();
@@ -48,6 +49,7 @@ function JoinCheck(){
         		return false;
         	}	
         	return true;	
+
         }
 
 
@@ -155,3 +157,4 @@ function loginCheck(){
     }
 
 	
+

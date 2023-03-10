@@ -93,8 +93,8 @@ input {
 }
 
 .idChk{
-	display: inline-block;
-	
+   display: inline-block;
+   
 
 }
 
@@ -149,6 +149,7 @@ select {
 
 #btnJoin {
     width: 148px;
+
     padding: 21px 0 17px;
     border: 0;
     cursor: pointer;
@@ -161,6 +162,7 @@ select {
 
 #btnReset{
 	width: 148px;
+
     padding: 21px 0 17px;
     border: 0;
     cursor: pointer;
@@ -171,8 +173,26 @@ select {
     font-family: Dotum,'돋움',Helvetica,sans-serif;
 }
 
+
+
+
+#btnReset{
+   width: 148px;
+
+    padding: 21px 0 17px;
+    border: 0;
+    cursor: pointer;
+    color: #fff;
+    background-color: #08a600;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: Dotum,'돋움',Helvetica,sans-serif;
+}
+
+
+
 #btnBack{
-	width: 148px;
+   width: 148px;
     padding: 21px 0 17px;
     border: 0;
     cursor: pointer;

@@ -29,6 +29,7 @@
                 <form id="login" action="/login.do" class="input-group" method="post">
                     <input type="text" name="id" class="input-field" placeholder="User name or Email" required autofocus>
                     <input type="password" name="pwd" class="input-field" placeholder="Enter Password" required>
+
                     
                 
                    <c:choose>
@@ -50,6 +51,7 @@
 					
                     </c:choose>
                     
+
                     <br><br>
                     <button class="submit">Login</button>
                     

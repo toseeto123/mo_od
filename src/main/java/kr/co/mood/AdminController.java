@@ -119,7 +119,7 @@ public class AdminController {
 		System.out.println(vo);
 		ps.updatePro(vo);
 		
-		return "Product/productDetail";
+		return "Product/adminProList";
 	}
 	
 	

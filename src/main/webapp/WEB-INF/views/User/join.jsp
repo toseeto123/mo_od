@@ -22,9 +22,9 @@
         <div id="header">
         <h1 class="logo"><a href="index.jsp">묻 : <span class="logo2">mo_od</span></a></h1>
         </div>
-	
+
         <div id="wrapper">
-	 <form action="join.do" method="post" name="join" id="join">
+    <form action="join.do" method="post" name="join" id="join">
             <!-- content-->
             <div id="content">
 
@@ -113,12 +113,14 @@
                 </div>
                 
                 <div>
+
                 	<h3 class="join_title"><label for="adr">우편번호</label></h3>
                 	<input type="text" name=adr id="adr" placeholder="우편번호">
                     <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
                     <input type="text" name="useraddr1" id="sample6_address" placeholder="주소"><br>
                     <input type="text" name="useraddr2" id="sample6_detailAddress" placeholder="상세주소">
                     <input type="text" name="useraddr3" id="sample6_extraAddress" placeholder="참고항목">
+
                 </div>
 
 
@@ -133,7 +135,7 @@
             
       </form>
         </div> 
-      
+
         
       <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
        
