@@ -40,6 +40,7 @@ public interface ProductService {
 	
 	
 	public List<ProVO> selectProListPaging(ProPaginVO vo);
+	public void updatePro(ProVO vo);
 	
 	
 }

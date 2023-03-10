@@ -42,6 +42,12 @@ public class ProductServiceImpl implements ProductService{
 		return prodao.CselectProListByPayCount(vo);
 	}
 	
+	@Override
+	public void updatePro(ProVO vo) {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	
 	
 	
