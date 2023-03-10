@@ -47,8 +47,7 @@ public class ProductController {
 		// mav.setViewName("adminPage/adminProUpdate");
 		// model.addObject("list", ps.selectProOne(pro_number));
 		model.addAttribute("list", ps.selectProOne(pro_number));
-		session.setAttribute("pro_num", ps.selectProOne(pro_number));
-		System.out.println(ps.selectProOne(pro_number));
+		session.setAttribute("pro_number", ps.selectProOne(pro_number));
 		return "Product/productDetail";
 	}
 	

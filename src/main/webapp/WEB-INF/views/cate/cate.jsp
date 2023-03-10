@@ -83,14 +83,14 @@ dl, ul, ol, li {
 <script type="text/javascript">
 
 
-function flush(type) {
-	  const resultElement = document.getElementById('amount');
+function flush(type, element) {
+	  const resultElement = element.parentNode.previousElementSibling;
 	  let number = resultElement.innerText;
 
 	  let xhr = new XMLHttpRequest(); // XMLHttpRequest 객체 생성
 	  xhr.open('POST', 'update.do', true); 
 	  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // 요청 헤더 설정
-
+	  
 	  xhr.onreadystatechange = function() {
 	    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
 	      // 서버로부터 응답이 왔을 때 처리할 내용
@@ -102,12 +102,13 @@ function flush(type) {
 	    number = parseInt(number) + 1;
 	  }
 
-	  xhr.send(`number=${number}`); // 서버로 number 값을 전송
+	  xhr.send(`number=${number}&`); // 서버로 number 값을 전송
+	 
 	  resultElement.innerText = number;
 	}
 	
-function minus(type) {
-	  const resultElement = document.getElementById('amount');
+function minus(type, element) {
+	  const resultElement = element.parentNode.previousElementSibling;
 	  let number = resultElement.innerText;
 
 	  let xhr = new XMLHttpRequest(); // XMLHttpRequest 객체 생성
@@ -132,6 +133,7 @@ function minus(type) {
 </script>
 </head>
 <body>
+<div>${map.cate_id}</div>
 
 	<section id="hero" style="height: 400px;">
 		<div class="hero-container">
@@ -171,13 +173,14 @@ function minus(type) {
 			</div>
 			<p style="text-align: center; margin-top: 30px;">
 			<c:forEach var="map" items="${map}">
-			<input type="hidden" value="${map.user_no }">
-			<input type="hidden" value="${map.pro_number }">
-			<div id="amount">${map.amount}</div>
-			<span>
-				<button class="plus_btn"onclick='flush("plus")'>+</button>
-				<button class="minus_btn"onclick='minus("minus")'>-</button>
-			</span>
+			 <input type="hidden" value="${map.user_no}">
+  <input type="hidden" value="${map.pro_number}">
+  <div class="amount">${map.amount}</div>
+  
+  <span>
+    <button class="plus_btn" onclick='flush("plus", this)'>+</button>
+    <button class="minus_btn" onclick='minus("minus", this)'>-</button>
+  </span>
 			
 				<p>${map.pro_name}</p><p>${map.pro_price }</p><p>${map.pro_maindesctitle }</p>
 				<img src="resources/assets/img/product/${map.pro_img1 }" class="img-fluid" style="width: 206px; height: 206px;">

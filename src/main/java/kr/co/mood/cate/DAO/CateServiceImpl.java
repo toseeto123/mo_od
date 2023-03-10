@@ -26,9 +26,9 @@ public class CateServiceImpl implements CateService{
 		catedao.addcate(cvo, uvo, pvo);
 	}
 	
-	public int modifyflashamount(CateVO cvo) {
+	public int modifyflashamount(int cate_id) {
 		
-		return catedao.modifyflashamount(cvo);
+		return catedao.modifyflashamount(cate_id);
 	}
 	
 	public int modifyminusamount(CateVO cvo) {

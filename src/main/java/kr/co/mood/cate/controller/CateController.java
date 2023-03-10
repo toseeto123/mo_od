@@ -1,18 +1,13 @@
 package kr.co.mood.cate.controller;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.mood.Product.DAO.ProductService;
@@ -55,7 +50,7 @@ public class CateController {
 		int userid = uvo.getNo();
 		System.out.println(userid);
 		
-		ProVO pvo = (ProVO)session.getAttribute("pro_num");
+		ProVO pvo = (ProVO)session.getAttribute("pro_number");
 		System.out.println(pvo);
 		int proid = pvo.getPro_number();
 		System.out.println(proid);
@@ -80,18 +75,21 @@ public class CateController {
 		return "cate/cate";
 	}
 	
-	@ResponseBody
+	
 	@RequestMapping(value="/update.do" ,method = RequestMethod.POST)
-	public String update(HttpSession session , CateVO cvo , Model model) {
+	public String update(@RequestBody int cate_id,HttpSession session , CateVO cvo , Model model) {
+		
 		UserVO uvo = (UserVO)session.getAttribute("login_info");
 		int userid = uvo.getNo();
-		ProVO pvo = (ProVO)session.getAttribute("pro_num");
+		ProVO pvo = (ProVO)session.getAttribute("pro_number");
 		int proid = pvo.getPro_number();
 		int count = (Integer) session.getAttribute("count");
 		cvo.setUser_no(userid);
-		cvo.setPro_number(proid);
+		cvo.setCate_id(cate_id);
 		cvo.setAmount(count);
-		cservice.modifyflashamount(cvo);
+		cservice.modifyflashamount(cate_id);
+		System.out.println("cvo : "+cvo);
+		System.out.println("cate_id : "+proid);
 		return "cate/cate";
 	}
 	
@@ -106,7 +104,6 @@ public class CateController {
 		cvo.setPro_number(proid);
 		cvo.setAmount(count);
 		cservice.modifyminusamount(cvo);
-		System.out.println(count);
 		return "cate/cate";
 	}
 	
