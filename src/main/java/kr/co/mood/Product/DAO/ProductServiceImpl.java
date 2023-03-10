@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.mood.Product.VO.ProPaginVO;
 import kr.co.mood.Product.VO.ProVO;
 
 @Service
@@ -28,14 +29,6 @@ public class ProductServiceImpl implements ProductService{
 		return prodao.selectProOne(pro_number);
 	}
 	
-	
-	@Override
-	public void updatePro(ProVO vo) {
-		prodao.updatePro(vo);
-	}
-	
-	
-	
 	@Override
 	public List<ProVO> AselectProListByPayCount(List<ProVO> vo) {
 		return prodao.AselectProListByPayCount(vo);
@@ -48,6 +41,11 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProVO> CselectProListByPayCount(List<ProVO> vo) {
 		return prodao.CselectProListByPayCount(vo);
 	}
+	
+	
+	
+	
+
 	
 	
 	
@@ -107,6 +105,15 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public ProVO D3selectCategoryProList(List<ProVO> vo) {
 		return prodao.D3selectCategoryProList(vo);
+	}
+	
+	
+	
+	
+	
+	@Override
+	public List<ProVO> selectProListPaging(ProPaginVO vo) {
+		return prodao.selectProListPaging(vo);
 	}
 
 }
