@@ -73,7 +73,7 @@ a:hover{
 			<div><div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;"><a href="#">&lt;</a>
 			<c:set var="page" value="${num }" />
 			${page }
-			&nbsp;<a href="/payment.do/1">1</a>&nbsp;
+			&nbsp;<a href="/admin/payment.do/1">1</a>&nbsp;
 			<a href="#">&gt;</a></div></div>
 			
 			<div style="width:100%; margin-top:50px;"><jsp:include page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" /></div>
