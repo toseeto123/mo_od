@@ -29,8 +29,8 @@
                     <input type="text" name="id" class="input-field" placeholder="User name or Email" required autofocus>
                     <input type="password" name="pwd" class="input-field" placeholder="Enter Password" required>
                     <c:if test="${ msg == false }">
-                    	<br><br>
-                	     <p style="color:red; font-size: 10px;" >존재하지 않는 아이디 입니다</p>
+                       <br><br>
+                        <p style="color:red; font-size: 10px;" >존재하지 않는 아이디 또는 비밀번호 입니다</p>
                     </c:if>
                     <br><br>
                     <button class="submit">Login</button>

@@ -22,9 +22,9 @@
         <div id="header">
         <h1 class="logo"><a href="index.jsp">묻 : <span class="logo2">mo_od</span></a></h1>
         </div>
-	 <!-- wrapper -->
+    <!-- wrapper -->
         <div id="wrapper">
-	 <form action="join.do" method="post" name="join" id="join">
+    <form action="join.do" method="post" name="join" id="join">
             <!-- content-->
             <div id="content">
 
@@ -38,28 +38,22 @@
                         <input type="text" id="id" name="id" class="string" maxlength="20" autofocus>
                     </div>
                     <button class="idChk" type="button" name="idChk" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
-<!-- 					<input type="hidden" name="checked_id" value=""> -->
                 </div>
 
                 <!-- PW1 -->
                 <div>
                     <h3 class="join_title"><label for="pwd">비밀번호</label></h3>
                     <span class="box int_pass">
-
                         <input type="password" id="pwd" name="pwd" class="string" maxlength="20">
-
                     </span>
-                    
                 </div>
 
                 <!-- PW2 -->
                 <div>
                     <h3 class="join_title"><label for="pwd2">비밀번호 재확인</label></h3>
-
-                    <span class="box int_string_check">
-                        <input type="password" id="pwd2" name="pwd2" class="string" maxlength="20">
-                         <span id="confirmMsg"></span>
-
+                    <span class="box int_string_check" >
+                        <input type="text" id="pwd2" name="pwd2" class="string" maxlength="20" onkeyup="passConfirm()">
+                        <span id="confirmMsg"></span>
                     </span>
                     
                 </div>
@@ -75,7 +69,7 @@
 
                 <!-- BIRTH -->
                 <div>
-                    <h3 class="join_title"><label for="age">나이</label></h3>
+                    <h3 class="join_title"><label for="age">연령</label></h3>
 
                     <div id="bir_wrap">
                         <div id="age">
@@ -119,8 +113,8 @@
                 </div>
                 
                 <div>
-                	<h3 class="join_title"><label for="adr">우편번호</label></h3>
-                	<input type="text" size="10" name="adr" id="postcode" placeholder="우편번호" value="12345" readonly="readonly" onclick="">
+                   <h3 class="join_title"><label for="adr">우편번호</label></h3>
+                   <input type="text" size="10" name="adr" id="postcode" placeholder="우편번호" value="12345" readonly="readonly" onclick="">
                     <input type="button" onclick="" value="우편번호 찾기"><br><br />
                     <input type="text" size="30" name="wRoadAddress" id="roadAddress" placeholder="도로명주소" value="경기도" readonly="readonly" onclick="">
                     <input type="text" size="30" name="wJibunAddress" id="jibunAddress" placeholder="지번주소" value="구리시"readonly="readonly" onclick="">
@@ -132,7 +126,8 @@
                 <!-- JOIN BTN-->
                 <div class="btn_area">
                     <input type="submit" value="가입하기" id="btnJoin" class="join_now bt_submit mainBgColor" onclick="return JoinCheck()">
-                    <input type="button" value="취소" class="join_now bt_submit mainBgColor" onclick="return index">
+                    <input type="reset" value="취소" id="btnReset" class="join_now bt_submit mainBgColor" >
+                    <input type="button" value="뒤로가기" id="btnBack" class="join_now bt_submit mainBgColor" onclick="location.href='index.jsp'">
                 </div>
 
                 
@@ -142,7 +137,6 @@
       </form>
         </div> 
         <!-- wrapper -->
-    
         
   
     </body>
