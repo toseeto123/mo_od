@@ -16,17 +16,23 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.Product.VO.ProPaginVO;
 import kr.co.mood.Product.VO.ProVO;
 import kr.co.mood.module.ModuleCommon;
+import kr.co.mood.user.dao.UserService;
+import kr.co.mood.user.dao.UserVO;
 
 @Controller
 public class AdminController {
 	
 	@Autowired
 	ProductService ps;
+	
+	@Autowired
+	private UserService userService;
 	
 	   @Autowired
 	   ProPaginVO paginVO;
@@ -40,6 +46,21 @@ public class AdminController {
 		return "adminPage/chart";	
 	}
 	
+	@RequestMapping("/adminLogin.do")
+	public String adminLogin() {
+		return "adminPage/adminLogin";
+	}
+
+	@RequestMapping(value = "/adminLogin.do", method = RequestMethod.POST)
+	public String adminLoginCheck(UserVO vo, HttpSession session, RedirectAttributes rttr) {
+		if(userService.selectId(vo) == null || !userService.selectId(vo).getId().equals("admin")) {
+			session.invalidate();
+			rttr.addFlashAttribute("msg", false);
+			return "redirect:/adminLogin.do";
+		}
+		session.setAttribute("login_info", userService.selectId(vo));
+		return "redirect:/chart.do";
+	}
 
 	@RequestMapping("/adminLogout.do")
 	public String adminLogout(HttpSession session){
