@@ -62,7 +62,7 @@ public class UserController {
 		  if(vo1.getId().equals("admin")) {
 			  System.out.println("admin 로그인 성공");
 			  	session.setAttribute("login_info", vo);
-				return "redirect:chart.do";
+				return "redirect:admin/chart.do";
 			} else {
 				System.out.println("로그인 성공 + " + vo1);
 				session.setAttribute("login_info", vo1);

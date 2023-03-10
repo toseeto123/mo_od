@@ -25,6 +25,7 @@ import kr.co.mood.module.ModuleCommon;
 import kr.co.mood.user.dao.UserService;
 import kr.co.mood.user.dao.UserVO;
 
+@RequestMapping("/admin")
 @Controller
 public class AdminController {
 	
@@ -74,16 +75,13 @@ public class AdminController {
 		return "adminPage/admincate";
 	}
 	
-	
-	//占쏙옙占쏙옙占쏙옙 占쏙옙품占쏙옙占쏙옙占쏙옙占쏙옙占� 占싱듸옙
 	@RequestMapping(value="insert.do" ,method=RequestMethod.GET)
 	public String insertProductPage(){
 		return "adminPage/insertPro";
 	}
 	
-	//占쏙옙占쏙옙占쏙옙 占쏙옙품占쏙옙占�
-	   @RequestMapping(value="insert.do" ,method=RequestMethod.POST)
-	   public String insertProduct(@RequestParam MultipartFile file,
+	@RequestMapping(value="adinsert.do" ,method=RequestMethod.POST)
+	public String insertProduct(@RequestParam MultipartFile file,
 	                        @RequestParam MultipartFile file1,
 	                        @RequestParam MultipartFile file2,
 	                        @RequestParam MultipartFile file3,
@@ -94,15 +92,8 @@ public class AdminController {
 	      String fileRealName3 = file2.getOriginalFilename();
 	      String fileRealName4 = file3.getOriginalFilename();
 	      String fileRealName5 = file4.getOriginalFilename();
-//	      long size = file.getSize(); //占쏙옙占쏙옙 占쏙옙占쏙옙占쏙옙
-//	      System.out.println("占쏙옙占싹몌옙 : "  + fileRealName1);
-//	      System.out.println("占쎈량크占쏙옙(byte) : " + size);
-//	      String fileExtension = fileRealName1.substring(fileRealName1.lastIndexOf("."),fileRealName1.length());
-//	      String uploadFolder = "D:/up";
-	      
-//	      File saveFile = new File(uploadFolder+"\\" + fileExtension);  // 占쏙옙占쏙옙 占쏙옙
+
 	      try {
-//	         file.transferTo(saveFile); // 占쏙옙占쏙옙 占쏙옙占쏙옙 占쏙옙占쏙옙氷占쏙옙占�(filewriter 占쌜억옙占쏙옙 占쌌쏙옙占쏙옙 占싼방에 처占쏙옙占쏙옙占쌔댐옙.)
 	         vo.setPro_img1(fileRealName1);
 	         vo.setPro_img2(fileRealName2);
 	         vo.setPro_img3(fileRealName3);
@@ -121,6 +112,7 @@ public class AdminController {
 
 	
 	
+
 	   @RequestMapping(value = "adminProList.do")
 	   public String ProductList(ArrayList<ProVO> vo, Model model) {
 	      return "redirect:/adminProList.do/1";
@@ -134,17 +126,12 @@ public class AdminController {
 	      model.addAttribute("list", showList);
 	      return "adminPage/adminProList";
 	   }
-	
+
 
 	@RequestMapping(value="adminProDetail" ,method=RequestMethod.GET)
 	public String updateProductPage(int pro_number, Model model, HttpServletRequest request){
-		//mav.setViewName("adminPage/adminProUpdate");
-		//model.addObject("list", ps.selectProOne(pro_number));
 		String id = request.getParameter("pro_number");
-		//System.out.println("占싱곤옙 :"+id);
 		pro_number = Integer.parseInt(id);
-		
-		//System.out.println("占싱곤옙 :"+pro_number);
 		
 		model.addAttribute("list", ps.selectProOne(pro_number));
 		return "adminPage/adminProUpdate";
