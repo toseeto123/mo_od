@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
@@ -58,7 +59,7 @@ public class UserController {
 		  if(vo1.getId().equals("admin")) {
 			  System.out.println("admin 로그인 성공");
 			  	session.setAttribute("login_info", vo);
-				return "adminPage/chart";
+				return "redirect:chart.do";
 			} else {
 				System.out.println("로그인 성공 + " + vo1);
 				session.setAttribute("login_info", vo1);
@@ -100,22 +101,30 @@ public class UserController {
  		return "User/login";
  	}
  	
+ 	
  	 @RequestMapping(value = "/deletemember.do" , method = RequestMethod.GET)
- 	   public String deletemember(UserVO vo,HttpSession session,RedirectAttributes rttr) throws Exception {
+ 	   public String deletemember(UserVO vo,HttpSession session,RedirectAttributes rttr, @RequestParam("pwd1") String pwd) throws Exception {
  		 UserVO ssvo = (UserVO)session.getAttribute("login_info");
  		 String sspwd = ssvo.getPwd();
- 		 String vopwd = vo.getPwd();
- 		 String Id = vo.getId();
- 		 if(!(sspwd.equals(vopwd))) {
+ 		 System.out.println("sspwd : " + sspwd);
+ 		System.out.println("pwd : " + pwd);
+ 		 if(!(sspwd.equals(pwd)) ||  pwd==null) {
  			 rttr.addFlashAttribute("msg", false);
- 			 return "redirect:/User/mypage";
+ 			 return null;
  		 }
  		 userservice.deleteUser(vo);
  		 session.invalidate();
  	     return "redirect:index.jsp";
  	   }
  	   
- 	
+ 	@RequestMapping(value = "/updatemyinfo.do", method = RequestMethod.POST)
+ 	public String update(UserVO vo, HttpSession session) throws Exception {
+ 		System.out.println("야미");
+ 		
+ 		userservice.updateUser(vo);
+ 		session.invalidate();
+ 		return "redirect:/";
+ 	}
  	
 
  	

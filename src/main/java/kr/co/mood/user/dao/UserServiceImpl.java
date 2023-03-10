@@ -18,7 +18,7 @@ public class UserServiceImpl implements UserService{
 	}
 
 	public void updateUser(UserVO vo) {
-		
+		userdao.update(vo);
 		
 	}
 
@@ -37,7 +37,6 @@ public class UserServiceImpl implements UserService{
 		userdao.delete(vo);
 	}
 
-	
 
 	
 	
