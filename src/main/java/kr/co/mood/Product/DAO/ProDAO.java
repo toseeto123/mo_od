@@ -22,6 +22,8 @@ public class ProDAO {
 		session.insert("ProDAO.insert", vo);
 		session.update("ProDAO.insertSerialNumber", vo);
 	}
+	
+	
 
 	public ProVO selectProOne(int pro_number) {
 

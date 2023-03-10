@@ -173,7 +173,7 @@ function minus(type) {
 			<c:forEach var="map" items="${map}">
 			<input type="hidden" value="${map.user_no }">
 			<input type="hidden" value="${map.pro_number }">
-			<div id="amount"><h3>1</h3></div>
+			<div id="amount">${map.amount}</div>
 			<span>
 				<button class="plus_btn"onclick='flush("plus")'>+</button>
 				<button class="minus_btn"onclick='minus("minus")'>-</button>
