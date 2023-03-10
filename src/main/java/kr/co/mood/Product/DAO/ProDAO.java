@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.mood.Product.VO.ProPaginVO;
 import kr.co.mood.Product.VO.ProVO;
 
 @Repository
@@ -26,13 +27,6 @@ public class ProDAO {
 
 		return session.selectOne("ProDAO.selectProOne", pro_number);
 	}
-	public void updatePro(ProVO vo) {
-		session.update("ProDAO.updatePro", vo);
-	}
-	
-	
-	
-	
 	
 	public List<ProVO> AselectProListByPayCount(List<ProVO> vo) {
 		return session.selectList("ProDAO.AselectProListByPayCount",vo);
@@ -85,6 +79,14 @@ public class ProDAO {
 	}
 	public ProVO D3selectCategoryProList(List<ProVO> vo){
 		return session.selectOne("ProDAO.D3selectCategoryProList", vo);		
+	}
+	
+	
+	
+	
+	public List<ProVO> selectProListPaging(ProPaginVO vo){
+		
+		return session.selectList("ProDAO.selectProListPaging", vo);
 	}
 	
 	
