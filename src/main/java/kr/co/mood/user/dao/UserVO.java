@@ -3,8 +3,8 @@ package kr.co.mood.user.dao;
 import java.util.Date;
 
 public class UserVO {
-	private int no;
-    private String id;
+   private int no;
+   private String id;
    private String pwd;
    private String name;
    private int age;

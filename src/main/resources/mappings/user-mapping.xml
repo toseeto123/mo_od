@@ -20,7 +20,7 @@
 
 	<insert id="insert" parameterType="kr.co.mood.user.dao.UserVO">
       <![CDATA[
-      INSERT INTO moodjoin VALUES(no, #{id}, #{pwd}, #{name}, #{age}, #{gender}, #{adr}, #{email}, #{phone}, #{day})
+      INSERT INTO moodjoin VALUES(no, #{id}, #{pwd}, #{name}, #{age}, #{gender}, #{adr}, #{email}, #{phone}, now())
       ]]>
    </insert>
    
@@ -42,5 +42,11 @@
 		 ]]>
 	</delete>
 	
-  	
-  </mapper>
+	
+    <update id = "update" parameterType="kr.co.mood.user.dao.UserVO">
+        update moodjoin
+        set id=#{id}, pwd =#{pwd}, name=#{name}, 
+        age=#{age}, gender=#{gender}, adr=#{adr}, email=#{email} , phone=#{phone}, day=#{day}
+        where id = #{id}
+    </update>
+	</mapper>

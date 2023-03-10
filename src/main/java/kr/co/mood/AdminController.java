@@ -37,7 +37,6 @@ public class AdminController {
 	
 	@RequestMapping("/chart.do")
 	public String adminIndex(Model model) {
-		
 		return "adminPage/chart";	
 	}
 	
