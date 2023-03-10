@@ -1,16 +1,18 @@
 package kr.co.mood.Payment.VO;
 
-public class userOrderProductVO {
 
+public class userOrderVO {
+
+	//상품데이터를 전달받을 모델
+	
 	/* 뷰로부터 전달받을 값 */
     private int pro_number;
     /* 주문수량 */
-    private int pro_paycount;
+    private int orderCount;
 	/* DB로부터 꺼내올 값 */
     private String pro_name;
-    /*상품가격 */
+    /* 상품가격 */
     private int pro_price;
-	
     /*만들어낼 데이터 총가격 */
     private int totalPrice;
     
@@ -20,11 +22,11 @@ public class userOrderProductVO {
 	public void setPro_number(int pro_number) {
 		this.pro_number = pro_number;
 	}
-	public int getPro_paycount() {
-		return pro_paycount;
+	public int getOrderCount() {
+		return orderCount;
 	}
-	public void setPro_paycount(int pro_paycount) {
-		this.pro_paycount = pro_paycount;
+	public void setOrderCount(int orderCount) {
+		this.orderCount = orderCount;
 	}
 	public String getPro_name() {
 		return pro_name;
@@ -44,9 +46,9 @@ public class userOrderProductVO {
 	public void setTotalPrice(int totalPrice) {
 		this.totalPrice = totalPrice;
 	}
-
+	//총가격을 만들어내는데 필요한 initSaleTotal()
 	public void initSaleTotal() {
-		this.totalPrice = this.pro_price * this.pro_paycount;
+		this.totalPrice = this.pro_price * this.orderCount;
 	}
 
 }

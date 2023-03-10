@@ -31,4 +31,10 @@ public class SampleController {
 		System.out.println("kakaopay success pg_token" + pg_token);
 		model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token));
 	}
+	@RequestMapping(value = "/User/kakaoPayCancel" )
+	public void payCancel(@RequestParam String pg_token, Model model) {
+		System.out.println("kakaopay Cancel......!!!!!!!! get!!!!");
+		System.out.println("kakaopay Cancel pg_token" + pg_token);
+		model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token));
+	}
 }

@@ -7,6 +7,9 @@
 <head>
 <jsp:include page="../../common/header.jsp" />
 <script src="https://unpkg.com/phosphor-icons"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/spring-webmvc/5.3.8/spring-webmvc.min.js"></script>
 <meta charset="UTF-8">
 <title>장바구니</title>
 <style>
@@ -77,8 +80,59 @@ dl, ul, ol, li {
 	display: block;
 }
 </style>
+<script type="text/javascript">
+
+
+function flush(type) {
+	  const resultElement = document.getElementById('amount');
+	  let number = resultElement.innerText;
+
+	  let xhr = new XMLHttpRequest(); // XMLHttpRequest 객체 생성
+	  xhr.open('POST', 'update.do', true); 
+	  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // 요청 헤더 설정
+
+	  xhr.onreadystatechange = function() {
+	    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+	      // 서버로부터 응답이 왔을 때 처리할 내용
+	    	resultElement.innerHtml = this.responseText;
+	    }
+	  };
+
+	  if (type === 'plus') {
+	    number = parseInt(number) + 1;
+	  }
+
+	  xhr.send(`number=${number}`); // 서버로 number 값을 전송
+	  resultElement.innerText = number;
+	}
+	
+function minus(type) {
+	  const resultElement = document.getElementById('amount');
+	  let number = resultElement.innerText;
+
+	  let xhr = new XMLHttpRequest(); // XMLHttpRequest 객체 생성
+	  xhr.open('POST', 'minusupdate.do', true); 
+	  xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded'); // 요청 헤더 설정
+
+	  xhr.onreadystatechange = function() {
+	    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+	      // 서버로부터 응답이 왔을 때 처리할 내용
+	      resultElement.innerHtml = this.responseText;
+	    }
+	  };
+
+	  if (type === 'minus') {
+	    number = parseInt(number) - 1;
+	  }
+
+	  xhr.send(`number=${number}`); // 서버로 number 값을 전송
+	  resultElement.innerText = number;
+	}
+	
+</script>
 </head>
 <body>
+
 	<section id="hero" style="height: 400px;">
 		<div class="hero-container">
 			<div id="heroCarousel" data-bs-interval="5000"
@@ -115,7 +169,21 @@ dl, ul, ol, li {
 			<li><span>03</span>주문완료</li>
 		</ol>
 			</div>
-			<p style="text-align: center; margin-top: 30px;">장바구니의 담겨 있는 상품이 없습니다</p>
+			<p style="text-align: center; margin-top: 30px;">
+			<c:forEach var="map" items="${map}">
+			<input type="hidden" value="${map.user_no }">
+			<input type="hidden" value="${map.pro_number }">
+			<div id="amount">${map.amount}</div>
+			<span>
+				<button class="plus_btn"onclick='flush("plus")'>+</button>
+				<button class="minus_btn"onclick='minus("minus")'>-</button>
+			</span>
+			
+				<p>${map.pro_name}</p><p>${map.pro_price }</p><p>${map.pro_maindesctitle }</p>
+				<img src="resources/assets/img/product/${map.pro_img1 }" class="img-fluid" style="width: 206px; height: 206px;">
+				
+			</c:forEach>
+			</p>
 		</div>
 		<div class="price_sum">
 			<div class="price_sum_cont">

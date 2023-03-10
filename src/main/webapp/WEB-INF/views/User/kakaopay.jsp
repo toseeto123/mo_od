@@ -12,10 +12,15 @@
 <body>
 <h1>카카오페이 api 사용</h1>
 	<a class="order_btn" >카드결제하기</a>
-	<form method="post" action="/kakaoPay">
+	   <input type="submit" value=바로결제" class="btn_buy">
+	<!-- <form method="post" action="/kakaoPay">
      <button id="apibtn">카카오페이로 결제하기</button>
-	</form>
-
+	</form> -->
+<!-- 주문 form toseet123 생성 -->
+			<form action="/userPay/${login_info.no}" method="get" class="order_form">
+				<input type="hidden" name="orders[0].pro_number" value="${list.pro_number}">
+				<input type="hidden" name="orders[0].orderCount" value="">
+			</form>
     <script>
     var IMP = window.IMP; 
     IMP.init("imp40061745"); 
@@ -57,5 +62,15 @@
 		});
 	}); 
 </script>
+
+<script>
+   /* 바로구매 버튼 */
+	$(".btn_buy").on("click", function(){
+		let orderCount = $(".quantity_input").val();
+		$(".order_form").find("input[name='orders[0].orderCount']").val(orderCount);
+		$(".order_form").submit();
+	});
+   </script>
+
 </body>
 </html>
