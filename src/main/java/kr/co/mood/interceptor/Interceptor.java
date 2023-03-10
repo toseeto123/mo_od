@@ -15,8 +15,7 @@ public class Interceptor extends HandlerInterceptorAdapter {
 
    // 로그인이 없을시 로그인으로 넘어가야 할 사이트 '/' 빼고 기술해주세요
    static final String[] CLIENT_SITE_LIST = {};// Client만
-   static final String[] ADMIN_SITE_LIST = { "chart.do", "payment.do", 
-         "admincate.do", "insert.do", "adminProList.do", "adminProDetail" };//Admin만
+   static final String[] ADMIN_SITE_LIST = { };//Admin만
    
    
    static final String[] COMMON_LIST = new String[CLIENT_SITE_LIST.length + ADMIN_SITE_LIST.length];

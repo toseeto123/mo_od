@@ -37,13 +37,13 @@ public class CateController {
 	
 	@RequestMapping(value = "/cate.do" , method = RequestMethod.GET)
 	public String cate() {
-		System.out.println("cate �엯�옣�씠�슂~");
+		System.out.println("cate");
 		return "cate/cate";
 	}
 	
 	@RequestMapping(value = "/cate.do" , method = RequestMethod.POST)
 	public ModelAndView selectAllList(HttpSession session , ModelAndView mav) {
-		System.out.println("cate �룷�뒪�듃 諛⑹떇 �엯�옣~");
+		System.out.println("cat");
 		
 		return mav;
 	}
