@@ -28,16 +28,16 @@
                 <div class="social-icons">
               <div style="font-size:30px;"><p style="display:inline; font-family:궁서;">묻:</p><p style="display:inline; font-family:굴림;">mo_od</p></div>
                 </div>
-                <form id="login" action="/adminLogin.do" class="input-group" method="post">
+                <form id="login" action="/admin/adminLogin.do" class="input-group" method="post">
                
                     <input type="text" name="id" class="input-field" placeholder="Enter Id" required autofocus>
                     <input type="password" name="pwd" class="input-field" placeholder="Enter Password" required>
 
-					<c:if test="${ msg == false }">
-                    	<br><br>
-                	     <p style="color:red; font-size: 10px;" >존재하지 않는 아이디 또는 비밀번호 입니다</p>
-					</c:if>
-					
+               <c:if test="${ msg == false }">
+                       <br><br>
+                        <p style="color:red; font-size: 10px;" >존재하지 않는 아이디 또는 비밀번호 입니다</p>
+               </c:if>
+               
                     <br><br>
                     <div>
                     <button class="submit" style="width: 130px; float:left;">Login</button>

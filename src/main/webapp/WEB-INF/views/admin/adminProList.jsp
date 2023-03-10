@@ -93,7 +93,7 @@
                         </table>
                   <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;"><a href="#">&lt;</a>
                   <c:forEach items="${ pagingNo }" var="no">
-                  &nbsp;<a href="/adminProList.do/${no}">${no}</a>&nbsp;
+                  &nbsp;<a href="/admin/adminProList.do/${no}">${no}</a>&nbsp;
                   </c:forEach>
                   <a href="#">&gt;</a></div>
                         <div></div>
