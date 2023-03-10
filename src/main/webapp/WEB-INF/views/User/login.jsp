@@ -11,7 +11,8 @@
    <title>Home</title>
     <link rel="stylesheet" href="/resources/user/css/login.css"/>
     <script type="text/javascript" src="/resources/user/js/main.js"></script>
-   
+  
+  
 </head>
 <body>
 
@@ -22,7 +23,9 @@
                     <button type="button" class="togglebtn" onclick="login()">LOG IN</button>
                 </div>
                 <div class="social-icons">
-                    <img src="/resources/user/img/fb.png" alt="naver">
+                	<a id="naverIdLoginButton" href="javascript:void(0)" >
+                    <span><img src="/resources/user/img/fb.png"  alt="naver">네이버 로그인</span>
+                    </a>
                     <img src="/resources/user/img/tw.png" alt="kakao">
                     <img src="/resources/user/img/gl.png" alt="google">
                 </div>

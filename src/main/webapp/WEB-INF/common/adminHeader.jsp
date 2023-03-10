@@ -43,7 +43,7 @@
 <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
-      <h1 class="logo"><a href="/chart.do">묻:mo_od</a></h1>
+      <h1 class="logo" style="font-family:'궁서';"><a href="/admin/chart.do">묻:<span class="logo2" style="font-family:'굴림';">mo_od</span></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="/index.html" class="logo"><img src="resources/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -55,8 +55,8 @@
 
           		<ul>
 
-                  <li><a href="/insert.do">상품등록</a></li>
-                  <li><a href="/adminProList.do">상품리스트/수정</a></li>
+                  <li><a href="/admin/insert.do">상품등록</a></li>
+                  <li><a href="/admin/adminProList.do">상품리스트/수정</a></li>
                 </ul>
 
           </li>
@@ -66,14 +66,14 @@
           <li class="dropdown"><a href="#">버킷</a>
                 
           </li>
-          <li class="dropdown"><a href="/payment.do">결제</a>
+          <li class="dropdown"><a href="/admin/payment.do">결제</a>
           </li>
            </ul>
            <ul>
           <!-- 알아서 이거 활용하자 -->
           <li><a class="getstarted scrollto" href="/">클라이언트</a></li>
           
-          <li><a class="getstarted scrollto" href="/adminLogout.do">로그아웃</a></li>
+          <li><a class="getstarted scrollto" href="/admin/adminLogout.do">로그아웃</a></li>
        </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
               </nav><!-- .navbar -->

@@ -21,14 +21,6 @@ public class ProductController {
 	@Autowired
 	ProductService ps;
 
-//	@RequestMapping(value = "proDetail.do")
-//	public String proDetails() {
-//		
-//		return "productDetail";	
-//		//return "inner-page";
-//	}
-
-	// 占쏙옙 占쏙옙품占쏙옙占쏙옙트占싱듸옙
 	@RequestMapping(value = "/proList.do")
 	public String proList(ArrayList<ProVO> vo, Model model) throws Exception {
 		List<ProVO> list = ps.selectProList(vo);
@@ -44,8 +36,6 @@ public class ProductController {
 
 	@RequestMapping(value = "{pro_number}", method = RequestMethod.GET)
 	public String proDetails(@PathVariable("pro_number") int pro_number, Model model,HttpSession session) {
-		// mav.setViewName("adminPage/adminProUpdate");
-		// model.addObject("list", ps.selectProOne(pro_number));
 		model.addAttribute("list", ps.selectProOne(pro_number));
 		session.setAttribute("pro_number", ps.selectProOne(pro_number));
 		return "Product/productDetail";

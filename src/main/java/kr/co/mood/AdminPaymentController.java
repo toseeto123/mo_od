@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import kr.co.mood.Payment.DAO.AdminPaymentService;
 
+@RequestMapping("/admin")
 @Controller
 public class AdminPaymentController {
 	
@@ -19,13 +20,13 @@ public class AdminPaymentController {
 
 	@RequestMapping("/payment.do")
 	public String adminPaymentDefault(HttpServletRequest request) {
-		return "redirect:/payment.do/1";	
+		return "redirect:/admin/payment.do/1";	
 	}
 	
 	@RequestMapping("/payment.do/{num}")
 	public String adminPaymentPaging(@PathVariable("num") String num, Model model) {
 		model.addAttribute("num", num);
-		return "adminPage/adminPayment";	
+		return "admin/adminPayment";	
 	}
 	
 }
