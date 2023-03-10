@@ -107,7 +107,7 @@ public class AdminController {
 	}
 
 	//          ǰ      Ʈ        ̵ 
-	@RequestMapping(value = "adminProDetail", method = RequestMethod.GET)
+	@RequestMapping(value = "/adminProDetail", method = RequestMethod.GET)
 	public String updateProductPage(int pro_number, Model model, HttpServletRequest request) {
 		// mav.setViewName("adminPage/adminProUpdate");
 		// model.addObject("list", ps.selectProOne(pro_number));
