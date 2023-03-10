@@ -24,6 +24,14 @@ public class ProductServiceImpl implements ProductService{
 		prodao.insertPro(vo);
 		
 	}
+	
+	@Override
+	public void updatePro(ProVO vo) {
+		prodao.updatePro(vo);
+	}
+	
+	
+	
 	@Override
 	public ProVO selectProOne(int pro_number){
 		return prodao.selectProOne(pro_number);
@@ -42,11 +50,7 @@ public class ProductServiceImpl implements ProductService{
 		return prodao.CselectProListByPayCount(vo);
 	}
 	
-	@Override
-	public void updatePro(ProVO vo) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 	
 	
 	
