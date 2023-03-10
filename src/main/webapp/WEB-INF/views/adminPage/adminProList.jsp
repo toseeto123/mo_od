@@ -31,6 +31,7 @@
                         <table class="table">
                            <thead>
                               <tr>
+                              <th scope="col">이미지</th>
                                  <th scope="col">카테고리</th>
                                  <th scope="col">상품일련번호</th>
                                  <th scope="col">상품명</th>
@@ -42,41 +43,41 @@
 
                               <c:forEach var="list" items="${list}">
                               <tr> 
+                   <td><img alt="" src="/resources/assets/img/product/${list.pro_img1}" style="width: 60px; height: 60px;"></td>              
                                  
-                                 
-						<td>                 
+                  <td>                 
                         <c:if test="${list.pro_categoryserial  eq 'A0' }">
-						가구 > 침대프레임
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'A1' }">
-						가구 > 매트리스
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'B0' }">
-						조명 > 무드등
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'B1' }">
-						조명 > 스탠드조명
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'C0' }">
-						수납 > 옷장/행거
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'C1' }">
-						수납 > 서랍
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'D0' }">
-						침실시공
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'D1' }">
-						거실시공
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'D2' }">
-						주방시공
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'D3' }">
-						욕조시공
-						</c:if>
-						</td>
-						<th scope="row">${list.pro_serialnumber}</th>
+                  가구 > 침대프레임
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'A1' }">
+                  가구 > 매트리스
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'B0' }">
+                  조명 > 무드등
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'B1' }">
+                  조명 > 스탠드조명
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'C0' }">
+                  수납 > 옷장/행거
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'C1' }">
+                  수납 > 서랍
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'D0' }">
+                  침실시공
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'D1' }">
+                  거실시공
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'D2' }">
+                  주방시공
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'D3' }">
+                  욕조시공
+                  </c:if>
+                  </td>
+                  <td>${list.pro_categoryserial}${list.pro_number}</td>
                                  
                                  <td><a href="/adminProDetail?pro_number=${list.pro_number}">${list.pro_name}</a></td>
                                  <td><fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></td>
@@ -90,11 +91,11 @@
                               </c:forEach>
                            </tbody>
                         </table>
-						<div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;"><a href="#">&lt;</a>
-						<c:forEach items="${ pagingNo }" var="no">
-						&nbsp;<a href="/adminProList.do/${no}">${no}</a>&nbsp;
-						</c:forEach>
-						<a href="#">&gt;</a></div>
+                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;"><a href="#">&lt;</a>
+                  <c:forEach items="${ pagingNo }" var="no">
+                  &nbsp;<a href="/adminProList.do/${no}">${no}</a>&nbsp;
+                  </c:forEach>
+                  <a href="#">&gt;</a></div>
                         <div></div>
                      </div>
                   </div>

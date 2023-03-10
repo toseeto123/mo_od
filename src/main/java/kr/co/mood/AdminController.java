@@ -18,13 +18,22 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
 import kr.co.mood.Product.DAO.ProductService;
+import kr.co.mood.Product.VO.ProPaginVO;
 import kr.co.mood.Product.VO.ProVO;
+import kr.co.mood.module.ModuleCommon;
 
 @Controller
 public class AdminController {
 	
 	@Autowired
 	ProductService ps;
+	
+	   @Autowired
+	   ProPaginVO paginVO;
+	   
+	   @Autowired
+	   ModuleCommon module;
+	
 	
 	@RequestMapping("/chart.do")
 	public String adminIndex(Model model) {
@@ -92,15 +101,21 @@ public class AdminController {
 
 	
 	
-	//占쏙옙占쏙옙占쏙옙 占쏙옙품占쏙옙占쏙옙트 占쏙옙占쏙옙占쏙옙 占싱듸옙
-	@RequestMapping(value="adminProList.do")
-	public String ProductList(ArrayList<ProVO> vo,Model model){
-		List<ProVO> list = ps.selectProList(vo);
-		model.addAttribute("list", list);
-		return "adminPage/adminProList";
-	}
+	   @RequestMapping(value = "adminProList.do")
+	   public String ProductList(ArrayList<ProVO> vo, Model model) {
+	      return "redirect:/adminProList.do/1";
+	   }
+
+	   @RequestMapping(value = "/adminProList.do/{page}") // FIX
+	   public String ProductListPage(@PathVariable String page, ArrayList<ProVO> vo, Model model) {
+	      List<ProVO> allList = ps.selectProList(vo);
+	      module.pagingModule(model, page, paginVO, allList);
+	      List<ProVO> showList = ps.selectProListPaging(paginVO);
+	      model.addAttribute("list", showList);
+	      return "adminPage/adminProList";
+	   }
 	
-	//占쏙옙占쏙옙占쏙옙 占쏙옙품占쏙옙占쏙옙占쏙옙트 占쏙옙占쏙옙占쏙옙占싱듸옙
+
 	@RequestMapping(value="adminProDetail" ,method=RequestMethod.GET)
 	public String updateProductPage(int pro_number, Model model, HttpServletRequest request){
 		//mav.setViewName("adminPage/adminProUpdate");
