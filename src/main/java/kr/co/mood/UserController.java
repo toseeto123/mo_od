@@ -16,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.co.mood.user.dao.UserService;
 import kr.co.mood.user.dao.UserVO;
 
+
 @Controller
 @SessionAttributes("loginUser")
 public class UserController {
@@ -52,6 +53,8 @@ public class UserController {
 	  
 	  if(vo1 == null) {
 		  session.setAttribute("login_info", null);
+		  System.out.println("로그인 실패");
+		  
 		  rttr.addFlashAttribute("msg", false);
 		  return "redirect:login.do";
 	  } else {

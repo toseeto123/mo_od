@@ -10,6 +10,7 @@
 <meta charset="UTF-8">
    <title>Home</title>
     <link rel="stylesheet" href="/resources/user/css/login.css"/>
+    <script type="text/javascript" src="/resources/user/js/main.js"></script>
    
 </head>
 <body>
@@ -28,14 +29,33 @@
                 <form id="login" action="/login.do" class="input-group" method="post">
                     <input type="text" name="id" class="input-field" placeholder="User name or Email" required autofocus>
                     <input type="password" name="pwd" class="input-field" placeholder="Enter Password" required>
-                    <c:if test="${ msg == false }">
-                    	<br><br>
+                    
+                
+                   <c:choose>
+
+                    <c:when test="${ msg == false == pwd }">
+      		           <br><br>
                 	     <p style="color:red; font-size: 10px;" >존재하지 않는 아이디 입니다</p>
-                    </c:if>
+                    </c:when> 
+
+                   <c:when test="${ msg == false == id  } ">
+      		             <br><br>
+                	     <p style="color:red; font-size: 10px;" >존재하지 않는 비밀번호 입니다</p>
+                   </c:when> 
+					
+					<c:when test="${ msg == false }">
+                    	<br><br>
+                	     <p style="color:red; font-size: 10px;" >존재하지 않는 아이디 또는 비밀번호 입니다</p>
+					</c:when>
+					
+                    </c:choose>
+                    
                     <br><br>
                     <button class="submit">Login</button>
                     
                     
+                    <a href="/search_id" class="btn idfind">아이디 찾기</a>
+                    <a href="/search_pwd" class="btn pwdfind">비밀번호찾기 찾기</a>
                 </form>
             </div>
              
