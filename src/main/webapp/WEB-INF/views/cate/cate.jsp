@@ -133,7 +133,6 @@ function minus(type, element) {
 </script>
 </head>
 <body>
-<div>${map.cate_id}</div>
 
 	<section id="hero" style="height: 400px;">
 		<div class="hero-container">
