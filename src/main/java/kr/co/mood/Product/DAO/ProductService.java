@@ -13,8 +13,8 @@ public interface ProductService {
 	public List<ProVO> AselectProListByPayCount(List<ProVO> vo);
 	public List<ProVO> BselectProListByPayCount(List<ProVO> vo);
 	public List<ProVO> CselectProListByPayCount(List<ProVO> vo);
-	
-	
+	public void updatePro(ProVO vo);
+
 	
 	
 	
@@ -40,7 +40,7 @@ public interface ProductService {
 	
 	
 	public List<ProVO> selectProListPaging(ProPaginVO vo);
-	public void updatePro(ProVO vo);
+	
 	
 	
 }

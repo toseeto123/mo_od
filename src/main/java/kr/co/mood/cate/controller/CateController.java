@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.mood.Product.DAO.ProductService;
@@ -36,13 +37,13 @@ public class CateController {
 	
 	@RequestMapping(value = "/cate.do" , method = RequestMethod.GET)
 	public String cate() {
-		System.out.println("cate 입장이요~");
+		System.out.println("cate �엯�옣�씠�슂~");
 		return "cate/cate";
 	}
 	
 	@RequestMapping(value = "/cate.do" , method = RequestMethod.POST)
 	public ModelAndView selectAllList(HttpSession session , ModelAndView mav) {
-		System.out.println("cate 포스트 방식 입장~");
+		System.out.println("cate �룷�뒪�듃 諛⑹떇 �엯�옣~");
 		
 		return mav;
 	}
@@ -72,13 +73,14 @@ public class CateController {
 		
 		
 		//select
-		System.out.println("cateselect 입장");
+		System.out.println("cateselect �엯�옣");
 		model.addAttribute("map" , cservice.selectCateList(userid));
 		
 		
 		return "cate/cate";
 	}
 	
+	@ResponseBody
 	@RequestMapping(value="/update.do" ,method = RequestMethod.POST)
 	public String update(HttpSession session , CateVO cvo , Model model) {
 		UserVO uvo = (UserVO)session.getAttribute("login_info");
@@ -90,7 +92,6 @@ public class CateController {
 		cvo.setPro_number(proid);
 		cvo.setAmount(count);
 		cservice.modifyflashamount(cvo);
-		System.out.println(count);
 		return "cate/cate";
 	}
 	

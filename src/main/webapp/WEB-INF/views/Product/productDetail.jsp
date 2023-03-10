@@ -162,26 +162,31 @@ pre{
                         <input type="radio" value="daaaa" id="chk_option 3" name="radioOption"><br>
                         </c:if>
                         
-                        
+                        <fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" />
                         
                         <li><strong>수 량</strong>: <input type='button' onclick='count("plus")' value='+' /><span id='result'>1</span><input type='button' onclick='count("minus")' value='-' />
+                         <li><strong>총 금액</strong>: <span id='resultPrice'>${list.pro_price }</span>원</li>
 		<script type="text/javascript">
                   function count(type)  {
                 	  // 결과를 표시할 element
                 	  const resultElement = document.getElementById('result');
+                	  const resultPriceElement = document.getElementById('resultPrice');
                 	  
                 	  // 현재 화면에 표시된 값
                 	  let number = resultElement.innerText;
-                	  
+                	  let totalPrice = resultPriceElement.innerText;
                 	  // 더하기/빼기
                 	  if(type === 'plus') {
                 	    number = parseInt(number) + 1;
+                	    totalPrice = (parseInt(totalPrice) + parseInt(${list.pro_price}));
                 	  }else if(type === 'minus' && number > 1)  {
                 	    number = parseInt(number) - 1;
+                	    totalPrice = (parseInt(totalPrice) - parseInt(${list.pro_price}));
                 	  }
                 	  
                 	  // 결과 출력
                 	  resultElement.innerText = number;
+                	  resultPriceElement.innerText = totalPrice;
                 	}
                   </script>
                      <li>            

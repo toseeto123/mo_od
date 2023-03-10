@@ -16,9 +16,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.mood.Product.DAO.ProductService;
+import kr.co.mood.Product.VO.ProPaginVO;
 import kr.co.mood.Product.VO.ProVO;
+import kr.co.mood.module.ModuleCommon;
+import kr.co.mood.user.dao.UserService;
+import kr.co.mood.user.dao.UserVO;
 
 @RequestMapping("/admin")
 @Controller
@@ -27,11 +32,36 @@ public class AdminController {
 	@Autowired
 	ProductService ps;
 	
+	@Autowired
+	private UserService userService;
+	
+	   @Autowired
+	   ProPaginVO paginVO;
+	   
+	   @Autowired
+	   ModuleCommon module;
+	
+	
 	@RequestMapping("/chart.do")
 	public String adminIndex(Model model) {
 		return "adminPage/chart";	
 	}
 	
+	@RequestMapping("/adminLogin.do")
+	public String adminLogin() {
+		return "adminPage/adminLogin";
+	}
+
+	@RequestMapping(value = "/adminLogin.do", method = RequestMethod.POST)
+	public String adminLoginCheck(UserVO vo, HttpSession session, RedirectAttributes rttr) {
+		if(userService.selectId(vo) == null || !userService.selectId(vo).getId().equals("admin")) {
+			session.invalidate();
+			rttr.addFlashAttribute("msg", false);
+			return "redirect:/adminLogin.do";
+		}
+		session.setAttribute("login_info", userService.selectId(vo));
+		return "redirect:/chart.do";
+	}
 
 	@RequestMapping("/adminLogout.do")
 	public String adminLogout(HttpSession session){
@@ -83,12 +113,20 @@ public class AdminController {
 	
 	
 
-	@RequestMapping(value="adminProList.do")
-	public String ProductList(ArrayList<ProVO> vo,Model model){
-		List<ProVO> list = ps.selectProList(vo);
-		model.addAttribute("list", list);
-		return "adminPage/adminProList";
-	}
+	   @RequestMapping(value = "adminProList.do")
+	   public String ProductList(ArrayList<ProVO> vo, Model model) {
+	      return "redirect:/adminProList.do/1";
+	   }
+
+	   @RequestMapping(value = "/adminProList.do/{page}") // FIX
+	   public String ProductListPage(@PathVariable String page, ArrayList<ProVO> vo, Model model) {
+	      List<ProVO> allList = ps.selectProList(vo);
+	      module.pagingModule(model, page, paginVO, allList);
+	      List<ProVO> showList = ps.selectProListPaging(paginVO);
+	      model.addAttribute("list", showList);
+	      return "adminPage/adminProList";
+	   }
+
 
 	@RequestMapping(value="adminProDetail" ,method=RequestMethod.GET)
 	public String updateProductPage(int pro_number, Model model, HttpServletRequest request){

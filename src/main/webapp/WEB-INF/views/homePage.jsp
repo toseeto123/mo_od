@@ -234,7 +234,7 @@
 
         <div class="row">
 <c:if test="${!empty D0.pro_img1 }">
-          <div class="col-xl-3 col-lg-4 col-md-6" onclick="location.href='${D0.pro_number }'" style="cursor: pointer">
+          <div class="col-xl-3 col-lg-4 col-md-6" onclick="location.href='D0categoryList'" style="cursor: pointer">
             <div class="member">
               <img src="resources/assets/img/product/${D0.pro_img1 }" class="img-fluid" alt="">
               <div class="member-info">
@@ -247,7 +247,7 @@
           </div>
           </c:if>
 <c:if test="${!empty D1.pro_img1 }">
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s" onclick="location.href='${D1.pro_number }'" style="cursor: pointer">
+          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s" onclick="location.href='D1categoryList'" style="cursor: pointer">
             <div class="member">
               <img src="resources/assets/img/product/${D1.pro_img1 }" class="img-fluid" alt="">
               <div class="member-info">
@@ -260,7 +260,7 @@
           </div>
           </c:if>
 <c:if test="${!empty D2.pro_img1 }">
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s" onclick="location.href='${D2.pro_number }'" style="cursor: pointer">
+          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s" onclick="location.href='D2categoryList'" style="cursor: pointer">
             <div class="member">
               <img src="resources/assets/img/product/${D2.pro_img1 }" class="img-fluid" alt="">
               <div class="member-info">
@@ -273,7 +273,7 @@
           </div>
           </c:if>
 <c:if test="${!empty D3.pro_img1 }">
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s" onclick="location.href='${D3.pro_number }'" style="cursor: pointer">
+          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s" onclick="location.href='D3categoryList'" style="cursor: pointer">
             <div class="member">
               <img src="resources/assets/img/product/${D3.pro_img1 }" class="img-fluid" alt="">
               <div class="member-info">
