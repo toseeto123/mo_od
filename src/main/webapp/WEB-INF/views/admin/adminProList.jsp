@@ -79,7 +79,7 @@
                   </td>
                   <td>${list.pro_categoryserial}${list.pro_number}</td>
                                  
-                                 <td><a href="/adminProDetail?pro_number=${list.pro_number}">${list.pro_name}</a></td>
+                                 <td><a href="/admin/adminProDetail?pro_number=${list.pro_number}">${list.pro_name}</a></td>
                                  <td><fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></td>
                                  <c:if test="${list.pro_soldout eq 0}">
                                  <td>판매중</td>
@@ -91,11 +91,29 @@
                               </c:forEach>
                            </tbody>
                         </table>
-                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;"><a href="#">&lt;</a>
+                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;">
+                  
+                  
+                  <c:if test="${prePage!=null }">
+                  <a href="/admin/adminProList.do/${prePage}">&lt;</a>
+                  </c:if>
+                  
                   <c:forEach items="${ pagingNo }" var="no">
+                  <c:choose>
+                  <c:when test="${selectPage == no}">
+                  &nbsp;<a style="color:green" href="/admin/adminProList.do/${no}">${no}</a>&nbsp;
+                  </c:when>
+                  <c:otherwise>
                   &nbsp;<a href="/admin/adminProList.do/${no}">${no}</a>&nbsp;
+                  </c:otherwise>
+                  </c:choose>
                   </c:forEach>
-                  <a href="#">&gt;</a></div>
+
+                  <c:if test="${nextPage != null }">
+                  <a href="/admin/adminProList.do/${nextPage}">&gt;</a>
+                  </c:if>
+
+                  </div>
                         <div></div>
                      </div>
                   </div>

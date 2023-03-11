@@ -28,7 +28,7 @@
                 <div class="social-icons">
               <div style="font-size:30px;"><p style="display:inline; font-family:궁서;">묻:</p><p style="display:inline; font-family:굴림;">mo_od</p></div>
                 </div>
-                <form id="login" action="/admin/adminLogin.do" class="input-group" method="post">
+                <form id="login" action="/adminLogin.do" class="input-group" method="post">
                
                     <input type="text" name="id" class="input-field" placeholder="Enter Id" required autofocus>
                     <input type="password" name="pwd" class="input-field" placeholder="Enter Password" required>

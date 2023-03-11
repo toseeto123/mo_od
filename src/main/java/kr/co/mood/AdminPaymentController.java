@@ -14,19 +14,19 @@ import kr.co.mood.Payment.DAO.AdminPaymentService;
 @RequestMapping("/admin")
 @Controller
 public class AdminPaymentController {
-	
+
 	@Autowired
-	AdminPaymentService adminService;
+	private AdminPaymentService adminService;
 
 	@RequestMapping("/payment.do")
 	public String adminPaymentDefault(HttpServletRequest request) {
-		return "redirect:/admin/payment.do/1";	
+		return "redirect:/admin/payment.do/1";
 	}
-	
+
 	@RequestMapping("/payment.do/{num}")
 	public String adminPaymentPaging(@PathVariable("num") String num, Model model) {
 		model.addAttribute("num", num);
-		return "admin/adminPayment";	
+		return "admin/adminPayment";
 	}
-	
+
 }
