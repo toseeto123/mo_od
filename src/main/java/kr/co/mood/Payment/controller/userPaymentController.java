@@ -26,15 +26,15 @@ public class userPaymentController {
 	@Autowired
 	ProductService productService;
 	
-	@RequestMapping(value="/userPay" , method = RequestMethod.POST)
-	public String insertcate(HttpSession session ,Model model) {
+	@RequestMapping(value="/orders/{no}" , method = RequestMethod.GET)
+	public String insertcate(@PathVariable("no") int no, HttpSession session ,Model model) {
 	
 		UserVO uvo = (UserVO)session.getAttribute("login_info");
 		System.out.println(uvo);
 		int userid = uvo.getNo();
 		System.out.println(userid);
 		
-		ProVO pvo = (ProVO)session.getAttribute("pro_num");
+		ProVO pvo = (ProVO)session.getAttribute("pro_number");
 		System.out.println(pvo);
 		int proid = pvo.getPro_number();
 		System.out.println(proid);
@@ -56,12 +56,12 @@ public class userPaymentController {
 		model.addAttribute("map" , cservice.selectCateList(userid));
 		
 		
-		return "User/userPay";
+		return "/User/userPay";
 	}
 	
 	
-	// 주문 내역 가져갈 명령어 url을 통해 전달받을 회원정보 no를 파라미터 설정
-	//상품 정보 전달받을 OrderListVO 그리고 pageGet에서 view로 전달해줄 model
+	// 二쇰Ц �궡�뿭 媛��졇媛� 紐낅졊�뼱 url�쓣 �넻�빐 �쟾�떖諛쏆쓣 �쉶�썝�젙蹂� no瑜� �뙆�씪誘명꽣 �꽕�젙
+	//�긽�뭹 �젙蹂� �쟾�떖諛쏆쓣 OrderListVO 洹몃━怨� pageGet�뿉�꽌 view濡� �쟾�떖�빐以� model
 	@RequestMapping("/User/userPay/{no}")
 	public void orderPgaeGET(@PathVariable("no") String no, userOrderListVO uol, Model model) {
 
@@ -78,14 +78,14 @@ public class userPaymentController {
 		return "User/userPay";
 	}
 
-	// 결제 리스트
+	// 寃곗젣 由ъ뒪�듃
 	@RequestMapping(value = "/userPaymentList.do")
 	public String userPaymentList() {
 
 		return "User/userPaymentList";
 	}
 
-	// 결제 상세
+	// 寃곗젣 �긽�꽭
 	@RequestMapping(value = "/userPaymentDetail.do")
 	public String userPaymentDetail() {
 

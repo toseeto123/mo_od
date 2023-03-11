@@ -71,24 +71,24 @@ img {
 						<div>
 							<h6 class="my-0">첫번째상품명 리스트로 뿌리기</h6>
 							<small class="text-muted">pro_name가져오기</small>
-						</div> <span class="text-muted">${map.pro_price} 상품금액</span>
+						</div> <span class="text-muted">상품금액</span>
 					</li>
 					<li
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">두번째상품명 리스트로 뿌리</h6>
 							<small class="text-muted">pro_name가져오기</small>
-						</div> <span class="text-muted">${map.pro_price} 상품금액</span>
+						</div> <span class="text-muted">상품금액</span>
 					</li>
 					<li
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
 							<h6 class="my-0">세번째상품들 리스트로뿌리</h6>
 							<small class="text-muted">pro_name가져오기</small>
-						</div> <span class="text-muted">${map.pro_price} 상품금액</span>
+						</div> <span class="text-muted">${pro_number.pro_price } 상품금액</span>
 					</li>
 					<li class="list-group-item d-flex justify-content-between"><span>Total
-							$total_price</span> <strong>${map.total_price}</strong></li>
+							$total_price</span> <strong></strong></li>
 				</ul>
 				<form action="/kakaoPay" method="post">
 				<!-- 히든으로 정보담아서 보내기? -->
@@ -103,29 +103,29 @@ img {
 					<div class="row">
 						<div class="col-md-6 mb-3">
 							<label for="firstName">이름</label> 
-							<strong>${map.name}</strong>
+							<strong>${login_info.name}</strong>
 						</div>
 						<div class="col-md-6 mb-3">
 							<label for="lastName">전화번호</label>
-							<strong>${map.phone}</strong>
+							<strong>${login_info.phone}</strong>
 						</div>
 					</div>
 
 					<div class="mb-3">
 						<label for="username">사용자ID</label>
 						<div class="input-group">
-							<strong>${map.id}</strong>
+							<strong>${login_info.id}</strong>
 						</div>
 					</div>
 
 					<div class="mb-3">
 						<label for="email">이메일 <span class="text-muted"></span></label>
-						<strong>${map.email}</strong>
+						<strong>${login_info.email}</strong>
 					</div>
 
 					<div class="mb-3">
 						<label for="address">주소</label> 
-						<strong>${map.adr}</strong>
+						<strong>${login_info.adr}</strong>
 					</div>
 
 					<hr class="mb-4">
@@ -135,13 +135,13 @@ img {
 					<div class="row">
 						<div class="col-md-6 mb-3">
 							<label for="cc-name"></label> 
-							<span>${map.img1}</span>
+							<span></span>
 							 <small
-								class="text-muted">${map.pro_maindesc} 상품디테일명</small>
+								class="text-muted"> 상품디테일명</small>
 						</div>
 						<div class="col-md-6 mb-3">
 							<label for="cc-number">가격정보</label> < <small
-								class="text-muted">${map.pro_price} 상품디테일명</small>
+								class="text-muted"> 상품디테일명</small>
 						</div>
 							<div class="invalid-feedback">여기다가 가격정보입력</div>
 						</div>
