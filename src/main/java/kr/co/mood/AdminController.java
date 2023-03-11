@@ -95,14 +95,14 @@ public class AdminController {
          return "redirect:/admin/adminProList.do/1";
       }
 
-      @RequestMapping(value = "/adminProList.do/{page}") // FIX
-      public String ProductListPage(@PathVariable String page, ArrayList<ProVO> vo, Model model) {
-         List<ProVO> allList = ps.selectProList(vo);
-         module.pagingModule(model, page, paginVO, allList);
-         List<ProVO> showList = ps.selectProListPaging(paginVO);
-         model.addAttribute("list", showList);
-         return "admin/adminProList";
-      }
+  	@RequestMapping(value = "/adminProList.do/{page}") // FIX
+  	public String ProductListPage(@PathVariable String page, ArrayList<ProVO> vo, Model model) {
+  		List<ProVO> allList = ps.selectProList(vo);
+  		module.pagingModule(model, paginVO, allList, page, 7);
+  		List<ProVO> showList = ps.selectProListPaging(paginVO);
+  		model.addAttribute("list", showList);
+  		return "/admin/adminProList";
+  	}
 
 
    @RequestMapping(value="adminProDetail" ,method=RequestMethod.GET)
