@@ -21,19 +21,19 @@
    rel="stylesheet">
 
 <!-- Vendor CSS Files -->
-<link href="resources/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-<link href="resources/assets/vendor/bootstrap/css/bootstrap.min.css"
+<link href="${pageContext.request.contextPath}/resources/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/assets/vendor/bootstrap/css/bootstrap.min.css"
    rel="stylesheet">
-<link href="resources/assets/vendor/bootstrap-icons/bootstrap-icons.css"
+<link href="${pageContext.request.contextPath}/resources/assets/vendor/bootstrap-icons/bootstrap-icons.css"
    rel="stylesheet">
-<link href="resources/assets/vendor/boxicons/css/boxicons.min.css"
+<link href="${pageContext.request.contextPath}/resources/assets/vendor/boxicons/css/boxicons.min.css"
    rel="stylesheet">
-<link href="resources/assets/vendor/glightbox/css/glightbox.min.css"
+<link href="${pageContext.request.contextPath}/resources/assets/vendor/glightbox/css/glightbox.min.css"
    rel="stylesheet">
-<link href="resources/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
 <!-- Template Main CSS File -->
-<link href="resources/assets/css/style.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/resources/assets/css/style.css" rel="stylesheet">
 
 <!-- =======================================================
   * Template Name: Groovin - v4.10.0
@@ -101,26 +101,26 @@ pre{
                      <div class="swiper-wrapper align-items-center">
 
                         <div class="swiper-slide">
-                           <img src="resources/assets/img/product/${list.pro_img1}" alt="">
+                           <img src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" alt="">
                         </div>
                         <c:if test="${!empty list.pro_img2}">
                         <div class="swiper-slide">
-                           <img src="resources/assets/img/product/${list.pro_img2}" alt="">
+                           <img src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img2}" alt="">
                         </div>
                         </c:if>
                         <c:if test="${!empty list.pro_img3}">
                         <div class="swiper-slide">
-                           <img src="resources/assets/img/product/${list.pro_img3}" alt="">
+                           <img src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img3}" alt="">
                         </div>
                         </c:if>
                         <c:if test="${!empty list.pro_img4}">
                         <div class="swiper-slide">
-                           <img src="resources/assets/img/product/${list.pro_img4}" alt="">
+                           <img src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img4}" alt="">
                         </div>
                         </c:if>
                         <c:if test="${!empty list.pro_img5}">
                         <div class="swiper-slide">
-                           <img src="resources/assets/img/product/${list.pro_img5}" alt="">
+                           <img src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img5}" alt="">
                         </div>
                         </c:if>
                         
@@ -244,7 +244,7 @@ pre{
 
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="member">
-              <img src="resources/assets/img/team/team-1.jpg" class="img-fluid" alt="">
+              <img src="${pageContext.request.contextPath}/resources/assets/img/team/team-1.jpg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Walter White</h4>
@@ -262,7 +262,7 @@ pre{
 
           <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s">
             <div class="member">
-              <img src="resources/assets/img/team/team-2.jpg" class="img-fluid" alt="">
+              <img src="${pageContext.request.contextPath}/resources/assets/img/team/team-2.jpg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Sarah Jhonson</h4>
@@ -280,7 +280,7 @@ pre{
 
           <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
             <div class="member">
-              <img src="resources/assets/img/team/team-3.jpg" class="img-fluid" alt="">
+              <img src="${pageContext.request.contextPath}/resources/assets/img/team/team-3.jpg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>William Anderson</h4>
@@ -298,7 +298,7 @@ pre{
 
           <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
             <div class="member">
-              <img src="resources/assets/img/team/team-4.jpg" class="img-fluid" alt="">
+              <img src="${pageContext.request.contextPath}/resources/assets/img/team/team-4.jpg" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>Amanda Jepson</h4>
@@ -328,15 +328,15 @@ pre{
       class="bi bi-arrow-up-short"></i></a>
 
    <!-- Vendor JS Files -->
-   <script src="resources/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-   <script src="resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-   <script src="resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
-   <script src="resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-   <script src="resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
-   <script src="resources/assets/vendor/php-email-form/validate.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/vendor/purecounter/purecounter_vanilla.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/vendor/php-email-form/validate.js"></script>
 
    <!-- Template Main JS File -->
-   <script src="resources/assets/js/main.js"></script>
+   <script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
 	
 	
    <script>
