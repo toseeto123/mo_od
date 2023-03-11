@@ -50,7 +50,7 @@ pre{
 </style>
 <body>
 <jsp:include page="/WEB-INF/common/header.jsp" />
-<form method="post" action="cateinsert.do">
+<form method="post" action="/cateinsert.do">
    <main id="main">
 <c:if test="${list.pro_number eq list.pro_number }">
       <!-- ======= Breadcrumbs ======= -->
