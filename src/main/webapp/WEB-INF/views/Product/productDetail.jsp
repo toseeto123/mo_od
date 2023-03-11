@@ -12,8 +12,8 @@
 <meta content="" name="keywords">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <!-- Favicons -->
-<link href="resources/assets/img/favicon.png" rel="icon">
-<link href="resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link href="${pageContext.request.contextPath}/resources/assets/img/favicon.png" rel="icon">
+<link href="${pageContext.request.contextPath}/resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
 <!-- Google Fonts -->
 <link
@@ -204,7 +204,7 @@ pre{
 </form>		
 
 	<!-- 주문 form toseet123 생성 -->
-			<form action="/User/userPay/${login_info.no}" method="get" class="order_form">
+			<form action="/orders/${login_info.no}"class="order_form">
 				<input type="hidden" name="orders[0].pro_number" value="${list.pro_number}">
 				<input type="hidden" name="orders[0].orderCount" value="">
 			</form>
