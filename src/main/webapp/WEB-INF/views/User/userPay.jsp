@@ -85,15 +85,14 @@ img {
 						<div>
 							<h6 class="my-0">세번째상품들 리스트로뿌리</h6>
 							<small class="text-muted">pro_name가져오기</small>
-						</div> <span class="text-muted">${pro_number.pro_price } 상품금액</span>
+						</div> <span class="text-muted"> 여길봐</span>
 					</li>
 					<li class="list-group-item d-flex justify-content-between"><span>Total
 							$total_price</span> <strong></strong></li>
 				</ul>
 				<form action="/kakaoPay" method="post">
 				<!-- 히든으로 정보담아서 보내기? -->
-				<button class="btn btn-primary btn-lg btn-block" type="submit"
-					id="apibtn">결제하기</button>
+				<button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">결제하기</button>
 				</form>
 
 			</div>
@@ -135,13 +134,11 @@ img {
 					<div class="row">
 						<div class="col-md-6 mb-3">
 							<label for="cc-name"></label> 
-							<span></span>
-							 <small
-								class="text-muted"> 상품디테일명</small>
+							<img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" style="width: 80px; height: 80px;">
+							 <small class="text-muted">상품명 : ${list.pro_name}</small>
 						</div>
 						<div class="col-md-6 mb-3">
-							<label for="cc-number">가격정보</label> < <small
-								class="text-muted"> 상품디테일명</small>
+							<label for="cc-number">가격 : ${list.pro_price}</label><br><small class="text-muted">상품디테일명 : ${list.pro_maindesctitle }</small>
 						</div>
 							<div class="invalid-feedback">여기다가 가격정보입력</div>
 						</div>

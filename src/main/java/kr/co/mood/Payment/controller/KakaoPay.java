@@ -28,18 +28,18 @@ public class KakaoPay {
 	 
 	        RestTemplate restTemplate = new RestTemplate();
 	 
-	        // 서버로 요청할 Header
+	        // �꽌踰꾨줈 �슂泥��븷 Header
 	        HttpHeaders headers = new HttpHeaders();
 	        headers.add("Authorization", "KakaoAK " + "1310fb3a979458e032a8aecca6d5e96c");
 	        headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
 	        headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
 	        
-	        // 서버로 요청할 Body
+	        // �꽌踰꾨줈 �슂泥��븷 Body
 	        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 	        params.add("cid", "TC0ONETIME");
 	        params.add("partner_order_id", "1001");
 	        params.add("partner_user_id", "gorany");
-	        params.add("item_name", "침대");
+	        params.add("item_name", "移⑤�");
 	        params.add("quantity", "1");
 	        params.add("total_amount", "100");
 	        params.add("tax_free_amount", "100");
@@ -73,13 +73,13 @@ public class KakaoPay {
 	        
 	        RestTemplate restTemplate = new RestTemplate();
 	 
-	        // 서버로 요청할 Header
+	        // �꽌踰꾨줈 �슂泥��븷 Header
 	        HttpHeaders headers = new HttpHeaders();
 	        headers.add("Authorization", "KakaoAK " + "1310fb3a979458e032a8aecca6d5e96c");
 	        headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
 	        headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
 	 
-	        // 서버로 요청할 Body
+	        // �꽌踰꾨줈 �슂泥��븷 Body
 	        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 	        params.add("cid", "TC0ONETIME");
 	        params.add("tid", kakaoPayReadyVO.getTid());

@@ -196,6 +196,7 @@ pre{
                   <div class="portfolio-description">
                      <h2>${list.pro_maindesctitle}</h2>
                      <pre>${list.pro_maindesc }</pre>
+                     
                      <input type="submit" value="장바구니" class="cateBtn"><br><br>
                      <input type="button" value="바로결제하기" class="btn_buy">
                   </div>
@@ -204,8 +205,8 @@ pre{
 </form>		
 
 	<!-- 주문 form toseet123 생성 -->
-			<form action="/orders/${login_info.no}"class="order_form">
-				<input type="hidden" name="orders[0].pro_number" value="${list.pro_number}">
+			<form action="/orders/${login_info.no}/${list.pro_number}"class="order_form">
+				<input type="hidden" name="pro_number" value="${list.pro_number}">
 				<input type="hidden" name="orders[0].orderCount" value="">
 			</form>
 <style>

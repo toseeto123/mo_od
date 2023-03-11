@@ -37,7 +37,7 @@ public class ProductController {
 	@RequestMapping(value = "/product/{pro_number}", method = RequestMethod.GET)
 	public String proDetails(@PathVariable("pro_number") int pro_number, Model model,HttpSession session) {
 		model.addAttribute("list", ps.selectProOne(pro_number));
-		session.setAttribute("pro_number", ps.selectProOne(pro_number));
+		//session.setAttribute("pro_number", ps.selectProOne(pro_number));
 		return "Product/productDetail";
 	}
 	
