@@ -121,7 +121,7 @@
                   <h4>${list.pro_name}</h4>
                   <span><fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></span>
                   <div class="social">
-                    <a href="${list.pro_number }">상세보기</a>
+                    <a href="/product/${list.pro_number }">상세보기</a>
                   </div>
                 </div>
               </div>

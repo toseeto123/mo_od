@@ -26,19 +26,19 @@ public class ProductController {
 		List<ProVO> list = ps.selectProList(vo);
 		System.out.println(ps.selectProList(vo));
 		model.addAttribute("list", list);
-		System.out.println("모델"+model);
-		System.out.println("리스트"+list);
+		System.out.println("紐⑤뜽"+model);
+		System.out.println("由ъ뒪�듃"+list);
 		System.out.println("ps"+ps.selectProList(vo));
 		
 		return "Product/productList";
 	}
 
 
-	@RequestMapping(value = "{pro_number}", method = RequestMethod.GET)
+	@RequestMapping(value = "/product/{pro_number}", method = RequestMethod.GET)
 	public String proDetails(@PathVariable("pro_number") int pro_number, Model model,HttpSession session) {
 		model.addAttribute("list", ps.selectProOne(pro_number));
 		session.setAttribute("pro_number", ps.selectProOne(pro_number));
-		return "Product/productDetail";
+		return "/Product/productDetail";
 	}
 	
 	
