@@ -1,6 +1,5 @@
 package kr.co.mood;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -8,6 +7,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,46 +28,23 @@ import kr.co.mood.user.dao.UserVO;
 @RequestMapping("/admin")
 @Controller
 public class AdminController {
-   
-   @Autowired
-   ProductService ps;
-   
-   @Autowired
-   private UserService userService;
-   
-      @Autowired
-      ProPaginVO paginVO;
-      
-      @Autowired
-      ModuleCommon module;
-   
-   
+
+	@Autowired
+	private ProductService ps;
+
+	@Autowired
+	private ProPaginVO paginVO;
+
+	@Autowired
+	private ModuleCommon module;
+
+
    @RequestMapping("/chart.do")
    public String adminIndex(Model model) {
       return "admin/chart";   
    }
    
-   @RequestMapping("/adminLogin.do")
-   public String adminLogin() {
-      return "admin/adminLogin";
-   }
-
-   @RequestMapping(value = "/adminLogin.do", method = RequestMethod.POST)
-   public String adminLoginCheck(UserVO vo, HttpSession session, RedirectAttributes rttr) {
-      if(userService.selectId(vo) == null || !userService.selectId(vo).getId().equals("admin")) {
-         session.invalidate();
-         rttr.addFlashAttribute("msg", false);
-         return "redirect:/admin/adminLogin.do";
-      }
-      session.setAttribute("login_info", userService.selectId(vo));
-      return "redirect:/admin/chart.do";
-   }
-
-   @RequestMapping("/adminLogout.do")
-   public String adminLogout(HttpSession session){
-      session.invalidate();
-      return "redirect:/admin/adminLogin.do";
-   }
+  
    
    @RequestMapping("admincate.do")
    public String adminCate(){
@@ -144,6 +121,5 @@ public class AdminController {
       
       return "Product/adminProList";
    }
-   
    
 }

@@ -71,9 +71,9 @@
            </ul>
            <ul>
           <!-- 알아서 이거 활용하자 -->
-          <li><a class="getstarted scrollto" href="/">클라이언트</a></li>
+          <li><a class="getstarted scrollto" href="/goclient.do">클라이언트</a></li>
           
-          <li><a class="getstarted scrollto" href="/admin/adminLogout.do">로그아웃</a></li>
+          <li><a class="getstarted scrollto" href="/adminLogout.do">로그아웃</a></li>
        </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
               </nav><!-- .navbar -->

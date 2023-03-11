@@ -11,33 +11,67 @@ import kr.co.mood.Product.VO.ProPaginVO;
 
 @Component
 public class ModuleCommon {
-   
-   @Autowired
-   ProPaginVO paginVO;
-   
-   public void pagingModule(Model model, String page, ProPaginVO paginVO, List allList) {
-      int getPage = Integer.parseInt(page);
-      int startPage = (getPage / 10) * 10 + 1;
-      int count = 7;
-      if (getPage % 10 == 0) {
-         startPage = startPage - count;
-      }
-      paginVO.setStartNo(getPage * count - count);
-      paginVO.setEndNo(count);
-      int endPage = startPage + 9;
-      int allPage = allList.size()/count;
-      if(allList.size()%10 > 0) {
-         allPage = allPage+1;
-      }
-      if(allPage < endPage) {
-         endPage = allPage;
-      }
-      
 
-      List<Integer> pagingNo = new ArrayList<Integer>();
-      for(int i = startPage; i <= endPage; i++) {
-         pagingNo.add(i);
-      }
-      model.addAttribute("pagingNo", pagingNo);
-   }
+	@Autowired
+	private ProPaginVO paginVO;
+
+	private  int showCount;
+	private  int indexNo;
+	
+	
+	public void pagingModule(Model model, ProPaginVO paginVO, List allList, String page, int showCount) {
+		
+		this.showCount = showCount;
+		pagingModuleMain(model, page, allList); 
+		paginVO.setStartNo(indexNo);
+		paginVO.setEndNo(showCount);
+		
+	}
+	
+	public void pagingModuleMain(Model model, String page, List allList) {
+		
+		int pageCount = 10;
+		int quotient = Integer.parseInt(page) / pageCount;
+		int remainder = Integer.parseInt(page) % pageCount;
+		indexNo = (Integer.parseInt(page) - 1) * showCount;
+		int startPageNo = (quotient * pageCount) + 1;
+		int realEndPageNo = allList.size() / showCount;
+		int endPageNo = quotient * pageCount + pageCount;
+		int preStartPageNo = startPageNo - pageCount;
+		int nextStartPageNo = startPageNo + pageCount;
+
+		if (allList.size() % showCount > 0) {
+			realEndPageNo = realEndPageNo + 1;
+		}
+
+		if (remainder == 0) {
+			startPageNo = startPageNo - pageCount;
+			endPageNo = endPageNo - pageCount;
+			nextStartPageNo = nextStartPageNo - pageCount;
+			preStartPageNo = preStartPageNo - pageCount;
+		}
+
+		if (endPageNo > realEndPageNo) {
+			endPageNo = realEndPageNo;
+		}
+
+		List<Integer> allPagingList = new ArrayList<Integer>();
+		
+		for (int i = startPageNo; i <= endPageNo; i++) {
+			allPagingList.add(i);
+		}
+
+		if (nextStartPageNo < realEndPageNo) {
+			model.addAttribute("nextPage", nextStartPageNo);
+		}
+		
+		if (startPageNo > 1) {
+			model.addAttribute("prePage", preStartPageNo);
+		}
+
+		model.addAttribute("pagingNo", allPagingList);
+
+		model.addAttribute("selectPage", page);
+
+	}
 }
