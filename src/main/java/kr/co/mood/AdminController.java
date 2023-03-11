@@ -38,77 +38,88 @@ public class AdminController {
 	@Autowired
 	private ModuleCommon module;
 
-	@RequestMapping("/chart.do")
-	public String adminIndex(Model model) {
-		return "/admin/chart";
-	}
 
-	@RequestMapping("admincate.do")
-	public String adminCate() {
+   @RequestMapping("/chart.do")
+   public String adminIndex(Model model) {
+      return "admin/chart";   
+   }
+   
+  
+   
+   @RequestMapping("admincate.do")
+   public String adminCate(){
+      
+      return "admin/admincate";
+   }
+   
+   @RequestMapping(value="insert.do" ,method=RequestMethod.GET)
+   public String insertProductPage(){
+      return "admin/insertPro";
+   }
+   
+   @RequestMapping(value="adinsert.do" ,method=RequestMethod.POST)
+   public String insertProduct(@RequestParam MultipartFile file,
+                           @RequestParam MultipartFile file1,
+                           @RequestParam MultipartFile file2,
+                           @RequestParam MultipartFile file3,
+                           @RequestParam MultipartFile file4,
+                                                         ProVO vo) throws IOException{
+         String fileRealName1 = file.getOriginalFilename(); 
+         String fileRealName2 = file1.getOriginalFilename();
+         String fileRealName3 = file2.getOriginalFilename();
+         String fileRealName4 = file3.getOriginalFilename();
+         String fileRealName5 = file4.getOriginalFilename();
 
-		return "/admin/admincate";
-	}
+         try {
+            vo.setPro_img1(fileRealName1);
+            vo.setPro_img2(fileRealName2);
+            vo.setPro_img3(fileRealName3);
+            vo.setPro_img4(fileRealName4);
+            vo.setPro_img5(fileRealName5);
+            
+         } catch (IllegalStateException e) {
+            e.printStackTrace();
+         } catch (Exception e) {
+            e.printStackTrace();
+         }
+         ps.insertPro(vo);
+         return "admin/chart";
+      }
+   
 
-	@RequestMapping(value = "insert.do", method = RequestMethod.GET)
-	public String insertProductPage() {
-		return "/admin/insertPro";
-	}
+   
+   
 
-	@RequestMapping(value = "adinsert.do", method = RequestMethod.POST)
-	public String insertProduct(@RequestParam MultipartFile file, @RequestParam MultipartFile file1,
-			@RequestParam MultipartFile file2, @RequestParam MultipartFile file3, @RequestParam MultipartFile file4,
-			ProVO vo) throws IOException {
-		String fileRealName1 = file.getOriginalFilename(); // 占쏙옙占싹몌옙占쏙옙 占쏙옙爭 占쏙옙 占쌍댐옙 占쌨쇽옙占쏙옙!
-		String fileRealName2 = file1.getOriginalFilename();
-		String fileRealName3 = file2.getOriginalFilename();
-		String fileRealName4 = file3.getOriginalFilename();
-		String fileRealName5 = file4.getOriginalFilename();
+      @RequestMapping(value = "adminProList.do")
+      public String ProductList(ArrayList<ProVO> vo, Model model) {
+         return "redirect:/admin/adminProList.do/1";
+      }
 
-		try {
-			vo.setPro_img1(fileRealName1);
-			vo.setPro_img2(fileRealName2);
-			vo.setPro_img3(fileRealName3);
-			vo.setPro_img4(fileRealName4);
-			vo.setPro_img5(fileRealName5);
+      @RequestMapping(value = "/adminProList.do/{page}") // FIX
+      public String ProductListPage(@PathVariable String page, ArrayList<ProVO> vo, Model model) {
+         List<ProVO> allList = ps.selectProList(vo);
+         module.pagingModule(model, page, paginVO, allList);
+         List<ProVO> showList = ps.selectProListPaging(paginVO);
+         model.addAttribute("list", showList);
+         return "admin/adminProList";
+      }
 
-		} catch (IllegalStateException e) {
-			e.printStackTrace();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		ps.insertPro(vo);
-		return "/admin/chart";
-	}
 
-	@RequestMapping(value = "adminProList.do")
-	public String ProductList(ArrayList<ProVO> vo, Model model) {
-		return "redirect:/admin/adminProList.do/1";
-	}
-
-	@RequestMapping(value = "/adminProList.do/{page}") // FIX
-	public String ProductListPage(@PathVariable String page, ArrayList<ProVO> vo, Model model) {
-		List<ProVO> allList = ps.selectProList(vo);
-		module.pagingModule(model, paginVO, allList, page, 2);
-		List<ProVO> showList = ps.selectProListPaging(paginVO);
-		model.addAttribute("list", showList);
-		return "/admin/adminProList";
-	}
-
-	@RequestMapping(value = "adminProDetail", method = RequestMethod.GET)
-	public String updateProductPage(int pro_number, Model model, HttpServletRequest request) {
-		String id = request.getParameter("pro_number");
-		pro_number = Integer.parseInt(id);
-
-		model.addAttribute("list", ps.selectProOne(pro_number));
-		return "/admin/adminProUpdate";
-	}
-
-	@RequestMapping(value = "/updatePro", method = RequestMethod.GET)
-	public String proDetails(@RequestParam("pro_number") int pro_number, ProVO vo) {
-		System.out.println(vo);
-		ps.updatePro(vo);
-
-		return "/Product/adminProList";
-	}
-
+   @RequestMapping(value="adminProDetail" ,method=RequestMethod.GET)
+   public String updateProductPage(int pro_number, Model model, HttpServletRequest request){
+      String id = request.getParameter("pro_number");
+      pro_number = Integer.parseInt(id);
+      
+      model.addAttribute("list", ps.selectProOne(pro_number));
+      return "admin/adminProUpdate";
+   }
+   
+   @RequestMapping(value = "/updatePro", method = RequestMethod.GET)
+   public String proDetails(@RequestParam("pro_number") int pro_number,ProVO vo) {
+      System.out.println(vo);
+      ps.updatePro(vo);
+      
+      return "Product/adminProList";
+   }
+   
 }

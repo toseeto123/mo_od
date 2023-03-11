@@ -11,6 +11,7 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 import kr.co.mood.user.dao.UserVO;
 
 public class Interceptor extends HandlerInterceptorAdapter {
+
 	private static final Logger logger = LoggerFactory.getLogger(Interceptor.class);
 
 	@Override

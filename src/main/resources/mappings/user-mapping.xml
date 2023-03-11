@@ -18,11 +18,12 @@
       <result property="day" column="DAY" />
    </resultMap> -->
 
-	<insert id="insert" parameterType="kr.co.mood.user.dao.UserVO">
+	 <insert id="insert" parameterType="kr.co.mood.user.dao.UserVO">
       <![CDATA[
-      INSERT INTO moodjoin VALUES(no, #{id}, #{pwd}, #{name}, #{age}, #{gender}, #{adr}, #{email}, #{phone}, now())
+      INSERT INTO moodjoin VALUES(no, #{id}, #{pwd}, #{name}, #{age} , #{gender}, concat(#{adr} , #{adr2} , #{adr3}), #{email}, #{phone}, now())
       ]]>
    </insert>
+
    
    <select id="selectId" parameterType="kr.co.mood.user.dao.UserVO" resultType="kr.co.mood.user.dao.UserVO">
    <![CDATA[
