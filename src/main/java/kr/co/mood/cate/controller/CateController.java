@@ -1,5 +1,7 @@
 package kr.co.mood.cate.controller;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +19,7 @@ import kr.co.mood.cate.DAO.CateService;
 import kr.co.mood.cate.vo.CateVO;
 import kr.co.mood.user.dao.UserService;
 import kr.co.mood.user.dao.UserVO;
+
 
 @Controller
 public class CateController {
@@ -75,21 +78,17 @@ public class CateController {
 	}
 	
 	
-	@RequestMapping(value="/update.do" ,method = RequestMethod.POST)
-	public String update(@RequestBody int cate_id,HttpSession session , CateVO cvo , Model model) {
-		
-		UserVO uvo = (UserVO)session.getAttribute("login_info");
-		int userid = uvo.getNo();
-		ProVO pvo = (ProVO)session.getAttribute("pro_number");
-		int proid = pvo.getPro_number();
-		int count = (Integer) session.getAttribute("count");
-		cvo.setUser_no(userid);
-		cvo.setCate_id(cate_id);
-		cvo.setAmount(count);
-		cservice.modifyflashamount(cate_id);
-		System.out.println("cvo : "+cvo);
-		System.out.println("cate_id : "+proid);
-		return "cate/cate";
+	@RequestMapping(value = "/update.do", method = RequestMethod.POST)
+	public String update(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
+		int number = Integer.parseInt(String.valueOf(data.get("number")));
+		int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
+	    
+
+	    int count = (Integer) session.getAttribute("count");
+	    cvo.setAmount(count);
+	    cservice.modifyflashamount(cateId);
+
+	    return "/cate/cate";
 	}
 	
 	@RequestMapping(value="/minusupdate.do" ,method = RequestMethod.POST)
