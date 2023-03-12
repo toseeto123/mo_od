@@ -69,23 +69,10 @@ img {
 					<li
 						class="list-group-item d-flex justify-content-between lh-condensed">
 						<div>
-							<h6 class="my-0">첫번째상품명 리스트로 뿌리기</h6>
-							<small class="text-muted">pro_name가져오기</small>
-						</div> <span class="text-muted">상품금액</span>
-					</li>
-					<li
-						class="list-group-item d-flex justify-content-between lh-condensed">
-						<div>
-							<h6 class="my-0">두번째상품명 리스트로 뿌리</h6>
-							<small class="text-muted">pro_name가져오기</small>
-						</div> <span class="text-muted">상품금액</span>
-					</li>
-					<li
-						class="list-group-item d-flex justify-content-between lh-condensed">
-						<div>
-							<h6 class="my-0">세번째상품들 리스트로뿌리</h6>
-							<small class="text-muted">pro_name가져오기</small>
-						</div> <span class="text-muted"> 여길봐</span>
+						버킷리스트 완성되면 foreach로 뿌려야 가능함..
+							<h6 class="my-0"> 상품명 리스트로 뿌리기</h6>
+							<small class="text-muted">${list.pro_name}</small>
+						</div> <span class="text-muted">${list.pro_price}</span>
 					</li>
 					<li class="list-group-item d-flex justify-content-between"><span>Total
 							$total_price</span> <strong></strong></li>
@@ -141,6 +128,7 @@ img {
 							<label for="cc-number">가격 : ${list.pro_price}</label><br><small class="text-muted">상품디테일명 : ${list.pro_maindesctitle }</small>
 						</div>
 							<div class="invalid-feedback">여기다가 가격정보입력</div>
+							<!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
 						</div>
 					</div>
 				</form>

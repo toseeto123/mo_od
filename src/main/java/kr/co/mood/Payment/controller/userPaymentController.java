@@ -7,15 +7,13 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import kr.co.mood.Payment.DAO.userPaymentService;
 import kr.co.mood.Payment.VO.userOrderListVO;
 import kr.co.mood.Product.DAO.ProductService;
-import kr.co.mood.Product.VO.ProVO;
 import kr.co.mood.cate.DAO.CateService;
 import kr.co.mood.user.dao.UserService;
 import kr.co.mood.user.dao.UserVO;
@@ -28,7 +26,7 @@ public class userPaymentController {
 	@Autowired
 	CateService cservice;
 	UserService userService;
-	
+	userPaymentService payService;
 	
 	
 	@Autowired
@@ -38,7 +36,7 @@ public class userPaymentController {
 	
 	@RequestMapping(value="/orders/{no}/{pro_number}" , method = RequestMethod.GET)
 	public String payPage(@PathVariable("no") int no,@PathVariable("pro_number") int pro_number,HttpSession session ,Model model) {
-	
+		
 		UserVO uvo = (UserVO)session.getAttribute("login_info");
 		model.addAttribute("list", productService.selectProOne(pro_number));
 		
