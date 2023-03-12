@@ -59,7 +59,6 @@ public class CateController {
 		System.out.println(proid);
 		
 		
-		
 		CateVO cvo = new CateVO();
 		int count = cvo.getAmount();
 		count = 1;

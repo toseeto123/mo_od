@@ -2,23 +2,34 @@ package kr.co.mood.Payment.controller;
 
 import java.net.URI;
 import java.net.URISyntaxException;
- 
+import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import kr.co.mood.Payment.VO.KakaoPayApprovalVO;
 import kr.co.mood.Payment.VO.KakaoPayReadyVO;
+import kr.co.mood.cate.DAO.CateService;
+import kr.co.mood.cate.vo.CateVO;
+import kr.co.mood.user.dao.UserVO;
 
 @Controller
 public class KakaoPay {
 	
+	@Autowired
+	private CateService cartservice;
+	
+	 	
 	    private static final String HOST = "https://kapi.kakao.com";
 	    
 	    private KakaoPayReadyVO kakaoPayReadyVO;

@@ -45,7 +45,7 @@
     
   </li>
   <li>
-    <a class="nav-link" href="#">결제내역</a>
+    <a class="payDetail" href="#">결제내역</a>
   </li>
   
   
@@ -66,7 +66,9 @@
       <div >tab2 content</div>
 </div>
 <div class="tabcontent">
-      <div>tab3 content</div>
+      <div id = "payDetail">
+      <jsp:include page="/WEB-INF/views/User/userPaymentDetail.jsp" />
+      </div>
 </div>
 
 </section>
@@ -81,6 +83,8 @@
 	    $(".tabcontent").hide();
 	    $(".tabcontent").eq(idx).show();
 	    $(".tabnav li").removeClass("on");
+	    $(this).addClass("on");
+	    $(".tabnav li").removeClass("payDetail");
 	    $(this).addClass("on");
 	  });
 	});
