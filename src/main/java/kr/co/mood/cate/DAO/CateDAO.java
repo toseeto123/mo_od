@@ -29,8 +29,8 @@ public class CateDAO {
 	public int modifyflashamount(int cate_id) {
 		return sql.update("CateDAO.plusupdate" , cate_id);
 	}
-	public int modifyminusamount(CateVO cvo) {
-		return sql.update("CateDAO.minusupdate" , cvo);
+	public int modifyminusamount(int cate_id) {
+		return sql.update("CateDAO.minusupdate" , cate_id);
 	}
 	public int dupcate(int pro_number , int user_no) {
 		return sql.update("CateDAO.dupcate" , pro_number);
