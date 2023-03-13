@@ -24,7 +24,6 @@ public class AdminLoginController {
 	
 	   @RequestMapping(value = "/adminLogin.do", method = RequestMethod.POST)
 	   public String adminLoginCheck(UserVO vo, HttpSession session, RedirectAttributes rttr) {
-		   System.out.println("둥");
 	      if(userService.selectId(vo) == null || !userService.selectId(vo).getId().equals("admin")) {
 	         session.invalidate();
 	         rttr.addFlashAttribute("msg", false);

@@ -15,21 +15,29 @@ public class ModuleCommon {
 	@Autowired
 	private ProPaginVO paginVO;
 
-	private  int showCount;
-	private  int indexNo;
-	
-	
+	private int showCount;
+	private int indexNo;
+
 	public void pagingModule(Model model, ProPaginVO paginVO, List allList, String page, int showCount) {
-		
+
 		this.showCount = showCount;
-		pagingModuleMain(model, page, allList); 
+		pagingModuleMain(model, page, allList);
 		paginVO.setStartNo(indexNo);
 		paginVO.setEndNo(showCount);
-		
+
 	}
-	
+
+	public int[] pagingModuleToAdminPayment(Model model, ProPaginVO paginVO, List allList, String page, int showCount) {
+
+		this.showCount = showCount;
+		pagingModuleMain(model, page, allList);
+		int[] toSqlNo = {indexNo, showCount};
+		return toSqlNo;
+
+	}
+
 	public void pagingModuleMain(Model model, String page, List allList) {
-		
+
 		int pageCount = 10;
 		int quotient = Integer.parseInt(page) / pageCount;
 		int remainder = Integer.parseInt(page) % pageCount;
@@ -56,7 +64,7 @@ public class ModuleCommon {
 		}
 
 		List<Integer> allPagingList = new ArrayList<Integer>();
-		
+
 		for (int i = startPageNo; i <= endPageNo; i++) {
 			allPagingList.add(i);
 		}
@@ -64,7 +72,7 @@ public class ModuleCommon {
 		if (nextStartPageNo < realEndPageNo) {
 			model.addAttribute("nextPage", nextStartPageNo);
 		}
-		
+
 		if (startPageNo > 1) {
 			model.addAttribute("prePage", preStartPageNo);
 		}
