@@ -175,56 +175,60 @@ li .btnspan {
 }
 </style>
 <script type="text/javascript">
-	function flush(type, element) {
-		const resultElement = element.parentNode.previousElementSibling;
-		let number = resultElement.innerText;
+function flush(type, element) {
+	  const resultElement = element.parentNode.previousElementSibling;
+	  let number = resultElement.innerText;
 
-		const cateIdList = document.querySelectorAll('.cate_id');
-		const cateIdArray = Array.from(cateIdList);
-		const cateIdValues = cateIdArray.map(function(element) {
-			return element.value;
-		});
+	  const cateIdList = document.querySelectorAll('.cate_id');
+	  const cateIdArray = Array.from(cateIdList);
+	  const cateIdValues = cateIdArray.map(function(element) {
+	    return element.value;
+	  });
 
-		const priceList = document.querySelectorAll('.pro_price');
-		const priceArray = Array.from(priceList);
-		const priceValues = priceArray.map(function(element) {
-			return element.value;
-		});
+	  const priceList = document.querySelectorAll('.pro_price');
+	  const priceArray = Array.from(priceList);
+	  const priceValues = priceArray.map(function(element) {
+	    return element.value;
+	  });
 
-		// get the index of the current loop iteration
-		const cateIdIndex = cateIdArray
-				.indexOf(element.parentNode.nextElementSibling);
-		const cateId = cateIdValues[cateIdIndex];
+	  // get the index of the current loop iteration
+	  const cateIdIndex = cateIdArray.indexOf(element.parentNode.nextElementSibling);
+	  const cateId = cateIdValues[cateIdIndex];
 
-		const priceIndex = priceArray
-				.indexOf(element.parentNode.nextElementSibling);
-		const proprice = priceValues[priceIndex];
+	  const priceIndex = priceArray.indexOf(element.parentNode.nextElementSibling);
+	  const proprice = priceValues[priceIndex];
+	  let xhr = new XMLHttpRequest();
+	  xhr.open('POST', 'plus.do', true);
+	  xhr.setRequestHeader('Content-Type', 'application/json'); // JSON 형태의 데이터 전송을 위한 설정
 
-		let xhr = new XMLHttpRequest();
-		xhr.open('POST', 'plus.do', true);
-		xhr.setRequestHeader('Content-Type', 'application/json'); // JSON 형태의 데이터 전송을 위한 설정
+	  xhr.onreadystatechange = function() {
+	    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+	      const totalPrice = JSON.parse(this.responseText).totalPrice;
+	      const priceElements = document.querySelectorAll('.pro_price');
+	      priceElements.forEach(function(priceElement) {
+	        priceElement.innerText = totalPrice;
+	        
+	      });
+	      console.log(totalPrice)
+	    }
+	  };
 
-		xhr.onreadystatechange = function() {
-			if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+	  if (type === 'plus') {
+	    number = parseInt(number) + 1;
+	  }
 
-			}
-		};
+	  if (cateId != null) {
+	    const data = {
+	      number: number,
+	      cateId: cateId,
+	      proprice: proprice
+	    };
+	    xhr.send(JSON.stringify(data)); // JSON 형태의 데이터 전송
+	  }
 
-		if (type === 'plus') {
-			number = parseInt(number) + 1;
-		}
-
-		if (cateId != null) {
-			const data = {
-				number : number,
-				cateId : cateId,
-				proprice : proprice
-			};
-			xhr.send(JSON.stringify(data)); // JSON 형태의 데이터 전송
-		}
-
-		resultElement.innerText = number;
-
+	  resultElement.innerText = number;
+	  alert(cateIdIndex)
+	  alert(price)
 	}
 
 	function minus(type, element) {
@@ -364,12 +368,11 @@ li .btnspan {
 						<button class="delete_btn" onclick="deletecate(this)"><i class="ph ph-trash"></i></button>
 					</div>
 
-					<input type="hidden" value="${map.cate_id}" name="cateId"
-						class="cate_id" /> <input type="hidden" value="${map.pro_price}"
-						name="pro_price" class="pro_price" />
+					<input type="hidden" value="${map.cate_id}" name="cateId" class="cate_id" /> 
+					<input type="hidden" value="${map.total}" name="pro_price" class="pro_price" />
 					<p style="margin-left: 100px;">
 						가 격 :
-						<fmt:formatNumber value="${map.pro_price}" type="currency"
+						<fmt:formatNumber value="${map.total}" type="currency"
 							currencySymbol="₩" />
 					</p>
 

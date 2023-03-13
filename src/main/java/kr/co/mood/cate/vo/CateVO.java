@@ -5,7 +5,7 @@ public class CateVO {
 	private int cate_id;
 	private int pro_number;
 	private int user_no;
-	
+	private int cate_pro_price;
 	// product
 	private String pro_name;
 	private String pro_price;
@@ -15,6 +15,14 @@ public class CateVO {
 	//cate
 	private int total;
 	private int amount;
+	
+	
+	public int getCate_pro_price() {
+		return cate_pro_price;
+	}
+	public void setCate_pro_price(int cate_pro_price) {
+		this.cate_pro_price = cate_pro_price;
+	}
 	public int getCate_id() {
 		return cate_id;
 	}
