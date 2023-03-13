@@ -29,6 +29,11 @@ public class UserDAO {
 		return result;
 	}
 	
+	public int idChk1(UserVO vo) throws Exception{
+		int result1 = mybatis.selectOne("UserDAO.idChk", vo);
+		return result1;
+	}
+	
 	public void delete(UserVO vo) throws Exception{
 		mybatis.delete("UserDAO.delete", vo);
 		System.out.println(vo);
@@ -39,6 +44,14 @@ public class UserDAO {
 		mybatis.update("UserDAO.update",vo);
 		
 	}
-	
+
+
+	public void insertnaver(UserVO naver) {
+		mybatis.insert("UserDAO.insertnaver", naver);
+		System.out.println(naver);
+		
+	}
+
+
 
 }

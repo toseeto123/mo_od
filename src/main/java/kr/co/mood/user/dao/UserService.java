@@ -18,8 +18,7 @@ public interface UserService {
 		public int idChk(UserVO vo) throws Exception;
 
 
-		
-		
+		public void insertnaver(UserVO naver);
 		
 		
 
