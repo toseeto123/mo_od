@@ -85,7 +85,7 @@ public class AdminController {
       return "admin/insertPro";
    }
    
-   @RequestMapping(value="adinsert.do" ,method=RequestMethod.POST)
+   @RequestMapping(value="insert.do" ,method=RequestMethod.POST)
    public String insertProduct(@RequestParam MultipartFile file,
                            @RequestParam MultipartFile file1,
                            @RequestParam MultipartFile file2,
@@ -111,7 +111,7 @@ public class AdminController {
             e.printStackTrace();
          }
          ps.insertPro(vo);
-         return "admin/chart";
+         return "admin/adminProList";
       }
    
 
