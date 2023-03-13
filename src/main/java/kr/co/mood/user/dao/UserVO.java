@@ -7,15 +7,14 @@ public class UserVO {
    private String id;
    private String pwd;
    private String name;
-   private int age;
-   private int gender;
+   private String age;
+   private String gender;
    private String adr;
    private String adr2;
    private String adr3;
    private String email;
    private String phone;
-   
-   public int getNo() {
+public int getNo() {
    return no;
 }
 public void setNo(int no) {
@@ -39,16 +38,16 @@ public String getName() {
 public void setName(String name) {
    this.name = name;
 }
-public int getAge() {
+public String getAge() {
    return age;
 }
-public void setAge(int age) {
+public void setAge(String age) {
    this.age = age;
 }
-public int getGender() {
+public String getGender() {
    return gender;
 }
-public void setGender(int gender) {
+public void setGender(String gender) {
    this.gender = gender;
 }
 public String getAdr() {
@@ -56,6 +55,18 @@ public String getAdr() {
 }
 public void setAdr(String adr) {
    this.adr = adr;
+}
+public String getAdr2() {
+   return adr2;
+}
+public void setAdr2(String adr2) {
+   this.adr2 = adr2;
+}
+public String getAdr3() {
+   return adr3;
+}
+public void setAdr3(String adr3) {
+   this.adr3 = adr3;
 }
 public String getEmail() {
    return email;
@@ -69,43 +80,12 @@ public String getPhone() {
 public void setPhone(String phone) {
    this.phone = phone;
 }
-public Date getDay() {
-   return day;
-}
-public void setDay(Date day) {
-   this.day = day;
-}
-
-
-public String getAdr2() {
-   return adr2;
-}
-public void setAdr2(String adr2) {
-   this.adr2 = adr2;
-}
-public String getAdr3() {
-   return adr3;
-}
-public void setAdr3(String adr3) {
-   this.adr3 = adr3;
-}
-
-
-private Date day;
-
 @Override
 public String toString() {
    return "UserVO [no=" + no + ", id=" + id + ", pwd=" + pwd + ", name=" + name + ", age=" + age + ", gender=" + gender
-         + ", adr=" + adr + ", adr2=" + adr2 + ", adr3=" + adr3 + ", email=" + email + ", phone=" + phone + ", day="
-         + day + "]";
+         + ", adr=" + adr + ", adr2=" + adr2 + ", adr3=" + adr3 + ", email=" + email + ", phone=" + phone + "]";
 }
-
-
-
-
-
-
-
+   
 
 
 

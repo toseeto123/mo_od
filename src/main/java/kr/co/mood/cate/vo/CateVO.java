@@ -15,6 +15,16 @@ public class CateVO {
 	//cate
 	private int total;
 	private int amount;
+	private int cate_pro_price;
+	
+	
+	
+	public int getCate_pro_price() {
+		return cate_pro_price;
+	}
+	public void setCate_pro_price(int cate_pro_price) {
+		this.cate_pro_price = cate_pro_price;
+	}
 	public int getCate_id() {
 		return cate_id;
 	}

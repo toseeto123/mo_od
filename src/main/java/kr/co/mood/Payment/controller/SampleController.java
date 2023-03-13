@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class SampleController {
+
    
    @Autowired
    private KakaoPay kakaopay;
@@ -27,6 +28,7 @@ public class SampleController {
         model.addAttribute("pro_price",pro_price);
          return "redirect:" + kakaopay.kakaoPayReady(pro_name,pro_price);
       }
+
 
    @RequestMapping(value = "/User/kakaoPaySuccess" )
    public void paySuccess(@RequestParam String pg_token, Model model) {

@@ -12,9 +12,15 @@ public interface CateService {
 	
 	public void addcate(CateVO cvo , UserVO uvo , ProVO pvo);
 	
+
+	
 	public int modifyflashamount(int cate_id);
 	
-	public int modifyminusamount(CateVO cvo);
+	public int modifyminusamount(int cate_id);
 	
 	public int dupcate(int pro_number , int user_no);
+	
+
+	public int deletecate(int cate_id);
+
 }

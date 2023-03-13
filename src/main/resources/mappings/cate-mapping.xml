@@ -4,11 +4,10 @@
 <mapper namespace="CateDAO">
 
 	<insert id="insert">
-
-		insert into cate(pro_number, user_no ,amount)
-		values(#{pro_number},#{user_no},#{amount}) ON DUPLICATE KEY UPDATE amount = amount+1
-
+		insert into cate(pro_number, user_no ,amount,cate_pro_price,total)
+		values(#{pro_number},#{user_no},#{amount},#{cate_pro_price},#{total}) ON DUPLICATE KEY UPDATE amount = amount+1
 	</insert>
+
 
 	<select id="selectlist" resultType="kr.co.mood.cate.vo.CateVO">
 
@@ -21,18 +20,34 @@
 
 
 	<update id="plusupdate">
-		update cate set amount = amount + 1
-		where cate_id = #{cate_id}
+		update cate set
+        total = total + cate_pro_price,
+        amount = amount + 1
+    where cate_id = #{cate_id}
 	</update>
 	
-	<update id="minusupdate">
-		update cate set amount = amount - #{amount}
-		where user_no = #{user_no} and pro_number = #{pro_number}
-	</update>
+<update id="minusupdate">
+  update cate set
+    amount = case
+      when amount > 1 then amount - 1
+      else 1
+    end,
+    total = case
+      when total > cate_pro_price then total - cate_pro_price
+      else total
+    end
+  where cate_id = #{cate_id}
+</update>
+	
+
 	
 	<update id="dupcate">
 		select * from cate where user_no = #{user_no} and pro_number = #{pro_number}
 	</update>
+	
+	<delete id="catedelete">
+		delete from cate where cate_id = #{cate_id}
+	</delete>
 	
 	
 </mapper>

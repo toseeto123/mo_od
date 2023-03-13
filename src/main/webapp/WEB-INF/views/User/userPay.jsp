@@ -61,6 +61,35 @@ img {
 
 		<div class="row">
 
+			<div class="col-md-4 order-md-2 mb-4">
+				<h4 class="d-flex justify-content-between align-items-center mb-3">
+					<span class="text-muted">버킷</span> <span
+						class="badge badge-secondary badge-pill">3</span>
+				</h4>
+				<ul class="list-group mb-3">
+					<li
+						class="list-group-item d-flex justify-content-between lh-condensed">
+						<div>
+						버킷리스트 완성되면 foreach로 뿌려야 가능함..
+							<h6 class="my-0"> 상품명 리스트로 뿌리기</h6>
+							<small class="text-muted">${list.pro_name}</small>
+						</div> <span class="text-muted">${list.pro_price}</span>
+					</li>
+					<li class="list-group-item d-flex justify-content-between"><span>Total
+							$total_price</span> <strong></strong></li>
+				</ul>
+				<form action="/kakaoPay" method="post">
+				<!-- 히든으로 정보담아서 보내기? -->
+				<input type="hidden" name="pro_name" value="${list.pro_name }">
+				<input type="hidden" name="pro_price" value="${list.pro_price }">
+				<input type="hidden" name="info_name" value="${login_info.name}">
+				<input type="hidden" name="info_phone" value="${login_info.phone}">
+				<input type="hidden" name="info_id" value="${login_info.id}">
+				
+				<button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">결제하기</button>
+				</form>
+
+
 			<div class="col-md-8 order-md-1">
 				<h4 class="mb-3">주문내역</h4>
 				<form class="needs-validation" novalidate>
