@@ -38,14 +38,14 @@
 
 <ul class="tabnav" id="myTab">
   <li class="on">
-    <a class="nav-link active" aria-current="page" href="#" id="first">내정보</a>
+    <a class="nav-link" aria-current="page" href="#" id="first">내정보</a>
   </li>
-  <li>
-    <a class="nav-link" href="#">버킷내역</a>
+  <li class="cartInfo'">
+    <a class="nav-link" aria-current="page" href="#" id="second">버킷내역</a>
     
   </li>
-  <li>
-    <a class="payDetail" href="#">결제내역</a>
+  <li class="payDetail">
+    <a class="nav-link" aria-current="page" href="#" id="third">결제내역</a>
   </li>
   
   
@@ -62,11 +62,13 @@
       
       </div>
 </div>
+<!-- 버킷이랑 결제내역 가져오려면 include로는 데이터보내기 어려울테니 다른거 찾기 -->
 <div class="tabcontent">
-      <div >tab2 content</div>
+      <div id="cartinfo"></div>
+      <jsp:include page="/WEB-INF/views/cate/cate.jsp" />
 </div>
 <div class="tabcontent">
-      <div id = "payDetail">
+      <div id ="payDetail">
       <jsp:include page="/WEB-INF/views/User/userPaymentDetail.jsp" />
       </div>
 </div>
@@ -85,6 +87,8 @@
 	    $(".tabnav li").removeClass("on");
 	    $(this).addClass("on");
 	    $(".tabnav li").removeClass("payDetail");
+	    $(this).addClass("on");
+	    $(".tabnav li").removeClass("cartInfo");
 	    $(this).addClass("on");
 	  });
 	});
