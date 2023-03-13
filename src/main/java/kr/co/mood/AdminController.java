@@ -5,9 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.Product.VO.ProPaginVO;
@@ -37,6 +34,12 @@ public class AdminController {
 
 	@Autowired
 	private ModuleCommon module;
+	
+	@Autowired
+	private UserService userService;
+	
+	@Autowired
+	private ProPaginVO vo1;
 
 
    @RequestMapping("/chart.do")
@@ -44,7 +47,27 @@ public class AdminController {
       return "admin/chart";   
    }
    
+   @RequestMapping("/adminMemberList.do")
+   public String adminMember() {
+	   return "redirect:/admin/adminMemberList.do/1";
+   }
   
+   
+   @RequestMapping("/adminMemberList.do/{paging}")
+   public String adminMemberList(@PathVariable String paging, Model model) {//추가된 부분
+	   List<UserVO> userList = userService.selectAll(null);
+	   module.pagingModule(model, paginVO, userList, paging, 10);
+	   List<UserVO> showUserList = userService.selectAll(paginVO);
+	   model.addAttribute("userList", showUserList);
+	   return "admin/adminMemberList";
+   }
+  
+   @RequestMapping("/adminMemberDetail.do/{userNo}")
+   public String adminMemberDetail(@PathVariable String userNo, UserVO vo, Model model){
+	   UserVO vo1 = userService.selectMemberNo(Integer.parseInt(userNo));
+	   model.addAttribute("userInfo", vo1);
+	   return "admin/adminMemeberDetail";
+   }
    
    @RequestMapping("admincate.do")
    public String adminCate(){
