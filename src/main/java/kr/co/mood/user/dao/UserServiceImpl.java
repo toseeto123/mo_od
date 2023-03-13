@@ -1,8 +1,12 @@
 package kr.co.mood.user.dao;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.servlet.ModelAndView;
+
+import kr.co.mood.Product.VO.ProPaginVO;
 
 @Service("userService")
 public class UserServiceImpl implements UserService{
@@ -12,6 +16,14 @@ public class UserServiceImpl implements UserService{
 	
 	private UserVO vo;
 	ModelAndView mav;
+	
+	public UserVO selectMemberNo(int no) {
+		return userdao.selectMemberNo(no);
+	}
+	
+	public List<UserVO> selectAll(ProPaginVO vo) {//추가된 부분
+		return userdao.selectAll(vo);
+	}
 	
 	public void insert(UserVO vo) {
 		userdao.insert(vo);
