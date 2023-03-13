@@ -59,16 +59,12 @@ public class userPaymentController {
 		ordervo.setOrderCount(count);
 		System.out.println(ordervo);
 		if (ordervo != null && uvo != null && pvo != null) {
-			System.out.println(ordervo);
-			System.out.println(uvo);
-			System.out.println(pvo);
-			System.out.println(payService);
 		    payService.insert(ordervo, uvo, pvo);
 		}else {
 			System.out.println("odervo uvo pvo == null ");
 		}
 		System.out.println(payService);
-		
+		//리스트 대신 orderProduct에 return후 insert 해야함..
 		//model.addAttribute("list", payService.selectOrderList(userid));
 	    model.addAttribute("pro_number", pvo);
 		
