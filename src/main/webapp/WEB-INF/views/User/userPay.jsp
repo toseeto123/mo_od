@@ -79,6 +79,12 @@ img {
 				</ul>
 				<form action="/kakaoPay" method="post">
 				<!-- 히든으로 정보담아서 보내기? -->
+				<input type="hidden" name="pro_name" value="${list.pro_name }">
+				<input type="hidden" name="pro_price" value="${list.pro_price }">
+				<input type="hidden" name="info_name" value="${login_info.name}">
+				<input type="hidden" name="info_phone" value="${login_info.phone}">
+				<input type="hidden" name="info_id" value="${login_info.id}">
+				
 				<button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">결제하기</button>
 				</form>
 

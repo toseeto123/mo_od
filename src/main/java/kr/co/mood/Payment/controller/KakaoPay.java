@@ -13,6 +13,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
@@ -35,24 +36,27 @@ public class KakaoPay {
 	    private KakaoPayReadyVO kakaoPayReadyVO;
 	    private KakaoPayApprovalVO kakaoPayApprovalVO;
 	    
-	    public String kakaoPayReady() {
+	    public String kakaoPayReady(@RequestParam("pro_name") String pro_name,@RequestParam("pro_price") int pro_price) {
 	 
 	        RestTemplate restTemplate = new RestTemplate();
 	 
-	        // �꽌踰꾨줈 �슂泥��븷 Header
+	        // 占쎄퐣甕곌쑬以� 占쎌뒄筌ｏ옙占쎈막 Header
 	        HttpHeaders headers = new HttpHeaders();
 	        headers.add("Authorization", "KakaoAK " + "1310fb3a979458e032a8aecca6d5e96c");
 	        headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
 	        headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
 	        
-	        // �꽌踰꾨줈 �슂泥��븷 Body
+	        
+	        String pro_price1 = Integer.toString(pro_price);
+	        
+	        // 占쎄퐣甕곌쑬以� 占쎌뒄筌ｏ옙占쎈막 Body
 	        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 	        params.add("cid", "TC0ONETIME");
 	        params.add("partner_order_id", "1001");
 	        params.add("partner_user_id", "gorany");
-	        params.add("item_name", "移⑤�");
+	        params.add("item_name", pro_name);
 	        params.add("quantity", "1");
-	        params.add("total_amount", "100");
+	        params.add("total_amount", pro_price1);
 	        params.add("tax_free_amount", "100");
 	        params.add("approval_url", "http://localhost:8080/User/kakaoPaySuccess");
 	        params.add("cancel_url", "http://localhost:8080/User/kakaoPayCancel");
@@ -84,13 +88,13 @@ public class KakaoPay {
 	        
 	        RestTemplate restTemplate = new RestTemplate();
 	 
-	        // �꽌踰꾨줈 �슂泥��븷 Header
+	        // 占쎄퐣甕곌쑬以� 占쎌뒄筌ｏ옙占쎈막 Header
 	        HttpHeaders headers = new HttpHeaders();
 	        headers.add("Authorization", "KakaoAK " + "1310fb3a979458e032a8aecca6d5e96c");
 	        headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
 	        headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
 	 
-	        // �꽌踰꾨줈 �슂泥��븷 Body
+	        // 占쎄퐣甕곌쑬以� 占쎌뒄筌ｏ옙占쎈막 Body
 	        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 	        params.add("cid", "TC0ONETIME");
 	        params.add("tid", kakaoPayReadyVO.getTid());
