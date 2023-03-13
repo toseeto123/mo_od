@@ -47,11 +47,19 @@
       ]]>
    </select>
    
+   
    <select id="idChk" parameterType="kr.co.mood.user.dao.UserVO" resultType="int">
 		<![CDATA[
 		select count(*) from moodjoin where id=#{id}
 		 ]]>
 	</select>
+	
+	 <insert id="insertnaver" parameterType="kr.co.mood.user.dao.UserVO">
+      <![CDATA[
+      INSERT INTO moodjoin VALUES(no, #{id}, "", #{name}, #{age} , #{gender}, "", #{email}, "", now())
+      ]]>
+   </insert>
+	
    
    <delete id="delete" parameterType="String" >
 		<![CDATA[
