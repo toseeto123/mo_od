@@ -78,7 +78,7 @@ public class CateController {
 	}
 	
 	
-	@RequestMapping(value = "/update.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/plus.do", method = RequestMethod.POST)
 	public String update(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
 		int number = Integer.parseInt(String.valueOf(data.get("number")));
 		int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
@@ -91,18 +91,17 @@ public class CateController {
 	    return "/cate/cate";
 	}
 	
-	@RequestMapping(value="/minusupdate.do" ,method = RequestMethod.POST)
-	public String minusupdate(HttpSession session , CateVO cvo , Model model) {
-		UserVO uvo = (UserVO)session.getAttribute("login_info");
-		int userid = uvo.getNo();
-		ProVO pvo = (ProVO)session.getAttribute("pro_num");
-		int proid = pvo.getPro_number();
-		int count = (Integer) session.getAttribute("count");
-		cvo.setUser_no(userid);
-		cvo.setPro_number(proid);
-		cvo.setAmount(count);
-		cservice.modifyminusamount(cvo);
-		return "cate/cate";
+	@RequestMapping(value = "/minus.do", method = RequestMethod.POST)
+	public String minus(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
+		int number = Integer.parseInt(String.valueOf(data.get("number")));
+		int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
+	    
+
+	    int count = (Integer) session.getAttribute("count");
+	    cvo.setAmount(count);
+	    cservice.modifyminusamount(cateId);
+
+	    return "/cate/cate";
 	}
 	
 }

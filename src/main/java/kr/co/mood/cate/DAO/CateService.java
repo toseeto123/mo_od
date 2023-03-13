@@ -14,7 +14,7 @@ public interface CateService {
 	
 	public int modifyflashamount(int cate_id);
 	
-	public int modifyminusamount(CateVO cvo);
+	public int modifyminusamount(int cate_id);
 	
 	public int dupcate(int pro_number , int user_no);
 }
