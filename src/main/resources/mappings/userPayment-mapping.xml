@@ -4,8 +4,15 @@
 <mapper namespace="userPaymentDAO">
 	
 	<insert id="insert">
-		insert into moodorder(pro_number, no ,ordercount)
-		values(#{pro_number},#{no},#{ordercount})
+		insert into moodorder(userNo,price,status)
+		values(#{userNo},#{price},#{status})
 	</insert>
+
+	<select id="selectOrderList" resultType="kr.co.mood.Payment.VO.userOrderVO">
+		select orderId,
+		o.userNo,pro_name ,pro_price,pro_img1,pro_maindesctitle,count
+		from moodjoin m, moodorder o, product p , orderProduct op
+		where m.no=o.userNo and c and o.userNo=#{userid} order by orderId
+	</select>
 
 </mapper>

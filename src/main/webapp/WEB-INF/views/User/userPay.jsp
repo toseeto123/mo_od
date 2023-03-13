@@ -60,40 +60,16 @@ img {
 		</div>
 
 		<div class="row">
-			<div class="col-md-4 order-md-2 mb-4">
-				<h4 class="d-flex justify-content-between align-items-center mb-3">
-					<span class="text-muted">버킷</span> <span
-						class="badge badge-secondary badge-pill">3</span>
-				</h4>
-				<ul class="list-group mb-3">
-					<li
-						class="list-group-item d-flex justify-content-between lh-condensed">
-						<div>
-						버킷리스트 완성되면 foreach로 뿌려야 가능함..
-							<h6 class="my-0"> 상품명 리스트로 뿌리기</h6>
-							<small class="text-muted">${list.pro_name}</small>
-						</div> <span class="text-muted">${list.pro_price}</span>
-					</li>
-					<li class="list-group-item d-flex justify-content-between"><span>Total
-							$total_price</span> <strong></strong></li>
-				</ul>
-				<form action="/kakaoPay" method="post">
-				<!-- 히든으로 정보담아서 보내기? -->
-				<button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">결제하기</button>
-				</form>
 
-			</div>
 			<div class="col-md-8 order-md-1">
 				<h4 class="mb-3">주문내역</h4>
 				<form class="needs-validation" novalidate>
 					<div class="row">
 						<div class="col-md-6 mb-3">
-							<label for="firstName">이름</label> 
-							<strong>${login_info.name}</strong>
+							<label for="firstName">이름</label> <strong>${login_info.name}</strong>
 						</div>
 						<div class="col-md-6 mb-3">
-							<label for="lastName">전화번호</label>
-							<strong>${login_info.phone}</strong>
+							<label for="lastName">전화번호</label> <strong>${login_info.phone}</strong>
 						</div>
 					</div>
 
@@ -105,13 +81,11 @@ img {
 					</div>
 
 					<div class="mb-3">
-						<label for="email">이메일 <span class="text-muted"></span></label>
-						<strong>${login_info.email}</strong>
+						<label for="email">이메일 <span class="text-muted"></span></label> <strong>${login_info.email}</strong>
 					</div>
 
 					<div class="mb-3">
-						<label for="address">주소</label> 
-						<strong>${login_info.adr}</strong>
+						<label for="address">주소</label> <strong>${login_info.adr}</strong>
 					</div>
 
 					<hr class="mb-4">
@@ -120,23 +94,43 @@ img {
 
 					<div class="row">
 						<div class="col-md-6 mb-3">
-							<label for="cc-name"></label> 
-							<img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" style="width: 80px; height: 80px;">
-							 <small class="text-muted">상품명 : ${list.pro_name}</small>
+							<label for="cc-name"></label> <img alt=""
+								src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}"
+								style="width: 80px; height: 80px;"> <small
+								class="text-muted">상품명 : ${list.pro_name}</small>
 						</div>
 						<div class="col-md-6 mb-3">
-							<label for="cc-number">가격 : ${list.pro_price}</label><br><small class="text-muted">상품디테일명 : ${list.pro_maindesctitle }</small>
+							<small class="text-muted">상품디테일명 :
+								${list.pro_maindesctitle }</small> <label for="cc-number"><strong>가격
+									: ${list.pro_price}</strong></label>
+
 						</div>
-							<div class="invalid-feedback">여기다가 가격정보입력</div>
-							<!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
+
+						<div class="mb-3">
+							<hr class="mb-4">
+
+
+							<form action="/kakaoPay" method="post">
+								<!-- 히든으로 정보담아서 보내기? -->
+								<input type="hidden" name="pro_name" value="${list.pro_name }">
+								<input type="hidden" name="pro_price" value="${list.pro_price }">
+								<input type="hidden" name="info_name" value="${login_info.name}">
+								<input type="hidden" name="info_phone"
+									value="${login_info.phone}"> <input type="hidden"
+									name="info_id" value="${login_info.id}">
+
+								<button class="btn btn-primary btn-lg btn-block" type="submit"
+									id="apibtn">결제하기</button>
+							</form>
+
 						</div>
+
 					</div>
-				</form>
 			</div>
 		</div>
-
-		<jsp:include page="/WEB-INF/common/footer.jsp" />
 	</div>
+
+	<jsp:include page="/WEB-INF/common/footer.jsp" />
 
 
 	<script
@@ -152,50 +146,48 @@ img {
 
 	<script src="form-validation.js"></script>
 
-	<form method="post" action="/kakaoPay">
-     
-	</form>
+	<form method="post" action="/kakaoPay"></form>
 
-    <script>
-    var IMP = window.IMP; 
-    IMP.init("imp40061745"); 
-    var today = new Date();   
-    var hours = today.getHours(); // 시
-    var minutes = today.getMinutes();  // 분
-    var seconds = today.getSeconds();  // 초
-    var milliseconds = today.getMilliseconds();
-    var makeMerchantUid = hours +  minutes + seconds + milliseconds;
+	<script>
+		var IMP = window.IMP;
+		IMP.init("imp40061745");
+		var today = new Date();
+		var hours = today.getHours(); // 시
+		var minutes = today.getMinutes(); // 분
+		var seconds = today.getSeconds(); // 초
+		var milliseconds = today.getMilliseconds();
+		var makeMerchantUid = hours + minutes + seconds + milliseconds;
 
-	$("#apibtn").click(function () {
-		// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
-		// ''안에 띄어쓰기 없이 가맹점 식별코드를 붙여넣어주세요. 안그러면 결제창이 안뜹니다.
-		IMP.request_pay({
-			pg : 'kakao',  //nicepay=nice.id , kcp=kcp.id, kginicis=html5_inicis.id
-            pay_method : 'card',
-            merchant_uid: "IMP"+makeMerchantUid, 
-            name : '당근 10kg',
-            amount : 1004,
-            buyer_email : 'Iamport@chai.finance',
-            buyer_name : '포트원 기술지원팀',
-            buyer_tel : '010-1234-5678',
-            buyer_addr : '서울특별시 강남구 삼성동',
-            buyer_postcode : '123-456'
-            
-			}, function (rsp) {
+		$("#apibtn").click(function() {
+			// i'mport 관리자 페이지 -> 내정보 -> 가맹점식별코드
+			// ''안에 띄어쓰기 없이 가맹점 식별코드를 붙여넣어주세요. 안그러면 결제창이 안뜹니다.
+			IMP.request_pay({
+				pg : 'kakao', //nicepay=nice.id , kcp=kcp.id, kginicis=html5_inicis.id
+				pay_method : 'card',
+				merchant_uid : "IMP" + makeMerchantUid,
+				name : '당근 10kg',
+				amount : 1004,
+				buyer_email : 'Iamport@chai.finance',
+				buyer_name : '포트원 기술지원팀',
+				buyer_tel : '010-1234-5678',
+				buyer_addr : '서울특별시 강남구 삼성동',
+				buyer_postcode : '123-456'
+
+			}, function(rsp) {
 				console.log(rsp);
-			if (rsp.success) {
-				var msg = '결제가 완료되었습니다.';
-				msg += '결제 금액 : ' + rsp.paid_amount;
-				// success.submit();
-				// 결제 성공 시 정보를 넘겨줘야한다면 body에 form을 만든 뒤 위의 코드를 사용하는 방법이 있습니다.
-				// 자세한 설명은 구글링으로 보시는게 좋습니다.
-			} else {
-				var msg = '결제에 실패하였습니다.';
-				msg += '에러내용 : ' + rsp.error_msg;
-			}
+				if (rsp.success) {
+					var msg = '결제가 완료되었습니다.';
+					msg += '결제 금액 : ' + rsp.paid_amount;
+					// success.submit();
+					// 결제 성공 시 정보를 넘겨줘야한다면 body에 form을 만든 뒤 위의 코드를 사용하는 방법이 있습니다.
+					// 자세한 설명은 구글링으로 보시는게 좋습니다.
+				} else {
+					var msg = '결제에 실패하였습니다.';
+					msg += '에러내용 : ' + rsp.error_msg;
+				}
 				alert(msg);
+			});
 		});
-	}); 
-</script>
+	</script>
 </body>
 </html>

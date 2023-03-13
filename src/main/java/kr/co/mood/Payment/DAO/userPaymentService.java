@@ -1,5 +1,7 @@
 package kr.co.mood.Payment.DAO;
 
+import java.util.List;
+
 import kr.co.mood.Payment.VO.userOrderVO;
 import kr.co.mood.Product.VO.ProVO;
 import kr.co.mood.user.dao.UserVO;
@@ -7,5 +9,7 @@ import kr.co.mood.user.dao.UserVO;
 public interface userPaymentService {
 	
 	public void addOrder(userOrderVO ordervo , UserVO uvo , ProVO pvo);
+	
+	public List<userOrderVO> selectOrderList(int userNo);
 
 }

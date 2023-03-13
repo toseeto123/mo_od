@@ -1,5 +1,7 @@
 package kr.co.mood.Payment.DAO;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import kr.co.mood.Payment.VO.userOrderVO;
@@ -14,6 +16,10 @@ public class userPaymentServiceImpl implements userPaymentService {
 	@Override
 	public void addOrder(userOrderVO ordervo, UserVO uvo, ProVO pvo) {
 		userPaydao.addOrder(ordervo, uvo, pvo);
+	}
+	@Override
+	public List<userOrderVO> selectOrderList(int userNo) {
+		return userPaydao.selectOrderList(userNo);
 	}
 
 }
