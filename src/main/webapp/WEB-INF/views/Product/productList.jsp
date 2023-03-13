@@ -59,6 +59,9 @@
                   <c:if test="${list.pro_categoryserial  eq 'A1' }">
                   <li><a href="#">침대프레임</a></li>
                   </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'A2' }">
+                  <li><a href="#">소 파</a></li>
+                  </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B0' }">
                   <li><a href="#">무드등</a></li>
                   </c:if>
@@ -94,6 +97,9 @@
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'A1' }">
                   <h2>침대프레임</h2>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'A2' }">
+                  <h2>소 파</h2>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B0' }">
                   <h2>무드등</h2>
