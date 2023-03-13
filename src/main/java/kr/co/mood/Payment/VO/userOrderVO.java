@@ -93,6 +93,16 @@ public class userOrderVO {
 		this.pro_name = pro_name;
 	}
 	
+	
+	
+	
+	@Override
+	public String toString() {
+		return "userOrderVO [pro_number=" + pro_number + ", orderCount=" + orderCount + ", pro_name=" + pro_name
+				+ ", pro_price=" + pro_price + ", pro_img1=" + pro_img1 + ", pro_maindesctitle=" + pro_maindesctitle
+				+ ", adress=" + adress + ", userNo=" + userNo + ", createdDate=" + createdDate + ", updatedDate="
+				+ updatedDate + ", totalPrice=" + totalPrice + "]";
+	}
 	//총가격을 만들어내는데 필요한 initSaleTotal()
 	public void initSaleTotal() {
 		this.totalPrice = this.pro_price * this.orderCount;

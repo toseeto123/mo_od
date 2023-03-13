@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="userPaymentDAO">
+<mapper namespace="kr.co.mood.Payment.DAO.userPaymentDAO">
 	
 	<insert id="insert">
-		insert into moodorder(userNo,price,status)
-		values(#{userNo},#{price},#{status})
+    INSERT INTO moodorder (userNo, address, price, status)
+    VALUES (#{userNo}, #{address}, #{price}, #{status})
 	</insert>
 
-	<select id="selectOrderList" resultType="kr.co.mood.Payment.VO.userOrderVO">
+	<!-- <select id="selectOrderList" resultType="kr.co.mood.Payment.VO.userOrderVO">
 		select orderId,
 		o.userNo,pro_name ,pro_price,pro_img1,pro_maindesctitle,count
 		from moodjoin m, moodorder o, product p , orderProduct op
 		where m.no=o.userNo and c and o.userNo=#{userid} order by orderId
-	</select>
+	</select> -->
 
 </mapper>

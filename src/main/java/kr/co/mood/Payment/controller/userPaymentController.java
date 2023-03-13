@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.mood.Payment.DAO.userPaymentService;
-import kr.co.mood.Payment.VO.userOrderProductVO;
 import kr.co.mood.Payment.VO.userOrderVO;
 import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.Product.VO.ProVO;
@@ -22,6 +21,7 @@ import kr.co.mood.user.dao.UserVO;
 
 
 @Controller
+@RequestMapping("/products")
 public class userPaymentController {
 
 	
@@ -36,28 +36,42 @@ public class userPaymentController {
 	
 	
 	
-	@RequestMapping(value="/orders/{no}/{pro_number}" , method = RequestMethod.GET)
-	public String payPage(@PathVariable("no") int no,@PathVariable("pro_number") int pro_number,HttpSession session ,Model model) {
+	@RequestMapping(value="/orders" , method = RequestMethod.GET)
+	public String processOrder(HttpSession session ,Model model) {
 		
 		UserVO uvo = (UserVO)session.getAttribute("login_info");
+		System.out.println(uvo);
 		int userid = uvo.getNo();
-		System.out.println(userid);
-		ProVO pvo = (ProVO)session.getAttribute("list");
+		
+		ProVO pvo = (ProVO)session.getAttribute("pro_number");
+		System.out.println(pvo);
 		int proid = pvo.getPro_number();
-		System.out.println(proid);
+		
+		
+		
 		userOrderVO ordervo = new userOrderVO();
-		//바로 구매시 카트에 담기는건 일단 생략
-		
-		
+		System.out.println(ordervo);
+		//정보 오더테이블에 담기
 		ordervo.setUserNo(userid);
 		ordervo.setPro_number(proid);
-		payService.addOrder(ordervo, uvo, pvo);
+		int count =ordervo.getOrderCount();
+		count = 1;
+		model.addAttribute(count);
+		ordervo.setOrderCount(count);
+		System.out.println(ordervo);
+		if (ordervo != null && uvo != null && pvo != null) {
+			System.out.println(ordervo);
+			System.out.println(uvo);
+			System.out.println(pvo);
+			System.out.println(payService);
+		    payService.insert(ordervo, uvo, pvo);
+		}else {
+			System.out.println("셋다 널이라는데");
+		}
+		System.out.println(payService);
 		
-		//model.addAttribute("list", productService.selectProOne(pro_number));
-				
 		model.addAttribute("list", payService.selectOrderList(userid));
-		
-		model.addAttribute("pro_number");
+	    model.addAttribute("pro_number", pvo);
 		
 		
 		return "User/userPay";
