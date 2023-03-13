@@ -4,13 +4,13 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public class ProPaginVO {
-	private int StartNo;
+	private int startNo;
 	private int endNo;
 	public int getStartNo() {
-		return StartNo;
+		return startNo;
 	}
 	public void setStartNo(int startNo) {
-		StartNo = startNo;
+		this.startNo = startNo;
 	}
 	public int getEndNo() {
 		return endNo;
