@@ -1,8 +1,7 @@
-package kr.co.mood.Payment.DAO;
+package kr.co.mood.pay.DAO;
 
 import java.util.List;
 
-import kr.co.mood.Payment.VO.userOrderProductVO;
 import kr.co.mood.Payment.VO.userOrderVO;
 import kr.co.mood.Product.VO.ProVO;
 import kr.co.mood.user.dao.UserVO;

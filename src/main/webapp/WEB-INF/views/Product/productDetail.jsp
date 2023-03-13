@@ -205,7 +205,7 @@ pre{
 </form>		
 
 	<!-- 주문 form toseet123 생성 -->
-			<form action="/products/orders" class="order_form" method="get">
+			<form action="/products/orders" class="order_form" method="post">
 			 	<input type="hidden" name="userNo" value="${login_info.no}">
 				<input type="hidden" name="address" value="${login_info.adr}">
 				<input type="hidden" name="price" value="${list.pro_price}">

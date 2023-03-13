@@ -1,4 +1,4 @@
-package kr.co.mood.Payment.DAO;
+package kr.co.mood.pay.DAO;
 
 import java.util.List;
 
@@ -19,11 +19,11 @@ public class userPaymentDAO {
 	
 	public void insert(userOrderVO ordervo, UserVO uvo , ProVO pvo) {
 		
-		sql.insert("userPaymentDAO insert",ordervo);
+		sql.insert("userPaymentDAO.insert",ordervo);
 	}
 	
 	public List<userOrderVO> selectOrderList(int userNo){
-		return sql.selectList("userPaymentDAO select", userNo);
+		return sql.selectList("userPaymentDAO.selectOrderList", userNo);
 	}
 
 }

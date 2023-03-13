@@ -1,6 +1,5 @@
 package kr.co.mood.Payment.controller;
 
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,11 +10,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.co.mood.Payment.DAO.userPaymentService;
 import kr.co.mood.Payment.VO.userOrderVO;
 import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.Product.VO.ProVO;
 import kr.co.mood.cate.DAO.CateService;
+import kr.co.mood.pay.DAO.userPaymentService;
 import kr.co.mood.user.dao.UserService;
 import kr.co.mood.user.dao.UserVO;
 
@@ -27,16 +26,16 @@ public class userPaymentController {
 	
 	@Autowired
 	CateService cservice;
+	@Autowired
 	UserService userService;
+	@Autowired
 	userPaymentService payService;
-	
-	
 	@Autowired
 	ProductService productService;
 	
 	
 	
-	@RequestMapping(value="/orders" , method = RequestMethod.GET)
+	@RequestMapping(value="/orders" , method = RequestMethod.POST)
 	public String processOrder(HttpSession session ,Model model) {
 		
 		UserVO uvo = (UserVO)session.getAttribute("login_info");
@@ -66,11 +65,11 @@ public class userPaymentController {
 			System.out.println(payService);
 		    payService.insert(ordervo, uvo, pvo);
 		}else {
-			System.out.println("셋다 널이라는데");
+			System.out.println("odervo uvo pvo == null ");
 		}
 		System.out.println(payService);
 		
-		model.addAttribute("list", payService.selectOrderList(userid));
+		//model.addAttribute("list", payService.selectOrderList(userid));
 	    model.addAttribute("pro_number", pvo);
 		
 		
