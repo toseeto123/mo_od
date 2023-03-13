@@ -39,7 +39,11 @@ public class CateServiceImpl implements CateService{
 	public int dupcate(int pro_number, int user_no) {
 		return catedao.dupcate(pro_number, user_no);
 	}
-
+	
+	public int deletecate(int cate_id) {
+		
+		return catedao.catedelete(cate_id);
+	}
 
 
 }
