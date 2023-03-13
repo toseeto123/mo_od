@@ -63,7 +63,6 @@ public class CateController {
 		CateVO cvo = new CateVO();
 		int count = cvo.getAmount();
 		count = 1;
-		session.setAttribute("count", count);
 		cvo.setUser_no(userid);
 		cvo.setPro_number(proid);
 		cvo.setAmount(count);
@@ -125,6 +124,7 @@ public class CateController {
 
 	@RequestMapping(value = "/catedelete.do", method = RequestMethod.POST)
 	public String deleteCate(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
+		System.out.println("delete 실행 완료");
 		int number = Integer.parseInt(String.valueOf(data.get("number")));
 		int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
 

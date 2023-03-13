@@ -140,12 +140,6 @@ public class UserController {
  	@RequestMapping(value = "/mypage.do" , method = RequestMethod.GET)
     public String mypage(UserVO vo,HttpSession session , Model model) {
 		UserVO uvo = (UserVO)session.getAttribute("login_info");
-		System.out.println(uvo);
-		int userid = uvo.getNo();
-		System.out.println(userid);
-		
-		model.addAttribute("map" , cateService.selectCateList(userid));
-
        return "User/mypage";
        }
  	
