@@ -36,6 +36,10 @@ public class CateDAO {
 		return sql.update("CateDAO.dupcate" , pro_number);
 	}
 	
+	public int catedelete(int cate_id) {
+		return sql.delete("CateDAO.catedelete" , cate_id);
+	}
+	
 	
 	
 }
