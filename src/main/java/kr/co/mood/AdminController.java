@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.co.mood.Payment.DAO.AdminPaymentService;
 import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.Product.VO.ProPaginVO;
 import kr.co.mood.Product.VO.ProVO;
@@ -40,10 +41,14 @@ public class AdminController {
 	
 	@Autowired
 	private ProPaginVO vo1;
+	
+	@Autowired
+	private AdminPaymentService adminPaymentService;
 
 
    @RequestMapping("/chart.do")
    public String adminIndex(Model model) {
+	   adminPaymentService.getCategoryChart(model);
       return "admin/chart";   
    }
    
