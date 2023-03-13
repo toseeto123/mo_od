@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.mood.Product.DAO.ProductService;
@@ -46,7 +47,7 @@ public class CateController {
 		return mav;
 	}
 	@RequestMapping(value="/cateinsert.do" , method = RequestMethod.POST)
-	public String insertcate(HttpSession session ,Model model) {
+	public String insertcate(HttpSession session ,Model model,@RequestParam("pro_price") int pro_price) {
 	
 		UserVO uvo = (UserVO)session.getAttribute("login_info");
 		System.out.println(uvo);
@@ -66,7 +67,12 @@ public class CateController {
 		cvo.setUser_no(userid);
 		cvo.setPro_number(proid);
 		cvo.setAmount(count);
+		cvo.setCate_pro_price(pro_price);
+		cvo.setTotal(pro_price);
 		cservice.addcate(cvo, uvo, pvo);
+		int cate_id = cvo.getCate_id();
+		System.out.println("가격 : "+pro_price);
+		System.out.println("아이디 : "+cate_id);
 		
 		
 		//select
@@ -82,12 +88,14 @@ public class CateController {
 	public String update(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
 		int number = Integer.parseInt(String.valueOf(data.get("number")));
 		int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
-	    
-
+		int proprice = Integer.parseInt(String.valueOf(data.get("proprice")));
+		
 	    int count = (Integer) session.getAttribute("count");
+	    
 	    cvo.setAmount(count);
+	    
 	    cservice.modifyflashamount(cateId);
-
+	    
 	    return "/cate/cate";
 	}
 	
@@ -100,16 +108,8 @@ public class CateController {
 	    int count = (Integer) session.getAttribute("count");
 	    cvo.setAmount(count);
 	    cservice.modifyminusamount(cateId);
-
+	    
 	    return "/cate/cate";
 	}
-	@RequestMapping(value="/mycate.do" , method = RequestMethod.GET)
-	public String mycate(HttpSession session , Model model) {
-		UserVO uvo = (UserVO)session.getAttribute("login_info");
-		System.out.println(uvo);
-		int userid = uvo.getNo();
-		System.out.println(userid);
-		model.addAttribute("map" , cservice.selectCateList(userid));
-		return "/User/my_cateinfo";
-	}
+	
 }

@@ -18,13 +18,11 @@ public class CateDAO {
 	
 	public List<CateVO> cateselect(int user_no) {
 		return sql.selectList("CateDAO.selectlist" , user_no);
-		
 	}
-	
 	public void addcate(CateVO cvo, UserVO uvo, ProVO pvo) {
 		sql.insert("CateDAO.insert",cvo);
-		
 	}
+	
 	
 	public int modifyflashamount(int cate_id) {
 		return sql.update("CateDAO.plusupdate" , cate_id);

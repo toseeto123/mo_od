@@ -173,7 +173,7 @@ li .btnspan {
 
 
 function flush(type, element) {
-     const resultElement = element.parentNode.previousElementSibling;
+     const resultElement = element.parentNode.previousElementSibling.previousElementSibling;
      let number = resultElement.innerText;
 
      const cateIdList = document.querySelectorAll('.cate_id');
@@ -182,18 +182,24 @@ function flush(type, element) {
        return element.value;
      });
      
+     const cateIdIndex = cateIdArray.indexOf(element.parentNode.previousElementSibling);
+     const cateId = cateIdValues[cateIdIndex];
+     
+     
+     
      const priceList = document.querySelectorAll('.pro_price');
      const priceArray = Array.from(priceList);
      const priceValues = priceArray.map(function(element) {
        return element.value;
      });
-
-     // get the index of the current loop iteration
-     const cateIdIndex = cateIdArray.indexOf(element.parentNode.nextElementSibling);
-     const cateId = cateIdValues[cateIdIndex];
      
      const priceIndex = priceArray.indexOf(element.parentNode.nextElementSibling);
      const proprice = priceValues[priceIndex];
+
+     // get the index of the current loop iteration
+     
+     
+
      
      let xhr = new XMLHttpRequest();
      xhr.open('POST', 'plus.do', true);
@@ -208,22 +214,22 @@ function flush(type, element) {
      if (type === 'plus') {
        number = parseInt(number) + 1;
      }
-
-     if (cateId != null) {
        const data = {
          number: number,
-         cateId: cateId,
-         proprice : proprice
+         proprice : proprice,
+         cateId: cateId
+         
        };
        xhr.send(JSON.stringify(data)); // JSON 형태의 데이터 전송
-     }
-
+     
+	console.log(proprice);
+	console.log(cateId);
      resultElement.innerText = number;
      
 }
 
 function minus(type, element) {
-    const resultElement = element.parentNode.previousElementSibling;
+	const resultElement = element.parentNode.previousElementSibling.previousElementSibling;
     let number = resultElement.innerText;
 
     const cateIdList = document.querySelectorAll('.cate_id');
@@ -231,10 +237,20 @@ function minus(type, element) {
     const cateIdValues = cateIdArray.map(function(element) {
       return element.value;
     });
-
-    // get the index of the current loop iteration
-    const cateIdIndex = cateIdArray.indexOf(element.parentNode.nextElementSibling);
+    
+    const cateIdIndex = cateIdArray.indexOf(element.parentNode.previousElementSibling);
     const cateId = cateIdValues[cateIdIndex];
+    
+    
+    
+    const priceList = document.querySelectorAll('.pro_price');
+    const priceArray = Array.from(priceList);
+    const priceValues = priceArray.map(function(element) {
+      return element.value;
+    });
+    
+    const priceIndex = priceArray.indexOf(element.parentNode.nextElementSibling);
+    const proprice = priceValues[priceIndex];
 
     let xhr = new XMLHttpRequest();
     xhr.open('POST', 'minus.do', true);
@@ -248,6 +264,7 @@ function minus(type, element) {
 
     if (type === 'minus'  && number > 1) {
       number = parseInt(number) - 1;
+      total = cateId + cateId;
     }
 
     if (cateId != null) {
@@ -257,8 +274,9 @@ function minus(type, element) {
       };
       xhr.send(JSON.stringify(data)); // JSON 형태의 데이터 전송
     }
-
+	
     resultElement.innerText = number;
+
 }
 
 
@@ -315,16 +333,15 @@ function minus(type, element) {
   
   <h2 style="margin-left: 100px;">${map.pro_name}</h2><p style="margin-left: 100px;">${map.pro_maindesctitle }</p>
   <span style="margin-left: 100px;">수 량 : </span><div class="amount" style="display: inline;">${map.amount}</div>
-  
+   <input type="hidden" value="${map.cate_id}" name="cateId" class="cate_id"/>
   <span class="btnspan">
     <button class="plus_btn" onclick='flush("plus", this)'>+</button>
     <button class="minus_btn" onclick='minus("minus", this)'>-</button>
   </span>
+  <input type="hidden" value="${map.pro_price}" name="pro_price" class="pro_price"/>
          
-          <input type="hidden" value="${map.cate_id}" name="cateId" class="cate_id"/>
-          <input type="hidden" value="${map.pro_price}" name="pro_price" class="pro_price"/>
-            <p style="margin-left: 100px;">가 격 : <fmt:formatNumber value="${map.pro_price}" type="currency" currencySymbol="₩" /></p>
-            
+          
+          <p style="margin-left: 100px;">가 격 : <fmt:formatNumber value="${map.pro_price}" type="currency" currencySymbol="₩" /></p>           
             <hr>
          </c:forEach>
          
