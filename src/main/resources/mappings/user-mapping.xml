@@ -17,6 +17,22 @@
       <result property="phone" column="PHONE" />
       <result property="day" column="DAY" />
    </resultMap> -->
+   
+   <!-- 추가된 부분 -->
+	<select id="selectAll" parameterType="kr.co.mood.Product.VO.ProPaginVO" resultType="kr.co.mood.user.dao.UserVO">
+   <![CDATA[
+      select * from moodjoin where id != 'admin'
+      ]]>
+      <if test="startNo != null">
+      limit #{startNo}, #{endNo}
+      </if>
+   </select>
+   	<select id="selectMemberNo" parameterType="kr.co.mood.user.dao.UserVO" resultType="kr.co.mood.user.dao.UserVO">
+   <![CDATA[
+      select * from moodjoin where no = #{no}
+      ]]>
+   </select>
+   
 
 	 <insert id="insert" parameterType="kr.co.mood.user.dao.UserVO">
       <![CDATA[
