@@ -112,4 +112,24 @@ public class CateController {
 	    return "/cate/cate";
 	}
 	
+	
+	@RequestMapping(value = "/mycate.do", method = RequestMethod.GET)
+	public String mycate(HttpSession session, Model model) {
+		UserVO uvo = (UserVO) session.getAttribute("login_info");
+		System.out.println(uvo);
+		int userid = uvo.getNo();
+		System.out.println(userid);
+		model.addAttribute("map", cservice.selectCateList(userid));
+		return "/User/my_cateinfo";
+	}
+
+	@RequestMapping(value = "/catedelete.do", method = RequestMethod.POST)
+	public String deleteCate(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
+		int number = Integer.parseInt(String.valueOf(data.get("number")));
+		int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
+
+		cservice.deletecate(cateId);
+		return "cate/cate";
+	}
+	
 }

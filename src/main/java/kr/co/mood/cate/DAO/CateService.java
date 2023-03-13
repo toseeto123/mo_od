@@ -20,5 +20,7 @@ public interface CateService {
 	
 	public int dupcate(int pro_number , int user_no);
 	
-	
+
+	public int deletecate(int cate_id);
+
 }

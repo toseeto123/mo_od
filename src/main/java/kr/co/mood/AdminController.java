@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
+import kr.co.mood.Payment.DAO.AdminPaymentService;
 import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.Product.VO.ProPaginVO;
 import kr.co.mood.Product.VO.ProVO;
@@ -40,10 +41,14 @@ public class AdminController {
 	
 	@Autowired
 	private ProPaginVO vo1;
+	
+	@Autowired
+	private AdminPaymentService adminPaymentService;
 
 
    @RequestMapping("/chart.do")
    public String adminIndex(Model model) {
+	   adminPaymentService.getCategoryChart(model);
       return "admin/chart";   
    }
    
@@ -80,7 +85,7 @@ public class AdminController {
       return "admin/insertPro";
    }
    
-   @RequestMapping(value="adinsert.do" ,method=RequestMethod.POST)
+   @RequestMapping(value="insert.do" ,method=RequestMethod.POST)
    public String insertProduct(@RequestParam MultipartFile file,
                            @RequestParam MultipartFile file1,
                            @RequestParam MultipartFile file2,
@@ -106,7 +111,7 @@ public class AdminController {
             e.printStackTrace();
          }
          ps.insertPro(vo);
-         return "admin/chart";
+         return "admin/adminProList";
       }
    
 

@@ -72,8 +72,8 @@
           </li>
           <li class="dropdown"><a href="#">수 납 <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                  <li><a href="/C1categoryList">옷장/행거</a></li>
-                  <li><a href="/C0categoryList">서랍</a></li>
+                  <li><a href="/C0categoryList">옷장/행거</a></li>
+                  <li><a href="/C1categoryList">서랍</a></li>
                 </ul>
           </li>
           <li class="dropdown"><a href="#">인테리어 시공 <i class="bi bi-chevron-down"></i></a>
