@@ -10,6 +10,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.mood.Product.DAO.ProductService;
@@ -20,6 +21,7 @@ import kr.co.mood.cate.vo.CateVO;
 import kr.co.mood.user.dao.UserService;
 import kr.co.mood.user.dao.UserVO;
 
+
 @Controller
 public class CateController {
 
@@ -28,36 +30,36 @@ public class CateController {
 	UserService userService;
 	@Autowired
 	ProductService productService;
-
+	
 	@Autowired
 	ProductController productController;
-
-	@RequestMapping(value = "/cate.do", method = RequestMethod.GET)
+	
+	@RequestMapping(value = "/cate.do" , method = RequestMethod.GET)
 	public String cate() {
 		System.out.println("cate");
 		return "cate/cate";
 	}
-
-	@RequestMapping(value = "/cate.do", method = RequestMethod.POST)
-	public ModelAndView selectAllList(HttpSession session, ModelAndView mav) {
+	
+	@RequestMapping(value = "/cate.do" , method = RequestMethod.POST)
+	public ModelAndView selectAllList(HttpSession session , ModelAndView mav) {
 		System.out.println("cat");
-
+		
 		return mav;
 	}
-
-	@RequestMapping(value = "/cateinsert.do", method = RequestMethod.POST)
-	public String insertcate(HttpSession session, Model model) {
-
-		UserVO uvo = (UserVO) session.getAttribute("login_info");
+	@RequestMapping(value="/cateinsert.do" , method = RequestMethod.POST)
+	public String insertcate(HttpSession session ,Model model,@RequestParam("pro_price") int pro_price) {
+	
+		UserVO uvo = (UserVO)session.getAttribute("login_info");
 		System.out.println(uvo);
 		int userid = uvo.getNo();
 		System.out.println(userid);
-
-		ProVO pvo = (ProVO) session.getAttribute("pro_number");
+		
+		ProVO pvo = (ProVO)session.getAttribute("pro_number");
 		System.out.println(pvo);
 		int proid = pvo.getPro_number();
 		System.out.println(proid);
-
+		
+		
 		CateVO cvo = new CateVO();
 		int count = cvo.getAmount();
 		count = 1;
@@ -65,39 +67,52 @@ public class CateController {
 		cvo.setUser_no(userid);
 		cvo.setPro_number(proid);
 		cvo.setAmount(count);
+		cvo.setCate_pro_price(pro_price);
+		cvo.setTotal(pro_price);
 		cservice.addcate(cvo, uvo, pvo);
-
-		// select
+		int cate_id = cvo.getCate_id();
+		System.out.println("Í∞ÄÍ≤© : "+pro_price);
+		System.out.println("ÏïÑÏù¥Îîî : "+cate_id);
+		
+		
+		//select
 		System.out.println("cateselect ÔøΩÏóØÔøΩÏò£");
-		model.addAttribute("map", cservice.selectCateList(userid));
-
+		model.addAttribute("map" , cservice.selectCateList(userid));
+		
+		
 		return "cate/cate";
 	}
-
+	
+	
 	@RequestMapping(value = "/plus.do", method = RequestMethod.POST)
 	public String update(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
 		int number = Integer.parseInt(String.valueOf(data.get("number")));
 		int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
-
-		int count = (Integer) session.getAttribute("count");
-		cvo.setAmount(count);
-		cservice.modifyflashamount(cateId);
-
-		return "/cate/cate";
+		int proprice = Integer.parseInt(String.valueOf(data.get("proprice")));
+		
+	    int count = (Integer) session.getAttribute("count");
+	    
+	    cvo.setAmount(count);
+	    
+	    cservice.modifyflashamount(cateId);
+	    
+	    return "/cate/cate";
 	}
-
+	
 	@RequestMapping(value = "/minus.do", method = RequestMethod.POST)
 	public String minus(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
 		int number = Integer.parseInt(String.valueOf(data.get("number")));
 		int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
+	    
 
-		int count = (Integer) session.getAttribute("count");
-		cvo.setAmount(count);
-		cservice.modifyminusamount(cateId);
-
-		return "/cate/cate";
+	    int count = (Integer) session.getAttribute("count");
+	    cvo.setAmount(count);
+	    cservice.modifyminusamount(cateId);
+	    
+	    return "/cate/cate";
 	}
-
+	
+	
 	@RequestMapping(value = "/mycate.do", method = RequestMethod.GET)
 	public String mycate(HttpSession session, Model model) {
 		UserVO uvo = (UserVO) session.getAttribute("login_info");
@@ -110,12 +125,11 @@ public class CateController {
 
 	@RequestMapping(value = "/catedelete.do", method = RequestMethod.POST)
 	public String deleteCate(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
-		System.out.println("delete πˆ∆∞ ¥©∏ßø‰");
 		int number = Integer.parseInt(String.valueOf(data.get("number")));
 		int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
 
 		cservice.deletecate(cateId);
 		return "cate/cate";
 	}
-
+	
 }
