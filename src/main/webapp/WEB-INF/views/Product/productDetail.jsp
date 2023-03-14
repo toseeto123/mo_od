@@ -168,10 +168,13 @@ pre{
                      </ul>
                      
                   </div>
-					<input type="hidden" name="${cate_id }"/>
+               <input type="hidden" name="${cate_id }"/>
                   <div class="portfolio-description">
                      <h2>${list.pro_maindesctitle}</h2>
                      <pre>${list.pro_maindesc }</pre>
+                     <input type="hidden" name="pro_price" value="${list.pro_price}">
+                	<input type="hidden" name="pro_number" value="${list.pro_number}">
+                     
                      
                      <input type="button" value="장바구니" class="cateBtn" ><br><br>
                      <input type="button" value="바로결제하기" class="btn_buy" onclick="submitKakaoPayForm()">
@@ -179,15 +182,18 @@ pre{
                   </div>
                </div>
                
+
 </form>		
 
 	<!-- 주문 form toseet123 생성 -->
-			<form action="/orders/${login_info.no}/${list.pro_number}"class="order_form">
-				<input type="hidden" name="pro_name" value="${list.pro_name}">
-				<input type="hidden" name="pro_number" value="${list.pro_number}">
-				<input type="hidden" name="orders[0].orderCount" value="">
-				
+			<form action="/products/orders" class="order_form" method="post">
+			 	<input type="hidden" name="userNo" value="${login_info.no}">
+				<input type="hidden" name="address" value="${login_info.adr}">
+				<input type="hidden" name="price" value="${list.pro_price}">
+				<input type="hidden" name="status" value="준비중">
+
 			</form>
+
 <style>
 .chk_option{
    cursor: pointer;
@@ -317,20 +323,19 @@ pre{
 
    <!-- Template Main JS File -->
    <script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
-	
-	
-   <script>
-   var login_info = ${login_info.no};
    
-   /* 바로구매 버튼  */
-	$(".btn_buy").on("click", function(){
-		let orderCount = $(".quantity_input").val();
-		$(".order_form").find("input[name='orders[0].orderCount']").val(orderCount);
-		$(".order_form").submit();
-	});
-  
+   
+   <script>
+
+   /* 바로구매 버튼 */
+   $(".btn_buy").on("click", function(){
+      let orderCount = $(".quantity_input").val();
+      $(".order_form").find("input[name='orders[0].orderCount']").val(orderCount);
+      $(".order_form").submit();
+   });
+
    </script>
-	
+   
 </body>
 
 </html>
