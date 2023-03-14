@@ -47,40 +47,43 @@ public class CateController {
 		return mav;
 	}
 	@RequestMapping(value="/cateinsert.do" , method = RequestMethod.POST)
-	public String insertcate(HttpSession session ,Model model,@RequestParam("pro_price") int pro_price) {
-	
-		UserVO uvo = (UserVO)session.getAttribute("login_info");
-		System.out.println(uvo);
-		int userid = uvo.getNo();
-		System.out.println(userid);
-		
-		ProVO pvo = (ProVO)session.getAttribute("pro_number");
-		System.out.println(pvo);
-		int proid = pvo.getPro_number();
-		System.out.println(proid);
-		
-		
-		CateVO cvo = new CateVO();
-		int count = cvo.getAmount();
-		count = 1;
-		cvo.setUser_no(userid);
-		cvo.setPro_number(proid);
-		cvo.setAmount(count);
-		cvo.setCate_pro_price(pro_price);
-		cvo.setTotal(pro_price);
-		cservice.addcate(cvo, uvo, pvo);
-		int cate_id = cvo.getCate_id();
-		System.out.println("가격 : "+pro_price);
-		System.out.println("아이디 : "+cate_id);
-		
-		
-		//select
-		System.out.println("cateselect �엯�옣");
-		model.addAttribute("map" , cservice.selectCateList(userid));
-		
-		
-		return "cate/cate";
+	public String insertcate(HttpSession session, Model model, @RequestParam("pro_price") int pro_price) {
+	    UserVO uvo = (UserVO) session.getAttribute("login_info");
+	    int userid = uvo.getNo();
+	    ProVO pvo = (ProVO) session.getAttribute("pro_number");
+	    System.out.println(pvo);
+	    int proid = pvo.getPro_number();
+
+	    CateVO cvo = new CateVO();
+	    int count = cvo.getAmount();
+	    cvo.setUser_no(userid);
+	    cvo.setPro_number(proid);
+	    cvo.setCate_pro_price(pro_price);
+	    cvo.setTotal(pro_price);
+	    cservice.addcate(cvo, uvo, pvo);
+	    int cate_id = cvo.getCate_id();
+
+	    // 중복 insert 방지를 위해 세션에서 pro_number 속성을 제거합니다.
+	    session.removeAttribute("pro_number");
+
+	    // POST 요청 처리 후 리다이렉트를 반환합니다.
+	    return "redirect:/cate";
 	}
+
+	@RequestMapping(value = "/cate", method = RequestMethod.GET)
+	public String showCateList(HttpSession session, Model model) {
+	    UserVO uvo = (UserVO) session.getAttribute("login_info");
+	    int userid = uvo.getNo();
+	    
+	    // 중복 insert를 방지하기 위해 cate_id가 null이 아닌 항목만 조회합니다.
+	    model.addAttribute("map", cservice.selectCateList(userid));
+	    return "/cate/cate";
+	}
+	
+	
+	
+
+	
 	
 	
 	@RequestMapping(value = "/plus.do", method = RequestMethod.POST)
@@ -89,9 +92,9 @@ public class CateController {
 		int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
 		int proprice = Integer.parseInt(String.valueOf(data.get("proprice")));
 		
-	    int count = (Integer) session.getAttribute("count");
+	    //int count = (Integer) session.getAttribute("count");
 	    
-	    cvo.setAmount(count);
+	    //cvo.setAmount(count);
 	    
 	    cservice.modifyflashamount(cateId);
 	    
@@ -102,10 +105,7 @@ public class CateController {
 	public String minus(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
 		int number = Integer.parseInt(String.valueOf(data.get("number")));
 		int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
-	    
 
-	    int count = (Integer) session.getAttribute("count");
-	    cvo.setAmount(count);
 	    cservice.modifyminusamount(cateId);
 	    
 	    return "/cate/cate";

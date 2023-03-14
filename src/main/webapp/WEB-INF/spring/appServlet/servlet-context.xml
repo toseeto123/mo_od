@@ -21,7 +21,7 @@
       <beans:property name="url"
          value="jdbc:mariadb://localhost:3306/mood" />
       <beans:property name="username" value="root" />
-      <beans:property name="password" value="songjungi12!" />
+      <beans:property name="password" value="1234" />
    </beans:bean>
 
    <beans:bean id="sqlSessionFactory"
@@ -82,7 +82,6 @@
     </beans:bean>
 
    <context:component-scan base-package="kr.co.*" />
-   <mybatis-spring:scan
-      base-package="kr.co.mood.Payment.DAO" />
+   <mybatis-spring:scan base-package="kr.co.mood.Payment.DAO" />
 
 </beans:beans>

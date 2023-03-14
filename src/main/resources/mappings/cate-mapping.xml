@@ -4,8 +4,8 @@
 <mapper namespace="CateDAO">
 
 	<insert id="insert">
-		insert into cate(pro_number, user_no ,amount,cate_pro_price,total)
-		values(#{pro_number},#{user_no},#{amount},#{cate_pro_price},#{total}) ON DUPLICATE KEY UPDATE amount = amount+1
+		insert into cate(pro_number, user_no,cate_pro_price,total)
+		values(#{pro_number},#{user_no},#{cate_pro_price},#{total}) ON DUPLICATE KEY UPDATE amount = amount+1
 	</insert>
 
 
