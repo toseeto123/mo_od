@@ -173,8 +173,9 @@ pre{
                      <h2>${list.pro_maindesctitle}</h2>
                      <pre>${list.pro_maindesc }</pre>
                      
-                     <input type="submit" value="장바구니" class="cateBtn"><br><br>
+                     <input type="button" value="장바구니" class="cateBtn" ><br><br>
                      <input type="button" value="바로결제하기" class="btn_buy" onclick="submitKakaoPayForm()">
+					                
                   </div>
                </div>
                
@@ -185,6 +186,7 @@ pre{
 				<input type="hidden" name="pro_name" value="${list.pro_name}">
 				<input type="hidden" name="pro_number" value="${list.pro_number}">
 				<input type="hidden" name="orders[0].orderCount" value="">
+				
 			</form>
 <style>
 .chk_option{
@@ -318,12 +320,15 @@ pre{
 	
 	
    <script>
-   /* 바로구매 버튼 */
+   var login_info = ${login_info.no};
+   
+   /* 바로구매 버튼  */
 	$(".btn_buy").on("click", function(){
 		let orderCount = $(".quantity_input").val();
 		$(".order_form").find("input[name='orders[0].orderCount']").val(orderCount);
 		$(".order_form").submit();
 	});
+  
    </script>
 	
 </body>

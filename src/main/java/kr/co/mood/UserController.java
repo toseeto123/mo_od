@@ -33,11 +33,12 @@ public class UserController {
 	private SqlSessionTemplate mybatis;
 	private UserVO vo;
 	private ModelAndView mav;
+	private CateService cateService;
 	
 	@Autowired
-
 	private JavaMailSender mailSender;
-	private CateService cateService;
+	
+	
 	
 	
 	  //네이버 로그인
@@ -92,7 +93,7 @@ public class UserController {
    }
 	
 	
-@RequestMapping(value = "/join.do" , method = RequestMethod.GET)
+	@RequestMapping(value = "/join.do" , method = RequestMethod.GET)
    public String join() {
       return "User/join";
    }
@@ -114,22 +115,14 @@ public class UserController {
 	  
 	  if(vo1 == null) {
 		  session.setAttribute("login_info", null);
-		  System.out.println("濡쒓렇�씤 �떎�뙣");
-		  
 		  rttr.addFlashAttribute("msg", false);
 		  return "redirect:login.do";
 	  } else {
-		  if(vo1.getId().equals("admin")) {
-			  System.out.println("admin 濡쒓렇�씤 �꽦怨�");
-			  	session.setAttribute("login_info", vo);
-				return "redirect:admin/chart.do";
-			} else {
-				System.out.println("濡쒓렇�씤 �꽦怨� + " + vo1);
 				session.setAttribute("login_info", vo1);
 				return "redirect:index.jsp";
 			}
 	  }	
-   }
+   
  	@RequestMapping("/logout.do")
  		public String logout(UserVO vo,HttpSession session) {
  			session.setAttribute("login_info", vo);
