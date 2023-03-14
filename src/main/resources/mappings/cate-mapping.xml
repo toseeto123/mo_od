@@ -3,29 +3,29 @@
 
 <mapper namespace="CateDAO">
 
-	<insert id="insert">
-		insert into cate(pro_number, user_no,cate_pro_price,total)
-		values(#{pro_number},#{user_no},#{cate_pro_price},#{total}) ON DUPLICATE KEY UPDATE amount = amount+1
-	</insert>
+   <insert id="insert">
+      insert into cate(pro_number, user_no,cate_pro_price,total,pro_option)
+      values(#{pro_number},#{user_no},#{cate_pro_price},#{total},#{pro_option}) ON DUPLICATE KEY UPDATE amount = amount+1, total = total + cate_pro_price
+   </insert>
 
 
-	<select id="selectlist" resultType="kr.co.mood.cate.vo.CateVO">
+   <select id="selectlist" resultType="kr.co.mood.cate.vo.CateVO">
 
-		select cate_id, p.pro_number,
-		c.user_no,pro_name ,pro_price,pro_img1,pro_maindesctitle,amount,total
-		from moodjoin m, cate c, product p
-		where m.no=c.user_no and c.pro_number = p.pro_number and
-		c.user_no=#{userid} order by cate_id
-	</select>
+      select cate_id, p.pro_number,
+      c.user_no,pro_name ,pro_price,pro_img1,pro_maindesctitle,amount,total,pro_option
+      from moodjoin m, cate c, product p
+      where m.no=c.user_no and c.pro_number = p.pro_number and
+      c.user_no=#{userid} order by cate_id
+   </select>
 
 
-	<update id="plusupdate">
-		update cate set
+   <update id="plusupdate">
+      update cate set
         total = total + cate_pro_price,
         amount = amount + 1
     where cate_id = #{cate_id}
-	</update>
-	
+   </update>
+   
 <update id="minusupdate">
   update cate set
     amount = case
@@ -38,16 +38,16 @@
     end
   where cate_id = #{cate_id}
 </update>
-	
+   
 
-	
-	<update id="dupcate">
-		select * from cate where user_no = #{user_no} and pro_number = #{pro_number}
-	</update>
-	
-	<delete id="catedelete">
-		delete from cate where cate_id = #{cate_id}
-	</delete>
-	
-	
+   
+   <update id="dupcate">
+      select * from cate where user_no = #{user_no} and pro_number = #{pro_number}
+   </update>
+   
+   <delete id="catedelete">
+      delete from cate where cate_id = #{cate_id}
+   </delete>
+   
+   
 </mapper>

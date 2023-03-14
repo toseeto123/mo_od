@@ -33,7 +33,6 @@ public class UserController {
 	private SqlSessionTemplate mybatis;
 	private UserVO vo;
 	private ModelAndView mav;
-	private CateService cateService;
 	
 	@Autowired
 	private JavaMailSender mailSender;
@@ -45,7 +44,7 @@ public class UserController {
 
 	
 	
-	  //�꽕�씠踰� 濡쒓렇�씤
+	  //占쎄퐬占쎌뵠甕곤옙 嚥≪뮄�젃占쎌뵥
 	@RequestMapping(value="/naverSave", method=RequestMethod.POST)
 	
     public @ResponseBody String naverSave(UserVO uservo,  HttpSession session ) throws Exception {
@@ -78,7 +77,7 @@ public class UserController {
         return "/";
         
      }else if(result == 0) {
-    	System.out.println("媛��엯諛붾줈吏꾪뻾~");
+    	System.out.println("揶쏉옙占쎌뿯獄쏅뗀以덌쭪袁る뻬~");
         userservice.insertnaver(naver);
         session.setAttribute("login_info", naver);
         return "/";
@@ -184,7 +183,7 @@ public class UserController {
  	   
  	@RequestMapping(value = "/updatemyinfo.do", method = RequestMethod.POST)
  	public String update(UserVO vo, HttpSession session) throws Exception {
- 		System.out.println("占쎈튊沃섓옙");
+ 		System.out.println("�뜝�럥�뒍亦껋꼻�삕");
  		
  		userservice.updateUser(vo);
  		session.invalidate();
@@ -195,24 +194,24 @@ public class UserController {
     @ResponseBody
     public String mailCheckGET(String email) throws Exception{
        
-       /* 酉�(View)濡쒕��꽣 �꽆�뼱�삩 �뜲�씠�꽣 �솗�씤 */
+       /* �뀎占�(View)嚥≪뮆占쏙옙苑� 占쎄퐜占쎈선占쎌궔 占쎈쑓占쎌뵠占쎄숲 占쎌넇占쎌뵥 */
 
              
-       /* �씤利앸쾲�샇(�궃�닔) �깮�꽦 */
+       /* 占쎌뵥筌앹빖苡뀐옙�깈(占쎄텆占쎈땾) 占쎄문占쎄쉐 */
        Random random = new Random();
        int checkNum = random.nextInt(888888) + 111111;
 
        
-       /* �씠硫붿씪 蹂대궡湲� */
+       /* 占쎌뵠筌롫뗄�뵬 癰귣�沅→묾占� */
        String setFrom = "cwj9799@naver.com";
        String toMail = email;
-       String title = "�쉶�썝媛��엯 �씤利� �씠硫붿씪 �엯�땲�떎.";
+       String title = "占쎌돳占쎌뜚揶쏉옙占쎌뿯 占쎌뵥筌앾옙 占쎌뵠筌롫뗄�뵬 占쎌뿯占쎈빍占쎈뼄.";
        String content = 
-             "�솃�럹�씠吏�瑜� 諛⑸Ц�빐二쇱뀛�꽌 媛먯궗�빀�땲�떎." +
+             "占쎌냳占쎈읂占쎌뵠筌욑옙�몴占� 獄쎻뫖揆占쎈퉸雅뚯눘�쏉옙苑� 揶쏅Ŋ沅쀯옙鍮�占쎈빍占쎈뼄." +
              "<br><br>" + 
-             "�씤利� 踰덊샇�뒗 " + checkNum + "�엯�땲�떎." + 
+             "占쎌뵥筌앾옙 甕곕뜇�깈占쎈뮉 " + checkNum + "占쎌뿯占쎈빍占쎈뼄." + 
              "<br>" + 
-             "�빐�떦 �씤利앸쾲�샇瑜� �씤利앸쾲�샇 �솗�씤���뿉 湲곗엯�븯�뿬 二쇱꽭�슂.";      
+             "占쎈퉸占쎈뼣 占쎌뵥筌앹빖苡뀐옙�깈�몴占� 占쎌뵥筌앹빖苡뀐옙�깈 占쎌넇占쎌뵥占쏙옙占쎈퓠 疫꿸퀣�뿯占쎈릭占쎈연 雅뚯눘苑�占쎌뒄.";      
        
        try {
           
