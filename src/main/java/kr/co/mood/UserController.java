@@ -33,7 +33,6 @@ public class UserController {
 	private SqlSessionTemplate mybatis;
 	private UserVO vo;
 	private ModelAndView mav;
-	private CateService cateService;
 	
 	@Autowired
 	private JavaMailSender mailSender;
