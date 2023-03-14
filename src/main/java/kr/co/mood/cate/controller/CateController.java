@@ -52,6 +52,7 @@ public class CateController {
        UserVO uvo = (UserVO) session.getAttribute("login_info");
        int userid = uvo.getNo();
        CateVO cvo = new CateVO();
+       
        cvo.setUser_no(userid);
        cvo.setPro_number(pro_number);
        cvo.setCate_pro_price(pro_price);
@@ -60,7 +61,7 @@ public class CateController {
        cservice.addcate(cvo, uvo, null);
 
 
-       // POST 요청 처리 후 리다이렉트를 반환합니다.
+       // POST �슂泥� 泥섎━ �썑 由щ떎�씠�젆�듃瑜� 諛섑솚�빀�땲�떎.
        return "redirect:/cate";
    }
 
@@ -69,7 +70,7 @@ public class CateController {
        UserVO uvo = (UserVO) session.getAttribute("login_info");
        int userid = uvo.getNo();
        
-       // 중복 insert를 방지하기 위해 cate_id가 null이 아닌 항목만 조회합니다.
+       // 以묐났 insert瑜� 諛⑹��븯湲� �쐞�빐 cate_id媛� null�씠 �븘�땶 �빆紐⑸쭔 議고쉶�빀�땲�떎.
        model.addAttribute("map", cservice.selectCateList(userid));
        return "/cate/cate";
    }
@@ -112,7 +113,7 @@ public class CateController {
 
    @RequestMapping(value = "/catedelete.do", method = RequestMethod.POST)
    public String deleteCate(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
-      System.out.println("delete 실행 완료");
+      System.out.println("delete �떎�뻾 �셿猷�");
       int number = Integer.parseInt(String.valueOf(data.get("number")));
       int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
 
