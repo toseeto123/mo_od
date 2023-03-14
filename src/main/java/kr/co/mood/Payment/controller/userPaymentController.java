@@ -1,8 +1,6 @@
 package kr.co.mood.Payment.controller;
 
 
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -49,8 +47,11 @@ public class userPaymentController {
 		System.out.println(uvo);
 		int userid = uvo.getNo();
 		
+
+
 		int proid = pro_number;
 		int price = pro_price;
+
 		
 		
 		userOrderVO ordervo = new userOrderVO();
@@ -58,7 +59,7 @@ public class userPaymentController {
 		//占쎌젟癰귨옙 占쎌궎占쎈쐭占쎈�믭옙�뵠�뇡遺용퓠 占쎈뼖疫뀐옙
 		ordervo.setUserNo(userid);
 		//ordervo.setPro_number(proid);
-		int count =ordervo.getOrderCount();
+		int count = ordervo.getOrderCount();
 		count = 1;
 		model.addAttribute(count);
 		ordervo.setOrderCount(count);
@@ -80,17 +81,19 @@ public class userPaymentController {
 		
 		int orderId = ordervo.getOrderId();
 		
-		
 		userOrderProductVO orderProVo = new userOrderProductVO();
 		orderProVo.setOrderId(orderId);
-		orderProVo.setPro_number(proid);
+		orderProVo.setPro_number(pronum);
 		orderProVo.setPrice(price);
 		orderProVo.setCount(count);
+		orderProVo.setPro_name(pvo.getPro_name());
 		System.out.println(orderProVo);
 		
 		productPayService.insert(orderProVo, uvo, null);
 		
-		//model.addAttribute("list", productPayService.selectOrderList(userid));
+		
+		model.addAttribute("orders", productPayService.selectList(orderId));
+		System.out.println(productPayService.selectList(orderId));
 		
 		
 		return "User/userPay";
@@ -158,14 +161,7 @@ public class userPaymentController {
 		return "User/userPay";
 	}
 
-	// �뇦猿됲�ｏ옙�젷 占쎈뎨占쎈봾裕욃뜝�럥諭�
-	@RequestMapping(value = "/userPaymentList.do")
-	public String userPaymentList() {
 
-		return "User/userPaymentList";
-	}
-
-	// �뇦猿됲�ｏ옙�젷 �뜝�럡留믣뜝�럡�돪
 	@RequestMapping(value = "/userPaymentDetail.do")
 	public String userPaymentDetail() {
 
