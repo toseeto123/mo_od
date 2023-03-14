@@ -448,7 +448,7 @@ function deletecate(element) {
 </script>
 </head>
 <body>
-<form action="/products/cateorders" method="post">
+
    <section id="hero" style="height: 400px;">
       <div class="hero-container">
          <div id="heroCarousel" data-bs-interval="5000"
@@ -538,14 +538,16 @@ function deletecate(element) {
                         
                      </dd>
                   </dl>
+                  <form action="/products/cateorders" method="post">
                   <input type="submit" value="바로결제하기" class="btn_buy" onclick="submitKakaoPayForm()">
-
+                  
+				</form>
                </div>
             </div>
          </div>
       </div>
    </div>
-   </form>
+   
 </body>
 <jsp:include page="../../common/footer.jsp" />
 </html>

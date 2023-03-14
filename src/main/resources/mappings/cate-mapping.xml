@@ -15,7 +15,7 @@
 
 
       select cate_id, p.pro_number,
-      c.user_no,pro_name ,pro_price,pro_img1,pro_maindesctitle,amount,total,pro_option
+      c.user_no,pro_name ,pro_price,pro_img1,pro_maindesctitle,amount,total,pro_option,cate_pro_price,total
       from moodjoin m, cate c, product p
       where m.no=c.user_no and c.pro_number = p.pro_number and
       c.user_no=#{userid} order by cate_id

@@ -123,15 +123,15 @@ img {
                   <div class="col-md-6 mb-3">
                      <label for="cc-name"></label> 
                      <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/" style="width: 80px; height: 80px;">
-                      <small class="text-muted">상품명 : ${list.pro_name}</small>
+                      <small class="text-muted">상품명 :</small>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="cc-number">가격 : ${list.pro_price}</label><br><small class="text-muted">상품디테일명 : </small>
+                     <label for="cc-number">가격 : </label><br><small class="text-muted">상품디테일명 : </small>
                   </div>
                      <div class="invalid-feedback">여기다가 가격정보입력</div><br>
                      <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
                   <hr class="mb-4">
-                  
+<c:forEach var="list" items="${list}">
                   <hr class="mb-4">
 
                <h4 class="mb-3">장바구니 상품정보</h4>
@@ -140,23 +140,27 @@ img {
                   <div class="col-md-6 mb-3">
                      <label for="cc-name"></label> 
                      <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/" style="width: 80px; height: 80px;">
-                      <small class="text-muted">상품명 : ${list.pro_name}</small>
+                      <small class="text-muted">상품명 : ${list.pro_number}</small>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="cc-number">가격 : ${list.pro_price}</label><br><small class="text-muted">상품디테일명 : </small>
+                     <label for="cc-number">가격 : ${list.total}</label><br><small class="text-muted">상품디테일명 : </small>
                   </div>
                      <div class="invalid-feedback">여기다가 가격정보입력</div><br>
                      <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
                   <hr class="mb-4">
+                  </c:forEach>
                   <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">420,000원 결제하기</button>
                   </div>
+
                </div>
             </form>
          </div>
       </div>
+      
 
 
    </div>
+  
 
 
    <script

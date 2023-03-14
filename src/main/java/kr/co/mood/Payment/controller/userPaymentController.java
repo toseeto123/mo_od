@@ -136,9 +136,9 @@ public class userPaymentController {
 		
 		productPayService.insert(orderProVo, uvo, null);
 		
-		model.addAttribute("list", cservice.selectCateList(ordervo.getOrderId()));
-		
-		
+		model.addAttribute("list", cservice.selectCateList(userid));
+		System.out.println(cservice.selectCateList(userid));
+		System.out.println("dddddddddddddddd : "+ userid);
 		return "/User/userPay";
 	}
 	
