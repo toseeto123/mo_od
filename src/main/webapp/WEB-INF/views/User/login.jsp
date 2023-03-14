@@ -27,21 +27,29 @@
                     <button type="button" class="togglebtn" onclick="login()">LOG IN</button>
                 </div>
                 <div class="social-icons">
-                	 <div class="col-sm-4 text-center ftco-animate" id="naverIdLogin"></div>
-                	 
+                <!--                네이버로그인 -->
+               <div class="col-sm-4 text-center ftco-animate" id="naverIdLogin" onclick="naverLoginclick()"></div>
+  				 <!-- <a href="#" id="naverIdLogin" class="btn sns-naver" title="새창">네이버로 로그인</a>
+  				<a href="#" id="kakaoLogin" class="btn sns-kakao" title="새창">카카오로 회원가입</a>
+  				<a href="#" id="googleLogin" class="btn sns-google" title="새창">구글 회원가입</a>
+ -->
  <script>
+ 	
 		 var naverLogin = new naver.LoginWithNaverId({
    	      clientId: "dClx55_VYi9U61rOGPS2", // 본인걸로 수정, 띄어쓰기 금지.
    	      callbackUrl: "http://localhost:8080/login.do", // 아무거나 설정
    	      isPopup: false,
-   	      loginButton: {color: "white", type: 1, height: 50}
+   	      loginButton: {color: "green", type: 1, height: 50}
    	      //callbackHandle: true
    	      
    	   });
   
    naverLogin.init();
-
-   window.addEventListener('load', function () {
+	
+	
+	
+   function naverLoginclick() {
+   //window.addEventListener('load', function () {
    naverLogin.getLoginStatus(function (status) {
 
    if (status) {
@@ -50,8 +58,6 @@
       var email = naverLogin.user.getEmail();
       var gender = naverLogin.user.getGender();
       var name = naverLogin.user.getName();
-     
-    
       
       
       $.ajax({
@@ -76,13 +82,11 @@
    } else {
       console.log("callback 처리에 실패하였습니다.");
    }
-   });
-});
+   })
+}
 </script>
 
-                    <img src="/resources/user/img/tw.png" alt="kakao">
-                    <img src="/resources/user/img/gl.png" alt="google">
-                </div>
+                   
                 <form id="login" action="/login.do" class="input-group" method="post">
                     <input type="text" name="id" class="input-field" placeholder="User name or Email" required autofocus>
                     <input type="password" name="pwd" class="input-field" placeholder="Enter Password" required>

@@ -27,6 +27,7 @@
       limit #{startNo}, #{endNo}
       </if>
    </select>
+   
    	<select id="selectMemberNo" parameterType="kr.co.mood.user.dao.UserVO" resultType="kr.co.mood.user.dao.UserVO">
    <![CDATA[
       select * from moodjoin where no = #{no}

@@ -33,11 +33,16 @@ public class UserController {
 	private SqlSessionTemplate mybatis;
 	private UserVO vo;
 	private ModelAndView mav;
+	private CateService cateService;
 	
 	@Autowired
 	private JavaMailSender mailSender;
+
 	@Autowired
 	private CateService cateService;
+
+	
+
 	
 	
 	  //�꽕�씠踰� 濡쒓렇�씤
@@ -92,7 +97,7 @@ public class UserController {
    }
 	
 	
-@RequestMapping(value = "/join.do" , method = RequestMethod.GET)
+	@RequestMapping(value = "/join.do" , method = RequestMethod.GET)
    public String join() {
       return "User/join";
    }
@@ -114,22 +119,14 @@ public class UserController {
 	  
 	  if(vo1 == null) {
 		  session.setAttribute("login_info", null);
-		  System.out.println("嚥≪뮄�젃占쎌뵥 占쎈뼄占쎈솭");
-		  
 		  rttr.addFlashAttribute("msg", false);
 		  return "redirect:login.do";
 	  } else {
-		  if(vo1.getId().equals("admin")) {
-			  System.out.println("admin 嚥≪뮄�젃占쎌뵥 占쎄쉐�⑨옙");
-			  	session.setAttribute("login_info", vo);
-				return "redirect:admin/chart.do";
-			} else {
-				System.out.println("嚥≪뮄�젃占쎌뵥 占쎄쉐�⑨옙 + " + vo1);
 				session.setAttribute("login_info", vo1);
 				return "redirect:index.jsp";
 			}
 	  }	
-   }
+   
  	@RequestMapping("/logout.do")
  		public String logout(UserVO vo,HttpSession session) {
  			session.setAttribute("login_info", vo);

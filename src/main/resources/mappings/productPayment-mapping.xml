@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="productPaymentDAO">
+	
+	<insert id="insert">
+    INSERT INTO orderProduct (pro_number, orderId, count, price)
+    VALUES (#{pro_number}, #{orderId}, #{count}, #{price})
+	</insert>
+
+	<select id="selectOrderList" resultType="kr.co.mood.Payment.VO.userOrderVO">
+		 select op.orderId, o.userNo, p.pro_name,p.pro_price,op.count 
+		 from moodjoin m, moodorder o, product p, orderProduct op 
+		 where m.no=o.userNo and o.userNo=2 order by op.orderId;
+	</select> 
+	
+	
+
+</mapper>

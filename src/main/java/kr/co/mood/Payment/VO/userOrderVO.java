@@ -12,20 +12,49 @@ public class userOrderVO {
     private int orderCount;
 	/* DB로부터 꺼내올 값 :  product */
     private String pro_name;
-	private int pro_price;
+	private int price;
 	private String pro_img1;
 	private String pro_maindesctitle;
     //user 꺼
-    private String adress;
+    private String address;
     private int userNo;
+    private String status;
     
+    private int orderId;
     private Date createdDate;
     private Date updatedDate;
     
     /*만들어낼 데이터 총가격 */
     private int totalPrice;
    
-    public int getTotalPrice() {
+    
+    
+    
+    public int getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public int getTotalPrice() {
 		return totalPrice;
 	}
 	public void setTotalPrice(int totalPrice) {
@@ -44,10 +73,10 @@ public class userOrderVO {
 		this.pro_maindesctitle = pro_maindesctitle;
 	}
 	public String getAdress() {
-		return adress;
+		return address;
 	}
 	public void setAdress(String adress) {
-		this.adress = adress;
+		this.address = adress;
 	}
 	public int getUserNo() {
 		return userNo;
@@ -68,12 +97,6 @@ public class userOrderVO {
 		this.updatedDate = updatedDate;
 	}
 	
-	public int getPro_price() {
-		return pro_price;
-	}
-	public void setPro_price(int pro_price) {
-		this.pro_price = pro_price;
-	}
 	public int getPro_number() {
 		return pro_number;
 	}
@@ -93,9 +116,19 @@ public class userOrderVO {
 		this.pro_name = pro_name;
 	}
 	
+	
+	
+	
+	@Override
+	public String toString() {
+		return "userOrderVO [pro_number=" + pro_number + ", orderCount=" + orderCount + ", pro_name=" + pro_name
+				+ ", price=" + price + ", pro_img1=" + pro_img1 + ", pro_maindesctitle=" + pro_maindesctitle
+				+ ", address=" + address + ", userNo=" + userNo + ", status=" + status + ", createdDate=" + createdDate
+				+ ", updatedDate=" + updatedDate + ", totalPrice=" + totalPrice + "]";
+	}
 	//총가격을 만들어내는데 필요한 initSaleTotal()
 	public void initSaleTotal() {
-		this.totalPrice = this.pro_price * this.orderCount;
+		this.totalPrice = this.price * this.orderCount;
 	}
 
 }

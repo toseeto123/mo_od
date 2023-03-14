@@ -1,6 +1,8 @@
 package kr.co.mood.Payment.controller;
 
-import java.util.List;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -11,49 +13,96 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import kr.co.mood.Payment.DAO.userPaymentService;
-import kr.co.mood.Payment.VO.userOrderListVO;
+import kr.co.mood.Payment.VO.userOrderProductVO;
+import kr.co.mood.Payment.VO.userOrderVO;
 import kr.co.mood.Product.DAO.ProductService;
+import kr.co.mood.Product.VO.ProVO;
 import kr.co.mood.cate.DAO.CateService;
+import kr.co.mood.pay.DAO.productPaymentService;
+import kr.co.mood.pay.DAO.userPaymentService;
 import kr.co.mood.user.dao.UserService;
 import kr.co.mood.user.dao.UserVO;
 
 
 @Controller
+@RequestMapping("/products")
 public class userPaymentController {
 
 	
 	@Autowired
 	CateService cservice;
+	@Autowired
 	UserService userService;
+	@Autowired
 	userPaymentService payService;
-	
-	
+	@Autowired
+	productPaymentService productPayService;
 	@Autowired
 	ProductService productService;
 	
 	
 	
-	@RequestMapping(value="/orders/{no}/{pro_number}" , method = RequestMethod.GET)
-	public String payPage(@PathVariable("no") int no,@PathVariable("pro_number") int pro_number,HttpSession session ,Model model) {
+	@RequestMapping(value="/orders" , method = RequestMethod.POST)
+	public String processOrder(HttpSession session ,Model model) {
 		
 		UserVO uvo = (UserVO)session.getAttribute("login_info");
-		model.addAttribute("list", productService.selectProOne(pro_number));
+		System.out.println(uvo);
+		int userid = uvo.getNo();
 		
-		model.addAttribute("pro_number");
+		ProVO pvo = (ProVO)session.getAttribute("pro_number");
+		System.out.println(pvo);
+		int proid = pvo.getPro_number();
+		int price = pvo.getPro_price();
+		
+		
+		userOrderVO ordervo = new userOrderVO();
+		System.out.println(ordervo);
+		//정보 오더테이블에 담기
+		ordervo.setUserNo(userid);
+		//ordervo.setPro_number(proid);
+		int count =ordervo.getOrderCount();
+		count = 1;
+		model.addAttribute(count);
+		ordervo.setOrderCount(count);
+		System.out.println(ordervo);
+		
+		if (ordervo != null && uvo != null && pvo != null) {
+		    payService.insert(ordervo, uvo, pvo);
+		    System.out.println("orderId:" + ordervo.getOrderId());
+		}else {
+			System.out.println("ordervo uvo pvo == null ");
+		}
+		System.out.println(payService);
+		
+		//리스트 대신 orderProduct에 return후 insert 해야함
+		// 상품 갯수는 일단 반영되면 추가하는걸로 해보는걸로.
+		//Map<String, String> params = new HashMap<String,String>();
+		//params.put("orderId", "orderId");
+		//System.out.println(params.get("orderId"));
+		
+		int orderId = ordervo.getOrderId();
+		
+		
+		userOrderProductVO orderProVo = new userOrderProductVO();
+		orderProVo.setOrderId(orderId);
+		orderProVo.setPro_number(proid);
+		orderProVo.setPrice(price);
+		orderProVo.setCount(count);
+		System.out.println(orderProVo);
+		
+		productPayService.insert(orderProVo, uvo, pvo);
+		
+		//model.addAttribute("list", productPayService.selectOrderList(userid));
 		
 		
 		return "User/userPay";
 	}
 	
 	
-	// 二쇰Ц �궡�뿭 媛��졇媛� 紐낅졊�뼱 url�쓣 �넻�빐 �쟾�떖諛쏆쓣 �쉶�썝�젙蹂� no瑜� �뙆�씪誘명꽣 �꽕�젙
-	//�긽�뭹 �젙蹂� �쟾�떖諛쏆쓣 OrderListVO 洹몃━怨� pageGet�뿉�꽌 view濡� �쟾�떖�빐以� model
 	@RequestMapping("/User/userPay/{no}")
-	public void orderPgaeGET(@PathVariable("no") String no, userOrderListVO uol, Model model) {
+	public void orderPgaeGET(@PathVariable("no") String no, userOrderVO uol, Model model) {
 
 		System.out.println("memberId : " + no);
-		System.out.println("orders : " + uol.getOrders());
 
 	}
 

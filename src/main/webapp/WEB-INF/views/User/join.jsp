@@ -72,10 +72,10 @@
                     <h3 class="join_title"><label for="age">나이</label></h3>
                     <div id="bir_wrap">
                         <div>
-                                <input type="radio" value="10~19" class="age" name="age" id="age" checked/>10대
-                                <input type="radio" value="20~29" class="age" name="age" id="age" />20대
-                                <input type="radio" value="30~39" class="age" name="age" id="age" />30대
-                                <input type="radio" value="40~49" class="age" name="age" id="age" />40대
+                                <input type="radio" value="10-19" class="age" name="age" id="age" checked/>10대
+                                <input type="radio" value="20-29" class="age" name="age" id="age" />20대
+                                <input type="radio" value="30-39" class="age" name="age" id="age" />30대
+                                <input type="radio" value="40-49" class="age" name="age" id="age" />40대
                                 <input type="radio" value="50대이상" class="age" name="age" id="age" />50대이상
                         </div>
                     </div>
@@ -97,8 +97,8 @@
                 
                 <div>
                     <h3 class="join_title"><label for="email">본인확인 이메일</label></h3>
-                    <div class="box string_email">
-                        <input type="text" id="email" name="email" class="email" maxlength="100" placeholder="선택입력">
+                    <div >
+                        <input type="text" id="email" name="email" class="email box string_email" maxlength="100" placeholder="선택입력">
                     </div>
                      <span class="final_mail_ck">이메일을 입력해주세요.</span>
                  <span class="mail_input_box_warn"></span>
