@@ -72,10 +72,10 @@
                     <h3 class="join_title"><label for="age">나이</label></h3>
                     <div id="bir_wrap">
                         <div>
-                                <input type="radio" value="10~19" class="age" name="age" id="age" checked/>10대
-                                <input type="radio" value="20~29" class="age" name="age" id="age" />20대
-                                <input type="radio" value="30~39" class="age" name="age" id="age" />30대
-                                <input type="radio" value="40~49" class="age" name="age" id="age" />40대
+                                <input type="radio" value="10-19" class="age" name="age" id="age" checked/>10대
+                                <input type="radio" value="20-29" class="age" name="age" id="age" />20대
+                                <input type="radio" value="30-39" class="age" name="age" id="age" />30대
+                                <input type="radio" value="40-49" class="age" name="age" id="age" />40대
                                 <input type="radio" value="50대이상" class="age" name="age" id="age" />50대이상
                         </div>
                     </div>
