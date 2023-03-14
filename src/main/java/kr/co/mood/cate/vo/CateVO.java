@@ -12,13 +12,23 @@ public class CateVO {
 	private String pro_img1;
 	private String pro_maindesctitle;
 	
+	
 	//cate
 	private int total;
 	private int amount;
 	private int cate_pro_price;
+	private String pro_option;
 	
 	
 	
+	
+	
+	public String getPro_option() {
+		return pro_option;
+	}
+	public void setPro_option(String pro_option) {
+		this.pro_option = pro_option;
+	}
 	public int getCate_pro_price() {
 		return cate_pro_price;
 	}
