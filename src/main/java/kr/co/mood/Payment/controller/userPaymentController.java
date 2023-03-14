@@ -1,8 +1,6 @@
 package kr.co.mood.Payment.controller;
 
 
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -51,7 +49,7 @@ public class userPaymentController {
 		
 		ProVO pvo = (ProVO)session.getAttribute("pro_number");
 		System.out.println(pvo);
-		int proid = pvo.getPro_number();
+		int pronum = pvo.getPro_number();
 		int price = pvo.getPro_price();
 		
 		
@@ -60,7 +58,7 @@ public class userPaymentController {
 		//정보 오더테이블에 담기
 		ordervo.setUserNo(userid);
 		//ordervo.setPro_number(proid);
-		int count =ordervo.getOrderCount();
+		int count = ordervo.getOrderCount();
 		count = 1;
 		model.addAttribute(count);
 		ordervo.setOrderCount(count);
@@ -82,18 +80,18 @@ public class userPaymentController {
 		
 		int orderId = ordervo.getOrderId();
 		
-		
 		userOrderProductVO orderProVo = new userOrderProductVO();
 		orderProVo.setOrderId(orderId);
-		orderProVo.setPro_number(proid);
+		orderProVo.setPro_number(pronum);
 		orderProVo.setPrice(price);
 		orderProVo.setCount(count);
+		orderProVo.setPro_name(pvo.getPro_name());
 		System.out.println(orderProVo);
 		
 		productPayService.insert(orderProVo, uvo, pvo);
 		
 		
-		model.addAttribute("list", productPayService.selectList(orderId));
+		model.addAttribute("orders", productPayService.selectList(orderId));
 		System.out.println(productPayService.selectList(orderId));
 		
 		
@@ -114,13 +112,6 @@ public class userPaymentController {
 	public String userPay() {
 
 		return "User/userPay";
-	}
-
-	// 寃곗젣 由ъ뒪�듃
-	@RequestMapping(value = "/userPaymentList.do")
-	public String userPaymentList() {
-
-		return "User/userPaymentList";
 	}
 
 	// 寃곗젣 �긽�꽭

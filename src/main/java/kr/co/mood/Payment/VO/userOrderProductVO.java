@@ -9,6 +9,10 @@ public class userOrderProductVO {
 	//moodjoin
 	private String id;
 	private String name;
+	private String phone;
+	private String email;
+	private String adr;
+	
 	
 	//product
 	private String pro_name;
@@ -25,6 +29,24 @@ public class userOrderProductVO {
 	private int price;
 	
 	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getAdr() {
+		return adr;
+	}
+	public void setAdr(String adr) {
+		this.adr = adr;
+	}
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
 	public int getUserno() {
 		return userno;
 	}

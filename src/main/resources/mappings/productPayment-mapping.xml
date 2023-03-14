@@ -13,9 +13,9 @@
 		SELECT m.name, m.phone, m.id, m.email, m.adr,
        p.pro_number, p.pro_img1, p.pro_name, p.pro_maindesc, p.pro_maindesctitle, p.pro_price,
        o.userno, o.price
-		FROM moodjoin m, moodorder o, product p, orderProduct op 
-		WHERE m.no=o.userNo AND o.orderId=op.orderId AND p.pro_number=op.pro_number 
-		ORDER BY op.orderId;
+	FROM moodjoin m, moodorder o, product p, orderProduct op 
+	WHERE m.no=o.userNo AND o.orderId=op.orderId AND p.pro_number=op.pro_number 
+	ORDER BY op.orderId;
 	</select> 
 	
 	

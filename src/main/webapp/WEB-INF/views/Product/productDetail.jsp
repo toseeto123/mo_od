@@ -194,6 +194,8 @@ pre{
 			 	<input type="hidden" id="userNo" name="userNo" value="${login_info.no}">
 				<input type="hidden" name="address" value="${login_info.adr}">
 				<input type="hidden" name="price" value="${list.pro_price}">
+				<input type="hidden" name="pro_number" value="${list.pro_number}">
+				<input type="hidden" name="pro_namer" value="${list.pro_name}">
 				<input type="hidden" name="status" value="준비중">
 			</form>
 
@@ -345,7 +347,6 @@ pre{
 			location.href = location.href;
 		}} else {
 			let orderCount = $(".quantity_input").val();
-	        $(".order_form").find("input[name='orders[0].orderCount']").val(orderCount);
 	        $(".order_form").submit();
 		}
 		
