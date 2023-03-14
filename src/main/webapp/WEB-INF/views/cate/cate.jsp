@@ -448,7 +448,7 @@ function deletecate(element) {
 </script>
 </head>
 <body>
-
+<form action="/products/cateorders" method="post">
    <section id="hero" style="height: 400px;">
       <div class="hero-container">
          <div id="heroCarousel" data-bs-interval="5000"
@@ -494,8 +494,7 @@ function deletecate(element) {
                <p style="text-align: center; margin-top: 30px;">
 
 
-                  <input type="hidden" value="${map.user_no}"> <input
-                     type="hidden" value="${map.pro_number}">
+                  <input type="hidden" value="${map.user_no}"> <input type="hidden" value="${map.pro_number}" name="pro_number">
                <h2 style="margin-left: 100px;">${map.pro_name}</h2>
                <p style="margin-left: 100px;">${map.pro_maindesctitle }</p>
                <span style="margin-left: 100px;">수 량 : </span>
@@ -513,7 +512,7 @@ function deletecate(element) {
                </span> <input type="hidden" value="${map.pro_price}" name="pro_price"
                   class="pro_price" />
 
-				<br><span style="margin-left: 100px;">옵 션 : </span>${map.pro_option }
+            <br><span style="margin-left: 100px;">옵 션 : </span>${map.pro_option }
                <p style="margin-left: 100px;">
                   가 격 : <span class="total"><fmt:formatNumber
                         value="${map.total}" type="currency" currencySymbol="₩" /></span>
@@ -522,6 +521,7 @@ function deletecate(element) {
                <hr>
 
             </div>
+            <input type="hidden" value="${map.total }" name="total">
          </c:forEach>
 
 
@@ -532,22 +532,20 @@ function deletecate(element) {
                <div class="price_sum_list">
                   <dl style="font-size: 20px;">
                      <dt>
-                        총 <strong class="amount_total">0</strong> 개의 상품 금액<span><i class="ph-equals" style="font-size: 20px; color: blue;"></i></span><strong class="value_total">0</strong> 원
+                        총 <strong class="amount_total">0</strong> 개의 상품 금액<span> : </span><strong class="value_total">0</strong> 원
                      </dt>
                      <dd>
                         
                      </dd>
                   </dl>
-                  <input type="button" value="바로결제하기" class="btn_buy" onclick="submitKakaoPayForm()">
+                  <input type="submit" value="바로결제하기" class="btn_buy" onclick="submitKakaoPayForm()">
 
                </div>
             </div>
          </div>
       </div>
    </div>
+   </form>
 </body>
-
-
-
 <jsp:include page="../../common/footer.jsp" />
 </html>

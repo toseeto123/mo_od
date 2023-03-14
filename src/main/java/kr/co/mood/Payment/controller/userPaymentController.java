@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.mood.Payment.VO.userOrderProductVO;
 import kr.co.mood.Payment.VO.userOrderVO;
@@ -43,21 +44,18 @@ public class userPaymentController {
 	
 	
 	@RequestMapping(value="/orders" , method = RequestMethod.POST)
-	public String processOrder(HttpSession session ,Model model) {
-		
+	public String processOrder(HttpSession session ,Model model, @RequestParam("pro_number") int pro_number , @RequestParam("pro_price") int pro_price) {
 		UserVO uvo = (UserVO)session.getAttribute("login_info");
 		System.out.println(uvo);
 		int userid = uvo.getNo();
 		
-		ProVO pvo = (ProVO)session.getAttribute("pro_number");
-		System.out.println(pvo);
-		int proid = pvo.getPro_number();
-		int price = pvo.getPro_price();
+		int proid = pro_number;
+		int price = pro_price;
 		
 		
 		userOrderVO ordervo = new userOrderVO();
 		System.out.println(ordervo);
-		//정보 오더테이블에 담기
+		//占쎌젟癰귨옙 占쎌궎占쎈쐭占쎈�믭옙�뵠�뇡遺용퓠 占쎈뼖疫뀐옙
 		ordervo.setUserNo(userid);
 		//ordervo.setPro_number(proid);
 		int count =ordervo.getOrderCount();
@@ -66,16 +64,16 @@ public class userPaymentController {
 		ordervo.setOrderCount(count);
 		System.out.println(ordervo);
 		
-		if (ordervo != null && uvo != null && pvo != null) {
-		    payService.insert(ordervo, uvo, pvo);
+		if (ordervo != null && uvo != null ) {
+		    payService.insert(ordervo, uvo, null);
 		    System.out.println("orderId:" + ordervo.getOrderId());
 		}else {
 			System.out.println("ordervo uvo pvo == null ");
 		}
 		System.out.println(payService);
 		
-		//리스트 대신 orderProduct에 return후 insert 해야함
-		// 상품 갯수는 일단 반영되면 추가하는걸로 해보는걸로.
+		//�뵳�딅뮞占쎈뱜 占쏙옙占쎈뻿 orderProduct占쎈퓠 return占쎌뜎 insert 占쎈퉸占쎈튊占쎈맙
+		// 占쎄맒占쎈�� 揶쏉옙占쎈땾占쎈뮉 占쎌뵬占쎈뼊 獄쏆꼷�겫占쎈┷筌롳옙 �빊遺쏙옙占쎈릭占쎈뮉椰꾨챶以� 占쎈퉸癰귣��뮉椰꾨챶以�.
 		//Map<String, String> params = new HashMap<String,String>();
 		//params.put("orderId", "orderId");
 		//System.out.println(params.get("orderId"));
@@ -90,12 +88,58 @@ public class userPaymentController {
 		orderProVo.setCount(count);
 		System.out.println(orderProVo);
 		
-		productPayService.insert(orderProVo, uvo, pvo);
+		productPayService.insert(orderProVo, uvo, null);
 		
 		//model.addAttribute("list", productPayService.selectOrderList(userid));
 		
 		
 		return "User/userPay";
+	}
+	
+	
+	@RequestMapping(value="/cateorders" , method = RequestMethod.POST)
+	public String cateProcessOrder(HttpSession session ,Model model, @RequestParam("pro_number") int pro_number , @RequestParam("pro_price") int pro_price) {
+		UserVO uvo = (UserVO)session.getAttribute("login_info");
+		
+		int userid = uvo.getNo();
+		
+		int proid = pro_number;
+		int price = pro_price;
+		
+		
+		userOrderVO ordervo = new userOrderVO();
+
+		ordervo.setUserNo(userid);
+
+		int count =ordervo.getOrderCount();
+		count = 1;
+		model.addAttribute(count);
+		ordervo.setOrderCount(count);
+
+		System.out.println("안찍히지?"+userid);
+		if (ordervo != null && uvo != null ) {
+		    payService.insert(ordervo, uvo, null);
+		    System.out.println("orderId:" + ordervo.getOrderId());
+		}else {
+			System.out.println("ordervo uvo pvo == null ");
+		}
+		System.out.println(payService);
+		
+		int orderId = ordervo.getOrderId();
+		
+		
+		userOrderProductVO orderProVo = new userOrderProductVO();
+		orderProVo.setOrderId(orderId);
+		orderProVo.setPro_number(proid);
+		orderProVo.setPrice(price);
+		orderProVo.setCount(count);
+		
+		productPayService.insert(orderProVo, uvo, null);
+		
+		model.addAttribute("list", cservice.selectCateList(ordervo.getOrderId()));
+		
+		
+		return "/User/userPay";
 	}
 	
 	
@@ -114,14 +158,14 @@ public class userPaymentController {
 		return "User/userPay";
 	}
 
-	// 寃곗젣 由ъ뒪�듃
+	// �뇦猿됲�ｏ옙�젷 占쎈뎨占쎈봾裕욃뜝�럥諭�
 	@RequestMapping(value = "/userPaymentList.do")
 	public String userPaymentList() {
 
 		return "User/userPaymentList";
 	}
 
-	// 寃곗젣 �긽�꽭
+	// �뇦猿됲�ｏ옙�젷 �뜝�럡留믣뜝�럡�돪
 	@RequestMapping(value = "/userPaymentDetail.do")
 	public String userPaymentDetail() {
 

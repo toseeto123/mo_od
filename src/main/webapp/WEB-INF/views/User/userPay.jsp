@@ -122,11 +122,11 @@ img {
                <div class="row">
                   <div class="col-md-6 mb-3">
                      <label for="cc-name"></label> 
-                     <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" style="width: 80px; height: 80px;">
+                     <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/" style="width: 80px; height: 80px;">
                       <small class="text-muted">상품명 : ${list.pro_name}</small>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="cc-number">가격 : ${list.pro_price}</label><br><small class="text-muted">상품디테일명 : ${list.pro_maindesctitle }</small>
+                     <label for="cc-number">가격 : ${list.pro_price}</label><br><small class="text-muted">상품디테일명 : </small>
                   </div>
                      <div class="invalid-feedback">여기다가 가격정보입력</div><br>
                      <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
@@ -139,11 +139,11 @@ img {
                <div class="row">
                   <div class="col-md-6 mb-3">
                      <label for="cc-name"></label> 
-                     <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" style="width: 80px; height: 80px;">
+                     <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/" style="width: 80px; height: 80px;">
                       <small class="text-muted">상품명 : ${list.pro_name}</small>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="cc-number">가격 : ${list.pro_price}</label><br><small class="text-muted">상품디테일명 : ${list.pro_maindesctitle }</small>
+                     <label for="cc-number">가격 : ${list.pro_price}</label><br><small class="text-muted">상품디테일명 : </small>
                   </div>
                      <div class="invalid-feedback">여기다가 가격정보입력</div><br>
                      <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
@@ -154,7 +154,11 @@ img {
             </form>
          </div>
       </div>
+
+
    </div>
+
+
    <script
       src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
