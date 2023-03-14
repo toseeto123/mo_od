@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.mood.Payment.VO.userOrderProductVO;
 import kr.co.mood.Payment.VO.userOrderVO;
@@ -43,21 +44,21 @@ public class userPaymentController {
 	
 	
 	@RequestMapping(value="/orders" , method = RequestMethod.POST)
-	public String processOrder(HttpSession session ,Model model) {
+	public String processOrder(HttpSession session ,Model model, @RequestParam("pro_number") int pro_number , @RequestParam("pro_price") int pro_price) {
 		
+		System.out.println(pro_number);
+		System.out.println(pro_price);
 		UserVO uvo = (UserVO)session.getAttribute("login_info");
 		System.out.println(uvo);
 		int userid = uvo.getNo();
 		
-		ProVO pvo = (ProVO)session.getAttribute("pro_number");
-		System.out.println(pvo);
-		int proid = pvo.getPro_number();
-		int price = pvo.getPro_price();
+		int proid = pro_number;
+		int price = pro_price;
 		
 		
 		userOrderVO ordervo = new userOrderVO();
 		System.out.println(ordervo);
-		//정보 오더테이블에 담기
+		//�젙蹂� �삤�뜑�뀒�씠釉붿뿉 �떞湲�
 		ordervo.setUserNo(userid);
 		//ordervo.setPro_number(proid);
 		int count =ordervo.getOrderCount();
@@ -66,16 +67,16 @@ public class userPaymentController {
 		ordervo.setOrderCount(count);
 		System.out.println(ordervo);
 		
-		if (ordervo != null && uvo != null && pvo != null) {
-		    payService.insert(ordervo, uvo, pvo);
+		if (ordervo != null && uvo != null ) {
+		    payService.insert(ordervo, uvo, null);
 		    System.out.println("orderId:" + ordervo.getOrderId());
 		}else {
 			System.out.println("ordervo uvo pvo == null ");
 		}
 		System.out.println(payService);
 		
-		//리스트 대신 orderProduct에 return후 insert 해야함
-		// 상품 갯수는 일단 반영되면 추가하는걸로 해보는걸로.
+		//由ъ뒪�듃 ���떊 orderProduct�뿉 return�썑 insert �빐�빞�븿
+		// �긽�뭹 媛��닔�뒗 �씪�떒 諛섏쁺�릺硫� 異붽��븯�뒗嫄몃줈 �빐蹂대뒗嫄몃줈.
 		//Map<String, String> params = new HashMap<String,String>();
 		//params.put("orderId", "orderId");
 		//System.out.println(params.get("orderId"));
@@ -90,7 +91,7 @@ public class userPaymentController {
 		orderProVo.setCount(count);
 		System.out.println(orderProVo);
 		
-		productPayService.insert(orderProVo, uvo, pvo);
+		productPayService.insert(orderProVo, uvo, null);
 		
 		//model.addAttribute("list", productPayService.selectOrderList(userid));
 		
@@ -114,14 +115,14 @@ public class userPaymentController {
 		return "User/userPay";
 	}
 
-	// 寃곗젣 由ъ뒪�듃
+	// 野껉퀣�젫 �뵳�딅뮞占쎈뱜
 	@RequestMapping(value = "/userPaymentList.do")
 	public String userPaymentList() {
 
 		return "User/userPaymentList";
 	}
 
-	// 寃곗젣 �긽�꽭
+	// 野껉퀣�젫 占쎄맒占쎄쉭
 	@RequestMapping(value = "/userPaymentDetail.do")
 	public String userPaymentDetail() {
 

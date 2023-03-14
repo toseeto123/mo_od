@@ -186,17 +186,20 @@ pre{
                    
 
                    
-
-                     
-                     
                      <input type="submit" value="장바구니" class="cateBtn" ><br><br>
-                     <input type="button" value="바로결제하기" class="btn_buy" onclick="submitKakaoPayForm()">
-                               
-                  </div>
-               </div>
                
 
-</form>      
+</form>      		
+<!-- ------------------------------------------------------------------------------------------ -->
+					<form action="/products/orders" method="post">
+					<input type="hidden" name="pro_price" value="${list.pro_price}">
+                   <input type="hidden" name="pro_number" value="${list.pro_number}">
+                     <input type="submit" value="바로결제하기" class="btn_buy">
+                     </form>
+                     
+                  </div>
+               </div>
+                     
          <form action="/login.do" class="login_form" method="get">         
          </form>
          
@@ -341,11 +344,11 @@ pre{
    
    
    <script>
-   
+   /*
    var userNo = $('#userNo').val();
    
    console.log(userNo);
-   /* 바로구매 버튼 */
+    바로구매 버튼 
    
    $(".btn_buy").on("click", function(){
       if(userNo=="") {
@@ -360,7 +363,7 @@ pre{
            $(".order_form").find("input[name='orders[0].orderCount']").val(orderCount);
            $(".order_form").submit();
       }
-      
+      */   
       
       
       /*

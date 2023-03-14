@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -53,76 +54,70 @@ img {
 </head>
 <jsp:include page="../../common/header.jsp" />
 <body class="bg-light">
+   <section id="hero" style="height: 400px;">
+      <div class="hero-container">
+         <div id="heroCarousel" data-bs-interval="5000"
+            class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+            <div class="carousel-inner" role="listbox">
+
+               <!-- Slide 1 -->
+               <div class="carousel-item active"
+                  style="background-image: url(resources/assets/img/slide/cate1.jpg); height: 500px;">
+                  <div class="carousel-container">
+                     <div class="carousel-content">
+                        <h2 class="animate__animated animate__fadeInDown">주문 | 결제</h2>
+                        <p class="animate__animated animate__fadeInUp">주문하시기 전에 회원정보와 결제금액을 반드시 확인하시기 바랍니다.</p>
+                        <div>
+                           <a href="#about"
+                              class="btn-get-started animate__animated animate__fadeInUp scrollto">Click</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+
+
    <div class="container">
-      <div class="py-5 text-center">
-         <h2>주문 | 결제</h2>
-         <p class="lead">주문하시기 전에 회원정보와 결제금액을 반드시 확인하시기 바랍니다.</p>
+      <div class="py-4 text-center">
       </div>
 
       <div class="row">
-         <div class="col-md-4 order-md-2 mb-4">
-            <h4 class="d-flex justify-content-between align-items-center mb-3">
-               <span class="text-muted">버킷</span> <span
-                  class="badge badge-secondary badge-pill">3</span>
-            </h4>
-            <ul class="list-group mb-3">
-               <li
-                  class="list-group-item d-flex justify-content-between lh-condensed">
-                  <div>
-                  버킷리스트 완성되면 foreach로 뿌려야 가능함..
-                     <h6 class="my-0"> 상품명 리스트로 뿌리기</h6>
-                     <small class="text-muted">${list.pro_name}</small>
-                  </div> <span class="text-muted">${list.pro_price}</span>
-               </li>
-               <li class="list-group-item d-flex justify-content-between"><span>Total
-                     $total_price</span> <strong></strong></li>
-            </ul>
-            <form action="/kakaoPay" method="post">
-            <!-- 히든으로 정보담아서 보내기? -->
-            <input type="hidden" name="pro_name" value="${list.pro_name }">
-            <input type="hidden" name="pro_price" value="${list.pro_price }">
-            <input type="hidden" name="info_name" value="${login_info.name}">
-            <input type="hidden" name="info_phone" value="${login_info.phone}">
-            <input type="hidden" name="info_id" value="${login_info.id}">
-            
-            
-            </form>
 
-         </div>
-         <div class="col-md-8 order-md-1">
-            <h4 class="mb-3">주문내역</h4>
+         <div class="col-md-12 order-md-1">
+            <h4 class="mb-3">${login_info.id} 님 주문정보</h4>
             <form class="needs-validation" novalidate>
                <div class="row">
                   <div class="col-md-6 mb-3">
-                     <label for="firstName">이름</label> 
-                     <strong>${login_info.name}</strong>
+                     <label for="firstName">성 함 : </label><strong> ${login_info.name}</strong>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="lastName">전화번호</label>
+                     <label for="lastName">전화번호 : </label>
                      <strong>${login_info.phone}</strong>
                   </div>
-               </div>
-
-               <div class="mb-3">
-                  <label for="username">사용자ID</label>
-                  <div class="input-group">
-                     <strong>${login_info.id}</strong>
-                  </div>
-               </div>
-
-               <div class="mb-3">
-                  <label for="email">이메일 <span class="text-muted"></span></label>
-                  <strong>${login_info.email}</strong>
-               </div>
-
-               <div class="mb-3">
-                  <label for="address">주소</label> 
+                  <div class="col-md-6 mb-3">
+                  <label for="address">주소 : </label> 
                   <strong>${login_info.adr}</strong>
+               </div>
+                  <div class="col-md-6 mb-3">
+                     <label for="lastName">E-mail : </label>
+                     <strong>${login_info.email}</strong>
+                  </div>
+                  
+               </div>
+               
+               <div class="mb-3">
+                  <label for="address">주문번호 : </label> 
+                  <strong>#order4398450</strong>
                </div>
 
                <hr class="mb-4">
 
-               <h4 class="mb-3">상품정보</h4>
+               <h4 class="mb-3">단품 상품정보</h4>
 
                <div class="row">
                   <div class="col-md-6 mb-3">
@@ -136,14 +131,31 @@ img {
                      <div class="invalid-feedback">여기다가 가격정보입력</div><br>
                      <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
                   <hr class="mb-4">
-                  <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">결제하기</button>
+                  
+                  <hr class="mb-4">
+
+               <h4 class="mb-3">장바구니 상품정보</h4>
+
+               <div class="row">
+                  <div class="col-md-6 mb-3">
+                     <label for="cc-name"></label> 
+                     <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" style="width: 80px; height: 80px;">
+                      <small class="text-muted">상품명 : ${list.pro_name}</small>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                     <label for="cc-number">가격 : ${list.pro_price}</label><br><small class="text-muted">상품디테일명 : ${list.pro_maindesctitle }</small>
+                  </div>
+                     <div class="invalid-feedback">여기다가 가격정보입력</div><br>
+                     <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
+                  <hr class="mb-4">
+                  <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">420,000원 결제하기</button>
                   </div>
                </div>
             </form>
          </div>
       </div>
 
-      <jsp:include page="/WEB-INF/common/footer.jsp" />
+
    </div>
 
 
@@ -206,4 +218,5 @@ img {
    }); 
 </script>
 </body>
+      <jsp:include page="../../common/footer.jsp" />
 </html>
