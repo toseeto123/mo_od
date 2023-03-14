@@ -494,8 +494,7 @@ function deletecate(element) {
                <p style="text-align: center; margin-top: 30px;">
 
 
-                  <input type="hidden" value="${map.user_no}"> <input
-                     type="hidden" value="${map.pro_number}">
+                  <input type="hidden" value="${map.user_no}"> <input type="hidden" value="${map.pro_number}" name="pro_number">
                <h2 style="margin-left: 100px;">${map.pro_name}</h2>
                <p style="margin-left: 100px;">${map.pro_maindesctitle }</p>
                <span style="margin-left: 100px;">수 량 : </span>
@@ -522,6 +521,7 @@ function deletecate(element) {
                <hr>
 
             </div>
+            <input type="hidden" value="${map.total }" name="total">
          </c:forEach>
 
 
@@ -538,13 +538,16 @@ function deletecate(element) {
                         
                      </dd>
                   </dl>
-                  <input type="button" value="바로결제하기" class="btn_buy" onclick="submitKakaoPayForm()">
-
+                  <form action="/products/cateorders" method="post">
+                  <input type="submit" value="바로결제하기" class="btn_buy" onclick="submitKakaoPayForm()">
+                  
+				</form>
                </div>
             </div>
          </div>
       </div>
    </div>
+   
 </body>
 <jsp:include page="../../common/footer.jsp" />
 </html>

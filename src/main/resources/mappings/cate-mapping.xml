@@ -3,16 +3,19 @@
 
 <mapper namespace="CateDAO">
 
+
    <insert id="insert">
       insert into cate(pro_number, user_no,cate_pro_price,total,pro_option)
       values(#{pro_number},#{user_no},#{cate_pro_price},#{total},#{pro_option}) ON DUPLICATE KEY UPDATE amount = amount+1, total = total + cate_pro_price
    </insert>
 
 
+
    <select id="selectlist" resultType="kr.co.mood.cate.vo.CateVO">
 
+
       select cate_id, p.pro_number,
-      c.user_no,pro_name ,pro_price,pro_img1,pro_maindesctitle,amount,total,pro_option
+      c.user_no,pro_name ,pro_price,pro_img1,pro_maindesctitle,amount,total,pro_option,cate_pro_price,total
       from moodjoin m, cate c, product p
       where m.no=c.user_no and c.pro_number = p.pro_number and
       c.user_no=#{userid} order by cate_id
