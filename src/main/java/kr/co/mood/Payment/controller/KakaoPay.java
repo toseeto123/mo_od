@@ -40,7 +40,7 @@ public class KakaoPay {
 	 
 	        RestTemplate restTemplate = new RestTemplate();
 	 
-	        // 占쎄퐣甕곌쑬以� 占쎌뒄筌ｏ옙占쎈막 Header
+	        // �뜝�럡�맋�뵓怨뚯뫊餓ο옙 �뜝�럩�뭵嶺뚳퐦�삕�뜝�럥留� Header
 	        HttpHeaders headers = new HttpHeaders();
 	        headers.add("Authorization", "KakaoAK " + "1310fb3a979458e032a8aecca6d5e96c");
 	        headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
@@ -49,7 +49,7 @@ public class KakaoPay {
 	        
 	        String pro_price1 = Integer.toString(pro_price);
 	        
-	        // 占쎄퐣甕곌쑬以� 占쎌뒄筌ｏ옙占쎈막 Body
+	        // �뜝�럡�맋�뵓怨뚯뫊餓ο옙 �뜝�럩�뭵嶺뚳퐦�삕�뜝�럥留� Body
 	        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 	        params.add("cid", "TC0ONETIME");
 	        params.add("partner_order_id", "1001");
@@ -81,26 +81,29 @@ public class KakaoPay {
 	        
 	    }
 	    
-	    public KakaoPayApprovalVO kakaoPayInfo(String pg_token) {
+	    public KakaoPayApprovalVO kakaoPayInfo(String pg_token , @RequestParam("pro_name") String pro_name,@RequestParam("pro_price") int pro_price) {
 	 
 	    	System.out.println("KakaoPayInfoVO............................................");
 	    	System.out.println("-----------------------------");
 	        
 	        RestTemplate restTemplate = new RestTemplate();
-	 
-	        // 占쎄퐣甕곌쑬以� 占쎌뒄筌ｏ옙占쎈막 Header
+	        String pro_price1 = Integer.toString(pro_price);
+	        // �뜝�럡�맋�뵓怨뚯뫊餓ο옙 �뜝�럩�뭵嶺뚳퐦�삕�뜝�럥留� Header
 	        HttpHeaders headers = new HttpHeaders();
 	        headers.add("Authorization", "KakaoAK " + "1310fb3a979458e032a8aecca6d5e96c");
 	        headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
 	        headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
-	 
-	        // 占쎄퐣甕곌쑬以� 占쎌뒄筌ｏ옙占쎈막 Body
+	        
+	        // �뜝�럡�맋�뵓怨뚯뫊餓ο옙 �뜝�럩�뭵嶺뚳퐦�삕�뜝�럥留� Body
 	        MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
 	        params.add("cid", "TC0ONETIME");
 	        params.add("tid", kakaoPayReadyVO.getTid());
 	        params.add("partner_order_id", "1001");
 	        params.add("partner_user_id", "gorany");
+	        params.add("item_name", pro_name);
 	        params.add("pg_token", pg_token);
+	        
+	        params.add("total_amount", pro_price1);
 	        params.add("total_amount", "2100");
 	        
 	        HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);

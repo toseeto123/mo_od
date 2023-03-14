@@ -29,15 +29,17 @@ public class SampleController {
 	   }
 
 	@RequestMapping(value = "/User/kakaoPaySuccess" )
-	public void paySuccess(@RequestParam String pg_token, Model model) {
+	public void paySuccess(@RequestParam String pg_token, Model model ,@RequestParam("pro_name") String pro_name,
+				  @RequestParam("pro_price") int pro_price) {
 		System.out.println("kakaopay success......!!!!!!!! get!!!!");
 		System.out.println("kakaopay success pg_token" + pg_token);
-		model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token));
+		model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token, pro_name, pro_price));
 	}
 	@RequestMapping(value = "/User/kakaoPayCancel" )
-	public void payCancel(@RequestParam String pg_token, Model model) {
+	public void payCancel(@RequestParam String pg_token, Model model, @RequestParam("pro_name") String pro_name,
+			  @RequestParam("pro_price") int pro_price) {
 		System.out.println("kakaopay Cancel......!!!!!!!! get!!!!");
 		System.out.println("kakaopay Cancel pg_token" + pg_token);
-		model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token));
+		model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token, pro_name, pro_price));
 	}
 }
