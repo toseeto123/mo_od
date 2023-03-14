@@ -85,7 +85,7 @@ img {
             <input type="hidden" name="info_phone" value="${login_info.phone}">
             <input type="hidden" name="info_id" value="${login_info.id}">
             
-            <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">결제하기</button>
+            
             </form>
 
          </div>
@@ -133,8 +133,10 @@ img {
                   <div class="col-md-6 mb-3">
                      <label for="cc-number">가격 : ${list.pro_price}</label><br><small class="text-muted">상품디테일명 : ${list.pro_maindesctitle }</small>
                   </div>
-                     <div class="invalid-feedback">여기다가 가격정보입력</div>
+                     <div class="invalid-feedback">여기다가 가격정보입력</div><br>
                      <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
+                  <hr class="mb-4">
+                  <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">결제하기</button>
                   </div>
                </div>
             </form>

@@ -11,6 +11,5 @@ public interface userPaymentService {
 	
 	public void insert(userOrderVO ordervo ,UserVO uvo , ProVO pvo);
 	
-	public List<userOrderVO> selectOrderList(int userNo);
 
 }
