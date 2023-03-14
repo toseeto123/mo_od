@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class SampleController {
 
+
    
    @Autowired
    private KakaoPay kakaopay;
@@ -43,3 +44,4 @@ public class SampleController {
       model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token));
    }
 }
+
