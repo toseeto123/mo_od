@@ -20,6 +20,7 @@ public class userOrderVO {
     private int userNo;
     private String status;
     
+    private int orderId;
     private Date createdDate;
     private Date updatedDate;
     
@@ -28,7 +29,14 @@ public class userOrderVO {
    
     
     
-    public String getStatus() {
+    
+    public int getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
+	public String getStatus() {
 		return status;
 	}
 	public void setStatus(String status) {

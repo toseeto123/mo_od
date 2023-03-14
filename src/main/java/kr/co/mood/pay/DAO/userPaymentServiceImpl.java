@@ -15,14 +15,9 @@ public class userPaymentServiceImpl implements userPaymentService {
 	@Autowired
 	userPaymentDAO userPaydao;
 	
-	
 	@Override
 	public void insert(userOrderVO ordervo,UserVO uvo, ProVO pvo) {
 		userPaydao.insert(ordervo, uvo, pvo);
-	}
-	@Override
-	public List<userOrderVO> selectOrderList(int userNo) {
-		return userPaydao.selectOrderList(userNo);
 	}
 
 }
