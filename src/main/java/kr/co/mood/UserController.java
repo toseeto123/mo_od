@@ -33,14 +33,19 @@ public class UserController {
 	private SqlSessionTemplate mybatis;
 	private UserVO vo;
 	private ModelAndView mav;
+
 	
 	@Autowired
-
 	private JavaMailSender mailSender;
+
+	@Autowired
 	private CateService cateService;
+
+	
+
 	
 	
-	  //네이버 로그인
+	  //占쎄퐬占쎌뵠甕곤옙 嚥≪뮄�젃占쎌뵥
 	@RequestMapping(value="/naverSave", method=RequestMethod.POST)
 	
     public @ResponseBody String naverSave(UserVO uservo,  HttpSession session ) throws Exception {
@@ -73,7 +78,7 @@ public class UserController {
         return "/";
         
      }else if(result == 0) {
-    	System.out.println("가입바로진행~");
+    	System.out.println("揶쏉옙占쎌뿯獄쏅뗀以덌쭪袁る뻬~");
         userservice.insertnaver(naver);
         session.setAttribute("login_info", naver);
         return "/";
@@ -92,7 +97,7 @@ public class UserController {
    }
 	
 	
-@RequestMapping(value = "/join.do" , method = RequestMethod.GET)
+	@RequestMapping(value = "/join.do" , method = RequestMethod.GET)
    public String join() {
       return "User/join";
    }
@@ -114,22 +119,14 @@ public class UserController {
 	  
 	  if(vo1 == null) {
 		  session.setAttribute("login_info", null);
-		  System.out.println("濡쒓렇�씤 �떎�뙣");
-		  
 		  rttr.addFlashAttribute("msg", false);
 		  return "redirect:login.do";
 	  } else {
-		  if(vo1.getId().equals("admin")) {
-			  System.out.println("admin 濡쒓렇�씤 �꽦怨�");
-			  	session.setAttribute("login_info", vo);
-				return "redirect:admin/chart.do";
-			} else {
-				System.out.println("濡쒓렇�씤 �꽦怨� + " + vo1);
 				session.setAttribute("login_info", vo1);
 				return "redirect:index.jsp";
 			}
 	  }	
-   }
+   
  	@RequestMapping("/logout.do")
  		public String logout(UserVO vo,HttpSession session) {
  			session.setAttribute("login_info", vo);
@@ -139,7 +136,11 @@ public class UserController {
 
  	@RequestMapping(value = "/mypage.do" , method = RequestMethod.GET)
     public String mypage(UserVO vo,HttpSession session , Model model) {
-		UserVO uvo = (UserVO)session.getAttribute("login_info");
+		UserVO uvo = (UserVO) session.getAttribute("login_info");
+		System.out.println(uvo);
+		int userid = uvo.getNo();
+		System.out.println(userid);
+		model.addAttribute("map", cateService.selectCateList(userid));
        return "User/mypage";
        }
  	
@@ -183,7 +184,7 @@ public class UserController {
  	   
  	@RequestMapping(value = "/updatemyinfo.do", method = RequestMethod.POST)
  	public String update(UserVO vo, HttpSession session) throws Exception {
- 		System.out.println("�빞誘�");
+ 		System.out.println("�뜝�럥�뒍亦껋꼻�삕");
  		
  		userservice.updateUser(vo);
  		session.invalidate();
@@ -194,24 +195,24 @@ public class UserController {
     @ResponseBody
     public String mailCheckGET(String email) throws Exception{
        
-       /* 뷰(View)로부터 넘어온 데이터 확인 */
+       /* �뀎占�(View)嚥≪뮆占쏙옙苑� 占쎄퐜占쎈선占쎌궔 占쎈쑓占쎌뵠占쎄숲 占쎌넇占쎌뵥 */
 
              
-       /* 인증번호(난수) 생성 */
+       /* 占쎌뵥筌앹빖苡뀐옙�깈(占쎄텆占쎈땾) 占쎄문占쎄쉐 */
        Random random = new Random();
        int checkNum = random.nextInt(888888) + 111111;
 
        
-       /* 이메일 보내기 */
+       /* 占쎌뵠筌롫뗄�뵬 癰귣�沅→묾占� */
        String setFrom = "cwj9799@naver.com";
        String toMail = email;
-       String title = "회원가입 인증 이메일 입니다.";
+       String title = "占쎌돳占쎌뜚揶쏉옙占쎌뿯 占쎌뵥筌앾옙 占쎌뵠筌롫뗄�뵬 占쎌뿯占쎈빍占쎈뼄.";
        String content = 
-             "홈페이지를 방문해주셔서 감사합니다." +
+             "占쎌냳占쎈읂占쎌뵠筌욑옙�몴占� 獄쎻뫖揆占쎈퉸雅뚯눘�쏉옙苑� 揶쏅Ŋ沅쀯옙鍮�占쎈빍占쎈뼄." +
              "<br><br>" + 
-             "인증 번호는 " + checkNum + "입니다." + 
+             "占쎌뵥筌앾옙 甕곕뜇�깈占쎈뮉 " + checkNum + "占쎌뿯占쎈빍占쎈뼄." + 
              "<br>" + 
-             "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";      
+             "占쎈퉸占쎈뼣 占쎌뵥筌앹빖苡뀐옙�깈�몴占� 占쎌뵥筌앹빖苡뀐옙�깈 占쎌넇占쎌뵥占쏙옙占쎈퓠 疫꿸퀣�뿯占쎈릭占쎈연 雅뚯눘苑�占쎌뒄.";      
        
        try {
           

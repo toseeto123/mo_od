@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
@@ -141,25 +142,25 @@ pre{
                         <li><strong>옵 션</strong>:<br>
                         <c:if test="${empty list.pro_option1}">
                         <label for="chk_option" ><span class="chk_option">선택안함</span></label>
-                        <input type="radio" value="daaaa" id="chk_option" name="radioOption" checked="checked"><br>
+                        <input type="radio" value="선택안함" id="chk_option" name="radioOption" checked="checked"><br>
                         </c:if>
                         
                         
                         <c:if test="${!empty list.pro_option1}">
-                        <label for="chk_option 1" ><span class="chk_option">${list.pro_option1}</span></label>
-                        <input type="radio" value="daaaa" id="chk_option 1" name="radioOption" checked="checked"><br>
+                        <label for="chk_option 1"><span class="chk_option">${list.pro_option1}</span></label>
+                        <input type="radio" value="${list.pro_option1}" id="chk_option 1" name="radioOption" checked="checked"><br>
                         </c:if>
                         
                         
                          <c:if test="${!empty list.pro_option2}">
-                        <label for="chk_option 2" ><span class="chk_option">${list.pro_option2}</span></label>
-                        <input type="radio" value="daaaa" id="chk_option 2" name="radioOption"><br>
+                        <label for="chk_option 2"><span class="chk_option">${list.pro_option2}</span></label>
+                        <input type="radio" value="${list.pro_option2}" id="chk_option 2" name="radioOption"><br>
                         </c:if>
                         
                         </c:if>
                         <c:if test="${!empty list.pro_option3}">
-                        <label for="chk_option 3" ><span class="chk_option">${list.pro_option3}</span></label>
-                        <input type="radio" value="daaaa" id="chk_option 3" name="radioOption"><br>
+                        <label for="chk_option 3"><span class="chk_option">${list.pro_option3}</span></label>
+                        <input type="radio" value="${list.pro_option3}" id="chk_option 3" name="radioOption"><br>
                         </c:if>
 
                         
@@ -172,23 +173,35 @@ pre{
                   <div class="portfolio-description">
                      <h2>${list.pro_maindesctitle}</h2>
                      <pre>${list.pro_maindesc }</pre>
-                     <input type="hidden" name="pro_price" value="${list.pro_price}">
+                    <input type="hidden" name="pro_price" value="${list.pro_price}">
                 	<input type="hidden" name="pro_number" value="${list.pro_number}">
+                	
+                	
+
+                	
+
                      
                      
-                     <input type="submit" value="장바구니" class="cateBtn"><br><br>
+                     <input type="submit" value="장바구니" class="cateBtn" ><br><br>
                      <input type="button" value="바로결제하기" class="btn_buy" onclick="submitKakaoPayForm()">
+					                
                   </div>
                </div>
                
-</form>      
 
-   <!-- 주문 form toseet123 생성 -->
-         <form action="/orders/${login_info.no}/${list.pro_number}"class="order_form">
-            <input type="hidden" name="pro_name" value="${list.pro_name}">
-            <input type="hidden" name="pro_number" value="${list.pro_number}">
-            <input type="hidden" name="orders[0].orderCount" value="">
-         </form>
+</form>		
+			<form action="/login.do" class="login_form" method="get">			
+			</form>
+			
+			
+	<!-- 주문 form toseet123 생성 -->
+			<form action="/products/orders" class="order_form" method="post">
+			 	<input type="hidden" id="userNo" name="userNo" value="${login_info.no}">
+				<input type="hidden" name="address" value="${login_info.adr}">
+				<input type="hidden" name="price" value="${list.pro_price}">
+				<input type="hidden" name="status" value="준비중">
+			</form>
+
 <style>
 .chk_option{
    cursor: pointer;
@@ -321,12 +334,35 @@ pre{
    
    
    <script>
+   
+   var userNo = $('#userNo').val();
+   
+   console.log(userNo);
    /* 바로구매 버튼 */
+   
    $(".btn_buy").on("click", function(){
+	   if(userNo=="") {
+	   var login_chk = confirm('로그인이 필요한 서비스입니다. 로그인페이지로 이동하시겠습니까?');
+	  	
+		if(login_chk) {
+			$(".login_form").submit();
+		} else {
+			location.href = location.href;
+		}} else {
+			let orderCount = $(".quantity_input").val();
+	        $(".order_form").find("input[name='orders[0].orderCount']").val(orderCount);
+	        $(".order_form").submit();
+		}
+		
+		
+		
+	   /*
       let orderCount = $(".quantity_input").val();
       $(".order_form").find("input[name='orders[0].orderCount']").val(orderCount);
       $(".order_form").submit();
+		*/
    });
+
    </script>
    
 </body>

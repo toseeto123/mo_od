@@ -47,7 +47,7 @@ public class CateController {
 		return mav;
 	}
 	@RequestMapping(value="/cateinsert.do" , method = RequestMethod.POST)
-	public String insertcate(HttpSession session, Model model, @RequestParam("pro_price") int pro_price) {
+	public String insertcate(HttpSession session, Model model, @RequestParam("pro_price") int pro_price,@RequestParam("radioOption") String pro_option) {
 	    UserVO uvo = (UserVO) session.getAttribute("login_info");
 	    int userid = uvo.getNo();
 	    ProVO pvo = (ProVO) session.getAttribute("pro_number");
@@ -60,6 +60,7 @@ public class CateController {
 	    cvo.setPro_number(proid);
 	    cvo.setCate_pro_price(pro_price);
 	    cvo.setTotal(pro_price);
+	    cvo.setPro_option(pro_option);
 	    cservice.addcate(cvo, uvo, pvo);
 	    int cate_id = cvo.getCate_id();
 

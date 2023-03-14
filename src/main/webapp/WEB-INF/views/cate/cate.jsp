@@ -173,6 +173,19 @@ li .btnspan {
 .plus_btn:hover, .minus_btn:hover, .delete_btn:hover {
    background-color: #FFA500;
 }
+
+
+.cateBtn , .btn_buy{
+   background-color: #c8936ed4;
+   width: 416px;
+   height: 50px;
+   border : none;
+   border-radius: 30px;
+   box-shadow: 1px 1px 1px 1px lightgray;
+
+   
+   
+}
 </style>
 <script type="text/javascript">
 
@@ -394,16 +407,27 @@ function deletecate(element) {
    xhr.onreadystatechange = function() {
       if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
          const categoryItem = element.closest('.deleteplz');
+         
          const deleteprice = parseFloat(itemWrapper.parentNode.querySelector('.value_total').innerText.replace(/[\₩,]/g, ''));
          const totalSpans = parseFloat(itemWrapper.querySelector('.total').innerText.replace(/[\₩,]/g, ''));
+         
          const realtotal = deleteprice - totalSpans;
-         const realamount = itemWrapper.parentNode.querySelector('.amount_total')
+         const realamount = itemWrapper.parentNode.querySelector('.amount_total').innerText;
+         
+         const amountDiv = itemWrapper.querySelector('.amount');
+         const amount = +amountDiv.innerText;
+         const amountminus = realamount - amount;
          console.log(realamount)
+         console.log(amountminus)
+         
+         
       if (categoryItem) {
          categoryItem.remove()
          const realrealtotal = document.querySelector('.value_total');
          realrealtotal.innerText = parseCurrency(realtotal);
          
+         const realrealamount = document.querySelector('.amount_total');
+         realrealamount.innerText = amountminus;
       }
       }
    };
@@ -452,7 +476,6 @@ function deletecate(element) {
          </div>
       </div>
    </section>
-   
    <div class="content_box">
       <div class="order_wrap" style="position: relative;">
          <div class="order_tit">
@@ -477,6 +500,8 @@ function deletecate(element) {
                <p style="margin-left: 100px;">${map.pro_maindesctitle }</p>
                <span style="margin-left: 100px;">수 량 : </span>
                <div class="amount" style="display: inline;">${map.amount}</div>
+               
+                
                <input type="hidden" value="${map.cate_id}" name="cateId"
                   class="cate_id" /> <span class="btnspan">
                   <button class="plus_btn" onclick='flush("plus", this)'>+</button>
@@ -484,10 +509,11 @@ function deletecate(element) {
                   <button class="delete_btn" onclick='deletecate(this)'>
                      <i class="ph ph-trash"></i>
                   </button>
+                  
                </span> <input type="hidden" value="${map.pro_price}" name="pro_price"
                   class="pro_price" />
 
-
+				<br><span style="margin-left: 100px;">옵 션 : </span>${map.pro_option }
                <p style="margin-left: 100px;">
                   가 격 : <span class="total"><fmt:formatNumber
                         value="${map.total}" type="currency" currencySymbol="₩" /></span>
@@ -506,14 +532,13 @@ function deletecate(element) {
                <div class="price_sum_list">
                   <dl style="font-size: 20px;">
                      <dt>
-                        총 <strong class="amount_total">0</strong> 개의 상품 금액
+                        총 <strong class="amount_total">0</strong> 개의 상품 금액<span><i class="ph-equals" style="font-size: 20px; color: blue;"></i></span><strong class="value_total">0</strong> 원
                      </dt>
                      <dd>
-                        <span><i class="ph-equals"
-                           style="font-size: 20px; color: blue;"></i></span> 합계 <strong
-                           class="value_total">0</strong> 원
+                        
                      </dd>
                   </dl>
+                  <input type="button" value="바로결제하기" class="btn_buy" onclick="submitKakaoPayForm()">
 
                </div>
             </div>
@@ -521,5 +546,8 @@ function deletecate(element) {
       </div>
    </div>
 </body>
+
+
+
 <jsp:include page="../../common/footer.jsp" />
 </html>
