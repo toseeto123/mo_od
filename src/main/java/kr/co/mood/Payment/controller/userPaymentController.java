@@ -92,7 +92,9 @@ public class userPaymentController {
 		
 		productPayService.insert(orderProVo, uvo, pvo);
 		
-		//model.addAttribute("list", productPayService.selectOrderList(userid));
+		
+		model.addAttribute("list", productPayService.selectList(orderId));
+		System.out.println(productPayService.selectList(orderId));
 		
 		
 		return "User/userPay";

@@ -71,16 +71,17 @@ img {
                   <div>
                   버킷리스트 완성되면 foreach로 뿌려야 가능함..
                      <h6 class="my-0"> 상품명 리스트로 뿌리기</h6>
-                     <small class="text-muted">${list.pro_name}</small>
-                  </div> <span class="text-muted">${list.pro_price}</span>
+                     < <small class="text-muted">${list.pro_name}</small> 
+                  </div> <span class="text-muted">${Integer.parseInt(list.pro_price)}</span>
                </li>
                <li class="list-group-item d-flex justify-content-between"><span>Total
                      $total_price</span> <strong></strong></li>
             </ul>
+            
             <form action="/kakaoPay" method="post">
             <!-- 히든으로 정보담아서 보내기? -->
-            <input type="hidden" name="pro_name" value="${list.pro_name }">
-            <input type="hidden" name="pro_price" value="${list.pro_price }">
+            <input type="hidden" name="pro_name" value="${list.pro_name}">
+            <input type="hidden" name="pro_price" value="${list.pro_price}">
             <input type="hidden" name="info_name" value="${login_info.name}">
             <input type="hidden" name="info_phone" value="${login_info.phone}">
             <input type="hidden" name="info_id" value="${login_info.id}">
@@ -143,7 +144,7 @@ img {
          </div>
       </div>
 
-      <jsp:include page="/WEB-INF/common/footer.jsp" />
+      
    </div>
 
 
@@ -206,4 +207,5 @@ img {
    }); 
 </script>
 </body>
+<jsp:include page="/WEB-INF/common/footer.jsp" />
 </html>
