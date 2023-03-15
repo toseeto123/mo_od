@@ -199,18 +199,29 @@ pre{
                      
                   </div>
                </div>
+
+               
+</form>		
+			<form action="/login.do" class="login_form" method="get">			
+			</form>
+			
+			
+	<!-- 주문 form toseet123 생성 -->
+			<form action="/products/orders" class="order_form" method="post">
+			 	<input type="hidden" id="userNo" name="userNo" value="${login_info.no}">
+				<input type="hidden" name="address" value="${login_info.adr}">
+				<input type="hidden" name="price" value="${list.pro_price}">
+				<input type="hidden" name="pro_number" value="${list.pro_number}">
+				<input type="hidden" name="pro_namer" value="${list.pro_name}">
+				<input type="hidden" name="status" value="준비중">
+			</form>
+
                      
          <form action="/login.do" class="login_form" method="get">         
          </form>
          
          
-   <!-- 주문 form toseet123 생성 -->
-         <form action="/products/orders" class="order_form" method="post">
-             <input type="hidden" id="userNo" name="userNo" value="${login_info.no}">
-            <input type="hidden" name="address" value="${login_info.adr}">
-            <input type="hidden" name="price" value="${list.pro_price}">
-            <input type="hidden" name="status" value="준비중">
-         </form>
+=
 
 <style>
 .chk_option{
@@ -351,6 +362,10 @@ pre{
     바로구매 버튼 
    
    $(".btn_buy").on("click", function(){
+
+		
+	   /*
+
       if(userNo=="") {
       var login_chk = confirm('로그인이 필요한 서비스입니다. 로그인페이지로 이동하시겠습니까?');
         
@@ -367,6 +382,7 @@ pre{
       
       
       /*
+
       let orderCount = $(".quantity_input").val();
       $(".order_form").find("input[name='orders[0].orderCount']").val(orderCount);
       $(".order_form").submit();

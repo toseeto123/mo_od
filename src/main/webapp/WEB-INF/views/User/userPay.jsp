@@ -152,11 +152,14 @@ img {
                      <div class="invalid-feedback">여기다가 가격정보입력</div><br>
                      <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
                   <hr class="mb-4">
-                  </c:forEach>
-                  <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">420,000원 결제하기</button>
+                 
+                  
                   </div>
-
+ </c:forEach>
+ <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">420,000원 결제하기</button>
                </div>
+               
+               
             </form>
          </div>
       </div>
@@ -167,8 +170,7 @@ img {
   
 
 
-   <script
-      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
       crossorigin="anonymous"></script>
    <script>
@@ -225,6 +227,6 @@ img {
       });
    }); 
 </script>
-</body>
+
+
       <jsp:include page="../../common/footer.jsp" />
-</html>

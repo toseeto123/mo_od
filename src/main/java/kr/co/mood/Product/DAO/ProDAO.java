@@ -6,8 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.co.mood.Product.VO.ProPaginVO;
 import kr.co.mood.Product.VO.ProVO;
+import kr.co.mood.module.ModuleVO;
 
 @Repository
 public class ProDAO {
@@ -92,7 +92,7 @@ public class ProDAO {
 	
 	
 	
-	public List<ProVO> selectProListPaging(ProPaginVO vo){
+	public List<ProVO> selectProListPaging(ModuleVO vo){
 		
 		return session.selectList("ProDAO.selectProListPaging", vo);
 	}

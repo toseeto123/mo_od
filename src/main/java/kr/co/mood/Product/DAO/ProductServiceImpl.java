@@ -6,8 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kr.co.mood.Product.VO.ProPaginVO;
 import kr.co.mood.Product.VO.ProVO;
+import kr.co.mood.module.ModuleVO;
 
 @Service
 public class ProductServiceImpl implements ProductService{
@@ -122,7 +122,7 @@ public class ProductServiceImpl implements ProductService{
 	
 	
 	@Override
-	public List<ProVO> selectProListPaging(ProPaginVO vo) {
+	public List<ProVO> selectProListPaging(ModuleVO vo) {
 		return prodao.selectProListPaging(vo);
 	}
 

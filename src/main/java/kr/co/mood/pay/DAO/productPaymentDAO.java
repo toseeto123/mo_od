@@ -1,5 +1,7 @@
 package kr.co.mood.pay.DAO;
 
+import java.util.List;
+
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -18,4 +20,14 @@ public class productPaymentDAO {
 	public void insert(userOrderProductVO orderProVo, UserVO uvo , ProVO pvo) {
 		sql.insert("productPaymentDAO.insert",orderProVo);
 	}
+
+
+	public List<userOrderProductVO>selectList(int orderId) {
+		return sql.selectList("productPaymentDAO.selectList", orderId);
+		
+	}
+	
+//	public List<userOrderProductVO> selectOrderList(int orderId) {
+//		sql.selectList("productPaymetnDAO.selectOrderList", orderId);
+//	}
 }

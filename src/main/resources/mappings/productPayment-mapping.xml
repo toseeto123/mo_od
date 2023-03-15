@@ -9,10 +9,13 @@
     VALUES (#{pro_number}, #{orderId}, #{count}, #{price})
 	</insert>
 
-	<select id="selectOrderList" resultType="kr.co.mood.Payment.VO.userOrderVO">
-		 select op.orderId, o.userNo, p.pro_name,p.pro_price,op.count 
-		 from moodjoin m, moodorder o, product p, orderProduct op 
-		 where m.no=o.userNo and o.userNo=2 order by op.orderId;
+	<select id="selectList" resultType="kr.co.mood.Payment.VO.userOrderProductVO">
+		SELECT m.name, m.phone, m.id, m.email, m.adr,
+       p.pro_number, p.pro_img1, p.pro_name, p.pro_maindesc, p.pro_maindesctitle, p.pro_price,
+       o.userno, o.price
+	FROM moodjoin m, moodorder o, product p, orderProduct op 
+	WHERE m.no=o.userNo AND o.orderId=op.orderId AND p.pro_number=op.pro_number 
+	ORDER BY op.orderId;
 	</select> 
 	
 	
