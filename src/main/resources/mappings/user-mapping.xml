@@ -18,15 +18,21 @@
       <result property="day" column="DAY" />
    </resultMap> -->
    
-   <!-- 추가된 부분 -->
-	<select id="selectAll" parameterType="kr.co.mood.Product.VO.ProPaginVO" resultType="kr.co.mood.user.dao.UserVO">
+<select id="selectAll" parameterType="kr.co.mood.module.ModuleVO" resultType="kr.co.mood.user.dao.UserVO">
    <![CDATA[
       select * from moodjoin where id != 'admin'
       ]]>
-      <if test="startNo != null">
+      <if test="searchId != null">
+      <![CDATA[and id like concat('%', #{searchId}, '%')]]>
+      </if>
+      <if test="searchName != null">
+      <![CDATA[and name like concat('%', #{searchName}, '%')]]>
+      </if>
+      <if test="startNo != null and endNo != 0">
       limit #{startNo}, #{endNo}
       </if>
    </select>
+   
    	<select id="selectMemberNo" parameterType="kr.co.mood.user.dao.UserVO" resultType="kr.co.mood.user.dao.UserVO">
    <![CDATA[
       select * from moodjoin where no = #{no}
