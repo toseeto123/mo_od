@@ -112,7 +112,7 @@ img {
                
                <div class="mb-3">
                   <label for="address">주문번호 : </label> 
-                  <strong>#order4398450</strong>
+                  <strong>는 여기말고 결제 후 생성으로 만들어야함</strong>
                </div>
 
                <hr class="mb-4">
@@ -131,19 +131,23 @@ img {
                      <div class="invalid-feedback">여기다가 가격정보입력</div><br>
                      <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
                   <hr class="mb-4">
+                  <h4 class="mb-3">장바구니 상품정보</h4>
+                   <hr class="mb-4">
 <c:forEach var="list" items="${list}">
-                  <hr class="mb-4">
+                 
 
-               <h4 class="mb-3">장바구니 상품정보</h4>
+               
 
                <div class="row">
                   <div class="col-md-6 mb-3">
                      <label for="cc-name"></label> 
-                     <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/" style="width: 80px; height: 80px;">
-                      <small class="text-muted">상품명 : ${list.pro_number}</small>
+                     <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" style="width: 80px; height: 80px;">
+                     <div style="display: inline-block;">
+                      <small class="text-muted">상품명 : ${list.pro_name}<br>옵 션 : ${list.pro_option}</small>
+                    </div>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="cc-number">가격 : ${list.total}</label><br><small class="text-muted">상품디테일명 : </small>
+                     <label for="cc-number">가격 : ${list.total}</label><br><small class="text-muted">상품디테일명 : ${list.pro_maindesctitle}</small>
                   </div>
                      <div class="invalid-feedback">여기다가 가격정보입력</div><br>
                      <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
