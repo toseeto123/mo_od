@@ -47,8 +47,6 @@ public class userPaymentController {
 		System.out.println(uvo);
 		int userid = uvo.getNo();
 		
-
-
 		int proid = pro_number;
 		int price = pro_price;
 
@@ -96,7 +94,7 @@ public class userPaymentController {
 		System.out.println(productPayService.selectList(orderId));
 		
 		
-		return "User/userPay";
+		return "User/userPayOne";
 	}
 	
 	
