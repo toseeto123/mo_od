@@ -83,10 +83,10 @@ public class userPaymentController {
 		
 		userOrderProductVO orderProVo = new userOrderProductVO();
 		orderProVo.setOrderId(orderId);
-		orderProVo.setPro_number(pronum);
+		orderProVo.setPro_number(proid);
 		orderProVo.setPrice(price);
 		orderProVo.setCount(count);
-		orderProVo.setPro_name(pvo.getPro_name());
+		//orderProVo.setPro_name(pvo.getPro_name());
 		System.out.println(orderProVo);
 		
 		productPayService.insert(orderProVo, uvo, null);

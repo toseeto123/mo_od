@@ -448,7 +448,7 @@ function deletecate(element) {
 </script>
 </head>
 <body>
-
+<form action="/products/cateorders" method="post">
    <section id="hero" style="height: 400px;">
       <div class="hero-container">
          <div id="heroCarousel" data-bs-interval="5000"
@@ -503,9 +503,9 @@ function deletecate(element) {
                 
                <input type="hidden" value="${map.cate_id}" name="cateId"
                   class="cate_id" /> <span class="btnspan">
-                  <button class="plus_btn" onclick='flush("plus", this)'>+</button>
-                  <button class="minus_btn" onclick='minus("minus", this)'>-</button>
-                  <button class="delete_btn" onclick='deletecate(this)'>
+                  <button type="button" class="plus_btn" onclick='flush("plus", this)'>+</button>
+                  <button type="button" class="minus_btn" onclick='minus("minus", this)'>-</button>
+                  <button class="delete_btn" type="button" onclick='deletecate(this)'>
                      <i class="ph ph-trash"></i>
                   </button>
                   
@@ -538,16 +538,16 @@ function deletecate(element) {
                         
                      </dd>
                   </dl>
-                  <form action="/products/cateorders" method="post">
-                  <input type="submit" value="바로결제하기" class="btn_buy" onclick="submitKakaoPayForm()">
                   
-				</form>
+                  <input type="submit" value="바로결제하기" class="btn_buy">
+                  
+				
                </div>
             </div>
          </div>
       </div>
    </div>
-   
+   </form>
 </body>
 <jsp:include page="../../common/footer.jsp" />
 </html>
