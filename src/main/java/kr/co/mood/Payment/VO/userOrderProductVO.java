@@ -19,6 +19,8 @@ public class userOrderProductVO {
 	private String pro_price;
 	private String pro_img1;
 	private String pro_maindesctitle;
+	private String pro_option;
+	private int total;
 	
 	//moodorder 참조키
 	private int orderId;
@@ -29,6 +31,19 @@ public class userOrderProductVO {
 	private int price;
 	
 	
+	
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	public String getPro_option() {
+		return pro_option;
+	}
+	public void setPro_option(String pro_option) {
+		this.pro_option = pro_option;
+	}
 	public String getEmail() {
 		return email;
 	}
