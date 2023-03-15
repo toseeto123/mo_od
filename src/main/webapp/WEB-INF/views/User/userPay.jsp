@@ -117,7 +117,7 @@ img {
 
                <hr class="mb-4">
 
-               <h4 class="mb-3">단품 상품정보</h4>
+               <%-- <h4 class="mb-3">단품 상품정보</h4>
 
                <div class="row">
                   <div class="col-md-6 mb-3">
@@ -130,8 +130,8 @@ img {
                   </div>
                      <div class="invalid-feedback">여기다가 가격정보입력</div><br>
                      <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
-                  <hr class="mb-4">
-                  <h4 class="mb-3">장바구니 상품정보</h4>
+                  <hr class="mb-4"> --%>
+                  <h4 class="mb-3">결제 상품정보</h4>
                    <hr class="mb-4">
 <c:forEach var="list" items="${list}">
                  
