@@ -156,7 +156,13 @@ img {
                   
                   </div>
  </c:forEach>
- <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">420,000원 결제하기</button>
+ 
+ <c:set var="totalPrice" value="0" />
+<c:forEach var="list" items="${list}">
+    <c:set var="totalPrice" value="${totalPrice + list.pro_price}" />
+</c:forEach>
+
+<button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">${totalPrice}원 결제하기</button>
                </div>
                
                

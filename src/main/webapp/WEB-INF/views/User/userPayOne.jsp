@@ -140,7 +140,12 @@ img {
                   
                   </div>
  </c:forEach>
- <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">${orderlist.pro_price}원 결제하기</button>
+ <c:set var="totalPrice" value="0" />
+<c:forEach var="orders" items="${orders}">
+    <c:set var="totalPrice" value="${totalPrice + orders.pro_price}" />
+</c:forEach>
+
+<button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">${totalPrice}원 결제하기</button>
                </div>
                
                
