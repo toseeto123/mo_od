@@ -73,32 +73,32 @@ public class ProductServiceImpl implements ProductService{
 	
 	
 	@Override
-	public List<ProVO> A0selectCategoryProList(List<ProVO> vo) {
-		return prodao.A0selectCategoryProList(vo);
+	public List<ProVO> A0selectCategoryProList(List<ProVO> voa0) {
+		return prodao.A0selectCategoryProList(voa0);
 	}
 	@Override
-	public List<ProVO> A1selectCategoryProList(List<ProVO> vo) {
-		return prodao.A1selectCategoryProList(vo);
+	public List<ProVO> A1selectCategoryProList(List<ProVO> voa1) {
+		return prodao.A1selectCategoryProList(voa1);
 	}
 	@Override
-	public List<ProVO> A2selectCategoryProList(List<ProVO> vo) {
-		return prodao.A2selectCategoryProList(vo);
+	public List<ProVO> A2selectCategoryProList(List<ProVO> voa2) {
+		return prodao.A2selectCategoryProList(voa2);
 	}
 	@Override
-	public List<ProVO> B0selectCategoryProList(List<ProVO> vo) {
-		return prodao.B0selectCategoryProList(vo);
+	public List<ProVO> B0selectCategoryProList(List<ProVO> vob0) {
+		return prodao.B0selectCategoryProList(vob0);
 	}
 	@Override
-	public List<ProVO> B1selectCategoryProList(List<ProVO> vo) {
-		return prodao.B1selectCategoryProList(vo);
+	public List<ProVO> B1selectCategoryProList(List<ProVO> vob1) {
+		return prodao.B1selectCategoryProList(vob1);
 	}
 	@Override
-	public List<ProVO> C0selectCategoryProList(List<ProVO> vo) {
-		return prodao.C0selectCategoryProList(vo);
+	public List<ProVO> C0selectCategoryProList(List<ProVO> voc0) {
+		return prodao.C0selectCategoryProList(voc0);
 	}
 	@Override
-	public List<ProVO> C1selectCategoryProList(List<ProVO> vo) {
-		return prodao.C1selectCategoryProList(vo);
+	public List<ProVO> C1selectCategoryProList(List<ProVO> voc1) {
+		return prodao.C1selectCategoryProList(voc1);
 	}
 	@Override
 	public ProVO D0selectCategoryProList(List<ProVO> vo) {
@@ -124,6 +124,34 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<ProVO> selectProListPaging(ModuleVO vo) {
 		return prodao.selectProListPaging(vo);
+	}
+	@Override
+	public List<ProVO> A0selectProListPaging(ModuleVO vo) {
+		return prodao.A0selectProListPaging(vo);
+	}
+	@Override
+	public List<ProVO> A1selectProListPaging(ModuleVO vo) {
+		return prodao.A1selectProListPaging(vo);
+	}
+	@Override
+	public List<ProVO> A2selectProListPaging(ModuleVO vo) {
+		return prodao.A2selectProListPaging(vo);
+	}
+	@Override
+	public List<ProVO> B0selectProListPaging(ModuleVO vo) {
+		return prodao.B0selectProListPaging(vo);
+	}
+	@Override
+	public List<ProVO> B1selectProListPaging(ModuleVO vo) {
+		return prodao.B1selectProListPaging(vo);
+	}
+	@Override
+	public List<ProVO> C0selectProListPaging(ModuleVO vo) {
+		return prodao.C0selectProListPaging(vo);
+	}
+	@Override
+	public List<ProVO> C1selectProListPaging(ModuleVO vo) {
+		return prodao.C1selectProListPaging(vo);
 	}
 
 }

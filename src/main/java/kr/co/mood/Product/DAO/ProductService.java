@@ -40,6 +40,13 @@ public interface ProductService {
 	
 	
 	public List<ProVO> selectProListPaging(ModuleVO vo);
+	public List<ProVO> A0selectProListPaging(ModuleVO vo);
+	public List<ProVO> A1selectProListPaging(ModuleVO vo);
+	public List<ProVO> A2selectProListPaging(ModuleVO vo);
+	public List<ProVO> B0selectProListPaging(ModuleVO vo);
+	public List<ProVO> B1selectProListPaging(ModuleVO vo);
+	public List<ProVO> C0selectProListPaging(ModuleVO vo);
+	public List<ProVO> C1selectProListPaging(ModuleVO vo);
 	
 	
 	

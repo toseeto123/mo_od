@@ -96,6 +96,34 @@ public class ProDAO {
 		
 		return session.selectList("ProDAO.selectProListPaging", vo);
 	}
+	public List<ProVO> A0selectProListPaging(ModuleVO vo){
+		
+		return session.selectList("ProDAO.A0selectProListPaging", vo);
+	}
+	public List<ProVO> A1selectProListPaging(ModuleVO vo){
+		
+		return session.selectList("ProDAO.A1selectProListPaging", vo);
+	}
+	public List<ProVO> A2selectProListPaging(ModuleVO vo){
+		
+		return session.selectList("ProDAO.A2selectProListPaging", vo);
+	}
+	public List<ProVO> B0selectProListPaging(ModuleVO vo){
+		
+		return session.selectList("ProDAO.B0selectProListPaging", vo);
+	}
+	public List<ProVO> B1selectProListPaging(ModuleVO vo){
+		
+		return session.selectList("ProDAO.B1selectProListPaging", vo);
+	}
+	public List<ProVO> C0selectProListPaging(ModuleVO vo){
+		
+		return session.selectList("ProDAO.C0selectProListPaging", vo);
+	}
+	public List<ProVO> C1selectProListPaging(ModuleVO vo){
+		
+		return session.selectList("ProDAO.C1selectProListPaging", vo);
+	}
 	
 	
 
