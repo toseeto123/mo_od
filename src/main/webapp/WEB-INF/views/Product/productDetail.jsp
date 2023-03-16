@@ -187,14 +187,16 @@ pre{
 
                    
                      <input type="submit" value="장바구니" class="cateBtn" ><br><br>
-               
+               		   <input type="button" value="바로결제하기" class="btn_buy">
 
 </form>      		
 <!-- ------------------------------------------------------------------------------------------ -->
+					
+					
 					<form action="/products/orders" method="post">
 					<input type="hidden" name="pro_price" value="${list.pro_price}">
                    <input type="hidden" name="pro_number" value="${list.pro_number}">
-                     <input type="submit" value="바로결제하기" class="btn_buy">
+                  
                      </form>
                      
                   </div>
@@ -202,10 +204,9 @@ pre{
 
                
 </form>		
-			<form action="/login.do" class="login_form" method="get">	
-				
-			</form>
 			
+			<form action="/login.do" class="login_form" method="get">
+			</form>
 			
 	<!-- 주문 form toseet123 생성 -->
 			<form action="/products/orders" class="order_form" method="post">
@@ -218,13 +219,7 @@ pre{
 				
 			</form>
 
-                     
-         <form action="/login.do" class="login_form" method="get">         
-         </form>
-         
-         
-=
-
+    
 <style>
 .chk_option{
    cursor: pointer;
