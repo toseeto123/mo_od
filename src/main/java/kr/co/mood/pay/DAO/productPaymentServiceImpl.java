@@ -26,4 +26,13 @@ public class productPaymentServiceImpl implements productPaymentService {
 		return productPayDao.selectList(orderId);
 		 
 	}
+	
+	@Override
+	public void cateorderinsert(userOrderProductVO orderProVo, UserVO uvo, ProVO pvo) {
+		productPayDao.cateorderinsert(orderProVo, uvo, pvo);
+	}
+	
+
+	
+	
 }

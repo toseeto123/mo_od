@@ -22,9 +22,10 @@ public class userOrderProductVO {
 	private String pro_option;
 	private int total;
 	
-	//moodorder 참조키
+	
+	//moodorder 李몄“�궎
 	private int orderId;
-	//product 참조키
+	//product 李몄“�궎
 	private int pro_number;
 	private int count;
 	
