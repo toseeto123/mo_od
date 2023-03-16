@@ -68,7 +68,8 @@ img {
                   <div class="carousel-container">
                      <div class="carousel-content">
                         <h2 class="animate__animated animate__fadeInDown">주문 | 결제</h2>
-                        <p class="animate__animated animate__fadeInUp">주문하시기 전에 회원정보와 결제금액을 반드시 확인하시기 바랍니다.</p>
+                        <p class="animate__animated animate__fadeInUp">주문하시기 전에
+                           회원정보와 결제금액을 반드시 확인하시기 바랍니다.</p>
                         <div>
                            <a href="#about"
                               class="btn-get-started animate__animated animate__fadeInUp scrollto">Click</a>
@@ -83,36 +84,34 @@ img {
 
 
    <div class="container">
-      <div class="py-4 text-center">
-      </div>
+      <div class="py-4 text-center"></div>
 
       <div class="row">
 
-         <div class="col-md-12 order-md-1">
-            <h4 class="mb-3">${login_info.id} 님 주문정보</h4>
-            <form class="needs-validation" novalidate>
+         <form class="needs-validation" novalidate action="/kakaoPay"
+            method="post">
+            <div class="col-md-12 order-md-1">
+               <h4 class="mb-3">${login_info.id}님주문정보</h4>
                <div class="row">
                   <div class="col-md-6 mb-3">
-                     <label for="firstName">성 함 : </label><strong> ${login_info.name}</strong>
+                     <label for="firstName">성 함 : </label><strong>
+                        ${login_info.name}</strong>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="lastName">전화번호 : </label>
-                     <strong>${login_info.phone}</strong>
+                     <label for="lastName">전화번호 : </label> <strong>${login_info.phone}</strong>
                   </div>
                   <div class="col-md-6 mb-3">
-                  <label for="address">주소 : </label> 
-                  <strong>${login_info.adr}</strong>
+                     <label for="address">주소 : </label> <strong>${login_info.adr}</strong>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                     <label for="lastName">E-mail : </label> <strong>${login_info.email}</strong>
+                  </div>
+
                </div>
-                  <div class="col-md-6 mb-3">
-                     <label for="lastName">E-mail : </label>
-                     <strong>${login_info.email}</strong>
-                  </div>
-                  
-               </div>
-               
+
                <div class="mb-3">
-                  <label for="address">주문번호 : </label> 
-                  <strong>는 여기말고 결제 후 생성으로 만들어야함</strong>
+                  <label for="address">주문번호 : </label> <strong>는 여기말고 결제 후
+                     생성으로 만들어야함</strong>
                </div>
 
                <hr class="mb-4">
@@ -131,52 +130,60 @@ img {
                      <div class="invalid-feedback">여기다가 가격정보입력</div><br>
                      <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
                   <hr class="mb-4"> --%>
-                  <h4 class="mb-3">결제 상품정보</h4>
-                   <hr class="mb-4">
-<c:forEach var="list" items="${list}">
-                 
+               <h4 class="mb-3">결제 상품정보</h4>
+               <hr class="mb-4">
+               <c:forEach var="list" items="${list}">
+                  <input type="hidden" name="pro_name" value=${list.pro_name }>
 
-               
 
-               <div class="row">
-                  <div class="col-md-6 mb-3">
-                     <label for="cc-name"></label> 
-                     <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" style="width: 80px; height: 80px;">
-                     <div style="display: inline-block;">
-                      <small class="text-muted">상품명 : ${list.pro_name}<br>옵 션 : ${list.pro_option}</small>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                     <label for="cc-number">가격 : ${list.total}</label><br><small class="text-muted">상품디테일명 : ${list.pro_maindesctitle}</small>
-                  </div>
-                     <div class="invalid-feedback">여기다가 가격정보입력</div><br>
+
+                  <div class="row">
+                     <div class="col-md-6 mb-3">
+                        <label for="cc-name"></label> <img alt=""
+                           src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}"
+                           style="width: 80px; height: 80px;">
+                        <div style="display: inline-block;">
+                           <small class="text-muted">상품명 : ${list.pro_name}<br>옵
+                              션 : ${list.pro_option}
+                           </small>
+                        </div>
+                     </div>
+                     <div class="col-md-6 mb-3">
+                        <label for="cc-number">가격 : ${list.pro_price}</label><br> <small
+                           class="text-muted">상품디테일명 : ${list.pro_maindesctitle}</small>
+                     </div>
+                     <div class="invalid-feedback">여기다가 가격정보입력</div>
+                     <br>
                      <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
-                  <hr class="mb-4">
-                 
-                  
-                  </div>
- </c:forEach>
- 
- <c:set var="totalPrice" value="0" />
-<c:forEach var="list" items="${list}">
-    <c:set var="totalPrice" value="${totalPrice + list.pro_price}" />
-</c:forEach>
+                     <hr class="mb-4">
 
-<button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">${totalPrice}원 결제하기</button>
-               </div>
-               
-               
-            </form>
-         </div>
+                  </div>
+               </c:forEach>
+
+               <c:set var="totalPrice" value="0" />
+               <c:forEach var="list" items="${list}">
+                  <c:set var="totalPrice" value="${totalPrice + list.pro_price}" />
+               </c:forEach>
+               <c:forEach var="orderprice" items="${orderprice}">
+                  <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">${orderprice.price}원결제하기</button>
+                  <input type="hidden" name="pro_price" value=${orderprice.price }>
+                  </c:forEach>
+                  
+            </div>
+
+
+         </form>
       </div>
-      
+   </div>
+
 
 
    </div>
-  
 
 
-   <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+
+   <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
       integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
       crossorigin="anonymous"></script>
    <script>
@@ -188,11 +195,9 @@ img {
 
    <script src="form-validation.js"></script>
 
-   <form method="post" action="/kakaoPay">
-     
-   </form>
+   <form method="post" action="/kakaoPay"></form>
 
-    <script>
+   <script>
     var IMP = window.IMP; 
     IMP.init("imp40061745"); 
     var today = new Date();   
@@ -235,4 +240,4 @@ img {
 </script>
 
 
-      <jsp:include page="../../common/footer.jsp" />
+   <jsp:include page="../../common/footer.jsp" />

@@ -4,14 +4,17 @@ package kr.co.mood;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.reflection.SystemMetaObject;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -116,16 +119,27 @@ public class UserController {
    public String loginAction(UserVO vo, HttpSession session , RedirectAttributes rttr) {
 	  UserVO vo1 =  userservice.selectId(vo);
 	  
+	  String path = (String) session.getAttribute("path");
+
+	  System.out.println(path);
+	  
+	  if(path== null) {
 	  if(vo1 == null) {
+		  System.out.println("null이야");
 		  session.setAttribute("login_info", null);
 		  rttr.addFlashAttribute("msg", false);
 		  return "redirect:login.do";
 	  } else {
+		  		System.out.println("메인페이지로 이동할거야");
 				session.setAttribute("login_info", vo1);
 				return "redirect:index.jsp";
 			}
-	  }	
-   
+	  }	else {
+		 System.out.println("해당페이지로 이동할거야");
+		session.setAttribute("login_info", vo1);
+		return "redirect:"+path;
+	  }
+   }
  	@RequestMapping("/logout.do")
  		public String logout(UserVO vo,HttpSession session) {
  			session.setAttribute("login_info", vo);

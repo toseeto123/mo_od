@@ -27,6 +27,12 @@ public class productPaymentDAO {
 		
 	}
 	
+	public void cateorderinsert(userOrderProductVO orderProVo, UserVO uvo , ProVO pvo) {
+		sql.insert("productPaymentDAO.cateorderinsert",orderProVo);
+	}
+	
+
+	
 //	public List<userOrderProductVO> selectOrderList(int orderId) {
 //		sql.selectList("productPaymetnDAO.selectOrderList", orderId);
 //	}
