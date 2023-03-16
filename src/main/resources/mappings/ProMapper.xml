@@ -3,7 +3,7 @@
 	
 	<mapper namespace="ProDAO">
 	
-	<select id="selectProListPaging" parameterType="kr.co.mood.Product.VO.ProPaginVO" resultType="kr.co.mood.Product.VO.ProVO">
+	<select id="selectProListPaging" parameterType="kr.co.mood.module.ModuleVO" resultType="kr.co.mood.Product.VO.ProVO">
 		select pro_serialnumber, pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
 		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product
 		order by pro_number

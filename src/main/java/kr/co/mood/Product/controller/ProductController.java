@@ -26,10 +26,9 @@ public class ProductController {
 	@RequestMapping(value = "/proList.do")
 	public String proList(ArrayList<ProVO> vo, Model model) throws Exception {
 		List<ProVO> list = ps.selectProList(vo);
-		System.out.println(ps.selectProList(vo));
 		model.addAttribute("list", list);
-		System.out.println("紐⑤뜽"+model);
-		System.out.println("由ъ뒪�듃"+list);
+		System.out.println("筌뤴뫀�쑞"+model);
+		System.out.println("�뵳�딅뮞占쎈뱜"+list);
 		System.out.println("ps"+ps.selectProList(vo));
 		
 		return "Product/productList";
@@ -39,10 +38,10 @@ public class ProductController {
 	@RequestMapping(value = "/product/{pro_number}", method = RequestMethod.GET)
 	public String proDetails(@PathVariable("pro_number") int pro_number, UserVO vo, Model model, HttpSession session) {
 		model.addAttribute("list", ps.selectProOne(pro_number));
+
 		session.setAttribute("pro_number", ps.selectProOne(pro_number));
 		session.setAttribute("path", "/product/"+Integer.toString(pro_number));
 		String path = (String) session.getAttribute("path");
-		
 		return "Product/productDetail";
 	}
 	
