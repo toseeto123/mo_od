@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.Product.VO.ProVO;
@@ -35,9 +36,20 @@ public class CateController {
 	ProductController productController;
 	
 	@RequestMapping(value = "/cate.do" , method = RequestMethod.GET)
-	public String cate() {
+	public String cate(HttpSession session, RedirectAttributes rttr) {
+	
+		UserVO uvo = (UserVO) session.getAttribute("login_info");
 		System.out.println("cate");
-		return "cate/cate";
+		
+		if(uvo==null) {
+			 System.out.println("null이야");
+			 rttr.addFlashAttribute("msg", "loginmsg");
+			 return "redirect:login.do";
+		}
+		else {
+			System.out.println("이동!");
+			return "cate/cate";
+		}
 	}
 	
 	@RequestMapping(value = "/cate.do" , method = RequestMethod.POST)

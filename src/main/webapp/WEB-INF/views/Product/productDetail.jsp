@@ -185,7 +185,8 @@ pre{
                
 
 </form>		
-			<form action="/login.do" class="login_form" method="get">			
+			<form action="/login.do" class="login_form" method="get">	
+				
 			</form>
 			
 			
@@ -195,6 +196,7 @@ pre{
 				<input type="hidden" name="address" value="${login_info.adr}">
 				<input type="hidden" name="price" value="${list.pro_price}">
 				<input type="hidden" name="status" value="준비중">
+				
 			</form>
 
 <style>
@@ -329,12 +331,9 @@ pre{
    
    
    <script>
-   
    var userNo = $('#userNo').val();
    
-   console.log(userNo);
    /* 바로구매 버튼 */
-   
    $(".btn_buy").on("click", function(){
 	   if(userNo=="") {
 	   var login_chk = confirm('로그인이 필요한 서비스입니다. 로그인페이지로 이동하시겠습니까?');
@@ -348,14 +347,6 @@ pre{
 	        $(".order_form").find("input[name='orders[0].orderCount']").val(orderCount);
 	        $(".order_form").submit();
 		}
-		
-		
-		
-	   /*
-      let orderCount = $(".quantity_input").val();
-      $(".order_form").find("input[name='orders[0].orderCount']").val(orderCount);
-      $(".order_form").submit();
-		*/
    });
 
    </script>

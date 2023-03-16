@@ -89,6 +89,7 @@
                <li class="/login_info">${login_info.name } [ ${login_info.id } ]</li>
                <li><a href="/mypage.do"><span class="getstarted scrollto"> Mypage</span> </a></li>
                <li><a href="/logout.do"><span class="getstarted scrollto">Logout</span></a></li>
+               <li><a href="/cate.do"><span class="getstarted scrollto">Cate</span></a></li>
             </c:if>
             
             
