@@ -17,6 +17,7 @@ import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.Product.VO.ProVO;
 import kr.co.mood.module.ModuleCommon;
 import kr.co.mood.module.ModuleVO;
+import kr.co.mood.user.dao.UserVO;
 
 @Controller
 public class ProductController {
