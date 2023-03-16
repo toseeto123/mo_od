@@ -11,5 +11,9 @@ public interface productPaymentService {
 	public void insert(userOrderProductVO orderProVo ,UserVO uvo , ProVO pvo);
 	
 	public List<userOrderProductVO> selectList(int orderId);
+	
+	public void cateorderinsert(userOrderProductVO orderProVo ,UserVO uvo , ProVO pvo);
+	
+
 
 }
