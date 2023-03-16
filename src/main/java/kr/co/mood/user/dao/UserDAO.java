@@ -7,7 +7,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.co.mood.Product.VO.ProPaginVO;
+import kr.co.mood.module.ModuleVO;
 
 @Repository
 public class UserDAO {
@@ -15,7 +15,7 @@ public class UserDAO {
 	private SqlSessionTemplate mybatis;
 	private SqlSession session;
 	
-	public List<UserVO> selectAll(ProPaginVO vo) {//추가된 부분
+	public List<UserVO> selectAll(ModuleVO vo) {//추가된 부분
 		return mybatis.selectList("UserDAO.selectAll", vo);
 	}
 	public UserVO selectMemberNo(int no) {

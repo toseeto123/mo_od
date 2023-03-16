@@ -26,10 +26,9 @@ public class ProductController {
 	@RequestMapping(value = "/proList.do")
 	public String proList(ArrayList<ProVO> vo, Model model) throws Exception {
 		List<ProVO> list = ps.selectProList(vo);
-		System.out.println(ps.selectProList(vo));
 		model.addAttribute("list", list);
-		System.out.println("紐⑤뜽"+model);
-		System.out.println("由ъ뒪�듃"+list);
+		System.out.println("筌뤴뫀�쑞"+model);
+		System.out.println("�뵳�딅뮞占쎈뱜"+list);
 		System.out.println("ps"+ps.selectProList(vo));
 		
 		return "Product/productList";

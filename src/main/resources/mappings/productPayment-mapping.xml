@@ -4,16 +4,36 @@
 
 <mapper namespace="productPaymentDAO">
 	
+	<insert id="cateorderinsert">
+      INSERT INTO orderProduct (pro_number, orderId, count, price)
+      SELECT
+      cate.pro_number,
+      (SELECT MAX(orderId) FROM moodorder),
+      cate.amount,
+      SUM(cate.total)
+      FROM cate
+      WHERE cate.user_no = #{userno}
+      GROUP BY cate.user_no
+	</insert>
+	
 	<insert id="insert">
     INSERT INTO orderProduct (pro_number, orderId, count, price)
     VALUES (#{pro_number}, #{orderId}, #{count}, #{price})
 	</insert>
+	
 
-	<select id="selectOrderList" resultType="kr.co.mood.Payment.VO.userOrderVO">
-		 select op.orderId, o.userNo, p.pro_name,p.pro_price,op.count 
-		 from moodjoin m, moodorder o, product p, orderProduct op 
-		 where m.no=o.userNo and o.userNo=2 order by op.orderId;
+
+	<select id="selectList" resultType="kr.co.mood.Payment.VO.userOrderProductVO">
+		SELECT m.name, m.phone, m.id, m.email, m.adr,
+       p.pro_number, p.pro_img1, p.pro_name, p.pro_maindesc, p.pro_maindesctitle, p.pro_price,
+       o.userno, op.price ,o.orderId
+		FROM moodjoin m, moodorder o, product p, orderProduct op 
+		WHERE m.no=o.userNo AND o.orderId=op.orderId AND p.pro_number=op.pro_number 
+		and #{orderId} = op.orderId
+		ORDER BY op.orderId
 	</select> 
+	
+	
 	
 	
 
