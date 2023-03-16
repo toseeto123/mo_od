@@ -1,9 +1,13 @@
 package kr.co.mood.user.dao;
 
+import java.util.List;
+
 import org.apache.ibatis.session.SqlSession;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+
+import kr.co.mood.module.ModuleVO;
 
 @Repository
 public class UserDAO {
@@ -11,6 +15,12 @@ public class UserDAO {
 	private SqlSessionTemplate mybatis;
 	private SqlSession session;
 	
+	public List<UserVO> selectAll(ModuleVO vo) {//추가된 부분
+		return mybatis.selectList("UserDAO.selectAll", vo);
+	}
+	public UserVO selectMemberNo(int no) {
+		return mybatis.selectOne("UserDAO.selectMemberNo", no);
+	}
 	
 	public void insert(UserVO vo) {
 		mybatis.insert("UserDAO.insert", vo);
@@ -29,6 +39,11 @@ public class UserDAO {
 		return result;
 	}
 	
+	public int idChk1(UserVO vo) throws Exception{
+		int result1 = mybatis.selectOne("UserDAO.idChk", vo);
+		return result1;
+	}
+	
 	public void delete(UserVO vo) throws Exception{
 		mybatis.delete("UserDAO.delete", vo);
 		System.out.println(vo);
@@ -39,6 +54,14 @@ public class UserDAO {
 		mybatis.update("UserDAO.update",vo);
 		
 	}
-	
+
+
+	public void insertnaver(UserVO naver) {
+		mybatis.insert("UserDAO.insertnaver", naver);
+		System.out.println(naver);
+		
+	}
+
+
 
 }

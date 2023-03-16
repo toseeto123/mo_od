@@ -2,10 +2,11 @@ package kr.co.mood;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 
 import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,13 +16,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.co.mood.Payment.DAO.AdminPaymentService;
 import kr.co.mood.Product.DAO.ProductService;
-import kr.co.mood.Product.VO.ProPaginVO;
 import kr.co.mood.Product.VO.ProVO;
 import kr.co.mood.module.ModuleCommon;
+import kr.co.mood.module.ModuleVO;
+import kr.co.mood.module.ViewPagingVO;
 import kr.co.mood.user.dao.UserService;
 import kr.co.mood.user.dao.UserVO;
 
@@ -31,20 +34,71 @@ public class AdminController {
 
 	@Autowired
 	private ProductService ps;
-
-	@Autowired
-	private ProPaginVO paginVO;
-
+	
 	@Autowired
 	private ModuleCommon module;
+	
+	@Autowired
+	private UserService userService;
+	
+	
+	@Autowired
+	private AdminPaymentService adminPaymentService;
 
 
    @RequestMapping("/chart.do")
    public String adminIndex(Model model) {
+	   adminPaymentService.getCategoryChart(model);
       return "admin/chart";   
    }
    
+   @RequestMapping("/adminMemberList.do")
+   public String adminMember() {
+	   return "redirect:/admin/adminMemberList.do/1";
+   }
   
+   @RequestMapping("/adminMemberList.do/{paging}/{searchWhat}/{search}")
+   @ResponseBody
+   public Map<String, Object> adminMemberList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//추가된 부분
+	   ModuleVO moduleVO = new ModuleVO();
+	   Map<String, Object> map = new HashMap<String, Object>();
+	   if(search.equals("(none)")) {
+		   search = null;		   
+	   }else {
+	   if(searchWhat.equals("id")) {
+		   moduleVO.setSearchId(search);
+	   }else if(searchWhat.equals("name")) {
+		   moduleVO.setSearchName(search);
+	   }
+	   }
+	   System.out.println(moduleVO.getStartNo());
+	   System.out.println(moduleVO.getEndNo());
+	   List<UserVO> userList = userService.selectAll(moduleVO);
+	   ViewPagingVO viewVO = module.pagingModule(model, moduleVO, userList, paging, 1);
+	   List<UserVO> showUserList = userService.selectAll(moduleVO);
+	   model.addAttribute("userList", showUserList);
+	   map.put("list", showUserList);
+	   map.put("vo", viewVO);
+	   return map;
+   }
+   
+   
+   @RequestMapping("/adminMemberList.do/{paging}")
+   public String adminMemberList(@PathVariable String paging, Model model) {//추가된 부분
+	   ModuleVO moduleVO = new ModuleVO();
+	   List<UserVO> userList = userService.selectAll(null);
+	   module.pagingModule(model, moduleVO, userList, paging, 1);
+	   List<UserVO> showUserList = userService.selectAll(moduleVO);
+	   model.addAttribute("userList", showUserList);
+	   return "admin/adminMemberList";
+   }
+  
+   @RequestMapping("/adminMemberDetail.do/{userNo}")
+   public String adminMemberDetail(@PathVariable String userNo, UserVO vo, Model model){
+	   UserVO vo1 = userService.selectMemberNo(Integer.parseInt(userNo));
+	   model.addAttribute("userInfo", vo1);
+	   return "admin/adminMemeberDetail";
+   }
    
    @RequestMapping("admincate.do")
    public String adminCate(){
@@ -57,7 +111,7 @@ public class AdminController {
       return "admin/insertPro";
    }
    
-   @RequestMapping(value="adinsert.do" ,method=RequestMethod.POST)
+   @RequestMapping(value="insert.do" ,method=RequestMethod.POST)
    public String insertProduct(@RequestParam MultipartFile file,
                            @RequestParam MultipartFile file1,
                            @RequestParam MultipartFile file2,
@@ -83,7 +137,7 @@ public class AdminController {
             e.printStackTrace();
          }
          ps.insertPro(vo);
-         return "admin/chart";
+         return "admin/adminProList";
       }
    
 
@@ -97,9 +151,10 @@ public class AdminController {
 
   	@RequestMapping(value = "/adminProList.do/{page}") // FIX
   	public String ProductListPage(@PathVariable String page, ArrayList<ProVO> vo, Model model) {
+  		ModuleVO moduleVO = new ModuleVO();
   		List<ProVO> allList = ps.selectProList(vo);
-  		module.pagingModule(model, paginVO, allList, page, 7);
-  		List<ProVO> showList = ps.selectProListPaging(paginVO);
+  		module.pagingModule(model, moduleVO, allList, page, 7);
+  		List<ProVO> showList = ps.selectProListPaging(moduleVO);
   		model.addAttribute("list", showList);
   		return "/admin/adminProList";
   	}
@@ -119,7 +174,7 @@ public class AdminController {
       System.out.println(vo);
       ps.updatePro(vo);
       
-      return "Product/adminProList";
+      return "/admin/adminProList";
    }
    
 }

@@ -18,22 +18,24 @@ public class CateDAO {
 	
 	public List<CateVO> cateselect(int user_no) {
 		return sql.selectList("CateDAO.selectlist" , user_no);
-		
 	}
-	
 	public void addcate(CateVO cvo, UserVO uvo, ProVO pvo) {
 		sql.insert("CateDAO.insert",cvo);
-		
 	}
+	
 	
 	public int modifyflashamount(int cate_id) {
 		return sql.update("CateDAO.plusupdate" , cate_id);
 	}
-	public int modifyminusamount(CateVO cvo) {
-		return sql.update("CateDAO.minusupdate" , cvo);
+	public int modifyminusamount(int cate_id) {
+		return sql.update("CateDAO.minusupdate" , cate_id);
 	}
 	public int dupcate(int pro_number , int user_no) {
 		return sql.update("CateDAO.dupcate" , pro_number);
+	}
+	
+	public int catedelete(int cate_id) {
+		return sql.delete("CateDAO.catedelete" , cate_id);
 	}
 	
 	

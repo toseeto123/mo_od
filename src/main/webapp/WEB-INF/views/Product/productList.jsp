@@ -59,6 +59,9 @@
                   <c:if test="${list.pro_categoryserial  eq 'A1' }">
                   <li><a href="#">침대프레임</a></li>
                   </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'A2' }">
+                  <li><a href="#">소 파</a></li>
+                  </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B0' }">
                   <li><a href="#">무드등</a></li>
                   </c:if>
@@ -95,6 +98,9 @@
                   <c:if test="${list.pro_categoryserial  eq 'A1' }">
                   <h2>침대프레임</h2>
                   </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'A2' }">
+                  <h2>소 파</h2>
+                  </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B0' }">
                   <h2>무드등</h2>
                   </c:if>
@@ -115,13 +121,13 @@
           <div class="col-xl-3 col-lg-4 col-md-6">
           
             <div class="member" style="background-color: white;">  
- 				<img src="resources/assets/img/product/${list.pro_img1}" alt="" class="img-fluid" style="width: 306px; height: 306px;">
+ 				<img src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" alt="" class="img-fluid" style="width: 306px; height: 306px;">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>${list.pro_name}</h4>
                   <span><fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></span>
                   <div class="social">
-                    <a href="/product/${list.pro_number }">상세보기</a>
+                    <a href="/product/${list.pro_number}">상세보기</a>
                   </div>
                 </div>
               </div>
@@ -135,8 +141,211 @@
 
       </div>
     </section><!-- End Team Section -->
+<section>
+<c:forEach var="list" items="${list}">
 
+<!-- A0번 카테고리 -->
+                  <c:if test="${list.pro_categoryserial  eq 'A0' }">
+                  
+                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;">
+                  
+                  
+                  <c:if test="${prePage!=null }">
+                  <a href="/A0categoryList/${prePage}">&lt;</a>
+                  </c:if>
+                  
+                  <c:forEach items="${ pagingNo }" var="no">
+                  <c:choose>
+                  <c:when test="${selectPage == no}">
+                  &nbsp;<a style="color:green" href="/A0categoryList/${no}">${no}</a>&nbsp;
+                  </c:when>
+                  <c:otherwise>
+                  &nbsp;<a href="/A0categoryList/${no}">${no}</a>&nbsp;
+                  </c:otherwise>
+                  </c:choose>
+                  </c:forEach>
 
+                  <c:if test="${nextPage != null }">
+                  <a href="/A0categoryList/${nextPage}">&gt;</a>
+                  </c:if>
+                  </div>
+                  </c:if>
+                  
+                  
+                  
+<!-- A1번 카테고리 -->                  
+                  <c:if test="${list.pro_categoryserial  eq 'A1' }">
+                  
+                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;">
+                  
+                  
+                  <c:if test="${prePage!=null }">
+                  <a href="/A1categoryList/${prePage}">&lt;</a>
+                  </c:if>
+                  
+                  <c:forEach items="${ pagingNo }" var="no">
+                  <c:choose>
+                  <c:when test="${selectPage == no}">
+                  &nbsp;<a style="color:green" href="/A1categoryList/${no}">${no}</a>&nbsp;
+                  </c:when>
+                  <c:otherwise>
+                  &nbsp;<a href="/A1categoryList/${no}">${no}</a>&nbsp;
+                  </c:otherwise>
+                  </c:choose>
+                  </c:forEach>
+
+                  <c:if test="${nextPage != null }">
+                  <a href="/A1categoryList/${nextPage}">&gt;</a>
+                  </c:if>
+                  </div>
+                  
+                  </c:if>
+                  
+                  
+<!-- A2번 카테고리 -->                  
+                  <c:if test="${list.pro_categoryserial  eq 'A2' }">
+                  
+                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;">
+                  
+                  
+                  <c:if test="${prePage!=null }">
+                  <a href="/A2categoryList/${prePage}">&lt;</a>
+                  </c:if>
+                  
+                  <c:forEach items="${ pagingNo }" var="no">
+                  <c:choose>
+                  <c:when test="${selectPage == no}">
+                  &nbsp;<a style="color:green" href="/A2categoryList/${no}">${no}</a>&nbsp;
+                  </c:when>
+                  <c:otherwise>
+                  &nbsp;<a href="/A2categoryList/${no}">${no}</a>&nbsp;
+                  </c:otherwise>
+                  </c:choose>
+                  </c:forEach>
+
+                  <c:if test="${nextPage != null }">
+                  <a href="/A2categoryList/${nextPage}">&gt;</a>
+                  </c:if>
+                  </div>
+                  
+                  </c:if>
+                  
+<!-- B0번 카테고리 -->                  
+                  <c:if test="${list.pro_categoryserial  eq 'B0' }">
+                  
+                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;">
+                  
+                  
+                  <c:if test="${prePage!=null }">
+                  <a href="/B0categoryList/${prePage}">&lt;</a>
+                  </c:if>
+                  
+                  <c:forEach items="${ pagingNo }" var="no">
+                  <c:choose>
+                  <c:when test="${selectPage == no}">
+                  &nbsp;<a style="color:green" href="/B0categoryList/${no}">${no}</a>&nbsp;
+                  </c:when>
+                  <c:otherwise>
+                  &nbsp;<a href="/B0categoryList/${no}">${no}</a>&nbsp;
+                  </c:otherwise>
+                  </c:choose>
+                  </c:forEach>
+
+                  <c:if test="${nextPage != null }">
+                  <a href="/B0categoryList/${nextPage}">&gt;</a>
+                  </c:if>
+                  </div>
+                  
+                  </c:if>                  
+                  
+
+<!-- B1번 카테고리 -->                  
+                  <c:if test="${list.pro_categoryserial  eq 'B1' }">
+                  
+                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;">
+                  
+                  
+                  <c:if test="${prePage!=null }">
+                  <a href="/B1categoryList/${prePage}">&lt;</a>
+                  </c:if>
+                  
+                  <c:forEach items="${ pagingNo }" var="no">
+                  <c:choose>
+                  <c:when test="${selectPage == no}">
+                  &nbsp;<a style="color:green" href="/B1categoryList/${no}">${no}</a>&nbsp;
+                  </c:when>
+                  <c:otherwise>
+                  &nbsp;<a href="/B1categoryList/${no}">${no}</a>&nbsp;
+                  </c:otherwise>
+                  </c:choose>
+                  </c:forEach>
+
+                  <c:if test="${nextPage != null }">
+                  <a href="/B1categoryList/${nextPage}">&gt;</a>
+                  </c:if>
+                  </div>
+                  
+                  </c:if>
+
+<!-- C0번 카테고리 -->                  
+                  <c:if test="${list.pro_categoryserial  eq 'C0' }">
+                  
+                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;">
+                  
+                  
+                  <c:if test="${prePage!=null }">
+                  <a href="/C0categoryList/${prePage}">&lt;</a>
+                  </c:if>
+                  
+                  <c:forEach items="${ pagingNo }" var="no">
+                  <c:choose>
+                  <c:when test="${selectPage == no}">
+                  &nbsp;<a style="color:green" href="/C0categoryList/${no}">${no}</a>&nbsp;
+                  </c:when>
+                  <c:otherwise>
+                  &nbsp;<a href="/C0categoryList/${no}">${no}</a>&nbsp;
+                  </c:otherwise>
+                  </c:choose>
+                  </c:forEach>
+
+                  <c:if test="${nextPage != null }">
+                  <a href="/C0categoryList/${nextPage}">&gt;</a>
+                  </c:if>
+                  </div>
+                  
+                  </c:if>
+
+<!-- C1번 카테고리 -->                  
+                  <c:if test="${list.pro_categoryserial  eq 'C1' }">
+                  
+                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;">
+                  
+                  
+                  <c:if test="${prePage!=null }">
+                  <a href="/C1categoryList/${prePage}">&lt;</a>
+                  </c:if>
+                  
+                  <c:forEach items="${ pagingNo }" var="no">
+                  <c:choose>
+                  <c:when test="${selectPage == no}">
+                  &nbsp;<a style="color:green" href="/C1categoryList/${no}">${no}</a>&nbsp;
+                  </c:when>
+                  <c:otherwise>
+                  &nbsp;<a href="/C1categoryList/${no}">${no}</a>&nbsp;
+                  </c:otherwise>
+                  </c:choose>
+                  </c:forEach>
+
+                  <c:if test="${nextPage != null }">
+                  <a href="/C1categoryList/${nextPage}">&gt;</a>
+                  </c:if>
+                  </div>
+                  
+                  </c:if>
+
+                  
+  </c:forEach>
+</section>
 
   <!-- Vendor JS Files -->
   <script src="resources/assets/vendor/purecounter/purecounter_vanilla.js"></script>

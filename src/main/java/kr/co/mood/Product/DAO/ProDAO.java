@@ -6,8 +6,8 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
-import kr.co.mood.Product.VO.ProPaginVO;
 import kr.co.mood.Product.VO.ProVO;
+import kr.co.mood.module.ModuleVO;
 
 @Repository
 public class ProDAO {
@@ -92,9 +92,37 @@ public class ProDAO {
 	
 	
 	
-	public List<ProVO> selectProListPaging(ProPaginVO vo){
+	public List<ProVO> selectProListPaging(ModuleVO vo){
 		
 		return session.selectList("ProDAO.selectProListPaging", vo);
+	}
+	public List<ProVO> A0selectProListPaging(ModuleVO vo){
+		
+		return session.selectList("ProDAO.A0selectProListPaging", vo);
+	}
+	public List<ProVO> A1selectProListPaging(ModuleVO vo){
+		
+		return session.selectList("ProDAO.A1selectProListPaging", vo);
+	}
+	public List<ProVO> A2selectProListPaging(ModuleVO vo){
+		
+		return session.selectList("ProDAO.A2selectProListPaging", vo);
+	}
+	public List<ProVO> B0selectProListPaging(ModuleVO vo){
+		
+		return session.selectList("ProDAO.B0selectProListPaging", vo);
+	}
+	public List<ProVO> B1selectProListPaging(ModuleVO vo){
+		
+		return session.selectList("ProDAO.B1selectProListPaging", vo);
+	}
+	public List<ProVO> C0selectProListPaging(ModuleVO vo){
+		
+		return session.selectList("ProDAO.C0selectProListPaging", vo);
+	}
+	public List<ProVO> C1selectProListPaging(ModuleVO vo){
+		
+		return session.selectList("ProDAO.C1selectProListPaging", vo);
 	}
 	
 	

@@ -17,6 +17,28 @@
       <result property="phone" column="PHONE" />
       <result property="day" column="DAY" />
    </resultMap> -->
+   
+<select id="selectAll" parameterType="kr.co.mood.module.ModuleVO" resultType="kr.co.mood.user.dao.UserVO">
+   <![CDATA[
+      select * from moodjoin where id != 'admin'
+      ]]>
+      <if test="searchId != null">
+      <![CDATA[and id like concat('%', #{searchId}, '%')]]>
+      </if>
+      <if test="searchName != null">
+      <![CDATA[and name like concat('%', #{searchName}, '%')]]>
+      </if>
+      <if test="startNo != null and endNo != 0">
+      limit #{startNo}, #{endNo}
+      </if>
+   </select>
+   
+   	<select id="selectMemberNo" parameterType="kr.co.mood.user.dao.UserVO" resultType="kr.co.mood.user.dao.UserVO">
+   <![CDATA[
+      select * from moodjoin where no = #{no}
+      ]]>
+   </select>
+   
 
 	 <insert id="insert" parameterType="kr.co.mood.user.dao.UserVO">
       <![CDATA[
@@ -31,11 +53,19 @@
       ]]>
    </select>
    
+   
    <select id="idChk" parameterType="kr.co.mood.user.dao.UserVO" resultType="int">
 		<![CDATA[
 		select count(*) from moodjoin where id=#{id}
 		 ]]>
 	</select>
+	
+	 <insert id="insertnaver" parameterType="kr.co.mood.user.dao.UserVO">
+      <![CDATA[
+      INSERT INTO moodjoin VALUES(no, #{id}, "", #{name}, #{age} , #{gender}, "", #{email}, "", now())
+      ]]>
+   </insert>
+	
    
    <delete id="delete" parameterType="String" >
 		<![CDATA[

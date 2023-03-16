@@ -3,7 +3,7 @@
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="utf-8">
 
 <head>
   <meta charset="utf-8">
@@ -72,8 +72,8 @@
           </li>
           <li class="dropdown"><a href="#">수 납 <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                  <li><a href="/C1categoryList">옷장/행거</a></li>
-                  <li><a href="/C0categoryList">서랍</a></li>
+                  <li><a href="/C0categoryList">옷장/행거</a></li>
+                  <li><a href="/C1categoryList">서랍</a></li>
                 </ul>
           </li>
           <li class="dropdown"><a href="#">인테리어 시공 <i class="bi bi-chevron-down"></i></a>
@@ -89,6 +89,7 @@
                <li class="/login_info">${login_info.name } [ ${login_info.id } ]</li>
                <li><a href="/mypage.do"><span class="getstarted scrollto"> Mypage</span> </a></li>
                <li><a href="/logout.do"><span class="getstarted scrollto">Logout</span></a></li>
+               <li><a href="/cate.do"><span class="getstarted scrollto">Cate</span></a></li>
             </c:if>
             
             
@@ -114,9 +115,3 @@
   </header><!-- End Header -->
 
  
-
-
-
-</body>
-
-</html>

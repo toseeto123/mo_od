@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
@@ -41,6 +42,13 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+<script
+   src="https://cdnjs.cloudflare.com/ajax/libs/spring-webmvc/5.3.8/spring-webmvc.min.js"></script>
+   
+   <script type="text/javascript">
+   	
+   </script>
 </head>
 <style>
 pre{
@@ -141,74 +149,74 @@ pre{
                         <li><strong>옵 션</strong>:<br>
                         <c:if test="${empty list.pro_option1}">
                         <label for="chk_option" ><span class="chk_option">선택안함</span></label>
-                        <input type="radio" value="daaaa" id="chk_option" name="radioOption" checked="checked"><br>
+                        <input type="radio" value="선택안함" id="chk_option" name="radioOption" checked="checked"><br>
                         </c:if>
                         
                         
                         <c:if test="${!empty list.pro_option1}">
-                        <label for="chk_option 1" ><span class="chk_option">${list.pro_option1}</span></label>
-                        <input type="radio" value="daaaa" id="chk_option 1" name="radioOption"><br>
+                        <label for="chk_option 1"><span class="chk_option">${list.pro_option1}</span></label>
+                        <input type="radio" value="${list.pro_option1}" id="chk_option 1" name="radioOption" checked="checked"><br>
                         </c:if>
                         
                         
                          <c:if test="${!empty list.pro_option2}">
-                        <label for="chk_option 2" ><span class="chk_option">${list.pro_option2}</span></label>
-                        <input type="radio" value="daaaa" id="chk_option 2" name="radioOption"><br>
+                        <label for="chk_option 2"><span class="chk_option">${list.pro_option2}</span></label>
+                        <input type="radio" value="${list.pro_option2}" id="chk_option 2" name="radioOption"><br>
                         </c:if>
                         
                         </c:if>
                         <c:if test="${!empty list.pro_option3}">
-                        <label for="chk_option 3" ><span class="chk_option">${list.pro_option3}</span></label>
-                        <input type="radio" value="daaaa" id="chk_option 3" name="radioOption"><br>
+                        <label for="chk_option 3"><span class="chk_option">${list.pro_option3}</span></label>
+                        <input type="radio" value="${list.pro_option3}" id="chk_option 3" name="radioOption"><br>
                         </c:if>
 
                         
-                        <li><strong>수 량</strong>: <input type='button' onclick='count("plus")' value='+' /><span id='result'>1</span><input type='button' onclick='count("minus")' value='-' />
-                         <li><strong>총 금액</strong>: <span id='resultPrice'>${list.pro_price }</span>원</li>
-		<script type="text/javascript">
-                  function count(type)  {
-                	  // 결과를 표시할 element
-                	  const resultElement = document.getElementById('result');
-                	  const resultPriceElement = document.getElementById('resultPrice');
-                	  
-                	  // 현재 화면에 표시된 값
-                	  let number = resultElement.innerText;
-                	  let totalPrice = resultPriceElement.innerText;
-                	  // 더하기/빼기
-                	  if(type === 'plus') {
-                	    number = parseInt(number) + 1;
-                	    totalPrice = (parseInt(totalPrice) + parseInt(${list.pro_price}));
-                	  }else if(type === 'minus' && number > 1)  {
-                	    number = parseInt(number) - 1;
-                	    totalPrice = (parseInt(totalPrice) - parseInt(${list.pro_price}));
-                	  }
-                	  
-                	  // 결과 출력
-                	  resultElement.innerText = number;
-                	  resultPriceElement.innerText = totalPrice;
-                	}
-                  </script>
+
                      <li>            
                      </ul>
                      
                   </div>
-					<input type="hidden" name="${cate_id }"/>
+               <input type="hidden" name="${cate_id }"/>
                   <div class="portfolio-description">
                      <h2>${list.pro_maindesctitle}</h2>
                      <pre>${list.pro_maindesc }</pre>
+                    <input type="hidden" name="pro_price" value="${list.pro_price}">
+                   <input type="hidden" name="pro_number" value="${list.pro_number}">
+                   
+                   
+
+                   
+                     <input type="submit" value="장바구니" class="cateBtn" ><br><br>
+               		   <input type="button" value="바로결제하기" class="btn_buy">
+
+</form>      		
+<!-- ------------------------------------------------------------------------------------------ -->
+					
+					
+					<%-- <form action="/products/orders" method="post">
+					<input type="hidden" name="pro_price" value="${list.pro_price}">
+                    <input type="hidden" name="pro_number" value="${list.pro_number}">
+                  
+                     </form> --%>
                      
-                     <input type="submit" value="장바구니" class="cateBtn"><br><br>
-                     <input type="button" value="바로결제하기" class="btn_buy">
                   </div>
                </div>
-               
-</form>		
-
-	<!-- 주문 form toseet123 생성 -->
-			<form action="/orders/${login_info.no}/${list.pro_number}"class="order_form">
-				<input type="hidden" name="pro_number" value="${list.pro_number}">
-				<input type="hidden" name="orders[0].orderCount" value="">
+			
+			<form action="/login.do" class="login_form" method="get">
 			</form>
+			
+	<!-- 주문 form toseet123 생성 -->
+			<form action="/products/orders" class="order_form" method="post">
+			 	<input type="hidden" id="userNo" name="userNo" value="${login_info.no}">
+				<input type="hidden" name="address" value="${login_info.adr}">
+				<input type="hidden" name="pro_price" value="${list.pro_price}">
+				<input type="hidden" name="pro_number" value="${list.pro_number}">
+				<input type="hidden" name="pro_name" value="${list.pro_name}">
+				<input type="hidden" name="status" value="준비중">
+				
+			</form>
+
+    
 <style>
 .chk_option{
    cursor: pointer;
@@ -338,17 +346,31 @@ pre{
 
    <!-- Template Main JS File -->
    <script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
-	
-	
+   
+   
    <script>
+
+   var userNo = $('#userNo').val();
+   
    /* 바로구매 버튼 */
-	$(".btn_buy").on("click", function(){
-		let orderCount = $(".quantity_input").val();
-		$(".order_form").find("input[name='orders[0].orderCount']").val(orderCount);
-		$(".order_form").submit();
-	});
+   $(".btn_buy").on("click", function(){
+	   if(userNo=="") {
+	   var login_chk = confirm('로그인이 필요한 서비스입니다. 로그인페이지로 이동하시겠습니까?');
+	  	
+		if(login_chk) {
+			$(".login_form").submit();
+		} else {
+			location.href = location.href;
+		}} else {
+			let orderCount = $(".quantity_input").val();
+	        $(".order_form").find("input[name='orders[0].orderCount']").val(orderCount);
+	        $(".order_form").submit();
+		}
+
+   });
+
    </script>
-	
+   
 </body>
 
 </html>

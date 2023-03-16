@@ -3,14 +3,59 @@
 	
 	<mapper namespace="ProDAO">
 	
-	<select id="selectProListPaging" parameterType="kr.co.mood.Product.VO.ProPaginVO" resultType="kr.co.mood.Product.VO.ProVO">
+	<select id="selectProListPaging" parameterType="kr.co.mood.module.ModuleVO" resultType="kr.co.mood.Product.VO.ProVO">
 		select pro_serialnumber, pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
 		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product
 		order by pro_number
 		limit #{startNo}, #{endNo}
 	</select>
 	
+	<select id="A0selectProListPaging" parameterType="kr.co.mood.module.ModuleVO" resultType="kr.co.mood.Product.VO.ProVO">
+		select pro_serialnumber, pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'A0%'
+		order by pro_number
+		limit #{startNo}, #{endNo}
+	</select>
 	
+	<select id="A1selectProListPaging" parameterType="kr.co.mood.module.ModuleVO" resultType="kr.co.mood.Product.VO.ProVO">
+		select pro_serialnumber, pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'A1%'
+		order by pro_number
+		limit #{startNo}, #{endNo}
+	</select>
+	<select id="A2selectProListPaging" parameterType="kr.co.mood.module.ModuleVO" resultType="kr.co.mood.Product.VO.ProVO">
+		select pro_serialnumber, pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'A2%'
+		order by pro_number
+		limit #{startNo}, #{endNo}
+	</select>	
+	<select id="B0selectProListPaging" parameterType="kr.co.mood.module.ModuleVO" resultType="kr.co.mood.Product.VO.ProVO">
+		select pro_serialnumber, pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'B0%'
+		order by pro_number
+		limit #{startNo}, #{endNo}
+	</select>
+	<select id="B1selectProListPaging" parameterType="kr.co.mood.module.ModuleVO" resultType="kr.co.mood.Product.VO.ProVO">
+		select pro_serialnumber, pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'B1%'
+		order by pro_number
+		limit #{startNo}, #{endNo}
+	</select>
+	<select id="C0selectProListPaging" parameterType="kr.co.mood.module.ModuleVO" resultType="kr.co.mood.Product.VO.ProVO">
+		select pro_serialnumber, pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'C0%'
+		order by pro_number
+		limit #{startNo}, #{endNo}
+	</select>
+	<select id="C1selectProListPaging" parameterType="kr.co.mood.module.ModuleVO" resultType="kr.co.mood.Product.VO.ProVO">
+		select pro_serialnumber, pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
+		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'C1%'
+		order by pro_number
+		limit #{startNo}, #{endNo}
+	</select>
+	
+	
+			
 	
 	
 	<select id="selectProList" resultType="kr.co.mood.Product.VO.ProVO">
@@ -76,11 +121,7 @@
 	</select>
   
   
-
-  
-  
-  
-  <select id="A0selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
+	<select id="A0selectCategoryProList" resultType="kr.co.mood.Product.VO.ProVO">
 	      <![CDATA[
 		select pro_number, pro_categoryserial, pro_name, pro_maindesc,pro_maindesctitle,pro_subdesc ,pro_option1,pro_option2,pro_option3,pro_paycount,
 		pro_bucketcount ,pro_price,pro_soldout,pro_img1,pro_img2,pro_img3,pro_img4,pro_img5 from product where pro_categoryserial like 'A0%'

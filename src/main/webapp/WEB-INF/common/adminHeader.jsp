@@ -60,7 +60,7 @@
                 </ul>
 
           </li>
-          <li class="dropdown"><a href="#">회원관리</a>
+          <li class="dropdown"><a href="/admin/adminMemberList.do">회원관리</a>
                 
           </li>
           <li class="dropdown"><a href="#">버킷</a>

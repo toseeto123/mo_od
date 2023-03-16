@@ -2,8 +2,8 @@ package kr.co.mood.Product.DAO;
 
 import java.util.List;
 
-import kr.co.mood.Product.VO.ProPaginVO;
 import kr.co.mood.Product.VO.ProVO;
+import kr.co.mood.module.ModuleVO;
 
 
 public interface ProductService {
@@ -39,7 +39,14 @@ public interface ProductService {
 	
 	
 	
-	public List<ProVO> selectProListPaging(ProPaginVO vo);
+	public List<ProVO> selectProListPaging(ModuleVO vo);
+	public List<ProVO> A0selectProListPaging(ModuleVO vo);
+	public List<ProVO> A1selectProListPaging(ModuleVO vo);
+	public List<ProVO> A2selectProListPaging(ModuleVO vo);
+	public List<ProVO> B0selectProListPaging(ModuleVO vo);
+	public List<ProVO> B1selectProListPaging(ModuleVO vo);
+	public List<ProVO> C0selectProListPaging(ModuleVO vo);
+	public List<ProVO> C1selectProListPaging(ModuleVO vo);
 	
 	
 	
