@@ -60,21 +60,7 @@ public class CateController {
 		
 		return mav;
 	}
-	   @RequestMapping(value="/cateinsert.do" , method = RequestMethod.POST)
-	   public String insertcate(HttpSession session, Model model, @RequestParam("pro_price") int pro_price) {
-	       UserVO uvo = (UserVO) session.getAttribute("login_info");
-	       int userid = uvo.getNo();
-	       ProVO pvo = (ProVO) session.getAttribute("pro_number");
-	       System.out.println(pvo);
-	       int proid = pvo.getPro_number();
-
-   
-   @RequestMapping(value = "/cate.do" , method = RequestMethod.POST)
-   public ModelAndView selectAllList(HttpSession session , ModelAndView mav) {
-      System.out.println("cat");
-      
-      return mav;
-   }
+	
    @RequestMapping(value="/cateinsert.do" , method = RequestMethod.POST)
    public String insertcate(HttpSession session, Model model, @RequestParam("pro_number") int pro_number,@RequestParam("pro_price") int pro_price,@RequestParam("radioOption") String pro_option) {
        UserVO uvo = (UserVO) session.getAttribute("login_info");
