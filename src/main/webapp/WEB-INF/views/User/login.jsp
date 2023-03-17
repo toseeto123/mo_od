@@ -123,6 +123,7 @@
                     <button class="submit">Login</button>
                     
                     
+                    
                     <a href="/search_id" class="btn idfind">아이디 찾기</a>
                     <a href="/search_pwd" class="btn pwdfind">비밀번호찾기 찾기</a>
                 </form>

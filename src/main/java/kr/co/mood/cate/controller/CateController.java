@@ -57,29 +57,25 @@ public class CateController {
 		
 		return mav;
 	}
-<<<<<<< HEAD
-	  
-  
-=======
-	
->>>>>>> ce467993d6f68e3f9d26b30101555f78f75b14fb
+
    @RequestMapping(value="/cateinsert.do" , method = RequestMethod.POST)
    public String insertcate(HttpSession session, Model model, @RequestParam("pro_number") int pro_number,@RequestParam("pro_price") int pro_price,@RequestParam("radioOption") String pro_option) {
-       UserVO uvo = (UserVO) session.getAttribute("login_info");
+       System.out.println("카트인서트와써!");
+	   UserVO uvo = (UserVO) session.getAttribute("login_info");	
+	   if(uvo==null) {
+		   return "redirect:/login.do";
+	   } else {
        int userid = uvo.getNo();
        CateVO cvo = new CateVO();
-       
+     
        cvo.setUser_no(userid);
        cvo.setPro_number(pro_number);
        cvo.setCate_pro_price(pro_price);
        cvo.setTotal(pro_price);
        cvo.setPro_option(pro_option);
        cservice.addcate(cvo, uvo, null);
-
-
-
-       // POST �슂泥� 泥섎━ �썑 由щ떎�씠�젆�듃瑜� 諛섑솚�빀�땲�떎.
        return "redirect:/cate";
+	   }
    }
 
    @RequestMapping(value = "/cate", method = RequestMethod.GET)
