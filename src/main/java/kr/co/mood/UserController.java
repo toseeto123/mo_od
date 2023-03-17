@@ -12,6 +12,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.co.mood.cate.DAO.CateService;
 import kr.co.mood.user.dao.UserService;
@@ -40,9 +44,36 @@ public class UserController {
 	@Autowired
 	private CateService cateService;
 
-	
-
-	
+	@RequestMapping(value="/googleSave", method=RequestMethod.POST)
+	@ResponseBody
+	public String googleSave(@RequestBody String googleJsonData, HttpSession session) throws Exception{
+		
+		  ObjectMapper mapper = new ObjectMapper();
+	        JsonNode jsonParsing;
+			
+				jsonParsing = mapper.readTree(googleJsonData);
+				String name = jsonParsing.get("name").asText();
+				String email = jsonParsing.get("email").asText();
+				String age = jsonParsing.get("age").asText();
+				int age1 = Integer.parseInt(age)/10;
+				String ageGroup = (age1*10)+"~"+((age1*10)+9);
+				UserVO googleVO = new UserVO();
+				googleVO.setEmail(email);
+				googleVO.setId(email);
+				googleVO.setName(name);
+				googleVO.setAge(ageGroup);
+				
+				 int result = userservice.idChk(googleVO);
+				  System.out.println(result);
+				  if(result == 0) {
+					  userservice.insertnaver(googleVO);
+				      session.setAttribute("login_info", googleVO);
+				  }else {
+				      session.setAttribute("login_info", googleVO);
+				  }
+				
+		return "";
+	}	
 	
 	  //占쎄퐬占쎌뵠甕곤옙 嚥≪뮄�젃占쎌뵥
 	@RequestMapping(value="/naverSave", method=RequestMethod.POST)
@@ -115,17 +146,28 @@ public class UserController {
    @RequestMapping(value = "/login.do" , method = RequestMethod.POST)
    public String loginAction(UserVO vo, HttpSession session , RedirectAttributes rttr) {
 	  UserVO vo1 =  userservice.selectId(vo);
+	  System.out.println("여기와써");
+	  String path = (String) session.getAttribute("path");
+
+	  System.out.println(path);
 	  
+	  if(path== null) {
 	  if(vo1 == null) {
+		  System.out.println("null이야");
 		  session.setAttribute("login_info", null);
 		  rttr.addFlashAttribute("msg", false);
 		  return "redirect:login.do";
 	  } else {
+		  		System.out.println("메인페이지로 이동할거야");
 				session.setAttribute("login_info", vo1);
 				return "redirect:index.jsp";
 			}
-	  }	
-   
+	  }	else {
+		 System.out.println("해당페이지로 이동할거야");
+		session.setAttribute("login_info", vo1);
+		return "redirect:"+path;
+	  }
+   }
  	@RequestMapping("/logout.do")
  		public String logout(UserVO vo,HttpSession session) {
  			session.setAttribute("login_info", vo);

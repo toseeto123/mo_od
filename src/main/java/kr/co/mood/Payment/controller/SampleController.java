@@ -34,6 +34,7 @@ public class SampleController {
         model.addAttribute("pro_price",pro_price);
         model.addAttribute("orderId",orderId);
          return "redirect:" + kakaopay.kakaoPayReady(pro_name,pro_price,orderId);
+
       }
 
 

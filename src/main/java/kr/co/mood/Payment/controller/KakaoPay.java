@@ -39,7 +39,9 @@ public class KakaoPay {
        private KakaoPayReadyVO kakaoPayReadyVO;
        private KakaoPayApprovalVO kakaoPayApprovalVO;
        
+
        public String kakaoPayReady(@RequestParam("pro_name") String pro_name,@RequestParam("pro_price") int pro_price,@RequestParam("orderId") int orderId) {
+
     
            RestTemplate restTemplate = new RestTemplate();
 
@@ -53,6 +55,7 @@ public class KakaoPay {
            String pro_pricestr = Integer.toString(pro_price);
            String orderIdstr = Integer.toString(pro_price);
            
+
            //  뜝 럡 맋 뵓怨뚯뫊餓    뜝 럩 뭵嶺뚳퐦 삕 뜝 럥留  Body
            MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
            params.add("cid", "TC0ONETIME");
@@ -61,6 +64,7 @@ public class KakaoPay {
            params.add("item_name", pro_name);
            params.add("quantity", "1");
            params.add("total_amount", pro_pricestr);
+
            params.add("tax_free_amount", "100");
            params.add("approval_url", "http://localhost:8080/User/kakaoPaySuccess");
            params.add("cancel_url", "http://localhost:8080/User/kakaoPayCancel");
