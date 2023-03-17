@@ -68,7 +68,7 @@ public class KakaoPay {
            params.add("total_amount", pro_pricestr);
 
            params.add("tax_free_amount", "100");
-           params.add("approval_url", "http://localhost:8080/User/kakaoPaySuccess");
+           params.add("approval_url", "http://localhost:8080/User/kakaoPaySuccess&orderId=156&userno=2");
            params.add("cancel_url", "http://localhost:8080/User/kakaoPayCancel");
            params.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");
            System.out.println(params);
