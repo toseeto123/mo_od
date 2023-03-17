@@ -118,7 +118,7 @@ public class UserController {
    @RequestMapping(value = "/login.do" , method = RequestMethod.POST)
    public String loginAction(UserVO vo, HttpSession session , RedirectAttributes rttr) {
 	  UserVO vo1 =  userservice.selectId(vo);
-	  
+	  System.out.println("여기와써");
 	  String path = (String) session.getAttribute("path");
 
 	  System.out.println(path);

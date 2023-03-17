@@ -7,7 +7,6 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,7 +15,6 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.mood.Product.DAO.ProductService;
-import kr.co.mood.Product.VO.ProVO;
 import kr.co.mood.Product.controller.ProductController;
 import kr.co.mood.cate.DAO.CateService;
 import kr.co.mood.cate.vo.CateVO;
@@ -37,9 +35,8 @@ public class CateController {
 	@Autowired
 	ProductController productController;
 	
-	@RequestMapping(value = "/cate.do" , method = RequestMethod.GET)
 	public String cate(HttpSession session, RedirectAttributes rttr) {
-	
+		
 		UserVO uvo = (UserVO) session.getAttribute("login_info");
 		System.out.println("cate");
 		

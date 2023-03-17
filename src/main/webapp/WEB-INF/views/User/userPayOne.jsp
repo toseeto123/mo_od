@@ -85,7 +85,8 @@ img {
    <div class="container">
       <div class="py-4 text-center">
       </div>
-
+	<form class="needs-validation" novalidate action="/kakaoPay"
+            method="post">
       <div class="row">
 	<c:forEach var="orders" items="${orders}">
          <div class="col-md-12 order-md-1">
@@ -147,12 +148,11 @@ img {
 
 <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">${totalPrice}원 결제하기</button>
                </div>
-               
-               
-            </form>
+     
+            
          </div>
       </div>
-      
+</form>      
 
 
    </div>
@@ -171,9 +171,7 @@ img {
 
    <script src="form-validation.js"></script>
 
-   <form method="post" action="/kakaoPay">
-     
-   </form>
+</body>
 
     <script>
     var IMP = window.IMP; 
@@ -192,8 +190,8 @@ img {
          pg : 'kakao',  //nicepay=nice.id , kcp=kcp.id, kginicis=html5_inicis.id
             pay_method : 'card',
             merchant_uid: "IMP"+makeMerchantUid, 
-            name : '당근 10kg',
-            amount : 1004,
+            name : '주문명: america',
+            amount : 1000,
             buyer_email : 'Iamport@chai.finance',
             buyer_name : '포트원 기술지원팀',
             buyer_tel : '010-1234-5678',

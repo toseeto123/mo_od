@@ -187,44 +187,36 @@ pre{
 
                    
                      <input type="submit" value="장바구니" class="cateBtn" ><br><br>
-               
+               		   <input type="button" value="바로결제하기" class="btn_buy">
 
 </form>      		
 <!-- ------------------------------------------------------------------------------------------ -->
-					<form action="/products/orders" method="post">
+					
+					
+					<%-- <form action="/products/orders" method="post">
 					<input type="hidden" name="pro_price" value="${list.pro_price}">
-                   <input type="hidden" name="pro_number" value="${list.pro_number}">
-                     <input type="submit" value="바로결제하기" class="btn_buy">
-                     </form>
+                    <input type="hidden" name="pro_number" value="${list.pro_number}">
+                  
+                     </form> --%>
                      
                   </div>
                </div>
-
-               
-</form>		
-			<form action="/login.do" class="login_form" method="get">	
-				
-			</form>
 			
+			<form action="/login.do" class="login_form" method="get">
+			</form>
 			
 	<!-- 주문 form toseet123 생성 -->
 			<form action="/products/orders" class="order_form" method="post">
 			 	<input type="hidden" id="userNo" name="userNo" value="${login_info.no}">
 				<input type="hidden" name="address" value="${login_info.adr}">
-				<input type="hidden" name="price" value="${list.pro_price}">
+				<input type="hidden" name="pro_price" value="${list.pro_price}">
 				<input type="hidden" name="pro_number" value="${list.pro_number}">
-				<input type="hidden" name="pro_namer" value="${list.pro_name}">
+				<input type="hidden" name="pro_name" value="${list.pro_name}">
 				<input type="hidden" name="status" value="준비중">
 				
 			</form>
 
-                     
-         <form action="/login.do" class="login_form" method="get">         
-         </form>
-         
-         
-=
-
+    
 <style>
 .chk_option{
    cursor: pointer;
