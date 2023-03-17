@@ -52,15 +52,16 @@ public class UserController {
 	        JsonNode jsonParsing;
 			
 				jsonParsing = mapper.readTree(googleJsonData);
-				String name = jsonParsing.get("name").asText();
-				String email = jsonParsing.get("email").asText();
+				String name[] = jsonParsing.get("name").asText().split("\"");
+				String email[] = jsonParsing.get("email").asText().split("\"");
 				String age = jsonParsing.get("age").asText();
+				
 				int age1 = Integer.parseInt(age)/10;
 				String ageGroup = (age1*10)+"~"+((age1*10)+9);
 				UserVO googleVO = new UserVO();
-				googleVO.setEmail(email);
-				googleVO.setId(email);
-				googleVO.setName(name);
+				googleVO.setEmail(email[1]);
+				googleVO.setId(email[1]);
+				googleVO.setName(name[1]);
 				googleVO.setAge(ageGroup);
 				
 				 int result = userservice.idChk(googleVO);
@@ -72,7 +73,8 @@ public class UserController {
 				      session.setAttribute("login_info", googleVO);
 				  }
 				
-		return "";
+				  String path = (String) session.getAttribute("path");
+				return path;
 	}	
 	
 	  //占쎄퐬占쎌뵠甕곤옙 嚥≪뮄�젃占쎌뵥
