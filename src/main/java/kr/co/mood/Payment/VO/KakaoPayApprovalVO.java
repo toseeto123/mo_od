@@ -4,14 +4,24 @@ import java.sql.Date;
 
 public class KakaoPayApprovalVO {
 	
+	
+	public KakaoPayApprovalVO() {
+	}
 	 //response
     private String aid, tid, cid, sid;
     private String partner_order_id, partner_user_id, payment_method_type;
-    private AmountVO amount;
+    private AmountVO amount , total;
     private CardVO card_info;
     private String item_name, item_code, payload;
     private Integer quantity, tax_free_amount, vat_amount;
     private Date created_at, approved_at;
+    
+	public AmountVO getTotal() {
+		return total;
+	}
+	public void setTotal(AmountVO total) {
+		this.total = total;
+	}
 	public String getAid() {
 		return aid;
 	}
@@ -48,6 +58,7 @@ public class KakaoPayApprovalVO {
 	public void setPartner_user_id(String partner_user_id) {
 		this.partner_user_id = partner_user_id;
 	}
+	
 	public String getPayment_method_type() {
 		return payment_method_type;
 	}
@@ -114,6 +125,7 @@ public class KakaoPayApprovalVO {
 	public void setApproved_at(Date approved_at) {
 		this.approved_at = approved_at;
 	}
+	
     
     
 }

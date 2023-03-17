@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="KakaoPayApprovalDAO">
+
+   <insert id="insert">
+      insert into payment(payment_method, orderid , userid , amount)
+      value(#{payment_method_type}, #{partner_order_id} , #{partner_user_id}, #{amount.total})
+   </insert>
+
+
+
+</mapper>
