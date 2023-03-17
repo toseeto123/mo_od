@@ -58,7 +58,7 @@ pre{
 </style>
 <body>
 <jsp:include page="/WEB-INF/common/header.jsp" />
-<form method="post" action="/cateinsert.do">
+<form method="post" action="/cateinsert.do" class="cateinsert">
    <main id="main">
 <c:if test="${list.pro_number eq list.pro_number }">
       <!-- ======= Breadcrumbs ======= -->
@@ -186,9 +186,14 @@ pre{
                    
 
                    
-                     <input type="submit" value="장바구니" class="cateBtn" ><br><br>
-               		   <input type="button" value="바로결제하기" class="btn_buy">
-
+                     <input type="button" value="장바구니" class="cateBtn" id="cateinsert"><br><br>
+               		 <input type="button" value="바로결제하기" class="btn_buy">
+					<% 
+					session.setAttribute("catepath", "/cateinsert.do");
+					String catepath = (String)session.getAttribute("catepath");
+					session.setAttribute("paypath", "/products/orders");
+					String paypath = (String)session.getAttribute("paypath");
+					%>
 </form>      		
 <!-- ------------------------------------------------------------------------------------------ -->
 					
@@ -351,13 +356,12 @@ pre{
    <script>
 
    var userNo = $('#userNo').val();
-   
    /* 바로구매 버튼 */
    $(".btn_buy").on("click", function(){
 	   if(userNo=="") {
 	   var login_chk = confirm('로그인이 필요한 서비스입니다. 로그인페이지로 이동하시겠습니까?');
-	  	
 		if(login_chk) {
+			
 			$(".login_form").submit();
 		} else {
 			location.href = location.href;
@@ -365,6 +369,23 @@ pre{
 			let orderCount = $(".quantity_input").val();
 	        $(".order_form").find("input[name='orders[0].orderCount']").val(orderCount);
 	        $(".order_form").submit();
+		}
+
+   });
+  
+   /* 장바구니 버튼 */
+   $(".cateBtn").on("click", function(){	   
+	   if(userNo=="") {
+		   
+	   var login_chk = confirm('로그인이 필요한 서비스입니다. 로그인페이지로 이동하시겠습니까?');
+	   
+		if(login_chk) {
+			$(".cateinsert").submit();
+			
+		} else {
+			location.href = location.href;
+		}} else {
+			$(".cateinsert").submit();
 		}
 
    });
