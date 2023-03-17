@@ -85,6 +85,7 @@ public String toString() {
    return "UserVO [no=" + no + ", id=" + id + ", pwd=" + pwd + ", name=" + name + ", age=" + age + ", gender=" + gender
          + ", adr=" + adr + ", adr2=" + adr2 + ", adr3=" + adr3 + ", email=" + email + ", phone=" + phone + "]";
 }
+
    
 
 

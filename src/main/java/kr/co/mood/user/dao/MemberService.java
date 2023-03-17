@@ -20,7 +20,7 @@ import com.google.gson.JsonParser;
 @Service
 public class MemberService {
 	@Autowired
-	private UserDAO mr;
+	private UserDAO userdao;
 	
 	public String getAccessToken (String authorize_code) {
 		String access_Token = "";
@@ -90,26 +90,30 @@ public class MemberService {
 			userInfo.put("nickname", nickname);
 			userInfo.put("email", email);
 			userInfo.put("age_range", age_range);
+			System.out.println("dsds"+userInfo);
+			
+			
 			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 		// catch 아래 코드 추가.
-		UserVO result = mr.findkakao(userInfo);
+		UserVO result = userdao.findkakao(userInfo);
 		// 위 코드는 먼저 정보가 저장되있는지 확인하는 코드.
-		System.out.println("S:" + result);
 		if(result==null) {
 		// result가 null이면 정보가 저장이 안되있는거므로 정보를 저장.
-			mr.kakaoinsert(userInfo);
+			userdao.kakaoinsert(userInfo);
 			// 위 코드가 정보를 저장하기 위해 Repository로 보내는 코드임.
-			return mr.findkakao(userInfo);
+			return userdao.findkakao(userInfo);
 			// 위 코드는 정보 저장 후 컨트롤러에 정보를 보내는 코드임.
 			//  result를 리턴으로 보내면 null이 리턴되므로 위 코드를 사용.
 		} else {
 			return result;
-			// 정보가 이미 있기 때문에 result를 리턴함.
+			
 		}
         
 	}
+
+	
 }

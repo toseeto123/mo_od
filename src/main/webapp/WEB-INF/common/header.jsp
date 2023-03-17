@@ -85,21 +85,23 @@
                 </ul>
           </li>
 
-              <c:if test="${!empty login_info.id}">
+			<c:if test="${!empty login_info.id}">
                <li class="/login_info">${login_info.name } [ ${login_info.id } ]</li>
                <li><a href="/mypage.do"><span class="getstarted scrollto"> Mypage</span> </a></li>
                <li><a href="/logout.do"><span class="getstarted scrollto">Logout</span></a></li>
                <li><a href="/cate.do"><span class="getstarted scrollto">Cate</span></a></li>
             </c:if>
-            
-            
-            <!-- 알아서 이거 활용하자 -->
-
-           <c:if test="${empty login_info.id}">
+	
+	
+						
+					<c:if test="${empty login_info.id}">
 							<li><a class="getstarted scrollto" href="/join.do">회원가입</a></li>
 							<li><a class="getstarted scrollto" href="/login.do">로그인</a></li>
 							<li><a class="getstarted scrollto" href="/cate.do">장바구니</a></li>
-			</c:if>
+			       </c:if>
+            
+            
+ 
 
 
 
