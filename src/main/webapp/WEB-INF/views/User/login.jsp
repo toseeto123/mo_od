@@ -7,13 +7,20 @@
 
 <head>
 
+<script>
+                	
+                	 </script>
+                	  <meta name="google-signin-client_id" content="38260405754-99qf9j81rp019ft343rpp1fmq378qabg.apps.googleusercontent.com">
+
 <meta charset="UTF-8">
    <title>Home</title>
     <link rel="stylesheet" href="/resources/user/css/login.css"/>
     <script type="text/javascript" src="/resources/user/js/main.js"></script>
  	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-
+	<script type="text/javascript" src="/resources/user/js/googleLogin.js"></script>
+        <script async defer src="https://apis.google.com/js/api.js" onload="googleGapiLoaded()"></script>
+    	<script async defer src="https://accounts.google.com/gsi/client" onload="googleGisLoaded()"></script>
   <script>
   const result ="${msg}"
   if(result==="loginmsg"){
@@ -38,7 +45,10 @@
   				 <!-- <a href="#" id="naverIdLogin" class="btn sns-naver" title="새창">네이버로 로그인</a>
   				<a href="#" id="kakaoLogin" class="btn sns-kakao" title="새창">카카오로 회원가입</a>
   				<a href="#" id="googleLogin" class="btn sns-google" title="새창">구글 회원가입</a>
- -->
+  				
+ -->			
+ 			<!-- Google Login -->
+ 				<button style="background: transparent; border-color: transparent; position:absolute; top:23%; left:20%;" onclick="googleHandleAuthClick()"><img style="width:45px;" src="/resources/user/img/gl.png" alt="google"></button>
  <script>
  	
 		 var naverLogin = new naver.LoginWithNaverId({
@@ -123,11 +133,14 @@
 					
 				
                     <br><br>
+
                     <button class="submit">로그인</button>
                      
                      <a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/member/kakaoLogin&response_type=code">
      	               <img src="/resources/user/img/ka.png" alt="kakao">
    	                 </a>
+
+
                     
 <!--                     <button class="submit" onclick="location.href='index.jsp'">취소</button> -->
 <!--                     <button class="submit" onclick="location.href='join.do'">회원가입</button> -->
@@ -141,5 +154,8 @@
             </div>
              </div>
         </div>
+        
+        
+        
 </body>
 </html>
