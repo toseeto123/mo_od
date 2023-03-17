@@ -74,6 +74,7 @@ public class UserController {
 				  }
 				
 				  String path = (String) session.getAttribute("path");
+				  System.out.println("이것은 path 다");
 				return path;
 	}	
 	
