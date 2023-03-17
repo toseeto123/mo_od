@@ -92,6 +92,11 @@
 }
 </script>
 
+			<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/member/kakaoLogin&response_type=code">
+     	            
+     	            <img src="/resources/user/img/ka.png" alt="kakao">
+   	                 </a>
+
                    
                 <form id="login" action="/login.do" class="input-group" method="post">
                     <input type="text" name="id" class="input-field" placeholder="User name or Email" required autofocus>
