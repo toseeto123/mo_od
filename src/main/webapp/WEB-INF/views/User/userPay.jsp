@@ -167,6 +167,7 @@ img {
                <c:forEach var="orderprice" items="${orderprice}">
                   <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">${orderprice.price}원결제하기</button>
                   <input type="hidden" name="pro_price" value=${orderprice.price }>
+                  <input type="hidden" name="orderId" value=${orderprice.orderId }>
                   </c:forEach>
                   
             </div>
