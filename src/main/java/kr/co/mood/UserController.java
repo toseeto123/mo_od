@@ -4,17 +4,15 @@ package kr.co.mood;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.reflection.SystemMetaObject;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -22,6 +20,9 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.co.mood.cate.DAO.CateService;
 import kr.co.mood.user.dao.UserService;
@@ -43,9 +44,36 @@ public class UserController {
 	@Autowired
 	private CateService cateService;
 
-	
-
-	
+	@RequestMapping(value="/googleSave", method=RequestMethod.POST)
+	@ResponseBody
+	public String googleSave(@RequestBody String googleJsonData, HttpSession session) throws Exception{
+		
+		  ObjectMapper mapper = new ObjectMapper();
+	        JsonNode jsonParsing;
+			
+				jsonParsing = mapper.readTree(googleJsonData);
+				String name = jsonParsing.get("name").asText();
+				String email = jsonParsing.get("email").asText();
+				String age = jsonParsing.get("age").asText();
+				int age1 = Integer.parseInt(age)/10;
+				String ageGroup = (age1*10)+"~"+((age1*10)+9);
+				UserVO googleVO = new UserVO();
+				googleVO.setEmail(email);
+				googleVO.setId(email);
+				googleVO.setName(name);
+				googleVO.setAge(ageGroup);
+				
+				 int result = userservice.idChk(googleVO);
+				  System.out.println(result);
+				  if(result == 0) {
+					  userservice.insertnaver(googleVO);
+				      session.setAttribute("login_info", googleVO);
+				  }else {
+				      session.setAttribute("login_info", googleVO);
+				  }
+				
+		return "";
+	}	
 	
 	  //占쎄퐬占쎌뵠甕곤옙 嚥≪뮄�젃占쎌뵥
 	@RequestMapping(value="/naverSave", method=RequestMethod.POST)
