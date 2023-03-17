@@ -235,24 +235,20 @@ public class UserController {
     @ResponseBody
     public String mailCheckGET(String email) throws Exception{
        
-       /* �뀎占�(View)嚥≪뮆占쏙옙苑� 占쎄퐜占쎈선占쎌궔 占쎈쑓占쎌뵠占쎄숲 占쎌넇占쎌뵥 */
-
-             
-       /* 占쎌뵥筌앹빖苡뀐옙�깈(占쎄텆占쎈땾) 占쎄문占쎄쉐 */
+       
        Random random = new Random();
        int checkNum = random.nextInt(888888) + 111111;
 
        
-       /* 占쎌뵠筌롫뗄�뵬 癰귣�沅→묾占� */
        String setFrom = "cwj9799@naver.com";
        String toMail = email;
-       String title = "占쎌돳占쎌뜚揶쏉옙占쎌뿯 占쎌뵥筌앾옙 占쎌뵠筌롫뗄�뵬 占쎌뿯占쎈빍占쎈뼄.";
+       String title = "회원가입 인증 이메일 입니다.";
        String content = 
-             "占쎌냳占쎈읂占쎌뵠筌욑옙�몴占� 獄쎻뫖揆占쎈퉸雅뚯눘�쏉옙苑� 揶쏅Ŋ沅쀯옙鍮�占쎈빍占쎈뼄." +
+             "홈페이지를 방문해주셔서 감사합니다." +
              "<br><br>" + 
-             "占쎌뵥筌앾옙 甕곕뜇�깈占쎈뮉 " + checkNum + "占쎌뿯占쎈빍占쎈뼄." + 
+             "인증 번호는 " + checkNum + "입니다." + 
              "<br>" + 
-             "占쎈퉸占쎈뼣 占쎌뵥筌앹빖苡뀐옙�깈�몴占� 占쎌뵥筌앹빖苡뀐옙�깈 占쎌넇占쎌뵥占쏙옙占쎈퓠 疫꿸퀣�뿯占쎈릭占쎈연 雅뚯눘苑�占쎌뒄.";      
+             "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";      
        
        try {
           
