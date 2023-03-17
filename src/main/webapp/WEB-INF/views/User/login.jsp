@@ -9,13 +9,16 @@
 <script>
                 	
                 	 </script>
+                	  <meta name="google-signin-client_id" content="38260405754-99qf9j81rp019ft343rpp1fmq378qabg.apps.googleusercontent.com">
 <meta charset="UTF-8">
    <title>Home</title>
     <link rel="stylesheet" href="/resources/user/css/login.css"/>
     <script type="text/javascript" src="/resources/user/js/main.js"></script>
  	<script type="text/javascript" src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js" charset="utf-8"></script>
 	<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-
+	<script type="text/javascript" src="/resources/user/js/googleLogin.js"></script>
+        <script async defer src="https://apis.google.com/js/api.js" onload="googleGapiLoaded()"></script>
+    	<script async defer src="https://accounts.google.com/gsi/client" onload="googleGisLoaded()"></script>
   <script>
   const result ="${msg}"
   if(result==="loginmsg"){
@@ -38,7 +41,10 @@
   				 <!-- <a href="#" id="naverIdLogin" class="btn sns-naver" title="새창">네이버로 로그인</a>
   				<a href="#" id="kakaoLogin" class="btn sns-kakao" title="새창">카카오로 회원가입</a>
   				<a href="#" id="googleLogin" class="btn sns-google" title="새창">구글 회원가입</a>
- -->
+  				
+ -->			
+ 			<!-- Google Login -->
+ 				<button style="background: transparent; border-color: transparent; position:absolute; top:23%; left:20%;" onclick="googleHandleAuthClick()"><img style="width:45px;" src="/resources/user/img/gl.png" alt="google"></button>
  <script>
  	
 		 var naverLogin = new naver.LoginWithNaverId({
@@ -121,7 +127,11 @@
 
                     <br><br>
                     <button class="submit">Login</button>
-                    
+                    			
+ 				    <!--Add buttons to initiate auth sequence and sign out-->
+    <button id="authorize_button" onclick="handleAuthClick()">로그인</button>
+    <button id="signout_button" onclick="handleSignoutClick()">로그아웃</button>
+    <pre id="content" style="white-space: pre-wrap;"></pre>
                     
                     <a href="/search_id" class="btn idfind">아이디 찾기</a>
                     <a href="/search_pwd" class="btn pwdfind">비밀번호찾기 찾기</a>
@@ -129,5 +139,8 @@
             </div>
              
         </div>
+        
+        
+        
 </body>
 </html>
