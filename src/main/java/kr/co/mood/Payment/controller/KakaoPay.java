@@ -15,16 +15,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import kr.co.mood.Payment.VO.KakaoPayApprovalVO;
 import kr.co.mood.Payment.VO.KakaoPayReadyVO;
 import kr.co.mood.cate.DAO.CateService;
-import kr.co.mood.cate.vo.CateVO;
 import kr.co.mood.pay.DAO.KakaoPayApprovalService;
-import kr.co.mood.user.dao.UserVO;
 
 @Controller
 public class KakaoPay {
@@ -68,7 +65,7 @@ public class KakaoPay {
            params.add("total_amount", pro_pricestr);
 
            params.add("tax_free_amount", "100");
-           params.add("approval_url", "http://localhost:8080/User/kakaoPaySuccess&orderId=156&userno=2");
+           params.add("approval_url", "http://localhost:8080/User/kakaoPaySuccess?orderId=" + orderIdstr + "&userno=" + userno);
            params.add("cancel_url", "http://localhost:8080/User/kakaoPayCancel");
            params.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");
            System.out.println(params);
