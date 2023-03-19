@@ -13,9 +13,9 @@
 <h1>카카오페이 api 사용</h1>
 	<a class="order_btn" >카드결제하기</a>
 	   <input type="submit" value=바로결제" class="btn_buy">
-	<!-- <form method="post" action="/kakaoPay">
+	 <form method="post" action="/kakaoPay">
      <button id="apibtn">카카오페이로 결제하기</button>
-	</form> -->
+	</form> 
 <!-- 주문 form toseet123 생성 -->
 			<form action="/userPay/${login_info.no}" method="get" class="order_form">
 				<input type="hidden" name="orders[0].pro_number" value="${list.pro_number}">

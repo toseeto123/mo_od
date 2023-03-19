@@ -80,4 +80,18 @@
         age=#{age}, gender=#{gender}, adr=#{adr}, email=#{email} , phone=#{phone}, day=#{day}
         where id = #{id}
     </update>
+    
+    <select id="findKakao" parameterType="kr.co.mood.user.dao.UserVO" resultType="kr.co.mood.user.dao.UserVO">
+		select * from moodjoin where name=#{nickname} and age=#{age_range} and email=#{email} and id=#{email}
+	</select>
+
+	
+	<insert id="kakaoInsert" parameterType="kr.co.mood.user.dao.UserVO">
+	<![CDATA[
+		insert into moodjoin(no,id,name,age,email,day) values(no,#{email},#{nickname}, #{age_range} , #{email}, now())
+		 ]]>
+	</insert>
+    
+    
+    
 	</mapper>

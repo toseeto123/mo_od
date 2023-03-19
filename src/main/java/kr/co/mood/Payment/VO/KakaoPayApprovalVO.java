@@ -2,15 +2,11 @@ package kr.co.mood.Payment.VO;
 
 import java.sql.Date;
 
-import lombok.NoArgsConstructor;
-
-@NoArgsConstructor
 public class KakaoPayApprovalVO {
 	
-	public KakaoPayApprovalVO() {
-		// TODO Auto-generated constructor stub
-	}
 	
+	public KakaoPayApprovalVO() {
+	}
 	 //response
     private String aid, tid, cid, sid;
     private String partner_order_id, partner_user_id, payment_method_type;
@@ -19,8 +15,7 @@ public class KakaoPayApprovalVO {
     private String item_name, item_code, payload;
     private Integer quantity, tax_free_amount, vat_amount;
     private Date created_at, approved_at;
-	private String pro_name;
-	private int pro_price;
+    
 	public String getAid() {
 		return aid;
 	}
@@ -57,6 +52,7 @@ public class KakaoPayApprovalVO {
 	public void setPartner_user_id(String partner_user_id) {
 		this.partner_user_id = partner_user_id;
 	}
+	
 	public String getPayment_method_type() {
 		return payment_method_type;
 	}
@@ -123,55 +119,8 @@ public class KakaoPayApprovalVO {
 	public void setApproved_at(Date approved_at) {
 		this.approved_at = approved_at;
 	}
-	public String getPro_name() {
-		return pro_name;
-	}
-	public void setPro_name(String pro_name) {
-		this.pro_name = pro_name;
-	}
-	public int getPro_price() {
-		return pro_price;
-	}
-	public void setPro_price(int pro_price) {
-		this.pro_price = pro_price;
-	}
-	@Override
-	public String toString() {
-		return "KakaoPayApprovalVO [aid=" + aid + ", tid=" + tid + ", cid=" + cid + ", sid=" + sid
-				+ ", partner_order_id=" + partner_order_id + ", partner_user_id=" + partner_user_id
-				+ ", payment_method_type=" + payment_method_type + ", amount=" + amount + ", card_info=" + card_info
-				+ ", item_name=" + item_name + ", item_code=" + item_code + ", payload=" + payload + ", quantity="
-				+ quantity + ", tax_free_amount=" + tax_free_amount + ", vat_amount=" + vat_amount + ", created_at="
-				+ created_at + ", approved_at=" + approved_at + ", pro_name=" + pro_name + ", pro_price=" + pro_price
-				+ "]";
-	}
-	public KakaoPayApprovalVO(String aid, String tid, String cid, String sid, String partner_order_id,
-			String partner_user_id, String payment_method_type, AmountVO amount, CardVO card_info, String item_name,
-			String item_code, String payload, Integer quantity, Integer tax_free_amount, Integer vat_amount,
-			Date created_at, Date approved_at, String pro_name, int pro_price) {
-		super();
-		this.aid = aid;
-		this.tid = tid;
-		this.cid = cid;
-		this.sid = sid;
-		this.partner_order_id = partner_order_id;
-		this.partner_user_id = partner_user_id;
-		this.payment_method_type = payment_method_type;
-		this.amount = amount;
-		this.card_info = card_info;
-		this.item_name = item_name;
-		this.item_code = item_code;
-		this.payload = payload;
-		this.quantity = quantity;
-		this.tax_free_amount = tax_free_amount;
-		this.vat_amount = vat_amount;
-		this.created_at = created_at;
-		this.approved_at = approved_at;
-		this.pro_name = pro_name;
-		this.pro_price = pro_price;
-	}
 	
-	
+    
     
 }
 

@@ -1,5 +1,6 @@
 package kr.co.mood.user.dao;
 
+import java.util.HashMap;
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -61,6 +62,16 @@ public class UserDAO {
 		System.out.println(naver);
 		
 	}
+	
+	// 정보 저장
+			public void kakaoinsert(HashMap<String, Object> userInfo) {
+				mybatis.insert("UserDAO.kakaoInsert",userInfo);
+			}
+			public UserVO findkakao(HashMap<String, Object> userInfo) {
+//				System.out.println("RN:"+userInfo.get("nickname"));
+//				System.out.println("RE:"+userInfo.get("email"));
+				return mybatis.selectOne("UserDAO.findKakao", userInfo);
+			}
 
 
 

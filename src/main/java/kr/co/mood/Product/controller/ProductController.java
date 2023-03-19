@@ -50,7 +50,6 @@ public class ProductController {
 		session.setAttribute("pro_number", ps.selectProOne(pro_number));
 		session.setAttribute("path", "/product/"+Integer.toString(pro_number));
 		String path = (String) session.getAttribute("path");
-		System.out.println(path);
 		return "Product/productDetail";
 	}
 	
