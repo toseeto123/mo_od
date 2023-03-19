@@ -13,8 +13,8 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="resources/assets/img/favicon.png" rel="icon">
-  <link href="resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="${pageContext.request.contextPath}/resources/assets/img/favicon.png" rel="icon">
+  <link href="${pageContext.request.contextPath}/resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
@@ -41,7 +41,54 @@
 
 <body>
 <jsp:include page="/WEB-INF/common/header.jsp" />
+   <section id="hero" style="height: 400px;">
+      <div class="hero-container">
+         <div id="heroCarousel" data-bs-interval="5000"
+            class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
 
+            <div class="carousel-inner" role="listbox">
+
+               <!-- Slide 1 -->
+               <div class="carousel-item active"
+                  style="background-image: url(../resources/assets/img/slide/cate1.jpg); height: 500px;">
+                  <div class="carousel-container">
+                     <div class="carousel-content">
+                        <h2 class="animate__animated animate__fadeInDown">
+                        <c:forEach var="list" items="${list}" begin="0" end="0">
+          		  <c:if test="${list.pro_categoryserial  eq 'A0' }">
+                  매트리스
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'A1' }">
+                  침대프레임
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'A2' }">
+                  소 파
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'B0' }">
+                  무드등
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'B1' }">
+                  스탠드조명
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'C0' }">
+                  옷장/행거
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'C1' }">
+                  서랍
+                  </c:if>
+        </c:forEach>
+                        </h2>
+                        <p class="animate__animated animate__fadeInUp">묻:mo_od</p>
+                        <div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
 
 <!-- ======= Breadcrumbs ======= -->
 <c:forEach var="list" items="${list}" begin="0" end="0">
@@ -85,36 +132,12 @@
       <!-- End Breadcrumbs -->
 
     <!-- ======= Team Section ======= -->
-    <c:forEach var="list" items="${list}" begin="0" end="0">
     <section id="team" class="team">
       <div class="container">
 
-        <div class="section-title">
-          
-          
-          		  <c:if test="${list.pro_categoryserial  eq 'A0' }">
-                  <h2>매트리스</h2>
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'A1' }">
-                  <h2>침대프레임</h2>
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'A2' }">
-                  <h2>소 파</h2>
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'B0' }">
-                  <h2>무드등</h2>
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'B1' }">
-                  <h2>스탠드조명</h2>
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'C0' }">
-                  <h2>옷장/행거</h2>
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'C1' }">
-                  <h2>서랍</h2>
-                  </c:if>
+        <div class="section-title">       
+    
         </div>
-        </c:forEach>
 
         <div class="row">
 <c:forEach var="list" items="${list}">

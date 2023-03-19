@@ -57,31 +57,31 @@
       <nav id="navbar" class="navbar">
         <ul>
 
-          <li class="dropdown"><a href="#"><span>가 구</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#"><b>가 구</b> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                 <li><a href="/A0categoryList">매트리스</a></li>
-                 <li><a href="/A1categoryList">침대 프레임</a></li>
-                 <li><a href="/A2categoryList">소 파</a></li>
+                 <li><a href="/A0categoryList"><b>매트리스</b></a></li>
+                 <li><a href="/A1categoryList"><b>침대 프레임</b></a></li>
+                 <li><a href="/A2categoryList"><b>소 파</b></a></li>
                 </ul>
           </li>
-          <li class="dropdown"><a href="#">조 명 <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#"><b>조 명</b> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                  <li><a href="/B0categoryList">무드등</a></li>
-                  <li><a href="/B1categoryList">스탠드조명</a></li>
+                  <li><a href="/B0categoryList"><b>무드등</b></a></li>
+                  <li><a href="/B1categoryList"><b>스탠드조명</b></a></li>
                 </ul>
           </li>
-          <li class="dropdown"><a href="#">수 납 <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#"><b>수 납</b> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                  <li><a href="/C0categoryList">옷장/행거</a></li>
-                  <li><a href="/C1categoryList">서랍</a></li>
+                  <li><a href="/C0categoryList"><b>옷장 / 행거</b></a></li>
+                  <li><a href="/C1categoryList"><b>서 랍</b></a></li>
                 </ul>
           </li>
-          <li class="dropdown"><a href="#">인테리어 시공 <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#"><b>인테리어 시공</b> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                 <li><a href="/D0categoryList">침 실</a></li>
-                  <li><a href="/D1categoryList">거 실</a></li>
-                  <li><a href="/D2categoryList">주 방</a></li>
-                  <li><a href="/D3categoryList">욕 실</a></li>
+                 <li><a href="/D0categoryList"><b>침 실</b></a></li>
+                  <li><a href="/D1categoryList"><b>거 실</b></a></li>
+                  <li><a href="/D2categoryList"><b>주 방</b></a></li>
+                  <li><a href="/D3categoryList"><b>욕 실</b></a></li>
                 </ul>
           </li>
 

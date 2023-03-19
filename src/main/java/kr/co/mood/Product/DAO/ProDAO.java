@@ -18,6 +18,10 @@ public class ProDAO {
 	public List<ProVO> selectProList(List<ProVO> vo) {
 		return session.selectList("ProDAO.selectProList", vo);
 	}
+	public List<ProVO> selectProRandom(List<ProVO> vo) {
+		return session.selectList("ProDAO.selectProRandom", vo);
+	}
+	
 	public void insertPro(ProVO vo) {
 		session.insert("ProDAO.insert", vo);
 		session.update("ProDAO.insertSerialNumber", vo);

@@ -17,17 +17,15 @@ public class SampleController {
    
     @RequestMapping(value = "/kakaopay", method = RequestMethod.GET)
       public String kakaoPayGet() {
-     
+
       return "User/kakaopay";
    }
    
    @RequestMapping(value = "/kakaoPay", method = RequestMethod.POST)
-      public String kakaoPay(@RequestParam("pro_name") String pro_name,
-                          @RequestParam("pro_price") int pro_price,Model model) {
-        System.out.println("kakaopay post...以 ........");
-        model.addAttribute("pro_name", pro_name);
-        model.addAttribute("pro_price",pro_price);
-         return "redirect:" + kakaopay.kakaoPayReady(pro_name,pro_price);
+      public String kakaoPay() {
+        System.out.println("kakaopay post...餓� ........");
+
+         return "redirect:" + kakaopay.kakaoPayReady();
       }
 
 
