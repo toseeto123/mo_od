@@ -18,7 +18,13 @@ public class ProductServiceImpl implements ProductService{
 	@Override
 	public List<ProVO> selectProList(List<ProVO> vo){
 		return prodao.selectProList(vo);
-	}		
+	}
+	@Override
+	public List<ProVO> selectProRandom(List<ProVO> vo) {
+		
+		return prodao.selectProRandom(vo);
+	}
+	
 	@Override
 	public void insertPro(ProVO vo) {
 		prodao.insertPro(vo);
