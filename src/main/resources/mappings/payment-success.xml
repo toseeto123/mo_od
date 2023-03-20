@@ -10,7 +10,14 @@
    </insert>
 
 	<delete id="catedelete">
-		 delete from cate where user_no = #{user_no}
+		delete from cate where user_no = #{user_no}
 	</delete>
+
+	<update id="paycountupdate">
+		UPDATE product p
+		JOIN cate c ON p.pro_number = c.pro_number
+		SET p.pro_paycount = p.pro_paycount + c.amount
+		WHERE FIND_IN_SET(p.pro_number, #{p.pro_number})
+	</update>
 
 </mapper>

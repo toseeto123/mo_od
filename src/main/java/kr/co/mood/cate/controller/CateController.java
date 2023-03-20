@@ -41,12 +41,12 @@ public class CateController {
 		System.out.println("cate");
 		
 		if(uvo==null) {
-			 System.out.println("null이야");
+			 System.out.println("null�씠�빞");
 			 rttr.addFlashAttribute("msg", "loginmsg");
 			 return "redirect:login.do";
 		}
 		else {
-			System.out.println("이동!");
+			System.out.println("�씠�룞!");
 			return "cate/cate";
 		}
 	}
@@ -60,7 +60,7 @@ public class CateController {
 
    @RequestMapping(value="/cateinsert.do" , method = RequestMethod.POST)
    public String insertcate(HttpSession session, Model model, @RequestParam("pro_number") int pro_number,@RequestParam("pro_price") int pro_price,@RequestParam("radioOption") String pro_option) {
-       System.out.println("카트인서트와써!");
+       System.out.println("移댄듃�씤�꽌�듃���뜥!");
 	   UserVO uvo = (UserVO) session.getAttribute("login_info");	
 	   if(uvo==null) {
 		   return "redirect:/login.do";
@@ -83,7 +83,7 @@ public class CateController {
        UserVO uvo = (UserVO) session.getAttribute("login_info");
        int userid = uvo.getNo();
        
-       // 以묐났 insert瑜� 諛⑹��븯湲� �쐞�빐 cate_id媛� null�씠 �븘�땶 �빆紐⑸쭔 議고쉶�빀�땲�떎.
+       // 餓λ쵎�궗 insert�몴占� 獄쎻뫗占쏙옙釉�疫뀐옙 占쎌맄占쎈퉸 cate_id揶쏉옙 null占쎌뵠 占쎈툡占쎈빒 占쎈퉮筌뤴뫖彛� 鈺곌퀬�돳占쎈�占쎈빍占쎈뼄.
        model.addAttribute("map", cservice.selectCateList(userid));
        return "/cate/cate";
    }
@@ -126,7 +126,7 @@ public class CateController {
 
    @RequestMapping(value = "/catedelete.do", method = RequestMethod.POST)
    public String deleteCate(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
-      System.out.println("delete �떎�뻾 �셿猷�");
+      System.out.println("delete 占쎈뼄占쎈뻬 占쎌끏�뙴占�");
       int number = Integer.parseInt(String.valueOf(data.get("number")));
       int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
 

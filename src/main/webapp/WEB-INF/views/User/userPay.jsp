@@ -253,6 +253,7 @@ background-color: #c8936ed4;
                <h4 class="mb-4">결제 상품정보</h4>
                <c:forEach var="list" items="${list}">
                   <input type="hidden" name="pro_name" value=${list.pro_name }>
+                  <input type="hidden" name="pro_no" value="${list.pro_number }">
 
 
 

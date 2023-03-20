@@ -20,4 +20,8 @@ public class KakaoPayApprovalDAO {
 	public void paysuccessdelete(String userno) {
 		sql.delete("KakaoPayApprovalDAO.catedelete" , userno);
 	}
+	
+	public void paysuccessupdate(String pro_no) {
+		sql.update("KakaoPayApprovalDAO.paycountupdate" , pro_no);
+	}
 }
