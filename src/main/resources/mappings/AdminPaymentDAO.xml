@@ -47,9 +47,10 @@
     
     <select id="getCategoryChart4" resultType="kr.co.mood.Payment.VO.AdminChartVO">
 		<![CDATA[
-		select member.gender as gender, product.pro_categoryserial as 'categorySerial', 
-				sum(orderProduct.count) as 'productCount', 
-				CASE DAYOFWEEK(payment.approved_at) 
+		select member.gender as gender,
+		sum(orderProduct.count) as 'productCount',
+		product.pro_categoryserial  as 'categorySerial',
+		CASE DAYOFWEEK(payment.approved_at) 
          		WHEN 1 THEN '월요일' 
          		WHEN 2 THEN '화요일' 
          		WHEN 3 THEN '수요일' 
@@ -58,18 +59,18 @@
          		WHEN 6 THEN '토요일' 
          		WHEN 7 THEN '일요일' 
          		ELSE '유효한 날짜가 아닙니다.' END as week
-			from payment 
-			inner join moodjoin as member 
-				on payment.userId = member.no
-			inner join orderProduct
-				on payment.orderid = orderProduct.orderId
-			inner join product
-				on orderProduct.pro_number = product.pro_number
-			where payment.Success = 'A'
-				and payment.approved_at like concat(#{year}, '%')
-			group by product.pro_categoryserial
-			order by DAYOFWEEK(payment.approved_at) desc
-			limit 0, 5
+		from orderproduct
+			inner join payment
+				on payment.orderid = orderproduct.orderId
+			inner join moodjoin as member
+				on member.no = payment.userId 
+			inner join product 
+				on product.pro_number = orderproduct.pro_number 
+		where payment.Success = 'A'
+			and payment.approved_at like concat(#{year}, '%')
+		group by orderproduct.pro_number
+		order by dayofweek(payment.approved_at) desc 
+		limit 0, 5
 			]]>
     </select>
     

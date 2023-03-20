@@ -15,7 +15,7 @@
 		page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
 
 	<!-- ======= Hero Section ======= -->
-	<section id="hero">
+	<section id="hero" style="margin-bottom:40px;">
 		<div class="hero-container">
 			<div id="heroCarousel" data-bs-interval="5000"
 				class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -68,10 +68,10 @@
 							
 							<c:set var="index4" value="0" />
 							<c:forEach var="list" items="${chart4}">
-							<input type="hidden" id="gender${index4}" value="${list.gender}">
-							<input type="hidden" id="week2${index4}" value="${list.week}">
-							<input type="hidden" id="productCount${index4}" value="${list.productCount}">
-							<input type="hidden" id="categorySerial${index4}" value="${list.categorySerial}">							
+							<input type="hidden" id="gender4${index4}" value="${list.gender}">
+							<input type="hidden" id="week4${index4}" value="${list.week}">
+							<input type="hidden" id="productCount4${index4}" value="${list.productCount}">
+							<input type="hidden" id="categorySerial4${index4}" value="${list.categorySerial}">							
 							<input type="hidden" value="${index4=index4+1}">
 							</c:forEach>
 							<input type="hidden" id="chartValue4" value="${index4}">
@@ -112,34 +112,33 @@
 	}
 	
 	
-	const chartDictionary = {};
-	const womanChartData = [];
-	const manChartData = [];
+	
+	let womanChartData = [];
+	let manChartData = [];
 	const categorySerial = [];
 	const productCount = []; 
 	for(var i = 0; i<document.getElementById('chartValue4').value; i++){
-		 chartDictionary['y'] = document.getElementById('week2'+i).value;
-		 productCount.push(document.getElementById('productCount'+i).value);
-		chartDictionary['r'] = document.getElementById('productCount'+i).value;
-		chartDictionary['x'] = document.getElementById('categorySerial'+i).value;
-		categorySerial.push(document.getElementById('categorySerial'+i).value)
-		if(document.getElementById('gender'+i).value == 'F'){
-			womanChartData.push(chartDictionary);
-
-		}else if(document.getElementById('gender'+i).value == 'M'){
-			manChartData.push(chartDictionary)
-		}		
+		productCount.push(parseInt(document.getElementById('productCount4'+i).value))
 	}
-	let max = 0;
-	for(var i=0; i<productCount.length; i++){
-		max = max + productCount[i];
+	let sum = productCount.reduce((a,b)=>(a+b));
+	for(var i = 0; i<document.getElementById('chartValue4').value; i++){
+		let chartDictionary = {};	
+		 productCount.push(document.getElementById('productCount4'+i).value);
+		chartDictionary['x'] = document.getElementById('categorySerial4'+i).value;
+		 chartDictionary['y'] = document.getElementById('week4'+i).value;
+		 chartDictionary['r'] = Math.floor(parseInt(document.getElementById('productCount4'+i).value)/sum*100);
+		categorySerial.push(document.getElementById('categorySerial4'+i).value)
+		if(document.getElementById('gender4'+i).value == 'F'){
+			womanChartData.push(chartDictionary)	
+		}else if(document.getElementById('gender4'+i).value == 'M'){
+			manChartData.push(chartDictionary);
+		}
+				
 	}
-	for(var i = 0; i<womanChartData.length; i++){
-		womanChartData[i]['r'] = womanChartData[i]['r']/max*100;
-	}
-	for(var i = 0; i<manChartData.length; i++){ 
-		manChartData[i]['r'] = manChartData[i]['r']/max*100;
-	}
+	console.log(womanChartData)
+	console.log(manChartData)
+	
+	
 	
 
 		// Get the canvas element
