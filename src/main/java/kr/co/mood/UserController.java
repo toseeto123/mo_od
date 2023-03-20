@@ -103,15 +103,17 @@ public class UserController {
   System.out.println(result);
   
   try {
-     if(result == 1) {
+     if(result == 0) {
+    	 
+    	 System.out.println("네이버 로그인 성공");
+         userservice.insertnaver(naver);
+         session.setAttribute("login_info", naver);
+         return "redirect:/";
     	
-        return "/";
-        
-     }else if(result == 0) {
-    	System.out.println("揶쏉옙占쎌뿯獄쏅뗀以덌쭪袁る뻬~");
-        userservice.insertnaver(naver);
-        session.setAttribute("login_info", naver);
-        return "/";
+     }else if(result == 1) {
+    	 System.out.println("이미있는 아이디");
+    	 session.setAttribute("login_info", naver);
+    	 return "redirect:/";
      }
      
   }catch (Exception e) {

@@ -63,7 +63,7 @@ public class UserDAO {
 		
 	}
 	
-	// 정보 저장
+	// 카카오 정보 저장
 			public void kakaoinsert(HashMap<String, Object> userInfo) {
 				mybatis.insert("UserDAO.kakaoInsert",userInfo);
 			}
