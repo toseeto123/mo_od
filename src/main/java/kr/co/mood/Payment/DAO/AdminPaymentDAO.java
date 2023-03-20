@@ -7,6 +7,6 @@ import kr.co.mood.Payment.VO.AdminPaymentVO;
 public interface AdminPaymentDAO {
 	public List<AdminPaymentVO> getCategoryChart1();
 	public List<AdminPaymentVO> getCategoryChart2();
-	//public List<AdminPaymentVO> getCategoryChart3();
-	//public List<AdminPaymentVO> getCategoryChart4();
+	public List<AdminPaymentVO> getCategoryChart3(String year);
+	public List<AdminPaymentVO> getCategoryChart4(String year);
 }
