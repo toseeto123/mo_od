@@ -19,5 +19,20 @@
 		SET p.pro_paycount = p.pro_paycount + c.amount
 		WHERE FIND_IN_SET(p.pro_number, #{p.pro_number})
 	</update>
+	
+	<select id="selectlist" resultType="kr.co.mood.Payment.VO.KakaoPayApprovalVO">
+	 SELECT pa.payment_id, pa.payment_method, pa.orderid, pa.userId, pa.Amount, pa.approved_at,
+       m.name, m.phone, m.id, m.email, m.adr,
+       p.pro_number, p.pro_img1, p.pro_name, p.pro_maindesc, p.pro_maindesctitle, p.pro_price,
+       o.userno, op.price, o.orderId
+		FROM moodjoin m
+		INNER JOIN moodorder o ON m.no = o.userNo
+		INNER JOIN orderproduct op ON o.orderId = op.orderId
+		INNER JOIN product p ON p.pro_number = op.pro_number
+		INNER JOIN payment pa ON pa.orderid = o.orderId
+		WHERE o.userNo = #{userno}
+		ORDER BY pa.payment_id;
+	
+	</select>
 
 </mapper>

@@ -1,7 +1,8 @@
 package kr.co.mood.pay.DAO;
 
+import java.util.List;
+
 import kr.co.mood.Payment.VO.KakaoPayApprovalVO;
-import kr.co.mood.cate.vo.CateVO;
 
 public interface KakaoPayApprovalService {
 	
@@ -10,4 +11,6 @@ public interface KakaoPayApprovalService {
 	public void paysuccessdelete(String userno);
 	
 	public void paysuccessupdate(String pro_no);
+	
+	public List<KakaoPayApprovalVO>selectlist(int userno);
 }
