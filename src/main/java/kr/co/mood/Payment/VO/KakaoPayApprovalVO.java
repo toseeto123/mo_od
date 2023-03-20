@@ -16,6 +16,59 @@ public class KakaoPayApprovalVO {
     private Integer quantity, tax_free_amount, vat_amount;
     private Date created_at, approved_at;
     
+    //결제확인용값들
+    //product
+    private String pro_img1,pro_name,pro_maindesctitle;
+    private int pro_number,pro_price;
+    //user
+    private int userno;
+    //order
+    private int orderId;
+    
+    
+    
+	public int getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+	}
+	public int getPro_price() {
+		return pro_price;
+	}
+	public void setPro_price(int pro_price) {
+		this.pro_price = pro_price;
+	}
+	public String getPro_maindesctitle() {
+		return pro_maindesctitle;
+	}
+	public void setPro_maindesctitle(String pro_maindesctitle) {
+		this.pro_maindesctitle = pro_maindesctitle;
+	}
+	public String getPro_name() {
+		return pro_name;
+	}
+	public void setPro_name(String pro_name) {
+		this.pro_name = pro_name;
+	}
+	public int getPro_number() {
+		return pro_number;
+	}
+	public void setPro_number(int pro_number) {
+		this.pro_number = pro_number;
+	}
+	public int getUserno() {
+		return userno;
+	}
+	public void setUserno(int userno) {
+		this.userno = userno;
+	}
+	public String getPro_img1() {
+		return pro_img1;
+	}
+	public void setPro_img1(String pro_img1) {
+		this.pro_img1 = pro_img1;
+	}
 	public String getAid() {
 		return aid;
 	}
