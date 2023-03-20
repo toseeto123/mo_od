@@ -3,7 +3,7 @@ package kr.co.mood.cate.vo;
 public class CateVO {
 
 	private int cate_id;
-	private int pro_number;
+	private String pro_number;
 	private int user_no;
 	
 	// product
@@ -41,10 +41,11 @@ public class CateVO {
 	public void setCate_id(int cate_id) {
 		this.cate_id = cate_id;
 	}
-	public int getPro_number() {
+	
+	public String getPro_number() {
 		return pro_number;
 	}
-	public void setPro_number(int pro_number) {
+	public void setPro_number(String pro_number) {
 		this.pro_number = pro_number;
 	}
 	public int getUser_no() {
