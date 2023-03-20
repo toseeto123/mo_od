@@ -52,15 +52,16 @@ public class UserController {
 	        JsonNode jsonParsing;
 			
 				jsonParsing = mapper.readTree(googleJsonData);
-				String name = jsonParsing.get("name").asText();
-				String email = jsonParsing.get("email").asText();
+				String name[] = jsonParsing.get("name").asText().split("\"");
+				String email[] = jsonParsing.get("email").asText().split("\"");
 				String age = jsonParsing.get("age").asText();
+				
 				int age1 = Integer.parseInt(age)/10;
 				String ageGroup = (age1*10)+"~"+((age1*10)+9);
 				UserVO googleVO = new UserVO();
-				googleVO.setEmail(email);
-				googleVO.setId(email);
-				googleVO.setName(name);
+				googleVO.setEmail(email[1]);
+				googleVO.setId(email[1]);
+				googleVO.setName(name[1]);
 				googleVO.setAge(ageGroup);
 				
 				 int result = userservice.idChk(googleVO);
@@ -72,7 +73,9 @@ public class UserController {
 				      session.setAttribute("login_info", googleVO);
 				  }
 				
-		return "";
+				  String path = (String) session.getAttribute("path");
+				  System.out.println("이것은 path 다");
+				return path;
 	}	
 	
 	  //占쎄퐬占쎌뵠甕곤옙 嚥≪뮄�젃占쎌뵥
@@ -146,7 +149,6 @@ public class UserController {
    @RequestMapping(value = "/login.do" , method = RequestMethod.POST)
    public String loginAction(UserVO vo, HttpSession session , RedirectAttributes rttr) {
 	  UserVO vo1 =  userservice.selectId(vo);
-	  System.out.println("여기와써");
 	  String path = (String) session.getAttribute("path");
 
 	  System.out.println(path);
@@ -236,24 +238,20 @@ public class UserController {
     @ResponseBody
     public String mailCheckGET(String email) throws Exception{
        
-       /* �뀎占�(View)嚥≪뮆占쏙옙苑� 占쎄퐜占쎈선占쎌궔 占쎈쑓占쎌뵠占쎄숲 占쎌넇占쎌뵥 */
-
-             
-       /* 占쎌뵥筌앹빖苡뀐옙�깈(占쎄텆占쎈땾) 占쎄문占쎄쉐 */
+       
        Random random = new Random();
        int checkNum = random.nextInt(888888) + 111111;
 
        
-       /* 占쎌뵠筌롫뗄�뵬 癰귣�沅→묾占� */
        String setFrom = "cwj9799@naver.com";
        String toMail = email;
-       String title = "占쎌돳占쎌뜚揶쏉옙占쎌뿯 占쎌뵥筌앾옙 占쎌뵠筌롫뗄�뵬 占쎌뿯占쎈빍占쎈뼄.";
+       String title = "회원가입 인증 이메일 입니다.";
        String content = 
-             "占쎌냳占쎈읂占쎌뵠筌욑옙�몴占� 獄쎻뫖揆占쎈퉸雅뚯눘�쏉옙苑� 揶쏅Ŋ沅쀯옙鍮�占쎈빍占쎈뼄." +
+             "홈페이지를 방문해주셔서 감사합니다." +
              "<br><br>" + 
-             "占쎌뵥筌앾옙 甕곕뜇�깈占쎈뮉 " + checkNum + "占쎌뿯占쎈빍占쎈뼄." + 
+             "인증 번호는 " + checkNum + "입니다." + 
              "<br>" + 
-             "占쎈퉸占쎈뼣 占쎌뵥筌앹빖苡뀐옙�깈�몴占� 占쎌뵥筌앹빖苡뀐옙�깈 占쎌넇占쎌뵥占쏙옙占쎈퓠 疫꿸퀣�뿯占쎈릭占쎈연 雅뚯눘苑�占쎌뒄.";      
+             "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";      
        
        try {
           

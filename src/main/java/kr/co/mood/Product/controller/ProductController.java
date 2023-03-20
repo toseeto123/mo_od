@@ -44,12 +44,12 @@ public class ProductController {
 
 	@RequestMapping(value = "/product/{pro_number}", method = RequestMethod.GET)
 
-	public String proDetails(@PathVariable("pro_number") int pro_number, UserVO vo, Model model, HttpSession session) {
+	public String proDetails(@PathVariable("pro_number") int pro_number, ArrayList<ProVO> vo, Model model, HttpSession session) {
 		model.addAttribute("list", ps.selectProOne(pro_number));
+		model.addAttribute("randomList", ps.selectProRandom(vo));
 		session.setAttribute("pro_number", ps.selectProOne(pro_number));
 		session.setAttribute("path", "/product/"+Integer.toString(pro_number));
 		String path = (String) session.getAttribute("path");
-		System.out.println(path);
 		return "Product/productDetail";
 	}
 	

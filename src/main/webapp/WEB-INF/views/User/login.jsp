@@ -6,10 +6,12 @@
 <html>
 
 <head>
+
 <script>
                 	
                 	 </script>
                 	  <meta name="google-signin-client_id" content="38260405754-99qf9j81rp019ft343rpp1fmq378qabg.apps.googleusercontent.com">
+
 <meta charset="UTF-8">
    <title>Home</title>
     <link rel="stylesheet" href="/resources/user/css/login.css"/>
@@ -31,13 +33,15 @@
 
  <div class="wrap">
             <div class="form-wrap">
+            <div>로그인</div>
                 <div class="button-wrap">
-                    <div id="btn"></div>
-                    <button type="button" class="togglebtn" onclick="login()">LOG IN</button>
+                     <a href="index.jsp">
+                         <img class="img-concert" src="/resources/user/img/beulaendeu.png"/>
+                      </a>
                 </div>
-                <div class="social-icons">
+               <div class="social-icons">
                 <!--                네이버로그인 -->
-               <div class="col-sm-4 text-center ftco-animate" id="naverIdLogin" onclick="naverLoginclick()"></div>
+              <div class="col-sm-4 text-center ftco-animate" id="naverIdLogin" onclick="naverLoginclick()"></div>
   				 <!-- <a href="#" id="naverIdLogin" class="btn sns-naver" title="새창">네이버로 로그인</a>
   				<a href="#" id="kakaoLogin" class="btn sns-kakao" title="새창">카카오로 회원가입</a>
   				<a href="#" id="googleLogin" class="btn sns-google" title="새창">구글 회원가입</a>
@@ -98,10 +102,7 @@
 }
 </script>
 
-			<a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/member/kakaoLogin&response_type=code">
-     	            
-     	            <img src="/resources/user/img/ka.png" alt="kakao">
-   	                 </a>
+			
 
                    
                 <form id="login" action="/login.do" class="input-group" method="post">
@@ -129,20 +130,29 @@
 					
                     </c:choose>
                     
-
+					
+				
                     <br><br>
-                    <button class="submit">Login</button>
-                    			
- 				    <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" onclick="handleAuthClick()">로그인</button>
-    <button id="signout_button" onclick="handleSignoutClick()">로그아웃</button>
-    <pre id="content" style="white-space: pre-wrap;"></pre>
+
+                    <button class="submit">로그인</button>
+                     
+                     <a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/member/kakaoLogin&response_type=code">
+     	               <img src="/resources/user/img/ka.png" alt="kakao">
+   	                 </a>
+
+
                     
-                    <a href="/search_id" class="btn idfind">아이디 찾기</a>
-                    <a href="/search_pwd" class="btn pwdfind">비밀번호찾기 찾기</a>
+<!--                     <button class="submit" onclick="location.href='index.jsp'">취소</button> -->
+<!--                     <button class="submit" onclick="location.href='join.do'">회원가입</button> -->
+                 	
+                    
+<!--                     <a href="/search_id" class="btn idfind">아이디 찾기</a> -->
+<!--                     <a href="/search_pwd" class="btn pwdfind">비밀번호 재설정</a> -->
                 </form>
+                <a href="index.jsp" class="">메인 페이지</a>
+                <a href="join.do" class="">회원가입</a>
             </div>
-             
+             </div>
         </div>
         
         

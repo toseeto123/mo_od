@@ -2,9 +2,6 @@ package kr.co.mood.Payment.VO;
 
 import java.sql.Date;
 
-import kr.co.mood.cate.vo.CateVO;
-import kr.co.mood.user.dao.UserVO;
-
 public class KakaoPayApprovalVO {
 	
 	
@@ -18,43 +15,7 @@ public class KakaoPayApprovalVO {
     private String item_name, item_code, payload;
     private Integer quantity, tax_free_amount, vat_amount;
     private Date created_at, approved_at;
-    private UserVO  uv;
-    private userOrderProductVO uopv;
-    private CateVO cate;
     
-    
-    
-    
-    
-    
-	
-    
-    
-	public userOrderProductVO getUopv() {
-		return uopv;
-	}
-	public void setUopv(userOrderProductVO uopv) {
-		this.uopv = uopv;
-	}
-	public CateVO getCate() {
-		return cate;
-	}
-	public void setCate(CateVO cate) {
-		this.cate = cate;
-	}
-	public UserVO getUv() {
-		return uv;
-	}
-	public void setUv(UserVO uv) {
-		this.uv = uv;
-	}
-	public userOrderProductVO getUpv() {
-		return uopv;
-	}
-	public void setUpv(userOrderProductVO upv) {
-		this.uopv = upv;
-	}
-
 	public String getAid() {
 		return aid;
 	}
@@ -158,18 +119,6 @@ public class KakaoPayApprovalVO {
 	public void setApproved_at(Date approved_at) {
 		this.approved_at = approved_at;
 	}
-	@Override
-	public String toString() {
-		return "KakaoPayApprovalVO [aid=" + aid + ", tid=" + tid + ", cid=" + cid + ", sid=" + sid
-				+ ", partner_order_id=" + partner_order_id + ", partner_user_id=" + partner_user_id
-				+ ", payment_method_type=" + payment_method_type + ", amount=" + amount + ", card_info=" + card_info
-				+ ", item_name=" + item_name + ", item_code=" + item_code + ", payload=" + payload + ", quantity="
-				+ quantity + ", tax_free_amount=" + tax_free_amount + ", vat_amount=" + vat_amount + ", created_at="
-				+ created_at + ", approved_at=" + approved_at + ", uv=" + uv + ", uopv=" + uopv + ", cate=" + cate
-				+ "]";
-	}
-	
-	
 	
     
     

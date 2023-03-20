@@ -2,6 +2,7 @@
    pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,7 +13,6 @@
 <meta name="author"
    content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.101.0">
-
 <title>결제</title>
 
 <link rel="canonical"
@@ -26,6 +26,7 @@
 
 
 <style>
+
 .bd-placeholder-img {
    font-size: 1.125rem;
    text-anchor: middle;
@@ -45,11 +46,123 @@ img {
    width: 15vmin;
    height: 15vmin;
 }
+
+
+ol {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   margin-bottom: 0;
+   
+}
+
+li {
+   display: flex;
+   align-items: center;
+   margin: 10px;
+   margin-bottom: 0;
+}
+
+li .btnspan {
+   display: inline-flex;
+   justify-content: center;
+   align-items: center;
+   width: 30px;
+   height: 30px;
+   border-radius: 50%;
+   background-color: #ccc;
+   margin-right: 5px;
+   font-size: 16px;
+   color: #fff;
+}
+li .btnspan_on{
+background-color: #c8936ed4;
+}
+
+@media only screen and (max-width: 768px) {
+   ol {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #f8f9fa;
+      padding: 10px;
+      box-sizing: border-box;
+      z-index: 999;
+      
+   }
+   li {
+      margin: 5px;
+   }
+   li .btnspan {
+      width: 20px;
+      height: 20px;
+      font-size: 12px;
+   }
+}
+.order_wrap {
+   max-width: 1200px;
+   width: 100%;
+   margin: auto;
+}
+
+@media only screen and (max-width: 768px) {
+   .order_wrap {
+      max-width: 768px;
+   }
+}
+
+@media only screen and (max-width: 576px) {
+   .order_wrap {
+      max-width: 576px;
+   }
+}
+
+.order_wrap .order_tit {
+   overflow: hidden;
+   border-bottom: 2px solid #c8936ed4;
+   margin-bottom: 10px;
+}
+
+.order_wrap .order_tit ol {
+   float: right;
+   line-height: 62px;
+}
+
+.order_wrap .order_tit h2 {
+   float: left;
+   font-size: 28px;
+   color: #222222;
+}
+
+.order_wrap .order_tit ol li {
+   float: left;
+   font-size: 14px;
+   color: #d1d1d1;
+}
+
+.order_wrap .order_tit li span {
+   font-size: 16px;
+   font-weight: bold;
+}
+
+.order_wrap .order_tit .page_on {
+   color: #c8936ed4;
+   font-weight: bold;
+}
+.content_box {
+   margin-top: 10px;
+}
 </style>
 <!-- Custom styles for this template -->
 <link href="form-validation.css" rel="stylesheet">
 <!-- jQuery -->
-
+<script type="text/javascript"
+   src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 </head>
 <jsp:include page="../../common/header.jsp" />
@@ -71,8 +184,6 @@ img {
                         <p class="animate__animated animate__fadeInUp">주문하시기 전에
                            회원정보와 결제금액을 반드시 확인하시기 바랍니다.</p>
                         <div>
-                           <a href="#about"
-                              class="btn-get-started animate__animated animate__fadeInUp scrollto">Click</a>
                         </div>
                      </div>
                   </div>
@@ -81,14 +192,24 @@ img {
          </div>
       </div>
    </section>
-
+   <div class="content_box">
+      <div class="order_wrap" style="position: relative;">
+         <div class="order_tit">
+            <ol>
+               <li><span class="btnspan">01</span>장바구니</li>
+               <li class="page_on"><span class="btnspan btnspan_on">02</span>주문서작성/결제</li>
+               <li><span class="btnspan">03</span>주문완료</li>
+            </ol>
+         </div>
+         </div>
 
    <div class="container">
       <div class="py-4 text-center"></div>
 
       <div class="row">
 
-         <form class="needs-validation" novalidate action="/kakaoPay" method="post">
+         <form class="needs-validation" novalidate action="/kakaoPay"
+            method="post">
             <div class="col-md-12 order-md-1">
                <h4 class="mb-3">${login_info.id}님주문정보</h4>
                <div class="row">
@@ -108,9 +229,9 @@ img {
 
                </div>
 
-               <div class="mb-3">
-                  <label for="address">주문번호 : </label> <strong>는 여기말고 결제 후
-                     생성으로 만들어야함</strong>
+               <div class="mb-3"><c:forEach var="orderprice" items="${orderprice}">
+                  <label for="address">주문번호 : </label> <strong>${orderprice.orderId }</strong>
+                  </c:forEach>
                </div>
 
                <hr class="mb-4">
@@ -129,8 +250,7 @@ img {
                      <div class="invalid-feedback">여기다가 가격정보입력</div><br>
                      <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
                   <hr class="mb-4"> --%>
-               <h4 class="mb-3">결제 상품정보</h4>
-               <hr class="mb-4">
+               <h4 class="mb-4">결제 상품정보</h4>
                <c:forEach var="list" items="${list}">
                   <input type="hidden" name="pro_name" value=${list.pro_name }>
 
@@ -140,18 +260,18 @@ img {
                      <div class="col-md-6 mb-3">
                         <label for="cc-name"></label> <img alt=""
                            src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}"
-                           style="width: 80px; height: 80px;">
+                           style="width: 100px; height: 100px; margin-bottom: 10px;">
+
                         <div style="display: inline-block;">
-                           <small class="text-muted">상품명 : ${list.pro_name}<br>옵
-                              션 : ${list.pro_option}
+                           <small class="text-muted">상품명 : ${list.pro_name}<br>옵 션 : ${list.pro_option}<br>설 명 : ${list.pro_maindesctitle}
                            </small>
                         </div>
                      </div>
                      <div class="col-md-6 mb-3">
-                        <label for="cc-number">가격 : ${list.pro_price}</label><br> <small
-                           class="text-muted">상품디테일명 : ${list.pro_maindesctitle}</small>
+                        <label for="cc-number">상품금액 : <fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></label><br><label for="cc-number">수 량 : ${list.amount}</label><br><label for="cc-number">총 금액 : <fmt:formatNumber value="${list.total}" type="currency" currencySymbol="₩" /></label>
                      </div>
-                     <div class="invalid-feedback">여기다가 가격정보입력</div>
+                     
+      
                      <br>
                      <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
                      <hr class="mb-4">
@@ -164,51 +284,29 @@ img {
                   <c:set var="totalPrice" value="${totalPrice + list.pro_price}" />
                </c:forEach>
                <c:forEach var="orderprice" items="${orderprice}">
-                 
-                  <input type="submit" value="결제"/>
+                  <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn"><fmt:formatNumber value="${orderprice.price}" type="currency" currencySymbol="₩" />원 결제하기</button>
                   <input type="hidden" name="pro_price" value=${orderprice.price }>
                   <input type="hidden" name="orderId" value=${orderprice.orderId }>
-                  <input type="hidden" name="userNo" value=${login_info.no }> 
-                   </c:forEach>
+                  <input type="hidden" name="userno" value=${login_info.no }>
+                  </c:forEach>
+                  
             </div>
 
-</form>
-         <script type="text/javascript">
- $(document).ready(function() {
-  // form submit 이벤트 리스너 등록
-  $("form").on("submit", function(event) {
-    event.preventDefault(); // 기본 동작 취소
 
-    // form 데이터를 가져옴
-    var formData = $(this).serialize();
-
-    // AJAX 요청 설정
-    $.ajax({
-    	url: "/kakaoPayInfo", // 요청 URL
-    	type: "POST", // 요청 메서드
-      data: formData, // 전송할 데이터
-      success: function(response) { // 요청 성공 시 동작할 함수
-        // 서버로부터 받은 응답을 처리
-        console.log("성공 :" +response);
-      },
-      error: function(xhr, status, error) { // 요청 실패 시 동작할 함수
-        console.error("에러"+error);
-      }
-    });
-  });
-});    
- </script>
-       
-         
+         </form>
       </div>
    </div>
 
 
+
    </div>
 
 
 
-
+   <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"></script>
    <script>
       window.jQuery
             || document

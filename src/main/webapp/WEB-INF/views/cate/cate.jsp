@@ -135,6 +135,9 @@ li .btnspan {
    font-size: 16px;
    color: #fff;
 }
+li .btnspan_on{
+background-color: #c8936ed4;
+}
 
 @media only screen and (max-width: 768px) {
    ol {
@@ -190,8 +193,20 @@ li .btnspan {
 <script type="text/javascript">
 
 window.onload = function() {
-   updateTotalCount();
-   minusTotalCount();
+	   updateTotalCount();
+	   minusTotalCount();
+	if(userNo=="") {
+		console.log(path);
+			
+		   var login_chk = confirm('로그인이 필요한 서비스입니다. 로그인페이지로 이동하시겠습니까?');
+			if(login_chk) {
+				location.href='/login.do';
+			} else {
+				location.href = path;
+			}} else {
+				location.href = location.href;
+			}
+
 }
 
 function parseCurrency(num) {
@@ -480,7 +495,7 @@ function deletecate(element) {
       <div class="order_wrap" style="position: relative;">
          <div class="order_tit">
             <ol>
-               <li class="page_on"><span class="btnspan">01</span>장바구니</li>
+               <li class="page_on"><span class="btnspan btnspan_on">01</span>장바구니</li>
                <li><span class="btnspan">02</span>주문서작성/결제</li>
                <li><span class="btnspan">03</span>주문완료</li>
             </ol>
