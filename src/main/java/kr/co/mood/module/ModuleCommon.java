@@ -29,7 +29,7 @@ public class ModuleCommon {
 
 	}
 
-	public int[] pagingModuleToAdminPayment(Model model, ModuleVO ModuleVO, List allList, String page, int showCount) {
+	public int[] pagingModuleToAdminPayment(Model model, List allList, String page, int showCount) {
 
 		this.showCount = showCount;
 		pagingModuleMain(model, page, allList);

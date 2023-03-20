@@ -2,72 +2,70 @@ package kr.co.mood.Payment.VO;
 
 
 public class AdminPaymentVO {	
-	 private int payCount;
-	 private int bucketCount;
-	 private String serialNumber;
-	 private String week;
-	 private int sales;
-	 private int productCount;
-	 private String categorySerial;
-	 private String gender;
-	 
 	
-	public int getProductCount() {
-		return productCount;
+	private int orderNo;
+	private String name;
+	private String address;
+	private String phone;
+	private String productNo;
+	private String productName;
+	private int price;
+	private int amount;
+	
+	public int getOrderNo() {
+		return orderNo;
 	}
-	public void setProductCount(int productCount) {
-		this.productCount = productCount;
+	public void setOrderNo(int orderNo) {
+		this.orderNo = orderNo;
 	}
-	public String getCategorySerial() {
-		return categorySerial;
+	public String getName() {
+		return name;
 	}
-	public void setCategorySerial(String categorySerial) {
-		this.categorySerial = categorySerial;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getGender() {
-		return gender;
+	public String getAddress() {
+		return address;
 	}
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setAddress(String address) {
+		this.address = address;
 	}
-	public String getWeek() {
-		return week;
+	public String getPhone() {
+		return phone;
 	}
-	public void setWeek(String week) {
-		this.week = week;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
-	public int getSales() {
-		return sales;
+	public String getProductNo() {
+		return productNo;
 	}
-	public void setSales(int sales) {
-		this.sales = sales;
+	public void setProductNo(String productNo) {
+		this.productNo = productNo;
 	}
-	public int getPayCount() {
-		return payCount;
+	public String getProductName() {
+		return productName;
 	}
-	public void setPayCount(int payCount) {
-		this.payCount = payCount;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
-	public int getBucketCount() {
-		return bucketCount;
+	public int getPrice() {
+		return price;
 	}
-	public void setBucketCount(int bucketCount) {
-		this.bucketCount = bucketCount;
+	public void setPrice(int price) {
+		this.price = price;
 	}
-	public String getSerialNumber() {
-		return serialNumber;
+	public int getAmount() {
+		return amount;
 	}
-	public void setSerialNumber(String serialNumber) {
-		this.serialNumber = serialNumber;
+	public void setAmount(int amount) {
+		this.amount = amount;
 	}
-
-
+	
 	@Override
 	public String toString() {
-		return "AdminPaymentVO [payCount=" + payCount + ", bucketCount=" + bucketCount + ", serialNumber="
-				+ serialNumber + ", week=" + week + ", sales=" + sales + ", productCount=" + productCount
-				+ ", categorySerial=" + categorySerial + ", gender=" + gender + "]";
-	} 
-	 
+		return "AdminPaymentVO [orderNo=" + orderNo + ", name=" + name + ", address=" + address + ", phone=" + phone
+				+ ", productNo=" + productNo + ", productName=" + productName + ", price=" + price + ", amount="
+				+ amount + "]";
+	}
 	 
 }
