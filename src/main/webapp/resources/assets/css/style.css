@@ -11,8 +11,11 @@
 
 
 body {
-  font-family: "Open Sans", sans-serif;
+  font-family: "Roboto", sans-serif;
   color: #444444;
+}
+pre{
+	font-family: "Roboto", sans-serif;
 }
 
 a {
@@ -21,7 +24,7 @@ a {
 }
 
 a:hover {
-  color: #74c92d;
+  color: #c9902d;
   text-decoration: none;
 }
 
@@ -71,7 +74,7 @@ h6 {
 # Header
 --------------------------------------------------------------*/
 #header {
-  background: rgba(0, 0, 0, 0.75);
+  background: rgba(0, 0, 0, 0.7);
   transition: all 0.5s;
   z-index: 997;
   height: 80px;
@@ -204,13 +207,14 @@ h6 {
   z-index: 99;
   opacity: 0;
   visibility: hidden;
-  background: #fff;
+  background: rgba(255, 255, 255, 0.8); 
   box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
   transition: 0.3s;
 }
 
 .navbar .dropdown ul li {
   min-width: 200px;
+
 }
 
 .navbar .dropdown ul a {
@@ -534,8 +538,8 @@ h6 {
 }
 
 #hero .btn-get-started:hover {
-  background: #6ab82a;
-  border-color: #6ab82a;
+  background: #c98b2d;
+  border-color: #c98b2d;
   color: #fff;
 }
 
@@ -1399,7 +1403,7 @@ section {
 }
 
 .contact .php-email-form button[type=submit]:hover {
-  background: #6ab82a;
+  background: #c98b2d;
 }
 
 @-webkit-keyframes animate-loading {
@@ -1621,7 +1625,7 @@ section {
 }
 
 #footer .footer-top .footer-newsletter form input[type=submit]:hover {
-  background: #6ab82a;
+  background: #c98b2d;
 }
 
 #footer .copyright {

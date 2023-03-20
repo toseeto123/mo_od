@@ -85,9 +85,9 @@ img {
    <div class="container">
       <div class="py-4 text-center">
       </div>
-	<form class="needs-validation" novalidate action="/kakaoPay"
-            method="post">
+	
       <div class="row">
+      <form class="needs-validation" novalidate action="/kakaoPay" method="post">
 	<c:forEach var="orders" items="${orders}">
          <div class="col-md-12 order-md-1">
             <h4 class="mb-3">${orders.id} 님 주문정보</h4>
@@ -144,9 +144,14 @@ img {
  <c:set var="totalPrice" value="0" />
 <c:forEach var="orders" items="${orders}">
     <c:set var="totalPrice" value="${totalPrice + orders.pro_price}" />
+    <input type="hidden" value="${orders.pro_name}" name="pro_name"> 
+    <input type="hidden" value="${orders.pro_price}" name="pro_price"> 
+    <input type="hidden" value="${orders.orderId}" name="orderId"> 
+    <input type="hidden" value="${orders.userno }" name="userno">
+    <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">${totalPrice}원 결제하기</button>
 </c:forEach>
 
-<button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">${totalPrice}원 결제하기</button>
+
                </div>
      
             

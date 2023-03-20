@@ -44,7 +44,7 @@
           </div>
 
           <!-- Slide 3 -->
-          <div class="carousel-item" style="background-image: url(resources/assets/img/slide/slide-3.jpg);">
+          <div class="carousel-item" style="background-image: url(resources/assets/img/slide/slide3.jpg);">
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>

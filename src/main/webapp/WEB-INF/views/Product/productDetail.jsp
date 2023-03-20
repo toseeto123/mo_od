@@ -45,16 +45,70 @@
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script
    src="https://cdnjs.cloudflare.com/ajax/libs/spring-webmvc/5.3.8/spring-webmvc.min.js"></script>
-   
-   <script type="text/javascript">
-   	
-   </script>
+
 </head>
 <style>
 pre{
     overflow: auto;
     white-space: pre-wrap; /* pre tag내에 word wrap */
 }
+.chk_option{
+   cursor: pointer;
+}
+
+.cateBtn , .btn_buy{
+   background-color: #c8936ed4;
+   width: 416px;
+   height: 50px;
+   border : none;
+   border-radius: 30px;
+   box-shadow: 1px 1px 1px 1px lightgray;  
+}
+/* 라디오 버튼 스타일링 */
+input[type="radio"] {
+  -webkit-appearance: none; /* 브라우저별 스타일링 제거 */
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 50%; /* 라운드 처리 */
+  width: 15px; /* 사이즈 */
+  height: 15px;
+  border: 2px solid #e4e4e4; /* 보더 설정 */
+  background-color: #fff; /* 배경색 설정 */
+  outline: none; /* 포커스 아웃라인 제거 */
+  transition: all 0.3s ease-in-out; /* 호버 애니메이션 처리 */
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+/* 선택된 라디오 버튼 스타일링 */
+input[type="radio"]:checked {
+  background-color: #4f88f7; /* 선택 시 배경색 변경 */
+  border-color: #4f88f7; /* 선택 시 보더 색 변경 */
+}
+
+/* 라디오 버튼의 가짜 내부 원 스타일링 */
+input[type="radio"]:before {
+  content: ""; /* 내용 없음 */
+  display: block;
+  width: 0; /* 가짜 원 초기 크기 */
+  height: 0;
+  border-radius: 50%;
+  background-color: #4f88f7; /* 가짜 원 배경색 */
+  position: absolute; /* 부모 요소에 대해 절대 위치 지정 */
+  top: 50%; /* 수직 위치 중앙으로 */
+  left: 50%; /* 수평 위치 중앙으로 */
+  transform: translate(-50%, -50%) scale(0); /* 가짜 원 초기 크기와 위치 설정 */
+  transition: all 0.3s ease-in-out; /* 호버 애니메이션 처리 */
+}
+
+/* 선택된 라디오 버튼의 가짜 내부 원 스타일링 */
+input[type="radio"]:checked:before {
+  width: 18px; /* 가짜 원 크기 변경 */
+  height: 18px;
+  transform: translate(-50%, -50%) scale(1); /* 가짜 원 크기와 위치 변경 */
+}
+
 </style>
 <body>
 <jsp:include page="/WEB-INF/common/header.jsp" />
@@ -143,12 +197,12 @@ pre{
                   <div class="portfolio-info">
                      <h3>${list.pro_name}</h3>
                      <ul>
-                        <li><strong>서브상세설명</strong>: ${list.pro_subdesc}</li>
+                        <li><strong>특징</strong>: ${list.pro_subdesc}</li>
                         <li><strong>제품번호</strong>: ${list.pro_serialnumber }</li>
                         <li><strong>가 격</strong>: <fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></li>   
                         <li><strong>옵 션</strong>:<br>
                         <c:if test="${empty list.pro_option1}">
-                        <label for="chk_option" ><span class="chk_option">선택안함</span></label>
+                        <label for="chk_option"><span class="chk_option">선택안함</span></label>
                         <input type="radio" value="선택안함" id="chk_option" name="radioOption" checked="checked"><br>
                         </c:if>
                         
@@ -222,23 +276,7 @@ pre{
 			</form>
 
     
-<style>
-.chk_option{
-   cursor: pointer;
-}
 
-.cateBtn , .btn_buy{
-   background-color: #c8936ed4;
-   width: 416px;
-   height: 50px;
-   border : none;
-   border-radius: 30px;
-   box-shadow: 1px 1px 1px 1px lightgray;
-
-   
-   
-}
-</style>
 
             </div>
 
@@ -249,84 +287,30 @@ pre{
     <section id="team" class="team">
       <div class="container">
 
-        <div class="section-title">
-          <h2>관련 상품</h2>
-          <p>내용 내용 내용 내용 내용</p>
+        <div class="section-title"><hr>
+          <h2>추천 상품</h2>
+          <p>${login_info.id } 회원님이 좋아하실만한 상품</p>
         </div>
 
         <div class="row">
-
+<c:forEach var="randomList" items="${randomList}" begin="0" end="3">
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="member">
-              <img src="${pageContext.request.contextPath}/resources/assets/img/team/team-1.jpg" class="img-fluid" alt="">
+              <img src="${pageContext.request.contextPath}/resources/assets/img/product/${randomList.pro_img1}" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
-                  <h4>Walter White</h4>
-                  <span>Chief Executive Officer</span>
+                  <h4>${randomList.pro_name}</h4>
+                  <span>${randomList.pro_maindesctitle}</span>
+                  <span><fmt:formatNumber value="${randomList.pro_price}" type="currency" currencySymbol="₩" /></span>
                   <div class="social">
-                    <a href=""><i class="bi bi-twitter"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
+                    <a href="/product/${randomList.pro_number}">상세보기</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
+</c:forEach>
 
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s">
-            <div class="member">
-              <img src="${pageContext.request.contextPath}/resources/assets/img/team/team-2.jpg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Sarah Jhonson</h4>
-                  <span>Product Manager</span>
-                  <div class="social">
-                    <a href=""><i class="bi bi-twitter"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s">
-            <div class="member">
-              <img src="${pageContext.request.contextPath}/resources/assets/img/team/team-3.jpg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>William Anderson</h4>
-                  <span>CTO</span>
-                  <div class="social">
-                    <a href=""><i class="bi bi-twitter"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s">
-            <div class="member">
-              <img src="${pageContext.request.contextPath}/resources/assets/img/team/team-4.jpg" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>Amanda Jepson</h4>
-                  <span>Accountant</span>
-                  <div class="social">
-                    <a href=""><i class="bi bi-twitter"></i></a>
-                    <a href=""><i class="bi bi-facebook"></i></a>
-                    <a href=""><i class="bi bi-instagram"></i></a>
-                    <a href=""><i class="bi bi-linkedin"></i></a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
 
         </div>
 

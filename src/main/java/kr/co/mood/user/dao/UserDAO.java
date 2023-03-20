@@ -68,8 +68,8 @@ public class UserDAO {
 				mybatis.insert("UserDAO.kakaoInsert",userInfo);
 			}
 			public UserVO findkakao(HashMap<String, Object> userInfo) {
-				System.out.println("RN:"+userInfo.get("nickname"));
-				System.out.println("RE:"+userInfo.get("email"));
+//				System.out.println("RN:"+userInfo.get("nickname"));
+//				System.out.println("RE:"+userInfo.get("email"));
 				return mybatis.selectOne("UserDAO.findKakao", userInfo);
 			}
 

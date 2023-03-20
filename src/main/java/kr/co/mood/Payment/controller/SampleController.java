@@ -26,30 +26,31 @@ public class SampleController {
    
    @RequestMapping(value = "/kakaoPay", method = RequestMethod.POST)
       public String kakaoPay(@RequestParam("pro_name") String pro_name,
+    		  			 @RequestParam("userno") String userno,
                           @RequestParam("pro_price") int pro_price,
                           @RequestParam("orderId") int orderId,
                           Model model) {
         System.out.println("kakaopay post...以 ........");
-        model.addAttribute("pro_name", pro_name);
-        model.addAttribute("pro_price",pro_price);
-        model.addAttribute("orderId",orderId);
-         return "redirect:" + kakaopay.kakaoPayReady(pro_name,pro_price,orderId);
+       // model.addAttribute("pro_name", pro_name);
+        //model.addAttribute("pro_price",pro_price);
+        //model.addAttribute("orderId",orderId);
+         return "redirect:" + kakaopay.kakaoPayReady(pro_name,userno,pro_price,orderId);
 
       }
 
 
    @RequestMapping(value = "/User/kakaoPaySuccess" )
-   public void paySuccess(@RequestParam("pg_token") String pg_token, Model model) {
+   public void paySuccess(@RequestParam("pg_token") String pg_token, @RequestParam("orderId") int orderId,@RequestParam("userno") String userno ,Model model) {
       System.out.println("kakaopay success......!!!!!!!! get!!!!");
       System.out.println("kakaopay success pg_token" + pg_token);
 
-      model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token));
+      model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token,orderId,userno));
    }
-   @RequestMapping(value = "/User/kakaoPayCancel" )
-   public void payCancel(@RequestParam("pg_token") String pg_token, Model model) {
-      System.out.println("kakaopay Cancel......!!!!!!!! get!!!!");
-      System.out.println("kakaopay Cancel pg_token" + pg_token);
-
-      model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token));
-   }
+//   @RequestMapping(value = "/User/kakaoPayCancel" )
+//   public void payCancel(@RequestParam("pg_token") String pg_token, Model model) {
+//      System.out.println("kakaopay Cancel......!!!!!!!! get!!!!");
+//      System.out.println("kakaopay Cancel pg_token" + pg_token);
+//
+//      model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token));
+//   }
 }

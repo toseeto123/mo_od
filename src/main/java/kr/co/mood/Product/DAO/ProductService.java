@@ -8,6 +8,7 @@ import kr.co.mood.module.ModuleVO;
 
 public interface ProductService {
 	public List<ProVO> selectProList(List<ProVO> vo);
+	public List<ProVO> selectProRandom(List<ProVO> vo);
 	public void insertPro(ProVO vo);
 	public ProVO selectProOne(int pro_number);
 	public List<ProVO> AselectProListByPayCount(List<ProVO> vo);

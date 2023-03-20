@@ -137,8 +137,12 @@ googleXHT.setRequestHeader('Content-Type', 'application/json');
 
 googleXHT.onload = function () {
   if (googleXHT.status === 200) {
-   location.href='/';
-    console.log(googleXHT.responseText);
+  if(googleXHT.responseText.trim()==''){
+  	location.href='/';
+  }else{
+  location.href=googleXHT.responseText
+  }
+
   } else {
     console.error(googleXHT.statusText);
   }
