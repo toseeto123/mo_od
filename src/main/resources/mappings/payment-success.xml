@@ -4,12 +4,10 @@
 
 <mapper namespace="KakaoPayApprovalDAO">
 
-	<insert id="insert">
-		insert into payment(payment_method, orderid , userid
-		, amount)
-		value(#{payment_method_type}, #{partner_order_id} ,
-		#{partner_user_id}, #{amount.total})
-	</insert>
+   <insert id="insert">
+      insert into payment(payment_method, orderid , userid , amount , approved_at)
+      value(#{payment_method_type}, #{partner_order_id} , #{partner_user_id}, #{amount.total}, #{approved_at})
+   </insert>
 
 	<delete id="catedelete">
 		delete from cate where user_no = #{user_no}

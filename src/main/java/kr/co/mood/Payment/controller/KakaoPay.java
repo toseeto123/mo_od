@@ -57,7 +57,6 @@ public class KakaoPay {
           
            String pro_pricestr = Integer.toString(pro_price);
            String orderIdstr = Integer.toString(orderId);
-           System.out.println(pro_name);
            //  �쐻 �윞 留� 逾볠�⑤슣維딃쨹    �쐻 �윪 萸드떵�슪�맔 �굲 �쐻 �윥�븰  Body
            MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
            params.add("cid", "TC0ONETIME");
