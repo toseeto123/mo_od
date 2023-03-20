@@ -85,14 +85,12 @@
 					<span style="margin-left: 100px;">수 량 : </span>
 					<div class="amount" style="display: inline;">${orders.quantity}</div>
 					<p style="margin-left: 100px;">
-						가 격 : <span class=""><fmt:formatNumber
+						가 격 : <span class="total"><fmt:formatNumber
 								value="${orders.pro_price}" type="currency" currencySymbol="₩" /></span>
 					</p>
 					<br>
 					<hr>
-					<p style="margin-left: 100px;">
-						총주문금액 : <span class="total"><fmt:formatNumber
-								value="price" type="currency" currencySymbol="₩" /></span>
+					
 
 				</div>
 			</c:forEach>
