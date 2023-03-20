@@ -126,7 +126,7 @@
 		if(document.getElementById('gender'+i).value == 'F'){
 			womanChartData.push(chartDictionary);
 
-		}else{
+		}else if(document.getElementById('gender'+i).value == 'M'){
 			manChartData.push(chartDictionary)
 		}		
 	}

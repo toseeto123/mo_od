@@ -6,7 +6,7 @@
 
 <mapper namespace="kr.co.mood.Payment.DAO.AdminPaymentDAO">
 
-    <select id="getCategoryChart1" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
+    <select id="getCategoryChart1" resultType="kr.co.mood.Payment.VO.AdminChartVO">
          SELECT pro_serialnumber as 'serialNumber', 
          		SUM(pro_paycount) as 'payCount' 
          	FROM product 
@@ -16,7 +16,7 @@
          	limit 0, 5
     </select>
     
-    <select id="getCategoryChart2" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
+    <select id="getCategoryChart2" resultType="kr.co.mood.Payment.VO.AdminChartVO">
          select pro_serialnumber as 'serialNumber', 
          		pro_bucketcount as 'bucketCount' 
          	from product 
@@ -25,7 +25,7 @@
          	limit 0, 5
     </select>
     
-    <select id="getCategoryChart3" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
+    <select id="getCategoryChart3" resultType="kr.co.mood.Payment.VO.AdminChartVO">
          <![CDATA[
          SELECT CASE DAYOFWEEK(approved_at) 
          		WHEN 1 THEN '월요일' 
@@ -45,7 +45,7 @@
          	]]>
     </select>
     
-    <select id="getCategoryChart4" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
+    <select id="getCategoryChart4" resultType="kr.co.mood.Payment.VO.AdminChartVO">
 		<![CDATA[
 		select member.gender as gender, product.pro_categoryserial as 'categorySerial', 
 				sum(orderProduct.count) as 'productCount', 
@@ -72,6 +72,39 @@
 			limit 0, 5
 			]]>
     </select>
+    
+    <select id="adminPaymentMemberList" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
+    	select payment.payment_id as 'orderNo',
+			member.name as 'name',
+			moodorder.address as 'address',
+			member.phone as 'phone',
+			payment.amount as 'amount'
+		from moodorder
+		inner join payment
+			on moodorder.orderId = payment.orderid
+		inner join moodjoin as member
+			on moodorder.userNo = member.no
+		where payment.Success = 'A'
+		order by orderNo desc
+		<if test="endNo != 0">
+		limit #{startNo}, #{endNo}
+    	</if>
+    </select>    
+    
+    <select id="adminPaymentList" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
+    	select payment.payment_id as 'orderNo', 
+			product.pro_serialnumber as 'productNo',
+			product.pro_name as 'productName',
+			orderProduct.price as 'price'
+		from payment
+		inner join orderProduct
+			on payment.orderId = orderProduct.orderId
+		inner join product
+			on orderProduct.pro_number = product.pro_number
+		where payment.Success = 'A'
+		order by orderNo desc
+    </select>
+    
     
 </mapper>
 

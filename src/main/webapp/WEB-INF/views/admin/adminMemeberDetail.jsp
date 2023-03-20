@@ -45,7 +45,17 @@ a:hover {
 					</tr>
 					<tr>
 						<th scope="col">성별</th>
-						<td>${userInfo.gender}</td>
+						<c:choose>
+						<c:when test="${userInfo.gender == 'F'}">
+							<td>여자</td>	
+						</c:when>
+						<c:when test="${userInfo.gender == 'M'}">
+							<td>남자</td>
+						</c:when>
+						<c:otherwise>
+							<td></td>
+						</c:otherwise>
+						</c:choose>
 					</tr>
 					<tr>
 						<th scope="col">나이</th>
