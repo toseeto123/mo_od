@@ -4,6 +4,7 @@ package kr.co.mood;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -12,6 +13,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,7 +26,12 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import kr.co.mood.Payment.VO.userOrderProductVO;
+import kr.co.mood.Payment.VO.userOrderVO;
 import kr.co.mood.cate.DAO.CateService;
+import kr.co.mood.cate.vo.CateVO;
+import kr.co.mood.pay.DAO.productPaymentService;
+import kr.co.mood.pay.DAO.userPaymentService;
 import kr.co.mood.user.dao.UserService;
 import kr.co.mood.user.dao.UserVO;
 
@@ -40,9 +47,13 @@ public class UserController {
 	
 	@Autowired
 	private JavaMailSender mailSender;
-
 	@Autowired
 	private CateService cateService;
+	@Autowired
+	userPaymentService payService;
+	@Autowired
+	productPaymentService productPayService;
+	
 
 	@RequestMapping(value="/googleSave", method=RequestMethod.POST)
 	@ResponseBody
@@ -146,30 +157,85 @@ public class UserController {
       return "User/login";
       }
   //lsg
-   @RequestMapping(value = "/login.do" , method = RequestMethod.POST)
-   public String loginAction(UserVO vo, HttpSession session , RedirectAttributes rttr) {
-	  UserVO vo1 =  userservice.selectId(vo);
-	  String path = (String) session.getAttribute("path");
+   @RequestMapping(value = "/login.do", method = RequestMethod.POST)
+   public String loginAction(@ModelAttribute("cvo") CateVO cvo,UserVO vo, HttpSession session, HttpServletRequest request, RedirectAttributes ra,Model model) {
+       UserVO vo1 = userservice.selectId(vo);
+       
+       if (vo1 == null) {
+           session.setAttribute("login_info", null);
+           request.setAttribute("msg", false);
+           return "redirect:/login.do";
+       } else {
+           session.setAttribute("login_info", vo1);
+           
+           // path 가져오기
+           String path = (String) session.getAttribute("path");
+           
+           if (path == null) {
+               return "redirect:/index.jsp";
+           } else if (path.contains("catelogin.do")) { // 장바구니 페이지에서 왔다면
+        	   session.setAttribute("path", request.getRequestURI()); // 현재 경로 저장
+               return "redirect:/cate.do";
+           } else if (path.contains("proCatelogin.do")) {
+        	   session.setAttribute("path", request.getRequestURI()); // 현재 경로 저장
+        	   CateVO sessionCvo = (CateVO) session.getAttribute("cvo"); // 세션에서 CateVO 객체를 받아옴;
+               int userid = vo1.getNo();
+               sessionCvo.setUser_no(userid);
+        	   if (sessionCvo != null) {
+        		   cateService.addcate(sessionCvo, vo1, null);
+               }
+               return "redirect:/cate.do";
+           } else if(path.contains("payBeLogin.do")) {	   
+        	session.setAttribute("path", request.getRequestURI()); // 현재 경로 저장
+        	
 
-	  System.out.println(path);
-	  
-	  if(path== null) {
-	  if(vo1 == null) {
-		  System.out.println("null이야");
-		  session.setAttribute("login_info", null);
-		  rttr.addFlashAttribute("msg", false);
-		  return "redirect:login.do";
-	  } else {
-		  		System.out.println("메인페이지로 이동할거야");
-				session.setAttribute("login_info", vo1);
-				return "redirect:index.jsp";
-			}
-	  }	else {
-		 System.out.println("해당페이지로 이동할거야");
-		session.setAttribute("login_info", vo1);
-		return "redirect:"+path;
-	  }
+         	userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
+         	userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
+         	int userid = vo1.getNo();
+
+         	sessionordervo.setUserNo(userid);
+         	payService.insert(sessionordervo, vo1, null);
+         	int orderid = sessionordervo.getOrderId();
+         	sessionorderprovo.setUserno(userid);
+         	sessionorderprovo.setOrderId(orderid);
+
+            productPayService.insert(sessionorderprovo, vo1, null);
+            
+            
+            model.addAttribute("orders", productPayService.selectList(orderid));
+
+         	return "/User/userPayOne";
+           }
+           else {
+               return "redirect:" + path;
+           }
+       }
    }
+
+   @RequestMapping(value = "/catelogin.do", method = RequestMethod.GET)
+   public String catelogin(HttpSession session, HttpServletRequest request) {
+       session.setAttribute("path", request.getRequestURI()); // 현재 경로 저장
+       
+       return "redirect:/login.do";
+   }
+   @RequestMapping(value = "/proCatelogin.do", method = RequestMethod.GET)
+   public String proCatelogin(@ModelAttribute("cvo") CateVO cvo, HttpSession session, ModelAndView mav,HttpServletRequest request) {
+	  session.setAttribute("path", request.getRequestURI()); // 현재 경로 저장
+	  
+      session.setAttribute("cvo", cvo); // CateVO 객체를 세션에 저장
+      return "redirect:/login.do";
+   }
+   @RequestMapping(value = "/payBeLogin.do", method = RequestMethod.GET)
+   public String payBeLogin(@ModelAttribute("ordervo") userOrderVO ordervo,@ModelAttribute("orderProVo") userOrderProductVO orderProVo, HttpSession session, ModelAndView mav,HttpServletRequest request) {
+	  session.setAttribute("path", request.getRequestURI()); // 현재 경로 저장
+      
+
+      return "redirect:/login.do";
+   }
+   
+   
+   
+   
  	@RequestMapping("/logout.do")
  		public String logout(UserVO vo,HttpSession session) {
  			session.setAttribute("login_info", vo);

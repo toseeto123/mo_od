@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,13 +59,20 @@ public class CateController {
 		return mav;
 	}
 
-   @RequestMapping(value="/cateinsert.do" , method = RequestMethod.POST)
-   public String insertcate(HttpSession session, Model model, @RequestParam("pro_number") int pro_number,@RequestParam("pro_price") int pro_price,@RequestParam("radioOption") String pro_option) {
-       System.out.println("카트인서트와써!");
-	   UserVO uvo = (UserVO) session.getAttribute("login_info");	
-	   if(uvo==null) {
-		   return "redirect:/login.do";
-	   } else {
+	@RequestMapping(value="/cateinsert.do" , method = RequestMethod.POST)
+	public String insertcate(HttpSession session, @RequestParam("pro_number") int pro_number,
+	                         @RequestParam("pro_price") int pro_price, @RequestParam("radioOption") String pro_option,
+	                         RedirectAttributes redirectAttributes) {
+	    UserVO uvo = (UserVO) session.getAttribute("login_info");
+	    if(uvo==null) {
+	        CateVO cvo = new CateVO();
+	        cvo.setPro_number(pro_number);
+	        cvo.setCate_pro_price(pro_price);
+	        cvo.setTotal(pro_price);
+	        cvo.setPro_option(pro_option);
+	        redirectAttributes.addFlashAttribute("cvo", cvo);
+	        return "redirect:/proCatelogin.do";
+	    } else {
        int userid = uvo.getNo();
        CateVO cvo = new CateVO();
      
@@ -82,11 +90,22 @@ public class CateController {
    public String showCateList(HttpSession session, Model model) {
        UserVO uvo = (UserVO) session.getAttribute("login_info");
        int userid = uvo.getNo();
-       
+            
        // 以묐났 insert瑜� 諛⑹��븯湲� �쐞�빐 cate_id媛� null�씠 �븘�땶 �빆紐⑸쭔 議고쉶�빀�땲�떎.
        model.addAttribute("map", cservice.selectCateList(userid));
        return "/cate/cate";
    }
+   
+   @RequestMapping(value = "/beLoginCate", method = RequestMethod.GET)
+   public String beLoginCate(HttpSession session, Model model) {
+	   System.out.println("비로그인 카트 이동");
+       UserVO uvo = (UserVO) session.getAttribute("login_info");
+       
+
+       return "/cate/cate";
+   }
+   
+   
    
    @RequestMapping(value = "/plus.do", method = RequestMethod.POST)
    public String update(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {

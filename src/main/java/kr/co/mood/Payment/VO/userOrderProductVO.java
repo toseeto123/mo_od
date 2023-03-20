@@ -149,6 +149,15 @@ public class userOrderProductVO {
 	public void setPrice(int price) {
 		this.price = price;
 	}
+
+	@Override
+	public String toString() {
+		return "userOrderProductVO [userno=" + userno + ", id=" + id + ", name=" + name + ", phone=" + phone
+				+ ", email=" + email + ", adr=" + adr + ", pro_name=" + pro_name + ", pro_price=" + pro_price
+				+ ", pro_img1=" + pro_img1 + ", pro_maindesctitle=" + pro_maindesctitle + ", pro_option=" + pro_option
+				+ ", total=" + total + ", orderId=" + orderId + ", partner_order_id=" + partner_order_id
+				+ ", pro_number=" + pro_number + ", count=" + count + ", price=" + price + "]";
+	}
 	
 	
 }
