@@ -38,8 +38,10 @@ public class KakaoPay {
        private KakaoPayApprovalVO kakaoPayApprovalVO;
        
 
-       public String kakaoPayReady(@RequestParam("pro_name") String pro_name,@RequestParam("userno") String userno,@RequestParam("pro_price") int pro_price,@RequestParam("orderId") int orderId) {
-
+       public String kakaoPayReady(@RequestParam("pro_name") String pro_name,
+    		   					@RequestParam("userno") String userno,
+    		   					@RequestParam("pro_price") int pro_price,
+    		   					@RequestParam("orderId") int orderId) {
     
            RestTemplate restTemplate = new RestTemplate();
 
@@ -52,7 +54,6 @@ public class KakaoPay {
           
            String pro_pricestr = Integer.toString(pro_price);
            String orderIdstr = Integer.toString(orderId);
-           
            
 
            //  뜝 럡 맋 뵓怨뚯뫊餓    뜝 럩 뭵嶺뚳퐦 삕 뜝 럥留  Body
