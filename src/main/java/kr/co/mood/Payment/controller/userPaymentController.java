@@ -109,6 +109,7 @@ public class userPaymentController {
       
       
       userOrderVO ordervo = new userOrderVO();
+      
 
       ordervo.setUserNo(userid);
 

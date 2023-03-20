@@ -12,6 +12,7 @@
 <meta name="author"
    content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.101.0">
+
 <title>결제</title>
 
 <link rel="canonical"
@@ -48,8 +49,7 @@ img {
 <!-- Custom styles for this template -->
 <link href="form-validation.css" rel="stylesheet">
 <!-- jQuery -->
-<script type="text/javascript"
-   src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
 
 </head>
 <jsp:include page="../../common/header.jsp" />
@@ -88,8 +88,7 @@ img {
 
       <div class="row">
 
-         <form class="needs-validation" novalidate action="/kakaoPay"
-            method="post">
+         <form class="needs-validation" novalidate action="/kakaoPay" method="post">
             <div class="col-md-12 order-md-1">
                <h4 class="mb-3">${login_info.id}님주문정보</h4>
                <div class="row">
@@ -165,28 +164,51 @@ img {
                   <c:set var="totalPrice" value="${totalPrice + list.pro_price}" />
                </c:forEach>
                <c:forEach var="orderprice" items="${orderprice}">
-                  <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">${orderprice.price}원결제하기</button>
+                 
+                  <input type="submit" value="결제"/>
                   <input type="hidden" name="pro_price" value=${orderprice.price }>
                   <input type="hidden" name="orderId" value=${orderprice.orderId }>
-                  </c:forEach>
-                  
+                  <input type="hidden" name="userNo" value=${login_info.no }> 
+                   </c:forEach>
             </div>
 
+</form>
+         <script type="text/javascript">
+ $(document).ready(function() {
+  // form submit 이벤트 리스너 등록
+  $("form").on("submit", function(event) {
+    event.preventDefault(); // 기본 동작 취소
 
-         </form>
+    // form 데이터를 가져옴
+    var formData = $(this).serialize();
+
+    // AJAX 요청 설정
+    $.ajax({
+    	url: "/kakaoPayInfo", // 요청 URL
+    	type: "POST", // 요청 메서드
+      data: formData, // 전송할 데이터
+      success: function(response) { // 요청 성공 시 동작할 함수
+        // 서버로부터 받은 응답을 처리
+        console.log("성공 :" +response);
+      },
+      error: function(xhr, status, error) { // 요청 실패 시 동작할 함수
+        console.error("에러"+error);
+      }
+    });
+  });
+});    
+ </script>
+       
+         
       </div>
    </div>
 
 
-
    </div>
 
 
 
-   <script
-      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
-      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
-      crossorigin="anonymous"></script>
+
    <script>
       window.jQuery
             || document

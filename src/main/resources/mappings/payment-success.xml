@@ -6,8 +6,8 @@
 
    <insert id="insert">
       insert into payment(payment_method, orderid , userid , amount)
-      value(#{payment_method_type}, #{partner_order_id} , #{partner_user_id}, #{amount.total})
-   </insert>
+      values(#{payment_method_type}, #{partner_order_id} , #{user_no}, #{amount.total})
+</insert>
 
 
 
