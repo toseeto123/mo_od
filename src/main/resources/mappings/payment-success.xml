@@ -9,6 +9,8 @@
       value(#{payment_method_type}, #{partner_order_id} , #{partner_user_id}, #{amount.total})
    </insert>
 
-
+	<delete id="catedelete">
+		 delete from cate where user_no = #{user_no}
+	</delete>
 
 </mapper>

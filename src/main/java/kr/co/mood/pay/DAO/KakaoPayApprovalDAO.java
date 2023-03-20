@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.mood.Payment.VO.KakaoPayApprovalVO;
+import kr.co.mood.cate.vo.CateVO;
 
 @Repository
 public class KakaoPayApprovalDAO {
@@ -14,5 +15,9 @@ public class KakaoPayApprovalDAO {
 	
 	public void paymentinsert(KakaoPayApprovalVO kvo) {
 		sql.insert("KakaoPayApprovalDAO.insert", kvo);
+	}
+	
+	public void paysuccessdelete(String userno) {
+		sql.delete("KakaoPayApprovalDAO.catedelete" , userno);
 	}
 }
