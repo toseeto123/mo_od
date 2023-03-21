@@ -25,6 +25,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.co.mood.cate.DAO.CateService;
+import kr.co.mood.user.dao.MemberService;
 import kr.co.mood.user.dao.UserService;
 import kr.co.mood.user.dao.UserVO;
 
@@ -35,6 +36,8 @@ public class UserController {
 	@Autowired
 	private UserService userservice ;
 	private SqlSessionTemplate mybatis;
+	@Autowired
+	private MemberService ms;
 	private UserVO vo;
 	private ModelAndView mav;
 	
@@ -111,7 +114,7 @@ public class UserController {
         return "/";
         
      }else if(result == 0) {
-    	System.out.println("揶쏉옙占쎌뿯獄쏅뗀以덌쭪袁る뻬~");
+    	
         userservice.insertnaver(naver);
         session.setAttribute("login_info", naver);
         return "/";
@@ -128,6 +131,36 @@ public class UserController {
    }
    return str;
    }
+	
+	
+	
+	@RequestMapping(value="/user/*")
+	public class MemberController {
+		@Autowired
+		private MemberService ms;
+		@Autowired
+		private HttpSession session;
+
+		@RequestMapping(value="/kakaoLogin", method=RequestMethod.GET)
+		public String kakaoLogin(@RequestParam(value = "code", required = false) String code ) throws Exception {
+			System.out.println("#########" + code);
+			
+			String access_Token = ms.getAccessToken(code);
+			
+			
+			UserVO userInfo = ms.getUserInfo(access_Token);	
+			// 아래 코드가 추가되는 내용
+
+			// 위 코드는 session객체에 담긴 정보를 초기화 하는 코드.
+			session.setAttribute("login_info", userInfo);
+			System.out.println("fdfd"+userInfo);
+			
+			return "redirect:/";
+	    	}
+
+	}
+	
+	
 	
 	
 	@RequestMapping(value = "/join.do" , method = RequestMethod.GET)
@@ -171,11 +204,14 @@ public class UserController {
 	  }
    }
  	@RequestMapping("/logout.do")
- 		public String logout(UserVO vo,HttpSession session) {
+ 		public String logout(UserVO vo,HttpSession session,UserVO userInfo) {
+ 		
  			session.setAttribute("login_info", vo);
  			session.invalidate();
  			return "redirect:index.jsp";
  		}
+ 	
+ 
 
  	@RequestMapping(value = "/mypage.do" , method = RequestMethod.GET)
     public String mypage(UserVO vo,HttpSession session , Model model) {

@@ -82,7 +82,9 @@
     </update>
     
     <select id="findKakao" parameterType="kr.co.mood.user.dao.UserVO" resultType="kr.co.mood.user.dao.UserVO">
+    <![CDATA[
 		select * from moodjoin where name=#{nickname} and age=#{age_range} and email=#{email} and id=#{email}
+		]]>
 	</select>
 
 	
