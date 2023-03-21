@@ -19,43 +19,62 @@ a:hover{
 
 	<!-- ======= Hero Section ======= -->
 	<section id="hero" style="overflow:hidden; height:auto;">
-		<div class="hero-container">
+	<div style="width:25%; margin-top:5%; margin-left:39%;">
+			<select id="searchWhat">
+				<option value="name">이름</option>
+				<option value="orderNo">주문번호</option>
+				<option value="payDate">결제날짜</option>
+				<option value="phone">연락처</option>
+			</select> <input type="search" id="search">
 			
+			
+			<input type="button" style="background: transparent; width:70px; color:white; border-radius:10px; border: 2px solid #deb887;"
+				id="searchBtn" value="찾기" onMouseover="this.style.background='#d2b48c';" onMouseout="this.style.background='transparent'" onclick="search('/')">
+				</div>
+			
+		<div class="hero-container">
+			<div id="tables">
 			<c:forEach var="member" items="${member}">
-              <table class="table" style="color:white; margin-top:5%; margin-left:15%; width:70%;">
-                <thead>
+              <table id="table" class="table" style="color:white; margin-top:5%; margin-left:15%; width:70%;">
+                <thead id="thead">
                 <tr>
-                	<th style="width:20%;">주문번호 : ${member.orderNo}</th>
+                	<th id="orderNo" style="width:20%;">주문번호 : ${member.orderNo}</th>
+                	<th colspan="3" ></th>
+                	<th>결제날짜 : ${member.payDate}</th>
                 </tr>
                 <tr>
-                <th scope="col">이름 : ${member.name}</th>
-                <th scope="col">주소 : ${member.address}</th>
-                <th scope="col" style="width:30%;">연락처 : ${member.phone}</th>
+                <th id="name" scope="col">이름 : ${member.name}</th>
+                <th id="address" colspan="3" scope="col">주소 : ${member.address}</th>
+                <th id="phone" scope="col" style="width:30%;">연락처 : ${member.phone}</th>
                 </tr>
                   <tr>
                     <th scope="col">상품번호</th>
                     <th scope="col">상품명</th>
-                    <th scope="col">상품가격</th>
+                    <th scope="col">상품금액</th>
+                    <th scope="col">수량</th>
+                    <th scope="col">금액</th>
                   </tr>
                 </thead>
                 
-                <tbody>
+                <tbody id="tbody">
 				
 				<c:forEach var="product" items="${map[member.orderNo]}">
-                  <tr>
-                    <th scope="row">${product.productNo}</th>
-                    <td>${product.productName}</</td>
-                    <td> &#8361; ${product.price}</td>
+                  <tr id="product">
+                    <th id="productNo" scope="row">${product.productNo}</th>
+                    <td id="productNam">${product.productName}</</td>
+                    <td id="price">&#8361; ${product.price}</td>
+                    <td id="productCount"> ${product.productCount}</td>
+                    <td id="amount">&#8361; ${product.productCount*product.price}</td>
                   </tr>
                  </c:forEach> 
                   
                   <tr>
-                  	<td colspan="2" style="border-bottom:none;"></td>
-                  	<td>총금액: ${member.amount }</td>
+                  	<td colspan="4" style="border-bottom:none;"></td>
+                  	<td id="memberAmount">총금액: &#8361; ${member.amount }</td>
                   </tr>
                   
                   <tr>
-                  <td colspan="2" style="border-bottom:none"></td>
+                  <td colspan="4" style="border-bottom:none"></td>
                   <td style="border-bottom:none">
                   	<form action="#" method="post">
                   	<a href="#about" class="btn-get-started animate__animated">주문취소</a>
@@ -67,6 +86,7 @@ a:hover{
                 </tbody>
               </table>
               </c:forEach>
+              </div>
               <!-- End Default Table Example -->
  
 					<!-- End Default Table Example -->
@@ -99,6 +119,6 @@ a:hover{
 
 	</section>
 	<!-- End Hero -->
-
+<script src="/resources/user/js/adminPaymentSearching.js"></script> 
 </body>
 </html>

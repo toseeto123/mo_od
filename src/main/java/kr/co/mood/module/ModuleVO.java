@@ -8,8 +8,30 @@ public class ModuleVO {
 	private int endNo;
 	private String searchId;
 	private String searchName;
+	private String phone;
+	private String orderNo;
+	private String date;
 	
 	
+
+	public String getPhone() {
+		return phone;
+	}
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getOrderNo() {
+		return orderNo;
+	}
+	public void setOrderNo(String orderNo) {
+		this.orderNo = orderNo;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
 	public String getSearchId() {
 		return searchId;
 	}

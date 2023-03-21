@@ -79,7 +79,8 @@
 			member.name as 'name',
 			moodorder.address as 'address',
 			member.phone as 'phone',
-			payment.amount as 'amount'
+			payment.amount as 'amount',
+			payment.approved_at 'payDate'
 		from moodorder
 		inner join payment
 			on moodorder.orderId = payment.orderid
@@ -90,13 +91,50 @@
 		<if test="endNo != 0">
 		limit #{startNo}, #{endNo}
     	</if>
+    	
     </select>    
+
+
+    <select id="adminPaymentSearchingList"
+    	parameterType="kr.co.mood.module.ModuleVO"
+     resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
+    	select payment.payment_id as 'orderNo',
+			member.name as 'name',
+			moodorder.address as 'address',
+			member.phone as 'phone',
+			payment.amount as 'amount',
+			payment.approved_at 'payDate'
+		from moodorder
+		inner join payment
+			on moodorder.orderId = payment.orderid
+		inner join moodjoin as member
+			on moodorder.userNo = member.no
+		where payment.Success = 'A'		
+		<if test="searchName != null">
+		and member.name like concat('%', #{searchName}, '%')
+		</if>
+		<if test="orderNo > 0">
+		and payment.payment_id = #{orderNo}
+		</if>
+		<if test="phone != null">
+		and member.phone like concat('%', #{phone}, '%')
+		</if>
+		<if test="date != null">
+		and payment.approved_at like concat('%', #{date}, '%')
+		</if>
+		order by orderNo desc
+		<if test="endNo > 0">
+		limit #{startNo}, #{endNo}
+    	</if>    	
+    </select>
+
     
     <select id="adminPaymentList" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
     	select payment.payment_id as 'orderNo', 
 			product.pro_serialnumber as 'productNo',
 			product.pro_name as 'productName',
-			orderProduct.price as 'price'
+			orderProduct.price as 'price',
+			orderProduct.count as 'productCount'
 		from payment
 		inner join orderProduct
 			on payment.orderId = orderProduct.orderId
