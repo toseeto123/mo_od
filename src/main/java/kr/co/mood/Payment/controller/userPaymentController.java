@@ -46,7 +46,7 @@ public class userPaymentController {
       UserVO uvo = (UserVO)session.getAttribute("login_info");
       System.out.println(uvo);
       int userid = uvo.getNo();
-      
+      String adr= uvo.getAdr() + uvo.getAdr2() + uvo.getAdr3();
       int proid = pro_number;
       int price = pro_price;
 
@@ -61,6 +61,7 @@ public class userPaymentController {
       count = 1;
       model.addAttribute(count);
       ordervo.setOrderCount(count);
+      ordervo.setAddress(adr);
       System.out.println(ordervo);
       
       if (ordervo != null && uvo != null ) {
