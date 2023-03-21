@@ -229,7 +229,7 @@ background-color: #c8936ed4;
 
                </div>
 
-               <div class="mb-3"><c:forEach var="orderprice" items="${orderprice}">
+               <div class="mb-3"><c:forEach var="orderprice" items="${orderprice}" begin="0" end="0">
                   <label for="address">주문번호 : </label> <strong>${orderprice.orderId }</strong>
                   </c:forEach>
                </div>
@@ -284,7 +284,7 @@ background-color: #c8936ed4;
                <c:forEach var="list" items="${list}">
                   <c:set var="totalPrice" value="${totalPrice + list.pro_price}" />
                </c:forEach>
-               <c:forEach var="orderprice" items="${orderprice}">
+               <c:forEach var="orderprice" items="${orderprice}" begin="0" end="0">
                   <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn"><fmt:formatNumber value="${orderprice.price}" type="currency" currencySymbol="₩" />원 결제하기</button>
                   <input type="hidden" name="pro_price" value=${orderprice.price }>
                   <input type="hidden" name="orderId" value=${orderprice.orderId }>

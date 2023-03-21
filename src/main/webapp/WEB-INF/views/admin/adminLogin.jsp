@@ -41,7 +41,7 @@
                     <br><br>
                     <div>
                     <button class="submit" style="width: 130px; float:left;">Login</button>
-                    <input type="button" class="submit" value="Client" onclick="location.href='/'" style="width: 130px; float:right;">
+                    <input type="button" class="submit" value="Client" onclick="location.href='/goclient.do'" style="width: 130px; float:right;">
                     </div>
                 </form>
             </div>

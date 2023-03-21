@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.Param;
 
 import kr.co.mood.Payment.VO.AdminChartVO;
 import kr.co.mood.Payment.VO.AdminPaymentVO;
+import kr.co.mood.module.ModuleVO;
 
 public interface AdminPaymentDAO {
 	public List<AdminChartVO> getCategoryChart1();
@@ -14,4 +15,5 @@ public interface AdminPaymentDAO {
 	public List<AdminChartVO> getCategoryChart4(String year);
 	public List<AdminPaymentVO> adminPaymentList();
 	public List<AdminPaymentVO> adminPaymentMemberList(@Param("startNo") int startNo, @Param("endNo") int endNo);
+	public List<AdminPaymentVO> adminPaymentSearchingList(ModuleVO vo);
 }
