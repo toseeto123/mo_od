@@ -104,11 +104,11 @@
                  <span class="mail_input_box_warn"></span>
              <div class="mail_check_wrap">
                <div class="mail_check_input_box" id="mail_check_input_box_false">
-                  <input class="mail_check_input" disabled="disabled">
+                  <input class="mail_check_input" id="email1" disabled="disabled" required>
                </div>
                <button class="mail_check_button">인증번호 전송</button>
                <div class="clearfix"></div>
-               <span id="mail_check_input_box_warn"></span>
+               <span id="mail_check_input_box_warn" name="mail_check_input_box_warn"></span>
             </div>
                     
                 </div>
@@ -164,6 +164,7 @@
    } else {
       warnMsg.html("올바르지 못한 이메일 형식입니다.");
       warnMsg.css("display", "inline-block");
+      join.email1.focus();
       return false;
    }   
    

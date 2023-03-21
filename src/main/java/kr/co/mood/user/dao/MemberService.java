@@ -117,6 +117,13 @@ public class MemberService {
 		}
         
 	}
+	
+	
+	
+	
+	
+
+	}
 
 	public String getNaverAccessToken (String authorize_code,HttpSession session) {
 			String access_Token = "";
@@ -275,4 +282,4 @@ public class MemberService {
 	
 	
 	
-}
+

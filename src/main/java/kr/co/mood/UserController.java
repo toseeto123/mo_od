@@ -49,6 +49,8 @@ public class UserController {
 	@Autowired
 	private UserService userservice ;
 	private SqlSessionTemplate mybatis;
+	@Autowired
+	private MemberService ms;
 	private UserVO vo;
 	private ModelAndView mav;
 	private HttpSession session;
@@ -72,6 +74,208 @@ public class UserController {
 		jsonParsing = mapper.readTree(googleJsonData);
 		int age = Integer.parseInt(jsonParsing.get("age").asText()) / 10;
 		
+
+		UserVO googleVO = new UserVO();
+		googleVO.setEmail(jsonParsing.get("email").asText());
+		googleVO.setId(jsonParsing.get("email").asText());
+		googleVO.setName(jsonParsing.get("name").asText());
+		googleVO.setAge((age * 10) + "~" + ((age * 10) + 9));
+		
+
+    System.out.println(uservo); 
+    String email = uservo.getEmail();
+    String name = uservo.getName();
+    String age = uservo.getAge();
+    String gender = uservo.getGender();
+
+    
+    UserVO naver = new UserVO();
+    
+    naver.setId(email);
+    naver.setEmail(email);
+    naver.setName(name);
+    naver.setAge(age);
+    naver.setGender(gender);
+    
+    
+    String str = "no";
+    System.out.println(naver);
+  
+  int result = userservice.idChk(naver);
+  System.out.println(result);
+  
+  try {
+     if(result == 1) {
+    	
+        return "/";
+        
+     }else if(result == 0) {
+    	
+        userservice.insertnaver(naver);
+        session.setAttribute("login_info", naver);
+        return "/";
+     }
+     
+  }catch (Exception e) {
+     throw new RuntimeException();
+  }
+  
+
+   
+   if(uservo!=null) {
+	   str = "ok";
+   }
+   return str;
+   }
+	
+	
+	
+	@RequestMapping(value="/user/*")
+	public class MemberController {
+		@Autowired
+		private MemberService ms;
+		@Autowired
+		private HttpSession session;
+
+		@RequestMapping(value="/kakaoLogin", method=RequestMethod.GET)
+		public String kakaoLogin(@RequestParam(value = "code", required = false) String code ) throws Exception {
+			System.out.println("#########" + code);
+			
+			String access_Token = ms.getAccessToken(code);
+			
+			
+			UserVO userInfo = ms.getUserInfo(access_Token);	
+			// 아래 코드가 추가되는 내용
+
+			// 위 코드는 session객체에 담긴 정보를 초기화 하는 코드.
+			session.setAttribute("login_info", userInfo);
+			System.out.println("fdfd"+userInfo);
+			
+			return "redirect:/";
+	    	}
+
+	}
+	
+	
+	
+	
+	@RequestMapping(value = "/join.do" , method = RequestMethod.GET)
+   public String join() {
+      return "User/join";
+   }
+
+   @RequestMapping(value = "/idchk" , method = RequestMethod.POST)
+   public String idchk() {
+      return "User/join";
+   }
+   
+   @RequestMapping(value = "/login.do" , method = RequestMethod.GET)
+   public String login() {
+	   
+      return "User/login";
+      }
+  //lsg
+   @RequestMapping(value = "/login.do" , method = RequestMethod.POST)
+   public String loginAction(UserVO vo, HttpSession session , RedirectAttributes rttr) {
+	  UserVO vo1 =  userservice.selectId(vo);
+	  String path = (String) session.getAttribute("path");
+
+	  System.out.println(path);
+	  
+	  if(path== null) {
+	  if(vo1 == null) {
+		  System.out.println("null이야");
+		  session.setAttribute("login_info", null);
+		  rttr.addFlashAttribute("msg", false);
+		  return "redirect:login.do";
+	  } else {
+		  		System.out.println("메인페이지로 이동할거야");
+				session.setAttribute("login_info", vo1);
+				return "redirect:index.jsp";
+			}
+	  }	else {
+		 System.out.println("해당페이지로 이동할거야");
+		session.setAttribute("login_info", vo1);
+		return "redirect:"+path;
+	  }
+   }
+ 	@RequestMapping("/logout.do")
+ 		public String logout(UserVO vo,HttpSession session,UserVO userInfo) {
+ 		
+ 			session.setAttribute("login_info", vo);
+ 			session.invalidate();
+ 			return "redirect:index.jsp";
+ 		}
+ 	
+ 
+
+ 	@RequestMapping(value = "/mypage.do" , method = RequestMethod.GET)
+    public String mypage(UserVO vo,HttpSession session , Model model) {
+
+		int result = userservice.idChk(googleVO);
+		
+		if (result == 0) {
+			userservice.insertnaver(googleVO);
+			session.setAttribute("login_info", googleVO);
+		} else {
+			session.setAttribute("login_info", googleVO);
+		}
+
+		return (String) session.getAttribute("path");
+	}
+
+	// 占쎄퐬占쎌뵠甕곤옙 嚥≪뮄�젃占쎌뵥
+	@RequestMapping(value = "/naverSave", method = RequestMethod.POST)
+
+	public @ResponseBody String naverSave(UserVO uservo, HttpSession session) throws Exception {
+
+		System.out.println(uservo);
+		String email = uservo.getEmail();
+		String name = uservo.getName();
+		String age = uservo.getAge();
+		String gender = uservo.getGender();
+
+		UserVO naver = new UserVO();
+
+		naver.setId(email);
+		naver.setEmail(email);
+		naver.setName(name);
+		naver.setAge(age);
+		naver.setGender(gender);
+
+		String str = "no";
+		System.out.println(naver);
+
+		int result = userservice.idChk(naver);
+		System.out.println(result);
+
+		try {
+			if (result == 1) {
+
+				return "/";
+
+			} else if (result == 0) {
+				System.out.println("揶쏉옙占쎌뿯獄쏅뗀以덌쭪袁る뻬~");
+				userservice.insertnaver(naver);
+				session.setAttribute("login_info", naver);
+				return "/";
+			}
+
+		} catch (Exception e) {
+			throw new RuntimeException();
+		}
+
+		if (uservo != null) {
+			str = "ok";
+		}
+		return str;
+	}
+
+	@RequestMapping(value = "/join.do", method = RequestMethod.GET)
+	public String join() {
+		return "User/join";
+	}
+
 
 		  ObjectMapper mapper = new ObjectMapper();
 	        JsonNode jsonParsing;
@@ -156,6 +360,7 @@ public class UserController {
 				session.setAttribute("login_info", vo1);
 				return "redirect:index.jsp";
 			}
+
 	  }	else {
 		 System.out.println("해당페이지로 이동할거야");
 		session.setAttribute("login_info", vo1);
@@ -181,6 +386,7 @@ public class UserController {
 
  	@RequestMapping(value = "/mypage.do" , method = RequestMethod.GET)
     public String mypage(UserVO vo,HttpSession session , Model model) {
+
 		UserVO uvo = (UserVO) session.getAttribute("login_info");
 		System.out.println(uvo);
 		int userid = uvo.getNo();
