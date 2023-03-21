@@ -1,9 +1,13 @@
 package kr.co.mood;
 
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.mybatis.spring.SqlSessionTemplate;
@@ -12,6 +16,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -25,6 +30,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.co.mood.cate.DAO.CateService;
+import kr.co.mood.user.dao.MemberService;
 import kr.co.mood.user.dao.UserService;
 import kr.co.mood.user.dao.UserVO;
 
@@ -33,10 +39,15 @@ import kr.co.mood.user.dao.UserVO;
 @SessionAttributes("loginUser")
 public class UserController {
 	@Autowired
+	private MemberService ms;
+	
+	@Autowired
 	private UserService userservice ;
 	private SqlSessionTemplate mybatis;
 	private UserVO vo;
 	private ModelAndView mav;
+	private HttpSession session;
+	
 	
 	@Autowired
 	private JavaMailSender mailSender;
@@ -77,60 +88,23 @@ public class UserController {
 				  System.out.println("이것은 path 다");
 				return path;
 	}	
-	
-	  //占쎄퐬占쎌뵠甕곤옙 嚥≪뮄�젃占쎌뵥
-	@RequestMapping(value="/naverSave", method=RequestMethod.POST)
-	
-    public @ResponseBody String naverSave(UserVO uservo,  HttpSession session ) throws Exception {
-		
-    System.out.println(uservo); 
-    String email = uservo.getEmail();
-    String name = uservo.getName();
-    String age = uservo.getAge();
-    String gender = uservo.getGender();
+	@RequestMapping("/naverLogin")
+	public void naverLogin(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws IOException {
+	    String access_Token = ms.getNaverAccessToken(code, session);
+	    UserVO naverUserInfo =  ms.getNaverUserInfo(access_Token, session);
+	    session.setAttribute("login_info", naverUserInfo);
+	    session.setAttribute("access_token", access_Token);
+	    
+	    String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080";
 
-    
-    UserVO naver = new UserVO();
-    
-    naver.setId(email);
-    naver.setEmail(email);
-    naver.setName(name);
-    naver.setAge(age);
-    naver.setGender(gender);
-    
-    
-    String str = "no";
-    System.out.println(naver);
-  
-  int result = userservice.idChk(naver);
-  System.out.println(result);
-  
-  try {
-     if(result == 0) {
-    	 
-    	 System.out.println("네이버 로그인 성공");
-         userservice.insertnaver(naver);
-         session.setAttribute("login_info", naver);
-         return "redirect:/";
-    	
-     }else if(result == 1) {
-    	 System.out.println("이미있는 아이디");
-    	 session.setAttribute("login_info", naver);
-    	 return "redirect:/";
-     }
-     
-  }catch (Exception e) {
-     throw new RuntimeException();
-  }
-  
-
-   
-   if(uservo!=null) {
-	   str = "ok";
-   }
-   return str;
-   }
-	
+	    response.setContentType("text/html; charset=UTF-8");
+	    PrintWriter out = response.getWriter();
+	    out.println("<script>");
+	    out.println("window.opener.location.href='" + referer + "';");
+	    out.println("window.close();");
+	    out.println("</script>");
+	    out.flush();
+	}
 	
 	@RequestMapping(value = "/join.do" , method = RequestMethod.GET)
    public String join() {
@@ -143,8 +117,10 @@ public class UserController {
    }
    
    @RequestMapping(value = "/login.do" , method = RequestMethod.GET)
-   public String login() {
-	   
+   public String login(ModelMap model) {
+	   String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
+       model.addAttribute( "naverUrl", naverUrl ); 
+      
       return "User/login";
       }
   //lsg
@@ -152,7 +128,7 @@ public class UserController {
    public String loginAction(UserVO vo, HttpSession session , RedirectAttributes rttr) {
 	  UserVO vo1 =  userservice.selectId(vo);
 	  String path = (String) session.getAttribute("path");
-
+	  System.out.println("야야야야야");
 	  System.out.println(path);
 	  
 	  if(path== null) {
@@ -173,9 +149,19 @@ public class UserController {
 	  }
    }
  	@RequestMapping("/logout.do")
- 		public String logout(UserVO vo,HttpSession session) {
- 			session.setAttribute("login_info", vo);
+ 		public String logout(HttpSession session) {
+ 			session.getAttribute("login_info");
+ 			String token = (String)session.getAttribute("access_token");
+ 			System.out.println(session.getAttribute("access_token"));
+ 			System.out.println(token);
+ 			System.out.println("로그아웃1");
+
+ 			if(token==null) {
  			session.invalidate();
+ 			} else {
+ 				System.out.println("로그아웃한다!");
+ 				ms.naverLogout(token);
+ 			}
  			return "redirect:index.jsp";
  		}
 

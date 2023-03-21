@@ -6,12 +6,7 @@
 <html>
 
 <head>
-
-<script>
-                	
-                	 </script>
-                	  <meta name="google-signin-client_id" content="38260405754-99qf9j81rp019ft343rpp1fmq378qabg.apps.googleusercontent.com">
-
+	<meta name="google-signin-client_id" content="38260405754-99qf9j81rp019ft343rpp1fmq378qabg.apps.googleusercontent.com">
 <meta charset="UTF-8">
    <title>Home</title>
     <link rel="stylesheet" href="/resources/user/css/login.css"/>
@@ -40,67 +35,20 @@
                       </a>
                 </div>
                <div class="social-icons">
-                <!--                네이버로그인 -->
-              <div class="col-sm-4 text-center ftco-animate" id="naverIdLogin" onclick="naverLoginclick()"></div>
-  				 <!-- <a href="#" id="naverIdLogin" class="btn sns-naver" title="새창">네이버로 로그인</a>
-  				<a href="#" id="kakaoLogin" class="btn sns-kakao" title="새창">카카오로 회원가입</a>
-  				<a href="#" id="googleLogin" class="btn sns-google" title="새창">구글 회원가입</a>
-  				
- -->			
+               
+               <a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/member/kakaoLogin&response_type=code">
+     	               <img src="/resources/user/img/ka.png" alt="kakao">
+   	                 </a>
+             
+               <a id="custom-login-btn" href="javascript:void(0);" onclick="window.open('${naverUrl}','naverLogin','width=430,height=500,location=no,status=no,scrollbars=yes');"">
+					<img src="http://static.nid.naver.com/oauth/small_w_in.PNG" width="100"/>
+				</a>
+				
+				 
+               
  			<!-- Google Login -->
  				<button style="background: transparent; border-color: transparent; position:absolute; top:23%; left:20%;" onclick="googleHandleAuthClick()"><img style="width:45px;" src="/resources/user/img/gl.png" alt="google"></button>
- <script>
- 	
-		 var naverLogin = new naver.LoginWithNaverId({
-   	      clientId: "dClx55_VYi9U61rOGPS2", // 본인걸로 수정, 띄어쓰기 금지.
-   	      callbackUrl: "http://localhost:8080/login.do", // 아무거나 설정
-   	      isPopup: false,
-   	      loginButton: {color: "green", type: 1, height: 50}
-   	      //callbackHandle: true
-   	      
-   	   });
-  
-   naverLogin.init();
-	
-	
-	
-   function naverLoginclick() {
-   //window.addEventListener('load', function () {
-   naverLogin.getLoginStatus(function (status) {
 
-   if (status) {
-      console.log(naverLogin.user);
-      var age = naverLogin.user.getAge();
-      var email = naverLogin.user.getEmail();
-      var gender = naverLogin.user.getGender();
-      var name = naverLogin.user.getName();
-      
-      
-      $.ajax({
-         type: 'post',
-         url: 'naverSave',
-         data: {'name':name, 'email':email,'age':age,'gender':gender},
-         dataType: 'text',
-         success: function(str) {
-            if(str=='ok') {
-               console.log('성공')
-               // location.replace("/") 
-            } else if(str=='no') {
-               console.log('실패')
-              // location.replace("http://localhost:8080/login.do")
-            }
-         },
-         error: function(str) {
-            console.log('오류 발생')
-         }
-      })
-
-   } else {
-      console.log("callback 처리에 실패하였습니다.");
-   }
-   })
-}
-</script>
 
 			
 
@@ -136,9 +84,7 @@
 
                     <button class="submit">로그인</button>
                      
-                     <a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/member/kakaoLogin&response_type=code">
-     	               <img src="/resources/user/img/ka.png" alt="kakao">
-   	                 </a>
+                     
 
 
                     
