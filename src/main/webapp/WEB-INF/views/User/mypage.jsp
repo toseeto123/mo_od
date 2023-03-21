@@ -39,6 +39,11 @@ section {
 	justify-content: flex-end;
 }
 
+.tabnav li.on a {
+	background: #fff;
+	color: #7ea21e;
+}
+
 .tabnav li a:before {
 	content: "";
 	position: absolute;
@@ -89,7 +94,7 @@ section {
 	<section>
 
 		<ul class="tabnav" id="myTab">
-			<li class="on"><a class="nav-link active" aria-current="page"
+			<li class="on"><a class="nav-link" aria-current="page"
 				href="#" id="first">내정보</a></li>
 			<li><a class="nav-link" href="#">버킷내역</a></li>
 			<li><a class="payDetail" href="#">결제내역</a></li>
@@ -104,7 +109,9 @@ section {
 			</div>
 		</div>
 		<div class="tabcontent">
+			<div id="cate">
 			<jsp:include page="/WEB-INF/views/User/my_cateinfo.jsp" />
+			</div>
 		</div>
 
 		<div class="tabcontent">
@@ -131,9 +138,14 @@ section {
 				$(".tabcontent").eq(idx).show();
 				$(".tabnav li").removeClass("on");
 				$(this).addClass("on");
-				$(".tabnav li").removeClass("payDetail");
-				$(this).addClass("on");
-			});
+				$(".tabnav li").removeClass("cate");
+		        $(".tabnav li").removeClass("payDetail");
+		        if ($(this).hasClass("cate")) {
+		            $(this).addClass("cate");
+		        } else if ($(this).hasClass("payDetail")) {
+		            $(this).addClass("payDetail");
+		        }
+		     });
 		});
 	</script>
 	<jsp:include page="/WEB-INF/common/footer.jsp" />
