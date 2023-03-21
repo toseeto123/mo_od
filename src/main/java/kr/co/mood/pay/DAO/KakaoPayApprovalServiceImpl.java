@@ -1,5 +1,7 @@
 package kr.co.mood.pay.DAO;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,4 +26,7 @@ public class KakaoPayApprovalServiceImpl implements KakaoPayApprovalService{
 		kdao.paysuccessupdate(pro_no);
 	}
 
+	public List<KakaoPayApprovalVO>selectlist(int userno){
+		return kdao.selectlist(userno);
+	}
 }

@@ -29,6 +29,7 @@ import kr.co.mood.Payment.VO.userOrderProductVO;
 import kr.co.mood.Payment.VO.userOrderVO;
 import kr.co.mood.cate.DAO.CateService;
 import kr.co.mood.cate.vo.CateVO;
+import kr.co.mood.pay.DAO.KakaoPayApprovalService;
 import kr.co.mood.pay.DAO.productPaymentService;
 import kr.co.mood.pay.DAO.userPaymentService;
 import kr.co.mood.user.dao.UserService;
@@ -52,6 +53,9 @@ public class UserController {
 	@Autowired
 	productPaymentService productPayService;
 	
+	@Autowired
+	private KakaoPayApprovalService kakaoService;
+	 
 
 	@RequestMapping(value = "/googleSave", method = RequestMethod.POST)
 	@ResponseBody
@@ -233,6 +237,9 @@ public class UserController {
 		int userid = uvo.getNo();
 		System.out.println(userid);
 		model.addAttribute("map", cateService.selectCateList(userid));
+		model.addAttribute("orders", kakaoService.selectlist(userid));
+		System.out.println(kakaoService);
+		System.out.println(kakaoService.selectlist(userid));
 		return "User/mypage";
 	}
 
