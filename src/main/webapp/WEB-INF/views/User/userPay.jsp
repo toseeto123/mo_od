@@ -236,20 +236,6 @@ background-color: #c8936ed4;
 
                <hr class="mb-4">
 
-               <%-- <h4 class="mb-3">단품 상품정보</h4>
-
-               <div class="row">
-                  <div class="col-md-6 mb-3">
-                     <label for="cc-name"></label> 
-                     <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/" style="width: 80px; height: 80px;">
-                      <small class="text-muted">상품명 :</small>
-                  </div>
-                  <div class="col-md-6 mb-3">
-                     <label for="cc-number">가격 : </label><br><small class="text-muted">상품디테일명 : </small>
-                  </div>
-                     <div class="invalid-feedback">여기다가 가격정보입력</div><br>
-                     <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
-                  <hr class="mb-4"> --%>
                <h4 class="mb-4">결제 상품정보</h4>
                <c:forEach var="list" items="${list}">
                   <input type="hidden" name="pro_name" value=${list.pro_name }>
@@ -286,6 +272,7 @@ background-color: #c8936ed4;
                </c:forEach>
                <c:forEach var="orderprice" items="${orderprice}" begin="0" end="0">
                   <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn"><fmt:formatNumber value="${orderprice.price}" type="currency" currencySymbol="₩" />원 결제하기</button>
+                  <button class="btn btn-primary btn-lg btn-block" type="button" id="cancelbtn">주문 취소</button>
                   <input type="hidden" name="pro_price" value=${orderprice.price }>
                   <input type="hidden" name="orderId" value=${orderprice.orderId }>
                   <input type="hidden" name="userno" value=${login_info.no }>
