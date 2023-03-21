@@ -45,9 +45,6 @@ import kr.co.mood.user.dao.UserVO;
 @Controller
 @SessionAttributes("loginUser")
 public class UserController {
-	@Autowired
-
-	private MemberService ms;
 	
 	@Autowired
 	private UserService userservice ;
@@ -70,8 +67,8 @@ public class UserController {
 	userPaymentService payService;
 	@Autowired
 	productPaymentService productPayService;
-	
-
+	@Autowired
+	private MemberService ms;
 	
 	@RequestMapping(value = "/googleSave", method = RequestMethod.POST)
 	   @ResponseBody
@@ -99,23 +96,49 @@ public class UserController {
 
 	      return (String) session.getAttribute("path");
 	   }
-	@RequestMapping("/naverLogin")
-	public void naverLogin(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws IOException {
-	    String access_Token = ms.getNaverAccessToken(code, session);
-	    UserVO naverUserInfo =  ms.getNaverUserInfo(access_Token, session);
-	    session.setAttribute("login_info", naverUserInfo);
-	    session.setAttribute("access_token", access_Token);
-	    
-	    String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080";
+	@RequestMapping(value="/user/*")
+	public class MemberController {
+		@Autowired
+		private MemberService ms;
+		@Autowired
+		private HttpSession session;
 
-	    response.setContentType("text/html; charset=UTF-8");
-	    PrintWriter out = response.getWriter();
-	    out.println("<script>");
-	    out.println("window.opener.location.href='" + referer + "';");
-	    out.println("window.close();");
-	    out.println("</script>");
-	    out.flush();
+		@RequestMapping(value="/kakaoLogin", method=RequestMethod.GET)
+		public String kakaoLogin(@RequestParam(value = "code", required = false) String code ) throws Exception {
+			System.out.println("#########" + code);
+			
+			String access_Token = ms.getAccessToken(code);
+			
+			
+			UserVO userInfo = ms.getUserInfo(access_Token);	
+			// 아래 코드가 추가되는 내용
+
+			// 위 코드는 session객체에 담긴 정보를 초기화 하는 코드.
+			session.setAttribute("login_info", userInfo);
+			System.out.println("fdfd"+userInfo);
+			
+			return "redirect:/";
+	    	}
+
 	}
+	
+	@RequestMapping("/naverLogin")
+	   public void naverLogin(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws IOException {
+	       String access_Token = ms.getNaverAccessToken(code, session);
+	       UserVO naverUserInfo =  ms.getNaverUserInfo(access_Token, session);
+	       session.setAttribute("login_info", naverUserInfo);
+	       session.setAttribute("access_token", access_Token);
+	       
+	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080";
+
+	       response.setContentType("text/html; charset=UTF-8");
+	       PrintWriter out = response.getWriter();
+	       out.println("<script>");
+	       out.println("window.opener.location.href='" + referer + "';");
+	       out.println("window.close();");
+	       out.println("</script>");
+	       out.flush();
+	   }
 	
 	@RequestMapping(value = "/join.do" , method = RequestMethod.GET)
    public String join() {
@@ -209,22 +232,14 @@ public class UserController {
       return "redirect:/login.do";
    }
    
- 	@RequestMapping("/logout.do")
- 		public String logout(HttpSession session) {
- 			session.getAttribute("login_info");
- 			String token = (String)session.getAttribute("access_token");
- 			System.out.println(session.getAttribute("access_token"));
- 			System.out.println(token);
- 			System.out.println("로그아웃1");
-
- 			if(token==null) {
- 			session.invalidate();
- 			} else {
- 				System.out.println("로그아웃한다!");
- 				ms.naverLogout(token);
- 			}
- 			return "redirect:index.jsp";
- 		}
+   @RequestMapping("/logout.do")
+   public String logout(HttpSession session) {
+      session.getAttribute("login_info");
+      System.out.println("로그아웃1");
+      session.invalidate();
+      
+      return "redirect:index.jsp";
+   }
 
  	@RequestMapping(value = "/mypage.do" , method = RequestMethod.GET)
     public String mypage(UserVO vo,HttpSession session , Model model) {
