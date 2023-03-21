@@ -2,9 +2,10 @@ package kr.co.mood.Payment.controller;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -17,7 +18,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import kr.co.mood.Payment.VO.userOrderProductVO;
 import kr.co.mood.Payment.VO.userOrderVO;
 import kr.co.mood.Product.DAO.ProductService;
-import kr.co.mood.Product.VO.ProVO;
 import kr.co.mood.cate.DAO.CateService;
 import kr.co.mood.pay.DAO.productPaymentService;
 import kr.co.mood.pay.DAO.userPaymentService;
@@ -115,10 +115,14 @@ public class userPaymentController {
    
    
    @RequestMapping(value="/cateorders" , method = RequestMethod.POST)
-   public String cateProcessOrder(HttpSession session ,Model model, @RequestParam("pro_number") int pro_number , @RequestParam("total") int total) {
+   public String cateProcessOrder(HttpSession session ,Model model, @RequestParam("pro_number") int pro_number , @RequestParam("total") List<Integer> total) {
       UserVO uvo = (UserVO)session.getAttribute("login_info");
       int userid = uvo.getNo();
-      
+      int sum = 0;
+      for (int totals : total) {
+          sum += totals;
+      }
+      System.out.println("ㅆㅓㅁ"+sum);
       int proid = pro_number;
       
       
@@ -131,7 +135,7 @@ public class userPaymentController {
       count = 1;
       model.addAttribute(count);
       ordervo.setOrderCount(count);
-      ordervo.setPrice(total);
+      ordervo.setPrice(sum);
       if (ordervo != null && uvo != null ) {
           payService.insert(ordervo, uvo, null);
           System.out.println("orderId:" + ordervo.getOrderId());
@@ -146,7 +150,7 @@ public class userPaymentController {
       userOrderProductVO orderProVo = new userOrderProductVO();
       orderProVo.setOrderId(orderId);
       orderProVo.setPro_number(proid);
-      orderProVo.setPrice(total);
+      orderProVo.setPrice(sum);
       orderProVo.setCount(count);
       orderProVo.setUserno(userid);
       

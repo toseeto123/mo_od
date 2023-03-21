@@ -49,7 +49,7 @@ public class SampleController {
       System.out.println("kakaopay success......!!!!!!!! get!!!!");
       System.out.println("kakaopay success pg_token" + pg_token);
 
-      model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token,orderId,userno, pro_number));
+      model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token,orderId,userno,pro_number));
    }
 //   @RequestMapping(value = "/User/kakaoPayCancel" )
 //   public void payCancel(@RequestParam("pg_token") String pg_token, Model model) {
