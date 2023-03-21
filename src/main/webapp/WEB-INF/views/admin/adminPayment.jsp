@@ -21,16 +21,16 @@ a:hover{
 	<section id="hero" style="overflow:hidden; height:auto;">
 		<div class="hero-container">
 			
-			
+			<c:forEach var="member" items="${member}">
               <table class="table" style="color:white; margin-top:5%; margin-left:15%; width:70%;">
                 <thead>
                 <tr>
-                	<th style="width:20%;">주문번호 : <!-- ${list.get(0).order_no} --></th>
+                	<th style="width:20%;">주문번호 : ${member.orderNo}</th>
                 </tr>
                 <tr>
-                <th scope="col">이름 : <!-- ${list.get(0).user_name} --></th>
-                <th scope="col">주소 : <!-- ${list.get(0).user_addr} --></th>
-                <th scope="col" style="width:30%;">연락처 : <!--  ${list.get(0).user_phone}--></th>
+                <th scope="col">이름 : ${member.name}</th>
+                <th scope="col">주소 : ${member.address}</th>
+                <th scope="col" style="width:30%;">연락처 : ${member.phone}</th>
                 </tr>
                   <tr>
                     <th scope="col">상품번호</th>
@@ -41,24 +41,23 @@ a:hover{
                 
                 <tbody>
 				
-				<!--<c:forEach var="product" items="${list}">-->
+				<c:forEach var="product" items="${map[member.orderNo]}">
                   <tr>
-                    <th scope="row"><!-- ${product.pd_code} --></th>
-                    <td><!-- ${product.pd_name} --></td>
-                    <td> &#8361; <!-- ${product.pd_price } --></td>
+                    <th scope="row">${product.productNo}</th>
+                    <td>${product.productName}</</td>
+                    <td> &#8361; ${product.price}</td>
                   </tr>
-                 <!--  </c:forEach>--> 
+                 </c:forEach> 
                   
                   <tr>
                   	<td colspan="2" style="border-bottom:none;"></td>
-                  	<td>총금액: </td>
+                  	<td>총금액: ${member.amount }</td>
                   </tr>
                   
                   <tr>
                   <td colspan="2" style="border-bottom:none"></td>
                   <td style="border-bottom:none">
                   	<form action="#" method="post">
-                  	<!-- <input type="hidden" value="${list.get(0).order_no}"> -->
                   	<a href="#about" class="btn-get-started animate__animated">주문취소</a>
                   	<a href="#about" class="btn-get-started animate__animated">주문확인</a>
                   	</form>
@@ -67,17 +66,37 @@ a:hover{
                   
                 </tbody>
               </table>
-              
+              </c:forEach>
               <!-- End Default Table Example -->
  
-			<div><div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;"><a href="#">&lt;</a>
-			<c:set var="page" value="${num }" />
-			${page }
-			&nbsp;<a href="/admin/payment.do/1">1</a>&nbsp;
-			<a href="#">&gt;</a></div></div>
-			
-			<div style="width:100%; margin-top:50px;"><jsp:include page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" /></div>
+					<!-- End Default Table Example -->
+			<div id="modulePaging"
+				style="display: inline-block; position: absolute; left: 50%; transform: translateX(-50%); font-size: 20px;">
+				<c:if test="${prePage!=null }">
+					<a href="/admin/adminMemberList.do/${prePage}">&lt;</a>
+				</c:if>
+
+				<c:forEach items="${ pagingNo }" var="no">
+					<c:choose>
+						<c:when test="${selectPage == no}">
+                  &nbsp;<a style="color: green"
+								href="/admin/payment.do/${no}">${no}</a>&nbsp;
+                  </c:when>
+						<c:otherwise>
+                  &nbsp;<a href="/admin/payment.do/${no}">${no}</a>&nbsp;
+                  </c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<c:if test="${nextPage != null }">
+					<a href="/admin/payment.do/${nextPage}">&gt;</a>
+				</c:if>
+			</div>
+			<div style="width: 100%; margin-top: 50px;"><jsp:include
+					page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" /></div>
 		</div>
+		<input type="hidden" value="${selectPage}" id="selectPage">
+
 	</section>
 	<!-- End Hero -->
 

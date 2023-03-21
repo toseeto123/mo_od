@@ -1,7 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+   content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="description" content="">
+<meta name="author"
+   content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
+<meta name="generator" content="Hugo 0.101.0">
+<title>결제완료</title>
 <style>
 ol {
    display: flex;
@@ -112,9 +121,9 @@ background-color: #c8936ed4;
    margin-top: 10px;
 }
 </style>
-
+</head>
 <jsp:include page="/WEB-INF/common/header.jsp" />
-
+<body>
 
    <section id="hero" style="height: 400px;">
       <div class="hero-container">
@@ -151,16 +160,74 @@ background-color: #c8936ed4;
             </ol>
          </div>
          
-결제일시:     [[${info.approved_at}]]<br/>
+         <div class="container">
+      <div class="py-4 text-center"></div>
+
+      <div class="row">
+            <div class="col-md-12 order-md-1">
+               <h4 class="mb-3">주문자 정보</h4>
+               <div class="row">
+                  <div class="col-md-6 mb-3">
+                     <label for="firstName">성 함 : </label><strong>
+                        ${login_info.name}</strong>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                     <label for="lastName">전화번호 : </label> <strong>${login_info.phone}</strong>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                     <label for="address">주소 : </label> <strong>${login_info.adr}</strong>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                     <label for="lastName">E-mail : </label> <strong>${login_info.email}</strong>
+                  </div>
+
+               </div>
+		
+               <div class="mb-3">
+                  <label for="address">주문번호 : </label> <strong>${info.partner_order_id }</strong>
+               </div>
+				
+			  <hr>
+         
+               <h4 class="mb-4">결제 상품정보</h4>
+               <c:forEach var="info" items="${info}">
+                 <div class="col-md-6 mb-3">
+                     <label for="firstName">상품명 : </label><strong>
+                        ${info.item_name}</strong>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                     <label for="lastName">주문 수량 : </label> <strong>${info.quantity}</strong>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                     <label for="address">결제 금액 : </label> <strong>${info.amount.total}</strong>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                     <label for="lastName">결제승인시간 : </label> <strong>${info.approved_at}</strong>
+                  </div>
+				
+               </div>
+              
+		
+             </c:forEach>
+                  </div>
+               <hr>
+               <label><a href="/mo_od"> <strong>Mo_od의 또 다른 상품 구경하기 </strong></a></label> <br><br>
+               
+ 
+ 			
+ 
+            </div>
+      </div>
+   </div>
+<%-- 결제일시:     [[${info.approved_at}]]<br/>
 주문번호:    [[${info.partner_order_id}]]<br/>
 상품명:    [[${info.item_name}]]<br/>
 상품수량:    [[${info.quantity}]]<br/>
 결제금액:    [[${info.amount.total}]]<br/>
-결제방법:    [[${info.payment_method_type}]]<br/>
+결제방법:    [[${info.payment_method_type}]]<br/> --%>
 
-<h2>[[${info}]]</h2>
+<%-- <h2>[[${info}]]</h2> --%>
 
-</div>
-</div>
-
+</body>
 <jsp:include page="/WEB-INF/common/footer.jsp" />
+</html>

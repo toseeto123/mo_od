@@ -30,6 +30,10 @@ public class ProDAO {
 		session.update("ProDAO.updatePro", vo);
 	}
 	
+	public void catecountupdate(String pro_no) {
+		session.update("ProDAO.updatecatecount" , pro_no);
+	}
+	
 	
 	
 	

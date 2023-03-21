@@ -2,36 +2,70 @@ package kr.co.mood.Payment.VO;
 
 
 public class AdminPaymentVO {	
-	 private String category;
-	 private int category_paycount;
-	 private String pro_name;
-	 private int pro_bucketcount;
-	 
-	 
-	 
-	public String getPro_name() {
-		return pro_name;
+	
+	private int orderNo;
+	private String name;
+	private String address;
+	private String phone;
+	private String productNo;
+	private String productName;
+	private int price;
+	private int amount;
+	
+	public int getOrderNo() {
+		return orderNo;
 	}
-	public void setPro_name(String pro_name) {
-		this.pro_name = pro_name;
+	public void setOrderNo(int orderNo) {
+		this.orderNo = orderNo;
 	}
-	public int getPro_bucketcount() {
-		return pro_bucketcount;
+	public String getName() {
+		return name;
 	}
-	public void setPro_bucketcount(int pro_bucketcount) {
-		this.pro_bucketcount = pro_bucketcount;
+	public void setName(String name) {
+		this.name = name;
 	}
-	public String getCategory() {
-		return category;
+	public String getAddress() {
+		return address;
 	}
-	public void setCategory(String category) {
-		this.category = category;
+	public void setAddress(String address) {
+		this.address = address;
 	}
-	public int getCategory_paycount() {
-		return category_paycount;
+	public String getPhone() {
+		return phone;
 	}
-	public void setCategory_paycount(int category_paycount) {
-		this.category_paycount = category_paycount;
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+	public String getProductNo() {
+		return productNo;
+	}
+	public void setProductNo(String productNo) {
+		this.productNo = productNo;
+	}
+	public String getProductName() {
+		return productName;
+	}
+	public void setProductName(String productName) {
+		this.productName = productName;
+	}
+	public int getPrice() {
+		return price;
+	}
+	public void setPrice(int price) {
+		this.price = price;
+	}
+	public int getAmount() {
+		return amount;
+	}
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+	
+	@Override
+	public String toString() {
+		return "AdminPaymentVO [orderNo=" + orderNo + ", name=" + name + ", address=" + address + ", phone=" + phone
+				+ ", productNo=" + productNo + ", productName=" + productName + ", price=" + price + ", amount="
+				+ amount + "]";
 	}
 	 
 }

@@ -36,6 +36,10 @@ public class ProductServiceImpl implements ProductService{
 		prodao.updatePro(vo);
 	}
 	
+	@Override
+	public void catecountupdate(String pro_no) {
+		prodao.catecountupdate(pro_no);
+	}
 	
 	
 	@Override
@@ -159,5 +163,6 @@ public class ProductServiceImpl implements ProductService{
 	public List<ProVO> C1selectProListPaging(ModuleVO vo) {
 		return prodao.C1selectProListPaging(vo);
 	}
+
 
 }
