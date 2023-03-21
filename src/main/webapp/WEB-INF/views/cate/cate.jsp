@@ -193,20 +193,21 @@ background-color: #c8936ed4;
 <script type="text/javascript">
 
 window.onload = function() {
-	   updateTotalCount();
-	   minusTotalCount();
-	if(userNo=="") {
+	updateTotalCount();
+	minusTotalCount();
+	if (${not empty login_info.id}) {
+		 
+	} else {
+		var path = location.pathname;
 		console.log(path);
+		var login_chk = confirm('로그인이 필요한 서비스입니다. 로그인페이지로 이동하시겠습니까?');
+		if (login_chk) {
+			location.href = '/login.do?redirect=' + encodeURIComponent(path); // 현재 페이지 경로를 redirect 파라미터로 전달합니다.
+		} else {
 			
-		   var login_chk = confirm('로그인이 필요한 서비스입니다. 로그인페이지로 이동하시겠습니까?');
-			if(login_chk) {
-				location.href='/login.do';
-			} else {
-				location.href = path;
-			}} else {
-				location.href = location.href;
-			}
-
+		}
+	}
+	
 }
 
 function parseCurrency(num) {

@@ -29,13 +29,13 @@ public class SampleController {
     		  			 @RequestParam("userno") String userno,
                           @RequestParam("pro_price") int pro_price,
                           @RequestParam("orderId") int orderId,
-                          @RequestParam("pro_no") String pro_no,
+                          @RequestParam("pro_number") String pro_number,
                           Model model) {
         System.out.println("kakaopay post...餓� ........");
        // model.addAttribute("pro_name", pro_name);
         //model.addAttribute("pro_price",pro_price);
         //model.addAttribute("orderId",orderId);
-         return "redirect:" + kakaopay.kakaoPayReady(pro_name,userno,pro_price,orderId , pro_no);
+         return "redirect:" + kakaopay.kakaoPayReady(pro_name,userno,pro_price,orderId , pro_number);
 
       }
 
@@ -44,12 +44,12 @@ public class SampleController {
    public void paySuccess(@RequestParam("pg_token") String pg_token,
 		   @RequestParam("orderId") int orderId,
 		   @RequestParam("userno") String userno ,
-		   @RequestParam("pro_no") String pro_no,
+		   @RequestParam("pro_number") String pro_number,
 		   Model model) {
       System.out.println("kakaopay success......!!!!!!!! get!!!!");
       System.out.println("kakaopay success pg_token" + pg_token);
 
-      model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token,orderId,userno, pro_no));
+      model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token,orderId,userno, pro_number));
    }
 //   @RequestMapping(value = "/User/kakaoPayCancel" )
 //   public void payCancel(@RequestParam("pg_token") String pg_token, Model model) {

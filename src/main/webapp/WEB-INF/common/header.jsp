@@ -6,6 +6,7 @@
 <html lang="utf-8">
 
 <head>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -96,10 +97,11 @@
 	
 	
 						
+
 					<c:if test="${empty login_info.id}">
 							<li><a class="getstarted scrollto" href="/join.do">회원가입</a></li>
 							<li><a class="getstarted scrollto" href="/login.do">로그인</a></li>
-							<li><a class="getstarted scrollto" href="/cate.do">버킷</a></li>
+							<li><a class="getstarted scrollto cart-btn" href="#">버킷</a></li>
 			       </c:if>
             
             
@@ -107,8 +109,9 @@
 
 
 
+
         </ul>
-        
+
         
         
         
@@ -117,5 +120,20 @@
 
     </div>
   </header><!-- End Header -->
+
+<script>
+$(document).ready(function() {
+    $('.cart-btn').click(function(e) {
+        e.preventDefault(); // a 태그의 기본 동작인 페이지 이동을 막습니다.
+        if (${empty login_info.id}) {
+            if(confirm("로그인이 필요한 서비스입니다. 로그인 화면으로 이동할까요?")) {
+                location.href = '/catelogin.do';
+            }
+        } else {
+            location.href = '/cart.do';
+        }
+    });
+});
+</script>
 
  

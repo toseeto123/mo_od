@@ -2,6 +2,9 @@ package kr.co.mood.Payment.VO;
 
 
 public class userOrderProductVO {
+	public userOrderProductVO() {
+		// TODO Auto-generated constructor stub
+	}
 
 	
 	private int userno;
@@ -25,12 +28,35 @@ public class userOrderProductVO {
 	
 	//moodorder 李몄“�궎
 	private int orderId;
+	private int partner_order_id;
+	
 	//product 李몄“�궎
 	private int pro_number;
 	private int count;
 	
 	private int price;
 	
+	
+	public userOrderProductVO(int orderId) {
+	       this.orderId = orderId;
+	       this.partner_order_id = orderId;
+	   }
+	
+	public int getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(int orderId) {
+		this.orderId = orderId;
+		this.partner_order_id = orderId;
+
+	}
+	public int getPartner_order_id() {
+		return partner_order_id;
+	}
+	public void setPartner_order_id(int partner_order_id) {
+		this.partner_order_id = partner_order_id;
+		this.orderId = partner_order_id;
+	}
 	
 	
 	public int getTotal() {
@@ -111,12 +137,6 @@ public class userOrderProductVO {
 	public void setPro_number(int pro_number) {
 		this.pro_number = pro_number;
 	}
-	public int getOrderId() {
-		return orderId;
-	}
-	public void setOrderId(int orderId) {
-		this.orderId = orderId;
-	}
 	public int getCount() {
 		return count;
 	}
@@ -128,6 +148,15 @@ public class userOrderProductVO {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+
+	@Override
+	public String toString() {
+		return "userOrderProductVO [userno=" + userno + ", id=" + id + ", name=" + name + ", phone=" + phone
+				+ ", email=" + email + ", adr=" + adr + ", pro_name=" + pro_name + ", pro_price=" + pro_price
+				+ ", pro_img1=" + pro_img1 + ", pro_maindesctitle=" + pro_maindesctitle + ", pro_option=" + pro_option
+				+ ", total=" + total + ", orderId=" + orderId + ", partner_order_id=" + partner_order_id
+				+ ", pro_number=" + pro_number + ", count=" + count + ", price=" + price + "]";
 	}
 	
 	

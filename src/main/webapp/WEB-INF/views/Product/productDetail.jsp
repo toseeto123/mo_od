@@ -346,12 +346,10 @@ input[type="radio"]:checked:before {
 	   var login_chk = confirm('로그인이 필요한 서비스입니다. 로그인페이지로 이동하시겠습니까?');
 		if(login_chk) {
 			
-			$(".login_form").submit();
+			$(".order_form").submit();
 		} else {
 			location.href = location.href;
 		}} else {
-			let orderCount = $(".quantity_input").val();
-	        $(".order_form").find("input[name='orders[0].orderCount']").val(orderCount);
 	        $(".order_form").submit();
 		}
 
