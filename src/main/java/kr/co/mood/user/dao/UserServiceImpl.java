@@ -33,7 +33,6 @@ public class UserServiceImpl implements UserService{
 
 	public void updateUser(UserVO vo) {
 		userdao.update(vo);
-		
 	}
 
 	public UserVO selectId(UserVO vo) {

@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,17 +7,23 @@
 <title>Insert title here</title>
 
 <script type="text/javascript" src="/resources/user/js/main.js"></script>
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" href="/resources/user/css/join.css">
 
 <style>
-.logo{ font-family:"궁서" }
-.logo2{font-family:"굴림"}
+.logo {
+	font-family: "궁서"
+}
+
+.logo2 {
+	font-family: "굴림"
+}
 </style>
 
 
 </head>
 <body>
+
         
         <div id="header">
         <h1 class="logo"><a href="index.jsp">묻 : <span class="logo2">mo_od</span></a></h1>
@@ -149,6 +155,7 @@
       
       
       <script type="text/javascript">
+
       /* 인증번호 이메일 전송 */
     $(".mail_check_button").click(function(){
    
@@ -206,7 +213,7 @@
        
     });
       </script>
-       
-  
-    </body>
+
+
+</body>
 </html>

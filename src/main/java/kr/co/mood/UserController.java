@@ -294,11 +294,13 @@ public class UserController {
 
 	@RequestMapping(value = "/updatemyinfo.do", method = RequestMethod.POST)
 	public String update(UserVO vo, HttpSession session) throws Exception {
-		System.out.println("�뜝�럥�뒍亦껋꼻�삕");
-
+		System.out.println("업데이트하자!");
+		
 		userservice.updateUser(vo);
-		session.invalidate();
-		return "redirect:/";
+		System.out.println(vo);
+		
+		return "User/mypage";
+		
 	}
 
 	@RequestMapping(value = "/mailCheck", method = RequestMethod.GET)
