@@ -163,7 +163,7 @@ public class UserController {
        
        if (vo1 == null) {
            session.setAttribute("login_info", null);
-           request.setAttribute("msg", false);
+           ra.addFlashAttribute("msg", false);
            return "redirect:/login.do";
        } else {
            session.setAttribute("login_info", vo1);
