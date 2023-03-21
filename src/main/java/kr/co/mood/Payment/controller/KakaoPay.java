@@ -43,7 +43,7 @@ public class KakaoPay {
     		   @RequestParam("userno") String userno,
     		   @RequestParam("pro_price") int pro_price,
     		   @RequestParam("orderId") int orderId,
-    		   @RequestParam("pro_no") String pro_no) {
+    		   @RequestParam("pro_number") String pro_number) {
 
     
            RestTemplate restTemplate = new RestTemplate();
@@ -67,7 +67,7 @@ public class KakaoPay {
            params.add("total_amount", pro_pricestr);
            
            params.add("tax_free_amount", "100");
-           params.add("approval_url", "http://localhost:8080/User/kakaoPaySuccess?orderId=" + orderIdstr + "&userno=" + userno + "&pro_no="+ pro_no);
+           params.add("approval_url", "http://localhost:8080/User/kakaoPaySuccess?orderId=" + orderIdstr + "&userno=" + userno + "&pro_number="+ pro_number);
            params.add("cancel_url", "http://localhost:8080/User/kakaoPayCancel");
            params.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");
            System.out.println(params);
@@ -92,8 +92,7 @@ public class KakaoPay {
        public KakaoPayApprovalVO kakaoPayInfo(@RequestParam("pg_token")String pg_token,
     		   								  @RequestParam("orderId") int orderId,
     		   								@RequestParam("userno") String userno,
-    		   								@RequestParam("pro_no") String pro_no
-    		   ) {
+    		   								@RequestParam("pro_number") String pro_number) {
     
           System.out.println("KakaoPayInfoVO............................................");
           System.out.println("-----------------------------");
@@ -119,7 +118,7 @@ public class KakaoPay {
                kakaoPayApprovalVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/approve"), body, KakaoPayApprovalVO.class);
                System.out.println("" + kakaoPayApprovalVO);
                kservice.paymentinsert(kakaoPayApprovalVO);
-               kservice.paysuccessupdate(pro_no);
+               kservice.paysuccessupdate(pro_number);
                kservice.paysuccessdelete(userno);
                
                

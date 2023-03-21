@@ -72,10 +72,10 @@
                     <h3 class="join_title"><label for="age">나이</label></h3>
                     <div id="bir_wrap">
                         <div>
-                                <input type="radio" value="10-19" class="age" name="age" id="age" checked/>10대
-                                <input type="radio" value="20-29" class="age" name="age" id="age" />20대
-                                <input type="radio" value="30-39" class="age" name="age" id="age" />30대
-                                <input type="radio" value="40-49" class="age" name="age" id="age" />40대
+                                <input type="radio" value="10-19" class="age" name="age" id="age" checked/>10대 &nbsp;&nbsp;
+                                <input type="radio" value="20-29" class="age" name="age" id="age" />20대 &nbsp;&nbsp;
+                                <input type="radio" value="30-39" class="age" name="age" id="age" />30대 &nbsp;&nbsp;
+                                <input type="radio" value="40-49" class="age" name="age" id="age" />40대 &nbsp;&nbsp;
                                 <input type="radio" value="50대이상" class="age" name="age" id="age" />50대이상
                         </div>
                     </div>
@@ -126,7 +126,7 @@
                 <div>
                    <h3 class="join_title"><label for="adr">우편번호</label></h3>
                    <input type="text" class="address_input_1" name=adr id="adr" placeholder="우편번호" required>
-                    <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+                    <input type="button" class="adrchk" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
                     <input type="text" class="address_input_2" name="adr2" id="adr2" placeholder="주소" required><br>
                     <input type="text" class="address_input_3" name="adr3" id="adr3" placeholder="상세주소" required>
                 </div>

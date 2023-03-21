@@ -2,6 +2,8 @@ package kr.co.mood.Payment.controller;
 
 
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,11 +13,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import kr.co.mood.Payment.VO.userOrderProductVO;
 import kr.co.mood.Payment.VO.userOrderVO;
 import kr.co.mood.Product.DAO.ProductService;
-import kr.co.mood.Product.VO.ProVO;
 import kr.co.mood.cate.DAO.CateService;
 import kr.co.mood.pay.DAO.productPaymentService;
 import kr.co.mood.pay.DAO.userPaymentService;
@@ -42,35 +44,49 @@ public class userPaymentController {
    
    
    @RequestMapping(value="/orders" , method = RequestMethod.POST)
-   public String processOrder(HttpSession session ,Model model, @RequestParam("pro_number") int pro_number , @RequestParam("pro_price") int pro_price) {
+   public String processOrder(HttpSession session ,Model model, 
+		   @RequestParam("pro_number") int pro_number, 
+		   @RequestParam("pro_price") int pro_price,
+		   RedirectAttributes redirectAttributes) {
       UserVO uvo = (UserVO)session.getAttribute("login_info");
-      System.out.println(uvo);
-      int userid = uvo.getNo();
-      String adr= uvo.getAdr() + uvo.getAdr2() + uvo.getAdr3();
-      int proid = pro_number;
-      int price = pro_price;
+
+      userOrderVO ordervo = new userOrderVO();
 
       
-      
-      userOrderVO ordervo = new userOrderVO();
-      System.out.println(ordervo);
-      //占쎌젟癰귨옙 占쎌궎占쎈쐭占쎈 믭옙 뵠 뇡遺용퓠 占쎈뼖疫뀐옙
-      ordervo.setUserNo(userid);
-      //ordervo.setPro_number(proid);
-      int count = ordervo.getOrderCount();
-      count = 1;
-      model.addAttribute(count);
-      ordervo.setOrderCount(count);
-      ordervo.setAddress(adr);
-      System.out.println(ordervo);
-      
       if (ordervo != null && uvo != null ) {
+    	  int userid = uvo.getNo();
+          
+          int proid = pro_number;
+          int price = pro_price;
+      
+          System.out.println(ordervo);
+          //占쎌젟癰귨옙 占쎌궎占쎈쐭占쎈 믭옙 뵠 뇡遺용퓠 占쎈뼖疫뀐옙
+          ordervo.setUserNo(userid);
+          ordervo.setPrice(price);
+          //ordervo.setPro_number(proid);
+          int count = ordervo.getOrderCount();
+          count = 1;
+          model.addAttribute(count);
+          ordervo.setOrderCount(count);
           payService.insert(ordervo, uvo, null);
           System.out.println("orderId:" + ordervo.getOrderId());
-      }else {
-         System.out.println("ordervo uvo pvo == null ");
+      }else { 
+
+          userOrderProductVO orderProVo = new userOrderProductVO();
+          userOrderVO ordervo1 = new userOrderVO();
+          
+          orderProVo.setPro_number(pro_number);
+          orderProVo.setPrice(pro_price);
+          ordervo1.setPro_number(pro_number);
+          ordervo1.setPrice(pro_price);
+          
+          session.setAttribute("ordervo", ordervo1);
+          session.setAttribute("orderProVo", orderProVo);
+    	  return "redirect:/payBeLogin.do";
       }
       System.out.println(payService);
+      
+      
       
       // 뵳 딅뮞占쎈뱜 占쏙옙占쎈뻿 orderProduct占쎈퓠 return占쎌뜎 insert 占쎈퉸占쎈튊占쎈맙
       // 占쎄맒占쎈   揶쏉옙占쎈땾占쎈뮉 占쎌뵬占쎈뼊 獄쏆꼷 겫占쎈┷筌롳옙  빊遺쏙옙占쎈릭占쎈뮉椰꾨챶以  占쎈퉸癰귣  뮉椰꾨챶以 .
@@ -82,14 +98,14 @@ public class userPaymentController {
       
       userOrderProductVO orderProVo = new userOrderProductVO();
       orderProVo.setOrderId(orderId);
-      orderProVo.setPro_number(proid);
-      orderProVo.setPrice(price);
-      orderProVo.setCount(count);
+      orderProVo.setPro_number(pro_number);
+      orderProVo.setPrice(pro_price);
+      //orderProVo.setCount(count);
       //orderProVo.setPro_name(pvo.getPro_name());
       System.out.println(orderProVo);
       
       productPayService.insert(orderProVo, uvo, null);
-      
+
       
       model.addAttribute("orders", productPayService.selectList(orderId));
       System.out.println(productPayService.selectList(orderId));
@@ -100,16 +116,19 @@ public class userPaymentController {
    
    
    @RequestMapping(value="/cateorders" , method = RequestMethod.POST)
-   public String cateProcessOrder(HttpSession session ,Model model, @RequestParam("pro_number") int pro_number , @RequestParam("total") int total) {
+   public String cateProcessOrder(HttpSession session ,Model model, @RequestParam("pro_number") int pro_number , @RequestParam("total") List<Integer> total) {
       UserVO uvo = (UserVO)session.getAttribute("login_info");
-      System.out.println("프로넘버들 : "+pro_number);
       int userid = uvo.getNo();
-      
+      int sum = 0;
+      for (int totals : total) {
+          sum += totals;
+      }
+      System.out.println("ㅆㅓㅁ"+sum);
       int proid = pro_number;
-      int price = total;
       
       
       userOrderVO ordervo = new userOrderVO();
+      
 
       ordervo.setUserNo(userid);
 
@@ -117,8 +136,7 @@ public class userPaymentController {
       count = 1;
       model.addAttribute(count);
       ordervo.setOrderCount(count);
-
-      //System.out.println("안찍히지?"+userid);
+      ordervo.setPrice(sum);
       if (ordervo != null && uvo != null ) {
           payService.insert(ordervo, uvo, null);
           System.out.println("orderId:" + ordervo.getOrderId());
@@ -133,7 +151,7 @@ public class userPaymentController {
       userOrderProductVO orderProVo = new userOrderProductVO();
       orderProVo.setOrderId(orderId);
       orderProVo.setPro_number(proid);
-      orderProVo.setPrice(price);
+      orderProVo.setPrice(sum);
       orderProVo.setCount(count);
       orderProVo.setUserno(userid);
       

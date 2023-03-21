@@ -42,5 +42,12 @@ public class AmountVO {
 	public void setDiscount(Integer discount) {
 		this.discount = discount;
 	}
+
+	@Override
+	public String toString() {
+		return "AmountVO [total=" + total + ", tax_free=" + tax_free + ", vat=" + vat + ", point=" + point
+				+ ", discount=" + discount + "]";
+	}
+	
 	
 }
