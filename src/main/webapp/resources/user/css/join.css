@@ -94,7 +94,7 @@ input {
 
 .idChk{
    display: inline-block;
-   
+   height: 50px;
 
 }
 
@@ -178,19 +178,25 @@ select {
     border: none;
     background: #fff;
     font-size: 15px;
+    height: 51px;
    
 }
 
 .mail_check_input_box{
    display: block;
-    width: 100%;
+    width: 350px;
     height: 51px;
     border: solid 1px #dadada;
     padding: 10px 14px 10px 14px;
     box-sizing: border-box;
     background: #fff;
     position: relative;
+    display: inline-block;
    
+}
+.mail_check_button{
+	display: inline-block;
+	height: 50px;
 }
 .mail_check_input{
    display: block;
@@ -208,6 +214,27 @@ select {
 }
 .incorrect{
    color : red;
+}
+.address_input_1{
+	display:inline-block;
+	width: 350px;
+	height: 45px;
+	
+}
+.address_input_2{
+	width: 452px;
+	height: 44px;
+	margin: 10px 0 10px 0;
+}
+.address_input_3{
+	width: 452px;
+	height: 44px;
+}
+.adrchk{
+	 display: inline-block;
+	 width:95px;
+   height: 50px;
+    
 }
 
  
