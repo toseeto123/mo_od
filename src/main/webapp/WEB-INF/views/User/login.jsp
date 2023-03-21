@@ -28,7 +28,7 @@
 
  <div class="wrap">
             <div class="form-wrap">
-            <div>로그인</div>
+            
                 <div class="button-wrap">
                      <a href="index.jsp">
                          <img class="img-concert" src="/resources/user/img/beulaendeu.png"/>
@@ -48,6 +48,11 @@
                
  			<!-- Google Login -->
  				<button style="background: transparent; border-color: transparent; position:absolute; top:23%; left:20%;" onclick="googleHandleAuthClick()"><img style="width:45px;" src="/resources/user/img/gl.png" alt="google"></button>
+
+ 				 <a class="p-2" href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/member/kakaoLogin&response_type=code">
+     	               <img src="/resources/user/img/ka.png" alt="kakao">
+   	                 </a>
+
 
 
 			
@@ -84,16 +89,11 @@
 
                     <button class="submit">로그인</button>
                      
-                     
+
 
 
                     
-<!--                     <button class="submit" onclick="location.href='index.jsp'">취소</button> -->
-<!--                     <button class="submit" onclick="location.href='join.do'">회원가입</button> -->
-                 	
-                    
-<!--                     <a href="/search_id" class="btn idfind">아이디 찾기</a> -->
-<!--                     <a href="/search_pwd" class="btn pwdfind">비밀번호 재설정</a> -->
+
                 </form>
                 <a href="index.jsp" class="">메인 페이지</a>
                 <a href="join.do" class="">회원가입</a>
