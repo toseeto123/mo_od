@@ -42,12 +42,12 @@ public class CateController {
 		System.out.println("cate");
 		
 		if(uvo==null) {
-			 System.out.println("null이야");
+			 System.out.println("null占쎌뵠占쎈튊");
 			 rttr.addFlashAttribute("msg", "loginmsg");
 			 return "redirect:login.do";
 		}
 		else {
-			System.out.println("이동!");
+			System.out.println("占쎌뵠占쎈짗!");
 			return "cate/cate";
 		}
 	}
@@ -60,7 +60,7 @@ public class CateController {
 	}
 
 	@RequestMapping(value="/cateinsert.do" , method = RequestMethod.POST)
-	public String insertcate(HttpSession session, @RequestParam("pro_number") int pro_number,
+	public String insertcate(HttpSession session, @RequestParam("pro_number") String pro_number,
 	                         @RequestParam("pro_price") int pro_price, @RequestParam("radioOption") String pro_option,
 	                         RedirectAttributes redirectAttributes) {
 	    UserVO uvo = (UserVO) session.getAttribute("login_info");
@@ -82,6 +82,7 @@ public class CateController {
        cvo.setTotal(pro_price);
        cvo.setPro_option(pro_option);
        cservice.addcate(cvo, uvo, null);
+       productService.catecountupdate(pro_number);
        return "redirect:/cate";
 	   }
    }
@@ -145,7 +146,7 @@ public class CateController {
 
    @RequestMapping(value = "/catedelete.do", method = RequestMethod.POST)
    public String deleteCate(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
-      System.out.println("delete �떎�뻾 �셿猷�");
+      System.out.println("delete �뜝�럥堉꾢뜝�럥六� �뜝�럩�걦占쎈쇀�뜝占�");
       int number = Integer.parseInt(String.valueOf(data.get("number")));
       int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
 

@@ -49,7 +49,6 @@ pre{
 }
 </style>
 <body>
-<jsp:include page="/WEB-INF/common/header.jsp" />
 <form method="post" action="/cateinsert.do">
    <main id="main">
 <c:if test="${list.pro_number eq list.pro_number }">
@@ -298,9 +297,6 @@ pre{
     </section><!-- End Team Section -->
    </main>
    <!-- End #main -->
-
-      <jsp:include page="/WEB-INF/common/footer.jsp" />
-
    <a href="#"
       class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
@@ -316,15 +312,6 @@ pre{
    <!-- Template Main JS File -->
    <script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
    
-   
-   <script>
-   /* 바로구매 버튼 */
-   $(".btn_buy").on("click", function(){
-      let orderCount = $(".quantity_input").val();
-      $(".order_form").find("input[name='orders[0].orderCount']").val(orderCount);
-      $(".order_form").submit();
-   });
-   </script>
    
 </body>
 
