@@ -97,22 +97,16 @@
 	
 	
 						
-<<<<<<< HEAD
-			<c:if test="${empty login_info.id}">
-				<li><a class="getstarted scrollto" href="/join.do">회원가입</a></li>
-				<li><a class="getstarted scrollto" href="/login.do">로그인</a></li>
-				<li><a class="getstarted scrollto cart-btn" href="#">장바구니</a></li>
-			</c:if>
-=======
+
 					<c:if test="${empty login_info.id}">
 							<li><a class="getstarted scrollto" href="/join.do">회원가입</a></li>
 							<li><a class="getstarted scrollto" href="/login.do">로그인</a></li>
-							<li><a class="getstarted scrollto" href="/cate.do">버킷</a></li>
+							<li><a class="getstarted scrollto cart-btn" href="#">버킷</a></li>
 			       </c:if>
             
             
  
->>>>>>> branch 'develop' of https://github.com/toseeto123/mo_od.git
+
 
 
 
