@@ -9,6 +9,9 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.HashMap;
 
+import javax.servlet.http.HttpSession;
+
+import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -115,5 +118,161 @@ public class MemberService {
         
 	}
 
+	public String getNaverAccessToken (String authorize_code,HttpSession session) {
+			String access_Token = "";
+			String reqURL = "https://nid.naver.com/oauth2.0/token";
+			System.out.println("와따 네이버로그인");
+	        try {
+	            URL url = new URL(reqURL);
+	            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	            
+	            //POST 요청을 위해 기본값이 false인 setDoOutput을 true로
+	            conn.setRequestMethod("POST");
+	            conn.setDoOutput(true);
+	            //POST 요청에 필요로 요구하는 파라미터 스트림을 통해 전송
+	            BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
+	            StringBuilder sb = new StringBuilder();
+	            sb.append("grant_type=authorization_code");
+	            sb.append("&client_id=dClx55_VYi9U61rOGPS2");
+	            sb.append("&client_secret=MtrUDxfIj0");
+	            sb.append("&redirect_uri=http://localhost:8080/login.do");
+	            sb.append("&code="+authorize_code);
+	            sb.append("&state=url_parameter");
+	            System.out.println(sb);
+	            session.setAttribute("sb", sb);
+	            bw.write(sb.toString());
+	            bw.flush();
+	            
+	            
+	            //결과 코드가 200이라면 성공
+	            int responseCode = conn.getResponseCode();
+	            System.out.println(responseCode);
+	            if(responseCode==200){
+		            //요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
+		            BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		            String line = "";
+		            String result = "";
+		            
+		            while ((line = br.readLine()) != null) {
+		                result += line;
+		            }
+		            
+		            //Gson 라이브러리에 포함된 클래스로 JSON파싱 객체 생성
+		            JsonParser parser = new JsonParser();
+		            JsonElement element = parser.parse(result);
+		            
+		            access_Token = element.getAsJsonObject().get("access_token").getAsString();
+		          //refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
+		            System.out.println(access_Token);
+		            br.close();
+		            bw.close();
+	            }
+	        } catch (IOException e) {
+	            e.printStackTrace();
+	        } 
+	        
+	        return access_Token;
+	    }
+	
+	public UserVO getNaverUserInfo (String access_Token,HttpSession session) {
+	    //요청하는 클라이언트마다 가진 정보가 다를 수 있기에 HashMap타입으로 선언
+	    HashMap<String, Object> naverUserInfo = new HashMap<String, Object>();
+	    String reqURL = "https://openapi.naver.com/v1/nid/me";
+	    try {
+	        URL url = new URL(reqURL);
+	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	        conn.setRequestMethod("POST");
+	       
+	        //요청에 필요한 Header에 포함될 내용
+	        conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+	        
+	        int responseCode = conn.getResponseCode();
+	        if(responseCode == 200){
+		        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+		       
+		        String line = "";
+		        String result = "";
+		        
+		        while ((line = br.readLine()) != null) {
+		            result += line;
+		        }
+		        JsonParser parser = new JsonParser();
+		        JsonElement element = parser.parse(result);
+		        
+		        JsonObject response = element.getAsJsonObject().get("response").getAsJsonObject();
+		        
+		        String name = response.getAsJsonObject().get("name").getAsString();
+		        String email = response.getAsJsonObject().get("email").getAsString();
+		        String id = "NAVER_"+response.getAsJsonObject().get("id").getAsString();
+		        String age = response.getAsJsonObject().get("age").getAsString();
+		        String gender  = response.getAsJsonObject().get("gender").getAsString();
+		        String mobile  = response.getAsJsonObject().get("mobile").getAsString();
+		       
+		        naverUserInfo.put("name", name);
+		        naverUserInfo.put("email", email);
+		        naverUserInfo.put("id", email);
+		        naverUserInfo.put("age", age);
+		        naverUserInfo.put("gender", gender);
+		        naverUserInfo.put("phone", mobile);
+		        System.out.println(naverUserInfo);
+		        System.out.println("response값이당!!");
+		        System.out.println(response);
+		        session.setAttribute("response", response);
+	        }
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	        
+	    }
+	    System.out.println("response값이당!!");
+	    System.out.println(session.getAttribute("response"));
+	 // catch 아래 코드 추가.
+	 		UserVO result = userdao.findNaver(naverUserInfo);
+	 		// 위 코드는 먼저 정보가 저장되있는지 확인하는 코드.
+	 		
+	 		if(result==null) {
+	 		// result가 null이면 정보가 저장이 안되있는거므로 정보를 저장.
+	 			userdao.NaverInsert(naverUserInfo);
+	 			// 위 코드가 정보를 저장하기 위해 Repository로 보내는 코드임.
+	 			
+	 			
+	 			return userdao.findNaver(naverUserInfo);
+	 			// 위 코드는 정보 저장 후 컨트롤러에 정보를 보내는 코드임.
+	 			//  result를 리턴으로 보내면 null이 리턴되므로 위 코드를 사용.
+	 			
+	 			
+	 		} else {
+	 			
+	 			return result;
+	 			
+	 		}
+	}
+	public void naverLogout(String access_Token) {
+		String reqURL = "https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=dClx55_VYi9U61rOGPS2&client_secret=MtrUDxfIj0&access_token=\"+access_Token+\"service_provider=NAVER";
+	    try {
+	        URL url = new URL(reqURL);
+	        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	        conn.setRequestMethod("POST");
+	        conn.setRequestProperty("Authorization", "Bearer " + access_Token);
+	        
+	        int responseCode = conn.getResponseCode();
+	        System.out.println("responseCode : " + responseCode);
+	        
+	        BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+	        
+	        String result = "";
+	        String line = "";
+	        
+	        while ((line = br.readLine()) != null) {
+	            result += line;
+	        }
+	        
+	    } catch (IOException e) {
+	        e.printStackTrace();
+	    }
+	
+	}
+
+	
+	
 	
 }

@@ -63,7 +63,7 @@ public class UserDAO {
 		
 	}
 	
-	// 정보 저장
+	// 카카오 정보 저장
 			public void kakaoinsert(HashMap<String, Object> userInfo) {
 				mybatis.insert("UserDAO.kakaoInsert",userInfo);
 			}
@@ -72,7 +72,14 @@ public class UserDAO {
 //				System.out.println("RE:"+userInfo.get("email"));
 				return mybatis.selectOne("UserDAO.findKakao", userInfo);
 			}
+			
 
-
+		// 네이버 정보 저장
+			public UserVO findNaver(HashMap<String, Object> naverUserInfo) {
+				return mybatis.selectOne("UserDAO.findNaver", naverUserInfo);
+			}
+			public void NaverInsert(HashMap<String, Object> naverUserInfo) {
+				mybatis.insert("UserDAO.NaverInsert",naverUserInfo);
+			}
 
 }
