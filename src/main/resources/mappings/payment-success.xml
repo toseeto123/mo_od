@@ -5,8 +5,16 @@
 <mapper namespace="KakaoPayApprovalDAO">
 
    <insert id="insert">
-      insert into payment(payment_method, orderid , userid , amount , approved_at)
-      value(#{payment_method_type}, #{partner_order_id} , #{partner_user_id}, #{amount.total}, #{approved_at})
+INSERT INTO payment (payment_method, orderid, userid, amount, approved_at)
+SELECT
+  #{payment_method_type},
+  op.orderId,
+  mo.userNo,
+  #{amount.total},
+  #{approved_at}
+FROM orderProduct op
+INNER JOIN moodorder mo ON mo.orderid = op.orderId
+WHERE op.orderId = (SELECT MAX(orderId) FROM orderProduct);
    </insert>
 
 	<delete id="catedelete">

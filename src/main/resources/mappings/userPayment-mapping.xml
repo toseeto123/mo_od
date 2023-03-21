@@ -8,6 +8,7 @@
     INSERT INTO moodorder (userNo, address, price, status)
     VALUES (#{userNo}, #{address}, #{price}, #{status})
 	</insert>
+	
 
 	<!-- <select id="selectOrderList" resultType="kr.co.mood.Payment.VO.userOrderVO">
 		select moodorder.orderId,
