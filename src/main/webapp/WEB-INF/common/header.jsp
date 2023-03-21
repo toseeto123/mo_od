@@ -1,12 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
 <!DOCTYPE html>
 <html lang="utf-8">
 
 <head>
+<script src="https://unpkg.com/phosphor-icons"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/spring-webmvc/5.3.8/spring-webmvc.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
@@ -20,7 +27,7 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
+  
   <!-- Vendor CSS Files -->
   <link href="${pageContext.request.contextPath}/resources/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="${pageContext.request.contextPath}/resources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -87,29 +94,16 @@
           </li>
 
 			<c:if test="${!empty login_info.id}">
-
-               <li class="/login_info" style="color : white;">${login_info.name } [ ${login_info.id } ]</li>
-
+               <li class="/login_info" style="white">${login_info.name } [ ${login_info.id } ]</li>
                <li><a href="/mypage.do"><span class="getstarted scrollto"> Mypage</span> </a></li>
                <li><a href="/logout.do"><span class="getstarted scrollto">Logout</span></a></li>
                <li><a href="/cate.do"><span class="getstarted scrollto">Bucket</span></a></li>
             </c:if>
-	
-	
-						
-
-					<c:if test="${empty login_info.id}">
-							<li><a class="getstarted scrollto" href="/join.do">회원가입</a></li>
-							<li><a class="getstarted scrollto" href="/login.do">로그인</a></li>
-							<li><a class="getstarted scrollto cart-btn" href="#">버킷</a></li>
-			       </c:if>
-            
-            
- 
-
-
-
-
+			<c:if test="${empty login_info.id}">
+				<li><a class="getstarted scrollto" href="/join.do">회원가입</a></li>
+				<li><a class="getstarted scrollto" href="/login.do">로그인</a></li>
+				<li><a class="getstarted scrollto cart-btn" href="#">버킷</a></li>
+			</c:if>
         </ul>
 
         

@@ -56,13 +56,10 @@ public class UserController {
 	
 	@Autowired
 	private JavaMailSender mailSender;
-
 	@Autowired
 	private CateService cateService;
-	
 	@Autowired
 	private KakaoPayApprovalService kakaoService;
-	
 	@Autowired
 	userPaymentService payService;
 	@Autowired
