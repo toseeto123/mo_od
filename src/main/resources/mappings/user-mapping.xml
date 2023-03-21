@@ -92,6 +92,15 @@
 		 ]]>
 	</insert>
     
+     <select id="findNaver" parameterType="kr.co.mood.user.dao.UserVO" resultType="kr.co.mood.user.dao.UserVO">
+		select * from moodjoin where name=#{name} and email=#{email} and gender=#{gender} and phone=#{phone}
+	</select>
+    
+    <insert id="NaverInsert" parameterType="kr.co.mood.user.dao.UserVO">
+	<![CDATA[
+		insert into moodjoin(no,id,name,age,email,gender,phone, day) values(no,#{id},#{name}, #{age} , #{email}, #{gender},#{phone}, now())
+		 ]]>
+	</insert>
     
     
 	</mapper>
