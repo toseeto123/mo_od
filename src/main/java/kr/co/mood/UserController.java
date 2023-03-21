@@ -4,7 +4,7 @@ package kr.co.mood;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-
+import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
@@ -31,20 +31,14 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.co.mood.cate.DAO.CateService;
-
-import kr.co.mood.user.dao.MemberService;
-
 import kr.co.mood.pay.DAO.KakaoPayApprovalService;
-
+import kr.co.mood.user.dao.MemberService;
 import kr.co.mood.user.dao.UserService;
 import kr.co.mood.user.dao.UserVO;
 
 @Controller
 @SessionAttributes("loginUser")
 public class UserController {
-	@Autowired
-
-	private MemberService ms;
 	
 	@Autowired
 	private UserService userservice ;
@@ -65,70 +59,33 @@ public class UserController {
 	@Autowired
 	private KakaoPayApprovalService kakaoService;
 
-	@RequestMapping(value = "/googleSave", method = RequestMethod.POST)
-	@ResponseBody
-	public String googleSave(@RequestBody String googleJsonData, HttpSession session) throws Exception {
-
-		ObjectMapper mapper = new ObjectMapper();
-		JsonNode jsonParsing;
-		jsonParsing = mapper.readTree(googleJsonData);
-		int age = Integer.parseInt(jsonParsing.get("age").asText()) / 10;
-		
-
-		UserVO googleVO = new UserVO();
-		googleVO.setEmail(jsonParsing.get("email").asText());
-		googleVO.setId(jsonParsing.get("email").asText());
-		googleVO.setName(jsonParsing.get("name").asText());
-		googleVO.setAge((age * 10) + "~" + ((age * 10) + 9));
-		
-
-    System.out.println(uservo); 
-    String email = uservo.getEmail();
-    String name = uservo.getName();
-    String age = uservo.getAge();
-    String gender = uservo.getGender();
-
-    
-    UserVO naver = new UserVO();
-    
-    naver.setId(email);
-    naver.setEmail(email);
-    naver.setName(name);
-    naver.setAge(age);
-    naver.setGender(gender);
-    
-    
-    String str = "no";
-    System.out.println(naver);
-  
-  int result = userservice.idChk(naver);
-  System.out.println(result);
-  
-  try {
-     if(result == 1) {
-    	
-        return "/";
-        
-     }else if(result == 0) {
-    	
-        userservice.insertnaver(naver);
-        session.setAttribute("login_info", naver);
-        return "/";
-     }
-     
-  }catch (Exception e) {
-     throw new RuntimeException();
-  }
-  
-
-   
-   if(uservo!=null) {
-	   str = "ok";
-   }
-   return str;
-   }
 	
-	
+	   @RequestMapping(value = "/googleSave", method = RequestMethod.POST)
+	   @ResponseBody
+	   public String googleSave(@RequestBody String googleJsonData, HttpSession session) throws Exception {
+
+	      ObjectMapper mapper = new ObjectMapper();
+	      JsonNode jsonParsing;
+	      jsonParsing = mapper.readTree(googleJsonData);
+	      int age = Integer.parseInt(jsonParsing.get("age").asText()) / 10;
+	      
+	      UserVO googleVO = new UserVO();
+	      googleVO.setEmail(jsonParsing.get("email").asText());
+	      googleVO.setId(jsonParsing.get("email").asText());
+	      googleVO.setName(jsonParsing.get("name").asText());
+	      googleVO.setAge((age * 10) + "~" + ((age * 10) + 9));
+	      
+	      int result = userservice.idChk(googleVO);
+	      
+	      if (result == 0) {
+	         userservice.insertnaver(googleVO);
+	         session.setAttribute("login_info", googleVO);
+	      } else {
+	         session.setAttribute("login_info", googleVO);
+	      }
+
+	      return (String) session.getAttribute("path");
+	   }
 	
 	@RequestMapping(value="/user/*")
 	public class MemberController {
@@ -155,157 +112,7 @@ public class UserController {
 	    	}
 
 	}
-	
-	
-	
-	
-	@RequestMapping(value = "/join.do" , method = RequestMethod.GET)
-   public String join() {
-      return "User/join";
-   }
 
-   @RequestMapping(value = "/idchk" , method = RequestMethod.POST)
-   public String idchk() {
-      return "User/join";
-   }
-   
-   @RequestMapping(value = "/login.do" , method = RequestMethod.GET)
-   public String login() {
-	   
-      return "User/login";
-      }
-  //lsg
-   @RequestMapping(value = "/login.do" , method = RequestMethod.POST)
-   public String loginAction(UserVO vo, HttpSession session , RedirectAttributes rttr) {
-	  UserVO vo1 =  userservice.selectId(vo);
-	  String path = (String) session.getAttribute("path");
-
-	  System.out.println(path);
-	  
-	  if(path== null) {
-	  if(vo1 == null) {
-		  System.out.println("null이야");
-		  session.setAttribute("login_info", null);
-		  rttr.addFlashAttribute("msg", false);
-		  return "redirect:login.do";
-	  } else {
-		  		System.out.println("메인페이지로 이동할거야");
-				session.setAttribute("login_info", vo1);
-				return "redirect:index.jsp";
-			}
-	  }	else {
-		 System.out.println("해당페이지로 이동할거야");
-		session.setAttribute("login_info", vo1);
-		return "redirect:"+path;
-	  }
-   }
- 	@RequestMapping("/logout.do")
- 		public String logout(UserVO vo,HttpSession session,UserVO userInfo) {
- 		
- 			session.setAttribute("login_info", vo);
- 			session.invalidate();
- 			return "redirect:index.jsp";
- 		}
- 	
- 
-
- 	@RequestMapping(value = "/mypage.do" , method = RequestMethod.GET)
-    public String mypage(UserVO vo,HttpSession session , Model model) {
-
-		int result = userservice.idChk(googleVO);
-		
-		if (result == 0) {
-			userservice.insertnaver(googleVO);
-			session.setAttribute("login_info", googleVO);
-		} else {
-			session.setAttribute("login_info", googleVO);
-		}
-
-		return (String) session.getAttribute("path");
-	}
-
-	// 占쎄퐬占쎌뵠甕곤옙 嚥≪뮄�젃占쎌뵥
-	@RequestMapping(value = "/naverSave", method = RequestMethod.POST)
-
-	public @ResponseBody String naverSave(UserVO uservo, HttpSession session) throws Exception {
-
-		System.out.println(uservo);
-		String email = uservo.getEmail();
-		String name = uservo.getName();
-		String age = uservo.getAge();
-		String gender = uservo.getGender();
-
-		UserVO naver = new UserVO();
-
-		naver.setId(email);
-		naver.setEmail(email);
-		naver.setName(name);
-		naver.setAge(age);
-		naver.setGender(gender);
-
-		String str = "no";
-		System.out.println(naver);
-
-		int result = userservice.idChk(naver);
-		System.out.println(result);
-
-		try {
-			if (result == 1) {
-
-				return "/";
-
-			} else if (result == 0) {
-				System.out.println("揶쏉옙占쎌뿯獄쏅뗀以덌쭪袁る뻬~");
-				userservice.insertnaver(naver);
-				session.setAttribute("login_info", naver);
-				return "/";
-			}
-
-		} catch (Exception e) {
-			throw new RuntimeException();
-		}
-
-		if (uservo != null) {
-			str = "ok";
-		}
-		return str;
-	}
-
-	@RequestMapping(value = "/join.do", method = RequestMethod.GET)
-	public String join() {
-		return "User/join";
-	}
-
-
-		  ObjectMapper mapper = new ObjectMapper();
-	        JsonNode jsonParsing;
-			
-				jsonParsing = mapper.readTree(googleJsonData);
-				String name[] = jsonParsing.get("name").asText().split("\"");
-				String email[] = jsonParsing.get("email").asText().split("\"");
-				String age = jsonParsing.get("age").asText();
-				
-				int age1 = Integer.parseInt(age)/10;
-				String ageGroup = (age1*10)+"~"+((age1*10)+9);
-				UserVO googleVO = new UserVO();
-				googleVO.setEmail(email[1]);
-				googleVO.setId(email[1]);
-				googleVO.setName(name[1]);
-				googleVO.setAge(ageGroup);
-				
-				 int result = userservice.idChk(googleVO);
-				  System.out.println(result);
-				  if(result == 0) {
-					  userservice.insertnaver(googleVO);
-				      session.setAttribute("login_info", googleVO);
-				  }else {
-				      session.setAttribute("login_info", googleVO);
-				  }
-				
-				  String path = (String) session.getAttribute("path");
-				  System.out.println("이것은 path 다");
-				return path;
-	}	
 	@RequestMapping("/naverLogin")
 	public void naverLogin(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws IOException {
 	    String access_Token = ms.getNaverAccessToken(code, session);
