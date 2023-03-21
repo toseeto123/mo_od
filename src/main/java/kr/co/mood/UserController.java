@@ -1,9 +1,10 @@
 package kr.co.mood;
 
 
+
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.Random;
+
 
 import javax.mail.internet.MimeMessage;
 import javax.servlet.http.HttpServletRequest;
@@ -30,15 +31,19 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.co.mood.cate.DAO.CateService;
+
 import kr.co.mood.user.dao.MemberService;
+
+import kr.co.mood.pay.DAO.KakaoPayApprovalService;
+
 import kr.co.mood.user.dao.UserService;
 import kr.co.mood.user.dao.UserVO;
-
 
 @Controller
 @SessionAttributes("loginUser")
 public class UserController {
 	@Autowired
+
 	private MemberService ms;
 	
 	@Autowired
@@ -54,11 +59,20 @@ public class UserController {
 
 	@Autowired
 	private CateService cateService;
+	
+	@Autowired
+	private KakaoPayApprovalService kakaoService;
 
-	@RequestMapping(value="/googleSave", method=RequestMethod.POST)
+	@RequestMapping(value = "/googleSave", method = RequestMethod.POST)
 	@ResponseBody
-	public String googleSave(@RequestBody String googleJsonData, HttpSession session) throws Exception{
+	public String googleSave(@RequestBody String googleJsonData, HttpSession session) throws Exception {
+
+		ObjectMapper mapper = new ObjectMapper();
+		JsonNode jsonParsing;
+		jsonParsing = mapper.readTree(googleJsonData);
+		int age = Integer.parseInt(jsonParsing.get("age").asText()) / 10;
 		
+
 		  ObjectMapper mapper = new ObjectMapper();
 	        JsonNode jsonParsing;
 			
@@ -172,96 +186,90 @@ public class UserController {
 		int userid = uvo.getNo();
 		System.out.println(userid);
 		model.addAttribute("map", cateService.selectCateList(userid));
-       return "User/mypage";
-       }
- 	
- 	@ResponseBody
- 	@RequestMapping(value="/idChk", method = RequestMethod.POST)
- 	public int idChk(UserVO vo) throws Exception {
- 		int result = userservice.idChk(vo);
- 		return result;
- 	}
- 	
- 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
- 	public String postRegister(UserVO vo) throws Exception {
- 		int result = userservice.idChk(vo);
- 		try {
- 			if(result == 1) {
- 				return "/User/join";
- 			}else if(result == 0) {
- 				userservice.insert(vo);
- 			}
- 		} catch (Exception e) {
- 			e.printStackTrace();
- 		}
- 		return "User/login";
- 	}
- 	
- 	
- 	 @RequestMapping(value = "/deletemember.do" , method = RequestMethod.GET)
- 	   public String deletemember(UserVO vo,HttpSession session,RedirectAttributes rttr, @RequestParam("pwd1") String pwd) throws Exception {
- 		 UserVO ssvo = (UserVO)session.getAttribute("login_info");
- 		 String sspwd = ssvo.getPwd();
- 		 System.out.println("sspwd : " + sspwd);
- 		System.out.println("pwd : " + pwd);
- 		 if(!(sspwd.equals(pwd)) ||  pwd==null) {
- 			 rttr.addFlashAttribute("msg", false);
- 			 return null;
- 		 }
- 		 userservice.deleteUser(vo);
- 		 session.invalidate();
- 	     return "redirect:index.jsp";
- 	   }
- 	   
- 	@RequestMapping(value = "/updatemyinfo.do", method = RequestMethod.POST)
- 	public String update(UserVO vo, HttpSession session) throws Exception {
- 		System.out.println("�뜝�럥�뒍亦껋꼻�삕");
- 		
- 		userservice.updateUser(vo);
- 		session.invalidate();
- 		return "redirect:/";
- 	}
- 	
- 	@RequestMapping(value="/mailCheck", method=RequestMethod.GET)
-    @ResponseBody
-    public String mailCheckGET(String email) throws Exception{
-       
-       
-       Random random = new Random();
-       int checkNum = random.nextInt(888888) + 111111;
+		model.addAttribute("orders", kakaoService.selectlist(userid));
+		System.out.println(kakaoService);
+		System.out.println(kakaoService.selectlist(userid));
+		return "User/mypage";
+	}
 
-       
-       String setFrom = "cwj9799@naver.com";
-       String toMail = email;
-       String title = "회원가입 인증 이메일 입니다.";
-       String content = 
-             "홈페이지를 방문해주셔서 감사합니다." +
-             "<br><br>" + 
-             "인증 번호는 " + checkNum + "입니다." + 
-             "<br>" + 
-             "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";      
-       
-       try {
-          
-          MimeMessage message = mailSender.createMimeMessage();
-          MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
-          helper.setFrom(setFrom);
-          helper.setTo(toMail);
-          helper.setSubject(title);
-          helper.setText(content,true);
-          mailSender.send(message);
-          
-       }catch(Exception e) {
-          e.printStackTrace();
-       }      
-       
-       String num = Integer.toString(checkNum);
-       
-       return num;
-       
-    }
- 	
- 	
+	@ResponseBody
+	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
+	public int idChk(UserVO vo) throws Exception {
+		int result = userservice.idChk(vo);
+		return result;
+	}
+
+	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
+	public String postRegister(UserVO vo) throws Exception {
+		int result = userservice.idChk(vo);
+		try {
+			if (result == 1) {
+				return "/User/join";
+			} else if (result == 0) {
+				userservice.insert(vo);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return "User/login";
+	}
+
+	@RequestMapping(value = "/deletemember.do", method = RequestMethod.GET)
+	public String deletemember(UserVO vo, HttpSession session, RedirectAttributes rttr,
+			@RequestParam("pwd1") String pwd) throws Exception {
+		UserVO ssvo = (UserVO) session.getAttribute("login_info");
+		String sspwd = ssvo.getPwd();
+		System.out.println("sspwd : " + sspwd);
+		System.out.println("pwd : " + pwd);
+		if (!(sspwd.equals(pwd)) || pwd == null) {
+			rttr.addFlashAttribute("msg", false);
+			return null;
+		}
+		userservice.deleteUser(vo);
+		session.invalidate();
+		return "redirect:index.jsp";
+	}
+
+	@RequestMapping(value = "/updatemyinfo.do", method = RequestMethod.POST)
+	public String update(UserVO vo, HttpSession session) throws Exception {
+		System.out.println("�뜝�럥�뒍亦껋꼻�삕");
+
+		userservice.updateUser(vo);
+		session.invalidate();
+		return "redirect:/";
+	}
+
+	@RequestMapping(value = "/mailCheck", method = RequestMethod.GET)
+	@ResponseBody
+	public String mailCheckGET(String email) throws Exception {
+
+		Random random = new Random();
+		int checkNum = random.nextInt(888888) + 111111;
+
+		String setFrom = "cwj9799@naver.com";
+		String toMail = email;
+		String title = "회원가입 인증 이메일 입니다.";
+		String content = "홈페이지를 방문해주셔서 감사합니다." + "<br><br>" + "인증 번호는 " + checkNum + "입니다." + "<br>"
+				+ "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+
+		try {
+
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+			helper.setFrom(setFrom);
+			helper.setTo(toMail);
+			helper.setSubject(title);
+			helper.setText(content, true);
+			mailSender.send(message);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		String num = Integer.toString(checkNum);
+
+		return num;
+
+	}
 
 }
-

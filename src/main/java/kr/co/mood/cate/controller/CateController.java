@@ -41,12 +41,12 @@ public class CateController {
 		System.out.println("cate");
 		
 		if(uvo==null) {
-			 System.out.println("null이야");
+			 System.out.println("null占쎌뵠占쎈튊");
 			 rttr.addFlashAttribute("msg", "loginmsg");
 			 return "redirect:login.do";
 		}
 		else {
-			System.out.println("이동!");
+			System.out.println("占쎌뵠占쎈짗!");
 			return "cate/cate";
 		}
 	}
@@ -59,8 +59,8 @@ public class CateController {
 	}
 
    @RequestMapping(value="/cateinsert.do" , method = RequestMethod.POST)
-   public String insertcate(HttpSession session, Model model, @RequestParam("pro_number") int pro_number,@RequestParam("pro_price") int pro_price,@RequestParam("radioOption") String pro_option) {
-       System.out.println("카트인서트와써!");
+   public String insertcate(HttpSession session, Model model, @RequestParam("pro_number") String pro_number,@RequestParam("pro_price") int pro_price,@RequestParam("radioOption") String pro_option) {
+       System.out.println("燁삳똾�뱜占쎌뵥占쎄퐣占쎈뱜占쏙옙占쎈쑅!");
 	   UserVO uvo = (UserVO) session.getAttribute("login_info");	
 	   if(uvo==null) {
 		   return "redirect:/login.do";
@@ -74,6 +74,7 @@ public class CateController {
        cvo.setTotal(pro_price);
        cvo.setPro_option(pro_option);
        cservice.addcate(cvo, uvo, null);
+       productService.catecountupdate(pro_number);
        return "redirect:/cate";
 	   }
    }
@@ -83,7 +84,7 @@ public class CateController {
        UserVO uvo = (UserVO) session.getAttribute("login_info");
        int userid = uvo.getNo();
        
-       // 以묐났 insert瑜� 諛⑹��븯湲� �쐞�빐 cate_id媛� null�씠 �븘�땶 �빆紐⑸쭔 議고쉶�빀�땲�떎.
+       // 繞벿살탮占쎄텢 insert占쎈ご�뜝占� �뛾�렮維쀥뜝�룞�삕�뇡占썹뼨�먯삕 �뜝�럩留꾢뜝�럥�돵 cate_id�뤆�룊�삕 null�뜝�럩逾� �뜝�럥�닡�뜝�럥鍮� �뜝�럥�돫嶺뚮ㅄ維뽩퐲占� �댖怨뚰�э옙�뤂�뜝�럥占썲뜝�럥鍮띶뜝�럥堉�.
        model.addAttribute("map", cservice.selectCateList(userid));
        return "/cate/cate";
    }
@@ -126,7 +127,7 @@ public class CateController {
 
    @RequestMapping(value = "/catedelete.do", method = RequestMethod.POST)
    public String deleteCate(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
-      System.out.println("delete �떎�뻾 �셿猷�");
+      System.out.println("delete �뜝�럥堉꾢뜝�럥六� �뜝�럩�걦占쎈쇀�뜝占�");
       int number = Integer.parseInt(String.valueOf(data.get("number")));
       int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
 

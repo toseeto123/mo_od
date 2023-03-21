@@ -6,22 +6,107 @@
 
 <mapper namespace="kr.co.mood.Payment.DAO.AdminPaymentDAO">
 
-    <select id="getCategoryChart1" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
-         SELECT pro_categoryserial as category, SUM(pro_paycount) as category_paycount FROM product group by pro_categoryserial order by SUM(pro_paycount) limit 0, 5
+    <select id="getCategoryChart1" resultType="kr.co.mood.Payment.VO.AdminChartVO">
+         SELECT pro_serialnumber as 'serialNumber', 
+         		SUM(pro_paycount) as 'payCount' 
+         	FROM product 
+         	where pro_paycount > 0 
+         	group by pro_serialnumber 
+         	order by SUM(pro_paycount) desc
+         	limit 0, 5
     </select>
     
-    <select id="getCategoryChart2" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
-         select pro_name, pro_bucketcount from product order by pro_bucketcount desc limit 0, 5
+    <select id="getCategoryChart2" resultType="kr.co.mood.Payment.VO.AdminChartVO">
+         select pro_serialnumber as 'serialNumber', 
+         		pro_bucketcount as 'bucketCount' 
+         	from product 
+         	where pro_bucketcount > 0
+         	order by pro_bucketcount desc 
+         	limit 0, 5
     </select>
     
-    <!-- <select id="getCategoryChart3" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
-         
+    <select id="getCategoryChart3" resultType="kr.co.mood.Payment.VO.AdminChartVO">
+         <![CDATA[
+         SELECT CASE DAYOFWEEK(approved_at) 
+         		WHEN 1 THEN '월요일' 
+         		WHEN 2 THEN '화요일' 
+         		WHEN 3 THEN '수요일' 
+         		WHEN 4 THEN '목요일' 
+         		WHEN 5 THEN '금요일' 
+         		WHEN 6 THEN '토요일' 
+         		WHEN 7 THEN '일요일' 
+         		ELSE '유효한 날짜가 아닙니다.' END as week, 
+         	sum(amount) as sales 
+         	from payment 
+         	where Success = 'A'
+					and approved_at like concat(#{year}, '%')
+         	group by DAYOFWEEK(approved_at)
+         	order by DAYOFWEEK(approved_at)
+         	]]>
     </select>
     
-    <select id="getCategoryChart4" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
-         
+    <select id="getCategoryChart4" resultType="kr.co.mood.Payment.VO.AdminChartVO">
+		<![CDATA[
+		select member.gender as gender,
+		sum(orderProduct.count) as 'productCount',
+		product.pro_categoryserial  as 'categorySerial',
+		CASE DAYOFWEEK(payment.approved_at) 
+         		WHEN 1 THEN '월요일' 
+         		WHEN 2 THEN '화요일' 
+         		WHEN 3 THEN '수요일' 
+         		WHEN 4 THEN '목요일' 
+         		WHEN 5 THEN '금요일' 
+         		WHEN 6 THEN '토요일' 
+         		WHEN 7 THEN '일요일' 
+         		ELSE '유효한 날짜가 아닙니다.' END as week
+		from orderproduct
+			inner join payment
+				on payment.orderid = orderproduct.orderId
+			inner join moodjoin as member
+				on member.no = payment.userId 
+			inner join product 
+				on product.pro_number = orderproduct.pro_number 
+		where payment.Success = 'A'
+			and payment.approved_at like concat(#{year}, '%')
+		group by orderproduct.pro_number
+		order by dayofweek(payment.approved_at) desc 
+		limit 0, 5
+			]]>
     </select>
-     -->
+    
+    <select id="adminPaymentMemberList" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
+    	select payment.payment_id as 'orderNo',
+			member.name as 'name',
+			moodorder.address as 'address',
+			member.phone as 'phone',
+			payment.amount as 'amount'
+		from moodorder
+		inner join payment
+			on moodorder.orderId = payment.orderid
+		inner join moodjoin as member
+			on moodorder.userNo = member.no
+		where payment.Success = 'A'
+		order by orderNo desc
+		<if test="endNo != 0">
+		limit #{startNo}, #{endNo}
+    	</if>
+    </select>    
+    
+    <select id="adminPaymentList" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
+    	select payment.payment_id as 'orderNo', 
+			product.pro_serialnumber as 'productNo',
+			product.pro_name as 'productName',
+			orderProduct.price as 'price'
+		from payment
+		inner join orderProduct
+			on payment.orderId = orderProduct.orderId
+		inner join product
+			on orderProduct.pro_number = product.pro_number
+		where payment.Success = 'A'
+		order by orderNo desc
+    </select>
+    
+    
 </mapper>
 
 

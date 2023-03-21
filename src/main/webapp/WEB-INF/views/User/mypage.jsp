@@ -109,7 +109,7 @@ section {
 
 		<div class="tabcontent">
 			<div id="payDetail">
-				<jsp:include page="/WEB-INF/views/User/userPaymentDetail.jsp" />
+				<jsp:include page="/WEB-INF/views/User/userPaymentList.jsp" />
 			</div>
 		</div>
 

@@ -74,7 +74,7 @@ public class AdminController {
 	   System.out.println(moduleVO.getStartNo());
 	   System.out.println(moduleVO.getEndNo());
 	   List<UserVO> userList = userService.selectAll(moduleVO);
-	   ViewPagingVO viewVO = module.pagingModule(model, moduleVO, userList, paging, 1);
+	   ViewPagingVO viewVO = module.pagingModule(model, moduleVO, userList, paging, 10);
 	   List<UserVO> showUserList = userService.selectAll(moduleVO);
 	   model.addAttribute("userList", showUserList);
 	   map.put("list", showUserList);
@@ -87,7 +87,7 @@ public class AdminController {
    public String adminMemberList(@PathVariable String paging, Model model) {//추가된 부분
 	   ModuleVO moduleVO = new ModuleVO();
 	   List<UserVO> userList = userService.selectAll(null);
-	   module.pagingModule(model, moduleVO, userList, paging, 1);
+	   module.pagingModule(model, moduleVO, userList, paging, 10);
 	   List<UserVO> showUserList = userService.selectAll(moduleVO);
 	   model.addAttribute("userList", showUserList);
 	   return "admin/adminMemberList";
