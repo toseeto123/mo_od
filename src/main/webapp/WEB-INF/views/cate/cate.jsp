@@ -514,8 +514,6 @@ function deletecate(element) {
                <p style="margin-left: 100px;">${map.pro_maindesctitle }</p>
                <span style="margin-left: 100px;">수 량 : </span>
                <div class="amount" style="display: inline;">${map.amount}</div>
-               
-                
                <input type="hidden" value="${map.cate_id}" name="cateId"
                   class="cate_id" /> <span class="btnspan">
                   <button type="button" class="plus_btn" onclick='flush("plus", this)'>+</button>
@@ -542,24 +540,23 @@ function deletecate(element) {
 
 
          </p>
-         <div class="price_sum">
-            <div class="price_sum_cont">
-               <div class="price_sum_list">
-                  <dl style="font-size: 20px;">
-                     <dt>
-                        총 <strong class="amount_total">0</strong> 개의 상품 금액<span> : </span><strong class="value_total">0</strong> 원
-                     </dt>
-                     <dd>
-                        
-                     </dd>
-                  </dl>
-                  
-                  <input type="submit" value="바로결제하기" class="btn_buy">
-                  
-				
-               </div>
-            </div>
-         </div>
+			<div class="price_sum">
+				<div class="price_sum_cont">
+					<div class="price_sum_list">
+						<dl style="font-size: 20px;">
+							<dt>
+								총 <strong class="amount_total">0</strong> 개의 상품 금액
+							</dt>
+							<dd>
+								<span><i class="ph-equals"
+									style="font-size: 20px; color: blue;"></i></span> 합계 <strong
+									class="value_total">0</strong> 원
+							</dd>
+						</dl>
+
+					</div>
+				</div>
+			</div>
       </div>
    </div>
    </form>

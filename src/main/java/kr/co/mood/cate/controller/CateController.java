@@ -41,12 +41,12 @@ public class CateController {
 		System.out.println("cate");
 		
 		if(uvo==null) {
-			 System.out.println("null占쎌뵠占쎈튊");
+			 System.out.println("null�뜝�럩逾졾뜝�럥�뒍");
 			 rttr.addFlashAttribute("msg", "loginmsg");
 			 return "redirect:login.do";
 		}
 		else {
-			System.out.println("占쎌뵠占쎈짗!");
+			System.out.println("�뜝�럩逾졾뜝�럥吏�!");
 			return "cate/cate";
 		}
 	}
@@ -60,7 +60,7 @@ public class CateController {
 
    @RequestMapping(value="/cateinsert.do" , method = RequestMethod.POST)
    public String insertcate(HttpSession session, Model model, @RequestParam("pro_number") String pro_number,@RequestParam("pro_price") int pro_price,@RequestParam("radioOption") String pro_option) {
-       System.out.println("燁삳똾�뱜占쎌뵥占쎄퐣占쎈뱜占쏙옙占쎈쑅!");
+       System.out.println("�뇖�궠�샑占쎈콦�뜝�럩逾ε뜝�럡�맋�뜝�럥諭쒎뜝�룞�삕�뜝�럥�몗!");
 	   UserVO uvo = (UserVO) session.getAttribute("login_info");	
 	   if(uvo==null) {
 		   return "redirect:/login.do";
@@ -84,7 +84,7 @@ public class CateController {
        UserVO uvo = (UserVO) session.getAttribute("login_info");
        int userid = uvo.getNo();
        
-       // 繞벿살탮占쎄텢 insert占쎈ご�뜝占� �뛾�렮維쀥뜝�룞�삕�뇡占썹뼨�먯삕 �뜝�럩留꾢뜝�럥�돵 cate_id�뤆�룊�삕 null�뜝�럩逾� �뜝�럥�닡�뜝�럥鍮� �뜝�럥�돫嶺뚮ㅄ維뽩퐲占� �댖怨뚰�э옙�뤂�뜝�럥占썲뜝�럥鍮띶뜝�럥堉�.
+       // 濚욌꼬�궡�꺇�뜝�럡�뀬 insert�뜝�럥�걫占쎈쐻�뜝占� 占쎈쎗占쎈젻泳��λ쐻占쎈짗占쎌굲占쎈눀�뜝�뜾堉⑨옙癒��굲 占쎈쐻占쎈윪筌띻쐼�쐻占쎈윥占쎈뤅 cate_id占쎈쨬占쎈즸占쎌굲 null占쎈쐻占쎈윪�억옙 占쎈쐻占쎈윥占쎈떋占쎈쐻占쎈윥�뜮占� 占쎈쐻占쎈윥占쎈룶癲ル슢�뀈泳�戮⑺맪�뜝占� 占쎈뙑�⑤슦占싼띿삕占쎈쨧占쎈쐻占쎈윥�뜝�뜴�쐻占쎈윥�뜮�씢�쐻占쎈윥�젆占�.
        model.addAttribute("map", cservice.selectCateList(userid));
        return "/cate/cate";
    }
@@ -127,8 +127,7 @@ public class CateController {
 
    @RequestMapping(value = "/catedelete.do", method = RequestMethod.POST)
    public String deleteCate(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
-      System.out.println("delete �뜝�럥堉꾢뜝�럥六� �뜝�럩�걦占쎈쇀�뜝占�");
-      int number = Integer.parseInt(String.valueOf(data.get("number")));
+      System.out.println("delete 로직 들어 왔셔요~");
       int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
 
       cservice.deletecate(cateId);

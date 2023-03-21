@@ -104,7 +104,7 @@ a:hover {
 		data.page = 1,
 		data.searchWhat = document.getElementById("searchWhat").value,
 		data.search = document.getElementById("search").value
-		
+		console.log(searchWhat,search)
 		if(data.search.trim() == '' || data.search == null){
 			data.search = '(none)'
 		}
