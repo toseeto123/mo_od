@@ -173,7 +173,7 @@ background-color: #c8936ed4;
 }
 
 
-.cateBtn , .btn_buy{
+.cateBtn , .btn_buy , .cancelbtn{
    background-color: #c8936ed4;
    width: 416px;
    height: 50px;
@@ -550,8 +550,8 @@ function deletecate(element) {
                      </dd>
                   </dl>
                   
-                  <input type="submit" value="바로결제하기" class="btn_buy">
-                  
+                  <input type="submit" value="바로결제하기" class="btn_buy"> <br><br>
+                  <input type="button" value="메인페이지로 이동" class="cancelbtn" onclick="window.location='/mo_od';">
 				
                </div>
             </div>
@@ -561,4 +561,8 @@ function deletecate(element) {
    </form>
 </body>
 <jsp:include page="../../common/footer.jsp" />
+<script>
+ 
+</script>
+
 </html>

@@ -49,8 +49,9 @@ public class userPaymentController {
 		   @RequestParam("pro_price") int pro_price,
 		   RedirectAttributes redirectAttributes) {
       UserVO uvo = (UserVO)session.getAttribute("login_info");
+
       userOrderVO ordervo = new userOrderVO();
-      
+
       
       if (ordervo != null && uvo != null ) {
     	  int userid = uvo.getNo();

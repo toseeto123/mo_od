@@ -52,8 +52,9 @@ public class UserDAO {
 
 
 	public void update(UserVO vo) {
-		mybatis.update("UserDAO.update",vo);
-		
+		mybatis.delete("UserDAO.update", vo);
+		System.out.println(vo);
+		return;
 	}
 
 

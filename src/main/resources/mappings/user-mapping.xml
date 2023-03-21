@@ -76,8 +76,7 @@
 	
     <update id = "update" parameterType="kr.co.mood.user.dao.UserVO">
         update moodjoin
-        set id=#{id}, pwd =#{pwd}, name=#{name}, 
-        age=#{age}, gender=#{gender}, adr=#{adr}, email=#{email} , phone=#{phone}, day=#{day}
+        set adr=#{adr}, email=#{email}, phone=#{phone}
         where id = #{id}
     </update>
     
