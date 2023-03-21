@@ -12,11 +12,11 @@
 <body>
 <fieldset>
 <legend>회원정보수정</legend>
-	<form action="/updatemyinfo.do" method="post" name="fr">
+	<form action="/updatemyinfo.do?id=${login_info.id}" method="post" name="fr">
 		<table>
 		<tr>
 			<td>아이디</td>
-			<td><input type="text" name="id" value="${login_info.id}" readonly><br></td>
+			<td>${login_info.id}<br></td>
 		</tr>
 		<tr>
 			<td>비밀번호</td>
@@ -28,24 +28,24 @@
 		
 		<tr>
 			<td>비밀번호 확인</td>
-			<td><input type="password" id="pwd2" name="pwd2" required><br></td>
+			<td><input type="password" id="pwd2" name="pwd2" required ><br><span id="confirmMsg"></span></td>
 			
 		</tr>
 		<tr>
 			<td>이름</td>
-			<td><input type="text" name="name" value="${login_info.name}" readonly><br></td>
+			<td>${login_info.name}<br></td>
 		</tr>
 		<tr>
 			<td>나이</td>
-			<td><input type="text" name="age" value="${login_info.age}" readonly><br></td>
+			<td>${login_info.age}<br></td>
 		</tr>
 		<tr>
 			<td>성별</td>
-			<td><input type="text" name="gender" value="${login_info.gender}" readonly><br></td>
+			<td>${login_info.gender}<br></td>
 		</tr>
 		<tr>
 			<td>이메일</td>
-			<td><input type="text" name="email" value="${login_info.email}"><br></td>
+			<td><input type="text" class="myinfo_email" id="myinfo_email" name="email" value="${login_info.email}"><br></td>
 		</tr>
 		<tr>
 			<td>휴대전화</td>
@@ -60,7 +60,7 @@
 		<br>
 			<td colspan="2">
 			<br><br>
-				<button type="button" id="updateBtn" class="btn btn-primary" >
+				<button type="submit" id="updateBtn" class="btn btn-primary">
   					수정하기
 				</button>
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
@@ -106,4 +106,28 @@
 
 
 </body>
+<script>
+function passConfirm() {
+	if(mypage_myInfo.pwd1.value != mypage_myInfo.pwd2.value){
+        alert("입력한 암호가 일치하지 않습니다");
+        mypage_myInfo.pwd1.value="";
+        mypage_myInfo.pwd2.value="";
+        mypage_myInfo.pwd1.focus();
+        return false;
+     } if(mypage_myInfo.pwd.value != mypage_myInfo.pwd1.value ) {
+    	 alert("저장된 암호와 일치하지 않습니다");
+    	 mypage_myInfo.pwd.value="";
+    	 mypage_myInfo.pwd1.value="";
+    	 mypage_myInfo.pwd.focus();
+         return false;
+     } if(mypage_myInfo.pwd.value != mypage_myInfo.pwd2.value ) {
+    	 alert("저장된 암호와 일치하지 않습니다");
+    	 mypage_myInfo.pwd.value="";
+    	 mypage_myInfo.pwd2.value="";
+    	 mypage_myInfo.pwd.focus();
+         return false;
+     }
+		return true;
+	 }
+</script>
 </html>

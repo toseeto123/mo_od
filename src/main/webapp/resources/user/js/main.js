@@ -47,11 +47,7 @@ function JoinCheck(){
               join.phone.focus();
               return false;
            }   
-           if (document.join.mail_check_input_box_warn.value != document.join.mail_check_input_box_warn.value) {
-              alert("인증번호가 일치하지 않습니다");
-              join.email.focus();
-              return false;
-           }
+           
            return true;   
         }
 
