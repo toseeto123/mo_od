@@ -9,9 +9,12 @@
 
 <style>
 a:hover {
-	cursor: pointer;	
+	cursor: pointer;
 }
-*:focus { outline: 0; }
+
+*:focus {
+	outline: 0;
+}
 </style>
 </head>
 <body>
@@ -20,90 +23,94 @@ a:hover {
 	<!-- ======= Hero Section ======= -->
 	<section id="hero" style="background: white;">
 		<div class="hero-container">
-							<div style="width:25%; margin-top:5%; margin-left:39%;">
-								<select id="searchWhat">
-									<option value="name">회원이름</option>
-									<option value="pro_name">상품이름</option>
-									<option value="seria">상품 고유번호</option>
-								</select> <input type="search" id="search">
-								
-								<input type="button" style="background: transparent; width:70px; color:white; border-radius:10px; border: 2px solid #deb887;"
-									id="searchBtn" value="찾기" onMouseover="this.style.background='#d2b48c';" onMouseout="this.style.background='transparent'" onclick="search()">
-									</div>
-									
-								<table class="table" id="table">
-									<thead>
-										<tr>
-											<th scope="col">등록 번호</th>
-											<th scope="col">회원 이름</th>
-											<th scope="col">상품 이름</th>
-											<th scope="col">상품 옵션</th>
-											<th scope="col">상품 금액</th>
-											<th scope="col">상품 수량</th>
-											<th scope="col">상품 고유번호</th>
-											<th scope="col">삭제</th>
-										</tr>
-									</thead>
-									<tbody id="tbody">
-									<c:forEach var="cateList" items="${cateList }">
-										<tr class="deleteplz">
-											<th scope="col">${cateList.cate_id }</th>
-											<th scope="col">${cateList.name }</th>
-											<th scope="col">${cateList.pro_name }</th>
-											<th scope="col">${cateList.pro_option }</th>
-											<th scope="col">${cateList.pro_price }</th>
-											<th scope="col">${cateList.amount }</th>
-											<th scope="col">${cateList.pro_serialnumber}</th>
-											<th scope="col"><button type="button" onclick="deletecate(this)">삭제</button></th>
-										</tr>
-								</c:forEach>
-									</tbody>
-								</table>
-											<!-- End Default Table Example -->
-							<div id="modulePaging"
-								style="display: inline-block; position: absolute; left: 50%; transform: translateX(-50%); font-size: 20px;">
-								<c:if test="${prePage!=null }">
-									<a href="/admin/admincate.do/${prePage}">&lt;</a>
-								</c:if>
-				
-								<c:forEach items="${ pagingNo }" var="no">
-									<c:choose>
-										<c:when test="${selectPage == no}">
+			<div style="width: 25%; margin-top: 5%; margin-left: 39%;">
+				<select id="searchWhat">
+					<option value="name">회원이름</option>
+					<option value="pro_name">상품이름</option>
+					<option value="seria">상품 고유번호</option>
+				</select> <input type="search" id="search"> <input type="button"
+					style="background: transparent; width: 70px; color: white; border-radius: 10px; border: 2px solid #deb887;"
+					id="searchBtn" value="찾기"
+					onMouseover="this.style.background='#d2b48c';"
+					onMouseout="this.style.background='transparent'" onclick="search()">
+
+			</div>
+
+			<table class="table" id="table">
+				<thead>
+					<tr>
+						<th scope="col">등록 번호</th>
+						<th scope="col">회원 이름</th>
+						<th scope="col">상품 이름</th>
+						<th scope="col">상품 옵션</th>
+						<th scope="col">상품 금액</th>
+						<th scope="col">상품 수량</th>
+						<th scope="col">상품 고유번호</th>
+						<th scope="col">삭제</th>
+					</tr>
+				</thead>
+				<tbody id="tbody">
+					<c:forEach var="cateList" items="${cateList }">
+						<tr class="deleteplz">
+							<th scope="col">${cateList.cate_id }</th>
+							<th scope="col">${cateList.name }</th>
+							<th scope="col">${cateList.pro_name }</th>
+							<th scope="col">${cateList.pro_option }</th>
+							<th scope="col">${cateList.pro_price }</th>
+							<th scope="col">${cateList.amount }</th>
+							<th scope="col">${cateList.pro_serialnumber}</th>
+							<th scope="col"><button type="button"
+									onclick="deletecate(this)">삭제</button></th>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			<!-- End Default Table Example -->
+			<div id="modulePaging"
+				style="display: inline-block; position: absolute; left: 50%; transform: translateX(-50%); font-size: 20px;">
+				<c:if test="${prePage!=null }">
+					<a href="/admin/admincate.do/${prePage}">&lt;</a>
+				</c:if>
+
+				<c:forEach items="${ pagingNo }" var="no">
+					<c:choose>
+						<c:when test="${selectPage == no}">
 				                  &nbsp;<a style="color: green"
-												href="/admin/admincate.do/${no}">${no}</a>&nbsp;
+								href="/admin/admincate.do/${no}">${no}</a>&nbsp;
 				                  </c:when>
-										<c:otherwise>
+						<c:otherwise>
 				                  &nbsp;<a href="/admin/admincate.do/${no}">${no}</a>&nbsp;
 				                  </c:otherwise>
-									</c:choose>
-								</c:forEach>
-				
-								<c:if test="${nextPage != null }">
-									<a href="/admin/admincatet.do/${nextPage}">&gt;</a>
-								</c:if>
-							</div>
+					</c:choose>
+				</c:forEach>
 
-								<div>
-								</div>
-							</div>
-			<input type="hidden" value="${selectPage}" id="selectPage">
+				<c:if test="${nextPage != null }">
+					<a href="/admin/admincatet.do/${nextPage}">&gt;</a>
+				</c:if>
+			</div>
+
+			<div></div>
+		</div>
+		<input type="hidden" value="${selectPage}" id="selectPage">
 	</section>
 	<!-- End Hero -->
-		<script type="text/javascript">
-		function deletecate(element){
+	<script type="text/javascript">
+		 function deletecate(element){
 			  const cateId = element.closest('tr').querySelector('th:first-of-type').textContent;
-			  const data = { 'cate_id': cateId };
+			  const data = { cateId: Number(cateId) };
 			  console.log(cateId,data)
-			   let xhr = new XMLHttpRequest();
-			   xhr.open('POST', 'catedelete.do', true);
+			    let xhr = new XMLHttpRequest();
+			   xhr.open('POST', '/catedelete.do', true);
 			   xhr.setRequestHeader('Content-Type', 'application/json');
 			   xhr.onreadystatechange = function() {
 				      if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+				    	  location.reload();
 				      }
+			}
+			xhr.send(JSON.stringify(data));
+			location.reload();
 		}
-		xhr.send(JSON.stringify(data));
-	}
-		
+			
 		
 		
 		const data = {}
@@ -175,11 +182,11 @@ a:hover {
 			}
 		for(var i=0; i<tableData.list.length; i++){
 			var newRow = document.createElement("tr");
-			var aTag = document.createElement("button");
-			aTag.setAttribute("submit", "/catedelete.do");
+			var btnTag = document.createElement("button");
+			btnTag.addEventListener('click', () => deletecate(btnTag));
 			var newCell = [];
 			for(var t=0; t<8; t++){
-				newCell.push(document.createElement("td"));
+				newCell.push(document.createElement("th"));
 				newCell[t].setAttribute("scope", "col");
 			}				
 			newCell[0].innerHTML = tableData.list[i].cate_id;
@@ -189,8 +196,8 @@ a:hover {
 			newCell[4].innerHTML = tableData.list[i].pro_price;
 			newCell[5].innerHTML = tableData.list[i].amount;
 			newCell[6].innerHTML = tableData.list[i].pro_serialnumber;
-			aTag.innerHTML = '삭제';
-			newCell[7].appendChild(aTag);
+			btnTag.innerHTML = '삭제';
+			newCell[7].appendChild(btnTag);
 			for(var x=0; x<8; x++){
 				newRow.appendChild(newCell[x]);
 			}
