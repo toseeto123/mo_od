@@ -29,7 +29,7 @@
   <link href="/resources/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="${pageContext.request.contextPath}/resources/assets/css/style.css" rel="stylesheet">
+  <link href="/resources/assets/css/style.css" rel="stylesheet">
 
 <style>
    .navbar .headerMain li{ margin-right: 60px;}
