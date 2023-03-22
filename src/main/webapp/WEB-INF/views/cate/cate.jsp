@@ -510,8 +510,6 @@ function deletecate(element) {
                <p style="margin-left: 100px;">${map.pro_maindesctitle }</p>
                <span style="margin-left: 100px;">수 량 : </span>
                <div class="amount" style="display: inline;">${map.amount}</div>
-               
-                
                <input type="hidden" value="${map.cate_id}" name="cateId"
                   class="cate_id" /> <span class="btnspan">
                   <button type="button" class="plus_btn" onclick='flush("plus", this)'>+</button>

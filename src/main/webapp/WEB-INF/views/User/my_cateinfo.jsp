@@ -71,255 +71,267 @@
 window.onload = function() {
 	   updateTotalCount();
 	   minusTotalCount();
-	}
+	if(userNo=="") {
+		console.log(path);
+			
+		   var login_chk = confirm('로그인이 필요한 서비스입니다. 로그인페이지로 이동하시겠습니까?');
+			if(login_chk) {
+				location.href='/login.do';
+			} else {
+				location.href = path;
+			}} else {
+				location.href = location.href;
+			}
 
-	function parseCurrency(num) {
-	   return `₩` + num.toLocaleString('ko-KR');
-	}
+}
 
-	function updateTotalCount() {
-	   const amountTotal = document.querySelector('.amount_total');
-	   const valueTotal = document.querySelector('.value_total');
-	   const amountList = document.querySelectorAll('.amount');
-	   const totalList = document.querySelectorAll('.total');
-	   
-	   const amountArray = Array.from(amountList);
-	   const totalArray = Array.from(totalList);
-	   
-	   const totalAmount = amountArray.reduce(function(acc, element) {
-	      return acc + +element.innerText;
-	   }, 0);
-	   
-	   const totalValue = totalArray.reduce(function(acc, element) {
-	      const value = +(element.innerText.replace(/[\₩,]/g, ''));
-	      return acc + value;
-	   }, 0);
-	   
-	   amountTotal.innerText = totalAmount;
-	   valueTotal.innerText = parseCurrency(totalValue);
-	}
+function parseCurrency(num) {
+return `₩` + num.toLocaleString('ko-KR');
+}
 
-	function minusTotalCount() {
-	   
-	   
-	   const amountTotal = document.querySelector('.amount_total');
-	   const valueTotal = document.querySelector('.value_total');
-	   const amountList = document.querySelectorAll('.amount');
-	   const totalList = document.querySelectorAll('.total');
-	   
-	   const amountArray = Array.from(amountList);
-	   const totalArray = Array.from(totalList);
-	   
-	   const totalAmount = amountArray.reduce(function(acc, element) {
-	      return acc - +element.innerText;
-	   }, 0);
-	   
-	   const totalValue = totalArray.reduce(function(acc, element) {
-	      const value = +(element.innerText.replace(/[\₩,]/g, ''));
-	      return acc - value;
-	   }, 0);
-	   
-	   amountTotal.innerText = (totalAmount < 0) ? (-totalAmount).toString() : totalAmount.toString();
-	   valueTotal.innerText = (totalValue < 0) ? '₩' + parseCurrency(-totalValue).substring(1) : '₩' + parseCurrency(totalValue).substring(1);
-	}
+function updateTotalCount() {
+const amountTotal = document.querySelector('.amount_total');
+const valueTotal = document.querySelector('.value_total');
+const amountList = document.querySelectorAll('.amount');
+const totalList = document.querySelectorAll('.total');
 
-	function flush(type, element) {
-	   const itemWrapper = element.parentNode.parentNode;
-	     const resultElement = element.parentNode.previousElementSibling.previousElementSibling;
-	     let number = resultElement.innerText;
+const amountArray = Array.from(amountList);
+const totalArray = Array.from(totalList);
 
-	     const cateIdList = document.querySelectorAll('.cate_id');
-	     const cateIdArray = Array.from(cateIdList);
-	     const cateIdValues = cateIdArray.map(function(element) {
-	       return element.value;
-	     });
-	     
-	     const cateIdIndex = cateIdArray.indexOf(itemWrapper.querySelector('.cate_id'));
-	     const cateId = cateIdValues[cateIdIndex];
-	     
-	     
-	     
-	     const priceList = document.querySelectorAll('.pro_price');
-	     const priceArray = Array.from(priceList);
-	     const priceValues = priceArray.map((element) => element.value);
-	     
-	     const priceIndex = priceArray.indexOf(itemWrapper.querySelector('.pro_price'));
-	     const proprice = +priceValues[priceIndex];
-	     
-	     const amountDiv = itemWrapper.querySelector('.amount');
-	     const amount = +amountDiv.innerText;
-	     
-	     const totalPrice = (amount+1) * proprice;
-	     const totalSpan = itemWrapper.querySelector('.total');
-	     totalSpan.innerText = parseCurrency(totalPrice);
-	     
-	     // get the index of the current loop iteration
+const totalAmount = amountArray.reduce(function(acc, element) {
+   return acc + +element.innerText;
+}, 0);
 
-	     
-	     if (type === 'plus') {
-	       number = parseInt(number) + 1;
-	     }
-	     const data = {
-	       number: number,
-	       proprice : proprice,
-	       cateId: cateId,
-	     };
-	     
-	/*      fetch('plus.do', { 
-	        method: 'POST', 
-	        headers: {'Content-Type': 'application/json'},
-	         body: JSON.stringify(data),
-	     }); */
-	     let xhr = new XMLHttpRequest();
-	     xhr.open('POST', 'plus.do', true);
-	     xhr.setRequestHeader('Content-Type', 'application/json'); // JSON 형태의 데이터 전송을 위한 설정
+const totalValue = totalArray.reduce(function(acc, element) {
+   const value = +(element.innerText.replace(/[\₩,]/g, ''));
+   return acc + value;
+}, 0);
 
-	     xhr.onreadystatechange = function() {
-	       if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-	         
-	       }
-	     };
+amountTotal.innerText = totalAmount;
+valueTotal.innerText = parseCurrency(totalValue);
+}
 
-	     
-	       xhr.send(JSON.stringify(data)); // JSON 형태의 데이터 전송
-	     
-	     resultElement.innerText = number;
-	     updateTotalCount();
-	     
-	}
+function minusTotalCount() {
 
-	function minus(type, element) {
-	   const itemWrapper = element.parentNode.parentNode;
-	     const resultElement = element.parentNode.previousElementSibling.previousElementSibling;
-	     let number = resultElement.innerText;
 
-	     const cateIdList = document.querySelectorAll('.cate_id');
-	     const cateIdArray = Array.from(cateIdList);
-	     const cateIdValues = cateIdArray.map(function(element) {
-	       return element.value;
-	     });
-	     
-	     const cateIdIndex = cateIdArray.indexOf(itemWrapper.querySelector('.cate_id'));
-	     const cateId = cateIdValues[cateIdIndex];
-	     
-	     
-	     
-	     const priceList = document.querySelectorAll('.pro_price');
-	     const priceArray = Array.from(priceList);
-	     const priceValues = priceArray.map((element) => element.value);
-	     
-	     const priceIndex = priceArray.indexOf(itemWrapper.querySelector('.pro_price'));
-	     const proprice = +priceValues[priceIndex];
-	     
-	     const amountDiv = itemWrapper.querySelector('.amount');
-	     const amount = +amountDiv.innerText;
-	     
-	     const totalPrice = (amount-1) * proprice;
-	     const totalSpan = itemWrapper.querySelector('.total');
-	     if (totalPrice >= proprice) {
-	         totalSpan.innerText = parseCurrency(totalPrice);
-	       }
-	     
-	     // get the index of the current loop iteration
+const amountTotal = document.querySelector('.amount_total');
+const valueTotal = document.querySelector('.value_total');
+const amountList = document.querySelectorAll('.amount');
+const totalList = document.querySelectorAll('.total');
 
-	     
-	     if (type === 'minus' && number > 1) {
-	       number = parseInt(number) - 1;
-	     }
-	     const data = {
-	       number: number,
-	       proprice : proprice,
-	       cateId: cateId,
-	     };
+const amountArray = Array.from(amountList);
+const totalArray = Array.from(totalList);
 
-	     let xhr = new XMLHttpRequest();
-	     xhr.open('POST', 'minus.do', true);
-	     xhr.setRequestHeader('Content-Type', 'application/json'); // JSON 형태의 데이터 전송을 위한 설정
+const totalAmount = amountArray.reduce(function(acc, element) {
+   return acc - +element.innerText;
+}, 0);
 
-	     xhr.onreadystatechange = function() {
-	       if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-	         
-	       }
-	     };
+const totalValue = totalArray.reduce(function(acc, element) {
+   const value = +(element.innerText.replace(/[\₩,]/g, ''));
+   return acc - value;
+}, 0);
 
-	     
-	       xhr.send(JSON.stringify(data)); // JSON 형태의 데이터 전송
-	     
-	     resultElement.innerText = number;
-	     minusTotalCount();
-	     
-	}
-	function deletecate(element) {
-	   const itemWrapper = element.parentNode.parentNode;
-	    const resultElement = element.parentNode.previousElementSibling.previousElementSibling;
-	    let number = resultElement.innerText;
+amountTotal.innerText = (totalAmount < 0) ? (-totalAmount).toString() : totalAmount.toString();
+valueTotal.innerText = (totalValue < 0) ? '₩' + parseCurrency(-totalValue).substring(1) : '₩' + parseCurrency(totalValue).substring(1);
+}
 
-	    const cateIdList = document.querySelectorAll('.cate_id');
-	    const cateIdArray = Array.from(cateIdList);
-	    const cateIdValues = cateIdArray.map(function(element) {
-	      return element.value;
-	    });
-	    
-	    const cateIdIndex = cateIdArray.indexOf(itemWrapper.querySelector('.cate_id'));
-	    const cateId = cateIdValues[cateIdIndex];
-	    
-	         const priceList = document.querySelectorAll('.pro_price');
-	     const priceArray = Array.from(priceList);
-	     const priceValues = priceArray.map((element) => element.value);
-	     
-	     const priceIndex = priceArray.indexOf(itemWrapper.querySelector('.pro_price'));
-	     const proprice = +priceValues[priceIndex];
-	     
-	     const amountDiv = itemWrapper.querySelector('.amount');
-	     const amount = +amountDiv.innerText;
-	     
-	     const totalPrice = (amount-1) * proprice;
-	     const totalSpan = itemWrapper.querySelector('.total');
-	     
-	     if (totalPrice >= proprice) {
-	         totalSpan.innerText = parseCurrency(totalPrice);
-	       }
-	   let xhr = new XMLHttpRequest();
-	   xhr.open('POST', 'catedelete.do', true);
-	   xhr.setRequestHeader('Content-Type', 'application/json'); // JSON 형태의 데이터 전송을 위한 설정
+function flush(type, element) {
+const itemWrapper = element.parentNode.parentNode;
+  const resultElement = element.parentNode.previousElementSibling.previousElementSibling;
+  let number = resultElement.innerText;
 
-	   xhr.onreadystatechange = function() {
-	      if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-	         const categoryItem = element.closest('.deleteplz');
-	         
-	         const deleteprice = parseFloat(itemWrapper.parentNode.querySelector('.value_total').innerText.replace(/[\₩,]/g, ''));
-	         const totalSpans = parseFloat(itemWrapper.querySelector('.total').innerText.replace(/[\₩,]/g, ''));
-	         
-	         const realtotal = deleteprice - totalSpans;
-	         const realamount = itemWrapper.parentNode.querySelector('.amount_total').innerText;
-	         
-	         const amountDiv = itemWrapper.querySelector('.amount');
-	         const amount = +amountDiv.innerText;
-	         const amountminus = realamount - amount;
-	         console.log(realamount)
-	         console.log(amountminus)
-	         
-	         
-	      if (categoryItem) {
-	         categoryItem.remove()
-	         const realrealtotal = document.querySelector('.value_total');
-	         realrealtotal.innerText = parseCurrency(realtotal);
-	         
-	         const realrealamount = document.querySelector('.amount_total');
-	         realrealamount.innerText = amountminus;
-	      }
-	      }
-	   };
+  const cateIdList = document.querySelectorAll('.cate_id');
+  const cateIdArray = Array.from(cateIdList);
+  const cateIdValues = cateIdArray.map(function(element) {
+    return element.value;
+  });
+  
+  const cateIdIndex = cateIdArray.indexOf(itemWrapper.querySelector('.cate_id'));
+  const cateId = cateIdValues[cateIdIndex];
+  
+  
+  
+  const priceList = document.querySelectorAll('.pro_price');
+  const priceArray = Array.from(priceList);
+  const priceValues = priceArray.map((element) => element.value);
+  
+  const priceIndex = priceArray.indexOf(itemWrapper.querySelector('.pro_price'));
+  const proprice = +priceValues[priceIndex];
+  
+  const amountDiv = itemWrapper.querySelector('.amount');
+  const amount = +amountDiv.innerText;
+  
+  const totalPrice = (amount+1) * proprice;
+  const totalSpan = itemWrapper.querySelector('.total');
+  totalSpan.innerText = parseCurrency(totalPrice);
+  
+  // get the index of the current loop iteration
 
-	   if (cateId != null) {
-	      const data = {
-	         number : number,
-	         cateId : cateId
-	      };
-	      xhr.send(JSON.stringify(data)); // JSON 형태의 데이터 전송
-	   minusTotalCount();
-	   }
-	}
+  
+  if (type === 'plus') {
+    number = parseInt(number) + 1;
+  }
+  const data = {
+    number: number,
+    proprice : proprice,
+    cateId: cateId,
+  };
+  
+/*      fetch('plus.do', { 
+     method: 'POST', 
+     headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(data),
+  }); */
+  let xhr = new XMLHttpRequest();
+  xhr.open('POST', 'plus.do', true);
+  xhr.setRequestHeader('Content-Type', 'application/json'); // JSON 형태의 데이터 전송을 위한 설정
+
+  xhr.onreadystatechange = function() {
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+      
+    }
+  };
+
+  
+    xhr.send(JSON.stringify(data)); // JSON 형태의 데이터 전송
+  
+  resultElement.innerText = number;
+  updateTotalCount();
+  
+}
+
+function minus(type, element) {
+const itemWrapper = element.parentNode.parentNode;
+  const resultElement = element.parentNode.previousElementSibling.previousElementSibling;
+  let number = resultElement.innerText;
+
+  const cateIdList = document.querySelectorAll('.cate_id');
+  const cateIdArray = Array.from(cateIdList);
+  const cateIdValues = cateIdArray.map(function(element) {
+    return element.value;
+  });
+  
+  const cateIdIndex = cateIdArray.indexOf(itemWrapper.querySelector('.cate_id'));
+  const cateId = cateIdValues[cateIdIndex];
+  
+  
+  
+  const priceList = document.querySelectorAll('.pro_price');
+  const priceArray = Array.from(priceList);
+  const priceValues = priceArray.map((element) => element.value);
+  
+  const priceIndex = priceArray.indexOf(itemWrapper.querySelector('.pro_price'));
+  const proprice = +priceValues[priceIndex];
+  
+  const amountDiv = itemWrapper.querySelector('.amount');
+  const amount = +amountDiv.innerText;
+  
+  const totalPrice = (amount-1) * proprice;
+  const totalSpan = itemWrapper.querySelector('.total');
+  if (totalPrice >= proprice) {
+      totalSpan.innerText = parseCurrency(totalPrice);
+    }
+  
+  // get the index of the current loop iteration
+
+  
+  if (type === 'minus' && number > 1) {
+    number = parseInt(number) - 1;
+  }
+  const data = {
+    number: number,
+    proprice : proprice,
+    cateId: cateId,
+  };
+
+  let xhr = new XMLHttpRequest();
+  xhr.open('POST', 'minus.do', true);
+  xhr.setRequestHeader('Content-Type', 'application/json'); // JSON 형태의 데이터 전송을 위한 설정
+
+  xhr.onreadystatechange = function() {
+    if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+      
+    }
+  };
+
+  
+    xhr.send(JSON.stringify(data)); // JSON 형태의 데이터 전송
+  
+  resultElement.innerText = number;
+  minusTotalCount();
+  
+}
+function deletecate(element) {
+const itemWrapper = element.parentNode.parentNode;
+ const resultElement = element.parentNode.previousElementSibling.previousElementSibling;
+ let number = resultElement.innerText;
+
+ const cateIdList = document.querySelectorAll('.cate_id');
+ const cateIdArray = Array.from(cateIdList);
+ const cateIdValues = cateIdArray.map(function(element) {
+   return element.value;
+ });
+ 
+ const cateIdIndex = cateIdArray.indexOf(itemWrapper.querySelector('.cate_id'));
+ const cateId = cateIdValues[cateIdIndex];
+ 
+      const priceList = document.querySelectorAll('.pro_price');
+  const priceArray = Array.from(priceList);
+  const priceValues = priceArray.map((element) => element.value);
+  
+  const priceIndex = priceArray.indexOf(itemWrapper.querySelector('.pro_price'));
+  const proprice = +priceValues[priceIndex];
+  
+  const amountDiv = itemWrapper.querySelector('.amount');
+  const amount = +amountDiv.innerText;
+  
+  const totalPrice = (amount-1) * proprice;
+  const totalSpan = itemWrapper.querySelector('.total');
+  
+  if (totalPrice >= proprice) {
+      totalSpan.innerText = parseCurrency(totalPrice);
+    }
+let xhr = new XMLHttpRequest();
+xhr.open('POST', 'catedelete.do', true);
+xhr.setRequestHeader('Content-Type', 'application/json'); // JSON 형태의 데이터 전송을 위한 설정
+
+xhr.onreadystatechange = function() {
+   if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
+      const categoryItem = element.closest('.deleteplz');
+      
+      const deleteprice = parseFloat(itemWrapper.parentNode.querySelector('.value_total').innerText.replace(/[\₩,]/g, ''));
+      const totalSpans = parseFloat(itemWrapper.querySelector('.total').innerText.replace(/[\₩,]/g, ''));
+      
+      const realtotal = deleteprice - totalSpans;
+      const realamount = itemWrapper.parentNode.querySelector('.amount_total').innerText;
+      
+      const amountDiv = itemWrapper.querySelector('.amount');
+      const amount = +amountDiv.innerText;
+      const amountminus = realamount - amount;
+      console.log(realamount)
+      console.log(amountminus)
+      
+      
+   if (categoryItem) {
+      categoryItem.remove()
+      const realrealtotal = document.querySelector('.value_total');
+      realrealtotal.innerText = parseCurrency(realtotal);
+      
+      const realrealamount = document.querySelector('.amount_total');
+      realrealamount.innerText = amountminus;
+   }
+   }
+};
+
+if (cateId != null) {
+   const data = {
+      number : number,
+      cateId : cateId
+   };
+   xhr.send(JSON.stringify(data)); // JSON 형태의 데이터 전송
+minusTotalCount();
+}
+}
 
 
 

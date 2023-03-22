@@ -11,6 +11,7 @@ public class CateVO {
 	private String pro_price;
 	private String pro_img1;
 	private String pro_maindesctitle;
+	private String pro_serialnumber;
 	
 	
 	//cate
@@ -19,10 +20,23 @@ public class CateVO {
 	private int cate_pro_price;
 	private String pro_option;
 	
+	//user
+	private String name;
 	
 	
+	public String getPro_serialnumber() {
+		return pro_serialnumber;
+	}
+	public void setPro_serialnumber(String pro_serialnumber) {
+		this.pro_serialnumber = pro_serialnumber;
+	}
 	
-	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
 	public String getPro_option() {
 		return pro_option;
 	}
@@ -90,7 +104,18 @@ public class CateVO {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-
-	
+	@Override
+	public String toString() {
+		return "CateVO [cate_id=" + cate_id + ", pro_number=" + pro_number + ", user_no=" + user_no + ", pro_name="
+				+ pro_name + ", pro_price=" + pro_price + ", pro_img1=" + pro_img1 + ", pro_maindesctitle="
+				+ pro_maindesctitle + ", total=" + total + ", amount=" + amount + ", cate_pro_price=" + cate_pro_price
+				+ ", pro_option=" + pro_option + ", getPro_option()=" + getPro_option() + ", getCate_pro_price()="
+				+ getCate_pro_price() + ", getCate_id()=" + getCate_id() + ", getPro_number()=" + getPro_number()
+				+ ", getUser_no()=" + getUser_no() + ", getPro_name()=" + getPro_name() + ", getPro_price()="
+				+ getPro_price() + ", getPro_img1()=" + getPro_img1() + ", getPro_maindesctitle()="
+				+ getPro_maindesctitle() + ", getTotal()=" + getTotal() + ", getAmount()=" + getAmount()
+				+ ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()=" + super.toString()
+				+ "]";
+	}
 	
 }
