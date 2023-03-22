@@ -83,7 +83,7 @@
 					<h2 style="margin-left: 100px;">상품명: <span>${orders.pro_name}</span></h2>
 					<p style="margin-left: 100px;">상품정보: <span>${orders.pro_maindesctitle }</span></p>
 					<span style="margin-left: 100px;">수 량 : </span>
-					<div class="amount" style="display: inline;">${orders.quantity}</div>
+					<div class="amount" style="display: inline;">${orders.count}</div>
 					<p style="margin-left: 100px;">
 						가 격 : <span class="total"><fmt:formatNumber
 								value="${orders.pro_price}" type="currency" currencySymbol="₩" /></span>
