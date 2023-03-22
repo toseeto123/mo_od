@@ -10,7 +10,7 @@
 
           <div class="col-lg-3 col-md-6">
             <div class="footer-info">
-              <h2>묻:mo_od</h2>
+              <h2 style="display:inline; font-family:궁서;">묻:</h2><h2 style="display:inline; font-family:굴림;">mo_od</h2>
             </div>
           </div>
 

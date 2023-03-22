@@ -22,22 +22,22 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="${pageContext.request.contextPath}/resources/assets/img/favicon.png" rel="icon">
-  <link href="${pageContext.request.contextPath}/resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="/resources/assets/img/favicon.png" rel="icon">
+  <link href="/resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
   
   <!-- Vendor CSS Files -->
-  <link href="${pageContext.request.contextPath}/resources/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="${pageContext.request.contextPath}/resources/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <link href="/resources/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/resources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/resources/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/resources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/resources/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/resources/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
 
   <!-- Template Main CSS File -->
-  <link href="${pageContext.request.contextPath}/resources/assets/css/style.css" rel="stylesheet">
+  <link href="/resources/assets/css/style.css" rel="stylesheet">
 
   <!-- =======================================================
   * Template Name: Groovin - v4.10.0
@@ -95,9 +95,18 @@
 
 			<c:if test="${!empty login_info.id}">
                <li class="/login_info" style="white">${login_info.name } [ ${login_info.id } ]</li>
+               <c:choose>
+               <c:when test="${login_info.id == 'admin' }">
+               <li><a href="/admin/chart.do"><span class="getstarted scrollto"> Admin</span> </a></li>
+               </c:when>
+               <c:otherwise>
                <li><a href="/mypage.do"><span class="getstarted scrollto"> Mypage</span> </a></li>
+               </c:otherwise>
+               </c:choose>
                <li><a href="/logout.do"><span class="getstarted scrollto">Logout</span></a></li>
+               <c:if test="${login_info.id != 'admin' }">
                <li><a href="/cate.do"><span class="getstarted scrollto">Bucket</span></a></li>
+               </c:if>
             </c:if>
 			<c:if test="${empty login_info.id}">
 				<li><a class="getstarted scrollto" href="/join.do">회원가입</a></li>
