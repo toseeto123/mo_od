@@ -215,5 +215,6 @@ a:hover {
 		});
 		
 	</script>
+<script type="text/javascript" src="/resources/user/js/adminMemberListSearching.js"></script>
 </body>
 </html>

@@ -345,7 +345,6 @@
                 <input type="text" name="name" class="form-control" id="name" placeholder="연락 가능 시간" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
               </div>
             </div>
-            
             <div class="form-group mt-3">
               <textarea class="form-control" name="message" rows="5" placeholder="집구조,면적을 준비해주시면 빠른 상담진행이 가능합니다." required></textarea>
             </div>
@@ -364,17 +363,3 @@
   </main><!-- End #main -->
 	
 	<jsp:include page="../../WEB-INF/common/footer.jsp" />
-	
-  <!-- Vendor JS Files -->
-  <script src="resources/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-  <script src="resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-  <script src="resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
-  <script src="resources/assets/vendor/php-email-form/validate.js"></script>
-
-  <!-- Template Main JS File -->
-  <script src="resources/assets/js/main.js"></script>
-</body>
-
-</html>

@@ -13,6 +13,9 @@ import org.springframework.ui.Model;
 import kr.co.mood.Payment.VO.AdminChartVO;
 import kr.co.mood.Payment.VO.AdminPaymentVO;
 import kr.co.mood.module.ModuleCommon;
+import kr.co.mood.module.ModuleVO;
+import kr.co.mood.module.ViewPagingVO;
+import kr.co.mood.user.dao.UserVO;
 
 @Service
 public class AdminPaymentService {
@@ -52,6 +55,34 @@ public class AdminPaymentService {
 		model.addAttribute("map", map);
 	
 		}
+	
+	public Map<String, Object> adminPaymentSearchingList(Model model, String paging, String searchWhat, String search) {
+		   ModuleVO moduleVO = new ModuleVO();
+		   Map<String, Object> map = new HashMap<String, Object>();
+		   if(search.equals("(none)")) {
+			   search = null;		   
+		   }else {
+			   if(searchWhat.equals("name")) {
+				   moduleVO.setSearchName(search);
+			   }else if(searchWhat.equals("orderNo")) {
+				   moduleVO.setOrderNo(search);
+			   }else if(searchWhat.equals("payDate")) {
+				   moduleVO.setDate(search);
+			   }else if(searchWhat.equals("phone")) {
+				   moduleVO.setPhone(search);
+			   }
+		   }
+		   System.out.println();
+		   List<AdminPaymentVO> memberSearchingAllList = dao.adminPaymentSearchingList(moduleVO);
+		   ViewPagingVO viewVO = module.pagingModule(model, moduleVO, memberSearchingAllList, paging, 1);
+		   List<AdminPaymentVO> memberSearchingShowList = dao.adminPaymentSearchingList(moduleVO);
+		   List<AdminPaymentVO> productList = dao.adminPaymentList();
+		   System.out.println(memberSearchingShowList);
+		   map.put("list", memberSearchingShowList);
+		   map.put("vo", viewVO);
+		   map.put("productList", productList);
+		   return map;
+	}
 	
 	
 }

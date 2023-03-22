@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -7,17 +7,23 @@
 <title>Insert title here</title>
 
 <script type="text/javascript" src="/resources/user/js/main.js"></script>
-<script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <link rel="stylesheet" href="/resources/user/css/join.css">
 
 <style>
-.logo{ font-family:"궁서" }
-.logo2{font-family:"굴림"}
+.logo {
+	font-family: "궁서"
+}
+
+.logo2 {
+	font-family: "굴림"
+}
 </style>
 
 
 </head>
 <body>
+
         
         <div id="header">
         <h1 class="logo"><a href="index.jsp">묻 : <span class="logo2">mo_od</span></a></h1>
@@ -72,10 +78,10 @@
                     <h3 class="join_title"><label for="age">나이</label></h3>
                     <div id="bir_wrap">
                         <div>
-                                <input type="radio" value="10-19" class="age" name="age" id="age" checked/>10대
-                                <input type="radio" value="20-29" class="age" name="age" id="age" />20대
-                                <input type="radio" value="30-39" class="age" name="age" id="age" />30대
-                                <input type="radio" value="40-49" class="age" name="age" id="age" />40대
+                                <input type="radio" value="10-19" class="age" name="age" id="age" checked/>10대 &nbsp;&nbsp;
+                                <input type="radio" value="20-29" class="age" name="age" id="age" />20대 &nbsp;&nbsp;
+                                <input type="radio" value="30-39" class="age" name="age" id="age" />30대 &nbsp;&nbsp;
+                                <input type="radio" value="40-49" class="age" name="age" id="age" />40대 &nbsp;&nbsp;
                                 <input type="radio" value="50대이상" class="age" name="age" id="age" />50대이상
                         </div>
                     </div>
@@ -126,7 +132,7 @@
                 <div>
                    <h3 class="join_title"><label for="adr">우편번호</label></h3>
                    <input type="text" class="address_input_1" name=adr id="adr" placeholder="우편번호" required>
-                    <input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+                    <input type="button" class="adrchk" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
                     <input type="text" class="address_input_2" name="adr2" id="adr2" placeholder="주소" required><br>
                     <input type="text" class="address_input_3" name="adr3" id="adr3" placeholder="상세주소" required>
                 </div>
@@ -149,6 +155,7 @@
       
       
       <script type="text/javascript">
+
       /* 인증번호 이메일 전송 */
     $(".mail_check_button").click(function(){
    
@@ -206,7 +213,7 @@
        
     });
       </script>
-       
-  
-    </body>
+
+
+</body>
 </html>

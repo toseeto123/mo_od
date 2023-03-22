@@ -146,6 +146,7 @@ img {
     <c:set var="totalPrice" value="${totalPrice + orders.pro_price}" />
     <input type="hidden" value="${orders.pro_name}" name="pro_name"> 
     <input type="hidden" value="${orders.pro_price}" name="pro_price"> 
+    <input type="hidden" value="${orders.pro_number}" name="pro_number"> 
     <input type="hidden" value="${orders.orderId}" name="orderId"> 
     <input type="hidden" value="${orders.userno }" name="userno">
     <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn">${totalPrice}원 결제하기</button>

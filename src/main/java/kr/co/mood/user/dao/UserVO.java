@@ -3,7 +3,12 @@ package kr.co.mood.user.dao;
 import java.util.Date;
 
 public class UserVO {
+	public UserVO() {
+		// TODO Auto-generated constructor stub
+	}
+	
    private int no;
+   private Integer partner_user_id;
    private String id;
    private String pwd;
    private String name;
@@ -14,19 +19,26 @@ public class UserVO {
    private String adr3;
    private String email;
    private String phone;
-   private Date day;
    
-public Date getDay() {
-	return day;
+public UserVO(int no) {
+       this.no = no;
+       this.partner_user_id = no;
+   }
+   
+   
+public int getPartner_user_id() {
+	return partner_user_id;
 }
-public void setDay(Date day) {
-	this.day = day;
+public void setPartner_user_id(int partner_user_id) {
+	this.partner_user_id = partner_user_id;
+    this.no = partner_user_id;
 }
 public int getNo() {
    return no;
 }
 public void setNo(int no) {
-   this.no = no;
+	this.no = no;
+    this.partner_user_id = no;
 }
 public String getId() {
    return id;

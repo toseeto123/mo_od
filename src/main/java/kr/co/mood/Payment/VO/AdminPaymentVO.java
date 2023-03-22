@@ -1,5 +1,8 @@
 package kr.co.mood.Payment.VO;
 
+import java.sql.Date;
+
+import java.sql.Date;
 
 public class AdminPaymentVO {	
 	
@@ -11,7 +14,22 @@ public class AdminPaymentVO {
 	private String productName;
 	private int price;
 	private int amount;
+	private Date payDate;
+	private int productCount;
 	
+	
+	public int getProductCount() {
+		return productCount;
+	}
+	public void setProductCount(int productCount) {
+		this.productCount = productCount;
+	}
+	public Date getPayDate() {
+		return payDate;
+	}
+	public void setPayDate(Date payDate) {
+		this.payDate = payDate;
+	}
 	public int getOrderNo() {
 		return orderNo;
 	}
@@ -65,7 +83,8 @@ public class AdminPaymentVO {
 	public String toString() {
 		return "AdminPaymentVO [orderNo=" + orderNo + ", name=" + name + ", address=" + address + ", phone=" + phone
 				+ ", productNo=" + productNo + ", productName=" + productName + ", price=" + price + ", amount="
-				+ amount + "]";
+				+ amount + ", payDate=" + payDate + ", productCount=" + productCount + "]";
 	}
-	 
+	
+	
 }

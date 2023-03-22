@@ -7,12 +7,7 @@
 <html>
 <head>
 <jsp:include page="../../common/header.jsp" />
-<script src="https://unpkg.com/phosphor-icons"></script>
-<script
-   src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script
-   src="https://cdnjs.cloudflare.com/ajax/libs/spring-webmvc/5.3.8/spring-webmvc.min.js"></script>
+
 <meta charset="UTF-8">
 <title>장바구니</title>
 <style>
@@ -178,7 +173,7 @@ background-color: #c8936ed4;
 }
 
 
-.cateBtn , .btn_buy{
+.cateBtn , .btn_buy , .cancelbtn{
    background-color: #c8936ed4;
    width: 416px;
    height: 50px;
@@ -193,20 +188,21 @@ background-color: #c8936ed4;
 <script type="text/javascript">
 
 window.onload = function() {
-	   updateTotalCount();
-	   minusTotalCount();
-	if(userNo=="") {
+	updateTotalCount();
+	minusTotalCount();
+	if (${not empty login_info.id}) {
+		 
+	} else {
+		var path = location.pathname;
 		console.log(path);
+		var login_chk = confirm('로그인이 필요한 서비스입니다. 로그인페이지로 이동하시겠습니까?');
+		if (login_chk) {
+			location.href = '/login.do?redirect=' + encodeURIComponent(path); // 현재 페이지 경로를 redirect 파라미터로 전달합니다.
+		} else {
 			
-		   var login_chk = confirm('로그인이 필요한 서비스입니다. 로그인페이지로 이동하시겠습니까?');
-			if(login_chk) {
-				location.href='/login.do';
-			} else {
-				location.href = path;
-			}} else {
-				location.href = location.href;
-			}
-
+		}
+	}
+	
 }
 
 function parseCurrency(num) {
@@ -540,26 +536,31 @@ function deletecate(element) {
 
 
          </p>
-			<div class="price_sum">
-				<div class="price_sum_cont">
-					<div class="price_sum_list">
-						<dl style="font-size: 20px;">
-							<dt>
-								총 <strong class="amount_total">0</strong> 개의 상품 금액
-							</dt>
-							<dd>
-								<span><i class="ph-equals"
-									style="font-size: 20px; color: blue;"></i></span> 합계 <strong
-									class="value_total">0</strong> 원
-							</dd>
-						</dl>
-
-					</div>
-				</div>
-			</div>
+         <div class="price_sum">
+            <div class="price_sum_cont">
+               <div class="price_sum_list">
+                  <dl style="font-size: 20px;">
+                     <dt>
+                        총 <strong class="amount_total">0</strong> 개의 상품 금액<span> : </span><strong class="value_total">0</strong> 원
+                     </dt>
+                     <dd>
+                        
+                     </dd>
+                  </dl>
+                  
+                  <input type="submit" value="바로결제하기" class="btn_buy"> <br><br>
+                  <input type="button" value="메인페이지로 이동" class="cancelbtn" onclick="window.location='/mo_od';">
+				
+               </div>
+            </div>
+         </div>
       </div>
    </div>
    </form>
 </body>
 <jsp:include page="../../common/footer.jsp" />
+<script>
+ 
+</script>
+
 </html>

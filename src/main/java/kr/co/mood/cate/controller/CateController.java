@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -58,13 +59,20 @@ public class CateController {
 		return mav;
 	}
 
-   @RequestMapping(value="/cateinsert.do" , method = RequestMethod.POST)
-   public String insertcate(HttpSession session, Model model, @RequestParam("pro_number") String pro_number,@RequestParam("pro_price") int pro_price,@RequestParam("radioOption") String pro_option) {
-       System.out.println("�뇖�궠�샑占쎈콦�뜝�럩逾ε뜝�럡�맋�뜝�럥諭쒎뜝�룞�삕�뜝�럥�몗!");
-	   UserVO uvo = (UserVO) session.getAttribute("login_info");	
-	   if(uvo==null) {
-		   return "redirect:/login.do";
-	   } else {
+	@RequestMapping(value="/cateinsert.do" , method = RequestMethod.POST)
+	public String insertcate(HttpSession session, @RequestParam("pro_number") String pro_number,
+	                         @RequestParam("pro_price") int pro_price, @RequestParam("radioOption") String pro_option,
+	                         RedirectAttributes redirectAttributes) {
+	    UserVO uvo = (UserVO) session.getAttribute("login_info");
+	    if(uvo==null) {
+	        CateVO cvo = new CateVO();
+	        cvo.setPro_number(pro_number);
+	        cvo.setCate_pro_price(pro_price);
+	        cvo.setTotal(pro_price);
+	        cvo.setPro_option(pro_option);
+	        redirectAttributes.addFlashAttribute("cvo", cvo);
+	        return "redirect:/proCatelogin.do";
+	    } else {
        int userid = uvo.getNo();
        CateVO cvo = new CateVO();
      
@@ -83,11 +91,20 @@ public class CateController {
    public String showCateList(HttpSession session, Model model) {
        UserVO uvo = (UserVO) session.getAttribute("login_info");
        int userid = uvo.getNo();
-       
-       // 濚욌꼬�궡�꺇�뜝�럡�뀬 insert�뜝�럥�걫占쎈쐻�뜝占� 占쎈쎗占쎈젻泳��λ쐻占쎈짗占쎌굲占쎈눀�뜝�뜾堉⑨옙癒��굲 占쎈쐻占쎈윪筌띻쐼�쐻占쎈윥占쎈뤅 cate_id占쎈쨬占쎈즸占쎌굲 null占쎈쐻占쎈윪�억옙 占쎈쐻占쎈윥占쎈떋占쎈쐻占쎈윥�뜮占� 占쎈쐻占쎈윥占쎈룶癲ル슢�뀈泳�戮⑺맪�뜝占� 占쎈뙑�⑤슦占싼띿삕占쎈쨧占쎈쐻占쎈윥�뜝�뜴�쐻占쎈윥�뜮�씢�쐻占쎈윥�젆占�.
        model.addAttribute("map", cservice.selectCateList(userid));
        return "/cate/cate";
    }
+   
+   @RequestMapping(value = "/beLoginCate", method = RequestMethod.GET)
+   public String beLoginCate(HttpSession session, Model model) {
+	   System.out.println("비로그인 카트 이동");
+       UserVO uvo = (UserVO) session.getAttribute("login_info");
+       
+
+       return "/cate/cate";
+   }
+   
+   
    
    @RequestMapping(value = "/plus.do", method = RequestMethod.POST)
    public String update(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
