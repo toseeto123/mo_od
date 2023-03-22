@@ -103,10 +103,8 @@ public class userPaymentController {
       int userid = uvo.getNo();
       System.out.println("ㅆㅓㅁ"+total);
       int proid = pro_number;
-      
-      
+   
       userOrderVO ordervo = new userOrderVO();
-      
 
       ordervo.setUserNo(userid);
 
