@@ -47,9 +47,10 @@ public class userPaymentController {
    public String processOrder(HttpSession session ,Model model, 
 		   @RequestParam("pro_number") int pro_number, 
 		   @RequestParam("pro_price") int pro_price,
+		   @RequestParam("radioOption") String pro_option,
 		   RedirectAttributes redirectAttributes) {
       UserVO uvo = (UserVO)session.getAttribute("login_info");
-
+      System.out.println("옵션 : "+pro_option);
       userOrderVO ordervo = new userOrderVO();
 
       
@@ -65,9 +66,7 @@ public class userPaymentController {
           ordervo.setPrice(price);
           //ordervo.setPro_number(proid);
           int count = ordervo.getOrderCount();
-          count = 1;
-          model.addAttribute(count);
-          ordervo.setOrderCount(count);
+
           payService.insert(ordervo, uvo, null);
           System.out.println("orderId:" + ordervo.getOrderId());
       }else { 
@@ -77,6 +76,8 @@ public class userPaymentController {
           
           orderProVo.setPro_number(pro_number);
           orderProVo.setPrice(pro_price);
+          orderProVo.setPro_option(pro_option);
+          orderProVo.setCount(0);
           ordervo1.setPro_number(pro_number);
           ordervo1.setPrice(pro_price);
           
@@ -100,18 +101,18 @@ public class userPaymentController {
       orderProVo.setOrderId(orderId);
       orderProVo.setPro_number(pro_number);
       orderProVo.setPrice(pro_price);
+      orderProVo.setPro_option(pro_option);
+      orderProVo.setCount(0);
       //orderProVo.setCount(count);
       //orderProVo.setPro_name(pvo.getPro_name());
-      System.out.println(orderProVo);
       
       productPayService.insert(orderProVo, uvo, null);
 
       
-      model.addAttribute("orders", productPayService.selectList(orderId));
-      System.out.println(productPayService.selectList(orderId));
+      model.addAttribute("onelist", productPayService.selectList(orderId));
       
       
-      return "User/userPayOne";
+      return "User/userPay";
    }
    
    

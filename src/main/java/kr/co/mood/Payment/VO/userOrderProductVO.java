@@ -33,10 +33,20 @@ public class userOrderProductVO {
 	//product 李몄“�궎
 	private int pro_number;
 	private int count;
+	private int amount;
 	
 	private int price;
 	
 	
+	
+	public int getAmount() {
+		return amount;
+	}
+
+	public void setAmount(int amount) {
+		this.amount = amount;
+	}
+
 	public userOrderProductVO(int orderId) {
 	       this.orderId = orderId;
 	       this.partner_order_id = orderId;
