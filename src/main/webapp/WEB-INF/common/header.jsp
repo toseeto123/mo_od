@@ -39,12 +39,18 @@
   <!-- Template Main CSS File -->
   <link href="/resources/assets/css/style.css" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: Groovin - v4.10.0
-  * Template URL: https://bootstrapmade.com/groovin-free-bootstrap-theme/
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+<style>
+b{
+font-size: 18px;
+}
+
+li {
+   display: flex;
+   align-items: center;
+   margin: 10px;
+   margin-bottom: 0;
+}
+</style>
 </head>
 
 <body>
@@ -60,7 +66,7 @@
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-       <h1 class="logo" style="font-family:'궁서';"><a href="/index.jsp">묻:<span class="logo2" style="font-family:'굴림';">mo_od</span></a></h1>
+       <h1 class="logo" style="font-family:'궁서'; font-size: 40px;"><a href="/index.jsp">묻:<b class="logo2" style="font-family:'굴림'; font-size: 40px;">mo_od</b></a></h1>
  
       <nav id="navbar" class="navbar">
         <ul>
@@ -94,24 +100,22 @@
           </li>
 
 			<c:if test="${!empty login_info.id}">
-               <li class="/login_info" style="white">${login_info.name } [ ${login_info.id } ]</li>
+               <li class="/login_info" style="color : white;">${login_info.name } [ ${login_info.id } ]</li>
                <c:choose>
                <c:when test="${login_info.id == 'admin' }">
                <li><a href="/admin/chart.do"><span class="getstarted scrollto"> Admin</span> </a></li>
                </c:when>
                <c:otherwise>
-               <li><a href="/mypage.do"><span class="getstarted scrollto"> Mypage</span> </a></li>
+               <li><a href="/mypage.do"><span class="getstarted scrollto"> <b>Mypage</b></span> </a></li>
                </c:otherwise>
                </c:choose>
-               <li><a href="/logout.do"><span class="getstarted scrollto">Logout</span></a></li>
-               <c:if test="${login_info.id != 'admin' }">
-               <li><a href="/cate.do"><span class="getstarted scrollto">Bucket</span></a></li>
-               </c:if>
+               <li><a href="/logout.do"><span class="getstarted scrollto"><b>Logout</b></span></a></li>
+               
             </c:if>
 			<c:if test="${empty login_info.id}">
-				<li><a class="getstarted scrollto" href="/join.do">회원가입</a></li>
-				<li><a class="getstarted scrollto" href="/login.do">로그인</a></li>
-				<li><a class="getstarted scrollto cart-btn" href="#">버킷</a></li>
+				<li><a class="getstarted scrollto" href="/join.do"><b>회원가입</b></a></li>
+				<li><a class="getstarted scrollto" href="/login.do"><b>로그인</b></a></li>
+				
 			</c:if>
         </ul>
 

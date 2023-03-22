@@ -12,6 +12,8 @@ import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.validation.BindingResult;
@@ -23,6 +25,7 @@ import kr.co.mood.Payment.VO.KakaoPayApprovalVO;
 import kr.co.mood.Payment.VO.KakaoPayReadyVO;
 import kr.co.mood.cate.DAO.CateService;
 import kr.co.mood.pay.DAO.KakaoPayApprovalService;
+
 
 @Controller
 public class KakaoPay {
@@ -89,6 +92,7 @@ public class KakaoPay {
            
        }
        
+       @Transactional
        public KakaoPayApprovalVO kakaoPayInfo(@RequestParam("pg_token")String pg_token,
     		   								  @RequestParam("orderId") int orderId,
     		   								@RequestParam("userno") String userno,
@@ -115,20 +119,22 @@ public class KakaoPay {
            
            HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
            try {
-               kakaoPayApprovalVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/approve"), body, KakaoPayApprovalVO.class);
-               System.out.println("" + kakaoPayApprovalVO);
-               kservice.paymentinsert(kakaoPayApprovalVO);
-               kservice.paysuccessupdate(pro_number);
-               kservice.paysuccessdelete(userno);
-               
-               
-               return kakaoPayApprovalVO;
-           
-           } catch (RestClientException e) {
-               e.printStackTrace();
-           } catch (URISyntaxException e) {
-               e.printStackTrace();
-           }
+        	    kakaoPayApprovalVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/approve"), body, KakaoPayApprovalVO.class);
+        	    System.out.println("" + kakaoPayApprovalVO);
+        	    // kservice.paymentinsert() 메소드 예외 처리 추가
+        	    kservice.paymentinsert(kakaoPayApprovalVO);
+        	    kservice.paysuccessupdate(pro_number);
+        	    kservice.paysuccessdelete(userno);
+        	    return kakaoPayApprovalVO;
+        	} catch (RestClientException e) {
+        	    e.printStackTrace();
+        	} catch (URISyntaxException e) {
+        	    e.printStackTrace();
+        	} catch (Exception e) {
+        	    // kservice.paymentinsert() 메소드에서 예외 발생시 롤백 처리
+        	    TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+        	    e.printStackTrace();
+        	}
            
       return kakaoPayApprovalVO;
 

@@ -122,29 +122,56 @@ input[type="radio"]:checked:before {
             <div class="d-flex align-items-center">
                
                <ol>
-                  <li><a href="#">대카테고리</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
-                  
                   <c:if test="${list.pro_categoryserial  eq 'A0' }">
-                  <li><a href="/A0categoryList">매트리스</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/A0categoryList">가구</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'A1' }">
-                  <li><a href="/A1categoryList">침대프레임</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/A1categoryList">가구</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'A2' }">
+                  <li><a href="/A3categoryList">가구</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B0' }">
-                  <li><a href="/B0categoryList">무드등</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/B0categoryList">조명</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B1' }">
-                  <li><a href="/B1categoryList">스탠드조명</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/B1categoryList">조명</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C0' }">
-                  <li><a href="/C0categoryList">옷장/행거</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/C0categoryList">수납</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C1' }">
-                  <li><a href="/C1categoryList">서랍</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/C1categoryList">수납</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if> 
                   
+                  <c:if test="${list.pro_categoryserial  eq 'A0' }">
+                  <li><a href="/A0categoryList">매트리스</a>&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'A1' }">
+                  <li><a href="/A1categoryList">침대프레임</a>&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'A2' }">
+                  <li><a href="/A2categoryList">소파</a>&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'B0' }">
+                  <li><a href="/B0categoryList">무드등</a>&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'B1' }">
+                  <li><a href="/B1categoryList">스탠드조명</a>&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'C0' }">
+                  <li><a href="/C0categoryList">옷장/행거</a>&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'C1' }">
+                  <li><a href="/C1categoryList">서랍</a>&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if> 
+                  
+                  
+                  <li><a href="">${list.pro_name}</a></i></li>
+                  
+                  
                </ol>
-               <strong> ${list.pro_name}</<strong>
+ 
             </div>
 
          </div>
@@ -298,7 +325,7 @@ input[type="radio"]:checked:before {
         <div class="row">
 <c:forEach var="randomList" items="${randomList}" begin="0" end="3">
           <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="member">
+            <div class="member" style="cursor: pointer;" onclick="location.href='/product/${randomList.pro_number}'">
               <img src="${pageContext.request.contextPath}/resources/assets/img/product/${randomList.pro_img1}" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">

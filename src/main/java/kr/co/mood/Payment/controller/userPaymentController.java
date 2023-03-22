@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -42,7 +43,7 @@ public class userPaymentController {
    ProductService productService;
    
    
-   
+   @Transactional
    @RequestMapping(value="/orders" , method = RequestMethod.POST)
    public String processOrder(HttpSession session ,Model model, 
 		   @RequestParam("pro_number") int pro_number, 
@@ -50,25 +51,11 @@ public class userPaymentController {
 		   @RequestParam("radioOption") String pro_option,
 		   RedirectAttributes redirectAttributes) {
       UserVO uvo = (UserVO)session.getAttribute("login_info");
-      System.out.println("옵션 : "+pro_option);
       userOrderVO ordervo = new userOrderVO();
-
       
       if (ordervo != null && uvo != null ) {
-    	  int userid = uvo.getNo();
-          
-          int proid = pro_number;
-          int price = pro_price;
-      
-          System.out.println(ordervo);
-          //占쎌젟癰귨옙 占쎌궎占쎈쐭占쎈 믭옙 뵠 뇡遺용퓠 占쎈뼖疫뀐옙
-          ordervo.setUserNo(userid);
-          ordervo.setPrice(price);
-          //ordervo.setPro_number(proid);
-          int count = ordervo.getOrderCount();
+    	  
 
-          payService.insert(ordervo, uvo, null);
-          System.out.println("orderId:" + ordervo.getOrderId());
       }else { 
 
           userOrderProductVO orderProVo = new userOrderProductVO();
@@ -85,16 +72,14 @@ public class userPaymentController {
           session.setAttribute("orderProVo", orderProVo);
     	  return "redirect:/payBeLogin.do";
       }
-      System.out.println(payService);
+      int userid = uvo.getNo();
       
+      ordervo.setUserNo(userid);
+      ordervo.setPrice(pro_price);
+
+      payService.insert(ordervo, uvo, null);
       
-      
-      // 뵳 딅뮞占쎈뱜 占쏙옙占쎈뻿 orderProduct占쎈퓠 return占쎌뜎 insert 占쎈퉸占쎈튊占쎈맙
-      // 占쎄맒占쎈   揶쏉옙占쎈땾占쎈뮉 占쎌뵬占쎈뼊 獄쏆꼷 겫占쎈┷筌롳옙  빊遺쏙옙占쎈릭占쎈뮉椰꾨챶以  占쎈퉸癰귣  뮉椰꾨챶以 .
-      //Map<String, String> params = new HashMap<String,String>();
-      //params.put("orderId", "orderId");
-      //System.out.println(params.get("orderId"));
-      
+    
       int orderId = ordervo.getOrderId();
       
       userOrderProductVO orderProVo = new userOrderProductVO();
@@ -103,28 +88,20 @@ public class userPaymentController {
       orderProVo.setPrice(pro_price);
       orderProVo.setPro_option(pro_option);
       orderProVo.setCount(0);
-      //orderProVo.setCount(count);
-      //orderProVo.setPro_name(pvo.getPro_name());
       
       productPayService.insert(orderProVo, uvo, null);
-
       
       model.addAttribute("onelist", productPayService.selectList(orderId));
-      
-      
+           
       return "User/userPay";
    }
    
    
    @RequestMapping(value="/cateorders" , method = RequestMethod.POST)
-   public String cateProcessOrder(HttpSession session ,Model model, @RequestParam("pro_number") int pro_number , @RequestParam("total") List<Integer> total) {
+   public String cateProcessOrder(HttpSession session ,Model model, @RequestParam("pro_number") int pro_number , @RequestParam("totalValue") int total) {
       UserVO uvo = (UserVO)session.getAttribute("login_info");
       int userid = uvo.getNo();
-      int sum = 0;
-      for (int totals : total) {
-          sum += totals;
-      }
-      System.out.println("ㅆㅓㅁ"+sum);
+      System.out.println("ㅆㅓㅁ"+total);
       int proid = pro_number;
       
       
@@ -137,7 +114,7 @@ public class userPaymentController {
       count = 1;
       model.addAttribute(count);
       ordervo.setOrderCount(count);
-      ordervo.setPrice(sum);
+      ordervo.setPrice(total);
       if (ordervo != null && uvo != null ) {
           payService.insert(ordervo, uvo, null);
           System.out.println("orderId:" + ordervo.getOrderId());
@@ -152,7 +129,7 @@ public class userPaymentController {
       userOrderProductVO orderProVo = new userOrderProductVO();
       orderProVo.setOrderId(orderId);
       orderProVo.setPro_number(proid);
-      orderProVo.setPrice(sum);
+      orderProVo.setPrice(total);
       orderProVo.setCount(count);
       orderProVo.setUserno(userid);
       
