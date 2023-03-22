@@ -17,13 +17,8 @@
 
 <link rel="canonical"
    href="https://getbootstrap.com/docs/4.6/examples/checkout/">
-
-
-
 <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
-
-
 
 <style>
 
@@ -76,7 +71,7 @@ li .btnspan {
    border-radius: 50%;
    background-color: #ccc;
    margin-right: 5px;
-   font-size: 16px;
+   font-size: 20px;
    color: #fff;
 }
 li .btnspan_on{
@@ -101,7 +96,7 @@ background-color: #c8936ed4;
    li .btnspan {
       width: 20px;
       height: 20px;
-      font-size: 12px;
+      font-size: 18px;
    }
 }
 .order_wrap {
@@ -135,18 +130,18 @@ background-color: #c8936ed4;
 
 .order_wrap .order_tit h2 {
    float: left;
-   font-size: 28px;
+   font-size: 32px;
    color: #222222;
 }
 
 .order_wrap .order_tit ol li {
    float: left;
-   font-size: 14px;
+   font-size: 20px;
    color: #d1d1d1;
 }
 
 .order_wrap .order_tit li span {
-   font-size: 16px;
+   font-size: 22px;
    font-weight: bold;
 }
 
@@ -157,7 +152,19 @@ background-color: #c8936ed4;
 .content_box {
    margin-top: 10px;
 }
+.mb-3{
+ 	font-size: 24px;
+}
+.btn-primary {
+	background-color:#c8936ed4;
+}
+
+body {
+	height:100%;
+}
+
 </style>
+<jsp:include page="../../common/header.jsp" />
 <!-- Custom styles for this template -->
 <link href="form-validation.css" rel="stylesheet">
 <!-- jQuery -->
@@ -165,7 +172,7 @@ background-color: #c8936ed4;
    src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 
 </head>
-<jsp:include page="../../common/header.jsp" />
+
 <body class="bg-light">
    <section id="hero" style="height: 400px;">
       <div class="hero-container">
@@ -221,7 +228,7 @@ background-color: #c8936ed4;
                      <label for="lastName">전화번호 : </label> <strong>${login_info.phone}</strong>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="address">주소 : </label> <strong>${login_info.adr}</strong>
+                     <label for="address">주 소 : </label> <strong>${login_info.adr}</strong>
                   </div>
                   <div class="col-md-6 mb-3">
                      <label for="lastName">E-mail : </label> <strong>${login_info.email}</strong>
@@ -318,7 +325,7 @@ background-color: #c8936ed4;
 
 
 
-   </div>
+   </div><br>
 
 
 
@@ -334,10 +341,6 @@ background-color: #c8936ed4;
    <script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 
    <script src="form-validation.js"></script>
-
-   <form method="post" action="/kakaoPay"></form>
-
-   
 
 
    <jsp:include page="../../common/footer.jsp" />
