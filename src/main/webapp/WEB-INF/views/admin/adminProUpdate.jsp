@@ -32,10 +32,13 @@
 <div class="inputArea"> 
 카테고리 : 
                         <c:if test="${list.pro_categoryserial  eq 'A0' }">
-						가구 > 침대프레임
+						가구 > 매트리스
 						</c:if>
 						<c:if test="${list.pro_categoryserial  eq 'A1' }">
-						가구 > 매트리스
+						가구 > 침대프레임
+						</c:if>
+						<c:if test="${list.pro_categoryserial  eq 'A2' }">
+						가구 > 침대프레임
 						</c:if>
 						<c:if test="${list.pro_categoryserial  eq 'B0' }">
 						조명 > 무드등
@@ -99,35 +102,35 @@
 <div class="inputArea">
  <label for="">이미지1</label>
  <input type="file" id="" name="pro_img1" onchange="readURL(this);" />
- <img alt="" src="resources/assets/img/product/${list.pro_img1}" style="width: 100px; height: 100px;"> >>변경후>>
+ <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" style="width: 100px; height: 100px;"> >>변경후>>
  <img id="preview" style="width: 100px; height: 100px;"/>
 </div><hr>
 
 <div class="inputArea">
 <label for="">이미지2</label>
  <input type="file" id="" name="pro_img2" onchange="readURL(this);" />
- <img alt="" src="resources/assets/img/product/${list.pro_img2}" style="width: 100px; height: 100px;"> >>변경후>>
+ <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img2}" style="width: 100px; height: 100px;"> >>변경후>>
  <img id="preview" style="width: 100px; height: 100px;"/>
 </div><hr>
 
 <div class="inputArea">
 <label for="">이미지3</label>
  <input type="file" id="" name="pro_img3" onchange="readURL(this);" />
- <img alt="" src="resources/assets/img/product/${list.pro_img3}" style="width: 100px; height: 100px;"> >>변경후>>
+ <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img3}" style="width: 100px; height: 100px;"> >>변경후>>
  <img id="preview" style="width: 100px; height: 100px;"/>
 </div><hr>
 
 <div class="inputArea">
 <label for="">이미지4</label>
  <input type="file" id="" name="pro_img4" onchange="readURL(this);" />
- <img alt="" src="resources/assets/img/product/${list.pro_img4}" style="width: 100px; height: 100px;"> >>변경후>>
+ <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img4}" style="width: 100px; height: 100px;"> >>변경후>>
  <img id="preview" style="width: 100px; height: 100px;"/>
 </div><hr>
 
 <div class="inputArea">
 <label for="">이미지5</label>
  <input type="file" id="" name="pro_img5" onchange="readURL(this);" />
- <img alt="" src="resources/assets/img/product/${list.pro_img5}" style="width: 100px; height: 100px;"> >>변경후>>
+ <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img5}" style="width: 100px; height: 100px;"> >>변경후>>
  <img id="preview" style="width: 100px; height: 100px;"/>
 </div><hr>
 

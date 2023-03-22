@@ -30,13 +30,14 @@ public class ProductController {
 	
 
 	@RequestMapping(value = "/proList.do")
-	public String proList(ArrayList<ProVO> vo, Model model) throws Exception {
-		List<ProVO> list = ps.selectProList(vo);
-		System.out.println(ps.selectProList(vo));
+	public String proList(ModuleVO vo, Model model) throws Exception {
+		ModuleVO moduleVO = new ModuleVO();
+		List<ProVO> list = ps.selectProList(moduleVO);
+		System.out.println(ps.selectProList(moduleVO));
 		model.addAttribute("list", list);
 		System.out.println("紐⑤뜽"+model);
 		System.out.println("由ъ뒪�듃"+list);
-		System.out.println("ps"+ps.selectProList(vo));
+		System.out.println("ps"+ps.selectProList(moduleVO));
 		
 		return "Product/productList";
 	}

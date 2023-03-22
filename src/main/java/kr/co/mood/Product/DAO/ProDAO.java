@@ -15,7 +15,7 @@ public class ProDAO {
 	@Autowired
 	private SqlSessionTemplate session;
 
-	public List<ProVO> selectProList(List<ProVO> vo) {
+	public List<ProVO> selectProList(ModuleVO vo) {
 		return session.selectList("ProDAO.selectProList", vo);
 	}
 	public List<ProVO> selectProRandom(List<ProVO> vo) {
