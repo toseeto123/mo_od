@@ -13,39 +13,61 @@
     
      <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-    <script type="text/javascript" src="/resources/user/js/main.js"></script>
+    <!-- Favicons -->
+  <link href="/resources/assets/img/favicon.png" rel="icon">
+  <link href="/resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
+  
+  <!-- Vendor CSS Files -->
+  <link href="/resources/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
+  <link href="/resources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="/resources/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="/resources/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+  <link href="/resources/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+  <link href="/resources/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="/resources/assets/css/style.css" rel="stylesheet">
+  
+    
     
    
 </head>
 <body>
 
- <div class="wrap">
-            <div class="form-wrap">
-                <div class="button-wrap">
-                    <div id="btn"></div>
-                    <button type="button" class="togglebtn" onclick="login()">LOG IN</button>
-                </div>
-                <div class="social-icons">
-              <div style="font-size:30px;"><p style="display:inline; font-family:궁서;">묻:</p><p style="display:inline; font-family:굴림;">mo_od</p></div>
-                </div>
-                <form id="login" action="/adminLogin.do" class="input-group" method="post">
-               
-                    <input type="text" name="id" class="input-field" placeholder="Enter Id" required autofocus>
-                    <input type="password" name="pwd" class="input-field" placeholder="Enter Password" required>
+ <div class="login">
+	<div class="form-login">
+	<div style="font-size:30px;"><p style="display:inline; font-family:궁서;">묻:</p><p style="display:inline; font-family:굴림;">mo_od</p></div>
+		<div class="social-icons">
+  
+			<form id="login" action="/adminLogin.do" class="input-group" method="post">
+				<input type="text" name="id" class="input-field" placeholder="아이디"
+					required autofocus> <input type="password" name="pwd"
+					class="input-field" placeholder="비밀번호" required>
 
-               <c:if test="${ msg == false }">
-                       <br><br>
-                        <p style="color:red; font-size: 10px;" >존재하지 않는 아이디 또는 비밀번호 입니다</p>
-               </c:if>
-               
-                    <br><br>
-                    <div>
-                    <button class="submit" style="width: 130px; float:left;">Login</button>
-                    <input type="button" class="submit" value="Client" onclick="location.href='/goclient.do'" style="width: 130px; float:right;">
-                    </div>
-                </form>
-            </div>
-             
-        </div>
+
+				<c:if test="${ msg == false }">
+					<br>
+					<br>
+					<p style="color: red; font-size: 15px;">존재하지 않는 아이디 또는 비밀번호입니다</p>
+				</c:if>
+
+				<br>
+				<br>
+
+				<button class="submit" style="color: white;">로그인</button>
+
+
+			</form>
+			                    <button class="submit" style="width: 130px; float:left;">Login</button>
+				<input type="button" class="submit" value="Client" onclick="location.href='/goclient.do'" style="width: 130px; float:right;">
+
+		</div>
+	</div>
+</div>
+<jsp:include page="/WEB-INF/common/footer.jsp" />
+<script type="text/javascript" src="/resources/user/js/main.js"></script>
 </body>
 </html>
