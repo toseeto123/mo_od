@@ -8,9 +8,19 @@
 <title>Chart</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-a:hover {
-	cursor: pointer;
+input[type=button] {
+	line-height: 24px;
+	color: white;
+	background: #C39873;
+	border-radius: 10px;
+	border: none;
+	width: 100px;
+	height: 30px;
 }
+input[type=button]:hover{
+	border: 2px solid #C39873;
+	background: transparent;
+}	
 </style>
 </head>
 
@@ -74,7 +84,7 @@ a:hover {
 						<td>${userInfo.adr}${userInfo.adr2} ${userInfo.adr3}</td>
 					</tr>
 					<tr>
-						<td><a id="goBack" href="" onclick="e()">돌아가기</a></td>
+						<td><input type="button" onclick="goBack()" value="돌아가기"></td>
 					</tr>
 				</tbody>
 			</table>
@@ -88,19 +98,21 @@ a:hover {
 	</section>
 	<!-- End Hero -->
 	<script>
-	const referrer = document.referrer;
-	const ref = referrer.split('/')
-	let indexNo;
-	var uri = '';
-	for(var count=0; count<ref.length; count++){
-		if(ref[count] == "admin"){
-			indexNo = count;
+	function goBack(){
+		const referrer = document.referrer;
+		const ref = referrer.split('/')
+		let indexNo;
+		var uri = '';
+		for(var count=0; count<ref.length; count++){
+			if(ref[count] == "admin"){
+				indexNo = count;
+			}
 		}
+		for(var index=indexNo; index<ref.length; index++){
+			uri = uri+'/'+ref[index];
+		}
+		location.href=uri;
 	}
-	for(var index=indexNo; index<ref.length; index++){
-		uri = uri+'/'+ref[index];
-	}
-	document.getElementById("goBack").href=uri;
 </script>
 </body>
 </html>
