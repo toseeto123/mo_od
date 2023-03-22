@@ -268,6 +268,9 @@ input[type="radio"]:checked:before {
          <form action="/products/orders" class="order_form" method="post">
              <input type="hidden" id="userNo" name="userNo" value="${login_info.no}">
             <input type="hidden" id="userAdr" value="${login_info.adr}">
+            <input type="hidden" name="radioOption" value="${list.pro_option1 }">
+            <input type="hidden" name="radioOption" value="${list.pro_option2 }">
+            <input type="hidden" name="radioOption" value="${list.pro_option3 }">
             <input type="hidden" name="pro_price" value="${list.pro_price}">
             <input type="hidden" name="pro_number" value="${list.pro_number}">
             <input type="hidden" name="pro_name" value="${list.pro_name}">
@@ -343,15 +346,17 @@ input[type="radio"]:checked:before {
    var userAdr = $('#userAdr').val();
    /* 바로구매 버튼 */
    $(".btn_buy").on("click", function(){
-	   if(userNo=="") {
-	   var login_chk = confirm('로그인이 필요한 서비스입니다. 로그인페이지로 이동하시겠습니까?');
-		if(login_chk) {
-			$(".order_form").submit();
-		} else {
-			location.href = location.href;
-		}} else {
-	        $(".order_form").submit();
-		}
+   if(userNo=="") {
+   var login_chk = confirm('로그인이 필요한 서비스입니다. 로그인페이지로 이동하시겠습니까?');
+    if(login_chk) {
+        $(".cateinsert").attr("action", "/products/orders");
+        $(".cateinsert").submit();
+    } else {
+        location.href = location.href;
+    }} else {
+        $(".cateinsert").attr("action", "/products/orders");
+        $(".cateinsert").submit();
+    }
 	   
 	   if(userAdr=="" && userNo!=""){
 		   var adr_chk = confirm('필수입력정보를 입력해주세요.\n(간편 로그인경우 주소,휴대폰번호 정보가 부족할 수 있습니다.)');
@@ -361,8 +366,6 @@ input[type="radio"]:checked:before {
 				location.href = location.href;
 			}
 	   }
-	   
-	   
 
    });
   
