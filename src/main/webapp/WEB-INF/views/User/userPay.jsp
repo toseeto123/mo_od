@@ -241,8 +241,6 @@ background-color: #c8936ed4;
                   <input type="hidden" name="pro_name" value=${list.pro_name }>
                   <input type="hidden" name="pro_number" value="${list.pro_number }">
 
-
-
                   <div class="row">
                      <div class="col-md-6 mb-3">
                         <label for="cc-name"></label> <img alt=""
@@ -250,20 +248,55 @@ background-color: #c8936ed4;
                            style="width: 100px; height: 100px; margin-bottom: 10px;">
 
                         <div style="display: inline-block;">
-                           <small class="text-muted">상품명 : ${list.pro_name}<br>옵 션 : ${list.pro_option}<br>설 명 : ${list.pro_maindesctitle}
+                           <small class="text-muted">상품명 : ${list.pro_name}<c:if test="${!empty list.pro_option}"><br>옵 션 : ${list.pro_option}</c:if><br>설 명 : ${list.pro_maindesctitle}
                            </small>
                         </div>
                      </div>
                      <div class="col-md-6 mb-3">
-                        <label for="cc-number">상품금액 : <fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></label><br><label for="cc-number">수 량 : ${list.amount}</label><br><label for="cc-number">총 금액 : <fmt:formatNumber value="${list.total}" type="currency" currencySymbol="₩" /></label>
-                     </div>
-                     
-      
+                        <label for="cc-number">상품금액 : <fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></label><br>
+                        <label for="cc-number">수 량 : ${list.amount}</label><br>
+                        <label for="cc-number">총 금액 : <fmt:formatNumber value="${list.total}" type="currency" currencySymbol="₩" /></label>
+                     </div>    
                      <br>
                      <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
                      <hr class="mb-4">
-
                   </div>
+               </c:forEach>
+               
+               <c:forEach var="onelist" items="${onelist}">
+                  <input type="hidden" name="pro_name" value=${onelist.pro_name }>
+                  <input type="hidden" name="pro_number" value="${onelist.pro_number }">
+
+                  <div class="row">
+                     <div class="col-md-6 mb-3">
+                        <label for="cc-name"></label> <img alt=""
+                           src="${pageContext.request.contextPath}/resources/assets/img/product/${onelist.pro_img1}"
+                           style="width: 100px; height: 100px; margin-bottom: 10px;">
+
+                        <div style="display: inline-block;">
+                           <small class="text-muted">상품명 : ${onelist.pro_name}<c:if test="${!empty onelist.pro_option}"><br>옵 션 : ${onelist.pro_option}</c:if><br>설 명 : ${onelist.pro_maindesctitle}
+                           </small>
+                        </div>
+                     </div>
+                     <div class="col-md-6 mb-3">
+                        <label for="cc-number">상품금액 : <fmt:formatNumber value="${onelist.pro_price}" type="currency" currencySymbol="₩" /></label><br>
+                        <label for="cc-number">수 량 : ${onelist.count}</label><br>
+                        <label for="cc-number">총 금액 : <fmt:formatNumber value="${onelist.pro_price}" type="currency" currencySymbol="₩" /></label>
+                     </div>    
+                     <br>
+                     <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
+                     <hr class="mb-4">
+                  </div>
+                  
+                   <c:set var="totalPrice" value="0" />
+                  <c:set var="totalPrice" value="${totalPrice + onelist.pro_price}" />
+    				<input type="hidden" value="${onelist.pro_name}" name="pro_name"> 
+    				<input type="hidden" value="${onelist.pro_price}" name="pro_price"> 
+    				<input type="hidden" value="${onelist.pro_number}" name="pro_number"> 
+   				 	<input type="hidden" value="${onelist.orderId}" name="orderId"> 
+   				 	<input type="hidden" value="${onelist.userno }" name="userno">
+    				<button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn"><fmt:formatNumber value="${totalPrice}" type="currency" currencySymbol="₩" />원 결제하기</button>
+    				<button class="btn btn-primary btn-lg btn-block" type="button" id="cancelbtn">주문 취소</button>
                </c:forEach>
 
                <c:set var="totalPrice" value="0" />

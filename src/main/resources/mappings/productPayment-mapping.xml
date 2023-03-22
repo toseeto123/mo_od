@@ -5,9 +5,10 @@
 <mapper namespace="productPaymentDAO">
 	
 	<insert id="cateorderinsert">
-INSERT INTO orderProduct (pro_number, orderId, count, price)
+INSERT INTO orderProduct (pro_number, pro_option,orderId, count, price)
 SELECT
   pro_number,
+  pro_option,
   (SELECT MAX(orderId) FROM moodorder),
   amount,
   total
@@ -16,8 +17,8 @@ WHERE user_no = #{userno}
 	</insert>
 	
 	<insert id="insert">
-    INSERT INTO orderProduct (pro_number, orderId, count, price)
-    VALUES (#{pro_number}, #{orderId}, #{count}, #{price})
+    INSERT INTO orderProduct (pro_number,pro_option,orderId, count, price)
+    VALUES (#{pro_number}, #{pro_option},#{orderId}, #{count}+1, #{price})
 	</insert>
 	
 
@@ -25,7 +26,7 @@ WHERE user_no = #{userno}
 	<select id="selectList" resultType="kr.co.mood.Payment.VO.userOrderProductVO">
 		SELECT m.name, m.phone, m.id, m.email, m.adr,
        p.pro_number, p.pro_img1, p.pro_name, p.pro_maindesc, p.pro_maindesctitle, p.pro_price,
-       o.userno, o.price ,o.orderId
+       o.userno, o.price ,o.orderId,op.pro_option,count
 		FROM moodjoin m, moodorder o, product p, orderProduct op 
 		WHERE m.no=o.userNo AND o.orderId=op.orderId AND p.pro_number=op.pro_number 
 		and #{orderId} = op.orderId
