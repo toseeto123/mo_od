@@ -26,18 +26,16 @@ public class userOrderProductVO {
 	private int total;
 	
 	
-	//moodorder 李몄“�궎
+	//moodorder 筌〓챷�쒙옙沅�
 	private int orderId;
 	private int partner_order_id;
 	
-	//product 李몄“�궎
-	private int pro_number;
+	//product 筌〓챷�쒙옙沅�
+	private String pro_number;
 	private int count;
 	private int amount;
 	
 	private int price;
-	
-	
 	
 	public int getAmount() {
 		return amount;
@@ -141,12 +139,15 @@ public class userOrderProductVO {
 	public void setPro_maindesctitle(String pro_maindesctitle) {
 		this.pro_maindesctitle = pro_maindesctitle;
 	}
-	public int getPro_number() {
+	
+	public String getPro_number() {
 		return pro_number;
 	}
-	public void setPro_number(int pro_number) {
+
+	public void setPro_number(String pro_number) {
 		this.pro_number = pro_number;
 	}
+
 	public int getCount() {
 		return count;
 	}

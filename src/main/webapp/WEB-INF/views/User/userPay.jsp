@@ -305,15 +305,13 @@ background-color: #c8936ed4;
                </c:forEach>
                <c:forEach var="orderprice" items="${orderprice}" begin="0" end="0">
                   <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn"><fmt:formatNumber value="${orderprice.price}" type="currency" currencySymbol="₩" />원 결제하기</button>
-                  <button class="btn btn-primary btn-lg btn-block" type="button" id="cancelbtn">주문 취소</button>
+                  <button class="btn btn-primary btn-lg btn-block" type="button" id="cancelbtn" >주문 취소</button>
                   <input type="hidden" name="pro_price" value=${orderprice.price }>
                   <input type="hidden" name="orderId" value=${orderprice.orderId }>
                   <input type="hidden" name="userno" value=${login_info.no }>
                   </c:forEach>
                   
             </div>
-
-
          </form>
       </div>
    </div>
