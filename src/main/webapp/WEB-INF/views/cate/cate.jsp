@@ -212,6 +212,7 @@ function parseCurrency(num) {
 function updateTotalCount() {
    const amountTotal = document.querySelector('.amount_total');
    const valueTotal = document.querySelector('.value_total');
+   const totalValueInput = document.querySelector('.totalValueInput');
    const amountList = document.querySelectorAll('.amount');
    const totalList = document.querySelectorAll('.total');
    
@@ -229,6 +230,7 @@ function updateTotalCount() {
    
    amountTotal.innerText = totalAmount;
    valueTotal.innerText = parseCurrency(totalValue);
+   totalValueInput.value = totalValue;
 }
 
 function minusTotalCount() {
@@ -236,6 +238,7 @@ function minusTotalCount() {
    
    const amountTotal = document.querySelector('.amount_total');
    const valueTotal = document.querySelector('.value_total');
+   const totalValueInput = document.querySelector('.totalValueInput');
    const amountList = document.querySelectorAll('.amount');
    const totalList = document.querySelectorAll('.total');
    
@@ -253,6 +256,7 @@ function minusTotalCount() {
    
    amountTotal.innerText = (totalAmount < 0) ? (-totalAmount).toString() : totalAmount.toString();
    valueTotal.innerText = (totalValue < 0) ? '₩' + parseCurrency(-totalValue).substring(1) : '₩' + parseCurrency(totalValue).substring(1);
+   totalValueInput.value = Math.abs(totalValue);
 }
 
 function flush(type, element) {
@@ -456,6 +460,7 @@ function deletecate(element) {
 
 
 
+
 </script>
 </head>
 <body style="font-size: 22px; ">
@@ -531,6 +536,8 @@ function deletecate(element) {
 
             </div>
             <input type="hidden" value="${map.total }" name="total">
+ 
+            
          </c:forEach>
 
 
@@ -544,7 +551,7 @@ function deletecate(element) {
                         총 <strong class="amount_total">0</strong> 개의 상품 금액<span> : </span><strong class="value_total">0</strong> 원
                      </dt>
                      <dd>
-                        
+                                   <input type="hidden" name="totalValue" id="totalValueInput" class="totalValueInput">
                      </dd>
                   </dl>
                   <input type="hidden" value="${login_info.adr }" name="address">

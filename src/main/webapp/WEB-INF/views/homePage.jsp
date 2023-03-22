@@ -72,21 +72,20 @@
     
 
     <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio">
+    <section id="portfolio" class="portfolio" style="padding-bottom: 80px; padding-top: 100px;">
       <div class="container">
 
         <div class="section-title">
-          <h2>Popular Items</h2>
-          <p>많은 사랑을 받고있는 mo_od 상품</p>
+          <b style="font-size: 30px; color: #c8936ed4;">많은 사랑을 받고있는 mo_od 상품</b>
         </div>
 
         <div class="row">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">전체보기</li>
-              <li data-filter=".filter-app">가구</li>
-              <li data-filter=".filter-card">조명</li>
-              <li data-filter=".filter-web">수납</li>
+              <li data-filter="*" class="filter-active" style="font-size: 20px;">전체보기</li>
+              <li data-filter=".filter-app" style="font-size: 20px;">가구</li>
+              <li data-filter=".filter-card" style="font-size: 20px;">조명</li>
+              <li data-filter=".filter-web" style="font-size: 20px;">수납</li>
             </ul>
           </div>
         </div>
@@ -224,12 +223,11 @@
     </section><!-- End Portfolio Section -->
 
     <!-- ======= Team Section ======= -->
-    <section id="team" class="team">
+    <section id="team" class="team" style="padding-top: 0;">
       <div class="container">
 
         <div class="section-title">
-          <h2>interior portfolio</h2>
-          <p>mo_od 배테랑 직원들의 전문시공</p>
+          <b style="font-size: 30px; color: #c8936ed4;">mo_od 배테랑 직원들의 전문시공</b>
         </div>
 
         <div class="row">
@@ -292,73 +290,6 @@
 
 
 
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact">
-      <div class="container">
-
-        <div class="section-title">
-          <h2>문의 사항</h2>
-          <p></p>
-        </div>
-
-        <div class="row contact-info">
-
-          <div class="col-md-4">
-            <div class="contact-address">
-              <i class="bi bi-geo-alt"></i>
-              <h3>Address</h3>
-              <address>EX) 인천 계양구 ~~동</address>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="contact-phone">
-              <i class="bi bi-phone"></i>
-              <h3>Phone Number</h3>
-              <p><a href="tel:+155895548855">010-0000-0000</a></p>
-            </div>
-          </div>
-
-          <div class="col-md-4">
-            <div class="contact-email">
-              <i class="bi bi-envelope"></i>
-              <h3>Email</h3>
-              <p><a href="mailto:info@example.com">sgreen12@naver.com</a></p>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="form">
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
-            <div class="row">
-              <div class="col-md-6 form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="이름" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              </div>
-              <div class="col-md-6 form-group mt-3 mt-md-0">
-                <input type="email" class="form-control" name="email" id="email" placeholder="이메일" data-rule="email" data-msg="Please enter a valid email"><br>
-              </div>
-              <div class="col-md-6 form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="휴대폰 - 없이 입력" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              </div>
-              <div class="col-md-6 form-group">
-                <input type="text" name="name" class="form-control" id="name" placeholder="연락 가능 시간" data-rule="minlen:4" data-msg="Please enter at least 4 chars">
-              </div>
-            </div>
-            <div class="form-group mt-3">
-              <textarea class="form-control" name="message" rows="5" placeholder="집구조,면적을 준비해주시면 빠른 상담진행이 가능합니다." required></textarea>
-            </div>
-            <div class="my-3">
-              <div class="loading">Loading</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Your message has been sent. Thank you!</div>
-            </div>
-            <div class="text-center"><button type="submit">보내기</button></div>
-          </form>
-        </div>
-
-      </div>
-    </section><!-- End Contact Section -->
 
   </main><!-- End #main -->
 	

@@ -18,13 +18,13 @@
          </div>
       </section>
    <!-- ======= Hero Section ======= -->
-   <section id="hero" style="background: white;">
+   <section id="hero" style="background: white; height: 800px;">
       <div class="hero-container">
          <div id="heroCarousel" data-bs-interval="5000"
             class="carousel slide carousel-fade" data-bs-ride="carousel"
             style="background: white;">
             <div class="carousel-inner">
-               <div class="carousel-item active">
+               <div class="carousel-item active" style="height: 800px;">
                   <div class="carousel-container" style="background: white;">
                      <div>
 
@@ -298,7 +298,4 @@
 		});
 		
 	</script>
-
-</body>
 <jsp:include page="../../common/footer.jsp" />
-</html>
