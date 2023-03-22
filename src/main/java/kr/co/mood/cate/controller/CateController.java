@@ -42,12 +42,12 @@ public class CateController {
 		System.out.println("cate");
 		
 		if(uvo==null) {
-			 System.out.println("null�뜝�럩逾졾뜝�럥�뒍");
+			 System.out.println("null占쎈쐻占쎈윪�얠±�쐻占쎈윥占쎈뭾");
 			 rttr.addFlashAttribute("msg", "loginmsg");
 			 return "redirect:login.do";
 		}
 		else {
-			System.out.println("�뜝�럩逾졾뜝�럥吏�!");
+			System.out.println("占쎈쐻占쎈윪�얠±�쐻占쎈윥筌욑옙!");
 			return "cate/cate";
 		}
 	}
@@ -97,7 +97,7 @@ public class CateController {
    
    @RequestMapping(value = "/beLoginCate", method = RequestMethod.GET)
    public String beLoginCate(HttpSession session, Model model) {
-	   System.out.println("비로그인 카트 이동");
+	   System.out.println("鍮꾨줈洹몄씤 移댄듃 �씠�룞");
        UserVO uvo = (UserVO) session.getAttribute("login_info");
        
 
@@ -144,7 +144,7 @@ public class CateController {
 
    @RequestMapping(value = "/catedelete.do", method = RequestMethod.POST)
    public String deleteCate(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
-      System.out.println("delete 로직 들어 왔셔요~");
+      System.out.println("delete 濡쒖쭅 �뱾�뼱 �솕�뀛�슂~");
       int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
 
       cservice.deletecate(cateId);

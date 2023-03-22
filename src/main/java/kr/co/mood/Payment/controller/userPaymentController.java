@@ -60,7 +60,7 @@ public class userPaymentController {
           int price = pro_price;
       
           System.out.println(ordervo);
-          //占쎌젟癰귨옙 占쎌궎占쎈쐭占쎈 믭옙 뵠 뇡遺용퓠 占쎈뼖疫뀐옙
+          //�뜝�럩�젧�솻洹⑥삕 �뜝�럩沅롥뜝�럥�맠�뜝�럥 誘��삕 逾� �눀�겫�슜�뱺 �뜝�럥堉뽫뼨�먯삕
           ordervo.setUserNo(userid);
           ordervo.setPrice(price);
           //ordervo.setPro_number(proid);
@@ -88,8 +88,8 @@ public class userPaymentController {
       
       
       
-      // 뵳 딅뮞占쎈뱜 占쏙옙占쎈뻿 orderProduct占쎈퓠 return占쎌뜎 insert 占쎈퉸占쎈튊占쎈맙
-      // 占쎄맒占쎈   揶쏉옙占쎈땾占쎈뮉 占쎌뵬占쎈뼊 獄쏆꼷 겫占쎈┷筌롳옙  빊遺쏙옙占쎈릭占쎈뮉椰꾨챶以  占쎈퉸癰귣  뮉椰꾨챶以 .
+      // 逾� �봾裕욃뜝�럥諭� �뜝�룞�삕�뜝�럥六� orderProduct�뜝�럥�뱺 return�뜝�럩�쐩 insert �뜝�럥�돵�뜝�럥�뒍�뜝�럥留�
+      // �뜝�럡留믣뜝�럥   �뤆�룊�삕�뜝�럥�빢�뜝�럥裕� �뜝�럩逾у뜝�럥堉� �뛾�룇瑗� 寃ュ뜝�럥�뵹嶺뚮〕�삕  鍮딃겫�룞�삕�뜝�럥由��뜝�럥裕됪ㅀ袁⑥굡餓�  �뜝�럥�돵�솻洹�  裕됪ㅀ袁⑥굡餓� .
       //Map<String, String> params = new HashMap<String,String>();
       //params.put("orderId", "orderId");
       //System.out.println(params.get("orderId"));
@@ -123,7 +123,7 @@ public class userPaymentController {
       for (int totals : total) {
           sum += totals;
       }
-      System.out.println("ㅆㅓㅁ"+sum);
+      System.out.println("�뀊�뀚�뀅"+sum);
       int proid = pro_number;
       
       
@@ -185,5 +185,6 @@ public class userPaymentController {
    public String userPaymentDetail() {
 
       return "User/userPaymentDetail";
+      
    }
 }
