@@ -16,7 +16,7 @@ public class ProductServiceImpl implements ProductService{
 	private ProDAO prodao;
 	
 	@Override
-	public List<ProVO> selectProList(List<ProVO> vo){
+	public List<ProVO> selectProList(ModuleVO vo){
 		return prodao.selectProList(vo);
 	}
 	@Override
