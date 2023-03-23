@@ -20,6 +20,10 @@ input[type=button] {
 span.span{
 	color: #c8936ed4;
 }
+a{
+	font-size: 20px;
+	font-weight: bold;
+}
 </style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
 </head>
@@ -59,7 +63,7 @@ span.span{
 									<label class="col-3 col-form-label" for="email">이메일</label>
 									<div class="col-6">
 										<input class="form-control" type="email" id="email"
-											placeholder="이메일을 입력해주세요" required>
+											placeholder="이메일을 입력해주세요" required autofocus>
 
 									</div>
 									<input type="button" value="보내기" class="col-3"

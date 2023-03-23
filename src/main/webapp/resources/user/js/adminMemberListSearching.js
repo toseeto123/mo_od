@@ -1,4 +1,4 @@
-	const data = {}
+const data = {}
 	const pagingNo = [];
 	let preView = 0;
 	let nextView = 0;
@@ -6,7 +6,7 @@
 		data.page = 1,
 		data.searchWhat = document.getElementById("searchWhat").value,
 		data.search = document.getElementById("search").value
-		
+		console.log(searchWhat,search)
 		if(data.search.trim() == '' || data.search == null){
 			data.search = '(none)'
 		}
@@ -38,9 +38,14 @@
 	
 		const tableData = JSON.parse(this.responseText);
 		let pagingNumber = "";
+		console.log(tableData.vo)
+		console.log(tableData.vo.page)
+		console.log(tableData.vo.pagingNo)
+		console.log(tableData.vo.nextPage)
+		console.log(tableData.vo.prePage)
 	
 		if(tableData.vo.prePage > 0){
-			pagingNumber += "<a "+"id='preView'"+" style='color:#deb887' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>&lt;</a> ";
+			pagingNumber += "<a "+"id='preView'"+" style='color:#c8936ed4' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>&lt;</a> ";
 			preView = tableData.vo.prePage;
 			}
 	
@@ -48,13 +53,13 @@
 		if(data.page == tableData.vo.pagingNo[q]){
 		pagingNumber += " &nbsp;<a "+"id='page"+q+"'"+" style='color:green' onclick='pageView(this)'>"+tableData.vo.pagingNo[q]+"</a>&nbsp; ";
 		}else{
-			pagingNumber += " &nbsp;<a "+"id='page"+q+"'"+" style='color:#deb887' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>"+tableData.vo.pagingNo[q]+"</a>&nbsp; ";
+			pagingNumber += " &nbsp;<a "+"id='page"+q+"'"+" style='color:#c8936ed4' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>"+tableData.vo.pagingNo[q]+"</a>&nbsp; ";
 		}
 		
 		pagingNo.push(tableData.vo.pagingNo[q]);
 	}
 	if(tableData.vo.nextPage > 0){
-		pagingNumber += " <a "+"id='nextView'"+" style='color:#deb887' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>&gt;</a>"
+		pagingNumber += " <a "+"id='nextView'"+" style='color:#c8936ed4' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>&gt;</a>"
 		nextView = tableData.vo.nextPage;
 	}
 	
@@ -74,6 +79,7 @@
 		for(var t=0; t<6; t++){
 			newCell.push(document.createElement("td"));
 			newCell[t].setAttribute("scope", "col");
+			newCell[t].setAttribute("onClick", "location.href='/admin/adminMemberDetail.do/"+ tableData.list[i].no +"'")
 		}				
 		newCell[0].innerHTML = tableData.list[i].no;
 		newCell[1].innerHTML = tableData.list[i].id;
@@ -96,10 +102,10 @@
 	}
 	
 		function colorChangeOver(event){
-			event.style.color='#78E150';
+			event.style.color='#D29953';
 		}
 		function colorChangeOut(event){
-			event.style.color='#deb887';
+			event.style.color='#c8936ed4';
 		}
 		
 		
@@ -110,4 +116,4 @@
 			  search();
 		  }
 		});
-	
+		
