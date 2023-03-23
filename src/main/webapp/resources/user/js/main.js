@@ -191,4 +191,19 @@ function loginCheck(){
         }).open();
     }
 
+
+
+function UpdateCheck() {
+	if(document.mypage_myInfo.pwd.value != document.mypage_myInfo.pwd2.value){
+        alert("입력한 암호가 일치하지 않습니다");
+        mypage_myInfo.pwd.value="";
+        mypage_myInfo.pwd2.value="";
+        mypage_myInfo.pwd.focus();
+        return false;
+     } 
+		return true;
+	 }
+
+
+
    

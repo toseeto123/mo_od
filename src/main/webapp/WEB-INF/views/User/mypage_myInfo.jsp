@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<!-- <script type="text/javascript" src="/resources/user/js/main.js"></script> -->
+<script type="text/javascript" src="/resources/user/js/main.js"></script>
 </head>
 <body>
 <fieldset>
@@ -21,7 +21,7 @@
 		</tr>
 		<tr>
 			<td>비밀번호</td>
-			<td><input type="password" id="pwd" name="pwd" required><br>
+			<td><input type="password" class="pwd" id="pwd" name="pwd" required><br>
 <%-- 			<input type="hidden" id="pwd" name="pwd" value="${login_info.pwd}"> --%>
 			</td>
 			
@@ -29,7 +29,9 @@
 		
 		<tr>
 			<td>비밀번호 확인</td>
+
 			<td><input type="password" id="pwd2" name="pwd2" required onkeyup="passConfirm()"><br><span id="confirmMsg"></span></td>
+
 			
 		</tr>
 		<tr>
@@ -117,8 +119,5 @@
 
 
 </body>
-<script>
 
-
-</script>
 </html>
