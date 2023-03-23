@@ -4,18 +4,41 @@
 <html>
 <head>
 <jsp:include page="/WEB-INF/common/header.jsp" />
+<section id="hero" style="height : 350px;">
+      <div class="hero-container">
+         <div id="heroCarousel" data-bs-interval="5000"
+            class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+            <div class="carousel-inner" role="listbox">
+
+               Slide 1
+               <div class="carousel-item active"
+                  style="background-image: url(resources/assets/img/slide/cate1.jpg); height: 500px;">
+                  <div class="carousel-container">
+                     <div class="carousel-content">
+                        <h2 class="animate__animated animate__fadeInDown">회원가입
+                           </h2>
+                        <p class="animate__animated animate__fadeInUp">회원가입 페이지입니다</p>
+
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
 <script type="text/javascript" src="/resources/user/js/main.js"></script>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <link rel="stylesheet" href="/resources/user/css/join.css">
 
 <style>
 .logo {
 	font-family: "궁서"
 }
-
 .logo2 {
 	font-family: "굴림"
 }
@@ -25,10 +48,6 @@
 </head>
 <body>
 
-        
-<!--         <div id="ha"> -->
-<!--         <h1 class="logo"><a href="index.jsp">묻 : <span class="logo2">mo_od</span></a></h1> -->
-<!--         </div> -->
    
         <div id="wrapper">
     <form action="join.do" method="post" name="join" id="join">
@@ -112,7 +131,6 @@
              <div class="mail_check_wrap">
                <div class="mail_check_input_box" id="mail_check_input_box_false">
                   <input class="mail_check_input" id="email1" disabled="disabled" required>
-                  <input type="hidden" class="email1" id="email1" value="mail_check_input">
                </div>
                <button class="mail_check_button">인증번호 전송</button>
                <div class="clearfix"></div>
@@ -157,7 +175,6 @@
       
       
       <script type="text/javascript">
-
       /* 인증번호 이메일 전송 */
     $(".mail_check_button").click(function(){
    
@@ -216,6 +233,6 @@
     });
       </script>
 
-<jsp:include page="/WEB-INF/common/footer.jsp" />
+
 </body>
 </html>

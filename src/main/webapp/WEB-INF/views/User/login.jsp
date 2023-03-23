@@ -7,7 +7,7 @@
 
 <head>
 <jsp:include page="/WEB-INF/common/header.jsp" />
-<section id="hero" style="height: 400px;">
+<section id="hero" style="height: 350px;">
       <div class="hero-container">
          <div id="heroCarousel" data-bs-interval="5000"
             class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -119,6 +119,7 @@
 					onclick="window.open('${naverUrl}','naverLogin','width=430,height=500,location=no,status=no,scrollbars=yes');">
 					<img style="width: 50px;" src="/resources/user/img/naver.png"
 					alt="naver" />
+					<span class="box_list_txt" >네이버</span>
 				</a>
 
 
@@ -129,12 +130,14 @@
 					onclick="googleHandleAuthClick()">
 					<img style="width: 50px;" src="/resources/user/img/google.png"
 						alt="google">
+						<span class="box_list_txt">구글</span>
 				</button>
 
 				<a class="p-2"
 					href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/member/kakaoLogin&response_type=code">
 					<img style="width: 50px;" src="/resources/user/img/kakao.png"
 					alt="kakao">
+					<span class="box_list_txt" >카카오</span>
 				</a>
 			</div>
 		</div>
