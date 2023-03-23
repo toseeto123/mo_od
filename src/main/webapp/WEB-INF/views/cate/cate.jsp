@@ -466,6 +466,7 @@ function deletecate(element) {
 </head>
 <body style="font-size: 20px;">
 	<form action="/products/cateorders" method="post">
+	<input type="hidden" value="${login_info.adr }" name="adr">
 		<section>
 				<ul class="nav nav-pills nav-justified">
 				  <li class="nav-item" >
@@ -529,6 +530,7 @@ function deletecate(element) {
 
 					</div>
 					<input type="hidden" value="${map.total }" name="total">
+					
 
 				</c:forEach>
 				</c:otherwise>

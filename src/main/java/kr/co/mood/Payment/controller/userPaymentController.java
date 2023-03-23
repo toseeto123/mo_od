@@ -43,7 +43,7 @@ public class userPaymentController {
 	@RequestMapping(value = "/orders", method = RequestMethod.POST)
 	public String processOrder(HttpSession session, Model model, @RequestParam("pro_number") String pro_number,
 			@RequestParam("pro_price") int pro_price, @RequestParam("radioOption") String pro_option,
-			RedirectAttributes redirectAttributes) {
+			RedirectAttributes redirectAttributes,@RequestParam("adr") String address) {
 		UserVO uvo = (UserVO) session.getAttribute("login_info");
 		userOrderVO ordervo = new userOrderVO();
 
@@ -88,6 +88,7 @@ public class userPaymentController {
 
 		ordervo.setUserNo(userid);
 		ordervo.setPrice(pro_price);
+		ordervo.setAddress(address);
 
 		payService.insert(ordervo, uvo, null);
 
@@ -109,10 +110,10 @@ public class userPaymentController {
 
 	@RequestMapping(value = "/cateorders", method = RequestMethod.POST)
 	public String cateProcessOrder(HttpSession session, Model model, @RequestParam("pro_number") String pro_number,
-			@RequestParam("totalValue") int total) {
+			@RequestParam("totalValue") int total,@RequestParam("adr") String address) {
 		UserVO uvo = (UserVO) session.getAttribute("login_info");
 		int userid = uvo.getNo();
-		System.out.println("�뀊�뀚�뀅" + total);
+		System.out.println("占쎈�딉옙�싷옙��" + total);
 		String proid = pro_number;
 
 		userOrderVO ordervo = new userOrderVO();
@@ -124,6 +125,7 @@ public class userPaymentController {
 		model.addAttribute(count);
 		ordervo.setOrderCount(count);
 		ordervo.setPrice(total);
+		ordervo.setAddress(address);
 		if (ordervo != null && uvo != null) {
 			payService.insert(ordervo, uvo, null);
 			System.out.println("orderId:" + ordervo.getOrderId());

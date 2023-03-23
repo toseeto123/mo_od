@@ -266,7 +266,7 @@ input[type="radio"]:checked:before {
                    <input type="hidden" name="pro_number" value="${list.pro_number}">
                    
                    
-
+					<input type="hidden" value="${login_info.adr }" name="adr">
                    
                      <input type="button" value="장바구니" class="cateBtn" id="cateinsert"><br><br>
                       <input type="button" value="바로결제하기" class="btn_buy">
