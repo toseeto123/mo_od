@@ -92,11 +92,11 @@
 			</form>
 			<ul class="login_link_box">
 				<li class="login_li">
-				<a href="index.jsp" class="" style="color: black;">아이디 찾기</a>  &nbsp;
+				<a href="/searchId" class="" style="color: black;">아이디 찾기</a>  &nbsp;
 				</li>
 				
 				<li class="login_li">
-				<a href="index.jsp" class="" style="color: black;">비밀번호 재설정</a> &nbsp;
+				<a href="/searchPwd" class="" style="color: black;">비밀번호 재설정</a> &nbsp;
 				</li>
 				
 				<li class="login_li">

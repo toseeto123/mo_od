@@ -8,12 +8,13 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="/resources/user/js/main.js"></script>
 </head>
 <body>
 <fieldset>
 <legend>회원정보수정</legend>
-	<form action="/update.do?id=${login_info.id}" method="post" name="fr">
+	<form action="/update.do?id=${login_info.id}" method="post" name="mypage" id="mypage">
 		<table>
 		<tr>
 			<td>아이디</td>
@@ -73,9 +74,12 @@
 		<br>
 			<td colspan="2">
 			<br><br>
-				<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return UpdateCheck()">
-  					수정하기
-				</button>
+<!-- 			     <button type="submit" id="updateBtn" class="btn btn-primary" onclick="return UpdateCheck()"> -->
+<!--   					수정하기 -->
+<!-- 				</button> -->
+				<input type="submit" id="updateBtn" class="btn btn-primary" value="수정하기" onclick="return UpdateCheck()">
+  					
+				
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >
 					탈퇴하기
 				</button>
