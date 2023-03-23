@@ -48,7 +48,7 @@ function JoinCheck(){
               return false;
            }   
 
-           if (document.join.mail_check_input.value != document.join.mail_check_input) {
+           if (document.join.email1.value != document.join.email1.value) {
               alert("인증번호가 일치하지 않습니다");
               join.email.focus();
               return false;
@@ -87,6 +87,33 @@ function loginCheck(){
    }
 }      
       
+      function UpdateCheck(){
+           if (document.mypage_myInfo.pwd.value == ""){
+              alert("암호를 반드시 입력해주세여");
+              mypage_myInfo.pwd.focus();
+              return false;
+           }
+           if(document.mypage_myInfo.pwd.value != document.mypage_myInfo.pwd2.value){
+              alert("암호가 일치하지 않습니다");
+              mypage_myInfo.pwd.value="";
+              mypage_myInfo.pwd2.value="";
+              mypage_myInfo.pwd.focus();
+              return false;
+             
+           }
+           if (document.mypage_myInfo.email.value == "") {
+              alert("이메일을 입력해주세요");
+              mypage_myInfo.email.focus();
+              return false;
+           }
+           if (document.mypage_myInfo.phone.value == "") {
+              alert("전화번호를 입력해주세요");
+              mypage_myInfo.phone.focus();
+              return false;
+           }   
+           return true;   
+        }
+
       
       
       
@@ -154,7 +181,7 @@ function loginCheck(){
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                  $(".address_input_1").val(data.zonecode);
-                //$("[name=memberAddr1]").val(data.zonecode);    // 대체가능
+                
                   $(".address_input_2").val(addr);
                   //$("[name=memberAddr2]").val(addr);
                 // 커서를 상세주소 필드로 이동한다.
@@ -163,5 +190,20 @@ function loginCheck(){
             }
         }).open();
     }
+
+
+
+function UpdateCheck() {
+	if(document.mypage_myInfo.pwd.value != document.mypage_myInfo.pwd2.value){
+        alert("입력한 암호가 일치하지 않습니다");
+        mypage_myInfo.pwd.value="";
+        mypage_myInfo.pwd2.value="";
+        mypage_myInfo.pwd.focus();
+        return false;
+     } 
+		return true;
+	 }
+
+
 
    

@@ -100,6 +100,7 @@ li {
           </li>
 
 			<c:if test="${!empty login_info.id}">
+
                <li class="/login_info" style="color : white;">${login_info.name } [ ${login_info.id } ]</li>
                <c:choose>
                <c:when test="${login_info.id == 'admin' }">
@@ -111,6 +112,7 @@ li {
                </c:choose>
                <li><a href="/logout.do"><span class="getstarted scrollto"><b>Logout</b></span></a></li>
                
+
             </c:if>
 			<c:if test="${empty login_info.id}">
 				<li><a class="getstarted scrollto" href="/join.do"><b>회원가입</b></a></li>

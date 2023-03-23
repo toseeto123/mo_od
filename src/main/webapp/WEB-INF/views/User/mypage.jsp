@@ -4,7 +4,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="/WEB-INF/common/header.jsp" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -18,6 +17,7 @@ section {
 
 
 </style>
+<jsp:include page="/WEB-INF/common/header.jsp" />
 </head>
 <body>
 

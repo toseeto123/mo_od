@@ -12,21 +12,19 @@ body {
     cursor: pointer;
 }
 
-#header {
-    padding-top: 62px;
-    padding-bottom: 20px;
-    text-align: center;
-}
+
 #wrapper {
     position: relative;
     height: 100%;
 }
 
 #content {
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
+/*     position: absolute; */
+/*     left: 50%; */
+/*     transform: translate(-50%); */
     width: 460px;
+    margin: 0 auto;
+    padding: 80px 0;
 }
 
 
@@ -81,7 +79,7 @@ input {
 
 .box.string_id {
     display: inline-block;
-    width:380px;
+    width:370px;
 }
 
 .box.stiring_pwd {
@@ -95,6 +93,8 @@ input {
 .idChk{
    display: inline-block;
    height: 50px;
+   border-radius: 5px;
+   background-color: #c8936ed4;
 
 }
 
@@ -138,8 +138,8 @@ select {
     padding: 21px 0 17px;
     border: 0;
     cursor: pointer;
-    color: #fff;
-    background-color: #08a600;
+    color: black;
+    background-color: #c8936ed4;
     font-size: 20px;
     font-weight: 400;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
@@ -150,8 +150,8 @@ select {
     padding: 21px 0 17px;
     border: 0;
     cursor: pointer;
-    color: #fff;
-    background-color: #08a600;
+    color: black;
+    background-color: #c8936ed4;
     font-size: 20px;
     font-weight: 400;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
@@ -162,8 +162,8 @@ select {
     padding: 21px 0 17px;
     border: 0;
     cursor: pointer;
-    color: #fff;
-    background-color: #08a600;
+    color: black;
+    background-color: #c8936ed4;
     font-size: 20px;
     font-weight: 400;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
@@ -184,7 +184,7 @@ select {
 
 .mail_check_input_box{
    display: block;
-    width: 350px;
+    width: 338px;
     height: 51px;
     border: solid 1px #dadada;
     padding: 10px 14px 10px 14px;
@@ -197,6 +197,8 @@ select {
 .mail_check_button{
 	display: inline-block;
 	height: 50px;
+	 background-color: #c8936ed4;
+	 border-radius: 5px;
 }
 .mail_check_input{
    display: block;
@@ -217,8 +219,8 @@ select {
 }
 .address_input_1{
 	display:inline-block;
-	width: 350px;
-	height: 45px;
+	width: 330px;
+	height: 50px;
 	
 }
 .address_input_2{
@@ -232,8 +234,10 @@ select {
 }
 .adrchk{
 	 display: inline-block;
-	 width:95px;
+	 width:115px;
    height: 50px;
+    background-color: #c8936ed4;
+    border-radius: 5px;
     
 }
 

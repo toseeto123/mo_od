@@ -191,6 +191,8 @@ li .btnspan_on {
 			<c:forEach var="orders" items="${orders}">
 				<div class="deleteplz">
 					<img src="/resources/assets/img/product/${orders.pro_img1 }"
+						alt="${orders.pro_name}"
+						title="${orders.pro_name}"
 						class="img-fluid"
 						style="width: 250px; height: 250px; position: absolute; right: 150px;">
 					<p style="text-align: center; margin-top: 30px;">

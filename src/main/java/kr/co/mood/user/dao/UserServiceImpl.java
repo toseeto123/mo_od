@@ -23,6 +23,10 @@ public class UserServiceImpl implements UserService{
 		return userdao.selectMemberNo(no);
 	}
 	
+	public UserVO findEmail(String email) {
+		return userdao.findEmail(email);
+	}
+	
 	public List<UserVO> selectAll(ModuleVO vo) {//추가된 부분
 		return userdao.selectAll(vo);
 	}
@@ -31,7 +35,7 @@ public class UserServiceImpl implements UserService{
 		userdao.insert(vo);
 	}
 
-	public void updateUser(UserVO vo) {
+	public void update(UserVO vo) throws Exception{
 		userdao.update(vo);
 	}
 
@@ -48,7 +52,7 @@ public class UserServiceImpl implements UserService{
 	
 
 	@Override
-	public void deleteUser(UserVO vo) throws Exception {
+	public void delete(UserVO vo) throws Exception {
 		userdao.delete(vo);
 	}
 
@@ -58,7 +62,9 @@ public class UserServiceImpl implements UserService{
 	}
 
 	
-
+	public void updatePwd(UserVO vo) {
+		userdao.updatePwd(vo);
+	}
 	
 
 	
