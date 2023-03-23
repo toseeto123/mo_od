@@ -3,6 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+
 <jsp:include page="/WEB-INF/common/header.jsp" />
 <section id="hero" style="height : 350px;">
       <div class="hero-container">
@@ -28,6 +29,7 @@
          </div>
       </div>
    </section>
+
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -47,7 +49,6 @@
 
 </head>
 <body>
-
    
         <div id="wrapper">
     <form action="join.do" method="post" name="join" id="join">
