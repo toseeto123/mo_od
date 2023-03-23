@@ -29,7 +29,9 @@
 		
 		<tr>
 			<td>비밀번호 확인</td>
-			<td><input type="password" class="pwd2" id="pwd2" name="pwd2" required ><br><span id="confirmMsg"></span></td>
+
+			<td><input type="password" id="pwd2" name="pwd2" required onkeyup="passConfirm()"><br><span id="confirmMsg"></span></td>
+
 			
 		</tr>
 		<tr>
@@ -53,19 +55,26 @@
 			<td><input type="tel" name="phone" value="${login_info.phone}"><br></td>
 		</tr>
 		<tr>
-			<td>주소</td>
-			<td><input type="text" class="address_input_1" name=adr id="adr" placeholder="우편번호" value="${login_info.adr}"><br></td>	
-			<td><input type="text" class="address_input_2" name="adr2" id="adr2" placeholder="주소" required></td><br>
-            <td><input type="text" class="address_input_3" name="adr3" id="adr3" placeholder="상세주소" required></td>
+		
+			<td></td>
+			<td><input type="text" class="address_input_1" name=adr id="adr" placeholder="우편번호" value="${myinfo_adr1}" ><br></td>	
 			<td><input type="button" class="adrchk" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br></td>
 		</tr>
-		
+		<tr>
+			<td>주소</td>
+			<td colspan="2"><input type="text" size="50" class="address_input_2" name="adr2" id="adr2" placeholder="주소" value="${myinfo_adr2}" required></td><br>
+			
+		</tr>
+		<tr>
+			<td></td>
+			<td colspan="2"><input type="text" size="50" class="address_input_3" name="adr3" id="adr3" placeholder="상세주소" value="${myinfo_adr3}" required></td>
+		</tr>
 		<tr>
 		<br>
 			<td colspan="2">
 			<br><br>
 				<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return UpdateCheck()">
-				수정하기
+  					수정하기
 				</button>
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >
 					탈퇴하기
