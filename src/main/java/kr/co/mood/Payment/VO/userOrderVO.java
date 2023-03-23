@@ -4,19 +4,19 @@ import java.sql.Date;
 
 public class userOrderVO {
 
-	//상품데이터를 전달받을 모델
+	//�긽�뭹�뜲�씠�꽣瑜� �쟾�떖諛쏆쓣 紐⑤뜽
 	
-	/* 뷰로부터 전달받을 값 */
-    private int pro_number;
-    /* 주문수량 */
+	/* 酉곕줈遺��꽣 �쟾�떖諛쏆쓣 媛� */
+    private String pro_number;
+    /* 二쇰Ц�닔�웾 */
     private int orderCount;
-	/* DB로부터 꺼내올 값 :  product */
+	/* DB濡쒕��꽣 爰쇰궡�삱 媛� :  product */
     private String pro_name;
 	private int price;
 	private String pro_img1;
 	private String pro_maindesctitle;
-    //user 꺼
-    private String address;
+	private String address;
+    //user 爰�
     private int userNo;
     private String status;
     
@@ -24,13 +24,17 @@ public class userOrderVO {
     private Date createdDate;
     private Date updatedDate;
     
-    /*만들어낼 데이터 총가격 */
+    /*留뚮뱾�뼱�궪 �뜲�씠�꽣 珥앷�寃� */
     private int totalPrice;
    
     
-    
-    
-    public int getOrderId() {
+    public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
+	}
+	public int getOrderId() {
 		return orderId;
 	}
 	public void setOrderId(int orderId) {
@@ -47,12 +51,6 @@ public class userOrderVO {
 	}
 	public void setPrice(int price) {
 		this.price = price;
-	}
-	public String getAddress() {
-		return address;
-	}
-	public void setAddress(String address) {
-		this.address = address;
 	}
 	public int getTotalPrice() {
 		return totalPrice;
@@ -71,12 +69,6 @@ public class userOrderVO {
 	}
 	public void setPro_maindesctitle(String pro_maindesctitle) {
 		this.pro_maindesctitle = pro_maindesctitle;
-	}
-	public String getAdress() {
-		return address;
-	}
-	public void setAdress(String adress) {
-		this.address = adress;
 	}
 	public int getUserNo() {
 		return userNo;
@@ -97,10 +89,10 @@ public class userOrderVO {
 		this.updatedDate = updatedDate;
 	}
 	
-	public int getPro_number() {
+	public String getPro_number() {
 		return pro_number;
 	}
-	public void setPro_number(int pro_number) {
+	public void setPro_number(String pro_number) {
 		this.pro_number = pro_number;
 	}
 	public int getOrderCount() {
@@ -117,16 +109,21 @@ public class userOrderVO {
 	}
 	
 	
-	
-	
 	@Override
 	public String toString() {
 		return "userOrderVO [pro_number=" + pro_number + ", orderCount=" + orderCount + ", pro_name=" + pro_name
 				+ ", price=" + price + ", pro_img1=" + pro_img1 + ", pro_maindesctitle=" + pro_maindesctitle
-				+ ", address=" + address + ", userNo=" + userNo + ", status=" + status + ", createdDate=" + createdDate
-				+ ", updatedDate=" + updatedDate + ", totalPrice=" + totalPrice + "]";
+				+ ", address=" + address + ", userNo=" + userNo + ", status=" + status + ", orderId=" + orderId
+				+ ", createdDate=" + createdDate + ", updatedDate=" + updatedDate + ", totalPrice=" + totalPrice
+				+ ", getAddress()=" + getAddress() + ", getOrderId()=" + getOrderId() + ", getStatus()=" + getStatus()
+				+ ", getPrice()=" + getPrice() + ", getTotalPrice()=" + getTotalPrice() + ", getPro_img1()="
+				+ getPro_img1() + ", getPro_maindesctitle()=" + getPro_maindesctitle() + ", getUserNo()=" + getUserNo()
+				+ ", getCreatedDate()=" + getCreatedDate() + ", getUpdatedDate()=" + getUpdatedDate()
+				+ ", getPro_number()=" + getPro_number() + ", getOrderCount()=" + getOrderCount() + ", getPro_name()="
+				+ getPro_name() + ", getClass()=" + getClass() + ", hashCode()=" + hashCode() + ", toString()="
+				+ super.toString() + "]";
 	}
-	//총가격을 만들어내는데 필요한 initSaleTotal()
+	//珥앷�寃⑹쓣 留뚮뱾�뼱�궡�뒗�뜲 �븘�슂�븳 initSaleTotal()
 	public void initSaleTotal() {
 		this.totalPrice = this.price * this.orderCount;
 	}

@@ -212,6 +212,7 @@ function parseCurrency(num) {
 function updateTotalCount() {
    const amountTotal = document.querySelector('.amount_total');
    const valueTotal = document.querySelector('.value_total');
+   const totalValueInput = document.querySelector('.totalValueInput');
    const amountList = document.querySelectorAll('.amount');
    const totalList = document.querySelectorAll('.total');
    
@@ -229,6 +230,7 @@ function updateTotalCount() {
    
    amountTotal.innerText = totalAmount;
    valueTotal.innerText = parseCurrency(totalValue);
+   totalValueInput.value = totalValue;
 }
 
 function minusTotalCount() {
@@ -236,6 +238,7 @@ function minusTotalCount() {
    
    const amountTotal = document.querySelector('.amount_total');
    const valueTotal = document.querySelector('.value_total');
+   const totalValueInput = document.querySelector('.totalValueInput');
    const amountList = document.querySelectorAll('.amount');
    const totalList = document.querySelectorAll('.total');
    
@@ -253,6 +256,7 @@ function minusTotalCount() {
    
    amountTotal.innerText = (totalAmount < 0) ? (-totalAmount).toString() : totalAmount.toString();
    valueTotal.innerText = (totalValue < 0) ? '₩' + parseCurrency(-totalValue).substring(1) : '₩' + parseCurrency(totalValue).substring(1);
+   totalValueInput.value = Math.abs(totalValue);
 }
 
 function flush(type, element) {
@@ -456,9 +460,10 @@ function deletecate(element) {
 
 
 
+
 </script>
 </head>
-<body>
+<body style="font-size: 22px; ">
 <form action="/products/cateorders" method="post">
    <section id="hero" style="height: 400px;">
       <div class="hero-container">
@@ -506,15 +511,15 @@ function deletecate(element) {
 
 
                   <input type="hidden" value="${map.user_no}"> <input type="hidden" value="${map.pro_number}" name="pro_number">
-               <h2 style="margin-left: 100px;">${map.pro_name}</h2>
+               <h2 style="margin-left: 100px; ">${map.pro_name}</h2>
                <p style="margin-left: 100px;">${map.pro_maindesctitle }</p>
                <span style="margin-left: 100px;">수 량 : </span>
                <div class="amount" style="display: inline;">${map.amount}</div>
                <input type="hidden" value="${map.cate_id}" name="cateId"
                   class="cate_id" /> <span class="btnspan">
-                  <button type="button" class="plus_btn" onclick='flush("plus", this)'>+</button>
-                  <button type="button" class="minus_btn" onclick='minus("minus", this)'>-</button>
-                  <button class="delete_btn" type="button" onclick='deletecate(this)'>
+                  <button type="button" class="plus_btn" onclick='flush("plus", this)' title="수량 추가">+</button>
+                  <button type="button" class="minus_btn" onclick='minus("minus", this)' title="수량 감소">-</button>
+                  <button class="delete_btn" type="button" onclick='deletecate(this)' title="상품 삭제">
                      <i class="ph ph-trash"></i>
                   </button>
                   
@@ -531,6 +536,8 @@ function deletecate(element) {
 
             </div>
             <input type="hidden" value="${map.total }" name="total">
+ 
+            
          </c:forEach>
 
 
@@ -544,10 +551,10 @@ function deletecate(element) {
                         총 <strong class="amount_total">0</strong> 개의 상품 금액<span> : </span><strong class="value_total">0</strong> 원
                      </dt>
                      <dd>
-                        
+                                   <input type="hidden" name="totalValue" id="totalValueInput" class="totalValueInput">
                      </dd>
                   </dl>
-                  
+                  <input type="hidden" value="${login_info.adr }" name="address">
                   <input type="submit" value="바로결제하기" class="btn_buy"> <br><br>
                   <input type="button" value="메인페이지로 이동" class="cancelbtn" onclick="window.location='/mo_od';">
 				

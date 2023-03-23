@@ -56,10 +56,60 @@
 	border: none;
 	border-radius: 5px;
 	cursor: pointer;
-	font-size: 18px;
+	font-size: 24px;
 	font-weight: bold;
 	margin: 0 1px;
 }
+.order-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-left: 100px;
+  margin-top: 20px;
+  font-size: 16px;
+}
+
+.order-info h2, .order-info h4 {
+  margin: 0;
+}
+
+.order-info h2 span, .order-info h4 small {
+  font-weight: normal;
+  color: #555;
+}
+
+.order-info h2 {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.order-info h4 {
+  margin-bottom: 3px;
+}
+
+.order-info h4 small {
+  font-size: 14px;
+}
+
+.order-info h4 small, .order-info h4 small {
+  color: #888;
+}
+
+.order-info .total {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  margin-left: 5px;
+}
+
+.order-info .total:before {
+  content: "₩";
+}
+
+.tabnav{
+ margin-bottom:0px;
+}
+
 </style>
 </head>
 <body>
@@ -69,29 +119,24 @@
 			</div>
 			<c:forEach var="orders" items="${orders}">
 				<div class="deleteplz">
-
 					<img src="resources/assets/img/product/${orders.pro_img1 }"
+						alt="${orders.pro_name}"
+						title="${orders.pro_name}"
 						class="img-fluid"
-						style="width: 160px; height: 160px; position: absolute; right: 150px;">
+						style="width: 250px; height: 250px; position: absolute; right: 150px;">
 					<p style="text-align: center; margin-top: 30px;">
-
-
 						<input type="hidden" value="${orders.userno}"> <input
 							type="hidden" value="${orders.pro_number}">
 					<h2 style="margin-left: 100px;">주문번호:<span> ${orders.orderId}</span></h2>
 					<h2 style="margin-left: 100px;">결제일: <span>${orders.approved_at}</span></h2><br>	
-					<h2 style="margin-left: 100px;">상품명: <span>${orders.pro_name}</span></h2>
-					<p style="margin-left: 100px;">상품정보: <span>${orders.pro_maindesctitle }</span></p>
-					<span style="margin-left: 100px;">수 량 : </span>
-					<div class="amount" style="display: inline;">${orders.quantity}</div>
-					<p style="margin-left: 100px;">
-						가 격 : <span class="total"><fmt:formatNumber
+					<h4 style="margin-left: 100px;">상품명: <small>${orders.pro_name}</small></h4>
+					<h4 style="margin-left: 100px;">상품정보: <small>${orders.pro_maindesctitle }</small></h4>
+					<h4 style="margin-left: 100px;">수 량 : <small style="display: inline;">${orders.count}</small></h4>
+					<p style="margin-left: 100px;">가 격 : <span class="total"><fmt:formatNumber
 								value="${orders.pro_price}" type="currency" currencySymbol="₩" /></span>
 					</p>
 					<br>
 					<hr>
-					
-
 				</div>
 			</c:forEach>
 		</div>

@@ -13,13 +13,13 @@ public interface UserService {
 		
 		public UserVO selectMemberNo(int no);
 		
-		public void insert(UserVO vo) ;
+		public void insert(UserVO vo);
 
 		
-		public void updateUser(UserVO vo);
+		public void update(UserVO vo) throws Exception;
 
 		
-		public void deleteUser(UserVO vo) throws Exception;
+		public void delete(UserVO vo) throws Exception;
 
 
 		public UserVO selectId(UserVO vo);

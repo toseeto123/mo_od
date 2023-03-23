@@ -186,14 +186,43 @@ public class AdminController {
    
 
       @RequestMapping(value = "adminProList.do")
-      public String ProductList(ArrayList<ProVO> vo, Model model) {
+      public String ProductList() {
          return "redirect:/admin/adminProList.do/1";
       }
 
+      @RequestMapping("/adminProList.do/{paging}/{searchWhat}/{search}")
+      @ResponseBody
+      public Map<String, Object> adminProList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//異붽��맂 遺�遺�
+   	   ModuleVO moduleVO = new ModuleVO();
+   	   Map<String, Object> map = new HashMap<String, Object>();
+   	   if(search.equals("(none)")) {
+   		   search = null;		   
+   	   }else {
+   	   if(searchWhat.equals("id")) {
+   		   moduleVO.setSearchId(search);
+   	   }else if(searchWhat.equals("name")) {
+   		   moduleVO.setSearchName(search);
+   	   }
+   	   }
+   	   List<ProVO> proList = ps.selectProList(moduleVO);
+   	   ViewPagingVO viewVO = module.pagingModule(model, moduleVO, proList, paging, 7);
+   	   List<ProVO> showProList = ps.selectProList(moduleVO);
+   	   model.addAttribute("userList", showProList);
+   	   map.put("list", showProList);
+   	   map.put("vo", viewVO);
+   	   return map;
+      }
+      
+      
+      
+      
+      
+      
+
   	@RequestMapping(value = "/adminProList.do/{page}") // FIX
-  	public String ProductListPage(@PathVariable String page, ArrayList<ProVO> vo, Model model) {
+  	public String ProductListPage(@PathVariable String page, ModuleVO vo, Model model) {
   		ModuleVO moduleVO = new ModuleVO();
-  		List<ProVO> allList = ps.selectProList(vo);
+  		List<ProVO> allList = ps.selectProList(moduleVO);
   		module.pagingModule(model, moduleVO, allList, page, 7);
   		List<ProVO> showList = ps.selectProListPaging(moduleVO);
   		model.addAttribute("list", showList);

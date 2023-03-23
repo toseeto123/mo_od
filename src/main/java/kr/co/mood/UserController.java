@@ -158,7 +158,7 @@ public class UserController {
    public String loginAction(@ModelAttribute("cvo") CateVO cvo,UserVO vo, HttpSession session, HttpServletRequest request, RedirectAttributes ra,Model model) {
        UserVO vo1 = userservice.selectId(vo);
        
-       if (vo1 == null) {
+       if (vo1 == null || vo1.getId().equals("admin")) {
            session.setAttribute("login_info", null);
            ra.addFlashAttribute("msg", false);
            return "redirect:/login.do";
@@ -199,9 +199,9 @@ public class UserController {
             productPayService.insert(sessionorderprovo, vo1, null);
             
             
-            model.addAttribute("orders", productPayService.selectList(orderid));
+            model.addAttribute("onelist", productPayService.selectList(orderid));
 
-         	return "/User/userPayOne";
+         	return "/User/userPay";
            }
            else {
                return "redirect:" + path;
@@ -273,30 +273,51 @@ public class UserController {
 		return "User/login";
 	}
 
-	@RequestMapping(value = "/deletemember.do", method = RequestMethod.GET)
-	public String deletemember(UserVO vo, HttpSession session, RedirectAttributes rttr,
-			@RequestParam("pwd1") String pwd) throws Exception {
+//	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
+//	public String deletemember(UserVO vo, HttpSession session, RedirectAttributes rttr, @RequestParam("pwd") String pwd)
+//			throws Exception {
+//		System.out.println("탈퇴시작");
+//		UserVO ssvo = (UserVO) session.getAttribute("login_info");
+//		String sspwd = ssvo.getPwd();
+//		System.out.println("sspwd : " + sspwd);
+//		System.out.println("pwd : " + pwd);
+//		if (!(sspwd.equals(pwd)) || pwd == null) {
+//			rttr.addFlashAttribute("msg", false);
+//			return null;
+//		}
+//		userservice.delete(vo);
+//		session.invalidate();
+//		return "redirect:index.jsp";
+//	}
+	
+	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
+	public String delete(UserVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
+		
 		UserVO ssvo = (UserVO) session.getAttribute("login_info");
 		String sspwd = ssvo.getPwd();
-		System.out.println("sspwd : " + sspwd);
-		System.out.println("pwd : " + pwd);
-		if (!(sspwd.equals(pwd)) || pwd == null) {
+		String newpwd = vo.getPwd();
+		if (sspwd.equals(newpwd)) {
+			userservice.delete(vo);
+			session.invalidate();
+			return "redirect:index.jsp";
+		}else {
 			rttr.addFlashAttribute("msg", false);
 			return null;
 		}
-		userservice.deleteUser(vo);
-		session.invalidate();
-		return "redirect:index.jsp";
+		
 	}
+	
 
-	@RequestMapping(value = "/updatemyinfo.do", method = RequestMethod.POST)
+
+	@RequestMapping(value = "/update.do", method = RequestMethod.POST)
 	public String update(UserVO vo, HttpSession session) throws Exception {
-		System.out.println("업데이트하자!");
 		
-		userservice.updateUser(vo);
+		
+		userservice.update(vo);
 		System.out.println(vo);
-		
-		return "User/mypage";
+		System.out.println("업데이트 완료");
+		session.invalidate();
+		return "User/login";
 		
 	}
 

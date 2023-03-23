@@ -4,42 +4,11 @@
 
 <!-- ======= Footer ======= -->
   <footer id="footer">
-    <div class="footer-top">
-      <div class="container">
-        <div class="row">
 
-          <div class="col-lg-3 col-md-6">
-            <div class="footer-info">
-              <h2 style="display:inline; font-family:궁서;">묻:</h2><h2 style="display:inline; font-family:굴림;">mo_od</h2>
-            </div>
-          </div>
-
-          <div class="col-lg-2 col-md-6 footer-links">
-            <h4>회원 관리</h4>
-            <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">이슬기</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">최욱진</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">이성원</a></li>
-            </ul>
-          </div>
-
-          <div class="col-lg-3 col-md-6 footer-links">
-            <h4>상품 관리</h4>
-            <ul>
-            	<li><i class="bx bx-chevron-right"></i> <a href="#">김남수</a></li>
-            	<li><i class="bx bx-chevron-right"></i> <a href="#">김지애</a></li>
-            	<li><i class="bx bx-chevron-right"></i> <a href="#">장승연</a></li>
-            	<li><i class="bx bx-chevron-right"></i> <a href="#">송준기</a></li>
-            </ul>
-          </div>
-
-        </div>
-      </div>
-    </div>
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>mood</span></strong> 묻:mo_od Team
+        &copy; Copyright <strong><span style="font-family:궁서;">묻:</span><a href="/adminLogin.do" style="color:white;">mo_od.</a></strong> 2023<br>김남수 　김지애 　장승연 　송준기 　이슬기 　최욱진
       </div>
     </div>
   </footer><!-- End Footer -->
