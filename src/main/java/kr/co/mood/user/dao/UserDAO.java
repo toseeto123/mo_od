@@ -61,6 +61,10 @@ public class UserDAO {
 		System.out.println(vo);
 		
 	}
+	
+	public void updatePwd(UserVO vo) {
+		mybatis.update("UserDAO.updatePwd", vo);
+	}
 
 
 	public void insertnaver(UserVO naver) {

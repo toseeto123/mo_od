@@ -96,10 +96,10 @@ span.span{
 								<div class="card-body">
 								<div class="form-group row">
 								<div class="col-6">
-									<a href="">비밀번호 찾기</a>
+									<a href="/searchPwd">비밀번호 찾기</a>
 								</div>
 								<div class="col-6 text-right">
-									<a href="">돌아가기</a>
+									<a href="/login.do">돌아가기</a>
 								</div>
 								</div>
 							</div>
@@ -127,14 +127,23 @@ span.span{
                 if(num == number && time > 0){
                     clearInterval(interval);
                     document.getElementById('time').innerHTML = '인증완료';
-                    document.getElementById('show').innerHTML = '아이디는 ' + data.id + '입니다.';
+                    document.getElementById('show').innerHTML = "아이디는 <span id='copyText' style='color: #505050	; cursor: pointer;' onClick='du()'>" + data.id + "</span>입니다.";
                 }else if(time <= 0){
                     document.getElementById('time').innerHTML = '인증시간 만료';
                 }
             }
         }
         
-        
+    	function du(){
+    		  var copyText = document.getElementById("copyText");
+    		  var temp = document.createElement("textarea");
+    		  temp.value = copyText.innerText;
+    		  document.body.appendChild(temp);
+    		  temp.select();
+    		  document.execCommand("copy");
+    		  document.body.removeChild(temp);
+    		  alert("복사되었습니다.");
+    		}	
     
     </script>
 

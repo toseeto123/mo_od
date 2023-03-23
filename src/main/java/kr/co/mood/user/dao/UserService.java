@@ -17,7 +17,8 @@ public interface UserService {
 
 		
 		public void update(UserVO vo) throws Exception;
-
+		
+		public void updatePwd(UserVO vo);
 		
 		public void delete(UserVO vo) throws Exception;
 

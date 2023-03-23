@@ -62,7 +62,9 @@ public class UserServiceImpl implements UserService{
 	}
 
 	
-
+	public void updatePwd(UserVO vo) {
+		userdao.updatePwd(vo);
+	}
 	
 
 	

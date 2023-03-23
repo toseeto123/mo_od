@@ -114,10 +114,10 @@ span.span {
 
 								<div class="form-group row">
 									<div class="col-6">
-										<a href="">아이디 찾기</a>
+										<a href="/searchId">아이디 찾기</a>
 									</div>
 									<div class="col-6 text-right">
-										<a href="">돌아가기</a>
+										<a href="/login.do">돌아가기</a>
 									</div>
 
 								</div>
@@ -150,15 +150,15 @@ span.span {
 						<div class="card-body">
 							<div class="form-group">
 								<label for="password">새로운 비밀번호</label> <input type="password"
-									id="password" class="form-control" required>
+									id="password" class="form-control" required onFocus="this.value = ''">
 							</div>
 							<div class="form-group">
 								<label for="confirm-password">비밀번호 확인</label> <input
-									type="password" id="confirm-password" class="form-control"
-									required>
+									type="password" id="confirmPassword" class="form-control"
+									required onFocus="this.value = ''">
 							</div>
 							<div class="form-group text-center">
-								<input type="button" value="비밀번호 재설정">
+								<input type="button" onClick="passwordValidateForm()" value="비밀번호 재설정">
 							</div>
 						</div>
 					</div>
@@ -166,8 +166,6 @@ span.span {
 			</div>
 		</div>
 	</div>
-
-
 
 
 
@@ -193,7 +191,46 @@ span.span {
 		}
 
 	}
-									
+	
+	function passwordChange(){
+		
+		const xhr = new XMLHttpRequest();
+		const url = "/passwordChange?id="+document.getElementById('storage').value+"&pwd="+document.getElementById('password').value;
+		xhr.open("GET", url);
+		xhr.onreadystatechange = function () {
+		    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+		        const data = xhr.responseText;
+		        if(data == 'Success'){
+		        	location.href='/login.do';
+		        }else{
+		        	alert('비밀번호가 변경되지 않았습니다.')
+		        }
+		    }
+		};
+		xhr.send();
+	}
+	
+	
+    function passwordValidateForm() {
+  	  // 폼 요소의 유효성 검사 수행
+  	  if (!document.getElementById("password").checkValidity()) {				
+  	    document.getElementById("password").reportValidity();
+  	  } else if(document.getElementById("password").checkValidity()){
+  	  	  if(!document.getElementById("confirmPassword").checkValidity()){  		
+  	  		  document.getElementById("confirmPassword").reportValidity();  
+  	  	  }else if(document.getElementById("confirmPassword").checkValidity()){
+  	  		if(document.getElementById("password").value == document.getElementById("confirmPassword").value){
+  	  			passwordChange()
+  	  		}else{
+  	  			alert("비밀번호가 일치하지 않습니다. 다시 입력해주십시오.");
+  	  			 document.getElementById("confirmPassword").focus();
+  	  		}
+  	  	  }				
+  	  }
+  	  
+
+  	}
+			
 	</script>
 
 

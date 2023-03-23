@@ -48,7 +48,7 @@ public class ClientIdPassCheckController {
 			Random random = new Random();
 			int checkNum = random.nextInt(888888) + 111111;
 
-			/*String setFrom = "kjm1709@naver.com";
+			String setFrom = "cwj9799@naver.com";
 			String toMail = email;
 			String title = "인증번호 이메일 입니다.";
 			String content ="인증 번호는 " + checkNum + "입니다." + "<br>"
@@ -66,7 +66,7 @@ public class ClientIdPassCheckController {
 
 			} catch (Exception e) {
 				e.printStackTrace();
-			}*/
+			}
 
 			String num = Integer.toString(checkNum);
 			map.put("num", num);
@@ -79,6 +79,23 @@ public class ClientIdPassCheckController {
 		System.out.println("2");
 		}
 		return map;
+	}
+	
+	
+	@RequestMapping("/passwordChange")
+	@ResponseBody
+	public String passwordChange(String id, String pwd) {
+		UserVO userVo = new UserVO();
+		userVo.setId(id);
+		userVo.setPwd(pwd);
+		try {
+			userService.updatePwd(userVo);
+		} catch (Exception e) {
+			e.printStackTrace();
+			return "False";
+		}
+		
+		return "Success";
 	}
 	
 }
