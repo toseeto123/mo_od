@@ -188,8 +188,24 @@
 		= p.pro_bucketcount + 1 WHERE
 		FIND_IN_SET(p.pro_number, #{p.pro_number})
 	</update>
+	
+	
+	<select id="ACategoryList"
+		resultType="kr.co.mood.Product.VO.ProVO">
+  	SELECT DISTINCT pro_categoryserial FROM product WHERE pro_categoryserial LIKE 'A%';
 
+	</select>
+	<select id="BCategoryList"
+		resultType="kr.co.mood.Product.VO.ProVO">
+			SELECT DISTINCT pro_categoryserial FROM product WHERE pro_categoryserial LIKE 'B%';
 
+	</select>
+	<select id="CCategoryList"
+		resultType="kr.co.mood.Product.VO.ProVO">
+			SELECT DISTINCT pro_categoryserial FROM product WHERE pro_categoryserial LIKE 'C%';
+	</select>
+
+	
 
 	<select id="AselectProListByPayCount"
 		resultType="kr.co.mood.Product.VO.ProVO">

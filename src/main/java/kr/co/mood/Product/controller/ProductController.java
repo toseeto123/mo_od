@@ -44,7 +44,6 @@ public class ProductController {
 
 
 	@RequestMapping(value = "/product/{pro_number}", method = RequestMethod.GET)
-
 	public String proDetails(@PathVariable("pro_number") int pro_number, ArrayList<ProVO> vo, Model model, HttpSession session) {
 		model.addAttribute("list", ps.selectProOne(pro_number));
 		model.addAttribute("randomList", ps.selectProRandom(vo));
@@ -52,6 +51,28 @@ public class ProductController {
 		session.setAttribute("path", "/product/"+Integer.toString(pro_number));
 		String path = (String) session.getAttribute("path");
 		return "Product/productDetail";
+	}
+	
+	@RequestMapping(value = "/product/category/{pro_categoryserial}", method = RequestMethod.GET)
+	public String cateDetails(@PathVariable("pro_categoryserial") String pro_categoryserial, ArrayList<ProVO> vo, Model model, HttpSession session) {
+		System.out.println("몰까?"+pro_categoryserial);
+	    if (pro_categoryserial.equals("A0")) {
+	        return "redirect:/A0categoryList"; 
+	    } else if (pro_categoryserial.equals("A1")) {
+	        return "redirect:/A1categoryList"; 
+	    } else if (pro_categoryserial.equals("A2")) {
+	        return "redirect:/A2categoryList"; 
+	    } else if (pro_categoryserial.equals("B0")) {
+	        return "redirect:/B0categoryList"; 
+	    } else if (pro_categoryserial.equals("B1")) {
+	        return "redirect:/B1categoryList"; 
+	    } else if (pro_categoryserial.equals("C0")) {
+	        return "redirect:/C0categoryList"; 
+	    } else if (pro_categoryserial.equals("C1")) {
+	        return "redirect:/C1categoryList"; 
+	    }else{
+	        return "Product/productList"; // 다른 경우는 "Product/productList"로 리턴
+	    }
 	}
 	
 	
@@ -63,8 +84,33 @@ public class ProductController {
 	
 	
 	
+	@RequestMapping(value = "/AcategoryList")
+	public String AcategoryList(ArrayList<ProVO> vo, Model model) {
+		List<ProVO> list = ps.ACategoryList(vo);
+		List<ProVO> prolist = ps.AselectProListByPayCount(vo);
+		model.addAttribute("list", list);
+		model.addAttribute("prolist", prolist);
+		
+		return "/Product/categoryList";
+	}
 	
+	@RequestMapping(value = "/BcategoryList")
+	public String BcategoryList(ArrayList<ProVO> vo, Model model) {
+		List<ProVO> list = ps.BCategoryList(vo);
+		List<ProVO> prolist = ps.BselectProListByPayCount(vo);
+		model.addAttribute("list", list);
+		model.addAttribute("prolist", prolist);
+		return "/Product/categoryList";
+	}
 	
+	@RequestMapping(value = "/CcategoryList")
+	public String CcategoryList(ArrayList<ProVO> vo, Model model) {
+		List<ProVO> list = ps.CCategoryList(vo);
+		List<ProVO> prolist = ps.CselectProListByPayCount(vo);
+		model.addAttribute("list", list);
+		model.addAttribute("prolist", prolist);
+		return "/Product/categoryList";
+	}
 	
 	
 	
