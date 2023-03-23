@@ -203,10 +203,11 @@ li .btnspan_on {
                   style="width: 250px; height: 250px; position: absolute; right: 150px;">
                   <input type="hidden" value="${orders.tid }" name="tid">
                   <input type="hidden" value="${orders.pro_price }" name="price">
+                  <input type="hidden" value="${orders.orderId }" name="orderId">
                <p style="text-align: center; margin-top: 30px;">
                   <input type="hidden" value="${orders.userno}"> <input
-                     type="hidden" value="${orders.pro_number}">
-               <h2 style="margin-left: 100px;">주문번호:<span> ${orders.orderId}</span></h2>
+                     type="hidden" value="${orders.pro_number}" name="pro_number">
+               <h2 style="margin-left: 100px;">주문번호:<span> ${orders.orderId} </span></h2>
                <h2 style="margin-left: 100px;">결제일: <span>${orders.approved_at}</span></h2><br>   
                <h4 style="margin-left: 100px;">상품명: <small>${orders.pro_name}</small></h4>
                <h4 style="margin-left: 100px;">상품정보: <small>${orders.pro_maindesctitle }</small></h4>

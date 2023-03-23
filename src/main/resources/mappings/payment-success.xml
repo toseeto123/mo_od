@@ -24,6 +24,10 @@
 	<delete id="catedelete">
 		delete from cate where user_no = #{user_no}
 	</delete>
+	
+	<delete id="cancelDelete">
+		delete from orderproduct where orderId = #{orderId} 
+	</delete>
 
 	<update id="paycountupdate">
 		UPDATE product p

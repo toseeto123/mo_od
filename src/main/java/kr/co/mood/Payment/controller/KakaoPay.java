@@ -124,7 +124,7 @@ public class KakaoPay {
 
        }
        public KakaoCancelResponseVO kakaoCancel(@RequestParam("tid") String tid
-    		   ,@RequestParam("price") String price
+    		   ,@RequestParam("price") String price,@RequestParam("pro_number") String pro_number,@RequestParam("orderId") int orderId
     		   ) {
     	   System.out.println("취소 로직 들어 왔어유~");
            HttpHeaders headers = new HttpHeaders();
@@ -149,7 +149,9 @@ public class KakaoPay {
                    "https://kapi.kakao.com/v1/payment/cancel",
                    requestEntity,
                    KakaoCancelResponseVO.class);
-                   
+           
+           kservice.paycancelDelete(orderId);
+           System.out.println(orderId);
            return cancelResponse;
        }
        
