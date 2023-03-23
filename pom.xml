@@ -204,10 +204,10 @@
 		</dependency>
 		<!-- jquery -->
 		<dependency>
-			<groupId>org.webjars.bower</groupId>
-			<artifactId>jquery</artifactId>
-			<version>3.2.1</version>
-		</dependency>
+    <groupId>org.webjars.bower</groupId>
+    <artifactId>jquery</artifactId>
+    <version>3.4.1</version>
+</dependency>
 		
 		<dependency>
 	<groupId>com.googlecode.json-simple</groupId>
