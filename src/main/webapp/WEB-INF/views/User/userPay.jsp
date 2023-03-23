@@ -278,6 +278,8 @@ body {
                      <div class="col-md-6 mb-3">
                         <label for="cc-name"></label> <img alt=""
                            src="${pageContext.request.contextPath}/resources/assets/img/product/${onelist.pro_img1}"
+                           title="${onelist.pro_name }"
+                           alt="${onelist.pro_name }"
                            style="width: 100px; height: 100px; margin-bottom: 10px;">
 
                         <div style="display: inline-block;">
