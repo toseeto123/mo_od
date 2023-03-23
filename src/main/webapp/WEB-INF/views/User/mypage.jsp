@@ -8,11 +8,6 @@
 <title>Insert title here</title>
 
 
-<link
-	href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
-	rel="stylesheet"
-	integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65"
-	crossorigin="anonymous">
 
 <style>
 section {
@@ -20,71 +15,7 @@ section {
 	margin: 0 auto;
 }
 
-/*tab css*/
-.tab {
-	float: left;
-	width: 600px;
-}
 
-.tabnav {
-	font-size: 0;
-	border: 1px solid #ddd;
-}
-
-.tabnav li {
-	display: inline-block;
-	text-align: center;
-	border-right: 1px solid #ddd;
-	justify-content: flex-end;
-}
-
-.tabnav li.on a {
-	background: #fff;
-	color: #7ea21e;
-}
-
-.tabnav li a:before {
-	content: "";
-	position: absolute;
-	left: 0;
-	top: 0px;
-	width: 100%;
-	height: 3px;
-}
-
-.tabnav li a.active:before {
-	background: #7ea21e;
-}
-
-.tabnav li a.active {
-	border-bottom: 1px solid #fff;
-}
-
-.tabnav li a {
-	position: relative;
-	display: block;
-	background: #f8f8f8;
-	color: #000;
-	padding: 0 30px;
-	line-height: 46px;
-	text-decoration: none;
-	font-size: 16px;
-}
-
-.tabnav li a:hover, .tabnav li a.active {
-	background: #fff;
-	color: #7ea21e;
-}
-
-.tabcontent {
-	padding: 20px;
-	border: 1px solid #ddd;
-	border-top: none;
-}
-
-.on {
-	height: 100%;
-}
 </style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
 </head>
@@ -92,62 +23,18 @@ section {
 
 
 	<section>
-
-		<ul class="tabnav" id="myTab">
-			<li class="on"><a class="nav-link" aria-current="page"
-				href="#" id="first">내정보</a></li>
-			<li><a class="nav-link" href="#">버킷내역</a></li>
-			<li><a class="payDetail" href="#">결제내역</a></li>
-
-
+		<ul class="nav nav-pills nav-justified">
+		  <li class="nav-item" >
+		    <a class="nav-link active" href="/mypage.do" style="background: #c8936ed4; color:white;">회원 정보</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="/cate.do" style="background: #c8936ed4; color:white;">장바 구니</a>
+		  </li>
+		  <li class="nav-item">
+		    <a class="nav-link" href="/products/payMypage" style="background: #c8936ed4; color:white;">결제 내역</a>
+		  </li>
 		</ul>
-
-
-		<div class="tabcontent">
-			<div id="on">
-				<jsp:include page="/WEB-INF/views/User/mypage_myInfo.jsp" />
-			</div>
-		</div>
-		<div class="tabcontent">
-			<div id="cate">
-			<jsp:include page="/WEB-INF/views/User/my_cateinfo.jsp" />
-			</div>
-		</div>
-
-		<div class="tabcontent">
-			<div id="payDetail">
-				<jsp:include page="/WEB-INF/views/User/userPaymentList.jsp" />
-			</div>
-		</div>
-
 	</section>
-	<script
-		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4"
-		crossorigin="anonymous"></script>
-	<script src="https://code.jquery.com/jquery-3.5.1.min.js"
-		integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-		crossorigin="anonymous"></script>
-	<script>
-		$(function($) {
-			$(".tabcontent").hide();
-			$(".tabcontent").eq(0).show(0);
-			$(".tabnav li").click(function() {
-				var idx = $(this).index();
-				$(".tabcontent").hide();
-				$(".tabcontent").eq(idx).show();
-				$(".tabnav li").removeClass("on");
-				$(this).addClass("on");
-				$(".tabnav li").removeClass("cate");
-		        $(".tabnav li").removeClass("payDetail");
-		        if ($(this).hasClass("cate")) {
-		            $(this).addClass("cate");
-		        } else if ($(this).hasClass("payDetail")) {
-		            $(this).addClass("payDetail");
-		        }
-		     });
-		});
-	</script>
 	<jsp:include page="/WEB-INF/common/footer.jsp" />
 </body>
 

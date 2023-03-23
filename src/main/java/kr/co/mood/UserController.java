@@ -108,9 +108,9 @@ public class UserController {
 			
 			
 			UserVO userInfo = ms.getUserInfo(access_Token);	
-			// 아래 코드가 추가되는 내용
+			// �븘�옒 肄붾뱶媛� 異붽��릺�뒗 �궡�슜
 
-			// 위 코드는 session객체에 담긴 정보를 초기화 하는 코드.
+			// �쐞 肄붾뱶�뒗 session媛앹껜�뿉 �떞湲� �젙蹂대�� 珥덇린�솕 �븯�뒗 肄붾뱶.
 			session.setAttribute("login_info", userInfo);
 			System.out.println("fdfd"+userInfo);
 			
@@ -165,17 +165,17 @@ public class UserController {
        } else {
            session.setAttribute("login_info", vo1);
            
-           // path 가져오기
+           // path 媛��졇�삤湲�
            String path = (String) session.getAttribute("path");
            
            if (path == null) {
                return "redirect:/index.jsp";
-           } else if (path.contains("catelogin.do")) { // 장바구니 페이지에서 왔다면
-        	   session.setAttribute("path", request.getRequestURI()); // 현재 경로 저장
+           } else if (path.contains("catelogin.do")) { // �옣諛붽뎄�땲 �럹�씠吏��뿉�꽌 �솕�떎硫�
+        	   session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
                return "redirect:/cate.do";
            } else if (path.contains("proCatelogin.do")) {
-        	   session.setAttribute("path", request.getRequestURI()); // 현재 경로 저장
-        	   CateVO sessionCvo = (CateVO) session.getAttribute("cvo"); // 세션에서 CateVO 객체를 받아옴;
+        	   session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
+        	   CateVO sessionCvo = (CateVO) session.getAttribute("cvo"); // �꽭�뀡�뿉�꽌 CateVO 媛앹껜瑜� 諛쏆븘�샂;
                int userid = vo1.getNo();
                sessionCvo.setUser_no(userid);
         	   if (sessionCvo != null) {
@@ -183,7 +183,7 @@ public class UserController {
                }
                return "redirect:/cate.do";
            } else if(path.contains("payBeLogin.do")) {	   
-        	session.setAttribute("path", request.getRequestURI()); // 현재 경로 저장
+        	session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
         	
 
          	userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
@@ -210,20 +210,20 @@ public class UserController {
    }
    @RequestMapping(value = "/catelogin.do", method = RequestMethod.GET)
    public String catelogin(HttpSession session, HttpServletRequest request) {
-       session.setAttribute("path", request.getRequestURI()); // 현재 경로 저장
+       session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
        
        return "redirect:/login.do";
    }
    @RequestMapping(value = "/proCatelogin.do", method = RequestMethod.GET)
    public String proCatelogin(@ModelAttribute("cvo") CateVO cvo, HttpSession session, ModelAndView mav,HttpServletRequest request) {
-	  session.setAttribute("path", request.getRequestURI()); // 현재 경로 저장
+	  session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
 	  
-      session.setAttribute("cvo", cvo); // CateVO 객체를 세션에 저장
+      session.setAttribute("cvo", cvo); // CateVO 媛앹껜瑜� �꽭�뀡�뿉 ���옣
       return "redirect:/login.do";
    }
    @RequestMapping(value = "/payBeLogin.do", method = RequestMethod.GET)
    public String payBeLogin(@ModelAttribute("ordervo") userOrderVO ordervo,@ModelAttribute("orderProVo") userOrderProductVO orderProVo, HttpSession session, ModelAndView mav,HttpServletRequest request) {
-	  session.setAttribute("path", request.getRequestURI()); // 현재 경로 저장
+	  session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
       
 
       return "redirect:/login.do";
@@ -232,7 +232,7 @@ public class UserController {
    @RequestMapping("/logout.do")
    public String logout(HttpSession session) {
       session.getAttribute("login_info");
-      System.out.println("로그아웃1");
+      System.out.println("濡쒓렇�븘�썐1");
       session.invalidate();
       
       return "redirect:index.jsp";
@@ -338,9 +338,9 @@ public class UserController {
 
 		String setFrom = "cwj9799@naver.com";
 		String toMail = email;
-		String title = "회원가입 인증 이메일 입니다.";
-		String content = "홈페이지를 방문해주셔서 감사합니다." + "<br><br>" + "인증 번호는 " + checkNum + "입니다." + "<br>"
-				+ "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+		String title = "�쉶�썝媛��엯 �씤利� �씠硫붿씪 �엯�땲�떎.";
+		String content = "�솃�럹�씠吏�瑜� 諛⑸Ц�빐二쇱뀛�꽌 媛먯궗�빀�땲�떎." + "<br><br>" + "�씤利� 踰덊샇�뒗 " + checkNum + "�엯�땲�떎." + "<br>"
+				+ "�빐�떦 �씤利앸쾲�샇瑜� �씤利앸쾲�샇 �솗�씤���뿉 湲곗엯�븯�뿬 二쇱꽭�슂.";
 
 		try {
 
