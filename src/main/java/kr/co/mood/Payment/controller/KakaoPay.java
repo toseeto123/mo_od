@@ -42,7 +42,8 @@ public class KakaoPay {
     		   @RequestParam("userno") String userno,
     		   @RequestParam("pro_price") int pro_price,
     		   @RequestParam("orderId") int orderId,
-    		   @RequestParam("pro_number") String pro_number) {
+    		   @RequestParam("pro_number") String pro_number
+    		   ) {
 
     
            RestTemplate restTemplate = new RestTemplate();
@@ -65,7 +66,7 @@ public class KakaoPay {
            
            params.add("tax_free_amount", "100");
            params.add("approval_url", "http://localhost:8080/User/kakaoPaySuccess?orderId=" + orderIdstr + "&userno=" + userno + "&pro_number="+ pro_number);
-           params.add("cancel_url", "http://localhost:8080/User/kakaoPayCancel");
+           params.add("cancel_url", "http://localhost:8080/User/kakaoPayCancel?");
            params.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");
             HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
     
