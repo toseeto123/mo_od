@@ -7,40 +7,70 @@
 <meta charset="UTF-8">
 <title>Chart</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<style>
+	
+	footer{
+		width: 100%;
+		position:absolute;
+		bottom: 0;
+	}
+.grid-container {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
 
+.chart-item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+.chart1 {
+  grid-row: 1;
+  grid-column: 1;
+}
+
+.chart2 {
+  grid-row: 1;
+  grid-column: 2;
+}
+
+.chart3 {
+  grid-row: 2;
+  grid-column: 1;
+}
+
+.chart4 {
+  grid-row: 2;
+  grid-column: 2;
+}
+canvas{
+	width: 50%;
+}
+</style>
 </head>
 
 <body>
 	<jsp:include
 		page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
 
-	<!-- ======= Hero Section ======= -->
-	<section id="hero" style="margin-bottom:40px;">
-		<div class="hero-container">
-			<div id="heroCarousel" data-bs-interval="5000"
-				class="carousel slide carousel-fade" data-bs-ride="carousel">
-				<div class="carousel-inner">
-
-					<div class="carousel-item active">
-						<div class="carousel-container" style="background: white;">
-							<div>
-								<div
-									style="position: absolute; top: 15%; left: 25%; width: 300px; height: 300px;">
-									<canvas id="myChart1" style="width: 300px; height: 300px;"></canvas>
-								</div>
-								<div
-									style="position: absolute; top: 15%; right: 25%; width: 300px; height: 300px;">
-									<canvas id="myChart2" style="width: 300px; height: 300px"></canvas>
-								</div>
-								<div
-									style="position: absolute; top: 60%; left: 25%; width: 300px; height: 300px;">
-									<canvas id="myChart3" style="width: 300px; height: 300px"></canvas>
-								</div>
-								<div
-									style="position: absolute; top: 60%; right: 25%; width: 300px; height: 300px;">
-									<canvas id="myChart4" style="width: 300px; height: 300px"></canvas>
-								</div>
-							</div>
+							<div class="grid-container">
+  <div class="chart1 chart-item">
+    <canvas id="myChart1"></canvas>
+  </div>
+  <div class="chart2 chart-item">
+    <canvas id="myChart2"></canvas>
+  </div>
+  <div class="chart3 chart-item">
+    <canvas id="myChart3"></canvas>
+  </div>
+  <div class="chart4 chart-item">
+    <canvas id="myChart4"></canvas>
+  </div>
+</div>
 							
 							<c:set var="index1" value="0" />
 							<c:forEach var="list" items="${chart1}">
@@ -75,18 +105,14 @@
 							<input type="hidden" value="${index4=index4+1}">
 							</c:forEach>
 							<input type="hidden" id="chartValue4" value="${index4}">
-						</div>
-					</div>
-				</div>
-
-			</div>
-		</div>
-	</section>
+				
+	
 	<!-- End Hero -->
 
-
+<footer>
 	<jsp:include
 		page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" />
+		</footer>
 	<script>
 	
 	const chartProduct1 = [];

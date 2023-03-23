@@ -8,17 +8,13 @@
 <title>Chart</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style>
-body{
-	margin: 0;
-	padding: 0;
-}
+
 select, option{
 	height: 30px;
 	font-size: 18px;
 }
 
 section.container{
-	height: 80vh;
 	margin-bottom: 20px;
 }
 .searchParent{
@@ -45,6 +41,11 @@ input[type=button]{
 }
 input[type=search]{
 	font-size: 18px;
+}
+footer{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
 }
 </style>
 </head>
