@@ -1,14 +1,11 @@
 package kr.co.mood.Payment.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +16,7 @@ import kr.co.mood.Payment.VO.userOrderVO;
 import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.cate.DAO.CateService;
 import kr.co.mood.cate.vo.CateVO;
+import kr.co.mood.pay.DAO.KakaoPayApprovalService;
 import kr.co.mood.pay.DAO.productPaymentService;
 import kr.co.mood.pay.DAO.userPaymentService;
 import kr.co.mood.user.dao.UserService;
@@ -38,6 +36,8 @@ public class userPaymentController {
 	productPaymentService productPayService;
 	@Autowired
 	ProductService productService;
+	@Autowired
+	KakaoPayApprovalService kakaoPayApprovalService;
 
 	@Transactional
 	@RequestMapping(value = "/orders", method = RequestMethod.POST)
@@ -112,7 +112,7 @@ public class userPaymentController {
 			@RequestParam("totalValue") int total) {
 		UserVO uvo = (UserVO) session.getAttribute("login_info");
 		int userid = uvo.getNo();
-		System.out.println("ㅆㅓㅁ" + total);
+		System.out.println("�뀊�뀚�뀅" + total);
 		String proid = pro_number;
 
 		userOrderVO ordervo = new userOrderVO();
@@ -148,6 +148,14 @@ public class userPaymentController {
 		System.out.println(cservice.selectCateList(userid));
 		System.out.println("dddddddddddddddd : " + userid);
 		return "/User/userPay";
+	}
+	@RequestMapping(value = "/payMypage")
+	public String payMypage(Model model , HttpSession session) {
+		UserVO uvo = (UserVO) session.getAttribute("login_info");
+		int userno = uvo.getNo();
+		model.addAttribute("orders", kakaoPayApprovalService.selectlist(userno));
+		
+		return "User/userPaymentList";
 	}
 
 }
