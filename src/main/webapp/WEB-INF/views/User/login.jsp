@@ -7,6 +7,33 @@
 
 <head>
 <jsp:include page="/WEB-INF/common/header.jsp" />
+<section id="hero" style="height: 400px;">
+      <div class="hero-container">
+         <div id="heroCarousel" data-bs-interval="5000"
+            class="carousel slide carousel-fade" data-bs-ride="carousel">
+            <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+
+            <div class="carousel-inner" role="listbox">
+
+               <!-- Slide 1 -->
+               <div class="carousel-item active"
+                  style="background-image: url(resources/assets/img/slide/cate1.jpg); height: 500px;">
+                  <div class="carousel-container">
+                     <div class="carousel-content">
+                        <h2 class="animate__animated animate__fadeInDown">로그인
+                           </h2>
+                        <p class="animate__animated animate__fadeInUp">로그인을 하시면 다양한 혜택을 누리실 수 있습니다.</p>
+<!--                         <div> -->
+<!--                            <a href="#about" -->
+<!--                               class="btn-get-started animate__animated animate__fadeInUp scrollto">Click</a> -->
+<!--                         </div> -->
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
 
 
 <meta name="google-signin-client_id"
@@ -36,12 +63,12 @@
 <body>
 <div class="login">
 	<div class="form-login">
+	
 
-		<!--                 <div class="button-wrap"> -->
-		<!--                      <a href="index.jsp"> -->
-		<!--                          <img class="img-concert" src="/resources/user/img/beulaendeu.png"/> -->
-		<!--                       </a> -->
-		<!--                 </div> -->
+<!-- 		                <div class="button-wrap"> -->
+<!-- 		                     <h2 style="display: block; padding-left:140px; font-size: 30px; font-weight: bold;" >로그인</h2> -->
+<!-- 		                     <span style="  font-size: 18px;">로그인을 하시면 다양한 혜택을 누리실 수 있습니다.</span> -->
+<!-- 		                </div> -->
 		<div class="social-icons">
 
 			<form id="login" action="/login.do" class="input-group" method="post">
@@ -63,9 +90,24 @@
 
 
 			</form>
-			<a href="index.jsp" class="" style="color: black;">메인 페이지</a> <a
-				href="join.do" class="" style="color: black; margin: 0 15px 0 15px;">회원가입</a>
-			<a href="" class="" style="color: black;">비밀번호재설정</a>
+			<ul class="login_link_box">
+				<li class="login_li">
+				<a href="index.jsp" class="" style="color: black;">아이디 찾기</a>  &nbsp;
+				</li>
+				
+				<li class="login_li">
+				<a href="index.jsp" class="" style="color: black;">비밀번호 재설정</a> &nbsp;
+				</li>
+				
+				<li class="login_li">
+				<a href="join.do" class="" style="color: black;">회원가입</a> &nbsp;
+				</li>
+			
+			</ul>
+			
+<!-- 			<a href="index.jsp" class="" style="color: black;">메인 페이지</a>  -->
+<!-- 			<a href="join.do" class="" style="color: black; margin: 0 15px 0 15px;">회원가입</a> -->
+<!-- 			<a href="" class="" style="color: black;">비밀번호재설정</a> -->
 
 
 
