@@ -8,7 +8,7 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<!-- <script type="text/javascript" src="/resources/user/js/main.js"></script> -->
+<script type="text/javascript" src="/resources/user/js/main.js"></script>
 </head>
 <body>
 <fieldset>
@@ -21,7 +21,7 @@
 		</tr>
 		<tr>
 			<td>비밀번호</td>
-			<td><input type="password" id="pwd" name="pwd" required><br>
+			<td><input type="password" class="pwd" id="pwd" name="pwd" required><br>
 <%-- 			<input type="hidden" id="pwd" name="pwd" value="${login_info.pwd}"> --%>
 			</td>
 			
@@ -29,7 +29,7 @@
 		
 		<tr>
 			<td>비밀번호 확인</td>
-			<td><input type="password" id="pwd2" name="pwd2" required ><br><span id="confirmMsg"></span></td>
+			<td><input type="password" class="pwd2" id="pwd2" name="pwd2" required ><br><span id="confirmMsg"></span></td>
 			
 		</tr>
 		<tr>
@@ -64,8 +64,8 @@
 		<br>
 			<td colspan="2">
 			<br><br>
-				<button type="submit" id="updateBtn" class="btn btn-primary" onclick="retrun passConfirm()">
-  					수정하기
+				<button type="submit" id="updateBtn" class="btn btn-primary" onclick="return UpdateCheck()">
+				수정하기
 				</button>
 				<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" >
 					탈퇴하기
@@ -110,28 +110,5 @@
 
 
 </body>
-<script>
-function passConfirm() {
-	if(mypage_myInfo.pwd.value != mypage_myInfo.pwd2.value){
-        alert("입력한 암호가 일치하지 않습니다");
-        mypage_myInfo.pwd1.value="";
-        mypage_myInfo.pwd2.value="";
-        mypage_myInfo.pwd1.focus();
-        return false;
-     } if(mypage_myInfo.pwd.value != mypage_myInfo.pwd1.value ) {
-    	 alert("저장된 암호와 일치하지 않습니다");
-    	 mypage_myInfo.pwd.value="";
-    	 mypage_myInfo.pwd1.value="";
-    	 mypage_myInfo.pwd.focus();
-         return false;
-     } if(mypage_myInfo.pwd.value != mypage_myInfo.pwd2.value ) {
-    	 alert("저장된 암호와 일치하지 않습니다");
-    	 mypage_myInfo.pwd.value="";
-    	 mypage_myInfo.pwd2.value="";
-    	 mypage_myInfo.pwd.focus();
-         return false;
-     }
-		return true;
-	 }
-</script>
+
 </html>
