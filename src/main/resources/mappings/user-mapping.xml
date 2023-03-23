@@ -67,17 +67,19 @@
    </insert>
 	
    
-   <delete id="delete" parameterType="String" >
+   <delete id="delete" parameterType="kr.co.mood.user.dao.UserVO" >
 		<![CDATA[
 		delete from moodjoin where id=#{id} and pwd=#{pwd}
 		 ]]>
 	</delete>
 	
 	
-    <update id = "update" parameterType="kr.co.mood.user.dao.UserVO">
+    <update id ="update" parameterType="kr.co.mood.user.dao.UserVO">
+    <![CDATA[
         update moodjoin
-        set adr=#{adr}, email=#{email}, phone=#{phone}
+        set adr=concat(#{adr} , #{adr2} , #{adr3}), email=#{email}, phone=#{phone}, pwd=#{pwd}
         where id = #{id}
+        ]]>
     </update>
     
     <select id="findKakao" parameterType="kr.co.mood.user.dao.UserVO" resultType="kr.co.mood.user.dao.UserVO">

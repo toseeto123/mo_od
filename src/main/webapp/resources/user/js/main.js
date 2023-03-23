@@ -48,7 +48,7 @@ function JoinCheck(){
               return false;
            }   
 
-           if (document.join.mail_check_input.value != document.join.mail_check_input) {
+           if (document.join.email1.value != document.join.email1.value) {
               alert("인증번호가 일치하지 않습니다");
               join.email.focus();
               return false;
@@ -154,7 +154,7 @@ function loginCheck(){
 
                 // 우편번호와 주소 정보를 해당 필드에 넣는다.
                  $(".address_input_1").val(data.zonecode);
-                //$("[name=memberAddr1]").val(data.zonecode);    // 대체가능
+                
                   $(".address_input_2").val(addr);
                   //$("[name=memberAddr2]").val(addr);
                 // 커서를 상세주소 필드로 이동한다.
