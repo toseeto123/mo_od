@@ -44,7 +44,8 @@
   
 			<form id="login" action="/adminLogin.do" class="input-group" method="post">
 				<input type="text" name="id" class="input-field" placeholder="아이디"
-					required autofocus> <input type="password" name="pwd"
+					required autofocus> <br><br>
+					<input type="password" name="pwd"
 					class="input-field" placeholder="비밀번호" required>
 
 
@@ -61,7 +62,7 @@
 
 
 			</form>
-			                    <button class="submit" style="width: 130px; float:left;">Login</button>
+			    <button class="submit" style="width: 130px; float:left;">Login</button>
 				<input type="button" class="submit" value="Client" onclick="location.href='/goclient.do'" style="width: 130px; float:right;">
 
 		</div>
