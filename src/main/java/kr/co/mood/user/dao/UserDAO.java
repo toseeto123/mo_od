@@ -16,6 +16,11 @@ public class UserDAO {
 	private SqlSessionTemplate mybatis;
 	private SqlSession session;
 	
+	
+	public UserVO findEmail(String email) {
+		return mybatis.selectOne("UserDAO.findEmail", email);
+	}
+	
 	public List<UserVO> selectAll(ModuleVO vo) {//추가된 부분
 		return mybatis.selectList("UserDAO.selectAll", vo);
 	}
@@ -55,6 +60,10 @@ public class UserDAO {
 		mybatis.update("UserDAO.update", vo);
 		System.out.println(vo);
 		
+	}
+	
+	public void updatePwd(UserVO vo) {
+		mybatis.update("UserDAO.updatePwd", vo);
 	}
 
 

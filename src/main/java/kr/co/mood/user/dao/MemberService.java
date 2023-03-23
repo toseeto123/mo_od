@@ -128,7 +128,7 @@ public class MemberService {
    public String getNaverAccessToken (String authorize_code,HttpSession session) {
          String access_Token = "";
          String reqURL = "https://nid.naver.com/oauth2.0/token";
-         System.out.println("와따 네이버로그인");
+        
            try {
                URL url = new URL(reqURL);
                HttpURLConnection conn = (HttpURLConnection) url.openConnection();

@@ -1,14 +1,11 @@
 package kr.co.mood.Payment.controller;
 
-import java.util.List;
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +16,7 @@ import kr.co.mood.Payment.VO.userOrderVO;
 import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.cate.DAO.CateService;
 import kr.co.mood.cate.vo.CateVO;
+import kr.co.mood.pay.DAO.KakaoPayApprovalService;
 import kr.co.mood.pay.DAO.productPaymentService;
 import kr.co.mood.pay.DAO.userPaymentService;
 import kr.co.mood.user.dao.UserService;
@@ -38,12 +36,14 @@ public class userPaymentController {
 	productPaymentService productPayService;
 	@Autowired
 	ProductService productService;
+	@Autowired
+	KakaoPayApprovalService kakaoPayApprovalService;
 
 	@Transactional
 	@RequestMapping(value = "/orders", method = RequestMethod.POST)
 	public String processOrder(HttpSession session, Model model, @RequestParam("pro_number") String pro_number,
 			@RequestParam("pro_price") int pro_price, @RequestParam("radioOption") String pro_option,
-			RedirectAttributes redirectAttributes) {
+			RedirectAttributes redirectAttributes,@RequestParam("adr") String address) {
 		UserVO uvo = (UserVO) session.getAttribute("login_info");
 		userOrderVO ordervo = new userOrderVO();
 
@@ -88,6 +88,7 @@ public class userPaymentController {
 
 		ordervo.setUserNo(userid);
 		ordervo.setPrice(pro_price);
+		ordervo.setAddress(address);
 
 		payService.insert(ordervo, uvo, null);
 
@@ -109,10 +110,10 @@ public class userPaymentController {
 
 	@RequestMapping(value = "/cateorders", method = RequestMethod.POST)
 	public String cateProcessOrder(HttpSession session, Model model, @RequestParam("pro_number") String pro_number,
-			@RequestParam("totalValue") int total) {
+			@RequestParam("totalValue") int total,@RequestParam("adr") String address) {
 		UserVO uvo = (UserVO) session.getAttribute("login_info");
 		int userid = uvo.getNo();
-		System.out.println("ㅆㅓㅁ" + total);
+		System.out.println("占쎈�딉옙�싷옙��" + total);
 		String proid = pro_number;
 
 		userOrderVO ordervo = new userOrderVO();
@@ -124,6 +125,7 @@ public class userPaymentController {
 		model.addAttribute(count);
 		ordervo.setOrderCount(count);
 		ordervo.setPrice(total);
+		ordervo.setAddress(address);
 		if (ordervo != null && uvo != null) {
 			payService.insert(ordervo, uvo, null);
 			System.out.println("orderId:" + ordervo.getOrderId());
@@ -148,6 +150,14 @@ public class userPaymentController {
 		System.out.println(cservice.selectCateList(userid));
 		System.out.println("dddddddddddddddd : " + userid);
 		return "/User/userPay";
+	}
+	@RequestMapping(value = "/payMypage")
+	public String payMypage(Model model , HttpSession session) {
+		UserVO uvo = (UserVO) session.getAttribute("login_info");
+		int userno = uvo.getNo();
+		model.addAttribute("orders", kakaoPayApprovalService.selectlist(userno));
+		
+		return "User/userPaymentList";
 	}
 
 }

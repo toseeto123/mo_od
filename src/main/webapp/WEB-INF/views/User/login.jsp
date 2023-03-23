@@ -7,7 +7,7 @@
 
 <head>
 <jsp:include page="/WEB-INF/common/header.jsp" />
-<section id="hero" style="height: 400px;">
+<section id="hero" style="height: 350px;">
       <div class="hero-container">
          <div id="heroCarousel" data-bs-interval="5000"
             class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -92,11 +92,11 @@
 			</form>
 			<ul class="login_link_box">
 				<li class="login_li">
-				<a href="index.jsp" class="" style="color: black;">아이디 찾기</a>  &nbsp;
+				<a href="/searchId" class="" style="color: black;">아이디 찾기</a>  &nbsp;
 				</li>
 				
 				<li class="login_li">
-				<a href="index.jsp" class="" style="color: black;">비밀번호 재설정</a> &nbsp;
+				<a href="/searchPwd" class="" style="color: black;">비밀번호 재설정</a> &nbsp;
 				</li>
 				
 				<li class="login_li">
@@ -114,28 +114,39 @@
 			<div class="social_login">
 				<p class="snsname" style="margin-bottom: 10px; margin-top: 38px;">SNS계정으로
 					간편 로그인/회원가입</p>
-
+			<ul class="social_logo">
+				<li class="box_list">
+				
 				<a id="custom-login-btn" href="javascript:void(0);"
 					onclick="window.open('${naverUrl}','naverLogin','width=430,height=500,location=no,status=no,scrollbars=yes');">
 					<img style="width: 50px;" src="/resources/user/img/naver.png"
-					alt="naver" />
+					alt="naver">
+					<span class="box_list_txt" >네이버</span>
 				</a>
-
-
-
-
+				
+				</li>
+				
+				<li class="box_list">
 				<button
-					style="background: transparent; border-color: transparent; margin: 0 10px 0 10px;"
+					style="background: transparent; border-color: transparent;"
 					onclick="googleHandleAuthClick()">
 					<img style="width: 50px;" src="/resources/user/img/google.png"
 						alt="google">
+						<span class="box_list_txt">구글</span>
 				</button>
-
+				</li>
+				
+				<li class="box_list">
 				<a class="p-2"
 					href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/member/kakaoLogin&response_type=code">
 					<img style="width: 50px;" src="/resources/user/img/kakao.png"
 					alt="kakao">
+					<span class="box_list_txt" >카카오</span>
 				</a>
+				</li>
+			</ul>
+				
+
 			</div>
 		</div>
 	</div>

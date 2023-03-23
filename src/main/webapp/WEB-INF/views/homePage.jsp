@@ -8,7 +8,15 @@
  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
 <jsp:include page="../../WEB-INF/common/header.jsp" />
+<style>
+.animate__fadeInDown{
+ font-size:30px;
+}
 
+.animate__fadeInUp {
+ font-size:22px;
+}
+</style>
 <body>
 
   <!-- ======= Hero Section ======= -->
@@ -24,8 +32,8 @@
           <div class="carousel-item active" style="background-image: url(resources/assets/img/slide/mood.png);">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Grow Your Business</h2>
-                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <h2 class="animate__animated animate__fadeInDown">나만의 작은 문명 mo_od </h2>
+                <p class="animate__animated animate__fadeInUp"> 여러분의 취향을 가득담은 mo_od를 통해 &nbsp; 나만의 문명을 완성해보세요</p>
                 <div>
                   <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
                 </div>
@@ -37,8 +45,8 @@
           <div class="carousel-item" style="background-image: url(resources/assets/img/slide/slide-2.jpg);">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
-                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <h2 class="animate__animated animate__fadeInDown">3월의 mo_od</h2>
+                <p class="animate__animated animate__fadeInUp">3월의 mo_od로 가득채워진 아이템들을 만나보세요</p>
               </div>
             </div>
           </div>
@@ -47,8 +55,8 @@
           <div class="carousel-item" style="background-image: url(resources/assets/img/slide/slide3.jpg);">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
-                <p class="animate__animated animate__fadeInUp">Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
+                <h2 class="animate__animated animate__fadeInDown">컬러에 담겨진 mo_od </h2>
+                <p class="animate__animated animate__fadeInUp"> 여러분의 감성을 자극하는 mo_od의 컬러를 만나보세요 </p>
                 
               </div>
             </div>

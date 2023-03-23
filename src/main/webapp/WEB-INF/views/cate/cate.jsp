@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
@@ -11,178 +11,179 @@
 <meta charset="UTF-8">
 <title>장바구니</title>
 <style>
+section {
+	width: 1000px;
+	margin: 0 auto;
+}
 dl, ul, ol, li {
-   list-style: none;
+	list-style: none;
 }
 
 .content_box {
-   float: left;
-   width: 100%;
-   background-color: white;
+	float: left;
+	width: 100%;
+	background-color: white;
 }
 
 .order_wrap {
-   max-width: 1200px;
-   width: 100%;
-   margin: auto;
+	max-width: 1200px;
+	width: 100%;
+	margin: auto;
 }
 
 @media only screen and (max-width: 768px) {
-   .order_wrap {
-      max-width: 768px;
-   }
+	.order_wrap {
+		max-width: 768px;
+	}
 }
 
 @media only screen and (max-width: 576px) {
-   .order_wrap {
-      max-width: 576px;
-   }
+	.order_wrap {
+		max-width: 576px;
+	}
 }
 
 .order_wrap .order_tit {
-   overflow: hidden;
-   border-bottom: 2px solid #c8936ed4;
-   margin-bottom: 10px;
+	overflow: hidden;
+	border-bottom: 2px solid #c8936ed4;
+	margin-bottom: 10px;
 }
 
 .order_wrap .order_tit ol {
-   float: right;
-   line-height: 62px;
+	float: right;
+	line-height: 62px;
 }
 
 .order_wrap .order_tit h2 {
-   float: left;
-   font-size: 28px;
-   color: #222222;
+	float: left;
+	font-size: 28px;
+	color: #222222;
 }
 
 .order_wrap .order_tit ol li {
-   float: left;
-   font-size: 14px;
-   color: #d1d1d1;
+	float: left;
+	font-size: 14px;
+	color: #d1d1d1;
 }
 
 .order_wrap .order_tit li span {
-   font-size: 16px;
-   font-weight: bold;
+	font-size: 16px;
+	font-weight: bold;
 }
 
 .order_wrap .order_tit .page_on {
-   color: #c8936ed4;
-   font-weight: bold;
+	color: #c8936ed4;
+	font-weight: bold;
 }
 
 .price_sum {
-   margin: 40px 100px 50px;
-   padding: 20px 40px 25px 40px;
-   border: 2px solid #c8936ed4;
-   border-radius: 5px;
-   height: 300px;
+	margin: 40px 100px 50px;
+	padding: 20px 40px 25px 40px;
+	border: 2px solid #c8936ed4;
+	border-radius: 5px;
+	height: 300px;
 }
 
 .price_sum_cont {
-   display: table;
-   float: right;
-   text-align: right;
+	display: table;
+	float: right;
+	text-align: right;
 }
 
 .price_sum_cont .price_sum_list {
-   position: relative;
+	position: relative;
 }
 
 .price_sum_cont .price_sum_list dl {
-   display: table-cell;
-   padding: 5px 10px 5px 10px;
-   font-size: 16px;
-   text-align: right;
-   display: table-cell;
+	display: table-cell;
+	padding: 5px 10px 5px 10px;
+	font-size: 16px;
+	text-align: right;
+	display: table-cell;
 }
 
 .price_sum_cont .price_sum_list dl {
-   display: block;
+	display: block;
 }
 
 ol {
-   display: flex;
-   flex-wrap: wrap;
-   justify-content: center;
-   align-items: center;
-   margin: 0;
-   padding: 0;
-   list-style: none;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 }
 
 li {
-   display: flex;
-   align-items: center;
-   margin: 10px;
+	display: flex;
+	align-items: center;
+	margin: 10px;
 }
 
 li .btnspan {
-   display: inline-flex;
-   justify-content: center;
-   align-items: center;
-   width: 30px;
-   height: 30px;
-   border-radius: 50%;
-   background-color: #ccc;
-   margin-right: 5px;
-   font-size: 16px;
-   color: #fff;
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	width: 30px;
+	height: 30px;
+	border-radius: 50%;
+	background-color: #ccc;
+	margin-right: 5px;
+	font-size: 16px;
+	color: #fff;
 }
-li .btnspan_on{
-background-color: #c8936ed4;
+
+li .btnspan_on {
+	background-color: #c8936ed4;
 }
 
 @media only screen and (max-width: 768px) {
-   ol {
-      position: fixed;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      background-color: #f8f9fa;
-      padding: 10px;
-      box-sizing: border-box;
-      z-index: 999;
-   }
-   li {
-      margin: 5px;
-   }
-   li .btnspan {
-      width: 20px;
-      height: 20px;
-      font-size: 12px;
-   }
+	ol {
+		position: fixed;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		background-color: #f8f9fa;
+		padding: 10px;
+		box-sizing: border-box;
+		z-index: 999;
+	}
+	li {
+		margin: 5px;
+	}
+	li .btnspan {
+		width: 20px;
+		height: 20px;
+		font-size: 12px;
+	}
 }
 
 .plus_btn, .minus_btn, .delete_btn {
-   width: 30px;
-   height: 30px;
-   background-color: #ccc;
-   color: #FFF;
-   border: none;
-   border-radius: 5px;
-   cursor: pointer;
-   font-size: 18px;
-   font-weight: bold;
-   margin: 0 1px;
+	width: 30px;
+	height: 30px;
+	background-color: #ccc;
+	color: #FFF;
+	border: none;
+	border-radius: 5px;
+	cursor: pointer;
+	font-size: 18px;
+	font-weight: bold;
+	margin: 0 1px;
 }
 
 .plus_btn:hover, .minus_btn:hover, .delete_btn:hover {
-   background-color: #FFA500;
+	background-color: #FFA500;
 }
 
-
-.cateBtn , .btn_buy , .cancelbtn{
-   background-color: #c8936ed4;
-   width: 416px;
-   height: 50px;
-   border : none;
-   border-radius: 30px;
-   box-shadow: 1px 1px 1px 1px lightgray;
-
-   
-   
+.cateBtn, .btn_buy, .cancelbtn {
+	background-color: #c8936ed4;
+	width: 416px;
+	height: 50px;
+	border: none;
+	border-radius: 30px;
+	box-shadow: 1px 1px 1px 1px lightgray;
 }
 </style>
 <script type="text/javascript">
@@ -463,107 +464,104 @@ function deletecate(element) {
 
 </script>
 </head>
-<body style="font-size: 22px; ">
-<form action="/products/cateorders" method="post">
-   <section id="hero" style="height: 400px;">
-      <div class="hero-container">
-         <div id="heroCarousel" data-bs-interval="5000"
-            class="carousel slide carousel-fade" data-bs-ride="carousel">
-            <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-
-            <div class="carousel-inner" role="listbox">
-
-               <!-- Slide 1 -->
-               <div class="carousel-item active"
-                  style="background-image: url(resources/assets/img/slide/cate1.jpg); height: 500px;">
-                  <div class="carousel-container">
-                     <div class="carousel-content">
-                        <h2 class="animate__animated animate__fadeInDown">초히트 대 인기
-                           상품</h2>
-                        <p class="animate__animated animate__fadeInUp">지금 바로 클릭해보세요</p>
-                        <div>
-                           <a href="#about"
-                              class="btn-get-started animate__animated animate__fadeInUp scrollto">Click</a>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </div>
-   </section>
-   <div class="content_box">
-      <div class="order_wrap" style="position: relative;">
-         <div class="order_tit">
-            <ol>
-               <li class="page_on"><span class="btnspan btnspan_on">01</span>장바구니</li>
-               <li><span class="btnspan">02</span>주문서작성/결제</li>
-               <li><span class="btnspan">03</span>주문완료</li>
-            </ol>
-         </div>
-         <c:forEach var="map" items="${map}">
-            <div class="deleteplz">
-
-               <img src="resources/assets/img/product/${map.pro_img1 }"
-                  class="img-fluid"
-                  style="width: 160px; height: 160px; position: absolute; right: 150px;">
-               <p style="text-align: center; margin-top: 30px;">
+<body style="font-size: 20px;">
+	<form action="/products/cateorders" method="post">
+	<input type="hidden" value="${login_info.adr }" name="adr">
+		<section>
+				<ul class="nav nav-pills nav-justified">
+				  <li class="nav-item" >
+				    <a class="nav-link active" href="/mypage.do" style="background: #c8936ed4; color:white; font-size: 16px;">회원 정보</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="/cate.do" style="background: #c8936ed4; color:white; font-size: 16px;">장바 구니</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="/products/payMypage" style="background: #c8936ed4; color:white; font-size: 16px;">결제 내역</a>
+				  </li>
+				</ul>
+		</section>
+		<div class="content_box">
+			<div class="order_wrap" style="position: relative;">
+				<div class="order_tit">
+					<ol>
+						<li class="page_on" style="font-size: 20px;"><span
+							class="btnspan btnspan_on">01</span>장바구니</li>
+						<li style="font-size: 20px;"><span class="btnspan">02</span>주문서작성/결제</li>
+						<li style="font-size: 20px;"><span class="btnspan">03</span>주문완료</li>
+					</ol>
+				</div>
+				<c:choose>
+				<c:when test="${empty map }"><h2 style="text-align: center; margin-top: 70px; margin-bottom: 70px;">장바구니에 담긴 상품이 없습니다.</h2></c:when>
+				<c:otherwise>
+				<c:forEach var="map" items="${map}">
+					<div class="deleteplz">
+						<img src="resources/assets/img/product/${map.pro_img1 }"
+							class="img-fluid"
+							style="width: 160px; height: 160px; position: absolute; right: 150px;">
+						<p style="text-align: center; margin-top: 30px;">
 
 
-                  <input type="hidden" value="${map.user_no}"> <input type="hidden" value="${map.pro_number}" name="pro_number">
-               <h2 style="margin-left: 100px; ">${map.pro_name}</h2>
-               <p style="margin-left: 100px;">${map.pro_maindesctitle }</p>
-               <span style="margin-left: 100px;">수 량 : </span>
-               <div class="amount" style="display: inline;">${map.amount}</div>
-               <input type="hidden" value="${map.cate_id}" name="cateId"
-                  class="cate_id" /> <span class="btnspan">
-                  <button type="button" class="plus_btn" onclick='flush("plus", this)' title="수량 추가">+</button>
-                  <button type="button" class="minus_btn" onclick='minus("minus", this)' title="수량 감소">-</button>
-                  <button class="delete_btn" type="button" onclick='deletecate(this)' title="상품 삭제">
-                     <i class="ph ph-trash"></i>
-                  </button>
-                  
-               </span> <input type="hidden" value="${map.pro_price}" name="pro_price"
-                  class="pro_price" />
+							<input type="hidden" value="${map.user_no}" name="user_no"> <input
+								type="hidden" value="${map.pro_number}" name="pro_number">
+						<h2 style="margin-left: 100px;">${map.pro_name}</h2>
+						<p style="margin-left: 100px;">${map.pro_maindesctitle }</p>
+						<span style="margin-left: 100px;">수 량 : </span>
+						<div class="amount" style="display: inline;">${map.amount}</div>
+						<input type="hidden" value="${map.cate_id}" name="cateId"
+							class="cate_id" /> <span class="btnspan">
+							<button type="button" class="plus_btn"
+								onclick='flush("plus", this)' title="수량 추가">+</button>
+							<button type="button" class="minus_btn"
+								onclick='minus("minus", this)' title="수량 감소">-</button>
+							<button class="delete_btn" type="button"
+								onclick='deletecate(this)' title="상품 삭제">
+								<i class="ph ph-trash"></i>
+							</button>
 
-            <br><span style="margin-left: 100px;">옵 션 : </span>${map.pro_option }
-               <p style="margin-left: 100px;">
-                  가 격 : <span class="total"><fmt:formatNumber
-                        value="${map.total}" type="currency" currencySymbol="₩" /></span>
-               </p>
-               <br>
-               <hr>
+						</span> <input type="hidden" value="${map.pro_price}" name="pro_price"
+							class="pro_price" /> <br>
+						<span style="margin-left: 100px;">옵 션 : </span>${map.pro_option }
+						<p style="margin-left: 100px;">
+							가 격 : <span class="total"><fmt:formatNumber
+									value="${map.total}" type="currency" currencySymbol="₩" /></span>
+						</p>
+						<br>
+						<hr>
 
-            </div>
-            <input type="hidden" value="${map.total }" name="total">
- 
-            
-         </c:forEach>
+					</div>
+					<input type="hidden" value="${map.total }" name="total">
+					
+
+				</c:forEach>
+				</c:otherwise>
+				</c:choose>
 
 
+				</p>
+				<div class="price_sum">
+					<div class="price_sum_cont">
+						<div class="price_sum_list">
+							<dl style="font-size: 20px;">
+								<dt>
+									총 <strong class="amount_total">0</strong> 개의 상품 금액<span>
+										: </span><strong class="value_total">0</strong> 원
+								</dt>
+								<dd>
+									<input type="hidden" name="totalValue" id="totalValueInput"
+										class="totalValueInput">
+								</dd>
+							</dl>
+							<input type="hidden" value="${login_info.adr }" name="address">
+							<input type="submit" value="바로결제하기" class="btn_buy"> <br>
+							<br> <input type="button" value="메인페이지로 이동"
+								class="cancelbtn" onclick="window.location='/mo_od';">
 
-         </p>
-         <div class="price_sum">
-            <div class="price_sum_cont">
-               <div class="price_sum_list">
-                  <dl style="font-size: 20px;">
-                     <dt>
-                        총 <strong class="amount_total">0</strong> 개의 상품 금액<span> : </span><strong class="value_total">0</strong> 원
-                     </dt>
-                     <dd>
-                                   <input type="hidden" name="totalValue" id="totalValueInput" class="totalValueInput">
-                     </dd>
-                  </dl>
-                  <input type="hidden" value="${login_info.adr }" name="address">
-                  <input type="submit" value="바로결제하기" class="btn_buy"> <br><br>
-                  <input type="button" value="메인페이지로 이동" class="cancelbtn" onclick="window.location='/mo_od';">
-				
-               </div>
-            </div>
-         </div>
-      </div>
-   </div>
-   </form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
 </body>
 <jsp:include page="../../common/footer.jsp" />
 <script>

@@ -18,6 +18,10 @@
       <result property="day" column="DAY" />
    </resultMap> -->
    
+<select id="findEmail" resultType="kr.co.mood.user.dao.UserVO">
+	select email, id from moodjoin where email = #{email}
+</select>
+  
 <select id="selectAll" parameterType="kr.co.mood.module.ModuleVO" resultType="kr.co.mood.user.dao.UserVO">
    <![CDATA[
       select * from moodjoin where id != 'admin'
@@ -42,7 +46,7 @@
 
 	 <insert id="insert" parameterType="kr.co.mood.user.dao.UserVO">
       <![CDATA[
-      INSERT INTO moodjoin VALUES(no, #{id}, #{pwd}, #{name}, #{age} , #{gender}, concat(#{adr} , #{adr2} , #{adr3}), #{email}, #{phone}, now())
+      INSERT INTO moodjoin VALUES(no, #{id}, #{pwd}, #{name}, #{age} , #{gender}, concat_ws('   ',#{adr} , #{adr2} , #{adr3}), #{email}, #{phone}, now())
       ]]>
    </insert>
 
@@ -56,7 +60,7 @@
    
    <select id="idChk" parameterType="kr.co.mood.user.dao.UserVO" resultType="int">
 		<![CDATA[
-		select count(*) from moodjoin where id=#{id}
+		select count(*) from moodjoin where id=#{id} and id != 'admin'
 		 ]]>
 	</select>
 	
@@ -77,9 +81,15 @@
     <update id ="update" parameterType="kr.co.mood.user.dao.UserVO">
     <![CDATA[
         update moodjoin
-        set adr=concat(#{adr} , #{adr2} , #{adr3}), email=#{email}, phone=#{phone}, pwd=#{pwd}
+        set adr= concat_ws('   ',#{adr} , #{adr2} , #{adr3}), email=#{email}, phone=#{phone}, pwd=#{pwd}
         where id = #{id}
         ]]>
+    </update>
+    
+    <update id="updatePwd" parameterType="kr.co.mood.user.dao.UserVO">
+    	update moodjoin
+    	set pwd = #{pwd}
+    	where id = #{id}
     </update>
     
     <select id="findKakao" parameterType="kr.co.mood.user.dao.UserVO" resultType="kr.co.mood.user.dao.UserVO">
