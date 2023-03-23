@@ -20,7 +20,6 @@ public class UserVO {
    private String email;
    private String phone;
    
-   
 public UserVO(int no) {
        this.no = no;
        this.partner_user_id = no;

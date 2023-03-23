@@ -122,33 +122,61 @@ input[type="radio"]:checked:before {
             <div class="d-flex align-items-center">
                
                <ol>
-                  <li><a href="#">대카테고리</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
-                  
                   <c:if test="${list.pro_categoryserial  eq 'A0' }">
-                  <li><a href="/A0categoryList">매트리스</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/A0categoryList">가구</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'A1' }">
-                  <li><a href="/A1categoryList">침대프레임</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/A1categoryList">가구</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'A2' }">
+                  <li><a href="/A3categoryList">가구</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B0' }">
-                  <li><a href="/B0categoryList">무드등</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/B0categoryList">조명</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B1' }">
-                  <li><a href="/B1categoryList">스탠드조명</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/B1categoryList">조명</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C0' }">
-                  <li><a href="/C0categoryList">옷장/행거</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/C0categoryList">수납</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C1' }">
-                  <li><a href="/C1categoryList">서랍</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/C1categoryList">수납</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if> 
                   
+                  <c:if test="${list.pro_categoryserial  eq 'A0' }">
+                  <li><a href="/A0categoryList">매트리스</a>&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'A1' }">
+                  <li><a href="/A1categoryList">침대프레임</a>&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'A2' }">
+                  <li><a href="/A2categoryList">소파</a>&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'B0' }">
+                  <li><a href="/B0categoryList">무드등</a>&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'B1' }">
+                  <li><a href="/B1categoryList">스탠드조명</a>&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'C0' }">
+                  <li><a href="/C0categoryList">옷장/행거</a>&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'C1' }">
+                  <li><a href="/C1categoryList">서랍</a>&nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if> 
+                  
+                  
+                  <li><a href="">${list.pro_name}</a></i></li>
+                  
+                  
                </ol>
-               <strong> ${list.pro_name}</<strong>
+ 
             </div>
 
          </div>
       </section>
+      <input type="hidden" value="${login_info.adr }" name="address">
       <!-- End Breadcrumbs -->
       
 
@@ -268,6 +296,9 @@ input[type="radio"]:checked:before {
          <form action="/products/orders" class="order_form" method="post">
              <input type="hidden" id="userNo" name="userNo" value="${login_info.no}">
             <input type="hidden" id="userAdr" value="${login_info.adr}">
+            <input type="hidden" name="radioOption" value="${list.pro_option1 }">
+            <input type="hidden" name="radioOption" value="${list.pro_option2 }">
+            <input type="hidden" name="radioOption" value="${list.pro_option3 }">
             <input type="hidden" name="pro_price" value="${list.pro_price}">
             <input type="hidden" name="pro_number" value="${list.pro_number}">
             <input type="hidden" name="pro_name" value="${list.pro_name}">
@@ -295,7 +326,7 @@ input[type="radio"]:checked:before {
         <div class="row">
 <c:forEach var="randomList" items="${randomList}" begin="0" end="3">
           <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="member">
+            <div class="member" style="cursor: pointer;" onclick="location.href='/product/${randomList.pro_number}'">
               <img src="${pageContext.request.contextPath}/resources/assets/img/product/${randomList.pro_img1}" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
@@ -343,15 +374,17 @@ input[type="radio"]:checked:before {
    var userAdr = $('#userAdr').val();
    /* 바로구매 버튼 */
    $(".btn_buy").on("click", function(){
-	   if(userNo=="") {
-	   var login_chk = confirm('로그인이 필요한 서비스입니다. 로그인페이지로 이동하시겠습니까?');
-		if(login_chk) {
-			$(".order_form").submit();
-		} else {
-			location.href = location.href;
-		}} else {
-	        $(".order_form").submit();
-		}
+   if(userNo=="") {
+   var login_chk = confirm('로그인이 필요한 서비스입니다. 로그인페이지로 이동하시겠습니까?');
+    if(login_chk) {
+        $(".cateinsert").attr("action", "/products/orders");
+        $(".cateinsert").submit();
+    } else {
+        location.href = location.href;
+    }} else {
+        $(".cateinsert").attr("action", "/products/orders");
+        $(".cateinsert").submit();
+    }
 	   
 	   if(userAdr=="" && userNo!=""){
 		   var adr_chk = confirm('필수입력정보를 입력해주세요.\n(간편 로그인경우 주소,휴대폰번호 정보가 부족할 수 있습니다.)');
@@ -361,8 +394,6 @@ input[type="radio"]:checked:before {
 				location.href = location.href;
 			}
 	   }
-	   
-	   
 
    });
   

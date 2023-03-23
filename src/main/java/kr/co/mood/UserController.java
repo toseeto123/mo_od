@@ -199,9 +199,9 @@ public class UserController {
             productPayService.insert(sessionorderprovo, vo1, null);
             
             
-            model.addAttribute("orders", productPayService.selectList(orderid));
+            model.addAttribute("onelist", productPayService.selectList(orderid));
 
-         	return "/User/userPayOne";
+         	return "/User/userPay";
            }
            else {
                return "redirect:" + path;

@@ -1,13 +1,12 @@
 package kr.co.mood.Payment.controller;
 
-
-
 import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,171 +18,136 @@ import kr.co.mood.Payment.VO.userOrderProductVO;
 import kr.co.mood.Payment.VO.userOrderVO;
 import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.cate.DAO.CateService;
+import kr.co.mood.cate.vo.CateVO;
 import kr.co.mood.pay.DAO.productPaymentService;
 import kr.co.mood.pay.DAO.userPaymentService;
 import kr.co.mood.user.dao.UserService;
 import kr.co.mood.user.dao.UserVO;
 
-
 @Controller
 @RequestMapping("/products")
 public class userPaymentController {
 
-   
-   @Autowired
-   CateService cservice;
-   @Autowired
-   UserService userService;
-   @Autowired
-   userPaymentService payService;
-   @Autowired
-   productPaymentService productPayService;
-   @Autowired
-   ProductService productService;
-   
-   
-   
-   @RequestMapping(value="/orders" , method = RequestMethod.POST)
-   public String processOrder(HttpSession session ,Model model, 
-		   @RequestParam("pro_number") int pro_number, 
-		   @RequestParam("pro_price") int pro_price,
-		   RedirectAttributes redirectAttributes) {
-      UserVO uvo = (UserVO)session.getAttribute("login_info");
+	@Autowired
+	CateService cservice;
+	@Autowired
+	UserService userService;
+	@Autowired
+	userPaymentService payService;
+	@Autowired
+	productPaymentService productPayService;
+	@Autowired
+	ProductService productService;
 
-      userOrderVO ordervo = new userOrderVO();
+	@Transactional
+	@RequestMapping(value = "/orders", method = RequestMethod.POST)
+	public String processOrder(HttpSession session, Model model, @RequestParam("pro_number") String pro_number,
+			@RequestParam("pro_price") int pro_price, @RequestParam("radioOption") String pro_option,
+			RedirectAttributes redirectAttributes) {
+		UserVO uvo = (UserVO) session.getAttribute("login_info");
+		userOrderVO ordervo = new userOrderVO();
 
-      
-      if (ordervo != null && uvo != null ) {
-    	  int userid = uvo.getNo();
-          
-          int proid = pro_number;
-          int price = pro_price;
-      
-          System.out.println(ordervo);
-          //占쎌젟癰귨옙 占쎌궎占쎈쐭占쎈 믭옙 뵠 뇡遺용퓠 占쎈뼖疫뀐옙
-          ordervo.setUserNo(userid);
-          ordervo.setPrice(price);
-          //ordervo.setPro_number(proid);
-          int count = ordervo.getOrderCount();
-          count = 1;
-          model.addAttribute(count);
-          ordervo.setOrderCount(count);
-          payService.insert(ordervo, uvo, null);
-          System.out.println("orderId:" + ordervo.getOrderId());
-      }else { 
+		if (uvo == null) {
+			CateVO cvo = new CateVO();
+			cvo.setPro_number(pro_number);
+			cvo.setCate_pro_price(pro_price);
+			cvo.setTotal(pro_price);
+			cvo.setPro_option(pro_option);
+		} else {
+			int userid = uvo.getNo();
+			CateVO cvo = new CateVO();
 
-          userOrderProductVO orderProVo = new userOrderProductVO();
-          userOrderVO ordervo1 = new userOrderVO();
-          
-          orderProVo.setPro_number(pro_number);
-          orderProVo.setPrice(pro_price);
-          ordervo1.setPro_number(pro_number);
-          ordervo1.setPrice(pro_price);
-          
-          session.setAttribute("ordervo", ordervo1);
-          session.setAttribute("orderProVo", orderProVo);
-    	  return "redirect:/payBeLogin.do";
-      }
-      System.out.println(payService);
-      
-      
-      
-      // 뵳 딅뮞占쎈뱜 占쏙옙占쎈뻿 orderProduct占쎈퓠 return占쎌뜎 insert 占쎈퉸占쎈튊占쎈맙
-      // 占쎄맒占쎈   揶쏉옙占쎈땾占쎈뮉 占쎌뵬占쎈뼊 獄쏆꼷 겫占쎈┷筌롳옙  빊遺쏙옙占쎈릭占쎈뮉椰꾨챶以  占쎈퉸癰귣  뮉椰꾨챶以 .
-      //Map<String, String> params = new HashMap<String,String>();
-      //params.put("orderId", "orderId");
-      //System.out.println(params.get("orderId"));
-      
-      int orderId = ordervo.getOrderId();
-      
-      userOrderProductVO orderProVo = new userOrderProductVO();
-      orderProVo.setOrderId(orderId);
-      orderProVo.setPro_number(pro_number);
-      orderProVo.setPrice(pro_price);
-      //orderProVo.setCount(count);
-      //orderProVo.setPro_name(pvo.getPro_name());
-      System.out.println(orderProVo);
-      
-      productPayService.insert(orderProVo, uvo, null);
+			cvo.setUser_no(userid);
+			cvo.setPro_number(pro_number);
+			cvo.setCate_pro_price(pro_price);
+			cvo.setTotal(pro_price);
+			cvo.setPro_option(pro_option);
+			cservice.addcate(cvo, uvo, null);
+			productService.catecountupdate(pro_number);
+		}
 
-      
-      model.addAttribute("orders", productPayService.selectList(orderId));
-      System.out.println(productPayService.selectList(orderId));
-      
-      
-      return "User/userPayOne";
-   }
-   
-   
-   @RequestMapping(value="/cateorders" , method = RequestMethod.POST)
-   public String cateProcessOrder(HttpSession session ,Model model, @RequestParam("pro_number") int pro_number , @RequestParam("total") List<Integer> total) {
-      UserVO uvo = (UserVO)session.getAttribute("login_info");
-      int userid = uvo.getNo();
-      int sum = 0;
-      for (int totals : total) {
-          sum += totals;
-      }
-      System.out.println("ㅆㅓㅁ"+sum);
-      int proid = pro_number;
-      
-      
-      userOrderVO ordervo = new userOrderVO();
-      
+		if (ordervo != null && uvo != null) {
 
-      ordervo.setUserNo(userid);
+		} else {
 
-      int count =ordervo.getOrderCount();
-      count = 1;
-      model.addAttribute(count);
-      ordervo.setOrderCount(count);
-      ordervo.setPrice(sum);
-      if (ordervo != null && uvo != null ) {
-          payService.insert(ordervo, uvo, null);
-          System.out.println("orderId:" + ordervo.getOrderId());
-      }else {
-         System.out.println("ordervo uvo pvo == null ");
-      }
-      System.out.println(payService);
-      
-      int orderId = ordervo.getOrderId();
-      
-      
-      userOrderProductVO orderProVo = new userOrderProductVO();
-      orderProVo.setOrderId(orderId);
-      orderProVo.setPro_number(proid);
-      orderProVo.setPrice(sum);
-      orderProVo.setCount(count);
-      orderProVo.setUserno(userid);
-      
-      productPayService.cateorderinsert(orderProVo, uvo, null);
-      
-      model.addAttribute("list", cservice.selectCateList(userid));
-      model.addAttribute("orderprice",productPayService.selectList(orderId));
-      System.out.println(cservice.selectCateList(userid));
-      System.out.println("dddddddddddddddd : "+ userid);
-      return "/User/userPay";
-   }
-   
-   
-   @RequestMapping("/User/userPay/{no}")
-   public void orderPgaeGET(@PathVariable("no") String no, userOrderVO uol, Model model) {
+			userOrderProductVO orderProVo = new userOrderProductVO();
+			userOrderVO ordervo1 = new userOrderVO();
 
-      System.out.println("memberId : " + no);
+			orderProVo.setPro_number(pro_number);
+			orderProVo.setPrice(pro_price);
+			orderProVo.setPro_option(pro_option);
+			orderProVo.setCount(0);
+			ordervo1.setPro_number(pro_number);
+			ordervo1.setPrice(pro_price);
 
-   }
+			session.setAttribute("ordervo", ordervo1);
+			session.setAttribute("orderProVo", orderProVo);
+			return "redirect:/payBeLogin.do";
+		}
+		int userid = uvo.getNo();
 
-   
-   // payment test
-   @RequestMapping(value = "/userPay", method = RequestMethod.GET)
-   public String userPay() {
+		ordervo.setUserNo(userid);
+		ordervo.setPrice(pro_price);
 
-      return "User/userPay";
-   }
+		payService.insert(ordervo, uvo, null);
 
+		int orderId = ordervo.getOrderId();
 
-   @RequestMapping(value = "/userPaymentDetail.do")
-   public String userPaymentDetail() {
+		userOrderProductVO orderProVo = new userOrderProductVO();
+		orderProVo.setOrderId(orderId);
+		orderProVo.setPro_number(pro_number);
+		orderProVo.setPrice(pro_price);
+		orderProVo.setPro_option(pro_option);
+		orderProVo.setCount(0);
 
-      return "User/userPaymentDetail";
-   }
+		productPayService.insert(orderProVo, uvo, null);
+
+		model.addAttribute("onelist", productPayService.selectList(orderId));
+
+		return "User/userPay";
+	}
+
+	@RequestMapping(value = "/cateorders", method = RequestMethod.POST)
+	public String cateProcessOrder(HttpSession session, Model model, @RequestParam("pro_number") String pro_number,
+			@RequestParam("totalValue") int total) {
+		UserVO uvo = (UserVO) session.getAttribute("login_info");
+		int userid = uvo.getNo();
+		System.out.println("ㅆㅓㅁ" + total);
+		String proid = pro_number;
+
+		userOrderVO ordervo = new userOrderVO();
+
+		ordervo.setUserNo(userid);
+
+		int count = ordervo.getOrderCount();
+		count = 1;
+		model.addAttribute(count);
+		ordervo.setOrderCount(count);
+		ordervo.setPrice(total);
+		if (ordervo != null && uvo != null) {
+			payService.insert(ordervo, uvo, null);
+			System.out.println("orderId:" + ordervo.getOrderId());
+		} else {
+			System.out.println("ordervo uvo pvo == null ");
+		}
+		System.out.println(payService);
+
+		int orderId = ordervo.getOrderId();
+
+		userOrderProductVO orderProVo = new userOrderProductVO();
+		orderProVo.setOrderId(orderId);
+		orderProVo.setPro_number(proid);
+		orderProVo.setPrice(total);
+		orderProVo.setCount(count);
+		orderProVo.setUserno(userid);
+
+		productPayService.cateorderinsert(orderProVo, uvo, null);
+
+		model.addAttribute("list", cservice.selectCateList(userid));
+		model.addAttribute("orderprice", productPayService.selectList(orderId));
+		System.out.println(cservice.selectCateList(userid));
+		System.out.println("dddddddddddddddd : " + userid);
+		return "/User/userPay";
+	}
+
 }

@@ -7,8 +7,8 @@ import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,6 +22,8 @@ import org.springframework.web.multipart.MultipartFile;
 import kr.co.mood.Payment.DAO.AdminPaymentService;
 import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.Product.VO.ProVO;
+import kr.co.mood.cate.DAO.CateService;
+import kr.co.mood.cate.vo.CateVO;
 import kr.co.mood.module.ModuleCommon;
 import kr.co.mood.module.ModuleVO;
 import kr.co.mood.module.ViewPagingVO;
@@ -41,7 +43,8 @@ public class AdminController {
 	@Autowired
 	private UserService userService;
 	
-	
+	@Autowired
+	private CateService cateService;
 	@Autowired
 	private AdminPaymentService adminPaymentService;
 
@@ -59,7 +62,7 @@ public class AdminController {
   
    @RequestMapping("/adminMemberList.do/{paging}/{searchWhat}/{search}")
    @ResponseBody
-   public Map<String, Object> adminMemberList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//추가된 부분
+   public Map<String, Object> adminMemberList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//異붽��맂 遺�遺�
 	   ModuleVO moduleVO = new ModuleVO();
 	   Map<String, Object> map = new HashMap<String, Object>();
 	   if(search.equals("(none)")) {
@@ -71,8 +74,6 @@ public class AdminController {
 		   moduleVO.setSearchName(search);
 	   }
 	   }
-	   System.out.println(moduleVO.getStartNo());
-	   System.out.println(moduleVO.getEndNo());
 	   List<UserVO> userList = userService.selectAll(moduleVO);
 	   ViewPagingVO viewVO = module.pagingModule(model, moduleVO, userList, paging, 10);
 	   List<UserVO> showUserList = userService.selectAll(moduleVO);
@@ -84,7 +85,7 @@ public class AdminController {
    
    
    @RequestMapping("/adminMemberList.do/{paging}")
-   public String adminMemberList(@PathVariable String paging, Model model) {//추가된 부분
+   public String adminMemberList(@PathVariable String paging, Model model) {//異붽��맂 遺�遺�
 	   ModuleVO moduleVO = new ModuleVO();
 	   List<UserVO> userList = userService.selectAll(null);
 	   module.pagingModule(model, moduleVO, userList, paging, 10);
@@ -100,10 +101,50 @@ public class AdminController {
 	   return "admin/adminMemeberDetail";
    }
    
-   @RequestMapping("admincate.do")
+   @RequestMapping("/admincate.do")
    public String adminCate(){
-      
-      return "admin/admincate";
+      return "redirect:/admin/admincate.do/1";
+   }
+   
+   @RequestMapping("/admincate.do/{paging}")
+   public String admincateList(@PathVariable String paging,Model model,HttpSession session) {
+	   ModuleVO moduleVO = new ModuleVO();
+	   
+	   
+       UserVO uvo = (UserVO) session.getAttribute("login_info");
+       int userid = uvo.getNo();
+       
+	   List<CateVO> catelist = cateService.selectAll(null,userid);
+	   module.pagingModule(model, moduleVO, catelist, paging, 10);
+	   List<CateVO> showCatelist = cateService.selectAll(moduleVO,userid);
+	   model.addAttribute("cateList", showCatelist);	   
+	   
+	   return "admin/admincate";
+   }
+   @RequestMapping("/admincate.do/{paging}/{searchWhat}/{search}")
+   @ResponseBody
+   public Map<String, Object> adminCateserach(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model,HttpSession session) {
+	   ModuleVO moduleVO = new ModuleVO();
+	   Map<String, Object> map = new HashMap<String, Object>();
+	   if(search.equals("(none)")) {
+		   search = null;		   
+	   }else {
+	   if(searchWhat.equals("name")) {
+		   moduleVO.setSearchId(search);
+	   }else if(searchWhat.equals("pro_name")) {
+		   moduleVO.setSearchName(search);
+	   }
+	   }
+       UserVO uvo = (UserVO) session.getAttribute("login_info");
+       int userid = uvo.getNo();
+       
+	   List<CateVO> catelist = cateService.selectAll(null,userid);
+	   ViewPagingVO viewVO = module.pagingModule(model, moduleVO, catelist, paging, 10);
+	   List<CateVO> showCatelist = cateService.selectAll(moduleVO,userid);
+	   model.addAttribute("cateList", showCatelist);
+	   map.put("list", showCatelist);
+	   map.put("vo", viewVO);
+	   return map;
    }
    
    @RequestMapping(value="insert.do" ,method=RequestMethod.GET)
@@ -145,14 +186,43 @@ public class AdminController {
    
 
       @RequestMapping(value = "adminProList.do")
-      public String ProductList(ArrayList<ProVO> vo, Model model) {
+      public String ProductList() {
          return "redirect:/admin/adminProList.do/1";
       }
 
+      @RequestMapping("/adminProList.do/{paging}/{searchWhat}/{search}")
+      @ResponseBody
+      public Map<String, Object> adminProList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//異붽��맂 遺�遺�
+   	   ModuleVO moduleVO = new ModuleVO();
+   	   Map<String, Object> map = new HashMap<String, Object>();
+   	   if(search.equals("(none)")) {
+   		   search = null;		   
+   	   }else {
+   	   if(searchWhat.equals("id")) {
+   		   moduleVO.setSearchId(search);
+   	   }else if(searchWhat.equals("name")) {
+   		   moduleVO.setSearchName(search);
+   	   }
+   	   }
+   	   List<ProVO> proList = ps.selectProList(moduleVO);
+   	   ViewPagingVO viewVO = module.pagingModule(model, moduleVO, proList, paging, 7);
+   	   List<ProVO> showProList = ps.selectProList(moduleVO);
+   	   model.addAttribute("userList", showProList);
+   	   map.put("list", showProList);
+   	   map.put("vo", viewVO);
+   	   return map;
+      }
+      
+      
+      
+      
+      
+      
+
   	@RequestMapping(value = "/adminProList.do/{page}") // FIX
-  	public String ProductListPage(@PathVariable String page, ArrayList<ProVO> vo, Model model) {
+  	public String ProductListPage(@PathVariable String page, ModuleVO vo, Model model) {
   		ModuleVO moduleVO = new ModuleVO();
-  		List<ProVO> allList = ps.selectProList(vo);
+  		List<ProVO> allList = ps.selectProList(moduleVO);
   		module.pagingModule(model, moduleVO, allList, page, 7);
   		List<ProVO> showList = ps.selectProListPaging(moduleVO);
   		model.addAttribute("list", showList);

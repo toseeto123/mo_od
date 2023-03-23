@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.mood.Product.VO.ProVO;
 import kr.co.mood.cate.vo.CateVO;
+import kr.co.mood.module.ModuleVO;
 import kr.co.mood.user.dao.UserVO;
 
 @Repository
@@ -18,6 +19,10 @@ public class CateDAO {
 	
 	public List<CateVO> cateselect(int user_no) {
 		return sql.selectList("CateDAO.selectlist" , user_no);
+	}
+	
+	public List<CateVO> selectAll(ModuleVO vo,int userid) {
+		return sql.selectList("CateDAO.selectAll" , vo);
 	}
 	public void addcate(CateVO cvo, UserVO uvo, ProVO pvo) {
 		sql.insert("CateDAO.insert",cvo);

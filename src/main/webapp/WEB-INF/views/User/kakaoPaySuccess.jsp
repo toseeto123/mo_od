@@ -12,6 +12,28 @@
 <meta name="generator" content="Hugo 0.101.0">
 <title>결제완료</title>
 <style>
+
+.bd-placeholder-img {
+   font-size: 1.125rem;
+   text-anchor: middle;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+
+@media ( min-width : 768px) {
+   .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+   }
+}
+
+img {
+   width: 15vmin;
+   height: 15vmin;
+}
+
+
 ol {
    display: flex;
    flex-wrap: wrap;
@@ -40,12 +62,13 @@ li .btnspan {
    border-radius: 50%;
    background-color: #ccc;
    margin-right: 5px;
-   font-size: 16px;
+   font-size: 20px;
    color: #fff;
 }
 li .btnspan_on{
 background-color: #c8936ed4;
 }
+
 @media only screen and (max-width: 768px) {
    ol {
       position: fixed;
@@ -64,7 +87,7 @@ background-color: #c8936ed4;
    li .btnspan {
       width: 20px;
       height: 20px;
-      font-size: 12px;
+      font-size: 18px;
    }
 }
 .order_wrap {
@@ -98,18 +121,18 @@ background-color: #c8936ed4;
 
 .order_wrap .order_tit h2 {
    float: left;
-   font-size: 28px;
+   font-size: 32px;
    color: #222222;
 }
 
 .order_wrap .order_tit ol li {
    float: left;
-   font-size: 14px;
+   font-size: 20px;
    color: #d1d1d1;
 }
 
 .order_wrap .order_tit li span {
-   font-size: 16px;
+   font-size: 22px;
    font-weight: bold;
 }
 
@@ -120,6 +143,28 @@ background-color: #c8936ed4;
 .content_box {
    margin-top: 10px;
 }
+.mb-3{
+ 	font-size: 24px;
+}
+.btn-primary {
+	background-color:#c8936ed4;
+}
+
+body {
+	height:100%;
+}
+a {
+ font-size: 20px;
+}
+.returnbtn {
+   background-color: #c8936ed4;
+   width: 416px;
+   height: 50px;
+   border : none;
+   border-radius: 30px;
+   box-shadow: 1px 1px 1px 1px lightgray;
+}
+
 </style>
 </head>
 <jsp:include page="/WEB-INF/common/header.jsp" />
@@ -211,7 +256,7 @@ background-color: #c8936ed4;
              </c:forEach>
                   </div>
                <hr>
-               <label><a href="/mo_od"> <strong>Mo_od의 또 다른 상품 구경하기 </strong></a></label> <br><br>
+               <label><a href="/mo_od"><button class="returnbtn"> mo_od의 또 다른 상품 구경하기</button></a></label> <br><br>
                
  
  			

@@ -63,7 +63,27 @@
             <div class="d-flex align-items-center">
                
                <ol>
-                  <li><a href="#">대카테고리</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <c:if test="${list.pro_categoryserial  eq 'A0' }">
+                  <li><a href="/A0categoryList">가구</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'A1' }">
+                  <li><a href="/A1categoryList">가구</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'A2' }">
+                  <li><a href="/A3categoryList">가구</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'B0' }">
+                  <li><a href="/B0categoryList">조명</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'B1' }">
+                  <li><a href="/B1categoryList">조명</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'C0' }">
+                  <li><a href="/C0categoryList">수납</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if>
+                  <c:if test="${list.pro_categoryserial  eq 'C1' }">
+                  <li><a href="/C1categoryList">수납</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  </c:if> 
                   
                   <c:if test="${list.pro_categoryserial  eq 'A0' }">
                   <li><a href="#">매트리스</a></li>
@@ -108,14 +128,14 @@
 <c:forEach var="list" items="${list}">
           <div class="col-xl-3 col-lg-4 col-md-6">
           
-            <div class="member" style="background-color: white;">  
+            <div class="member" style="background-color: white; cursor: pointer;" onclick="location.href='/product/${list.pro_number}'">  
  				<img src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" alt="" class="img-fluid" style="width: 306px; height: 306px;">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>${list.pro_name}</h4>
                   <span><fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></span>
                   <div class="social">
-                    <a href="/product/${list.pro_number}">상세보기</a>
+                    <a href="/product/${list.pro_number}"> ${list.pro_maindesctitle} </a>
                   </div>
                 </div>
               </div>
@@ -145,7 +165,7 @@
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:green" href="/A0categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="color:#FF9500" href="/A0categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
                   &nbsp;<a href="/A0categoryList/${no}">${no}</a>&nbsp;
