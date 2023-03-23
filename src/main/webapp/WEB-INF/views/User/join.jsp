@@ -3,7 +3,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="/WEB-INF/common/header.jsp" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
 
@@ -15,7 +14,6 @@
 .logo {
 	font-family: "궁서"
 }
-
 .logo2 {
 	font-family: "굴림"
 }
@@ -26,9 +24,9 @@
 <body>
 
         
-<!--         <div id="ha"> -->
-<!--         <h1 class="logo"><a href="index.jsp">묻 : <span class="logo2">mo_od</span></a></h1> -->
-<!--         </div> -->
+        <div id="header">
+        <h1 class="logo"><a href="index.jsp">묻 : <span class="logo2">mo_od</span></a></h1>
+        </div>
    
         <div id="wrapper">
     <form action="join.do" method="post" name="join" id="join">
@@ -112,7 +110,6 @@
              <div class="mail_check_wrap">
                <div class="mail_check_input_box" id="mail_check_input_box_false">
                   <input class="mail_check_input" id="email1" disabled="disabled" required>
-                  <input type="hidden" class="email1" id="email1" value="mail_check_input">
                </div>
                <button class="mail_check_button">인증번호 전송</button>
                <div class="clearfix"></div>
@@ -157,7 +154,6 @@
       
       
       <script type="text/javascript">
-
       /* 인증번호 이메일 전송 */
     $(".mail_check_button").click(function(){
    
@@ -216,6 +212,6 @@
     });
       </script>
 
-<jsp:include page="/WEB-INF/common/footer.jsp" />
+
 </body>
 </html>

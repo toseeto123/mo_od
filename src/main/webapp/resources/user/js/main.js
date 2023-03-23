@@ -87,6 +87,33 @@ function loginCheck(){
    }
 }      
       
+      function UpdateCheck(){
+           if (document.mypage_myInfo.pwd.value == ""){
+              alert("암호를 반드시 입력해주세여");
+              mypage_myInfo.pwd.focus();
+              return false;
+           }
+           if(document.mypage_myInfo.pwd.value != document.mypage_myInfo.pwd2.value){
+              alert("암호가 일치하지 않습니다");
+              mypage_myInfo.pwd.value="";
+              mypage_myInfo.pwd2.value="";
+              mypage_myInfo.pwd.focus();
+              return false;
+             
+           }
+           if (document.mypage_myInfo.email.value == "") {
+              alert("이메일을 입력해주세요");
+              mypage_myInfo.email.focus();
+              return false;
+           }
+           if (document.mypage_myInfo.phone.value == "") {
+              alert("전화번호를 입력해주세요");
+              mypage_myInfo.phone.focus();
+              return false;
+           }   
+           return true;   
+        }
+
       
       
       

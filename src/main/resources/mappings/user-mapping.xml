@@ -42,7 +42,7 @@
 
 	 <insert id="insert" parameterType="kr.co.mood.user.dao.UserVO">
       <![CDATA[
-      INSERT INTO moodjoin VALUES(no, #{id}, #{pwd}, #{name}, #{age} , #{gender}, concat(#{adr} , #{adr2} , #{adr3}), #{email}, #{phone}, now())
+      INSERT INTO moodjoin VALUES(no, #{id}, #{pwd}, #{name}, #{age} , #{gender}, concat_ws('   ',#{adr} , #{adr2} , #{adr3}), #{email}, #{phone}, now())
       ]]>
    </insert>
 
@@ -77,7 +77,7 @@
     <update id ="update" parameterType="kr.co.mood.user.dao.UserVO">
     <![CDATA[
         update moodjoin
-        set adr=concat(#{adr} , #{adr2} , #{adr3}), email=#{email}, phone=#{phone}, pwd=#{pwd}
+        set adr= concat_ws('   ',#{adr} , #{adr2} , #{adr3}), email=#{email}, phone=#{phone}, pwd=#{pwd}
         where id = #{id}
         ]]>
     </update>

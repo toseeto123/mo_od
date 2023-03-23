@@ -241,6 +241,14 @@ public class UserController {
  	@RequestMapping(value = "/mypage.do" , method = RequestMethod.GET)
     public String mypage(UserVO vo,HttpSession session , Model model) {
 		UserVO uvo = (UserVO) session.getAttribute("login_info");
+		String str = uvo.getAdr();
+		System.out.println(str);
+		String[] array = str.split("   ");
+		System.out.println(array);
+		session.setAttribute("myinfo_adr1", array[0]);
+		session.setAttribute("myinfo_adr2", array[1]);
+		session.setAttribute("myinfo_adr3", array[2]);
+		
 		System.out.println(uvo);
 		int userid = uvo.getNo();
 		System.out.println(userid);
