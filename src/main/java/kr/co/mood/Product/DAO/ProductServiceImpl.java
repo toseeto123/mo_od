@@ -48,6 +48,21 @@ public class ProductServiceImpl implements ProductService{
 	}
 	
 	@Override
+	public List<ProVO> ACategoryList(List<ProVO> vo) {
+
+		return prodao.ACategoryList(vo);
+	}
+	@Override
+	public List<ProVO> BCategoryList(List<ProVO> vo) {
+		return prodao.BCategoryList(vo);
+	}
+	@Override
+	public List<ProVO> CCategoryList(List<ProVO> vo) {
+		return prodao.CCategoryList(vo);
+	}
+	
+	
+	@Override
 	public List<ProVO> AselectProListByPayCount(List<ProVO> vo) {
 		return prodao.AselectProListByPayCount(vo);
 	}

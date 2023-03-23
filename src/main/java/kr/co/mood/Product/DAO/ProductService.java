@@ -11,6 +11,11 @@ public interface ProductService {
 	public List<ProVO> selectProRandom(List<ProVO> vo);
 	public void insertPro(ProVO vo);
 	public ProVO selectProOne(int pro_number);
+	
+	public List<ProVO> ACategoryList(List<ProVO> vo);
+	public List<ProVO> BCategoryList(List<ProVO> vo);
+	public List<ProVO> CCategoryList(List<ProVO> vo);
+	
 	public List<ProVO> AselectProListByPayCount(List<ProVO> vo);
 	public List<ProVO> BselectProListByPayCount(List<ProVO> vo);
 	public List<ProVO> CselectProListByPayCount(List<ProVO> vo);
