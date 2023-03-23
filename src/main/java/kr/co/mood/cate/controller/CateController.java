@@ -39,22 +39,18 @@ public class CateController {
 	public String cate(HttpSession session, RedirectAttributes rttr) {
 		
 		UserVO uvo = (UserVO) session.getAttribute("login_info");
-		System.out.println("cate");
 		
 		if(uvo==null) {
-			 System.out.println("null占쎈쐻占쎈윪�얠±�쐻占쎈윥占쎈뭾");
 			 rttr.addFlashAttribute("msg", "loginmsg");
 			 return "redirect:login.do";
 		}
 		else {
-			System.out.println("占쎈쐻占쎈윪�얠±�쐻占쎈윥筌욑옙!");
 			return "cate/cate";
 		}
 	}
 	
 	@RequestMapping(value = "/cate.do" , method = RequestMethod.POST)
 	public ModelAndView selectAllList(HttpSession session , ModelAndView mav) {
-		System.out.println("cat");
 		
 		return mav;
 	}
@@ -97,7 +93,6 @@ public class CateController {
    
    @RequestMapping(value = "/beLoginCate", method = RequestMethod.GET)
    public String beLoginCate(HttpSession session, Model model) {
-	   System.out.println("鍮꾨줈洹몄씤 移댄듃 �씠�룞");
        UserVO uvo = (UserVO) session.getAttribute("login_info");
        
 
@@ -108,14 +103,8 @@ public class CateController {
    
    @RequestMapping(value = "/plus.do", method = RequestMethod.POST)
    public String update(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
-      int number = Integer.parseInt(String.valueOf(data.get("number")));
       int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
-      int proprice = Integer.parseInt(String.valueOf(data.get("proprice")));
       
-       //int count = (Integer) session.getAttribute("count");
-       
-       //cvo.setAmount(count);
-       
        cservice.modifyflashamount(cateId);
        
        return "/cate/cate";
@@ -123,7 +112,6 @@ public class CateController {
    
    @RequestMapping(value = "/minus.do", method = RequestMethod.POST)
    public String minus(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
-      int number = Integer.parseInt(String.valueOf(data.get("number")));
       int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
 
        cservice.modifyminusamount(cateId);
@@ -135,16 +123,13 @@ public class CateController {
    @RequestMapping(value = "/mycate.do", method = RequestMethod.GET)
    public String mycate(HttpSession session, Model model) {
       UserVO uvo = (UserVO) session.getAttribute("login_info");
-      System.out.println(uvo);
       int userid = uvo.getNo();
-      System.out.println(userid);
       model.addAttribute("map", cservice.selectCateList(userid));
       return "/User/my_cateinfo";
    }
 
    @RequestMapping(value = "/catedelete.do", method = RequestMethod.POST)
    public String deleteCate(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
-      System.out.println("delete 濡쒖쭅 �뱾�뼱 �솕�뀛�슂~");
       int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
 
       cservice.deletecate(cateId);

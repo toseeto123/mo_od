@@ -1,14 +1,15 @@
 package kr.co.mood.Payment.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import lombok.AllArgsConstructor;
-import lombok.Setter;
+import kr.co.mood.Payment.VO.KakaoCancelResponseVO;
 
 @Controller
 public class SampleController {
@@ -31,10 +32,6 @@ public class SampleController {
                           @RequestParam("orderId") int orderId,
                           @RequestParam("pro_number") String pro_number,
                           Model model) {
-        System.out.println("kakaopay post...é¤“ï¿½ ........");
-       // model.addAttribute("pro_name", pro_name);
-        //model.addAttribute("pro_price",pro_price);
-        //model.addAttribute("orderId",orderId);
          return "redirect:" + kakaopay.kakaoPayReady(pro_name,userno,pro_price,orderId , pro_number);
 
       }
@@ -46,16 +43,15 @@ public class SampleController {
 		   @RequestParam("userno") String userno ,
 		   @RequestParam("pro_number") String pro_number,
 		   Model model) {
-      System.out.println("kakaopay success......!!!!!!!! get!!!!");
-      System.out.println("kakaopay success pg_token" + pg_token);
 
       model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token,orderId,userno,pro_number));
    }
-//   @RequestMapping(value = "/User/kakaoPayCancel" )
-//   public void payCancel(@RequestParam("pg_token") String pg_token, Model model) {
-//      System.out.println("kakaopay Cancel......!!!!!!!! get!!!!");
-//      System.out.println("kakaopay Cancel pg_token" + pg_token);
-//
-//      model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token));
-//   }
+
+	   
+   @RequestMapping(value = "/User/kakaoPayCancel" )
+   public void payCancel(Model model,@RequestParam("tid") String tid,@RequestParam("price") String price) {
+	   System.out.println(" Äµ½½ ·ÎÁ÷ µé¾î ¿ÔÁ®¿ë");
+
+      model.addAttribute("info" , kakaopay.kakaoCancel(tid,price));
+   }
 }
