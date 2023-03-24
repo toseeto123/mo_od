@@ -168,6 +168,27 @@ li .btnspan_on {
 	background-color:#c8936ed4;
 }
 
+    .dropdown-toggle {
+    width: 1180px;
+        font-size: 20px;
+        padding: 10px 20px;
+        margin: 10px;
+    }
+
+.dropdown-menu {
+  max-height: 500px;
+  overflow-y: auto;
+  width: 100%;
+  padding: 30px;
+}
+footer{
+   width: 100%;
+   position: absolute;
+   bottom: 0;
+}
+
+
+
 </style>
 </head>
 <body style="margin: 0 auto;">
@@ -187,45 +208,78 @@ li .btnspan_on {
       </ul>
    </section>
    <div class="content_box">
+
       <div class="order_wrap" style="position: relative;">
          <div class="order_tit">
          </div>
          <c:choose>
          <c:when test="${empty orders }"> <h2 style="text-align: center; margin-top: 280px; margin-bottom: 285px;">결제 내역이 존재하지 않습니다.</h2></c:when>
          <c:otherwise>
-         <c:forEach var="orders" items="${orders}" varStatus="status">
-         <form action="/User/kakaoPayCancel">
-            <div class="deleteplz">
-               <img src="/resources/assets/img/product/${orders.pro_img1 }"
-                  alt="${orders.pro_name}"
-                  title="${orders.pro_name}"
-                  class="img-fluid"
-                  style="width: 250px; height: 250px; position: absolute; right: 150px;">
-                  <input type="hidden" value="${orders.tid }" name="tid">
-                  <input type="hidden" value="${orders.pro_price }" name="price">
-                  <input type="hidden" value="${orders.orderId }" name="orderId">
-               <p style="text-align: center; margin-top: 30px;">
-                  <input type="hidden" value="${orders.userno}"> <input
-                     type="hidden" value="${orders.pro_number}" name="pro_number">
-               <h2 style="margin-left: 100px;">주문번호:<span> ${orders.orderId} </span></h2>
-               <h2 style="margin-left: 100px;">결제일: <span>${orders.approved_at}</span></h2><br>   
-               <h4 style="margin-left: 100px;">상품명: <small>${orders.pro_name}</small></h4>
-               <h4 style="margin-left: 100px;">상품정보: <small>${orders.pro_maindesctitle }</small></h4>
-               <h4 style="margin-left: 100px;">수 량 : <small style="display: inline;">${orders.count}</small></h4>
-               <p style="margin-left: 100px;">가 격 : <span class="total"><fmt:formatNumber
-                        value="${orders.pro_price}" type="currency" currencySymbol="₩" /></span>
-               </p>
-               <input type="submit" value="주문취소" class=".btn-primary">
-               <br>
-               <hr>
-            </div>
-            </form>
-         </c:forEach>
+            <div class="dropdown">
+ <c:forEach var="orderid" items="${orderid}">
+  <button style="background: #AD8E70;"class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${orderid.orderId}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    주문번호: ${orderid.orderId} /결제일:${orderid.approved_at}
+  </button>
+
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton${orderid.orderId}">
+  
+    <c:forEach var="order" items="${orders}">
+      <c:if test="${order.orderId == orderid.orderId}">
+        <form action="/User/kakaoPayCancel">
+ <div class="deleteplz" style="display:flex; flex-wrap: wrap; align-items:center;  border-bottom: 1px solid lightgray; margin-bottom: 50px; padding-bottom: 30px;" >
+
+  <img src="/resources/assets/img/product/${order.pro_img1 }"
+  alt="${order.pro_name}"
+  title="${order.pro_name}"
+  class="img-fluid"
+  style="width: 150px; height: 150px; margin-right: 30px; max-width: 100%;">
+
+<div style="display: flex; flex-direction: column; flex-grow: 1; font-size: 1.2em; margin: 10px 0;">
+  <div style="text-align: left; margin-bottom: 10px;">
+    <span>상품명: <small>${order.pro_name}</small></span><br>
+    <span>옵션: <small>${order.pro_option}</small></span><br>
+    <span>상품정보: <small>${order.pro_maindesctitle}</small></span>
+  </div>
+
+  <div style="text-align: left;">
+    <span>수량: <small style="display: inline;">${order.count}</small></span><br>
+    <span>가격: <small class="total"><fmt:formatNumber value="${order.price}" type="currency" currencySymbol="₩" /></small></span>
+  </div>
+</div>
+
+</div>
+        </form>
+      </c:if>
+    </c:forEach>
+    <input type="submit" value="주문취소" class=".btn-primary">
+  </div>
+</c:forEach>
+</div>
          </c:otherwise>
          </c:choose>
       </div>
    </div>
+<script>
+$(function() {
+	  $('.dropdown-toggle').click(function() {
+	    var orderId = $(this).attr('id').replace('dropdownMenuButton', '');
+	    var dropdownMenu = $('.dropdown-menu').filter(function() {
+	      return $(this).attr('aria-labelledby') == 'dropdownMenuButton' + orderId;
+	    });
+	    $('.dropdown-menu').not(dropdownMenu).hide();
+	    dropdownMenu.slideToggle();
+	    $(this).text(function(i, text){
 
+	    });
+	  });
+
+	  $('.dropdown-item').click(function() {
+	    var orderId = $(this).data('orderid');
+	    console.log('Menu item clicked for order: ' + orderId);
+	  });
+	});
+
+</script>
 <jsp:include page="/WEB-INF/common/footer.jsp" />
 </body>
 </html>

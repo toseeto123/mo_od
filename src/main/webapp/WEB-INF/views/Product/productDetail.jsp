@@ -109,6 +109,10 @@ input[type="radio"]:checked:before {
   transform: translate(-50%, -50%) scale(1); /* 가짜 원 크기와 위치 변경 */
 }
 
+li {
+font-size: 20px;
+}
+
 </style>
 <body>
 <jsp:include page="/WEB-INF/common/header.jsp" />
@@ -225,37 +229,33 @@ input[type="radio"]:checked:before {
                   <div class="portfolio-info">
                      <h3>${list.pro_name}</h3>
                      <ul>
-                        <li><strong>특징</strong>: ${list.pro_subdesc}</li>
-                        <li><strong>제품번호</strong>: ${list.pro_serialnumber }</li>
-                        <li><strong>가 격</strong>: <fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></li>   
-                        <li><strong>옵 션</strong>:<br>
+                        <li><strong>특징 :　</strong>${list.pro_subdesc}</li>
+                        <li><strong>제품번호 :　</strong>${list.pro_serialnumber }</li>
+                        <li><strong>가 격 :　</strong><fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></li>   
+                        <li><strong>옵 션 :　</strong><li>
                         <c:if test="${empty list.pro_option1}">
-                        <label for="chk_option"><span class="chk_option">선택안함</span></label>
-                        <input type="radio" value="선택안함" id="chk_option" name="radioOption" checked="checked"><br>
-                        </c:if>
-                        
-                        
-                        <c:if test="${!empty list.pro_option1}">
-                        <label for="chk_option 1"><span class="chk_option">${list.pro_option1}</span></label>
-                        <input type="radio" value="${list.pro_option1}" id="chk_option 1" name="radioOption" checked="checked"><br>
-                        </c:if>
-                        
-                        
+                        <li><label for="chk_option"><span class="chk_option">선택안함</span></label>
+                        <input type="radio" value="선택안함" id="chk_option" name="radioOption" checked="checked"></li>
+                        </c:if>  
+                        <c:if test="${!empty list.pro_option1}">             
+                        <li><label for="chk_option 1"><span class="chk_option">${list.pro_option1}</span></label>
+                        <input type="radio" value="${list.pro_option1}" id="chk_option 1" name="radioOption" checked="checked"></li>
+                        </c:if>     
                          <c:if test="${!empty list.pro_option2}">
-                        <label for="chk_option 2"><span class="chk_option">${list.pro_option2}</span></label>
-                        <input type="radio" value="${list.pro_option2}" id="chk_option 2" name="radioOption"><br>
+                        <li><label for="chk_option 2"><span class="chk_option">${list.pro_option2}</span></label>
+                        <input type="radio" value="${list.pro_option2}" id="chk_option 2" name="radioOption"></li>
                         </c:if>
-                        
+              
                         </c:if>
                         <c:if test="${!empty list.pro_option3}">
-                        <label for="chk_option 3"><span class="chk_option">${list.pro_option3}</span></label>
-                        <input type="radio" value="${list.pro_option3}" id="chk_option 3" name="radioOption"><br>
+                        <li><label for="chk_option 3"><span class="chk_option">${list.pro_option3}</span></label>
+                        <input type="radio" value="${list.pro_option3}" id="chk_option 3" name="radioOption">
                         </c:if>
+                     </ul>
 
                         
 
-                     <li>            
-                     </ul>
+                                
                      
                   </div>
                <input type="hidden" name="${cate_id }"/>
@@ -268,8 +268,8 @@ input[type="radio"]:checked:before {
                    
 					<input type="hidden" value="${login_info.adr }" name="adr">
                    
-                     <input type="button" value="장바구니" class="cateBtn" id="cateinsert"><br><br>
-                      <input type="button" value="바로결제하기" class="btn_buy">
+                     <input type="button" value="장바구니" class="cateBtn" id="cateinsert" style="font-size: 20px; font-weight: bold; color : white;"><br><br>
+                     <input type="button" value="바로결제하기" class="btn_buy" style="font-size: 20px; font-weight: bold; color : white;">
                <% 
                session.setAttribute("catepath", "/cateinsert.do");
                String catepath = (String)session.getAttribute("catepath");
@@ -277,20 +277,10 @@ input[type="radio"]:checked:before {
                String paypath = (String)session.getAttribute("paypath");
                %>
 </form>            
-<!-- ------------------------------------------------------------------------------------------ -->
-               
-               
-               <%-- <form action="/products/orders" method="post">
-               <input type="hidden" name="pro_price" value="${list.pro_price}">
-                    <input type="hidden" name="pro_number" value="${list.pro_number}">
-                  
-                     </form> --%>
                      
                   </div>
                </div>
-         
-         <form action="/login.do" class="login_form" method="get">
-         </form>
+
          
    <!-- 주문 form toseet123 생성 -->
          <form action="/products/orders" class="order_form" method="post">

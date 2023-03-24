@@ -18,8 +18,8 @@ public class KakaoPayApprovalVO {
     
     //결제확인용값들
     //product
-    private String pro_img1,pro_name,pro_maindesctitle;
-    private int pro_number,pro_price;
+    private String pro_img1,pro_name,pro_maindesctitle,pro_option;
+    private int pro_number,price;
     //user
     private int userno;
     //order
@@ -27,7 +27,13 @@ public class KakaoPayApprovalVO {
     private int count;
     
     
-    public int getCount() {
+    public String getPro_option() {
+		return pro_option;
+	}
+	public void setPro_option(String pro_option) {
+		this.pro_option = pro_option;
+	}
+	public int getCount() {
        return count;
     }
     public void setCount(int count) {
@@ -41,11 +47,11 @@ public class KakaoPayApprovalVO {
 	public void setOrderId(int orderId) {
 		this.orderId = orderId;
 	}
-	public int getPro_price() {
-		return pro_price;
+	public int getPrice() {
+		return price;
 	}
-	public void setPro_price(int pro_price) {
-		this.pro_price = pro_price;
+	public void setPrice(int price) {
+		this.price = price;
 	}
 	public String getPro_maindesctitle() {
 		return pro_maindesctitle;
