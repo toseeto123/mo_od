@@ -5,6 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<jsp:include page="/WEB-INF/common/header.jsp" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
@@ -30,11 +31,8 @@ input {
  	margin : 0 auto;
  }
 </style>
-<jsp:include page="/WEB-INF/common/header.jsp" />
 </head>
 <body>
-
-
 	<section>
 		<ul class="nav nav-pills nav-justified">
 		  <li class="nav-item" >
