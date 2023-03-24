@@ -156,7 +156,7 @@ public class userPaymentController {
 		UserVO uvo = (UserVO) session.getAttribute("login_info");
 		int userno = uvo.getNo();
 		model.addAttribute("orders", kakaoPayApprovalService.selectlist(userno));
-		
+		model.addAttribute("orderid", kakaoPayApprovalService.selectorderid(userno));
 		return "User/userPaymentList";
 	}
 

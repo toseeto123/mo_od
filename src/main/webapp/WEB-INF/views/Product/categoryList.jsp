@@ -129,7 +129,7 @@
                   <c:if test="${list.pro_categoryserial  eq 'C1' }">
                   <b style="font-size: 30px; color: #c8936ed4;">서 랍</b>
                   </c:if>
-            <div class="member" style="background-color: white; cursor: pointer;" onclick="location.href='/product/category/${list.pro_categoryserial}'">  
+            <div class="member" style="background-color: white; cursor: pointer;" onclick="location.href='/products/category/${list.pro_categoryserial}'">  
             	<c:if test="${list.pro_categoryserial  eq 'A0' }">
                   <img src="${pageContext.request.contextPath}/resources/assets/img/category/mattress.png" alt="" class="img-fluid" style="width: 295px; height: 400px; border-radius: 7px;  box-shadow: 1px 2px 1px 1px gray;">
                   </c:if>

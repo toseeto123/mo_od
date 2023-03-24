@@ -42,22 +42,32 @@
 
 	<select id="selectlist"
 		resultType="kr.co.mood.Payment.VO.KakaoPayApprovalVO">
-		SELECT o.orderid, p.pro_name, p.pro_img1,
-		p.pro_number, p.pro_price,
-		p.pro_maindesc, p.pro_maindesctitle, pa.amount, pa.payment_id,
-		pa.payment_method, pa.SuccessTime ,op.count , pa.tid
-		FROM
-		moodorder o,
-		orderproduct op,
-		payment pa,
-		product p
-		WHERE o.userno= #{userno}
-		AND op.orderid=o.orderid
-		AND op.pro_number=p.pro_number
-		AND pa.orderid=o.orderid
-		GROUP BY op.orderid , op.pro_number
-		HAVING COUNT(DISTINCT op.pro_number) = 1
-		ORDER BY o.orderid DESC;
+SELECT o.orderid, p.pro_name, p.pro_img1,
+    op.pro_number, p.pro_maindesc, p.pro_maindesctitle, pa.amount, pa.payment_id,
+    pa.payment_method, pa.SuccessTime, op.count, pa.tid, op.pro_option, op.price
+FROM moodorder o
+JOIN orderproduct op ON op.orderid = o.orderid
+JOIN payment pa ON pa.orderid = o.orderid
+JOIN product p ON p.pro_number = op.pro_number
+WHERE o.userno = #{userno} AND op.orderid IN (
+  SELECT DISTINCT op2.orderid 
+  FROM orderproduct op2 
+  WHERE op2.pro_option = op.pro_option
+)
+GROUP BY o.orderid, op.pro_option
+ORDER BY o.orderid DESC;
 	</select>
+	
+	<select id="selectorderid" resultType="kr.co.mood.Payment.VO.KakaoPayApprovalVO">
+SELECT o.orderid, pa.SuccessTime,pa.payment_id,
+op.price, SUM(op.count) as total_count
+FROM moodorder o
+JOIN orderproduct op ON op.orderid = o.orderid
+JOIN payment pa ON pa.orderid = o.orderid
+WHERE o.userno = #{userno}
+GROUP BY o.orderid, pa.SuccessTime, pa.amount
+ORDER BY o.orderid DESC;
+	</select>
+	
 
 </mapper>

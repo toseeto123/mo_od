@@ -24,8 +24,9 @@ public class productPaymentDAO {
 
 	public List<userOrderProductVO>selectList(int orderId) {
 		return sql.selectList("productPaymentDAO.selectList", orderId);
-		
 	}
+	
+	
 	
 	public void cateorderinsert(userOrderProductVO orderProVo, UserVO uvo , ProVO pvo) {
 		sql.insert("productPaymentDAO.cateorderinsert",orderProVo);
