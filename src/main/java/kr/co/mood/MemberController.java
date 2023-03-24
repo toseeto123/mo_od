@@ -29,12 +29,14 @@ public class MemberController {
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code ) throws Exception {
 		String access_Token = ms.getAccessToken(code);		
 		UserVO userInfo = ms.getUserInfo(access_Token);	
+		  String path = (String) session.getAttribute("path");
+		
 		// 아래 코드가 추가되는 내용
 
 		// 위 코드는 session객체에 담긴 정보를 초기화 하는 코드.
 		session.invalidate();
 		session.setAttribute("login_info", userInfo);
-		return "redirect:/";
+		return "redirect:/login.do";
     	}
 	
 	
