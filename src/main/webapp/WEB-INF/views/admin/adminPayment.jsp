@@ -12,9 +12,8 @@ a:hover{
 	cursor:pointer;
 }
 footer{
+	margin-top: 200px;
 	width: 100%;
-	position: absolute;
-	bottom: 0;
 }
 </style>
 </head>
@@ -116,12 +115,13 @@ footer{
 					<a href="/admin/payment.do/${nextPage}">&gt;</a>
 				</c:if>
 			</div>
-			<footer><jsp:include
-					page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" /></footer>
+			
 		</div>
 		<input type="hidden" value="${selectPage}" id="selectPage">
 
 	</section>
 <script src="/resources/user/js/adminPaymentSearching.js"></script> 
 </body>
+<footer><jsp:include
+					page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" /></footer>
 </html>
