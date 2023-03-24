@@ -75,7 +75,7 @@
     </select>
     
     <select id="adminPaymentMemberList" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
-    	select payment.payment_id as 'orderNo',
+    	select payment.orderid as 'orderNo',
 			member.name as 'name',
 			moodorder.address as 'address',
 			member.phone as 'phone',
@@ -87,6 +87,7 @@
 		inner join moodjoin as member
 			on moodorder.userNo = member.no
 		where payment.Success = 'A'
+		group by orderNo
 		order by orderNo desc
 		<if test="endNo != 0">
 		limit #{startNo}, #{endNo}
@@ -98,7 +99,7 @@
     <select id="adminPaymentSearchingList"
     	parameterType="kr.co.mood.module.ModuleVO"
      resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
-    	select payment.payment_id as 'orderNo',
+    	select payment.orderid as 'orderNo',
 			member.name as 'name',
 			moodorder.address as 'address',
 			member.phone as 'phone',
@@ -122,6 +123,7 @@
 		<if test="date != null">
 		and payment.approved_at like concat('%', #{date}, '%')
 		</if>
+		group by product.pro_serialnumber
 		order by orderNo desc
 		<if test="endNo > 0">
 		limit #{startNo}, #{endNo}
@@ -130,7 +132,7 @@
 
     
     <select id="adminPaymentList" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
-    	select payment.payment_id as 'orderNo', 
+    	select payment.orderid as 'orderNo', 
 			product.pro_serialnumber as 'productNo',
 			product.pro_name as 'productName',
 			orderProduct.price as 'price',
@@ -141,6 +143,7 @@
 		inner join product
 			on orderProduct.pro_number = product.pro_number
 		where payment.Success = 'A'
+		group by product.pro_serialnumber
 		order by orderNo desc
     </select>
     
