@@ -43,20 +43,16 @@ public class MemberService {
          bw.write(sb.toString());
          bw.flush();
          int responseCode = conn.getResponseCode();
-         System.out.println("responseCode : " + responseCode);
          BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
          String line = "";
          String result = "";
          while ((line = br.readLine()) != null) {
             result += line;
          }
-         System.out.println("response body : " + result);
          JsonParser parser = new JsonParser();
          JsonElement element = parser.parse(result);
          access_Token = element.getAsJsonObject().get("access_token").getAsString();
          refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
-         System.out.println("access_token : " + access_Token);
-         System.out.println("refresh_token : " + refresh_Token);
          br.close();
          bw.close();
       } catch (IOException e) {
@@ -74,14 +70,12 @@ public class MemberService {
          conn.setRequestMethod("GET");
          conn.setRequestProperty("Authorization", "Bearer " + access_Token);
          int responseCode = conn.getResponseCode();
-         System.out.println("responseCode : " + responseCode);
          BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
          String line = "";
          String result = "";
          while ((line = br.readLine()) != null) {
             result += line;
          }
-         System.out.println("response body : " + result);
          JsonParser parser = new JsonParser();
          JsonElement element = parser.parse(result);
          JsonObject properties = element.getAsJsonObject().get("properties").getAsJsonObject();
@@ -93,8 +87,6 @@ public class MemberService {
          userInfo.put("nickname", nickname);
          userInfo.put("email", email);
          userInfo.put("age_range", age_range);
-         System.out.println("dsds"+userInfo);
-         
          
          
       } catch (IOException e) {
@@ -145,7 +137,7 @@ public class MemberService {
                sb.append("&redirect_uri=http://localhost:8080/login.do");
                sb.append("&code="+authorize_code);
                sb.append("&state=url_parameter");
-               System.out.println(sb);
+
                session.setAttribute("sb", sb);
                bw.write(sb.toString());
                bw.flush();
@@ -153,7 +145,6 @@ public class MemberService {
                
                //결과 코드가 200이라면 성공
                int responseCode = conn.getResponseCode();
-               System.out.println(responseCode);
                if(responseCode==200){
                   //요청을 통해 얻은 JSON타입의 Response 메세지 읽어오기
                   BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
@@ -170,7 +161,6 @@ public class MemberService {
                   
                   access_Token = element.getAsJsonObject().get("access_token").getAsString();
                 //refresh_Token = element.getAsJsonObject().get("refresh_token").getAsString();
-                  System.out.println(access_Token);
                   br.close();
                   bw.close();
                }
@@ -221,17 +211,12 @@ public class MemberService {
               naverUserInfo.put("age", age);
               naverUserInfo.put("gender", gender);
               naverUserInfo.put("phone", mobile);
-              System.out.println(naverUserInfo);
-              System.out.println("response값이당!!");
-              System.out.println(response);
               session.setAttribute("response", response);
            }
        } catch (IOException e) {
            e.printStackTrace();
            
        }
-       System.out.println("response값이당!!");
-       System.out.println(session.getAttribute("response"));
     // catch 아래 코드 추가.
           UserVO result = userdao.findNaver(naverUserInfo);
           // 위 코드는 먼저 정보가 저장되있는지 확인하는 코드.
@@ -253,32 +238,6 @@ public class MemberService {
              
           }
    }
-   public void naverLogout(String access_Token) {
-      String reqURL = "https://nid.naver.com/oauth2.0/token?grant_type=delete&client_id=dClx55_VYi9U61rOGPS2&client_secret=MtrUDxfIj0&access_token=\"+access_Token+\"service_provider=NAVER";
-       try {
-           URL url = new URL(reqURL);
-           HttpURLConnection conn = (HttpURLConnection) url.openConnection();
-           conn.setRequestMethod("POST");
-           conn.setRequestProperty("Authorization", "Bearer " + access_Token);
-           
-           int responseCode = conn.getResponseCode();
-           System.out.println("responseCode : " + responseCode);
-           
-           BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-           
-           String result = "";
-           String line = "";
-           
-           while ((line = br.readLine()) != null) {
-               result += line;
-           }
-           
-       } catch (IOException e) {
-           e.printStackTrace();
-       }
-   
-   }
-
    
 }
    

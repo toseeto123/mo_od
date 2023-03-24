@@ -93,31 +93,6 @@ public class UserController {
 
 	      return (String) session.getAttribute("path");
 	   }
-	@RequestMapping(value="/user/*")
-	public class MemberController {
-		@Autowired
-		private MemberService ms;
-		@Autowired
-		private HttpSession session;
-
-		@RequestMapping(value="/kakaoLogin", method=RequestMethod.GET)
-		public String kakaoLogin(@RequestParam(value = "code", required = false) String code ) throws Exception {
-			System.out.println("#########" + code);
-			
-			String access_Token = ms.getAccessToken(code);
-			
-			
-			UserVO userInfo = ms.getUserInfo(access_Token);	
-			// �븘�옒 肄붾뱶媛� 異붽��릺�뒗 �궡�슜
-
-			// �쐞 肄붾뱶�뒗 session媛앹껜�뿉 �떞湲� �젙蹂대�� 珥덇린�솕 �븯�뒗 肄붾뱶.
-			session.setAttribute("login_info", userInfo);
-			System.out.println("fdfd"+userInfo);
-			
-			return "redirect:/";
-	    	}
-
-	}
 	
 	@RequestMapping("/naverLogin")
 	   public void naverLogin(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws IOException {
@@ -164,18 +139,16 @@ public class UserController {
            return "redirect:/login.do";
        } else {
            session.setAttribute("login_info", vo1);
-           
-           // path 媛��졇�삤湲�
            String path = (String) session.getAttribute("path");
            
            if (path == null) {
                return "redirect:/index.jsp";
-           } else if (path.contains("catelogin.do")) { // �옣諛붽뎄�땲 �럹�씠吏��뿉�꽌 �솕�떎硫�
-        	   session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
+           } else if (path.contains("catelogin.do")) {
+        	   session.setAttribute("path", request.getRequestURI()); 
                return "redirect:/cate.do";
            } else if (path.contains("proCatelogin.do")) {
-        	   session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
-        	   CateVO sessionCvo = (CateVO) session.getAttribute("cvo"); // �꽭�뀡�뿉�꽌 CateVO 媛앹껜瑜� 諛쏆븘�샂;
+        	   session.setAttribute("path", request.getRequestURI()); 
+        	   CateVO sessionCvo = (CateVO) session.getAttribute("cvo"); 
                int userid = vo1.getNo();
                sessionCvo.setUser_no(userid);
         	   if (sessionCvo != null) {
@@ -232,7 +205,6 @@ public class UserController {
    @RequestMapping("/logout.do")
    public String logout(HttpSession session) {
       session.getAttribute("login_info");
-      System.out.println("濡쒓렇�븘�썐1");
       session.invalidate();
       
       return "redirect:index.jsp";
@@ -242,20 +214,14 @@ public class UserController {
     public String mypage(UserVO vo,HttpSession session , Model model) {
 		UserVO uvo = (UserVO) session.getAttribute("login_info");
 		String str = uvo.getAdr();
-		System.out.println(str);
 		String[] array = str.split("   ");
-		System.out.println(array);
 		session.setAttribute("myinfo_adr1", array[0]);
 		session.setAttribute("myinfo_adr2", array[1]);
 		session.setAttribute("myinfo_adr3", array[2]);
-		
-		System.out.println(uvo);
+
 		int userid = uvo.getNo();
-		System.out.println(userid);
 		model.addAttribute("map", cateService.selectCateList(userid));
 		model.addAttribute("orders", kakaoService.selectlist(userid));
-		System.out.println(kakaoService);
-		System.out.println(kakaoService.selectlist(userid));
 		return "User/mypage";
 	}
 
@@ -297,39 +263,12 @@ public class UserController {
 		session.invalidate();
 		return "redirect:index.jsp";
 	}
-	
-//	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
-//	public String delete(UserVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
-//		System.out.println("탈퇴시도");
-//		UserVO ssvo = (UserVO) session.getAttribute("login_info");
-//		String sspwd = ssvo.getPwd();
-//		String newpwd = vo.getPwd();
-//		System.out.println(vo.getPwd());
-//		if (sspwd.equals(newpwd)) {
-//			System.out.println("탈퇴성공");
-//			userservice.delete(vo);
-//			session.invalidate();
-//			return "redirect:index.jsp";
-//		}else {
-//			System.out.println("탈퇴실패");
-//			rttr.addFlashAttribute("msg", false);
-//			return "redirect:login.jsp";
-//		}
-//		
-//	}
-	
-
 
 	@RequestMapping(value = "/update.do", method = RequestMethod.POST)
 	public String update(UserVO vo, HttpSession session) throws Exception {
-		
-		
 		userservice.update(vo);
-		System.out.println(vo);
-		System.out.println("업데이트 완료");
 		session.invalidate();
 		return "User/login";
-		
 	}
 
 	@RequestMapping(value = "/mailCheck", method = RequestMethod.GET)
