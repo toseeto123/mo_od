@@ -164,11 +164,14 @@ li .btnspan_on {
       font-size: 12px;
    }
 }
+.btn-primary {
+	background-color:#c8936ed4;
+}
 
 </style>
 </head>
 <body style="margin: 0 auto;">
-<form action="/User/kakaoPayCancel">
+
 
    <section>
       <ul class="nav nav-pills nav-justified">
@@ -190,7 +193,8 @@ li .btnspan_on {
          <c:choose>
          <c:when test="${empty orders }"> <h2 style="text-align: center; margin-top: 280px; margin-bottom: 285px;">결제 내역이 존재하지 않습니다.</h2></c:when>
          <c:otherwise>
-         <c:forEach var="orders" items="${orders}">
+         <c:forEach var="orders" items="${orders}" varStatus="status">
+         <form action="/User/kakaoPayCancel">
             <div class="deleteplz">
                <img src="/resources/assets/img/product/${orders.pro_img1 }"
                   alt="${orders.pro_name}"
@@ -199,10 +203,11 @@ li .btnspan_on {
                   style="width: 250px; height: 250px; position: absolute; right: 150px;">
                   <input type="hidden" value="${orders.tid }" name="tid">
                   <input type="hidden" value="${orders.pro_price }" name="price">
+                  <input type="hidden" value="${orders.orderId }" name="orderId">
                <p style="text-align: center; margin-top: 30px;">
                   <input type="hidden" value="${orders.userno}"> <input
-                     type="hidden" value="${orders.pro_number}">
-               <h2 style="margin-left: 100px;">주문번호:<span> ${orders.orderId}</span></h2>
+                     type="hidden" value="${orders.pro_number}" name="pro_number">
+               <h2 style="margin-left: 100px;">주문번호:<span> ${orders.orderId} </span></h2>
                <h2 style="margin-left: 100px;">결제일: <span>${orders.approved_at}</span></h2><br>   
                <h4 style="margin-left: 100px;">상품명: <small>${orders.pro_name}</small></h4>
                <h4 style="margin-left: 100px;">상품정보: <small>${orders.pro_maindesctitle }</small></h4>
@@ -210,16 +215,17 @@ li .btnspan_on {
                <p style="margin-left: 100px;">가 격 : <span class="total"><fmt:formatNumber
                         value="${orders.pro_price}" type="currency" currencySymbol="₩" /></span>
                </p>
-               <input type="submit" value="주문취소">
+               <input type="submit" value="주문취소" class=".btn-primary">
                <br>
                <hr>
             </div>
+            </form>
          </c:forEach>
          </c:otherwise>
          </c:choose>
       </div>
    </div>
-</form>
+
 <jsp:include page="/WEB-INF/common/footer.jsp" />
 </body>
 </html>

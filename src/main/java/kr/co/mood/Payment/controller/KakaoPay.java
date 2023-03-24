@@ -42,7 +42,8 @@ public class KakaoPay {
     		   @RequestParam("userno") String userno,
     		   @RequestParam("pro_price") int pro_price,
     		   @RequestParam("orderId") int orderId,
-    		   @RequestParam("pro_number") String pro_number) {
+    		   @RequestParam("pro_number") String pro_number
+    		   ) {
 
     
            RestTemplate restTemplate = new RestTemplate();
@@ -65,7 +66,7 @@ public class KakaoPay {
            
            params.add("tax_free_amount", "100");
            params.add("approval_url", "http://localhost:8080/User/kakaoPaySuccess?orderId=" + orderIdstr + "&userno=" + userno + "&pro_number="+ pro_number);
-           params.add("cancel_url", "http://localhost:8080/User/kakaoPayCancel");
+           params.add("cancel_url", "http://localhost:8080/User/kakaoPayCancel?");
            params.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");
             HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
     
@@ -123,7 +124,7 @@ public class KakaoPay {
 
        }
        public KakaoCancelResponseVO kakaoCancel(@RequestParam("tid") String tid
-    		   ,@RequestParam("price") String price
+    		   ,@RequestParam("price") String price,@RequestParam("pro_number") String pro_number,@RequestParam("orderId") int orderId
     		   ) {
     	   System.out.println("취소 로직 들어 왔어유~");
            HttpHeaders headers = new HttpHeaders();
@@ -148,7 +149,9 @@ public class KakaoPay {
                    "https://kapi.kakao.com/v1/payment/cancel",
                    requestEntity,
                    KakaoCancelResponseVO.class);
-                   
+           
+           kservice.paycancelDelete(orderId);
+           System.out.println(orderId);
            return cancelResponse;
        }
        
