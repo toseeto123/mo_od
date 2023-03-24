@@ -27,7 +27,7 @@
     
     <select id="getCategoryChart3" resultType="kr.co.mood.Payment.VO.AdminChartVO">
          <![CDATA[
-          SELECT CASE DAYOFWEEK(approved_at) 
+          SELECT CASE DAYOFWEEK(SuccessTime) 
          		WHEN 2 THEN '월요일' 
          		WHEN 3 THEN '화요일' 
          		WHEN 4 THEN '수요일' 
@@ -39,9 +39,9 @@
          	sum(amount) as sales 
          	from payment 
          	where Success = 'A'
-					and approved_at like concat(#{year}, '%')
-         	group by DAYOFWEEK(approved_at)
-         	order by DAYOFWEEK(approved_at)
+					and SuccessTime like concat(#{year}, '%')
+         	group by DAYOFWEEK(SuccessTime)
+         	order by DAYOFWEEK(SuccessTime)
          	]]>
     </select>
     
@@ -61,7 +61,7 @@
 		inner join payment
 			on payment.orderid = orderproduct.orderid
 		where payment.Success = 'A'
-			and payment.approved_at like concat(#{year}, '%')
+			and payment.SuccessTime like concat(#{year}, '%')
 		order by member.age desc 
 		limit 0, 5
 			]]>
@@ -73,13 +73,13 @@
 			member.name as 'name', 
 			member.phone as 'phone', 
 			moodorder.price as 'amount',
-			payment.approved_at as 'payDate'
+			payment.SuccessTime as 'payDate'
 		from moodorder
 		inner join moodjoin as member
 			on member.no = moodorder.userNo
 		inner join payment
 			on payment.orderid = moodorder.orderid
-		where payment.Success = 'A'
+		where payment.Success = '결제 완료'
 		group by orderNo
 		order by orderNo desc
 		<if test="endNo != 0">
@@ -97,7 +97,7 @@
 			member.name as 'name', 
 			member.phone as 'phone', 
 			moodorder.price as 'amount',
-			payment.approved_at as 'payDate'
+			payment.SuccessTime as 'payDate'
 		from moodorder
 		inner join moodjoin as member
 			on member.no = moodorder.userNo
@@ -114,7 +114,7 @@
 		and member.phone like concat('%', #{phone}, '%')
 		</if>
 		<if test="date != null">
-		and payment.approved_at like concat('%', #{date}, '%')
+		and payment.SuccessTime like concat('%', #{date}, '%')
 		</if>
 		group by orderNo
 		order by orderNo desc
@@ -122,7 +122,6 @@
 		limit #{startNo}, #{endNo}
     	</if>    	
     </select>
-
     
     <select id="adminPaymentList" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
     	select orderproduct.orderid as'orderNo',

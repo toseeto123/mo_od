@@ -11,9 +11,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="/resources/user/js/main.js"></script>
 <style>
-* {
-	font-size :15px;
-}
+
 section {
 	width: 1000px;
 	margin: 0 auto;

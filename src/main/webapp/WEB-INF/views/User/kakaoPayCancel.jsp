@@ -153,9 +153,7 @@ background-color: #c8936ed4;
 body {
 	height:100%;
 }
-a {
- font-size: 20px;
-}
+
 .returnbtn {
    background-color: #c8936ed4;
    width: 416px;

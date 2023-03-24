@@ -279,7 +279,7 @@ body {
                            src="${pageContext.request.contextPath}/resources/assets/img/product/${onelist.pro_img1}"
                            title="${onelist.pro_name }"
                            alt="${onelist.pro_name }"
-                           style="width: 100px; height: 100px; margin-bottom: 10px;">
+                           style="width: 100px; height: 100px; margin-bottom: 70px;">
 
                         <div style="display: inline-block;">
                             <small class="text-muted"><a href="/product/${onelist.pro_number }" style="color:#c8936ed4;">상품명 : ${onelist.pro_name}</a><c:if test="${!empty onelist.pro_option}"><br>옵 션 : ${onelist.pro_option}</c:if><br>설 명 : ${onelist.pro_maindesctitle}

@@ -64,10 +64,10 @@
 
 <!-- ======= Breadcrumbs ======= -->
 <c:forEach var="list" items="${list}" begin="0" end="0">
-      <section id="breadcrumbs" class="breadcrumbs">
+      <section id="breadcrumbs" class="breadcrumbs" style="height: 70px; padding-bottom: 80px; font-size: 22px;">
          <div class="container">
 
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center" >
                
                <ol>
                   <c:if test="${list.pro_categoryserial  eq 'A%' }">
