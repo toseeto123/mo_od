@@ -35,6 +35,25 @@ section {
 		  </li>
 		</ul>
 	</section>
+
+	<div class="tabcontent">
+		<div id="on">
+			<jsp:include page="/WEB-INF/views/User/mypage_myInfo.jsp" />
+		</div>
+	</div>
+	<div class="tabcontent">
+		<div id="cate">
+			<jsp:include page="/WEB-INF/views/User/my_cateinfo.jsp" />
+		</div>
+	</div>
+
+	<div class="tabcontent">
+		<div id="payDetail">
+			<jsp:include page="/WEB-INF/views/User/userPaymentList.jsp" />
+		</div>
+	</div>
+
+
 	<jsp:include page="/WEB-INF/common/footer.jsp" />
 </body>
 
