@@ -184,6 +184,7 @@ li .btnspan_on {
 	border: none;
 	border-radius: 30px;
 	box-shadow: 1px 1px 1px 1px lightgray;
+	color:white;
 }
 </style>
 <script type="text/javascript">
@@ -497,6 +498,8 @@ function deletecate(element) {
 					<div class="deleteplz">
 						<img src="resources/assets/img/product/${map.pro_img1 }"
 							class="img-fluid"
+							alt="${map.pro_name}"
+							title="${map.pro_maindesctitle}"
 							style="width: 160px; height: 160px; position: absolute; right: 150px;">
 						<p style="text-align: center; margin-top: 30px;">
 
@@ -552,8 +555,8 @@ function deletecate(element) {
 								</dd>
 							</dl>
 							<input type="hidden" value="${login_info.adr }" name="address">
-							<input type="submit" value="바로결제하기" class="btn_buy"> <br>
-							<br> <input type="button" value="메인페이지로 이동"
+							<input type="submit" value="주문하기" class="btn_buy"> <br>
+							<br> <input type="button" value="더보러가기"
 								class="cancelbtn" onclick="window.location='/mo_od';">
 
 						</div>
