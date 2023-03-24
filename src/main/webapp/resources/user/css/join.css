@@ -96,6 +96,7 @@ input {
    border:none;
    border-radius: 5px;
    background-color: #c8936ed4;
+   color: white;
 
 }
 
@@ -139,11 +140,12 @@ select {
     padding: 21px 0 17px;
     border: 0;
     cursor: pointer;
-    color: black;
+    color: white;
     background-color: #c8936ed4;
     font-size: 20px;
     font-weight: 400;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
+    border-radius: 5px;
 }
 
 #btnReset{
@@ -151,11 +153,12 @@ select {
     padding: 21px 0 17px;
     border: 0;
     cursor: pointer;
-    color: black;
+    color: white;
     background-color: #c8936ed4;
     font-size: 20px;
     font-weight: 400;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
+    border-radius: 5px;
 }
 
 #btnBack{
@@ -163,11 +166,12 @@ select {
     padding: 21px 0 17px;
     border: 0;
     cursor: pointer;
-    color: black;
+    color: white;
     background-color: #c8936ed4;
     font-size: 20px;
     font-weight: 400;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
+    border-radius: 5px;
 }
 
 /*이메일*/
@@ -201,6 +205,7 @@ select {
 	 background-color: #c8936ed4;
 	 border:none;
 	 border-radius: 5px;
+	 color: white;
 }
 .mail_check_input{
    display: block;
@@ -242,7 +247,7 @@ select {
     border-radius: 5px;
     border:none;
     color: white;
-    font-weight: bold;
+    
     
 }
 

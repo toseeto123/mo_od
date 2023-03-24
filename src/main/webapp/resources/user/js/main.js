@@ -1,5 +1,5 @@
 function JoinCheck(){
-           if (document.join.id.value == "") {
+           if (document.join.id.value == 0) {
               alert("아이디를 써주세요");
               join.id.focus();
               return false;
@@ -32,7 +32,7 @@ function JoinCheck(){
               join.age.focus();
               return false;
            }
-           if (document.join.gender.value == "") {
+           if (document.join.gender.value == 0) {
               alert("성별을 입력해주세요");
               join.gender.focus();
               return false;
@@ -80,27 +80,27 @@ function fn_idChk(){
           
       
       function UpdateCheck(){
-           if (document.mypage_myInfo.pwd.value == ""){
+           if (document.mypage.pwd.value == ""){
               alert("암호를 반드시 입력해주세여");
-              mypage_myInfo.pwd.focus();
+              mypage.pwd.focus();
               return false;
            }
-           if(document.mypage_myInfo.pwd.value != document.mypage_myInfo.pwd2.value){
+           if(document.mypage.pwd.value != document.mypage.pwd2.value){
               alert("암호가 일치하지 않습니다");
-              mypage_myInfo.pwd.value="";
-              mypage_myInfo.pwd2.value="";
-              mypage_myInfo.pwd.focus();
+              mypage.pwd.value="";
+              mypage.pwd2.value="";
+              mypage.pwd.focus();
               return false;
              
            }
-           if (document.mypage_myInfo.email.value == "") {
+           if (document.mypage.email.value == "") {
               alert("이메일을 입력해주세요");
-              mypage_myInfo.email.focus();
+              mypage.email.focus();
               return false;
            }
-           if (document.mypage_myInfo.phone.value == "") {
+           if (document.mypage.phone.value == "") {
               alert("전화번호를 입력해주세요");
-              mypage_myInfo.phone.focus();
+              mypage.phone.focus();
               return false;
            }   
            return true;   
