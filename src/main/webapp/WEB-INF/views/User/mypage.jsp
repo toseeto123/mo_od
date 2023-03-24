@@ -6,9 +6,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-
-
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script type="text/javascript" src="/resources/user/js/main.js"></script>
 <style>
 section {
 	width: 1000px;
@@ -85,7 +85,7 @@ section {
 		<tr style="border-top:20px solid white;">
 		
 			<td><label for="adr"></label></td>
-			<td style="width:310px"><input type="text" class="address_input_1" name=adr id="adr" placeholder="우편번호" value="${myinfo_adr1}" ><br></td>	
+			<td style="width:310px;padding-left: 150px;"><input type="text" class="address_input_1" name=adr id="adr" placeholder="우편번호" value="${myinfo_adr1}" ><br></td>	
 			<td style="padding-left: 150px;"><input type="button" class="adrchk" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br></td>
 		</tr>
 		<tr style="border-top:20px solid white;">
