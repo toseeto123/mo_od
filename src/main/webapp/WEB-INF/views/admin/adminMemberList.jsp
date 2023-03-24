@@ -55,7 +55,7 @@ footer{
 		page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
 	<section class="container">
 			<div class="searchParent">
-			<div class="search">
+			<div class="search" style="margin-top: 50px; margin-bottom: 50px;">
 			<select id="searchWhat">
 				<option value="id">아이디</option>
 				<option value="name">이름</option>
