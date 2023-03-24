@@ -128,14 +128,14 @@
 <c:forEach var="list" items="${list}">
           <div class="col-xl-3 col-lg-4 col-md-6">
           
-            <div class="member" style="background-color: white; cursor: pointer;" onclick="location.href='/product/${list.pro_number}'">  
- 				<img src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" alt="" class="img-fluid" style="width: 306px; height: 306px;">
+            <div class="member" style="background-color: white; cursor: pointer;" onclick="location.href='/products/${list.pro_number}'">  
+ 				<img src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" alt="${list.pro_name}" title="${list.pro_maindesc}" class="img-fluid" style="width: 306px; height: 306px;">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>${list.pro_name}</h4>
                   <span><fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></span>
                   <div class="social">
-                    <a href="/product/${list.pro_number}"> ${list.pro_maindesctitle} </a>
+                    <a href="/products/${list.pro_number}"> ${list.pro_maindesctitle} </a>
                   </div>
                 </div>
               </div>

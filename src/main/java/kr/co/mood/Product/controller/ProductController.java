@@ -43,17 +43,17 @@ public class ProductController {
 	}
 
 
-	@RequestMapping(value = "/product/{pro_number}", method = RequestMethod.GET)
+	@RequestMapping(value = "/products/{pro_number}", method = RequestMethod.GET)
 	public String proDetails(@PathVariable("pro_number") int pro_number, ArrayList<ProVO> vo, Model model, HttpSession session) {
 		model.addAttribute("list", ps.selectProOne(pro_number));
 		model.addAttribute("randomList", ps.selectProRandom(vo));
 		session.setAttribute("pro_number", ps.selectProOne(pro_number));
-		session.setAttribute("path", "/product/"+Integer.toString(pro_number));
+		session.setAttribute("path", "/products/"+Integer.toString(pro_number));
 		String path = (String) session.getAttribute("path");
 		return "Product/productDetail";
 	}
 	
-	@RequestMapping(value = "/product/category/{pro_categoryserial}", method = RequestMethod.GET)
+	@RequestMapping(value = "/products/category/{pro_categoryserial}", method = RequestMethod.GET)
 	public String cateDetails(@PathVariable("pro_categoryserial") String pro_categoryserial, ArrayList<ProVO> vo, Model model, HttpSession session) {
 		System.out.println("몰까?"+pro_categoryserial);
 	    if (pro_categoryserial.equals("A0")) {
