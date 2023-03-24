@@ -23,9 +23,10 @@ span.span {
   align-items: center;
   min-height: calc(100% - 3.5rem);
 }
-a{
+.link {
 	font-size: 20px;
-	font-weight: bold;
+	width:150px;
+	height:auto;
 }
 </style>
 <link rel="stylesheet"
@@ -116,11 +117,11 @@ a{
 							<div class="card-body">
 
 								<div class="form-group row">
-									<div class="col-6">
-										<a href="/searchId">아이디 찾기</a>
+									<div class="col-6" style="padding-left:70px">
+										<input type="button" class="link" value="아이디 찾기" onclick="location.href='/searchId'">
 									</div>
-									<div class="col-6 text-right">
-										<a href="/login.do">돌아가기</a>
+									<div class="col-6 text-right" style="padding-right:70px">
+										<input type="button" class="link" value="돌아가기" onclick="location.href='/login.do'">
 									</div>
 
 								</div>
