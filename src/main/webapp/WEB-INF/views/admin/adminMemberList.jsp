@@ -126,9 +126,8 @@ footer{
 	
 
 <script type="text/javascript" src="/resources/user/js/adminMemberListSearching.js"></script>
+</body>
 <footer><jsp:include
 					page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" />
 		</footer>
-</body>
-
 </html>

@@ -75,17 +75,17 @@
     </select>
     
     <select id="adminPaymentMemberList" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
-    	select payment.orderid as 'orderNo',
-			member.name as 'name',
-			moodorder.address as 'address',
-			member.phone as 'phone',
-			payment.amount as 'amount',
-			payment.approved_at 'payDate'
+    	select moodorder.orderid as 'orderNo', 
+			moodorder.address as 'address', 
+			member.name as 'name', 
+			member.phone as 'phone', 
+			moodorder.price as 'amount',
+			payment.approved_at as 'payDate'
 		from moodorder
-		inner join payment
-			on moodorder.orderId = payment.orderid
 		inner join moodjoin as member
-			on moodorder.userNo = member.no
+			on member.no = moodorder.userNo
+		inner join payment
+			on payment.orderid = moodorder.orderid
 		where payment.Success = 'A'
 		group by orderNo
 		order by orderNo desc
@@ -99,23 +99,23 @@
     <select id="adminPaymentSearchingList"
     	parameterType="kr.co.mood.module.ModuleVO"
      resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
-    	select payment.orderid as 'orderNo',
-			member.name as 'name',
-			moodorder.address as 'address',
-			member.phone as 'phone',
-			payment.amount as 'amount',
-			payment.approved_at 'payDate'
+    	select moodorder.orderid as 'orderNo', 
+			moodorder.address as 'address', 
+			member.name as 'name', 
+			member.phone as 'phone', 
+			moodorder.price as 'amount',
+			payment.approved_at as 'payDate'
 		from moodorder
-		inner join payment
-			on moodorder.orderId = payment.orderid
 		inner join moodjoin as member
-			on moodorder.userNo = member.no
-		where payment.Success = 'A'		
+			on member.no = moodorder.userNo
+		inner join payment
+			on payment.orderid = moodorder.orderid
+		where payment.Success = 'A'
 		<if test="searchName != null">
 		and member.name like concat('%', #{searchName}, '%')
 		</if>
 		<if test="orderNo > 0">
-		and payment.payment_id = #{orderNo}
+		and moodorder.orderid = #{orderNo}
 		</if>
 		<if test="phone != null">
 		and member.phone like concat('%', #{phone}, '%')
@@ -123,7 +123,7 @@
 		<if test="date != null">
 		and payment.approved_at like concat('%', #{date}, '%')
 		</if>
-		group by product.pro_serialnumber
+		group by orderNo
 		order by orderNo desc
 		<if test="endNo > 0">
 		limit #{startNo}, #{endNo}
@@ -132,18 +132,14 @@
 
     
     <select id="adminPaymentList" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
-    	select payment.orderid as 'orderNo', 
+    	select orderproduct.orderid as'orderNo',
+			(orderproduct.price/orderproduct.count) as 'price',
+			orderproduct.count as 'productCount',
 			product.pro_serialnumber as 'productNo',
-			product.pro_name as 'productName',
-			orderProduct.price as 'price',
-			orderProduct.count as 'productCount'
-		from payment
-		inner join orderProduct
-			on payment.orderId = orderProduct.orderId
+			product.pro_name as 'productName'
+		from orderproduct
 		inner join product
-			on orderProduct.pro_number = product.pro_number
-		where payment.Success = 'A'
-		group by product.pro_serialnumber
+			on product.pro_number = orderproduct.pro_number
 		order by orderNo desc
     </select>
     
