@@ -6,7 +6,7 @@
 	let idFlag;
 	let isEmailCorrect = false;
 	function emailCheck(){		
-		console.log('샤랄라');
+	
 		if(document.getElementById('status').value =='id'){
 			document.getElementById('show').innerHTML = '';
 		}
@@ -18,7 +18,6 @@
 		xhr.onreadystatechange = function() {
 			
 		  if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-		  	console.log("수루루")
 		  		clearInterval(interval);
 			  data = JSON.parse(xhr.responseText);
 			  console.log(data);
@@ -152,5 +151,6 @@ function validate(){
 	if(!emailFlag && document.getElementById('emailCheck').innerHTML != '이메일이 인증되었습니다.'){
 		alert('이메일을 인증해주세요');
 		document.getElementById('email').focus();
+		return;
 	}
 }

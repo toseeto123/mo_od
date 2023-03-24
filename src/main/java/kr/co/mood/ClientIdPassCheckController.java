@@ -38,23 +38,54 @@ public class ClientIdPassCheckController {
 	
 	@RequestMapping("/searchIdCheck")
 	@ResponseBody
-	public String searchIdChecking(String id, String email){
-		for(UserVO vo : userService.findEmail(email)) {
-			if(vo.getId().equals(id)) {
-				return "True";
+	public String searchIdChecking(String id){
+		UserVO vo = new UserVO();
+		vo.setId(id);
+		try {
+			if(userService.idChk(vo) > 0) {
+				return "Success";
+			}else {
+				return "Fail";
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
-		
-		return "False";
+		return "";
 	}
 	
-	@RequestMapping("/searchEmailCheck")
+	@RequestMapping("/searchEmail")
+	@ResponseBody
+	public String emailCheck(String email) {
+		try {
+		if(userService.findEmail(email).get(0).getEmail()!= null) {
+			return "Success";
+		}
+		}catch(Exception e) {
+			return "Fail";
+		}
+		return "";
+		
+	}
+	
+	@RequestMapping("/searchIdEmail")
+	@ResponseBody
+	public String emailSearch(String id, String email) {
+		for(UserVO vo : userService.findEmail(email)) {
+			if(id.equals(vo.getId())) {
+				return "Success";
+			}
+		}
+		return "Fail";
+		
+	}
+	
+	
+	@RequestMapping("/sendEmail")
 	@ResponseBody
 	public Map<String, Object> searchEmailChecking(String email) {
 		
 		Map<String, Object> map = new HashMap<String, Object>();
 
-		if(userService.findEmail(email) != null) {
 
 			Random random = new Random();
 			int checkNum = random.nextInt(888888) + 111111;
@@ -98,11 +129,6 @@ public class ClientIdPassCheckController {
 			
 			map.put("id",list);
 			return map;			
-
-		}else {
-			map.put("num", "none");
-		}
-		return map;
 	}
 	
 	

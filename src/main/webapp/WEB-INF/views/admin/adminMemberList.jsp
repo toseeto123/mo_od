@@ -14,6 +14,10 @@ select, option{
 	font-size: 18px;
 }
 
+.tableContainer{
+	height: 450px;
+}
+
 section.container{
 	margin-bottom: 20px;
 }
@@ -44,8 +48,6 @@ input[type=search]{
 }
 footer{
 	width: 100%;
-	position: absolute;
-	bottom: 0;
 }
 </style>
 </head>
@@ -65,7 +67,7 @@ footer{
 			<input type="button" 
 				id="searchBtn" value="찾기" onclick="search()">
 				</div>
-				
+			<div class="tableContainer">
 			<table class="table" id="table"
 				style="margin-top: 2%; margin-left: 15%; width: 70%;">
 				<thead>
@@ -95,7 +97,7 @@ footer{
 					</c:forEach>
 				</tbody>
 			</table>
-
+			</div>
 			<!-- End Default Table Example -->
 			<div id="modulePaging"
 				style="display: inline-block; position: absolute; left: 50%; transform: translateX(-50%); font-size: 20px;">

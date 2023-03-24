@@ -27,10 +27,7 @@ span.span{
 	height:auto;
 }
 footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+
 }
 </style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
@@ -58,7 +55,7 @@ footer {
 	</section>
 
 	<div class="d-flex align-items-center justify-content-center"
-		style="height: 500px;">
+		>
 		<div class="row justify-content-center mt-5">
 			<div class="col-md-6">
 				<div class="card border-0">
@@ -75,7 +72,7 @@ footer {
 
 									</div>
 									<input type="button" value="보내기" class="col-3"
-										onclick="validateForm(); emailCheck()">
+										onclick="emailValidate()">
 									<div class="col-3"></div>
 									<div class="col-6">
 										<span class="span" id="emailCheck"></span>
@@ -91,7 +88,7 @@ footer {
 											placeholder="인증번호 입력">
 									</div>
 									<input type="button" value="확인" class="col-3"
-										onclick="validateForm(); numCheck(document.getElementById('number').value); validate()">
+										onclick="numValidate()">
 									<div class="col-3"></div>
 									<div class="col-7">
 										<span class="span" id="time"></span>
@@ -132,41 +129,122 @@ footer {
 		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="/resources/user/js/idPwdFind.js"></script>
+		
 	<script>
-        function numCheck(number){
-        	let pluralId = [];
-        	let someId = [];
-            if(num != 0){
-                if(num == number && time > 0){
-                	
-                	for(var z=0; z<data.id.length; z++){
-                		pluralId.push(data.id[z].id);
+		let pluralId = [];
+		let someId = [];
+		let num = 0;
+		let time;
+		let interval;
+		let email;
+		let concatPluralId ;
+		
+		function emailValidate(){
+			if (!document.getElementById("email").checkValidity()) {
+				document.getElementById("email").reportValidity();
+    	  } else {
+				emailCheck();
+    	  }
+		}
+		
+		function numValidate(){
+			if (!document.getElementById("email").checkValidity()) {
+				document.getElementById("email").reportValidity();
+    	  } else {
+    		  numCheck();
+    	  }
+		}
+		
+		function emailCheck(){
+			var xhr = new XMLHttpRequest();
+
+			xhr.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					console.log(this.responseText)
+					if (this.responseText != 'Success') {//만약 이메일이 없다면						
+						document.getElementById('emailCheck').innerHTML = '존재하지 않는 이메일입니다.'						
+						return;
+					}					
+						sendEmail();
+						document.getElementById('emailCheck').innerHTML = '인증번호가 발송되었습니다.'
+						
+				}
+			};
+			xhr.open("get", "/searchEmail?email="+document.getElementById('email').value, true);
+			xhr.send();
+		}
+		
+		function sendEmail(){
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					num = 0;
+					var data = JSON.parse(this.responseText);
+					num = data.num;
+					console.log(num)
+					pluralId =[];
+					someId = [];
+					if(num > 0){
+						email = document.getElementById('email').value;
+						clearInterval(interval);
+						time = 120;   	
+			    		interval = setInterval(timer, 1000);
+					}
+					for(var i=0; i<data.id.length; i++){
+                		pluralId.push(data.id[i].id);
                 	}       
-                	for(var x=0; x<pluralId.length; x++){
-                		someId.push("<span style='color: #505050; cursor: pointer;' onClick='du(this)'>"+pluralId[x]+"</span>")
-                	}
-                	const concatPluralId = someId.join("<span style='color: #505050';>, </span>");
-                    clearInterval(interval);
-                    document.getElementById('time').innerHTML = '인증완료';
-                    document.getElementById('show').innerHTML = "아이디는 " + concatPluralId + "입니다.";
-                }else if(time <= 0){
-                    document.getElementById('time').innerHTML = '인증시간 만료';
-                }
-            }
-        }
-        
-    	function du(event){
-    		  var temp = document.createElement("textarea");
-    		  temp.value = event.innerText;
-    		  document.body.appendChild(temp);
-    		  temp.select();
-    		  document.execCommand("copy");
-    		  document.body.removeChild(temp);
-    		  alert("복사되었습니다.");
-    		}	
+                	for(var i=0; i<pluralId.length; i++){
+                		someId.push("<span style='color: #505050; cursor: pointer;' onClick='copy(this)'>"+pluralId[i]+"</span>")
+                	}	
+                	concatPluralId = someId.join("<span style='color: #505050';>, </span>");
+				}
+			};
+			xhr.open("get", "/sendEmail?email="+document.getElementById('email').value, true);
+			xhr.send();
+		}
+		
+		function numCheck(){
+			if(num > 0 && num == document.getElementById('number').value && time > 0){
+				clearInterval(interval);
+				document.getElementById('time').innerHTML = '인증성공';
+				document.getElementById('show').innerHTML = "아이디는 " + concatPluralId + "입니다.";
+			}
+			if(num == 0){
+				alert("이메일을 인증해주세요");
+				document.getElementById('email').focus();
+			}
+		}
+		
+		function timer(){
+			
+			if(time > 0){				
+				time = time - 1;
+				var minute = time/60;
+				var second = time%60;
+				document.getElementById('time').innerHTML = 
+					Math.floor(minute).toString().padStart(2, '0') + ' : ' + second.toString().padStart(2, '0');
+			}else{				
+				if(num>0){
+					document.getElementById('time').innerHTML = '인증시간 만료';
+				}
+				clearInterval(interval);	
+			}	
+		}
+		
+		function copy(event){
+  		  var temp = document.createElement("textarea");
+  		  temp.value = event.innerText;
+  		  document.body.appendChild(temp);
+  		  temp.select();
+  		  document.execCommand("copy");
+  		  document.body.removeChild(temp);
+  		  alert("복사되었습니다.");
+  		}	
+		
+	</script>
+		
     
-    </script>
+    
 	
 </body>
 <footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>

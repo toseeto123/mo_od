@@ -11,9 +11,24 @@
 a:hover{
 	cursor:pointer;
 }
+select, option{
+	height: 30px;
+	font-size: 18px;
+}
 footer{
 	margin-top: 200px;
 	width: 100%;
+}
+input[type=button]{
+	color: white;
+	background: #d2b48c;  
+	width:100px; 
+	border-radius:10px; 
+	border: none;
+	font-size: 20px;
+}
+input[type=search]{
+	font-size: 18px;
 }
 </style>
 </head>
@@ -31,7 +46,7 @@ footer{
 			</select> <input type="search" id="search">
 			
 			
-			<input type="button" style="background: transparent; width:70px;  border-radius:10px; border: 2px solid #deb887;"
+			<input type="button" 
 				id="searchBtn" value="찾기" onclick="search()">
 				</div>
 			

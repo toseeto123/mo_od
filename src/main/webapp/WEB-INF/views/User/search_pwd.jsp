@@ -29,10 +29,7 @@ span.span {
 	height:auto;
 }
 footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+
 }
 </style>
 <link rel="stylesheet"
@@ -60,8 +57,7 @@ footer {
 			</div>
 		</div>
 	</section>
-	<div class="d-flex align-items-center justify-content-center"
-		style="height: height: 500px;">
+	<div class="d-flex align-items-center justify-content-center">
 		<div class="row justify-content-center mt-5">
 			<div class="col-md-6">
 				<div class="card border-0">
@@ -78,7 +74,7 @@ footer {
 											placeholder="아이디를 입력해주세요" required autofocus>
 									</div>
 									<input type="button" class="col-3" value="아이디 확인"
-										onClick="idValidateForm(); idCheck()">
+										onClick="idValidate()">
 									<div class="col-3"></div>
 									<div class="col-7">
 										<span class="span" id="idCheck"></span>
@@ -95,7 +91,7 @@ footer {
 											name="email" placeholder="이메일을 입력해주세요" required>
 									</div>
 									<input type="button" class="col-3" value="보내기"
-										onclick="idValidateForm(); validateForm(); isCorrect();">
+										onclick="emailValidate();">
 									<div class="col-3"></div>
 									<div class="col-6">
 										<span class="span" id="emailCheck"></span>
@@ -111,7 +107,7 @@ footer {
 											placeholder="인증번호 입력">
 									</div>
 									<input type="button" class="col-3" value="확인"
-										onClick="validateForm(); idValidateForm(); numCheck(document.getElementById('number').value); validate()">
+										onClick="numValidate()">
 									<div class="col-3"></div>
 									<div class="col-7">
 										<span class="span" id="time"></span> <input type="hidden"
@@ -182,74 +178,164 @@ footer {
 		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="/resources/user/js/idPwdFind.js"></script>
-
+		
 	<script>
-	const modalButton = document.getElementById('modalButton');
-	function numCheck(number) {										
-		if (num != 0) {
-			if (num == number && time > 0) {
+		let id;
+		let num = 0;
+		let time;
+		let interval;
+		let email;
+		
+		function idValidate(){
+			if (!document.getElementById("id").checkValidity()) {
+				document.getElementById("id").reportValidity();
+    	  } else {
+				idCheck();
+    	  }
+		}
+		
+		function idCheck(){
+			var xhr = new XMLHttpRequest();
+
+			xhr.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					console.log(this.responseText)
+					if (this.responseText != 'Success') {//만약 이메일이 없다면						
+						document.getElementById('idCheck').innerHTML = '존재하지 않는 아이디입니다.'						
+						return;
+					}
+						id = document.getElementById('id').value;
+						document.getElementById('idCheck').innerHTML = '인증성공'						
+				}
+			};
+			xhr.open("get", "/searchIdCheck?id="+document.getElementById('id').value, true);
+			xhr.send();
+		}
+		
+		function emailValidate(){
+			if (!document.getElementById("id").checkValidity()) {
+				document.getElementById("id").reportValidity();
+    	  } else {
+    			if (!document.getElementById("email").checkValidity()) {
+    				document.getElementById("email").reportValidity();
+        	  } else {
+    			emailCheck();
+        	  }
+    	  }
+		}
+		
+		function emailCheck(){
+			var xhr = new XMLHttpRequest();
+
+			xhr.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					if (this.responseText != 'Success') {						
+						document.getElementById('emailCheck').innerHTML = '존재하지 않는 이메일입니다.'						
+						return;
+					}
+						email = document.getElementById('email').value;
+						sendEmail();
+						document.getElementById('emailCheck').innerHTML = '이메일이 발송되었습니다.'						
+				}
+			};
+			xhr.open("get", "/searchIdEmail?id=" + id + "&email="+document.getElementById('email').value, true);
+			xhr.send();
+		}
+		
+		function sendEmail(){
+			var xhr = new XMLHttpRequest();
+			xhr.onreadystatechange = function() {
+				if (this.readyState == 4 && this.status == 200) {
+					num = 0;
+					var data = JSON.parse(this.responseText);
+					num = data.num;
+					console.log(num)
+					if(num > 0){
+						email = document.getElementById('email').value;
+						clearInterval(interval);
+						time = 120;   	
+			    		interval = setInterval(timer, 1000);
+					}	
+				}
+			};
+			xhr.open("get", "/sendEmail?email="+email, true);
+			xhr.send();
+		}
+		
+		
+		function timer(){
+			
+			if(time > 0){				
+				time = time - 1;
+				var minute = time/60;
+				var second = time%60;
+				document.getElementById('time').innerHTML = 
+					Math.floor(minute).toString().padStart(2, '0') + ' : ' + second.toString().padStart(2, '0');
+			}else{				
+				if(num>0){
+					document.getElementById('time').innerHTML = '인증시간 만료';
+				}
+				clearInterval(interval);	
+			}	
+		}
+		
+		
+		function numValidate(){
+			if (!document.getElementById("id").checkValidity()) {
+				document.getElementById("id").reportValidity();
+    	  } else {
+    		  if (!document.getElementById("email").checkValidity()) {
+  					document.getElementById("email").reportValidity();
+      	  		} else {
+      		  		numCheck();
+      	  }
+    	  }
+		}
+		
+		
+		function numCheck(){
+			if(num > 0 && num == document.getElementById('number').value && time > 0){
 				clearInterval(interval);
-				document.getElementById('time').innerHTML = '인증완료';
+				document.getElementById('time').innerHTML = '인증성공';
 				$('#myModal').modal('show');
-			} else if (time <= 0) {
-				document.getElementById('time').innerHTML = '인증시간 만료';
+			}
+			if(num == 0){
+				alert("이메일을 인증해주세요");
+				document.getElementById('email').focus();
 			}
 		}
-
-	}
-	
-	function generatePassword(length) {
-		  var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-		  var password = "";
-		  for (var i = 0; i < length; i++) {
-		    password += chars.charAt(Math.floor(Math.random() * chars.length));
-		  }
-		  return password;
-		}
-	
-	function passwordChange(){
-		var pass = generatePassword(12);
-		const xhr = new XMLHttpRequest();
-		const url = "/passwordChange?id="+document.getElementById('storage').value+"&pwd="+pass+"&email="+document.getElementById('emailStorage').value;
-		xhr.open("GET", url);
-		xhr.onreadystatechange = function () {
-		    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
-		        const data = xhr.responseText;
-		        if(data == 'Success'){
-		        	alert("비밀번호가 발급되었습니다.")
-		        	location.href='/login.do';
-		        }else{
-		        	alert('비밀번호가 변경되지 않았습니다.')
-		        }
-		    }
-		};
-		xhr.send();
-	}
-	
-	function isCorrect(){
-		var xhr = new XMLHttpRequest();
 		
-		xhr.open('GET', '/searchIdCheck?id='+document.getElementById('storage').value+"&email="+document.getElementById('email').value);
-
-		xhr.onload = function() {
-		  if (xhr.status === 200) {
-		    if(xhr.responseText == 'True'){
-		    	emailCheck();
-		    }else{
-		    	document.getElementById('emailCheck').innerHTML = '존재하지 않는 이메일입니다.';
-		    }
-		  } else {
-		    console.log('Request failed.  Returned status of ' + xhr.status);
-		  }
-		};
-
-		xhr.send();
-	}
-
-			
+		function generatePassword(length) {
+			  var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+			  var password = "";
+			  for (var i = 0; i < length; i++) {
+			    password += chars.charAt(Math.floor(Math.random() * chars.length));
+			  }
+			  return password;
+			}
+		
+		function passwordChange(){
+			var pass = generatePassword(12);
+			const xhr = new XMLHttpRequest();
+			const url = "/passwordChange?id="+id+"&pwd="+pass+"&email="+email;
+			xhr.open("GET", url);
+			xhr.onreadystatechange = function () {
+			    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+			        const data = xhr.responseText;
+			        if(data == 'Success'){
+			        	alert("비밀번호가 발급되었습니다.")
+			        	location.href='/login.do';
+			        }else{
+			        	alert('비밀번호가 변경되지 않았습니다.')
+			        }
+			    }
+			};
+			xhr.send();
+		}
+		
+	
 	</script>
-
+		
 
 </body>
 <footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
