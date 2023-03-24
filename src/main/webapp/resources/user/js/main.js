@@ -1,5 +1,5 @@
 function JoinCheck(){
-           if (document.join.id.value == "") {
+           if (document.join.id.value == 0) {
               alert("아이디를 써주세요");
               join.id.focus();
               return false;
@@ -32,7 +32,7 @@ function JoinCheck(){
               join.age.focus();
               return false;
            }
-           if (document.join.gender.value == "") {
+           if (document.join.gender.value == 0) {
               alert("성별을 입력해주세요");
               join.gender.focus();
               return false;
