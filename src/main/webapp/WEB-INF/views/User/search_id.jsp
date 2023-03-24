@@ -26,6 +26,12 @@ span.span{
 	width:150px;
 	height:auto;
 }
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
 </style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
 </head>
