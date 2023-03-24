@@ -13,6 +13,47 @@
 	width: 600px;
 	margin : 0 auto;
 }
+.inputArea {
+margin-bottom: 20px;
+}
+	
+label {
+display: inline-block;
+width: 150px;
+font-weight: bold;
+}
+	
+input[type="text"],
+textarea {
+width: 300px;
+padding: 5px;
+border: 1px solid #ccc;
+border-radius: 5px;
+font-size: 16px;
+}
+	
+input[type="file"] {
+margin-top: 5px;
+}
+	
+span {
+font-size: 12px;
+}
+	
+button {
+padding: 10px 20px;
+background-color: #007bff;
+color: #fff;
+border: none;
+border-radius: 5px;
+font-size: 16px;
+cursor: pointer;
+}
+	
+button:hover {
+background-color: #0069d9;
+}
+	
 </style>
 
 <body>
