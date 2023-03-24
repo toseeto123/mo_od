@@ -27,10 +27,7 @@ span.span{
 	height:auto;
 }
 footer {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  right: 0;
+
 }
 </style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
@@ -58,7 +55,7 @@ footer {
 	</section>
 
 	<div class="d-flex align-items-center justify-content-center"
-		style="height: 500px;">
+		>
 		<div class="row justify-content-center mt-5">
 			<div class="col-md-6">
 				<div class="card border-0">
@@ -75,7 +72,7 @@ footer {
 
 									</div>
 									<input type="button" value="보내기" class="col-3"
-										onclick="validateForm(); emailCheck()">
+										onclick="emailValidate()">
 									<div class="col-3"></div>
 									<div class="col-6">
 										<span class="span" id="emailCheck"></span>
@@ -91,7 +88,7 @@ footer {
 											placeholder="인증번호 입력">
 									</div>
 									<input type="button" value="확인" class="col-3"
-										onclick="validateForm(); numCheck(document.getElementById('number').value); validate()">
+										onclick="numValidate()">
 									<div class="col-3"></div>
 									<div class="col-7">
 										<span class="span" id="time"></span>
@@ -132,41 +129,11 @@ footer {
 		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-	<script src="/resources/user/js/idPwdFind.js"></script>
-	<script>
-        function numCheck(number){
-        	let pluralId = [];
-        	let someId = [];
-            if(num != 0){
-                if(num == number && time > 0){
-                	
-                	for(var z=0; z<data.id.length; z++){
-                		pluralId.push(data.id[z].id);
-                	}       
-                	for(var x=0; x<pluralId.length; x++){
-                		someId.push("<span style='color: #505050; cursor: pointer;' onClick='du(this)'>"+pluralId[x]+"</span>")
-                	}
-                	const concatPluralId = someId.join("<span style='color: #505050';>, </span>");
-                    clearInterval(interval);
-                    document.getElementById('time').innerHTML = '인증완료';
-                    document.getElementById('show').innerHTML = "아이디는 " + concatPluralId + "입니다.";
-                }else if(time <= 0){
-                    document.getElementById('time').innerHTML = '인증시간 만료';
-                }
-            }
-        }
-        
-    	function du(event){
-    		  var temp = document.createElement("textarea");
-    		  temp.value = event.innerText;
-    		  document.body.appendChild(temp);
-    		  temp.select();
-    		  document.execCommand("copy");
-    		  document.body.removeChild(temp);
-    		  alert("복사되었습니다.");
-    		}	
+		
+	<script src="/resources/user/js/findId.js"></script>
+		
     
-    </script>
+    
 	
 </body>
 <footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
