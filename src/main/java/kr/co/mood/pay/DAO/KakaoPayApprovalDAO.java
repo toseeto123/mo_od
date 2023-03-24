@@ -28,4 +28,8 @@ public class KakaoPayApprovalDAO {
 	public List<KakaoPayApprovalVO>selectlist(int userno) {
 		return sql.selectList("KakaoPayApprovalDAO.selectlist", userno);
 	}
+
+	public void paycancelDelete(int orderId) {
+		sql.delete("KakaoPayApprovalDAO.cancelDelete" , orderId);
+	}
 }
