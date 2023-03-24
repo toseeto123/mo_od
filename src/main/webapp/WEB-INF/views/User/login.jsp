@@ -60,7 +60,7 @@
 
 </head>
 
-<body>
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 <div class="login">
 	<div class="form-login">
 	
@@ -153,6 +153,12 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+window.history.forward(); 
+function noBack(){
+	window.history.forward();
+} 
+</script>
 <jsp:include page="/WEB-INF/common/footer.jsp" />
 </body>
 </html>

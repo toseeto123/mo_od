@@ -241,7 +241,7 @@ body {
                   </c:forEach>
                </div>
 
-               <hr class="mb-4">
+               <hr class="mb-4" style="margin-bottom:2rem !important;">
 
                <h4 class="mb-4">결제 상품정보</h4>
                <c:forEach var="list" items="${list}">
@@ -252,8 +252,7 @@ body {
                      <div class="col-md-6 mb-3">
                         <label for="cc-name"></label> <img alt=""
                            src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}"
-                           style="width: 100px; height: 100px; margin-bottom: 10px;">
-
+                           style="width: 100px; height: 100px; margin-bottom: 70px;">
                         <div style="display: inline-block;">
                            <small class="text-muted"><a href="/product/${list.pro_number }" style="color:#c8936ed4;">상품명 : ${list.pro_name}</a><c:if test="${!empty list.pro_option}"><br>옵 션 : ${list.pro_option}</c:if><br>설 명 : ${list.pro_maindesctitle}
                            </small>
