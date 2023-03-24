@@ -248,18 +248,10 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
-	public String deletemember(UserVO vo, HttpSession session, RedirectAttributes rttr, @RequestParam("pwd") String pwd)
-			throws Exception {
-		System.out.println("탈퇴시작");
+	public String deletemember(HttpSession session) throws Exception {
 		UserVO ssvo = (UserVO) session.getAttribute("login_info");
-		String sspwd = ssvo.getPwd();
-		System.out.println("sspwd : " + sspwd);
-		System.out.println("pwd : " + pwd);
-		if (!(sspwd.equals(pwd)) || pwd == null) {
-			rttr.addFlashAttribute("msg", false);
-			return null;
-		}
-		userservice.delete(vo);
+		String ssid = ssvo.getId();
+		userservice.delete(ssid);
 		session.invalidate();
 		return "redirect:index.jsp";
 	}

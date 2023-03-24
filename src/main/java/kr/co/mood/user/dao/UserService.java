@@ -20,7 +20,7 @@ public interface UserService {
 		
 		public void updatePwd(UserVO vo);
 		
-		public void delete(UserVO vo) throws Exception;
+		public void delete(String id) throws Exception;
 
 
 		public UserVO selectId(UserVO vo);

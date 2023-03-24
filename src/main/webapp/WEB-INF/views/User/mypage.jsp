@@ -11,10 +11,9 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="/resources/user/js/main.js"></script>
+
 <style>
-* {
-	font-size :15px;
-}
+
 section {
 	width: 1000px;
 	margin: 0 auto;
@@ -26,10 +25,19 @@ input {
 
  body tr td:first-child {
 	font-weight:bold;
+	font-size :20px;
 }
  body table {
  	margin : 0 auto;
  }
+ body {
+ @font-face {
+    font-family: 'GangwonEdu_OTFBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEdu_OTFBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+}
 </style>
 </head>
 <body>
@@ -71,7 +79,7 @@ input {
 			<td style="padding-left: 80px;"><label for="pwd">비밀번호 확인</label></td>
 
 			<td style="padding-left: 150px;"><input type="password" id="pwd2" name="pwd2" required onkeyup="passConfirm()"><br><span id="confirmMsg"></span></td>
-
+			
 			
 		</tr>
 		<tr style="border-top:20px solid white;">
@@ -106,7 +114,7 @@ input {
 			
 		</tr>
 		<tr style="border-top:20px solid white;">
-			<td></td>
+			<td><input type="hidden"id="sspwd" name="sspwd" value="${login_info.pwd}"/> </td>
 			<td colspan="2" style="padding-left: 150px;"><input type="text" size="50" class="address_input_3" name="adr3" id="adr3" placeholder="상세주소" value="${myinfo_adr3}" required></td>
 		</tr>
 		<tr style="border-top:20px solid white;">
@@ -149,8 +157,8 @@ input {
       	탈퇴하시겠습니까?<br>
       </div>
       <div class="modal-footer">
-        <button type="submit" class="btn btn-primary" onclick="location.href = '/delete.do'">탈퇴하기</button>
-        <button type="button" class="btn btn-secondary" onclick="$('#exampleModal').modal('hide')">닫기</button>
+        <button type="button" class="btn btn-primary"id="modal_delbtn"  style="background:#c8936ed4;border:#c8936ed4;color:white;" onclick="location.href = '/delete.do'">탈퇴하기</button>
+        <button type="button" class="btn btn-secondary" style="background:#c8936ed4;border:#c8936ed4;color:white;" onclick="$('#exampleModal').modal('hide')">닫기</button>
       </div>
     </div>
   	</div>
@@ -170,6 +178,8 @@ input {
 
 
 	<jsp:include page="/WEB-INF/common/footer.jsp" />
+	
+	
 </body>
 
 </html>
