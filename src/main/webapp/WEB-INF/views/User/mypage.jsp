@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -10,11 +11,24 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="/resources/user/js/main.js"></script>
 <style>
+* {
+	font-size :15px;
+}
 section {
 	width: 1000px;
 	margin: 0 auto;
 }
 
+input {
+	padding:10px;
+}
+
+ body tr td:first-child {
+	font-weight:bold;
+}
+ body table {
+ 	margin : 0 auto;
+ }
 </style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
 </head>
@@ -46,7 +60,7 @@ section {
 		<table>
 		<tr style="border-top:20px solid white;">
 			<td style="padding-left: 80px;"><label for="id">아이디</label></td>
-			<td style="padding-left: 150px;">${login_info.id}<br></td>
+			<td style="padding-left: 150px;" id="login_id">${login_info.id}<br></td>
 		</tr>
 		<tr style="border-top:20px solid white;">
 			<td style="padding-left: 80px;"><label for="pwd">비밀번호</label></td>
@@ -86,7 +100,7 @@ section {
 		
 			<td><label for="adr"></label></td>
 			<td style="width:310px;padding-left: 150px;"><input type="text" class="address_input_1" name=adr id="adr" placeholder="우편번호" value="${myinfo_adr1}" ><br></td>	
-			<td style="padding-left: 150px;"><input type="button" class="adrchk" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br></td>
+			<td style="padding-left: 110px;"><input type="button" class="adrchk" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br></td>
 		</tr>
 		<tr style="border-top:20px solid white;">
 			<td style="padding-left: 80px;">주소</td>
@@ -108,8 +122,8 @@ section {
   					
 				</div>
 				<div class="col-md-4">
-				<button type="button" class="btn btn-primary" data-toggle="modal" style="background:#c8936ed4;border:#c8936ed4;color:white;" data-target="#exampleModal" >
-					탈퇴하기
+				<button type="button" id="deleteBtn" class="btn btn-primary" style="background:#c8936ed4;border:#c8936ed4;color:white;" onclick="if (DeleteCheck()) $('#exampleModal').modal('show')">
+  					탈퇴하기
 				</button>
 				</div>
 				<div class="col-md-4">
@@ -138,7 +152,7 @@ section {
       </div>
       <div class="modal-footer">
         <button type="submit" class="btn btn-primary" onclick="location.href = '/delete.do'">탈퇴하기</button>
-        <button type="reset" class="btn btn-secondary" data-dismiss="modal">닫기</button>
+        <button type="button" class="btn btn-secondary" onclick="$('#exampleModal').modal('hide')">닫기</button>
       </div>
     </div>
   	</div>
