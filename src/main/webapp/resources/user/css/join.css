@@ -51,6 +51,7 @@ h3 {
 }
 
 
+
 .box {
     display: block;
     width: 100%;
@@ -96,6 +97,7 @@ input {
    border:none;
    border-radius: 5px;
    background-color: #c8936ed4;
+   color: white;
 
 }
 
@@ -139,11 +141,12 @@ select {
     padding: 21px 0 17px;
     border: 0;
     cursor: pointer;
-    color: black;
+    color: white;
     background-color: #c8936ed4;
     font-size: 20px;
     font-weight: 400;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
+    border-radius: 5px;
 }
 
 #btnReset{
@@ -151,11 +154,12 @@ select {
     padding: 21px 0 17px;
     border: 0;
     cursor: pointer;
-    color: black;
+    color: white;
     background-color: #c8936ed4;
     font-size: 20px;
     font-weight: 400;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
+    border-radius: 5px;
 }
 
 #btnBack{
@@ -163,11 +167,12 @@ select {
     padding: 21px 0 17px;
     border: 0;
     cursor: pointer;
-    color: black;
+    color: white;
     background-color: #c8936ed4;
     font-size: 20px;
     font-weight: 400;
     font-family: Dotum,'돋움',Helvetica,sans-serif;
+    border-radius: 5px;
 }
 
 /*이메일*/
@@ -180,6 +185,7 @@ select {
     background: #fff;
     font-size: 15px;
     height: 51px;
+    border: solid 1px #dadada;
    
 }
 
@@ -201,6 +207,7 @@ select {
 	 background-color: #c8936ed4;
 	 border:none;
 	 border-radius: 5px;
+	 color: white;
 }
 .mail_check_input{
    display: block;
@@ -223,26 +230,28 @@ select {
 	display:inline-block;
 	width: 330px;
 	height: 50px;
-	
+	border: solid 1px #dadada;
 }
 .address_input_2{
 	width: 452px;
 	height: 44px;
 	margin: 10px 0 10px 0;
+	border: solid 1px #dadada;
 }
 .address_input_3{
 	width: 452px;
 	height: 44px;
+	border: solid 1px #dadada;
 }
 .adrchk{
 	 display: inline-block;
 	 width:115px;
-   height: 50px;
+    height: 50px;
     background-color:  #c8936ed4;
     border-radius: 5px;
     border:none;
     color: white;
-    font-weight: bold;
+    
     
 }
 

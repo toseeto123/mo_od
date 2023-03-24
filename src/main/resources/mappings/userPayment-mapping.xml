@@ -5,8 +5,8 @@
 <mapper namespace="userPaymentDAO">
 	
 	<insert id="insert" parameterType="map" useGeneratedKeys="true" keyProperty="orderId" keyColumn="orderId">
-    INSERT INTO moodorder (userNo, address, price, status)
-    VALUES (#{userNo}, #{address}, #{price}, #{status})
+    INSERT INTO moodorder (userNo, address, price)
+    VALUES (#{userNo}, #{address}, #{price})
 	</insert>
 	
 

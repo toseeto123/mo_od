@@ -3,7 +3,12 @@ function JoinCheck(){
               alert("아이디를 써주세요");
               join.id.focus();
               return false;
-           }   
+           }
+           if (document.join.id.value.length < 6) {
+            alert("아이디는 최소 6글자 이상이어야 합니다.");
+             join.id.focus();
+             return false;
+            }   
            if($("#idChk").val() == "N"){
                join.id.focus();
                alert("아이디 중복 확인이 필요합니다");
@@ -20,8 +25,12 @@ function JoinCheck(){
               join.pwd2.value="";
               join.pwd.focus();
               return false;
-             
            }
+           if (!document.join.pwd.value.match(/^[A-Za-z0-9]{10,20}$/)) {
+            alert("암호는 영문 대소문자와 숫자의 조합으로 10~20자리 이내로 입력해주세요.");
+            join.pwd.focus();
+            return false;
+          }
            if (document.join.name.value == "") {
               alert("이름을 써주세요");
               join.name.focus();
@@ -32,7 +41,7 @@ function JoinCheck(){
               join.age.focus();
               return false;
            }
-           if (document.join.gender.value == "") {
+           if (document.join.gender.value == 0) {
               alert("성별을 입력해주세요");
               join.gender.focus();
               return false;
@@ -50,33 +59,44 @@ function JoinCheck(){
               alert("인증번호를 다시 확인해주세요.");
                $(".mail_check_input").focus();
                return false;
-    }
+            }
            if (document.join.phone.value == "") {
               alert("전화번호를 입력해주세요");
               join.phone.focus();
               return false;
            } 
+           var patt = new RegExp("[0-9]{2,3}[0-9]{3,4}[0-9]{3,4}");
+           var res = patt.test( $("#phone").val());
+
+          if(!patt.test( $("#phone").val()) ){
+            alert("전화번호를 정확히 입력하여 주십시오.");
+             return false;
+            }
            return true;   
         }
 
 
 
 function fn_idChk(){
-         $.ajax({
-            url : "/idChk",
-            type : "post",
-            dataType : "json",
-            data : {"id" : $("#id").val()},
-            success : function(data){
-               if(data == 1){
-                  alert("중복된 아이디입니다.");
-               }else if(data == 0){
-                  $("#idChk").attr("value", "Y");
-                  alert("사용가능한 아이디입니다.");
-               }
+    if($("#id").val().length < 6) {
+        alert("아이디는 최소 6글자 이상이어야 합니다.");
+        return false;
+    }
+    $.ajax({
+        url : "/idChk",
+        type : "post",
+        dataType : "json",
+        data : {"id" : $("#id").val()},
+        success : function(data){
+            if(data == 1){
+                alert("중복된 아이디입니다.");
+            } else if(data == 0){
+                $("#idChk").attr("value", "Y");
+                alert("사용가능한 아이디입니다.");
             }
-         })
-      }
+        }
+    });
+}
           
       
       function UpdateCheck(){
@@ -106,8 +126,38 @@ function fn_idChk(){
            return true;   
         }
 
-      
-      
+      function DeleteCheck() {
+  var sspwd = $('input#sspwd').val();
+  
+  if (sspwd != document.mypage.pwd.value) {
+    alert("저장된 암호와 입력한 암호가 일치하지 않습니다.");
+    mypage.pwd.value = "";
+    mypage.pwd2.value = "";
+    mypage.pwd.focus();
+    return false;
+  }
+  
+  if (document.mypage.pwd.value == "") {
+    alert("암호를 반드시 입력해주세요.");
+    mypage.pwd.focus();
+    return false;
+  }
+  
+  if (document.mypage.pwd.value != document.mypage.pwd2.value) {
+    alert("암호가 일치하지 않습니다.");
+    mypage.pwd.value = "";
+    mypage.pwd2.value = "";
+    mypage.pwd.focus();
+    return false;
+  }
+  
+  $(document.mypage).ready(function() {
+    $('#exampleModal').modal('show');
+  });
+  
+  return true;
+}
+    
       
    function passConfirm() {
    /* 비밀번호, 비밀번호 확인 입력창에 입력된 값을 비교해서 같다면 비밀번호 일치, 그렇지 않으면 불일치 라는 텍스트 출력.*/
@@ -213,19 +263,6 @@ function fn_idChk(){
         }
         
         
- $(".submit_button").click(function(){
-
-    	   // 이메일 인증 버튼을 누르지 않았을 경우
-    	   if (!mailnumCheck) {
-    	      alert("이메일 인증을 먼저 완료해주세요.");
-    	      return false;
-    	   }
-
-    	   // 가입 처리
-    	   // ...
-
-    	});        
-
 
 
 

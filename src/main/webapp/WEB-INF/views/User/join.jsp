@@ -62,7 +62,7 @@
                     </h3>
 
                     <div class="box string_id">
-                        <input type="text" id="id" name="id" class="string" maxlength="20" autofocus>
+                        <input type="text" id="id" name="id" class="string" minlength="6"  autofocus>
                     </div>
                     <button class="idChk" type="button" name="idChk" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
                 </div>
@@ -71,7 +71,7 @@
                 <div>
                     <h3 class="join_title"><label for="pwd">비밀번호</label></h3>
                     <span class="box int_pass">
-                        <input type="password" id="pwd" name="pwd" class="string" maxlength="20">
+                        <input type="password" id="pwd" name="pwd" class="string" pattern="^[A-Za-z0-9]{10,20}$" maxlength="20">
                     </span>
                 </div>
 
@@ -79,10 +79,9 @@
                 <div>
                     <h3 class="join_title"><label for="pwd2">비밀번호 재확인</label></h3>
                     <span class="box int_string_check" >
-                        <input type="password" id="pwd2" name="pwd2" class="string" maxlength="20" onkeyup="passConfirm()">
-                        <span id="confirmMsg"></span>
+                        <input type="password" id="pwd2" name="pwd2" class="string" maxlength="20" pattern="^[A-Za-z0-9]{10,20}$" onkeyup="passConfirm()">
                     </span>
-                    
+                    <span id="confirmMsg"></span>
                 </div>
 
                 
@@ -99,7 +98,7 @@
                     <h3 class="join_title">나이</h3>
                     <div id="bir_wrap">
                         <div>
-                               <input type="radio" value="10-19" class="age" name="age" id="age" /><label for="age">10대</label> &nbsp; &nbsp; &nbsp;
+                               <input type="radio" value="10-19" class="age" name="age" id="age" checked/><label for="age">10대</label> &nbsp; &nbsp; &nbsp;
 	                           <input type="radio" value="20-29" class="age" name="age" id="age1" /><label for="age1">20대</label> &nbsp; &nbsp; &nbsp;
 	                           <input type="radio" value="30-39" class="age" name="age" id="age2" /><label for="age2">30대</label> &nbsp; &nbsp; &nbsp;
 	                           <input type="radio" value="40-49" class="age" name="age" id="age3" /><label for="age3">40대</label> &nbsp; &nbsp;
@@ -113,7 +112,6 @@
                     <h3 class="join_title"><label for="gender">성별</label></h3>
                     <span class="box gender_code">
                         <select id="gender" name="gender" class="sel" aria-label="성별">
-                            <option>성별</option>
                             <option value="M">남자</option>
                             <option value="F">여자</option>
                         </select>                            
@@ -124,7 +122,7 @@
                 
                 <div>
                     <h3 class="join_title"><label for="email">본인확인 이메일</label></h3>
-                    <div >
+                    <div>
                         <input type="text" id="email" name="email" class="email box string_email" maxlength="100" placeholder="선택입력">
                     </div>
                      <span class="final_mail_ck">이메일을 입력해주세요.</span>
@@ -144,7 +142,7 @@
                 <div>
                     <h3 class="join_title"><label for="phone">휴대전화</label></h3>
                     <div class="box string_mobile">
-                        <input type="tel" id="phone" name="phone" class="string" maxlength="16" placeholder="전화번호 입력">
+                        <input type="tel" id="phone" name="phone" class="string" pattern="[0-9]{2,3}[0-9]{3,4}[0-9]{3,4}" maxlength="13" placeholder="- 를 빼고 전화번호를 입력하세요" >
                     </div>
                    
                         
@@ -230,6 +228,7 @@
           checkResult.attr("class", "incorrect");
           mailnumCheck = false;
        }   
+       
        
     });
     

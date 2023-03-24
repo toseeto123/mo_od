@@ -4,8 +4,9 @@
 	let data;
 	let emailFlag;
 	let idFlag;
+	let isEmailCorrect = false;
 	function emailCheck(){		
-		
+		console.log('샤랄라');
 		if(document.getElementById('status').value =='id'){
 			document.getElementById('show').innerHTML = '';
 		}
@@ -17,8 +18,10 @@
 		xhr.onreadystatechange = function() {
 			
 		  if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+		  	console.log("수루루")
 		  		clearInterval(interval);
 			  data = JSON.parse(xhr.responseText);
+			  console.log(data);
 		    if( data.num == 'none'){
 		    	if(emailFlag){
 		    		document.getElementById('emailCheck').innerHTML = ''
@@ -28,7 +31,13 @@
 				return;
 		    }else{
 		    	if(document.getElementById('status').value == 'pwd'){//비밀번호 찾기 일때
-		    		if(document.getElementById('storage').value != data.id){//아이디가 일치하지 않을 때
+		    		for(var x=0; x<data.id.length; x++){
+		    			if(document.getElementById('storage').value == data.id[x].id){
+		    				isEmailCorrect = true;
+		    			}
+		    		}
+		    		
+		    		if(!isEmailCorrect){//아이디가 일치하지 않을 때
 		    			if(emailFlag){
 		    				document.getElementById('emailCheck').innerHTML = ''
 		    				return;
@@ -36,7 +45,11 @@
 		    			document.getElementById('emailCheck').innerHTML = '존재하지 않는 이메일입니다.'
 		    			return;
 		    		}
+		    		document.getElementById('emailStorage').value = document.getElementById('email').value;
+		    		console.log('두둥');
+		    		
 		    	}	
+		    	
 		    		document.getElementById('emailCheck').innerHTML = '이메일이 인증되었습니다.'
 		    		console.log(data.num);		    		
 		    		num = data.num; 
@@ -46,6 +59,7 @@
 		  }
 		  
 		};
+
 
 		xhr.send();
 	}

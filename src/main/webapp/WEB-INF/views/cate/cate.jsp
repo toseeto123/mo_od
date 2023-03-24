@@ -81,7 +81,7 @@ dl, ul, ol, li {
 	padding: 20px 40px 25px 40px;
 	border: 2px solid #c8936ed4;
 	border-radius: 5px;
-	height: 300px;
+	height: 250px;
 }
 
 .price_sum_cont {
@@ -186,6 +186,12 @@ li .btnspan_on {
 	box-shadow: 1px 1px 1px 1px lightgray;
 	color:white;
 }
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+} 
 </style>
 <script type="text/javascript">
 
@@ -506,7 +512,7 @@ function deletecate(element) {
 
 							<input type="hidden" value="${map.user_no}" name="user_no"> <input
 								type="hidden" value="${map.pro_number}" name="pro_number">
-						<h2 style="margin-left: 100px;">${map.pro_name}</h2>
+						<a href="/product/${map.pro_number }"><h2 style="margin-left: 100px;">${map.pro_name}</h2></a>
 						<p style="margin-left: 100px;">${map.pro_maindesctitle }</p>
 						<span style="margin-left: 100px;">수 량 : </span>
 						<div class="amount" style="display: inline;">${map.amount}</div>

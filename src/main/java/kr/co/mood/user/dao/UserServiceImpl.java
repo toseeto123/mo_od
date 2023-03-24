@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService{
 		return userdao.selectMemberNo(no);
 	}
 	
-	public UserVO findEmail(String email) {
+	public List<UserVO> findEmail(String email) {
 		return userdao.findEmail(email);
 	}
 	
@@ -52,8 +52,8 @@ public class UserServiceImpl implements UserService{
 	
 
 	@Override
-	public void delete(UserVO vo) throws Exception {
-		userdao.delete(vo);
+	public void delete(String id) throws Exception {
+		userdao.delete(id);
 	}
 
 	@Override

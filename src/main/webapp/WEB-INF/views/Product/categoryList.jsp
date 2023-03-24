@@ -64,10 +64,10 @@
 
 <!-- ======= Breadcrumbs ======= -->
 <c:forEach var="list" items="${list}" begin="0" end="0">
-      <section id="breadcrumbs" class="breadcrumbs">
+      <section id="breadcrumbs" class="breadcrumbs" style="height: 70px; padding-bottom: 80px; font-size: 22px;">
          <div class="container">
 
-            <div class="d-flex align-items-center">
+            <div class="d-flex align-items-center" >
                
                <ol>
                   <c:if test="${list.pro_categoryserial  eq 'A%' }">
@@ -129,7 +129,7 @@
                   <c:if test="${list.pro_categoryserial  eq 'C1' }">
                   <b style="font-size: 30px; color: #c8936ed4;">서 랍</b>
                   </c:if>
-            <div class="member" style="background-color: white; cursor: pointer;" onclick="location.href='/product/category/${list.pro_categoryserial}'">  
+            <div class="member" style="background-color: white; cursor: pointer;" onclick="location.href='/products/category/${list.pro_categoryserial}'">  
             	<c:if test="${list.pro_categoryserial  eq 'A0' }">
                   <img src="${pageContext.request.contextPath}/resources/assets/img/category/mattress.png" alt="" class="img-fluid" style="width: 295px; height: 400px; border-radius: 7px;  box-shadow: 1px 2px 1px 1px gray;">
                   </c:if>

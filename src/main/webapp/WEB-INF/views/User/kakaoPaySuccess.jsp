@@ -11,6 +11,7 @@
    content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.101.0">
 <title>결제완료</title>
+<jsp:include page="../../common/header.jsp" />
 <style>
 
 .bd-placeholder-img {
@@ -153,9 +154,6 @@ background-color: #c8936ed4;
 body {
 	height:100%;
 }
-a {
- font-size: 20px;
-}
 .returnbtn {
    background-color: #c8936ed4;
    width: 416px;
@@ -166,8 +164,9 @@ a {
 }
 
 </style>
+
 </head>
-<jsp:include page="/WEB-INF/common/header.jsp" />
+
 <body>
 
    <section id="hero" style="height: 400px;">

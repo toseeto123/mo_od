@@ -78,7 +78,7 @@ function mainPagingEngine(url){
 			console.log(month);
 			var date = fullDate.getFullYear() + '-' + month + '-' + fullDate.getDate();
 				text = text +
-				"<table id='table' class='table' style='color:white; margin-top:5%; margin-left:15%; width:70%;'>"
+				"<table id='table' class='table' style='margin-top:5%; margin-left:15%; width:70%;'>"
                 +"<thead id='thead'>"
                 +"<tr>"
                 	+"<th id='orderNo' style='width:20%;'>주문번호 : " + tableData.list[i].orderNo + "</th>"

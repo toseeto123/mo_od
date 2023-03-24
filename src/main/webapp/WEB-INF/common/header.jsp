@@ -47,8 +47,8 @@ font-size: 18px;
 li {
    display: flex;
    align-items: center;
-   margin: 10px;
-   margin-bottom: 0;
+   margin: 20px;
+   margin-bottom: 20px;
 }
 </style>
 </head>
@@ -90,15 +90,6 @@ li {
                   <li><a href="/C1categoryList"><b>서 랍</b></a></li>
                 </ul>
           </li>
-          <li class="dropdown"><a href="#"><b>인테리어 시공</b> <i class="bi bi-chevron-down"></i></a>
-                <ul>
-                 <li><a href="/D0categoryList"><b>침 실</b></a></li>
-                  <li><a href="/D1categoryList"><b>거 실</b></a></li>
-                  <li><a href="/D2categoryList"><b>주 방</b></a></li>
-                  <li><a href="/D3categoryList"><b>욕 실</b></a></li>
-                </ul>
-          </li>
-
 			<c:if test="${!empty login_info.id}">
 
                

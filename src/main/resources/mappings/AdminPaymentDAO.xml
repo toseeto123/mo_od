@@ -27,66 +27,60 @@
     
     <select id="getCategoryChart3" resultType="kr.co.mood.Payment.VO.AdminChartVO">
          <![CDATA[
-         SELECT CASE DAYOFWEEK(approved_at) 
-         		WHEN 1 THEN '월요일' 
-         		WHEN 2 THEN '화요일' 
-         		WHEN 3 THEN '수요일' 
-         		WHEN 4 THEN '목요일' 
-         		WHEN 5 THEN '금요일' 
-         		WHEN 6 THEN '토요일' 
-         		WHEN 7 THEN '일요일' 
+          SELECT CASE DAYOFWEEK(SuccessTime) 
+         		WHEN 2 THEN '월요일' 
+         		WHEN 3 THEN '화요일' 
+         		WHEN 4 THEN '수요일' 
+         		WHEN 5 THEN '목요일' 
+         		WHEN 6 THEN '금요일' 
+         		WHEN 7 THEN '토요일' 
+         		WHEN 1 THEN '일요일' 
          		ELSE '유효한 날짜가 아닙니다.' END as week, 
          	sum(amount) as sales 
          	from payment 
          	where Success = 'A'
-					and approved_at like concat(#{year}, '%')
-         	group by DAYOFWEEK(approved_at)
-         	order by DAYOFWEEK(approved_at)
+					and SuccessTime like concat(#{year}, '%')
+         	group by DAYOFWEEK(SuccessTime)
+         	order by DAYOFWEEK(SuccessTime)
          	]]>
     </select>
     
     <select id="getCategoryChart4" resultType="kr.co.mood.Payment.VO.AdminChartVO">
 		<![CDATA[
 		select member.gender as gender,
-		sum(orderProduct.count) as 'productCount',
-		product.pro_categoryserial  as 'categorySerial',
-		CASE DAYOFWEEK(payment.approved_at) 
-         		WHEN 1 THEN '월요일' 
-         		WHEN 2 THEN '화요일' 
-         		WHEN 3 THEN '수요일' 
-         		WHEN 4 THEN '목요일' 
-         		WHEN 5 THEN '금요일' 
-         		WHEN 6 THEN '토요일' 
-         		WHEN 7 THEN '일요일' 
-         		ELSE '유효한 날짜가 아닙니다.' END as week
+			orderproduct.count as 'productCount',
+			product.pro_categoryserial as 'categorySerial',
+			member.age as 'age'
 		from orderproduct
-			inner join payment
-				on payment.orderid = orderproduct.orderId
-			inner join moodjoin as member
-				on member.no = payment.userId 
-			inner join product 
-				on product.pro_number = orderproduct.pro_number 
+		inner join moodorder
+			on moodorder.orderid = orderproduct.orderid
+		inner join moodjoin as member
+			on moodorder.userno = member.no
+		inner join product
+			on product.pro_number = orderproduct.pro_number
+		inner join payment
+			on payment.orderid = orderproduct.orderid
 		where payment.Success = 'A'
-			and payment.approved_at like concat(#{year}, '%')
-		group by orderproduct.pro_number
-		order by dayofweek(payment.approved_at) desc 
+			and payment.SuccessTime like concat(#{year}, '%')
+		order by member.age desc 
 		limit 0, 5
 			]]>
     </select>
     
     <select id="adminPaymentMemberList" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
-    	select payment.payment_id as 'orderNo',
-			member.name as 'name',
-			moodorder.address as 'address',
-			member.phone as 'phone',
-			payment.amount as 'amount',
-			payment.approved_at 'payDate'
+    	select moodorder.orderid as 'orderNo', 
+			moodorder.address as 'address', 
+			member.name as 'name', 
+			member.phone as 'phone', 
+			moodorder.price as 'amount',
+			payment.SuccessTime as 'payDate'
 		from moodorder
-		inner join payment
-			on moodorder.orderId = payment.orderid
 		inner join moodjoin as member
-			on moodorder.userNo = member.no
-		where payment.Success = 'A'
+			on member.no = moodorder.userNo
+		inner join payment
+			on payment.orderid = moodorder.orderid
+		where payment.Success = '결제 완료'
+		group by orderNo
 		order by orderNo desc
 		<if test="endNo != 0">
 		limit #{startNo}, #{endNo}
@@ -98,49 +92,46 @@
     <select id="adminPaymentSearchingList"
     	parameterType="kr.co.mood.module.ModuleVO"
      resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
-    	select payment.payment_id as 'orderNo',
-			member.name as 'name',
-			moodorder.address as 'address',
-			member.phone as 'phone',
-			payment.amount as 'amount',
-			payment.approved_at 'payDate'
+    	select moodorder.orderid as 'orderNo', 
+			moodorder.address as 'address', 
+			member.name as 'name', 
+			member.phone as 'phone', 
+			moodorder.price as 'amount',
+			payment.SuccessTime as 'payDate'
 		from moodorder
-		inner join payment
-			on moodorder.orderId = payment.orderid
 		inner join moodjoin as member
-			on moodorder.userNo = member.no
-		where payment.Success = 'A'		
+			on member.no = moodorder.userNo
+		inner join payment
+			on payment.orderid = moodorder.orderid
+		where payment.Success = 'A'
 		<if test="searchName != null">
 		and member.name like concat('%', #{searchName}, '%')
 		</if>
 		<if test="orderNo > 0">
-		and payment.payment_id = #{orderNo}
+		and moodorder.orderid = #{orderNo}
 		</if>
 		<if test="phone != null">
 		and member.phone like concat('%', #{phone}, '%')
 		</if>
 		<if test="date != null">
-		and payment.approved_at like concat('%', #{date}, '%')
+		and payment.SuccessTime like concat('%', #{date}, '%')
 		</if>
+		group by orderNo
 		order by orderNo desc
 		<if test="endNo > 0">
 		limit #{startNo}, #{endNo}
     	</if>    	
     </select>
-
     
     <select id="adminPaymentList" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
-    	select payment.payment_id as 'orderNo', 
+    	select orderproduct.orderid as'orderNo',
+			(orderproduct.price/orderproduct.count) as 'price',
+			orderproduct.count as 'productCount',
 			product.pro_serialnumber as 'productNo',
-			product.pro_name as 'productName',
-			orderProduct.price as 'price',
-			orderProduct.count as 'productCount'
-		from payment
-		inner join orderProduct
-			on payment.orderId = orderProduct.orderId
+			product.pro_name as 'productName'
+		from orderproduct
 		inner join product
-			on orderProduct.pro_number = product.pro_number
-		where payment.Success = 'A'
+			on product.pro_number = orderproduct.pro_number
 		order by orderNo desc
     </select>
     

@@ -60,7 +60,7 @@
 
 </head>
 
-<body>
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();" onunload="">
 <div class="login">
 	<div class="form-login">
 	
@@ -112,9 +112,9 @@
 
 
 			<div class="social_login">
-				<p class="snsname" style="margin-bottom: 10px; margin-top: 38px;">SNS계정으로
-					간편 로그인/회원가입</p>
-			<ul class="social_logo">
+				<p class="snsname" style="margin-bottom: 10px; margin-top: 38px;">간편로그인</p>
+				<br>
+			<ul class="social_logo" style="height: 150px; margin-left: -20px;">
 				<li class="box_list">
 				
 				<a id="custom-login-btn" href="javascript:void(0);"
@@ -126,24 +126,26 @@
 				
 				</li>
 				
-				<li class="box_list">
-				<button
-					style="background: transparent; border-color: transparent;"
-					onclick="googleHandleAuthClick()">
-					<img style="width: 50px;" src="/resources/user/img/google.png"
-						alt="google">
-						<span class="box_list_txt">구글</span>
-				</button>
-				</li>
-				
-				<li class="box_list">
-				<a class="p-2"
+				<li class="box_list" >
+				<a 
 					href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/member/kakaoLogin&response_type=code">
 					<img style="width: 50px;" src="/resources/user/img/kakao.png"
 					alt="kakao">
 					<span class="box_list_txt" >카카오</span>
 				</a>
 				</li>
+				
+				<li class="box_list">
+				<button
+					style="background: transparent; border-color: transparent;"
+					onclick="googleHandleAuthClick()">
+					<img style="width: 50px;" src="/resources/user/img/google.png"
+						alt="google">
+						<span class="box_list_txt" style="color:  #c8936ed4;">구글</span>
+				</button>
+				</li>
+				
+				
 			</ul>
 				
 
@@ -151,6 +153,12 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+window.history.forward(); 
+function noBack(){
+	window.history.forward();
+} 
+</script>
 <jsp:include page="/WEB-INF/common/footer.jsp" />
 </body>
 </html>

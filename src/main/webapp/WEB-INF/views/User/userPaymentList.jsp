@@ -6,6 +6,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+<jsp:include page="/WEB-INF/common/header.jsp" />
 <script src="https://unpkg.com/phosphor-icons"></script>
 <script
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -13,7 +14,7 @@
 <script
    src="https://cdnjs.cloudflare.com/ajax/libs/spring-webmvc/5.3.8/spring-webmvc.min.js"></script>
 <meta charset="UTF-8">
-<jsp:include page="/WEB-INF/common/header.jsp" />
+
 <title>결제상세</title>
 <style>
 section {
@@ -167,6 +168,7 @@ li .btnspan_on {
 .btn-primary {
 	background-color:#c8936ed4;
 }
+
 
     .dropdown-toggle {
     width: 1180px;

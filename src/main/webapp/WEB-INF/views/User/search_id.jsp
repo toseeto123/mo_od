@@ -10,6 +10,7 @@
 <title>아이디 찾기</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
 <style type="text/css">
 input[type=button] {
 	background: #c8936ed4;
@@ -20,9 +21,16 @@ input[type=button] {
 span.span{
 	color: #c8936ed4;
 }
-a{
+.link {
 	font-size: 20px;
-	font-weight: bold;
+	width:150px;
+	height:auto;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 </style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
@@ -50,7 +58,7 @@ a{
 	</section>
 
 	<div class="d-flex align-items-center justify-content-center"
-		style="height: 70vh;">
+		style="height: 500px;">
 		<div class="row justify-content-center mt-5">
 			<div class="col-md-6">
 				<div class="card border-0">
@@ -98,12 +106,12 @@ a{
 								</div>
 								</div>
 								<div class="card-body">
-								<div class="form-group row">
-								<div class="col-6">
-									<a href="/searchPwd">비밀번호 찾기</a>
+								<div class="form-group row" >
+								<div class="col-6" style="padding-left:70px">
+								<input type="button" class="link" value="비밀번호 찾기" onclick="location.href='/searchPwd'">
 								</div>
-								<div class="col-6 text-right">
-									<a href="/login.do">돌아가기</a>
+								<div class="col-6 text-right" style="padding-right:70px">
+								<input type="button" class="link" value="돌아가기" onclick="location.href='/login.do'">
 								</div>
 								</div>
 							</div>
@@ -127,21 +135,30 @@ a{
 	<script src="/resources/user/js/idPwdFind.js"></script>
 	<script>
         function numCheck(number){
+        	let pluralId = [];
+        	let someId = [];
             if(num != 0){
                 if(num == number && time > 0){
+                	
+                	for(var z=0; z<data.id.length; z++){
+                		pluralId.push(data.id[z].id);
+                	}       
+                	for(var x=0; x<pluralId.length; x++){
+                		someId.push("<span style='color: #505050; cursor: pointer;' onClick='du(this)'>"+pluralId[x]+"</span>")
+                	}
+                	const concatPluralId = someId.join("<span style='color: #505050';>, </span>");
                     clearInterval(interval);
                     document.getElementById('time').innerHTML = '인증완료';
-                    document.getElementById('show').innerHTML = "아이디는 <span id='copyText' style='color: #505050	; cursor: pointer;' onClick='du()'>" + data.id + "</span>입니다.";
+                    document.getElementById('show').innerHTML = "아이디는 " + concatPluralId + "입니다.";
                 }else if(time <= 0){
                     document.getElementById('time').innerHTML = '인증시간 만료';
                 }
             }
         }
         
-    	function du(){
-    		  var copyText = document.getElementById("copyText");
+    	function du(event){
     		  var temp = document.createElement("textarea");
-    		  temp.value = copyText.innerText;
+    		  temp.value = event.innerText;
     		  document.body.appendChild(temp);
     		  temp.select();
     		  document.execCommand("copy");
@@ -150,7 +167,7 @@ a{
     		}	
     
     </script>
-
-	<jsp:include page="/WEB-INF/common/footer.jsp" />
+	
 </body>
+<footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
 </html>

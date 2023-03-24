@@ -62,9 +62,9 @@
    </insert>
 	
    
-   <delete id="delete" parameterType="kr.co.mood.user.dao.UserVO" >
+   <delete id="delete" parameterType="String" >
 		<![CDATA[
-		delete from moodjoin where id=#{id} and pwd=#{pwd}
+		delete from moodjoin where id=#{id}
 		 ]]>
 	</delete>
 	
