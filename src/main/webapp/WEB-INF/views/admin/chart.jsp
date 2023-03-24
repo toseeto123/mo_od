@@ -99,7 +99,7 @@ canvas{
 							<c:set var="index4" value="0" />
 							<c:forEach var="list" items="${chart4}">
 							<input type="hidden" id="gender4${index4}" value="${list.gender}">
-							<input type="hidden" id="week4${index4}" value="${list.week}">
+							<input type="hidden" id="age${index4}" value="${list.age}">
 							<input type="hidden" id="productCount4${index4}" value="${list.productCount}">
 							<input type="hidden" id="categorySerial4${index4}" value="${list.categorySerial}">							
 							<input type="hidden" value="${index4=index4+1}">
@@ -138,20 +138,29 @@ canvas{
 	}
 	
 	
-	
 	let womanChartData = [];
 	let manChartData = [];
 	const categorySerial = [];
 	const productCount = []; 
+	const label4 = [];
 	for(var i = 0; i<document.getElementById('chartValue4').value; i++){
 		productCount.push(parseInt(document.getElementById('productCount4'+i).value))
+		let chart4Flag = true;
+		for(var j=0; j<label4.length; j++){
+			if(label4[j] == document.getElementById('age'+i).value){
+				chart4Flag = false;	
+			}
+		}
+		if(chart4Flag){
+			label4.push(document.getElementById('age'+i).value);
+		}
+		
 	}
 	let sum = productCount.reduce((a,b)=>(a+b));
 	for(var i = 0; i<document.getElementById('chartValue4').value; i++){
 		let chartDictionary = {};	
-		 productCount.push(document.getElementById('productCount4'+i).value);
 		chartDictionary['x'] = document.getElementById('categorySerial4'+i).value;
-		 chartDictionary['y'] = document.getElementById('week4'+i).value;
+		 chartDictionary['y'] = document.getElementById('age'+i).value;
 		 chartDictionary['r'] = Math.floor(parseInt(document.getElementById('productCount4'+i).value)/sum*100);
 		categorySerial.push(document.getElementById('categorySerial4'+i).value)
 		if(document.getElementById('gender4'+i).value == 'F'){
@@ -161,8 +170,8 @@ canvas{
 		}
 				
 	}
-	console.log(womanChartData)
-	console.log(manChartData)
+	console.log(productCount)
+	
 	
 	
 	
@@ -325,12 +334,12 @@ canvas{
 					position : 'bottom'
 				},
 				y : {
-					labels : [ '토요일', '금요일', '목요일', '수요일', '화요일', '월요일', '일요일'],
+					labels : label4,
 					type : 'category',
 					position : 'left',
 					 title:{
 		        		  display:true,
-		        		  text:'요일',
+		        		  text:'나이',
 		        		  font:{
 		        			  size:14,
 		        			  weight:'bold'

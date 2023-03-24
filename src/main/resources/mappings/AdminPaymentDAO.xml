@@ -27,14 +27,14 @@
     
     <select id="getCategoryChart3" resultType="kr.co.mood.Payment.VO.AdminChartVO">
          <![CDATA[
-         SELECT CASE DAYOFWEEK(approved_at) 
-         		WHEN 1 THEN '월요일' 
-         		WHEN 2 THEN '화요일' 
-         		WHEN 3 THEN '수요일' 
-         		WHEN 4 THEN '목요일' 
-         		WHEN 5 THEN '금요일' 
-         		WHEN 6 THEN '토요일' 
-         		WHEN 7 THEN '일요일' 
+          SELECT CASE DAYOFWEEK(approved_at) 
+         		WHEN 2 THEN '월요일' 
+         		WHEN 3 THEN '화요일' 
+         		WHEN 4 THEN '수요일' 
+         		WHEN 5 THEN '목요일' 
+         		WHEN 6 THEN '금요일' 
+         		WHEN 7 THEN '토요일' 
+         		WHEN 1 THEN '일요일' 
          		ELSE '유효한 날짜가 아닙니다.' END as week, 
          	sum(amount) as sales 
          	from payment 
@@ -48,28 +48,21 @@
     <select id="getCategoryChart4" resultType="kr.co.mood.Payment.VO.AdminChartVO">
 		<![CDATA[
 		select member.gender as gender,
-		sum(orderProduct.count) as 'productCount',
-		product.pro_categoryserial  as 'categorySerial',
-		CASE DAYOFWEEK(payment.approved_at) 
-         		WHEN 1 THEN '월요일' 
-         		WHEN 2 THEN '화요일' 
-         		WHEN 3 THEN '수요일' 
-         		WHEN 4 THEN '목요일' 
-         		WHEN 5 THEN '금요일' 
-         		WHEN 6 THEN '토요일' 
-         		WHEN 7 THEN '일요일' 
-         		ELSE '유효한 날짜가 아닙니다.' END as week
+			orderproduct.count as 'productCount',
+			product.pro_categoryserial as 'categorySerial',
+			member.age as 'age'
 		from orderproduct
-			inner join payment
-				on payment.orderid = orderproduct.orderId
-			inner join moodjoin as member
-				on member.no = payment.userId 
-			inner join product 
-				on product.pro_number = orderproduct.pro_number 
+		inner join moodorder
+			on moodorder.orderid = orderproduct.orderid
+		inner join moodjoin as member
+			on moodorder.userno = member.no
+		inner join product
+			on product.pro_number = orderproduct.pro_number
+		inner join payment
+			on payment.orderid = orderproduct.orderid
 		where payment.Success = 'A'
 			and payment.approved_at like concat(#{year}, '%')
-		group by orderproduct.pro_number
-		order by dayofweek(payment.approved_at) desc 
+		order by member.age desc 
 		limit 0, 5
 			]]>
     </select>
