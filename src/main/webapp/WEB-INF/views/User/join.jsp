@@ -96,14 +96,14 @@
 
                
                 <div>
-                    <h3 class="join_title"><label for="age">나이</label></h3>
+                    <h3 class="join_title">나이</h3>
                     <div id="bir_wrap">
                         <div>
-                                <input type="radio" value="10-19" class="age" name="age" id="age" checked/>10대 &nbsp;&nbsp;
-                                <input type="radio" value="20-29" class="age" name="age" id="age" />20대 &nbsp;&nbsp;
-                                <input type="radio" value="30-39" class="age" name="age" id="age" />30대 &nbsp;&nbsp;
-                                <input type="radio" value="40-49" class="age" name="age" id="age" />40대 &nbsp;&nbsp;
-                                <input type="radio" value="50대이상" class="age" name="age" id="age" />50대이상
+                               <input type="radio" value="10-19" class="age" name="age" id="age" /><label for="age">10대</label> &nbsp; &nbsp; &nbsp;
+	                           <input type="radio" value="20-29" class="age" name="age" id="age1" /><label for="age1">20대</label> &nbsp; &nbsp; &nbsp;
+	                           <input type="radio" value="30-39" class="age" name="age" id="age2" /><label for="age2">30대</label> &nbsp; &nbsp; &nbsp;
+	                           <input type="radio" value="40-49" class="age" name="age" id="age3" /><label for="age3">40대</label> &nbsp; &nbsp;
+	                           <input type="radio" value="50대이상" class="age" name="age" id="age4" /><label for="age4">50대 이상</label> 
                         </div>
                     </div>
                 </div>
@@ -232,6 +232,7 @@
        }   
        
     });
+    
       </script>
 
 <jsp:include page="/WEB-INF/common/footer.jsp" />
