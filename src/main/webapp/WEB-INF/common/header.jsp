@@ -48,7 +48,7 @@ li {
    display: flex;
    align-items: center;
    margin: 20px;
-   margin-bottom: 0;
+   margin-bottom: 20px;
 }
 </style>
 </head>
