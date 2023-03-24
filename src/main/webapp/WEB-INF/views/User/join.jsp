@@ -142,7 +142,7 @@
                 <div>
                     <h3 class="join_title"><label for="phone">휴대전화</label></h3>
                     <div class="box string_mobile">
-                        <input type="tel" id="phone" name="phone" class="string" maxlength="16" placeholder="-를 빼고 전화번호를 입력하세요">
+                        <input type="tel" id="phone" name="phone" class="string" pattern="[0-9]{2,3}[0-9]{3,4}[0-9]{3,4}" maxlength="13" placeholder="- 를 빼고 전화번호를 입력하세요" >
                     </div>
                    
                         

@@ -1,5 +1,5 @@
 function JoinCheck(){
-           if (document.join.id.value == 0) {
+           if (document.join.id.value == "") {
               alert("아이디를 써주세요");
               join.id.focus();
               return false;
@@ -50,12 +50,19 @@ function JoinCheck(){
               alert("인증번호를 다시 확인해주세요.");
                $(".mail_check_input").focus();
                return false;
-    }
+            }
            if (document.join.phone.value == "") {
               alert("전화번호를 입력해주세요");
               join.phone.focus();
               return false;
            } 
+           var patt = new RegExp("[0-9]{2,3}[0-9]{3,4}[0-9]{3,4}");
+           var res = patt.test( $("#phone").val());
+
+          if(!patt.test( $("#phone").val()) ){
+            alert("전화번호를 정확히 입력하여 주십시오.");
+             return false;
+            }
            return true;   
         }
 
@@ -213,19 +220,6 @@ function fn_idChk(){
         }
         
         
- $(".submit_button").click(function(){
-
-    	   // 이메일 인증 버튼을 누르지 않았을 경우
-    	   if (!mailnumCheck) {
-    	      alert("이메일 인증을 먼저 완료해주세요.");
-    	      return false;
-    	   }
-
-    	   // 가입 처리
-    	   // ...
-
-    	});        
-
 
 
 

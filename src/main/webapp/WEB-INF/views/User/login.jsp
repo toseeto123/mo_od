@@ -112,9 +112,9 @@
 
 
 			<div class="social_login">
-				<p class="snsname" style="margin-bottom: 10px; margin-top: 38px;">SNS계정으로
-					간편 로그인/회원가입</p>
-			<ul class="social_logo" style="height: 150px;">
+				<p class="snsname" style="margin-bottom: 10px; margin-top: 38px;">간편로그인</p>
+				<br>
+			<ul class="social_logo" style="height: 150px; margin-left: -20px;">
 				<li class="box_list">
 				
 				<a id="custom-login-btn" href="javascript:void(0);"
@@ -141,7 +141,7 @@
 					onclick="googleHandleAuthClick()">
 					<img style="width: 50px;" src="/resources/user/img/google.png"
 						alt="google">
-						<span class="box_list_txt">구글</span>
+						<span class="box_list_txt" style="color:  #c8936ed4;">구글</span>
 				</button>
 				</li>
 				
