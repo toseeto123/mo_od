@@ -228,76 +228,7 @@
         </div>
 
       </div>
-    </section><!-- End Portfolio Section -->
-
-    <!-- ======= Team Section ======= -->
-    <section id="team" class="team" style="padding-top: 0;">
-      <div class="container">
-
-        <div class="section-title">
-          <b style="font-size: 30px; color: #c8936ed4;">mo_od 배테랑 직원들의 전문시공</b>
-        </div>
-
-        <div class="row">
-<c:if test="${!empty D0.pro_img1 }">
-          <div class="col-xl-3 col-lg-4 col-md-6" onclick="location.href='D0categoryList'" style="cursor: pointer">
-            <div class="member">
-              <img src="resources/assets/img/product/${D0.pro_img1 }" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>침 실</h4>
-                  <span>${D0.pro_maindesctitle}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          </c:if>
-<c:if test="${!empty D1.pro_img1 }">
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.1s" onclick="location.href='D1categoryList'" style="cursor: pointer">
-            <div class="member">
-              <img src="resources/assets/img/product/${D1.pro_img1 }" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>거 실</h4>
-                  <span>${D1.pro_maindesctitle}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          </c:if>
-<c:if test="${!empty D2.pro_img1 }">
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.2s" onclick="location.href='D2categoryList'" style="cursor: pointer">
-            <div class="member">
-              <img src="resources/assets/img/product/${D2.pro_img1 }" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>주 방</h4>
-                  <span>${D2.pro_maindesctitle}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          </c:if>
-<c:if test="${!empty D3.pro_img1 }">
-          <div class="col-xl-3 col-lg-4 col-md-6" data-wow-delay="0.3s" onclick="location.href='D3categoryList'" style="cursor: pointer">
-            <div class="member">
-              <img src="resources/assets/img/product/${D3.pro_img1 }" class="img-fluid" alt="">
-              <div class="member-info">
-                <div class="member-info-content">
-                  <h4>욕 실</h4>
-                  <span>${D3.pro_maindesctitle}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-</c:if>
-        </div>
-
-      </div>
-    </section><!-- End Team Section -->
-
-
-
+    </section>
 
   </main><!-- End #main -->
 	
