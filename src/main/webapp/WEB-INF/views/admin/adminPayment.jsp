@@ -8,18 +8,32 @@
 <title>Chart</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-a:hover{
-	cursor:pointer;
-}
 select, option{
 	height: 30px;
 	font-size: 18px;
 }
-footer{
-   width: 100%;
-   position: absolute;
-   bottom: 0;
+
+.tableContainer{
+	height: 450px;
 }
+
+section.container{
+	margin-bottom: 20px;
+}
+.searchParent{
+	text-align: center;
+}
+.search{
+	display: inline-block;
+}
+a{
+	color: #c8936ed4;
+}
+a:hover {
+	cursor: pointer;	
+	color: #78E150;
+}
+*:focus { outline: 0; }
 input[type=button]{
 	color: white;
 	background: #d2b48c;  
@@ -31,14 +45,20 @@ input[type=button]{
 input[type=search]{
 	font-size: 18px;
 }
+footer{
+	margin-top: 100px;
+	width: 100%;
+}
 </style>
+
 </head>
 
 <body>
 	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
 
 	<section id="hero" style="overflow:hidden; height:auto; background: white;">
-	<div style="width:25%; margin-top:5%; margin-left:39%;">
+	<div class="searchParent">
+			<div class="search" style="margin-top: 50px; margin-bottom: 50px;">
 			<select id="searchWhat">
 				<option value="name">이름</option>
 				<option value="orderNo">주문번호</option>
@@ -50,7 +70,7 @@ input[type=search]{
 			<input type="button" 
 				id="searchBtn" value="찾기" onclick="search()">
 				</div>
-			
+			</div>
 		<div class="hero-container">
 			<div id="tables">
 			<c:forEach var="member" items="${member}">
@@ -97,7 +117,6 @@ input[type=search]{
                   <td style="border-bottom:none">
                   	<form action="#" method="post">
                   	<a href="#about" class="btn-get-started animate__animated">주문취소</a>
-                  	<a href="#about" class="btn-get-started animate__animated">주문확인</a>
                   	</form>
                   	</td>
                   </tr>

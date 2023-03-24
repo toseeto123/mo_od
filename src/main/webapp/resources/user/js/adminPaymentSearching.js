@@ -121,7 +121,6 @@ function mainPagingEngine(url){
                   +"<td style='border-bottom:none'>"
                   	+"<form action='#' method='post'>"
                   	+"<a href='#about' class='btn-get-started animate__animated'>주문취소</a>"
-                  	+"<a href='#about' class='btn-get-started animate__animated'>주문확인</a>"
                   	+"</form>"
                   	+"</td>"
                   +"</tr>"

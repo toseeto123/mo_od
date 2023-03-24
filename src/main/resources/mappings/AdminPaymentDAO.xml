@@ -38,7 +38,7 @@
          		ELSE '유효한 날짜가 아닙니다.' END as week, 
          	sum(amount) as sales 
          	from payment 
-         	where Success = 'A'
+         	where Success = '결제완료'
 					and SuccessTime like concat(#{year}, '%')
          	group by DAYOFWEEK(SuccessTime)
          	order by DAYOFWEEK(SuccessTime)
@@ -60,7 +60,7 @@
 			on product.pro_number = orderproduct.pro_number
 		inner join payment
 			on payment.orderid = orderproduct.orderid
-		where payment.Success = 'A'
+		where payment.Success = '결제완료'
 			and payment.SuccessTime like concat(#{year}, '%')
 		order by member.age desc 
 		limit 0, 5
@@ -92,7 +92,7 @@
     <select id="adminPaymentSearchingList"
     	parameterType="kr.co.mood.module.ModuleVO"
      resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
-    	select moodorder.orderid as 'orderNo', 
+ 		select moodorder.orderid as 'orderNo', 
 			moodorder.address as 'address', 
 			member.name as 'name', 
 			member.phone as 'phone', 
@@ -103,7 +103,7 @@
 			on member.no = moodorder.userNo
 		inner join payment
 			on payment.orderid = moodorder.orderid
-		where payment.Success = 'A'
+		where payment.Success = '결제 완료'
 		<if test="searchName != null">
 		and member.name like concat('%', #{searchName}, '%')
 		</if>
