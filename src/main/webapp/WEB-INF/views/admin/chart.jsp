@@ -11,10 +11,10 @@
 	
 	footer{
 		width: 100%;
-		position:absolute;
-		bottom: 0;
+		margin-top: 100px;
 	}
 .grid-container {
+	margin-top: 100px;
   display: grid;
   grid-template-rows: auto;
   grid-template-columns: repeat(2, 1fr);
@@ -54,9 +54,10 @@ canvas{
 </head>
 
 <body>
+<header>
 	<jsp:include
 		page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
-
+</header>
 							<div class="grid-container">
   <div class="chart1 chart-item">
     <canvas id="myChart1"></canvas>
@@ -114,7 +115,7 @@ canvas{
 		page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" />
 		</footer>
 	<script>
-	
+	let sum;
 	const chartProduct1 = [];
 	const chartPaycount1 = [];
 	for(var i = 0; i<document.getElementById('chartValue1').value; i++){
@@ -156,7 +157,9 @@ canvas{
 		}
 		
 	}
-	let sum = productCount.reduce((a,b)=>(a+b));
+	if(productCount.length > 0){
+		sum = productCount.reduce((a,b)=>(a+b));
+	}
 	for(var i = 0; i<document.getElementById('chartValue4').value; i++){
 		let chartDictionary = {};	
 		chartDictionary['x'] = document.getElementById('categorySerial4'+i).value;

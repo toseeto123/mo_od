@@ -72,12 +72,10 @@ public class AdminPaymentService {
 				   moduleVO.setPhone(search);
 			   }
 		   }
-		   System.out.println();
 		   List<AdminPaymentVO> memberSearchingAllList = dao.adminPaymentSearchingList(moduleVO);
 		   ViewPagingVO viewVO = module.pagingModule(model, moduleVO, memberSearchingAllList, paging, 1);
 		   List<AdminPaymentVO> memberSearchingShowList = dao.adminPaymentSearchingList(moduleVO);
 		   List<AdminPaymentVO> productList = dao.adminPaymentList();
-		   System.out.println(memberSearchingShowList);
 		   map.put("list", memberSearchingShowList);
 		   map.put("vo", viewVO);
 		   map.put("productList", productList);
