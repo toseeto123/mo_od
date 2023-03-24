@@ -22,7 +22,7 @@ table tr td:2nd-child {
 <body>
 <fieldset>
 	<form action="/update.do?id=${login_info.id}" method="post" name="mypage" id="mypage" style="width:950px;">
-		<table>
+		<table class="table">
 		<tr>
 			<td>아이디</td>
 			<td>${login_info.id}<br></td>

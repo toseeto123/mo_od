@@ -55,7 +55,7 @@ footer{
 		page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
 	<section class="container">
 			<div class="searchParent">
-			<div class="search">
+			<div class="search" style="margin-top: 50px; margin-bottom: 50px;">
 			<select id="searchWhat">
 				<option value="id">아이디</option>
 				<option value="name">이름</option>
@@ -71,10 +71,10 @@ footer{
 				<thead>
 
 					<tr>
-						<th scope="col" style="width: 10%;">회원번호</th>
-						<th scope="col" style="width: 10%;">아이디</th>
-						<th scope="col" style="width: 10%;">이름</th>
-						<th scope="col" style="width: 20%;">연락처</th>
+						<th scope="col">회원번호</th>
+						<th scope="col">아이디</th>
+						<th scope="col">이름</th>
+						<th scope="col">연락처</th>
 						<th scope="col">이메일</th>
 						<th scope="col">상세정보</th>
 					</tr>

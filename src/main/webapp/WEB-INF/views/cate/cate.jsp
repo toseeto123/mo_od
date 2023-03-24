@@ -503,7 +503,7 @@ function deletecate(element) {
 
 							<input type="hidden" value="${map.user_no}" name="user_no"> <input
 								type="hidden" value="${map.pro_number}" name="pro_number">
-						<h2 style="margin-left: 100px;">${map.pro_name}</h2>
+						<a href="/product/${map.pro_number }"><h2 style="margin-left: 100px;">${map.pro_name}</h2></a>
 						<p style="margin-left: 100px;">${map.pro_maindesctitle }</p>
 						<span style="margin-left: 100px;">수 량 : </span>
 						<div class="amount" style="display: inline;">${map.amount}</div>

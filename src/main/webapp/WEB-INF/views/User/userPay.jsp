@@ -252,10 +252,10 @@ body {
                      <div class="col-md-6 mb-3">
                         <label for="cc-name"></label> <img alt=""
                            src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}"
-                           style="width: 100px; height: 100px; margin-bottom: 10px;">
+                           style="width: 100px; height: 100px; margin-bottom: 70px;">
 
                         <div style="display: inline-block;">
-                           <small class="text-muted">상품명 : ${list.pro_name}<c:if test="${!empty list.pro_option}"><br>옵 션 : ${list.pro_option}</c:if><br>설 명 : ${list.pro_maindesctitle}
+                           <small class="text-muted"><a href="/product/${list.pro_number }" style="color:#c8936ed4;">상품명 : ${list.pro_name}</a><c:if test="${!empty list.pro_option}"><br>옵 션 : ${list.pro_option}</c:if><br>설 명 : ${list.pro_maindesctitle}
                            </small>
                         </div>
                      </div>
@@ -280,10 +280,10 @@ body {
                            src="${pageContext.request.contextPath}/resources/assets/img/product/${onelist.pro_img1}"
                            title="${onelist.pro_name }"
                            alt="${onelist.pro_name }"
-                           style="width: 100px; height: 100px; margin-bottom: 10px;">
+                           style="width: 100px; height: 100px; margin-bottom: 70px;">
 
                         <div style="display: inline-block;">
-                           <small class="text-muted">상품명 : ${onelist.pro_name}<c:if test="${!empty onelist.pro_option}"><br>옵 션 : ${onelist.pro_option}</c:if><br>설 명 : ${onelist.pro_maindesctitle}
+                           <small class="text-muted"><a href="/product/${onelist.pro_number }" style="color:#c8936ed4;">상품명 : ${onelist.pro_name}</a><c:if test="${!empty onelist.pro_option}"><br>옵 션 : ${onelist.pro_option}</c:if><br>설 명 : ${onelist.pro_maindesctitle}
                            </small>
                         </div>
                      </div>
@@ -299,7 +299,7 @@ body {
                   
                    <c:set var="totalPrice" value="0" />
                   <c:set var="totalPrice" value="${totalPrice + onelist.pro_price}" />
-    				<input type="hidden" value="${onelist.pro_name}" name="pro_name"> 
+    				<a href="/product/${onelist.pro_name }"><input type="hidden" value="${onelist.pro_name}" name="pro_name"></a> 
     				<input type="hidden" value="${onelist.pro_price}" name="pro_price"> 
     				<input type="hidden" value="${onelist.pro_number}" name="pro_number"> 
    				 	<input type="hidden" value="${onelist.orderId}" name="orderId"> 

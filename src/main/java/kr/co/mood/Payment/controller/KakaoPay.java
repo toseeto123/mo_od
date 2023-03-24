@@ -126,23 +126,22 @@ public class KakaoPay {
        public KakaoCancelResponseVO kakaoCancel(@RequestParam("tid") String tid
     		   ,@RequestParam("price") String price,@RequestParam("pro_number") String pro_number,@RequestParam("orderId") int orderId
     		   ) {
-    	   System.out.println("취소 로직 들어 왔어유~");
            HttpHeaders headers = new HttpHeaders();
            headers.add("Authorization", "KakaoAK " + "1310fb3a979458e032a8aecca6d5e96c");
            headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
            headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
            
-           // 카카오페이 요청
+           // 移댁뭅�삤�럹�씠 �슂泥�
            MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
            params.add("cid", "TC0ONETIME");
            params.add("tid", tid);
            params.add("cancel_amount", price);
            params.add("cancel_tax_free_amount", "100");
            System.out.println(params);
-           // 파라미터, 헤더
+           // �뙆�씪誘명꽣, �뿤�뜑
            HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<MultiValueMap<String, String>>(params, headers);
        
-           // 외부에 보낼 url
+           // �쇅遺��뿉 蹂대궪 url
            RestTemplate restTemplate = new RestTemplate();
        
            KakaoCancelResponseVO cancelResponse = restTemplate.postForObject(

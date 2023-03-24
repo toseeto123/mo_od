@@ -8,38 +8,65 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <style>
-a:hover {
-	cursor: pointer;
+select, option{
+	height: 30px;
+	font-size: 18px;
 }
 
-*:focus {
-	outline: 0;
+section.container{
+	margin-bottom: 20px;
+}
+.searchParent{
+	text-align: center;
+}
+.search{
+	display: inline-block;
+}
+a{
+	color: #c8936ed4;
+}
+a:hover {
+	cursor: pointer;	
+	color: #78E150;
+}
+*:focus { outline: 0; }
+input[type=button]{
+	color: white;
+	background: #d2b48c;  
+	width:100px; 
+	border-radius:10px; 
+	border: none;
+	font-size: 20px;
+}
+input[type=search]{
+	font-size: 18px;
+}
+footer{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
 }
 </style>
 </head>
 <body>
 	<jsp:include page="../../common/adminHeader.jsp" />
 
-	<!-- ======= Hero Section ======= -->
-	<section id="hero" style="background: white;">
-		<div class="hero-container">
-			<div style="width: 25%; margin-top: 5%; margin-left: 39%;">
+	<section id="hero" style="background: white;" class="container">
+	<div class="searchParent">
+		<div class="search" style="margin-top: 110px; margin-bottom: 50px;">
 				<select id="searchWhat">
 					<option value="name">회원이름</option>
 					<option value="pro_name">상품이름</option>
-					<option value="seria">상품 고유번호</option>
-				</select> <input type="search" id="search"> <input type="button"
-					style="background: transparent; width: 70px; color: white; border-radius: 10px; border: 2px solid #deb887;"
+				</select> <input type="search" id="search">
+				 </div>
+				<input type="button" style=""
 					id="searchBtn" value="찾기"
-					onMouseover="this.style.background='#d2b48c';"
-					onMouseout="this.style.background='transparent'" onclick="search()">
-
+					 onclick="search()">
 			</div>
-
 			<table class="table" id="table">
 				<thead>
 					<tr>
-						<th scope="col">등록 번호</th>
+						<th scope="col" >등록 번호</th>
 						<th scope="col">회원 이름</th>
 						<th scope="col">상품 이름</th>
 						<th scope="col">상품 옵션</th>
@@ -90,7 +117,6 @@ a:hover {
 			</div>
 
 			<div></div>
-		</div>
 		<input type="hidden" value="${selectPage}" id="selectPage">
 	</section>
 	<!-- End Hero -->
