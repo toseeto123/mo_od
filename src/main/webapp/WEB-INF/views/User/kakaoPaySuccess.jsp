@@ -184,7 +184,7 @@ a {
                   <div class="carousel-container">
                      <div class="carousel-content">
                         <h2 class="animate__animated animate__fadeInDown">결제 완료</h2>
-                        <p class="animate__animated animate__fadeInUp">"${login_info.id}" 님 mo_od 를 이용해주셔서　 감사합니다.</p>
+                        <p class="animate__animated animate__fadeInUp">"${login_info.name}"님 mo_od를 <br> 이용해주셔서 감사합니다.</p>
                         <div>
                            <a href="/mypage.do" class="btn-get-started animate__animated animate__fadeInUp scrollto">결제 내역</a>
                         </div>
