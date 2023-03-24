@@ -10,8 +10,16 @@ public class AdminChartVO {
 	 private int productCount;
 	 private String categorySerial;
 	 private String gender;
+	 private String age;
 	 
-	
+	 
+	 	
+	public String getAge() {
+		return age;
+	}
+	public void setAge(String age) {
+		this.age = age;
+	}
 	public int getProductCount() {
 		return productCount;
 	}
