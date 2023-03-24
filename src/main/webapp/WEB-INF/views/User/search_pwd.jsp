@@ -54,7 +54,7 @@ a{
 		</div>
 	</section>
 	<div class="d-flex align-items-center justify-content-center"
-		style="height: 70vh;">
+		style="height: height: 500px;">
 		<div class="row justify-content-center mt-5">
 			<div class="col-md-6">
 				<div class="card border-0">
@@ -238,5 +238,5 @@ a{
 
 
 </body>
-<jsp:include page="/WEB-INF/common/footer.jsp" />
+<footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
 </html>

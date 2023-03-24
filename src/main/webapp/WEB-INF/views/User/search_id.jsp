@@ -50,7 +50,7 @@ a{
 	</section>
 
 	<div class="d-flex align-items-center justify-content-center"
-		style="height: 70vh;">
+		style="height: 500px;">
 		<div class="row justify-content-center mt-5">
 			<div class="col-md-6">
 				<div class="card border-0">
@@ -150,7 +150,7 @@ a{
     		}	
     
     </script>
-
-	<jsp:include page="/WEB-INF/common/footer.jsp" />
+	
 </body>
+<footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
 </html>
