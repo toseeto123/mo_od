@@ -73,7 +73,7 @@ footer{
 					<tr>
 						<th scope="col" style="width: 10%;">회원번호</th>
 						<th scope="col" style="width: 10%;">아이디</th>
-						<th scope="col" style="width: 10%;">이름</th>
+						<th scope="col" style="width: 20%;">이름</th>
 						<th scope="col" style="width: 20%;">연락처</th>
 						<th scope="col">이메일</th>
 						<th scope="col">상세정보</th>
