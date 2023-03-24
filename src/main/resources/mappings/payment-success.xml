@@ -53,7 +53,7 @@
 		AND op.orderid=o.orderid
 		AND op.pro_number=p.pro_number
 		AND pa.orderid=o.orderid
-		GROUP BY op.pro_number
+		GROUP BY op.orderid , op.pro_number
 		HAVING COUNT(DISTINCT op.pro_number) = 1
 		ORDER BY o.orderid DESC;
 	</select>
