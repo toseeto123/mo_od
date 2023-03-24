@@ -135,21 +135,30 @@ footer {
 	<script src="/resources/user/js/idPwdFind.js"></script>
 	<script>
         function numCheck(number){
+        	let pluralId = [];
+        	let someId = [];
             if(num != 0){
                 if(num == number && time > 0){
+                	
+                	for(var z=0; z<data.id.length; z++){
+                		pluralId.push(data.id[z].id);
+                	}       
+                	for(var x=0; x<pluralId.length; x++){
+                		someId.push("<span style='color: #505050; cursor: pointer;' onClick='du(this)'>"+pluralId[x]+"</span>")
+                	}
+                	const concatPluralId = someId.join("<span style='color: #505050';>, </span>");
                     clearInterval(interval);
                     document.getElementById('time').innerHTML = '인증완료';
-                    document.getElementById('show').innerHTML = "아이디는 <span id='copyText' style='color: #505050	; cursor: pointer;' onClick='du()'>" + data.id + "</span>입니다.";
+                    document.getElementById('show').innerHTML = "아이디는 " + concatPluralId + "입니다.";
                 }else if(time <= 0){
                     document.getElementById('time').innerHTML = '인증시간 만료';
                 }
             }
         }
         
-    	function du(){
-    		  var copyText = document.getElementById("copyText");
+    	function du(event){
     		  var temp = document.createElement("textarea");
-    		  temp.value = copyText.innerText;
+    		  temp.value = event.innerText;
     		  document.body.appendChild(temp);
     		  temp.select();
     		  document.execCommand("copy");

@@ -1,17 +1,16 @@
 package kr.co.mood;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
 
-import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -35,6 +34,18 @@ public class ClientIdPassCheckController {
 	@RequestMapping("/searchPwd")
 	public String toGoPwdCheck() {
 		return "User/search_pwd";
+	}
+	
+	@RequestMapping("/searchIdCheck")
+	@ResponseBody
+	public String searchIdChecking(String id, String email){
+		for(UserVO vo : userService.findEmail(email)) {
+			if(vo.getId().equals(id)) {
+				return "True";
+			}
+		}
+		
+		return "False";
 	}
 	
 	@RequestMapping("/searchEmailCheck")
@@ -66,17 +77,30 @@ public class ClientIdPassCheckController {
 
 			} catch (Exception e) {
 				e.printStackTrace();
+				System.out.println("에러야");
 			}
-
+			List<UserVO> list = userService.findEmail(email);
+			for(int i=0; i<list.size(); i++) {
+				list.get(i).setName("nope");
+				list.get(i).setAdr("nope");
+				list.get(i).setAdr2("nope");
+				list.get(i).setAdr3("nope");
+				list.get(i).setAge("nope");
+				list.get(i).setGender("nope");
+				list.get(i).setNo(0);
+				list.get(i).setPartner_user_id(0);
+				list.get(i).setPhone("nope");
+				list.get(i).setPwd("nope");
+			}
+		
 			String num = Integer.toString(checkNum);
 			map.put("num", num);
-			map.put("id", userService.findEmail(email).getId());
-			System.out.println("1");
+			
+			map.put("id",list);
 			return map;			
 
 		}else {
-		map.put("num", "none");
-		System.out.println("2");
+			map.put("num", "none");
 		}
 		return map;
 	}
@@ -84,7 +108,7 @@ public class ClientIdPassCheckController {
 	
 	@RequestMapping("/passwordChange")
 	@ResponseBody
-	public String passwordChange(String id, String pwd) {
+	public String passwordChange(String id, String email, String pwd) {
 		UserVO userVo = new UserVO();
 		userVo.setId(id);
 		userVo.setPwd(pwd);
@@ -93,6 +117,24 @@ public class ClientIdPassCheckController {
 		} catch (Exception e) {
 			e.printStackTrace();
 			return "False";
+		}
+		String setFrom = "cwj9799@naver.com";
+		String toMail = email;
+		String title = "임시 비밀번호 발급 이메일입니다.";
+		String content ="임시 비밀번호는 " + pwd + "입니다.";
+
+		try {
+
+			MimeMessage message = mailSender.createMimeMessage();
+			MimeMessageHelper helper = new MimeMessageHelper(message, true, "utf-8");
+			helper.setFrom(setFrom);
+			helper.setTo(toMail);
+			helper.setSubject(title);
+			helper.setText(content, true);
+			mailSender.send(message);
+
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 		
 		return "Success";

@@ -95,7 +95,7 @@ footer {
 											name="email" placeholder="이메일을 입력해주세요" required>
 									</div>
 									<input type="button" class="col-3" value="보내기"
-										onclick="idValidateForm(); validateForm(); emailCheck()">
+										onclick="idValidateForm(); validateForm(); isCorrect();">
 									<div class="col-3"></div>
 									<div class="col-6">
 										<span class="span" id="emailCheck"></span>
@@ -159,16 +159,13 @@ footer {
 
 						<div class="card-body">
 							<div class="form-group">
-								<label for="password">새로운 비밀번호</label> <input type="password"
-									id="password" class="form-control" required onFocus="this.value = ''">
+								
 							</div>
 							<div class="form-group">
-								<label for="confirm-password">비밀번호 확인</label> <input
-									type="password" id="confirmPassword" class="form-control"
-									required onFocus="this.value = ''">
+								<h5>임시비밀번호가 이메일로 발송됩니다.</h5>
 							</div>
 							<div class="form-group text-center">
-								<input type="button" onClick="passwordValidateForm()" value="비밀번호 재설정">
+								<input type="button" onClick="passwordChange()" value="비밀번호 재설정">
 							</div>
 						</div>
 					</div>
@@ -178,7 +175,7 @@ footer {
 	</div>
 
 
-
+<input type="hidden" id="emailStorage">
 	<script
 		src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
 	<script
@@ -202,15 +199,25 @@ footer {
 
 	}
 	
+	function generatePassword(length) {
+		  var chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+		  var password = "";
+		  for (var i = 0; i < length; i++) {
+		    password += chars.charAt(Math.floor(Math.random() * chars.length));
+		  }
+		  return password;
+		}
+	
 	function passwordChange(){
-		
+		var pass = generatePassword(12);
 		const xhr = new XMLHttpRequest();
-		const url = "/passwordChange?id="+document.getElementById('storage').value+"&pwd="+document.getElementById('password').value;
+		const url = "/passwordChange?id="+document.getElementById('storage').value+"&pwd="+pass+"&email="+document.getElementById('emailStorage').value;
 		xhr.open("GET", url);
 		xhr.onreadystatechange = function () {
 		    if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
 		        const data = xhr.responseText;
 		        if(data == 'Success'){
+		        	alert("비밀번호가 발급되었습니다.")
 		        	location.href='/login.do';
 		        }else{
 		        	alert('비밀번호가 변경되지 않았습니다.')
@@ -220,26 +227,26 @@ footer {
 		xhr.send();
 	}
 	
-	
-    function passwordValidateForm() {
-  	  // 폼 요소의 유효성 검사 수행
-  	  if (!document.getElementById("password").checkValidity()) {				
-  	    document.getElementById("password").reportValidity();
-  	  } else if(document.getElementById("password").checkValidity()){
-  	  	  if(!document.getElementById("confirmPassword").checkValidity()){  		
-  	  		  document.getElementById("confirmPassword").reportValidity();  
-  	  	  }else if(document.getElementById("confirmPassword").checkValidity()){
-  	  		if(document.getElementById("password").value == document.getElementById("confirmPassword").value){
-  	  			passwordChange()
-  	  		}else{
-  	  			alert("비밀번호가 일치하지 않습니다. 다시 입력해주십시오.");
-  	  			 document.getElementById("confirmPassword").focus();
-  	  		}
-  	  	  }				
-  	  }
-  	  
+	function isCorrect(){
+		var xhr = new XMLHttpRequest();
+		
+		xhr.open('GET', '/searchIdCheck?id='+document.getElementById('storage').value+"&email="+document.getElementById('email').value);
 
-  	}
+		xhr.onload = function() {
+		  if (xhr.status === 200) {
+		    if(xhr.responseText == 'True'){
+		    	emailCheck();
+		    }else{
+		    	document.getElementById('emailCheck').innerHTML = '존재하지 않는 이메일입니다.';
+		    }
+		  } else {
+		    console.log('Request failed.  Returned status of ' + xhr.status);
+		  }
+		};
+
+		xhr.send();
+	}
+
 			
 	</script>
 

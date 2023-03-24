@@ -17,8 +17,8 @@ public class UserDAO {
 	private SqlSession session;
 	
 	
-	public UserVO findEmail(String email) {
-		return mybatis.selectOne("UserDAO.findEmail", email);
+	public List<UserVO> findEmail(String email) {
+		return mybatis.selectList("UserDAO.findEmail", email);
 	}
 	
 	public List<UserVO> selectAll(ModuleVO vo) {//추가된 부분
