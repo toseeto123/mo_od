@@ -10,11 +10,18 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="/resources/user/js/main.js"></script>
+<style>
+
+table tr td:2nd-child {
+	padding-left:150px;
+}
+
+
+</style>
 </head>
 <body>
 <fieldset>
-<legend>회원정보수정</legend>
-	<form action="/update.do?id=${login_info.id}" method="post" name="mypage" id="mypage">
+	<form action="/update.do?id=${login_info.id}" method="post" name="mypage" id="mypage" style="width:950px;">
 		<table>
 		<tr>
 			<td>아이디</td>
@@ -58,7 +65,7 @@
 		<tr>
 		
 			<td></td>
-			<td><input type="text" class="address_input_1" name=adr id="adr" placeholder="우편번호" value="${myinfo_adr1}" ><br></td>	
+			<td style="padding-left:150px;"><input type="text" class="address_input_1" name=adr id="adr" placeholder="우편번호" value="${myinfo_adr1}" ><br></td>	
 			<td><input type="button" class="adrchk" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br></td>
 		</tr>
 		<tr>
