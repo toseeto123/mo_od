@@ -1,3 +1,5 @@
+
+
 function JoinCheck(){
            if (document.join.id.value == "") {
               alert("아이디를 써주세요");
@@ -106,8 +108,31 @@ function fn_idChk(){
            return true;   
         }
 
-      
-      
+      function DeleteCheck(){
+      		var sspwd = $('#userNo').val();
+      		if (sspwd != document.mypage.pwd.value) {
+        	alert("저장된 암호와 입력한 암호가 일치하지 않습니다.");
+        	mypage.pwd.value = "";
+        	mypage.pwd2.value = "";
+        	mypage.pwd.focus();
+        	return false;
+    		}
+           if (document.mypage.pwd.value == ""){
+              alert("암호를 반드시 입력해주세여");
+              mypage.pwd.focus();
+              return false;
+           }
+            if(document.mypage.pwd.value != document.mypage.pwd2.value){
+              alert("암호가 일치하지 않습니다");
+              mypage.pwd.value="";
+              mypage.pwd2.value="";
+              mypage.pwd.focus();
+              return false;
+           }
+           
+           return true;
+           }
+    
       
    function passConfirm() {
    /* 비밀번호, 비밀번호 확인 입력창에 입력된 값을 비교해서 같다면 비밀번호 일치, 그렇지 않으면 불일치 라는 텍스트 출력.*/
