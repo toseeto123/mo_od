@@ -50,9 +50,9 @@ public class UserDAO {
 		return result1;
 	}
 	
-	public void delete(UserVO vo) throws Exception{
-		mybatis.delete("UserDAO.delete", vo);
-		System.out.println(vo);
+	public void delete(String id) throws Exception{
+		mybatis.delete("UserDAO.delete", id);
+		System.out.println(id);
 	}
 
 
@@ -89,5 +89,7 @@ public class UserDAO {
 			public void NaverInsert(HashMap<String, Object> naverUserInfo) {
 				mybatis.insert("UserDAO.NaverInsert",naverUserInfo);
 			}
+
+			
 
 }
