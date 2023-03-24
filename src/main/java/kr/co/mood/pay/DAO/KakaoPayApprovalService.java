@@ -13,4 +13,6 @@ public interface KakaoPayApprovalService {
 	public void paysuccessupdate(String pro_no);
 	
 	public List<KakaoPayApprovalVO>selectlist(int userno);
+	
+	public void paycancelDelete(int orderId);
 }

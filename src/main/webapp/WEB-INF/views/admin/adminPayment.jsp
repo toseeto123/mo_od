@@ -11,14 +11,18 @@
 a:hover{
 	cursor:pointer;
 }
+footer{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
 </style>
 </head>
 
 <body>
 	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
 
-	<!-- ======= Hero Section ======= -->
-	<section id="hero" style="overflow:hidden; height:auto;">
+	<section id="hero" style="overflow:hidden; height:auto; background: white;">
 	<div style="width:25%; margin-top:5%; margin-left:39%;">
 			<select id="searchWhat">
 				<option value="name">이름</option>
@@ -28,14 +32,14 @@ a:hover{
 			</select> <input type="search" id="search">
 			
 			
-			<input type="button" style="background: transparent; width:70px; color:white; border-radius:10px; border: 2px solid #deb887;"
-				id="searchBtn" value="찾기" onMouseover="this.style.background='#d2b48c';" onMouseout="this.style.background='transparent'" onclick="search('/')">
+			<input type="button" style="background: transparent; width:70px;  border-radius:10px; border: 2px solid #deb887;"
+				id="searchBtn" value="찾기" onclick="search()">
 				</div>
 			
 		<div class="hero-container">
 			<div id="tables">
 			<c:forEach var="member" items="${member}">
-              <table id="table" class="table" style="color:white; margin-top:5%; margin-left:15%; width:70%;">
+              <table id="table" class="table" style="margin-top:5%; margin-left:15%; width:70%;">
                 <thead id="thead">
                 <tr>
                 	<th id="orderNo" style="width:20%;">주문번호 : ${member.orderNo}</th>
@@ -112,13 +116,12 @@ a:hover{
 					<a href="/admin/payment.do/${nextPage}">&gt;</a>
 				</c:if>
 			</div>
-			<div style="width: 100%; margin-top: 50px;"><jsp:include
-					page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" /></div>
+			<footer><jsp:include
+					page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" /></footer>
 		</div>
 		<input type="hidden" value="${selectPage}" id="selectPage">
 
 	</section>
-	<!-- End Hero -->
 <script src="/resources/user/js/adminPaymentSearching.js"></script> 
 </body>
 </html>

@@ -17,10 +17,6 @@ input[type=button] {
 	width: 100px;
 	height: 30px;
 }
-input[type=button]:hover{
-	border: 2px solid #C39873;
-	background: transparent;
-}	
 </style>
 </head>
 
@@ -29,12 +25,10 @@ input[type=button]:hover{
 		page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
 
 	<!-- ======= Hero Section ======= -->
-	<section id="hero" style="overflow: hidden; height: auto;">
-		<div class="hero-container">
 
-
+	<div>
 			<table class="table"
-				style="color: white; margin-top: 5%; margin-left: 15%; width: 70%;">
+				style="margin-top: 5%; margin-left: 15%; width: 70%;">
 				<thead>
 
 					<tr>
@@ -92,10 +86,10 @@ input[type=button]:hover{
 			<!-- End Default Table Example -->
 
 
-			<div style="width: 100%; margin-top: 50px;"><jsp:include
+			<div style="position: absolute; bottom:0; width:100%;"><jsp:include
 					page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" /></div>
 		</div>
-	</section>
+	
 	<!-- End Hero -->
 	<script>
 	function goBack(){

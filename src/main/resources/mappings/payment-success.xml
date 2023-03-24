@@ -5,10 +5,11 @@
 <mapper namespace="KakaoPayApprovalDAO">
 
 	<insert id="insert">
-		INSERT INTO payment (payment_method, orderid, userid,
+		INSERT INTO payment (payment_method,tid,orderid, userid,
 		amount, approved_at)
 		SELECT
 		#{payment_method_type},
+		#{tid},
 		op.orderId,
 		mo.userNo,
 		#{amount.total},
@@ -22,6 +23,10 @@
 
 	<delete id="catedelete">
 		delete from cate where user_no = #{user_no}
+	</delete>
+	
+	<delete id="cancelDelete">
+		delete from orderproduct where orderId = #{orderId} 
 	</delete>
 
 	<update id="paycountupdate">
@@ -38,7 +43,7 @@
 		SELECT o.orderid, p.pro_name, p.pro_img1,
 		p.pro_number, p.pro_price,
 		p.pro_maindesc, p.pro_maindesctitle, pa.amount, pa.payment_id,
-		pa.payment_method, pa.approved_at ,op.count
+		pa.payment_method, pa.approved_at ,op.count , pa.tid
 		FROM
 		moodorder o,
 		orderproduct op,

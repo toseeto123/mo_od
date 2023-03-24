@@ -281,39 +281,42 @@ public class UserController {
 		return "User/login";
 	}
 
-//	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
-//	public String deletemember(UserVO vo, HttpSession session, RedirectAttributes rttr, @RequestParam("pwd") String pwd)
-//			throws Exception {
-//		System.out.println("탈퇴시작");
-//		UserVO ssvo = (UserVO) session.getAttribute("login_info");
-//		String sspwd = ssvo.getPwd();
-//		System.out.println("sspwd : " + sspwd);
-//		System.out.println("pwd : " + pwd);
-//		if (!(sspwd.equals(pwd)) || pwd == null) {
-//			rttr.addFlashAttribute("msg", false);
-//			return null;
-//		}
-//		userservice.delete(vo);
-//		session.invalidate();
-//		return "redirect:index.jsp";
-//	}
-	
 	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
-	public String delete(UserVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
-		
+	public String deletemember(UserVO vo, HttpSession session, RedirectAttributes rttr, @RequestParam("pwd") String pwd)
+			throws Exception {
+		System.out.println("탈퇴시작");
 		UserVO ssvo = (UserVO) session.getAttribute("login_info");
 		String sspwd = ssvo.getPwd();
-		String newpwd = vo.getPwd();
-		if (sspwd.equals(newpwd)) {
-			userservice.delete(vo);
-			session.invalidate();
-			return "redirect:index.jsp";
-		}else {
+		System.out.println("sspwd : " + sspwd);
+		System.out.println("pwd : " + pwd);
+		if (!(sspwd.equals(pwd)) || pwd == null) {
 			rttr.addFlashAttribute("msg", false);
 			return null;
 		}
-		
+		userservice.delete(vo);
+		session.invalidate();
+		return "redirect:index.jsp";
 	}
+	
+//	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
+//	public String delete(UserVO vo, HttpSession session, RedirectAttributes rttr) throws Exception {
+//		System.out.println("탈퇴시도");
+//		UserVO ssvo = (UserVO) session.getAttribute("login_info");
+//		String sspwd = ssvo.getPwd();
+//		String newpwd = vo.getPwd();
+//		System.out.println(vo.getPwd());
+//		if (sspwd.equals(newpwd)) {
+//			System.out.println("탈퇴성공");
+//			userservice.delete(vo);
+//			session.invalidate();
+//			return "redirect:index.jsp";
+//		}else {
+//			System.out.println("탈퇴실패");
+//			rttr.addFlashAttribute("msg", false);
+//			return "redirect:login.jsp";
+//		}
+//		
+//	}
 	
 
 

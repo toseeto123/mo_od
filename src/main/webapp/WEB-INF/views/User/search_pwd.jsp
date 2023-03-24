@@ -23,7 +23,10 @@ span.span {
   align-items: center;
   min-height: calc(100% - 3.5rem);
 }
-
+a{
+	font-size: 20px;
+	font-weight: bold;
+}
 </style>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -65,7 +68,7 @@ span.span {
 									<label class="col-3 col-form-label" for="id">아이디</label>
 									<div class="col-6">
 										<input type="text" class="form-control" id="id" name="id"
-											placeholder="아이디를 입력해주세요" required>
+											placeholder="아이디를 입력해주세요" required autofocus>
 									</div>
 									<input type="button" class="col-3" value="아이디 확인"
 										onClick="idValidateForm(); idCheck()">
