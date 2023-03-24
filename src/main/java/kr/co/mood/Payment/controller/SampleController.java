@@ -50,7 +50,7 @@ public class SampleController {
 	   
    @RequestMapping(value = "/User/kakaoPayCancel" )
    public void payCancel(Model model,@RequestParam("tid") String tid,@RequestParam("price") String price) {
-	   System.out.println(" Äµ½½ ·ÎÁ÷ µé¾î ¿ÔÁ®¿ë");
+	   System.out.println(" Äµï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
 
       model.addAttribute("info" , kakaopay.kakaoCancel(tid,price));
    }
