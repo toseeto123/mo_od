@@ -24,7 +24,8 @@
   
 <select id="selectAll" parameterType="kr.co.mood.module.ModuleVO" resultType="kr.co.mood.user.dao.UserVO">
    <![CDATA[
-      select * from moodjoin where id != 'admin'
+      select no, id, AES_DECRYPT(unhex(pwd), 'key') as pwd, name, age, gender, adr, email, phone, day
+      from moodjoin where id != 'admin'
       ]]>
       <if test="searchId != null">
       <![CDATA[and id like concat('%', #{searchId}, '%')]]>
@@ -39,21 +40,24 @@
    
    	<select id="selectMemberNo" parameterType="kr.co.mood.user.dao.UserVO" resultType="kr.co.mood.user.dao.UserVO">
    <![CDATA[
-      select * from moodjoin where no = #{no}
+      select no, id, AES_DECRYPT(unhex(pwd), 'key') as pwd, name, age, gender, adr, email, phone, day
+      from moodjoin where no = #{no}
       ]]>
    </select>
    
 
 	 <insert id="insert" parameterType="kr.co.mood.user.dao.UserVO">
       <![CDATA[
-      INSERT INTO moodjoin VALUES(no, #{id}, #{pwd}, #{name}, #{age} , #{gender}, concat_ws('   ',#{adr} , #{adr2} , #{adr3}), #{email}, #{phone}, now())
+      INSERT INTO moodjoin VALUES(no, #{id}, hex(aes_encrypt(#{pwd},'key')), #{name}, #{age} , #{gender}, concat_ws('   ',#{adr} , #{adr2} , #{adr3}), #{email}, #{phone}, now())
       ]]>
    </insert>
 
    
    <select id="selectId" parameterType="kr.co.mood.user.dao.UserVO" resultType="kr.co.mood.user.dao.UserVO">
    <![CDATA[
-      select * from moodjoin where id=#{id} and pwd=#{pwd}
+      select no, id, AES_DECRYPT(unhex(pwd), 'key') as pwd, name, age, gender, adr, email, phone, day
+      from moodjoin where id=#{id} and pwd=hex(aes_encrypt(#{pwd},'key'))
+      
       ]]>
    </select>
    
@@ -81,20 +85,21 @@
     <update id ="update" parameterType="kr.co.mood.user.dao.UserVO">
     <![CDATA[
         update moodjoin
-        set adr= concat_ws('   ',#{adr} , #{adr2} , #{adr3}), email=#{email}, phone=#{phone}, pwd=#{pwd}
+        set adr= concat_ws('   ',#{adr} , #{adr2} , #{adr3}), email=#{email}, phone=#{phone}, pwd=hex(aes_encrypt(#{pwd},'key'))
         where id = #{id}
         ]]>
     </update>
     
     <update id="updatePwd" parameterType="kr.co.mood.user.dao.UserVO">
     	update moodjoin
-    	set pwd = #{pwd}
+    	set pwd = hex(aes_encrypt(#{pwd},'key'))
     	where id = #{id}
     </update>
     
     <select id="findKakao" parameterType="kr.co.mood.user.dao.UserVO" resultType="kr.co.mood.user.dao.UserVO">
     <![CDATA[
-		select * from moodjoin where name=#{nickname} and age=#{age_range} and email=#{email} and id=#{email}
+		select no, id, AES_DECRYPT(unhex(pwd), 'key') as pwd, name, age, gender, adr, email, phone, day
+		from moodjoin where name=#{nickname} and age=#{age_range} and email=#{email} and id=#{email}
 		]]>
 	</select>
 
@@ -106,7 +111,8 @@
 	</insert>
     
      <select id="findNaver" parameterType="kr.co.mood.user.dao.UserVO" resultType="kr.co.mood.user.dao.UserVO">
-		select * from moodjoin where name=#{name} and email=#{email} and gender=#{gender} and phone=#{phone}
+		select no, id, AES_DECRYPT(unhex(pwd), 'key') as pwd, name, age, gender, adr, email, phone, day
+		from moodjoin where name=#{name} and email=#{email} and gender=#{gender} and phone=#{phone}
 	</select>
     
     <insert id="NaverInsert" parameterType="kr.co.mood.user.dao.UserVO">
