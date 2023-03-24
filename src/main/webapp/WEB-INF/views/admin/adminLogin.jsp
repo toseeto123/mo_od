@@ -59,6 +59,11 @@
 	input[type=text], input[type=password]{
 		font-size: 23px;
 	}
+	footer{
+   width: 100%;
+   position: absolute;
+   bottom: 0;
+}
 </style>
 
 

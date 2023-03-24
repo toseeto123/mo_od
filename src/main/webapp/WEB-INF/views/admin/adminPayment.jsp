@@ -12,8 +12,9 @@ a:hover{
 	cursor:pointer;
 }
 footer{
-	margin-top: 200px;
-	width: 100%;
+   width: 100%;
+   position: absolute;
+   bottom: 0;
 }
 </style>
 </head>
