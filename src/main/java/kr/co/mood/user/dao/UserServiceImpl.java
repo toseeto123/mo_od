@@ -23,7 +23,7 @@ public class UserServiceImpl implements UserService{
 		return userdao.selectMemberNo(no);
 	}
 	
-	public UserVO findEmail(String email) {
+	public List<UserVO> findEmail(String email) {
 		return userdao.findEmail(email);
 	}
 	
