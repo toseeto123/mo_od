@@ -10,6 +10,7 @@
 <title>아이디 찾기</title>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
+
 <style type="text/css">
 input[type=button] {
 	background: #c8936ed4;
@@ -20,9 +21,10 @@ input[type=button] {
 span.span{
 	color: #c8936ed4;
 }
-a{
+.link {
 	font-size: 20px;
-	font-weight: bold;
+	width:150px;
+	height:auto;
 }
 </style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
@@ -98,12 +100,12 @@ a{
 								</div>
 								</div>
 								<div class="card-body">
-								<div class="form-group row">
-								<div class="col-6">
-									<a href="/searchPwd">비밀번호 찾기</a>
+								<div class="form-group row" >
+								<div class="col-6" style="padding-left:70px">
+								<input type="button" class="link" value="비밀번호 찾기" onclick="location.href='/searchPwd'">
 								</div>
-								<div class="col-6 text-right">
-									<a href="/login.do">돌아가기</a>
+								<div class="col-6 text-right" style="padding-right:70px">
+								<input type="button" class="link" value="돌아가기" onclick="location.href='/login.do'">
 								</div>
 								</div>
 							</div>
