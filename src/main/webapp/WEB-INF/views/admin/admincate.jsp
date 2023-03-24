@@ -48,6 +48,7 @@ footer{
 </style>
 </head>
 <body>
+
 	<jsp:include page="../../common/adminHeader.jsp" />
 
 	<!-- ======= Hero Section ======= -->
