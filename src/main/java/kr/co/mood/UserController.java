@@ -100,6 +100,7 @@ public class UserController {
 	       UserVO naverUserInfo =  ms.getNaverUserInfo(access_Token, session);
 	       session.setAttribute("login_info", naverUserInfo);
 	       session.setAttribute("access_token", access_Token);
+	       String path = (String) session.getAttribute("path");
 	       
 	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080";
 
@@ -110,6 +111,7 @@ public class UserController {
 	       out.println("window.close();");
 	       out.println("</script>");
 	       out.flush();
+	       
 	   }
 	
 	@RequestMapping(value = "/join.do" , method = RequestMethod.GET)
@@ -124,6 +126,7 @@ public class UserController {
    
    @RequestMapping(value = "/login.do" , method = RequestMethod.GET)
    public String login(ModelMap model) {
+	   System.out.println("get방식");
 	   String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
        model.addAttribute( "naverUrl", naverUrl ); 
       
@@ -131,6 +134,7 @@ public class UserController {
       }
    @RequestMapping(value = "/login.do", method = RequestMethod.POST)
    public String loginAction(@ModelAttribute("cvo") CateVO cvo,UserVO vo, HttpSession session, HttpServletRequest request, RedirectAttributes ra,Model model) {
+	   System.out.println("post방식");
        UserVO vo1 = userservice.selectId(vo);
        
        if (vo1 == null || vo1.getId().equals("admin")) {
@@ -214,11 +218,16 @@ public class UserController {
     public String mypage(UserVO vo,HttpSession session , Model model) {
 		UserVO uvo = (UserVO) session.getAttribute("login_info");
 		String str = uvo.getAdr();
+		if(str==null) {
+			session.setAttribute("myinfo_adr1", "  ");
+			session.setAttribute("myinfo_adr2", "  ");
+			session.setAttribute("myinfo_adr3", "  ");
+		}else {
 		String[] array = str.split("   ");
 		session.setAttribute("myinfo_adr1", array[0]);
 		session.setAttribute("myinfo_adr2", array[1]);
 		session.setAttribute("myinfo_adr3", array[2]);
-
+		}
 		int userid = uvo.getNo();
 		model.addAttribute("map", cateService.selectCateList(userid));
 		model.addAttribute("orders", kakaoService.selectlist(userid));
