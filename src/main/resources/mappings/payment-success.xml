@@ -5,20 +5,18 @@
 <mapper namespace="KakaoPayApprovalDAO">
 
 	<insert id="insert">
-		INSERT INTO payment (payment_method,tid,orderid, userid,
-		amount, approved_at)
+		INSERT INTO payment (payment_method,tid,orderid,userid,amount)
 		SELECT
 		#{payment_method_type},
 		#{tid},
 		op.orderId,
 		mo.userNo,
-		#{amount.total},
-		#{approved_at}
+		#{amount.total}
 		FROM orderProduct op
 		INNER JOIN
 		moodorder mo ON mo.orderid = op.orderId
 		WHERE op.orderId = (SELECT
-		MAX(orderId) FROM orderProduct);
+		MAX(orderId) FROM orderProduct)
 	</insert>
 
 	<delete id="catedelete">
@@ -26,8 +24,12 @@
 	</delete>
 	
 	<delete id="cancelDelete">
-		delete from orderproduct where orderId = #{orderId} 
+		delete from orderproduct where orderId = #{orderId}
 	</delete>
+	<update id="successUpdate">
+		update payment set Success = '결제 취소',
+		CancelTime = now() where orderid = #{orderId};
+	</update>
 
 	<update id="paycountupdate">
 		UPDATE product p
@@ -43,7 +45,7 @@
 		SELECT o.orderid, p.pro_name, p.pro_img1,
 		p.pro_number, p.pro_price,
 		p.pro_maindesc, p.pro_maindesctitle, pa.amount, pa.payment_id,
-		pa.payment_method, pa.approved_at ,op.count , pa.tid
+		pa.payment_method, pa.SuccessTime ,op.count , pa.tid
 		FROM
 		moodorder o,
 		orderproduct op,

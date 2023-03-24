@@ -32,4 +32,7 @@ public class KakaoPayApprovalDAO {
 	public void paycancelDelete(int orderId) {
 		sql.delete("KakaoPayApprovalDAO.cancelDelete" , orderId);
 	}
+	public void paySuccessStatusUpdate(int orderId) {
+		sql.update("KakaoPayApprovalDAO.successUpdate" , orderId);
+	}
 }

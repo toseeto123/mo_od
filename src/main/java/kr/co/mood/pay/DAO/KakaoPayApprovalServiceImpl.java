@@ -33,5 +33,9 @@ public class KakaoPayApprovalServiceImpl implements KakaoPayApprovalService{
 	public void paycancelDelete(int orderId) {
 		kdao.paycancelDelete(orderId);
 	}
+
+	public void paySuccessStatusUpdate(int orderId) {
+		kdao.paySuccessStatusUpdate(orderId);
+	}
 	
 }
