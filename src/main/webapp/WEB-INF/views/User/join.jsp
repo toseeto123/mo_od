@@ -62,7 +62,7 @@
                     </h3>
 
                     <div class="box string_id">
-                        <input type="text" id="id" name="id" class="string" maxlength="20" autofocus>
+                        <input type="text" id="id" name="id" class="string" minlength="6"  autofocus>
                     </div>
                     <button class="idChk" type="button" name="idChk" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
                 </div>
@@ -71,7 +71,7 @@
                 <div>
                     <h3 class="join_title"><label for="pwd">비밀번호</label></h3>
                     <span class="box int_pass">
-                        <input type="password" id="pwd" name="pwd" class="string" maxlength="20">
+                        <input type="password" id="pwd" name="pwd" class="string" pattern="^[A-Za-z0-9]{10,20}$" maxlength="20">
                     </span>
                 </div>
 
@@ -79,7 +79,7 @@
                 <div>
                     <h3 class="join_title"><label for="pwd2">비밀번호 재확인</label></h3>
                     <span class="box int_string_check" >
-                        <input type="password" id="pwd2" name="pwd2" class="string" maxlength="20" onkeyup="passConfirm()">
+                        <input type="password" id="pwd2" name="pwd2" class="string" maxlength="20" pattern="^[A-Za-z0-9]{10,20}$" onkeyup="passConfirm()">
                     </span>
                     <span id="confirmMsg"></span>
                 </div>
@@ -122,7 +122,7 @@
                 
                 <div>
                     <h3 class="join_title"><label for="email">본인확인 이메일</label></h3>
-                    <div >
+                    <div>
                         <input type="text" id="email" name="email" class="email box string_email" maxlength="100" placeholder="선택입력">
                     </div>
                      <span class="final_mail_ck">이메일을 입력해주세요.</span>
@@ -228,6 +228,7 @@
           checkResult.attr("class", "incorrect");
           mailnumCheck = false;
        }   
+       
        
     });
     

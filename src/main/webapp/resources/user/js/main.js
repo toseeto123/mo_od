@@ -1,11 +1,14 @@
-
-
 function JoinCheck(){
            if (document.join.id.value == "") {
               alert("아이디를 써주세요");
               join.id.focus();
               return false;
-           }   
+           }
+           if (document.join.id.value.length < 6) {
+            alert("아이디는 최소 6글자 이상이어야 합니다.");
+             join.id.focus();
+             return false;
+            }   
            if($("#idChk").val() == "N"){
                join.id.focus();
                alert("아이디 중복 확인이 필요합니다");
@@ -22,8 +25,12 @@ function JoinCheck(){
               join.pwd2.value="";
               join.pwd.focus();
               return false;
-             
            }
+           if (!document.join.pwd.value.match(/^[A-Za-z0-9]{10,20}$/)) {
+            alert("암호는 영문 대소문자와 숫자의 조합으로 10~20자리 이내로 입력해주세요.");
+            join.pwd.focus();
+            return false;
+          }
            if (document.join.name.value == "") {
               alert("이름을 써주세요");
               join.name.focus();
@@ -71,21 +78,25 @@ function JoinCheck(){
 
 
 function fn_idChk(){
-         $.ajax({
-            url : "/idChk",
-            type : "post",
-            dataType : "json",
-            data : {"id" : $("#id").val()},
-            success : function(data){
-               if(data == 1){
-                  alert("중복된 아이디입니다.");
-               }else if(data == 0){
-                  $("#idChk").attr("value", "Y");
-                  alert("사용가능한 아이디입니다.");
-               }
+    if($("#id").val().length < 6) {
+        alert("아이디는 최소 6글자 이상이어야 합니다.");
+        return false;
+    }
+    $.ajax({
+        url : "/idChk",
+        type : "post",
+        dataType : "json",
+        data : {"id" : $("#id").val()},
+        success : function(data){
+            if(data == 1){
+                alert("중복된 아이디입니다.");
+            } else if(data == 0){
+                $("#idChk").attr("value", "Y");
+                alert("사용가능한 아이디입니다.");
             }
-         })
-      }
+        }
+    });
+}
           
       
       function UpdateCheck(){
