@@ -40,7 +40,6 @@ public class ProDAO {
 	
 
 	public ProVO selectProOne(int pro_number) {
-
 		return session.selectOne("ProDAO.selectProOne", pro_number);
 	}
 	
