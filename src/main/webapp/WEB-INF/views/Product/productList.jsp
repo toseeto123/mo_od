@@ -64,25 +64,25 @@
                
                <ol>
                   <c:if test="${list.pro_categoryserial  eq 'A0' }">
-                  <a href="/A0categoryList" style="margin-top: 20px;">가구</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/AcategoryList" style="margin-top: 20px;">가구</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'A1' }">
-                  <a href="/A1categoryList" style="margin-top: 20px;">가구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/AcategoryList" style="margin-top: 20px;">가구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'A2' }">
-                  <a href="/A3categoryList" style="margin-top: 20px;">가구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/AcategoryList" style="margin-top: 20px;">가구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B0' }">
-                  <a href="/B0categoryList" style="margin-top: 20px;">조명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/BcategoryList" style="margin-top: 20px;">조명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B1' }">
-                  <a href="/B1categoryList" style="margin-top: 20px;">조명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/BcategoryList" style="margin-top: 20px;">조명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C0' }">
-                  <a href="/C0categoryList" style="margin-top: 20px;">수납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/CcategoryList" style="margin-top: 20px;">수납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C1' }">
-                  <a href="/C1categoryList" style="margin-top: 20px;">수납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/CcategoryList" style="margin-top: 20px;">수납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if> 
                   
                   <c:if test="${list.pro_categoryserial  eq 'A0' }">
@@ -127,14 +127,14 @@
         <div class="row">
 <c:forEach var="list" items="${list}">
           <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="member" style="background-color: white; cursor: pointer;" onclick="location.href='/products/${list.pro_number}'">  
+            <div class="member" style="background-color: white; cursor: pointer;" onclick="location.href='/products/${list.pro_number}/${list.pro_name}'">  
  				<img src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" alt="${list.pro_name}" title="${list.pro_maindesc}" class="img-fluid" style="width: 306px; height: 306px;">
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>${list.pro_name}</h4>
                   <span><fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></span>
                   <div class="social">
-                    <a href="/products/${list.pro_number}"> ${list.pro_maindesctitle} </a>
+                    <a href="/products/${list.pro_number}/${list.pro_name}"> ${list.pro_maindesctitle} </a>
                   </div>
                 </div>
               </div>

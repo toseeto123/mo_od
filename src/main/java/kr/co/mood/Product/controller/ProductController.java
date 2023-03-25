@@ -1,9 +1,12 @@
 package kr.co.mood.Product.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +20,6 @@ import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.Product.VO.ProVO;
 import kr.co.mood.module.ModuleCommon;
 import kr.co.mood.module.ModuleVO;
-import kr.co.mood.user.dao.UserVO;
 
 @Controller
 public class ProductController {
@@ -43,13 +45,47 @@ public class ProductController {
 	}
 
 
-	@RequestMapping(value = "/products/{pro_number}", method = RequestMethod.GET)
-	public String proDetails(@PathVariable("pro_number") int pro_number, ArrayList<ProVO> vo, Model model, HttpSession session) {
+	@RequestMapping(value = "/products/{pro_number}/{pro_name}", method = RequestMethod.GET)
+	public String proDetails(@PathVariable("pro_number") int pro_number,@PathVariable("pro_name") String pro_name, ArrayList<ProVO> vo, Model model, HttpSession session,HttpServletRequest request,HttpServletResponse response) {
 		model.addAttribute("list", ps.selectProOne(pro_number));
 		model.addAttribute("randomList", ps.selectProRandom(vo));
 		session.setAttribute("pro_number", ps.selectProOne(pro_number));
 		session.setAttribute("path", "/products/"+Integer.toString(pro_number));
 		String path = (String) session.getAttribute("path");
+		
+		// 최근본상품 세션에 저장
+		String sessionKey = "recentlyViewedProducts";
+		int proNumber = pro_number;
+		String proName = pro_name;
+
+		List<Map<String, Object>> productList = (List<Map<String, Object>>) session.getAttribute(sessionKey);
+		if (productList == null) {
+		    productList = new ArrayList<Map<String, Object>>();
+		}
+		if (productList.size() >= 7) { // 최근본상품이 5개 이상이면
+		    productList.remove(0); // 가장 오래된 상품 삭제
+		}
+		boolean isProductExist = false;
+		for (Map<String, Object> product : productList) {
+		    if (product.get("proNumber").equals(proNumber)) {
+		        isProductExist = true;
+		        break;
+		    }
+		}
+		if (!isProductExist) { // 이미 본 상품이 아니면
+		    Map<String, Object> product = new HashMap<String, Object>();
+		    product.put("proNumber", proNumber);
+		    product.put("proName", proName);
+		    productList.add(product); // 새로운 상품 추가
+		}
+		// 세션에 저장
+		session.setAttribute(sessionKey, productList);
+
+		System.out.println("세션에 저장된 최근 본 상품 목록: " + productList);
+
+
+		
+		
 		return "Product/productDetail";
 	}
 	
