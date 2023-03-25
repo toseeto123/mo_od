@@ -4,7 +4,20 @@
 
 <!DOCTYPE html>
 <html>
-
+<style>
+.hover:hover{
+background: #da8862;
+}
+.fonthover{
+color: gray;
+}
+.fonthover:hover{
+color:#da8862;
+}
+.imghover:hover {
+transform: scale(1.2);
+}
+</style>
 <head>
 <jsp:include page="/WEB-INF/common/header.jsp" />
 <section id="hero" style="height: 350px;">
@@ -71,10 +84,10 @@
 <!-- 		                </div> -->
 		<div class="social-icons">
 
-			<form id="login" action="/login.do" class="input-group" method="post">
-				<input type="text" name="id" class="input-field" placeholder="아이디"
-					required autofocus> <input type="password" name="pwd"
-					class="input-field" placeholder="비밀번호" required>
+			<form id="login" action="/login.do" class="input-group" method="post" style="margin-bottom: 15px;">
+				<input type="text" name="id" class="input-field" placeholder=" 아이디"
+					required autofocus style="border-radius: 3px;"> <input type="password" name="pwd"
+					class="input-field" placeholder=" 비밀번호" required style="border-radius: 3px;">
 
 
 				<c:if test="${ msg == false }">
@@ -86,21 +99,21 @@
 				<br>
 				<br>
 
-				<button class="submit" style="color: white;">로그인</button>
+				<button class="submit hover" style="color: white; border-radius: 2px; ">로그인</button>
 
 
 			</form>
 			<ul class="login_link_box">
 				<li class="login_li">
-				<a href="/searchId" class="" style="color: black;">아이디 찾기</a>  &nbsp;
+				<a href="/searchId" class="fonthover">아이디 찾기</a>  &nbsp;
 				</li>
 				
 				<li class="login_li">
-				<a href="/searchPwd" class="" style="color: black;">비밀번호 재설정</a> &nbsp;
+				<a href="/searchPwd" class="fonthover">비밀번호 재설정</a> &nbsp;
 				</li>
 				
 				<li class="login_li">
-				<a href="join.do" class="" style="color: black;">회원가입</a> &nbsp;
+				<a href="join.do" class="fonthover">회원가입</a> &nbsp;
 				</li>
 			
 			</ul>
@@ -112,7 +125,7 @@
 
 
 			<div class="social_login">
-				<p class="snsname" style="margin-bottom: 10px; margin-top: 38px;">간편로그인</p>
+				<p class="snsname" style="margin-bottom: 10px; margin-top: 38px; color:#c8936ed4; font-size: 20px; font-weight: 700">간편 로그인</p>
 				<br>
 			<ul class="social_logo" style="height: 150px; margin-left: -20px;">
 				<li class="box_list">
@@ -120,7 +133,7 @@
 				<a id="custom-login-btn" href="javascript:void(0);"
 					onclick="window.open('${naverUrl}','naverLogin','width=430,height=500,location=no,status=no,scrollbars=yes');">
 					<img style="width: 50px;" src="/resources/user/img/naver.png"
-					alt="naver">
+					alt="naver" class="imghover">
 					<span class="box_list_txt" >네이버</span>
 				</a>
 				
@@ -130,7 +143,7 @@
 				<a 
 					href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/member/kakaoLogin&response_type=code">
 					<img style="width: 50px;" src="/resources/user/img/kakao.png"
-					alt="kakao">
+					alt="kakao" class="imghover">
 					<span class="box_list_txt" >카카오</span>
 				</a>
 				</li>
@@ -140,14 +153,14 @@
 					style="background: transparent; border-color: transparent;"
 					onclick="googleHandleAuthClick()">
 					<img style="width: 50px;" src="/resources/user/img/google.png"
-						alt="google">
+						alt="google" class="imghover">
 						<span class="box_list_txt" style="color:  #c8936ed4;">구글</span>
 				</button>
 				</li>
 				
 				
 			</ul>
-				
+				<br>
 
 			</div>
 		</div>

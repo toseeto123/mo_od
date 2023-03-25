@@ -120,6 +120,9 @@ margin: 0;
 margin-top: 0;
 
 }
+.btnhover:hover{
+background: #da8862;
+}
 
 </style>
 <body>
@@ -276,8 +279,8 @@ margin-top: 0;
                    
 					<input type="hidden" value="${login_info.adr }" name="adr">
                    
-                     <input type="button" value="장바구니" class="cateBtn" id="cateinsert" style="font-size: 20px; font-weight: bold; color : white;"><br><br>
-                     <input type="button" value="바로결제하기" class="btn_buy" style="font-size: 20px; font-weight: bold; color : white;">
+                     <input type="button" value="장바구니" class="cateBtn btnhover" id="cateinsert" style="font-size: 20px; font-weight: bold; color : white;"><br><br>
+                     <input type="button" value="바로결제하기" class="btn_buy btnhover" style="font-size: 20px; font-weight: bold; color : white;">
                <% 
                session.setAttribute("catepath", "/cateinsert.do");
                String catepath = (String)session.getAttribute("catepath");
