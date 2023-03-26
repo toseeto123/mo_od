@@ -11,7 +11,7 @@
    content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.101.0">
 <title>결제완료</title>
-<jsp:include page="../../common/header.jsp" />
+<jsp:include page="/WEB-INF/common/header.jsp" />
 <style>
 
 .bd-placeholder-img {
@@ -255,7 +255,7 @@ body {
              </c:forEach>
                   </div>
                <hr>
-               <label><a href="/mo_od"><button class="returnbtn"> mo_od의 또 다른 상품 구경하기</button></a></label> <br><br>
+               <label><a href="/"><button class="returnbtn"> mo_od의 또 다른 상품 구경하기</button></a></label> <br><br>
                
  
  			
