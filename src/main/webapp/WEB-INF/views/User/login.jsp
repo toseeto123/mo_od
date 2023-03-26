@@ -153,12 +153,12 @@
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
+<!-- <script type="text/javascript">
 window.history.forward(); 
 function noBack(){
 	window.history.forward();
 } 
-</script>
-<jsp:include page="/WEB-INF/common/footer.jsp" />
+</script> -->
+<footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
 </body>
 </html>
