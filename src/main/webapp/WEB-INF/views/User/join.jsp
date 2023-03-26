@@ -3,7 +3,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-
+<style>
+.btnhover:hover{
+background: #da8862;
+}
+.bt_submit:hover{
+background: #da8862;
+}
+</style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
 <section id="hero" style="height : 350px;">
       <div class="hero-container">
@@ -20,7 +27,7 @@
                      <div class="carousel-content">
                         <h2 class="animate__animated animate__fadeInDown">회원가입
                            </h2>
-                        <p class="animate__animated animate__fadeInUp">회원가입 페이지입니다</p>
+                        <p class="animate__animated animate__fadeInUp">　</p>
 
                      </div>
                   </div>
@@ -31,7 +38,7 @@
    </section>
 
 <meta charset="UTF-8">
-<title>Insert title here</title>
+
 
 <script type="text/javascript" src="/resources/user/js/main.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
@@ -64,7 +71,7 @@
                     <div class="box string_id">
                         <input type="text" id="id" name="id" class="string" minlength="6"  autofocus>
                     </div>
-                    <button class="idChk" type="button" name="idChk" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
+                    <button class="idChk btnhover" type="button" name="idChk" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
                 </div>
 
                 
@@ -86,7 +93,7 @@
 
                 
                 <div>
-                    <h3 class="join_title"><label for="name">이름</label></h3>
+                    <h3 class="join_title"><label for="name">이 름</label></h3>
                     <span class="box string_name">
                         <input type="text" id="name" name="name" class="string" maxlength="20">
                     </span>
@@ -95,7 +102,7 @@
 
                
                 <div>
-                    <h3 class="join_title">나이</h3>
+                    <h3 class="join_title">나 이</h3>
                     <div id="bir_wrap">
                         <div>
                                <input type="radio" value="10-19" class="age" name="age" id="age" checked/><label for="age">10대</label> &nbsp; &nbsp; &nbsp;
@@ -109,11 +116,11 @@
 
              
                 <div>
-                    <h3 class="join_title"><label for="gender">성별</label></h3>
+                    <h3 class="join_title"><label for="gender">성 별</label></h3>
                     <span class="box gender_code">
                         <select id="gender" name="gender" class="sel" aria-label="성별">
-                            <option value="M">남자</option>
-                            <option value="F">여자</option>
+                            <option value="M">남 자</option>
+                            <option value="F">여 자</option>
                         </select>                            
                     </span>
                     
@@ -131,7 +138,7 @@
                <div class="mail_check_input_box" id="mail_check_input_box_false">
                   <input class="mail_check_input" id="email1" disabled="disabled" required>
                </div>
-               <button class="mail_check_button">인증번호 전송</button>
+               <button class="mail_check_button btnhover">인증번호 전송</button>
                <div class="clearfix"></div>
                <span id="mail_check_input_box_warn" name="mail_check_input_box_warn"></span>
             </div>
@@ -151,7 +158,7 @@
                 <div>
                    <h3 class="join_title"><label for="adr">우편번호</label></h3>
                    <input type="text" class="address_input_1" name=adr id="adr" placeholder="우편번호" required>
-                    <input type="button" class="adrchk" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+                    <input type="button" class="adrchk btnhover" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
                     <input type="text" class="address_input_2" name="adr2" id="adr2" placeholder="주소" required><br>
                     <input type="text" class="address_input_3" name="adr3" id="adr3" placeholder="상세주소" required>
                 </div>
@@ -160,7 +167,7 @@
                 
                 <div class="btn_area">
                     <input type="submit" value="가입하기" id="btnJoin" class="join_now bt_submit mainBgColor" onclick="return JoinCheck()">
-                    <input type="reset" value="취소" id="btnReset" class="join_now bt_submit mainBgColor" >
+                    <input type="reset" value="취소" id="btnReset" class="join_now bt_submit mainBgColor">
                     <input type="button" value="뒤로가기" id="btnBack" class="join_now bt_submit mainBgColor" onclick="location.href='index.jsp'">
                 </div>
 
