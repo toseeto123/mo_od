@@ -7,7 +7,7 @@
 <html lang="en">
  <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-<jsp:include page="../../WEB-INF/common/header.jsp" />
+<jsp:include page="/WEB-INF/common/header.jsp" />
 <style>
 .animate__fadeInDown{
  font-size:30px;
@@ -230,5 +230,6 @@
     </section>
 
   </main><!-- End #main -->
-	
+</body>
 	<jsp:include page="../../WEB-INF/common/footer.jsp" />
+</html>

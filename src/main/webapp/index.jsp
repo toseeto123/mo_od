@@ -8,10 +8,10 @@
 
 
 <body>
-<%
-	response.sendRedirect("/mo_od");
-%>
 
+ <%
+  request.getRequestDispatcher("/home").forward(request,response);
+ %>
 
 </body>
 </html>

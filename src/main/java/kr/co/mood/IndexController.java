@@ -22,10 +22,9 @@ public class IndexController {
 	ProductService ps;
 	
 	
-	@RequestMapping(value = "/mo_od",method = RequestMethod.GET)
+	@RequestMapping(value = "/home", method = RequestMethod.GET)
 	public String indexPage(Model model, ArrayList<ProVO> vo) {
 
-		
 		List<ProVO> Alist = ps.AselectProListByPayCount(vo);
 		List<ProVO> Blist = ps.BselectProListByPayCount(vo);
 		List<ProVO> Clist = ps.CselectProListByPayCount(vo);
@@ -45,10 +44,9 @@ public class IndexController {
 		return "homePage";
 	}
 	
-	@RequestMapping(value = "/mo_od",method = RequestMethod.POST)
+	@RequestMapping(value = "/home",method = RequestMethod.POST)
 	public String viewProPage(Model model, ArrayList<ProVO> vo,HttpServletRequest request) {
 
-		
 		List<ProVO> Alist = ps.AselectProListByPayCount(vo);
 		List<ProVO> Blist = ps.BselectProListByPayCount(vo);
 		List<ProVO> Clist = ps.CselectProListByPayCount(vo);
