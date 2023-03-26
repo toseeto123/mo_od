@@ -22,7 +22,7 @@ public class IndexController {
 	ProductService ps;
 	
 	
-	@RequestMapping(value = "/mo_od",method = RequestMethod.GET)
+	@RequestMapping(value = "/",method = RequestMethod.GET)
 	public String indexPage(Model model, ArrayList<ProVO> vo) {
 
 		
@@ -45,7 +45,7 @@ public class IndexController {
 		return "homePage";
 	}
 	
-	@RequestMapping(value = "/mo_od",method = RequestMethod.POST)
+	@RequestMapping(value = "/",method = RequestMethod.POST)
 	public String viewProPage(Model model, ArrayList<ProVO> vo,HttpServletRequest request) {
 
 		

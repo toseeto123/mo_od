@@ -60,7 +60,7 @@ li {
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-       <h1 class="logo" style="font-family:'궁서'; font-size: 40px;"><a href="/index.jsp">묻:<b class="logo2" style="font-family:'굴림'; font-size: 40px;">mo_od</b></a></h1>
+       <h1 class="logo" style="font-family:'궁서'; font-size: 40px;"><a href="/">묻:<b class="logo2" style="font-family:'굴림'; font-size: 40px;">mo_od</b></a></h1>
  
       <nav id="navbar" class="navbar">
         <ul>
