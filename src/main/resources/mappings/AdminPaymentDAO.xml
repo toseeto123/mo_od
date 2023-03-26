@@ -48,18 +48,18 @@
     <select id="getCategoryChart4" resultType="kr.co.mood.Payment.VO.AdminChartVO">
 		<![CDATA[
 		select member.gender as gender,
-			orderproduct.count as 'productCount',
+			orderProduct.count as 'productCount',
 			product.pro_categoryserial as 'categorySerial',
 			member.age as 'age'
-		from orderproduct
+		from orderProduct
 		inner join moodorder
-			on moodorder.orderid = orderproduct.orderid
+			on moodorder.orderid = orderProduct.orderid
 		inner join moodjoin as member
 			on moodorder.userno = member.no
 		inner join product
-			on product.pro_number = orderproduct.pro_number
+			on product.pro_number = orderProduct.pro_number
 		inner join payment
-			on payment.orderid = orderproduct.orderid
+			on payment.orderid = orderProduct.orderid
 		where payment.Success = '결제 완료'
 			and payment.SuccessTime like concat(#{year}, '%')
 		order by member.age desc 
@@ -124,14 +124,14 @@
     </select>
     
     <select id="adminPaymentList" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
-    	select orderproduct.orderid as'orderNo',
-			(orderproduct.price/orderproduct.count) as 'price',
-			orderproduct.count as 'productCount',
+    	select orderProduct.orderid as'orderNo',
+			(orderProduct.price/orderProduct.count) as 'price',
+			orderProduct.count as 'productCount',
 			product.pro_serialnumber as 'productNo',
 			product.pro_name as 'productName'
-		from orderproduct
+		from orderProduct
 		inner join product
-			on product.pro_number = orderproduct.pro_number
+			on product.pro_number = orderProduct.pro_number
 		order by orderNo desc
     </select>
     

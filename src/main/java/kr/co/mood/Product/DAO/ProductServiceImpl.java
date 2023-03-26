@@ -44,6 +44,7 @@ public class ProductServiceImpl implements ProductService{
 	
 	@Override
 	public ProVO selectProOne(int pro_number){
+
 		return prodao.selectProOne(pro_number);
 	}
 	

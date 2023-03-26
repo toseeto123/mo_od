@@ -50,23 +50,18 @@ li {
    margin: 20px;
    margin-bottom: 20px;
 }
+
 </style>
 </head>
 
 <body>
-<script>
-  (function(){var w=window;if(w.ChannelIO){return w.console.error("ChannelIO script included twice.")}var ch=function(){ch.c(arguments)};ch.q=[];ch.c=function(args){ch.q.push(args)};w.ChannelIO=ch;function l(){if(w.ChannelIOInitialized){return}w.ChannelIOInitialized=true;var s=document.createElement("script");s.type="text/javascript";s.async=true;s.src="https://cdn.channel.io/plugin/ch-plugin-web.js";var x=document.getElementsByTagName("script")[0];if(x.parentNode){x.parentNode.insertBefore(s,x)}}if(document.readyState==="complete"){l()}else{w.addEventListener("DOMContentLoaded",l);w.addEventListener("load",l)}})();
 
-  ChannelIO('boot', {
-    "pluginKey": "efdd564f-7f90-4014-9acf-5cdd2de2f595"
-  });
-</script>
 
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-       <h1 class="logo" style="font-family:'궁서'; font-size: 40px;"><a href="/index.jsp">묻:<b class="logo2" style="font-family:'굴림'; font-size: 40px;">mo_od</b></a></h1>
+       <h1 class="logo" style="font-family:'궁서'; font-size: 40px;"><a href="/">묻:<b class="logo2" style="font-family:'굴림'; font-size: 40px;">mo_od</b></a></h1>
  
       <nav id="navbar" class="navbar">
         <ul>
@@ -137,5 +132,5 @@ $(document).ready(function() {
     });
 });
 </script>
-
+<jsp:include page="../../WEB-INF/common/RecentlyViewProduct.jsp"/>
  

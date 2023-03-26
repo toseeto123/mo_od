@@ -146,7 +146,7 @@ public class UserController {
            String path = (String) session.getAttribute("path");
            
            if (path == null) {
-               return "redirect:/index.jsp";
+               return "redirect:/";
            } else if (path.contains("catelogin.do")) {
         	   session.setAttribute("path", request.getRequestURI()); 
                return "redirect:/cate.do";
@@ -211,7 +211,7 @@ public class UserController {
       session.getAttribute("login_info");
       session.invalidate();
       
-      return "redirect:index.jsp";
+      return "redirect:/";
    }
 
  	@RequestMapping(value = "/mypage.do" , method = RequestMethod.GET)

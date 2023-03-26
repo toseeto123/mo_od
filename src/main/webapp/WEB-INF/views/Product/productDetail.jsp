@@ -51,6 +51,7 @@
 pre{
     overflow: auto;
     white-space: pre-wrap; /* pre tag내에 word wrap */
+
 }
 .chk_option{
    cursor: pointer;
@@ -109,8 +110,18 @@ input[type="radio"]:checked:before {
   transform: translate(-50%, -50%) scale(1); /* 가짜 원 크기와 위치 변경 */
 }
 
-li {
+.portfolio-info li {
 font-size: 20px;
+margin: 0;
+
+
+}
+.portfolio-info li+li{
+margin-top: 0;
+
+}
+.btnhover:hover{
+background: #da8862;
 }
 
 </style>
@@ -127,25 +138,25 @@ font-size: 20px;
                
                <ol>
                   <c:if test="${list.pro_categoryserial  eq 'A0' }">
-                  <a href="/A0categoryList" style="margin-top: 20px;">가구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/AcategoryList" style="margin-top: 20px;">가 구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'A1' }">
-                  <a href="/A1categoryList" style="margin-top: 20px;">가구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/AcategoryList" style="margin-top: 20px;">가 구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'A2' }">
-                  <a href="/A3categoryList" style="margin-top: 20px;">가구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i><
+                  <a href="/AcategoryList" style="margin-top: 20px;">가 구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B0' }">
-                  <a href="/B0categoryList" style="margin-top: 20px;">조명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/BcategoryList" style="margin-top: 20px;">조 명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B1' }">
-                  <a href="/B1categoryList" style="margin-top: 20px;">조명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/BcategoryList" style="margin-top: 20px;">조 명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C0' }">
-                  <a href="/C0categoryList" style="margin-top: 20px;">수납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/CcategoryList" style="margin-top: 20px;">수 납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C1' }">
-                  <a href="/C1categoryList" style="margin-top: 20px;">수납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/CcategoryList" style="margin-top: 20px;">수 납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if> 
                   
                   <c:if test="${list.pro_categoryserial  eq 'A0' }">
@@ -155,7 +166,7 @@ font-size: 20px;
                   &nbsp;&nbsp;&nbsp;&nbsp;<a href="/A1categoryList" style="margin-top: 20px;">침대프레임</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'A2' }">
-                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/A2categoryList" style="margin-top: 20px;">소파</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/A2categoryList" style="margin-top: 20px;">소 파</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B0' }">
                   &nbsp;&nbsp;&nbsp;&nbsp;<a href="/B0categoryList" style="margin-top: 20px;">무드등</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
@@ -167,7 +178,7 @@ font-size: 20px;
                   &nbsp;&nbsp;&nbsp;&nbsp;<a href="/C0categoryList" style="margin-top: 20px;">옷장/행거</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C1' }">
-                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/C1categoryList" style="margin-top: 20px;">서랍</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/C1categoryList" style="margin-top: 20px;">서 랍</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if> 
                   
                   
@@ -229,10 +240,10 @@ font-size: 20px;
                   <div class="portfolio-info">
                      <h3>${list.pro_name}</h3>
                      <ul>
-                        <li><strong>특징 :　</strong>${list.pro_subdesc}</li>
+                        <li><strong>특　　징 :　</strong>${list.pro_subdesc}</li>
                         <li><strong>제품번호 :　</strong>${list.pro_serialnumber }</li>
-                        <li><strong>가 격 :　</strong><fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></li>   
-                        <li><strong>옵 션 :　</strong><li>
+                        <li><strong>가　　격 :　</strong><fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></li>   
+                        <li><strong>옵　　션 :　</strong><li>
                         <c:if test="${empty list.pro_option1}">
                         <li><label for="chk_option"><span class="chk_option">선택안함</span></label>
                         <input type="radio" value="선택안함" id="chk_option" name="radioOption" checked="checked"></li>
@@ -261,15 +272,15 @@ font-size: 20px;
                <input type="hidden" name="${cate_id }"/>
                   <div class="portfolio-description">
                      <h2>${list.pro_maindesctitle}</h2>
-                     <pre>${list.pro_maindesc }</pre>
+                     <pre style="font-size: 21px;">${list.pro_maindesc }</pre>
                     <input type="hidden" name="pro_price" value="${list.pro_price}">
                    <input type="hidden" name="pro_number" value="${list.pro_number}">
                    
                    
 					<input type="hidden" value="${login_info.adr }" name="adr">
                    
-                     <input type="button" value="장바구니" class="cateBtn" id="cateinsert" style="font-size: 20px; font-weight: bold; color : white;"><br><br>
-                     <input type="button" value="바로결제하기" class="btn_buy" style="font-size: 20px; font-weight: bold; color : white;">
+                     <input type="button" value="장바구니" class="cateBtn btnhover" id="cateinsert" style="font-size: 20px; font-weight: bold; color : white;"><br><br>
+                     <input type="button" value="바로결제하기" class="btn_buy btnhover" style="font-size: 20px; font-weight: bold; color : white;">
                <% 
                session.setAttribute("catepath", "/cateinsert.do");
                String catepath = (String)session.getAttribute("catepath");
@@ -316,7 +327,7 @@ font-size: 20px;
         <div class="row">
 <c:forEach var="randomList" items="${randomList}" begin="0" end="3">
           <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="member" style="cursor: pointer;" onclick="location.href='/products/${randomList.pro_number}'">
+            <div class="member" style="cursor: pointer;" onclick="location.href='/products/${randomList.pro_number}/${randomList.pro_name}'">
               <img src="${pageContext.request.contextPath}/resources/assets/img/product/${randomList.pro_img1}" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
@@ -324,7 +335,7 @@ font-size: 20px;
                   <span>${randomList.pro_maindesctitle}</span>
                   <span><fmt:formatNumber value="${randomList.pro_price}" type="currency" currencySymbol="₩" /></span>
                   <div class="social">
-                    <a href="/products/${randomList.pro_number}">상세보기</a>
+                    <a href="/products/${randomList.pro_number}/${randomList.pro_name}">상세보기</a>
                   </div>
                 </div>
               </div>

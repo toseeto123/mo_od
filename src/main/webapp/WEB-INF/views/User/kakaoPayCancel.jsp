@@ -197,7 +197,6 @@ body {
       <div class="order_wrap" style="position: relative;">
          <div class="order_tit">
             <ol>
-               <li><span class="btnspan">01</span>장바구니</li>
                <li><span class="btnspan">02</span>주문서작성/결제</li>
                <li><span class="btnspan">03</span>결제완료</li>
                <li class="page_on"><span class="btnspan btnspan_on" >04</span>결제취소</li>
@@ -264,22 +263,11 @@ body {
              </c:forEach>
                   </div>
                <hr>
-               <label><a href="/mo_od"><button class="returnbtn"> mo_od의 또 다른 상품 구경하기</button></a></label> <br><br>
-               
- 
- 			
+               <label><a href="/"><button class="returnbtn"> mo_od의 또 다른 상품 구경하기</button></a></label> <br><br>
  
             </div>
       </div>
    </div>
-<%-- 결제일시:     [[${info.approved_at}]]<br/>
-주문번호:    [[${info.partner_order_id}]]<br/>
-상품명:    [[${info.item_name}]]<br/>
-상품수량:    [[${info.quantity}]]<br/>
-결제금액:    [[${info.amount.total}]]<br/>
-결제방법:    [[${info.payment_method_type}]]<br/> --%>
-
-<%-- <h2>[[${info}]]</h2> --%>
 
 </body>
 <jsp:include page="/WEB-INF/common/footer.jsp" />
