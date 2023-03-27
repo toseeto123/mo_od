@@ -8,9 +8,13 @@
 <title>장바구니</title>
 
 <style>
+body{
+overflow-y: scroll;
+}
 section {
 	width: 1000px;
 	margin: 0 auto;
+	
 }
 dl, ul, ol, li {
 	list-style: none;
