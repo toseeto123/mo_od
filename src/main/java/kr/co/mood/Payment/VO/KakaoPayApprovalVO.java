@@ -17,14 +17,14 @@ public class KakaoPayApprovalVO {
     private String item_name, item_code, payload;
     private Integer quantity, tax_free_amount, vat_amount;
     private Timestamp created_at, approved_at;
-    private Date successTime;
+    private Timestamp successTime;
     
     
     
-	public Date getSuccessTime() {
+	public Timestamp getSuccessTime() {
 		return successTime;
 	}
-	public void setSuccessTime(Date successTime) {
+	public void setSuccessTime(Timestamp successTime) {
 		this.successTime = successTime;
 	}
 	//결제확인용값들

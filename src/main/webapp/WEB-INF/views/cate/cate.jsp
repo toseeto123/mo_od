@@ -3,17 +3,18 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<jsp:include page="../../common/header.jsp" />
 
 <meta charset="UTF-8">
 <title>장바구니</title>
+
 <style>
+body{
+overflow-y: scroll;
+}
 section {
 	width: 1000px;
 	margin: 0 auto;
+	
 }
 dl, ul, ol, li {
 	list-style: none;
@@ -46,7 +47,7 @@ dl, ul, ol, li {
 .order_wrap .order_tit {
 	overflow: hidden;
 	border-bottom: 2px solid #c8936ed4;
-	margin-bottom: 10px;
+
 }
 
 .order_wrap .order_tit ol {
@@ -172,6 +173,13 @@ li .btnspan_on {
 	font-weight: bold;
 	margin: 0 1px;
 }
+.delete_btn{
+float: right;
+margin-right: 50px;
+width: 40px;
+height: 40px;
+margin-bottom: 40px;
+}
 
 .plus_btn:hover, .minus_btn:hover, .delete_btn:hover {
 	background-color: #FFA500;
@@ -192,7 +200,9 @@ footer {
   left: 0;
   right: 0;
 } 
+
 </style>
+<jsp:include page="../../common/header.jsp" />
 <script type="text/javascript">
 
 window.onload = function() {
@@ -471,7 +481,7 @@ function deletecate(element) {
 
 </script>
 </head>
-<body style="font-size: 20px;">
+<body>
 	<form action="/products/cateorders" method="post">
 	<input type="hidden" value="${login_info.adr }" name="adr">
 		<section>
@@ -480,7 +490,7 @@ function deletecate(element) {
 				    <a class="nav-link active" href="/mypage.do" style="background: #c8936ed4; color:white; font-size: 16px;">회원 정보</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" href="/cate.do" style="background: #c8936ed4; color:white; font-size: 16px;">장바 구니</a>
+				    <a class="nav-link" href="/cate.do" style="background: #da8862; color:white; font-size: 16px;">장바 구니</a>
 				  </li>
 				  <li class="nav-item">
 				    <a class="nav-link" href="/products/payMypage" style="background: #c8936ed4; color:white; font-size: 16px;">결제 내역</a>
@@ -501,12 +511,12 @@ function deletecate(element) {
 				<c:when test="${empty map }"><h2 style="text-align: center; margin-top: 70px; margin-bottom: 70px;">장바구니에 담긴 상품이 없습니다.</h2></c:when>
 				<c:otherwise>
 				<c:forEach var="map" items="${map}">
-					<div class="deleteplz">
+					<div class="deleteplz" style="height: 225;">
 						<img src="resources/assets/img/product/${map.pro_img1 }"
 							class="img-fluid"
 							alt="${map.pro_name}"
 							title="${map.pro_maindesctitle}"
-							style="width: 160px; height: 160px; position: absolute; right: 150px;">
+							style="width: 180px; height: 180px; position: absolute; right: 150px;">
 						<p style="text-align: center; margin-top: 30px;">
 
 
