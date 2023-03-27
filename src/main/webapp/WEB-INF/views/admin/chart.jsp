@@ -26,6 +26,7 @@
   justify-content: center;
   align-items: center;
   height: 300px;
+  margin: 50px 0;
 }
 
 .chart1 {
