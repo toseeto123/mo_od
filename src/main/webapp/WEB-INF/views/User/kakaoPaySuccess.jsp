@@ -186,7 +186,7 @@ body {
                         <h2 class="animate__animated animate__fadeInDown">결제 완료</h2>
                         <p class="animate__animated animate__fadeInUp">"${login_info.name}"님 mo_od를 <br> 이용해주셔서 감사합니다.</p>
                         <div>
-                           <a href="/users/mypage" class="btn-get-started animate__animated animate__fadeInUp scrollto">결제 내역</a>
+                           <a href="/products/payMypage" class="btn-get-started animate__animated animate__fadeInUp scrollto">결제 내역</a>
                         </div>
                      </div>
                   </div>
