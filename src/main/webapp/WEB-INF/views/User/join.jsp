@@ -131,7 +131,7 @@ background: #da8862;
                     <h3 class="join_title"><label for="email">본인확인 이메일</label></h3>
                     <div>
                         <input type="text" id="email" name="email" class="email box string_email" maxlength="100" onkeyup="emailConfirm()" placeholder="ooo@ooo.com">
-                        <input type="hidden" class="myinfo_email" id="myinfo_email" name="email" value="${login_info.email}">
+                        <input type="hidden" class="myinfo_email" id="myinfo_email" name="myinfo_email" value="${login_info.email}">
                     </div>
                      <span class="final_mail_ck">이메일을 입력해주세요.</span>
                      <span id="conemail"></span>
@@ -143,8 +143,7 @@ background: #da8862;
                <button class="mail_check_button btnhover">인증번호 전송</button>
                <div class="clearfix"></div>
                <span id="mail_check_input_box_warn" name="mail_check_input_box_warn"></span>
-            </div>
-                    
+            </div>    
                 </div>
 
                

@@ -32,7 +32,9 @@ span.span {
 	height:auto;
 }
 footer {
-
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 }
 </style>
 <link rel="stylesheet"
