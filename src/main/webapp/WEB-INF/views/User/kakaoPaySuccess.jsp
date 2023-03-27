@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -246,7 +247,7 @@ body {
                      <label for="address">결제 금액 : </label> <strong>${info.amount.total}</strong>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="lastName">결제승인시간 : </label> <strong>${info.approved_at}</strong>
+                     <label for="lastName">결제승인시간 : </label> <strong><fmt:formatDate value="${info.approved_at}" pattern="yyyy-MM-dd HH:mm:ss"/></strong>
                   </div>
 				
                </div>

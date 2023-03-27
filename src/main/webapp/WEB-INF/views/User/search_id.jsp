@@ -12,6 +12,9 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
 <style type="text/css">
+body{
+	overflow-x: hidden;
+}
 input[type=button] {
 	background: #c8936ed4;
 	border: 1px solid #c8936ed4;

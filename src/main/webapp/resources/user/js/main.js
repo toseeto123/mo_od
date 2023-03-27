@@ -97,8 +97,8 @@ function fn_idChk(){
         }
     });
 }
-          
-      
+
+  
       function UpdateCheck(){
            if (document.mypage.pwd.value == ""){
               alert("암호를 반드시 입력해주세여");
@@ -177,6 +177,27 @@ function fn_idChk(){
          confirmMsg.innerHTML ="비밀번호 불일치";
       }
    }
+   
+   
+   
+    $.ajax({
+    url: '/check_email',
+    type: 'POST',
+    data: {email: email},
+    success: function(response) {
+      if (response.result === 'duplicate') {
+        conemail.style.color = wrongColor;
+        conemail.innerHTML = "중복된 이메일입니다.";
+      } else {
+        conemail.style.color = correctColor;
+        conemail.innerHTML = "사용 가능한 이메일입니다.";
+      }
+    },
+    error: function(xhr, status, error) {
+      console.log(error);
+    }
+  });
+}
    
    
    

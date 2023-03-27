@@ -24,6 +24,11 @@ public class UserDAO {
 	public List<UserVO> selectAll(ModuleVO vo) {//추가된 부분
 		return mybatis.selectList("UserDAO.selectAll", vo);
 	}
+	
+	public UserVO selectIdCheck(String id) {
+		return mybatis.selectOne("UserDAO.selectIdCheck", id);
+	}
+	
 	public UserVO selectMemberNo(int no) {
 		return mybatis.selectOne("UserDAO.selectMemberNo", no);
 	}
