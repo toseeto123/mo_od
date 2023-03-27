@@ -56,17 +56,14 @@ li {
 
       <nav id="navbar" class="navbar">
         <ul class="headerMain">
-          <li class="dropdown"><a href="#" ><b>상품관리</b></a>
-
-
-
+          <li class="dropdown"><a href="/admin/adminProList.do" ><b>상품관리</b></a>
+          
           		<ul>
-
                   <li><a href="/admin/insert.do"><b>상품등록</b></a></li>
-                  <li><a href="/admin/adminProList.do"><b>상품리스트/수정</b></a></li>
                 </ul>
 
           </li>
+
           <li class="dropdown"><a href="/admin/adminMemberList.do"><b>회원관리</b></a>
                 
           </li>
