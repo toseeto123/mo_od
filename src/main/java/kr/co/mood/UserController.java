@@ -92,6 +92,7 @@ public class UserController {
 	}
 
 	@RequestMapping("/naverLogin")
+
 	public void naverLogin(@RequestParam("code") String code, HttpSession session, HttpServletResponse response,
 			HttpServletRequest request) throws IOException {
 		String access_Token = ms.getNaverAccessToken(code, session);
@@ -252,6 +253,7 @@ public class UserController {
 		session.invalidate();
 
 		return "redirect:/";
+
 	}
 
 	@RequestMapping(value = "/mypage.do", method = RequestMethod.GET)
