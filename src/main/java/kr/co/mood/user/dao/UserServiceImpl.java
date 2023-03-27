@@ -31,6 +31,10 @@ public class UserServiceImpl implements UserService{
 		return userdao.selectAll(vo);
 	}
 	
+	public UserVO selectIdCheck(String id) {
+		return userdao.selectIdCheck(id);
+	}
+	
 	public void insert(UserVO vo) {
 		userdao.insert(vo);
 	}

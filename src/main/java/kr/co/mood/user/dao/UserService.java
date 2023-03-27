@@ -11,6 +11,8 @@ public interface UserService {
 	
 		public List<UserVO> selectAll(ModuleVO vo);//추가된 부분
 		
+		public UserVO selectIdCheck(String id); 
+		
 		public UserVO selectMemberNo(int no);
 		
 		public void insert(UserVO vo);

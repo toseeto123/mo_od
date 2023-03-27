@@ -25,6 +25,12 @@
       </if>
    </select>
    
+   <select id="selectIdCheck" resultType="kr.co.mood.user.dao.UserVO">
+   	select no, id, name, age, gender, adr, email, phone, day
+   	from moodjoin 
+   	where id = #{id} 
+   </select>
+   
    	<select id="selectMemberNo" parameterType="kr.co.mood.user.dao.UserVO" resultType="kr.co.mood.user.dao.UserVO">
    <![CDATA[
       select no, id, AES_DECRYPT(unhex(pwd), 'key') as pwd, name, age, gender, adr, email, phone, day
