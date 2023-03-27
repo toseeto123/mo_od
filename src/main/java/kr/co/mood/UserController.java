@@ -39,6 +39,7 @@ import kr.co.mood.user.dao.MemberService;
 import kr.co.mood.user.dao.UserService;
 import kr.co.mood.user.dao.UserVO;
 
+@RequestMapping("/users")
 @Controller
 @SessionAttributes("loginUser")
 public class UserController {
@@ -90,30 +91,6 @@ public class UserController {
 		return (String) session.getAttribute("path");
 	}
 
-	      ObjectMapper mapper = new ObjectMapper();
-	      JsonNode jsonParsing;
-	      jsonParsing = mapper.readTree(googleJsonData);
-	      int age = Integer.parseInt(jsonParsing.get("age").asText()) / 10;
-	      
-	      UserVO googleVO = new UserVO();
-	      googleVO.setEmail(jsonParsing.get("email").asText());
-	      googleVO.setId(jsonParsing.get("email").asText());
-	      googleVO.setName(jsonParsing.get("name").asText());
-	      googleVO.setAge((age * 10) + "~" + ((age * 10) + 9));
-	      
-	      int result = userservice.idChk(googleVO);
-	     
-	      if (result == 0) {
-	         userservice.googleInsert(googleVO);	       
-	         session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
-	      } else {	    	  
-	         session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
-	      }
-
-	      return (String) session.getAttribute("path");
-	   }
-	
-
 	@RequestMapping("/naverLogin")
 	 public void naverLogin(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request,Model model) throws IOException {
 	       String access_Token = ms.getNaverAccessToken(code, session);
@@ -124,7 +101,7 @@ public class UserController {
 	      
 	       String pathgo = "";
 	       if (path.contains("catelogin.do")) {
-	           pathgo = "cate.do";
+	           pathgo = "/users/bucket";
 	       } else if (path.contains("proCatelogin.do")) {
 	           CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
 	           int userid = naverUserInfo.getNo();
@@ -162,10 +139,14 @@ public class UserController {
 	       out.println("window.close();");
 	       out.println("</script>");
 	       out.flush();
-		
-	       
-	   }
-	
+	}
+	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	public String login(ModelMap model) {
+		String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
+		model.addAttribute("naverUrl", naverUrl);
+		return "User/login";
+	}
+
 	
 	@RequestMapping(value={"/kakaoLogin" ,"/member/*"}, method=RequestMethod.GET)
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpServletRequest request, Model model , HttpSession session) throws Exception {
@@ -178,7 +159,7 @@ public class UserController {
 	    } else {
 	        session.setAttribute("path", request.getRequestURI());
 	        if (path.contains("catelogin.do")) {
-	            return "redirect:/cate.do";
+	            return "redirect:/users/bucket";
 	        } else if (path.contains("proCatelogin.do")) {
 	            CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
 	            int userid = userInfo.getNo();
@@ -186,7 +167,7 @@ public class UserController {
 	            if (sessionCvo != null) {
 	                cateService.addcate(sessionCvo, userInfo, null);
 	            }
-	            return "redirect:/cate.do";
+	            return "redirect:/users/bucket";
 	        } else if(path.contains("payBeLogin.do")) {
 	            userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
 	            userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
@@ -206,27 +187,12 @@ public class UserController {
 	}
 
 
-	@RequestMapping(value = "/join.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/join", method = RequestMethod.GET)
 	public String join() {
 		return "User/join";
 	}
 
-	@RequestMapping(value = "/idchk", method = RequestMethod.POST)
-	public String idchk() {
-		return "User/join";
-	}
-
-	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
-	public String login(ModelMap model) {
-
-	//	String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
-		String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://3.39.221.200:8080/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
-
-		model.addAttribute("naverUrl", naverUrl);
-		return "User/login";
-	}
-
-	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginAction(@ModelAttribute("cvo") CateVO cvo, UserVO vo, HttpSession session,
 			HttpServletRequest request, RedirectAttributes ra, Model model) {
 		System.out.println("post방식");
@@ -235,7 +201,7 @@ public class UserController {
 		if (vo1 == null || vo1.getId().equals("admin")) {
 			session.setAttribute("login_info", null);
 			ra.addFlashAttribute("msg", false);
-			return "redirect:/login.do";
+			return "redirect:/users/login";
 		} else {
 			session.setAttribute("login_info", vo1);
 			String path = (String) session.getAttribute("path");
@@ -244,7 +210,7 @@ public class UserController {
 				return "redirect:/";
 			} else if (path.contains("catelogin.do")) {
 				session.setAttribute("path", request.getRequestURI());
-				return "redirect:/cate.do";
+				return "redirect:/users/bucket";
 			} else if (path.contains("proCatelogin.do")) {
 				session.setAttribute("path", request.getRequestURI());
 				CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
@@ -253,7 +219,7 @@ public class UserController {
 				if (sessionCvo != null) {
 					cateService.addcate(sessionCvo, vo1, null);
 				}
-				return "redirect:/cate.do";
+				return "redirect:/users/bucket";
 			} else if (path.contains("payBeLogin.do")) {
 				session.setAttribute("path", request.getRequestURI());
 
@@ -277,12 +243,18 @@ public class UserController {
 			}
 		}
 	}
+	@ResponseBody
+	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
+	public int idChk(UserVO vo) throws Exception {
+		int result = userservice.idChk(vo);
+		return result;
+	}
 
 	@RequestMapping(value = "/catelogin.do", method = RequestMethod.GET)
 	public String catelogin(HttpSession session, HttpServletRequest request) {
 		session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
 
-		return "redirect:/login.do";
+		return "redirect:/users/login";
 	}
 
 	@RequestMapping(value = "/proCatelogin.do", method = RequestMethod.GET)
@@ -291,7 +263,7 @@ public class UserController {
 		session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
 
 		session.setAttribute("cvo", cvo); // CateVO 媛앹껜瑜� �꽭�뀡�뿉 ���옣
-		return "redirect:/login.do";
+		return "redirect:/users/login";
 	}
 
 	@RequestMapping(value = "/payBeLogin.do", method = RequestMethod.GET)
@@ -300,10 +272,10 @@ public class UserController {
 			HttpServletRequest request) {
 		session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
 
-		return "redirect:/login.do";
+		return "redirect:/users/login";
 	}
 
-	@RequestMapping("/logout.do")
+	@RequestMapping("/logout")
 	public String logout(HttpSession session) {
 		session.getAttribute("login_info");
 		session.invalidate();
@@ -312,7 +284,7 @@ public class UserController {
 
 	}
 
-	@RequestMapping(value = "/mypage.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/mypage", method = RequestMethod.GET)
 	public String mypage(UserVO vo, HttpSession session, Model model) {
 		UserVO uvo = (UserVO) session.getAttribute("login_info");
 		String str = uvo.getAdr();
@@ -332,12 +304,7 @@ public class UserController {
 		return "User/mypage";
 	}
 
-	@ResponseBody
-	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
-	public int idChk(UserVO vo) throws Exception {
-		int result = userservice.idChk(vo);
-		return result;
-	}
+
 
 	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
 	public String postRegister(UserVO vo) throws Exception {
