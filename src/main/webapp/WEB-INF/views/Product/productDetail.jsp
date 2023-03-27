@@ -295,8 +295,8 @@ background: #da8862;
          
    <!-- 주문 form toseet123 생성 -->
          <form action="/products/orders" class="order_form" method="post">
-             <input type="hidden" id="userNo" name="userNo" value="${login_info.no}">
-            <input type="hidden" id="userAdr" value="${login_info.adr}">
+            <input type="hidden" id="userNo" name="userNo" value="${login_info.no}">
+            <input type="hidden" id="userAdr" value="${login_info.adr}" name="adr">
             <input type="hidden" name="radioOption" value="${list.pro_option1 }">
             <input type="hidden" name="radioOption" value="${list.pro_option2 }">
             <input type="hidden" name="radioOption" value="${list.pro_option3 }">
@@ -304,7 +304,6 @@ background: #da8862;
             <input type="hidden" name="pro_number" value="${list.pro_number}">
             <input type="hidden" name="pro_name" value="${list.pro_name}">
             <input type="hidden" name="status" value="준비중">
-            
          </form>
 
     

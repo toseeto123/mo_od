@@ -65,9 +65,14 @@ public class KakaoPay {
            params.add("total_amount", pro_pricestr);
            
            params.add("tax_free_amount", "100");
-           params.add("approval_url", "http://localhost:8080/User/kakaoPaySuccess?orderId=" + orderIdstr + "&userno=" + userno + "&pro_number="+ pro_number);
-           params.add("cancel_url", "http://localhost:8080/User/kakaoPayCancel?");
-           params.add("fail_url", "http://localhost:8080/User/kakaoPaySuccessFail");
+
+          // params.add("approval_url", "http://localhost:8080/User/kakaoPaySuccess?orderId=" + orderIdstr + "&userno=" + userno + "&pro_number="+ pro_number);
+          // params.add("cancel_url", "http://localhost:8080/User/kakaoPayCancel?");
+          // params.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");
+           params.add("approval_url", "http://3.39.221.200:8080/User/kakaoPaySuccess?orderId=" + orderIdstr + "&userno=" + userno + "&pro_number="+ pro_number);
+           params.add("cancel_url", "http://3.39.221.200:8080/User/kakaoPayCancel?");
+           params.add("fail_url", "http://3.39.221.200:8080/kakaoPaySuccessFail");
+
             HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
     
            try {
@@ -108,7 +113,7 @@ public class KakaoPay {
            try {
         	    kakaoPayApprovalVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/approve"), body, KakaoPayApprovalVO.class);
         	    kservice.paymentinsert(kakaoPayApprovalVO);
-        	    kservice.paysuccessupdate(pro_number);
+        	    kservice.paysuccessupdate(pro_number); 
         	    kservice.paysuccessdelete(userno);
         	    return kakaoPayApprovalVO;
         	} catch (RestClientException e) {
@@ -124,10 +129,12 @@ public class KakaoPay {
 
        }
        public KakaoCancelResponseVO kakaoCancel(@RequestParam("tid") String tid
-    		   ,@RequestParam("price") String price,
+    		   ,@RequestParam("price") int price,
     		   @RequestParam("pro_number") String pro_number,
     		   @RequestParam("orderId") int orderId
     		   ) {
+    	   String total = Integer.toString(price);
+    	   Integer orderidchk = orderId;
            HttpHeaders headers = new HttpHeaders();
            headers.add("Authorization", "KakaoAK " + "1310fb3a979458e032a8aecca6d5e96c");
            headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
@@ -137,7 +144,7 @@ public class KakaoPay {
            MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
            params.add("cid", "TC0ONETIME");
            params.add("tid", tid);
-           params.add("cancel_amount", price);
+           params.add("cancel_amount", total);
            params.add("cancel_tax_free_amount", "100");
            System.out.println(params);
            // 占쎈솁占쎌뵬沃섎챸苑�, 占쎈엘占쎈쐭
@@ -150,10 +157,10 @@ public class KakaoPay {
                    "https://kapi.kakao.com/v1/payment/cancel",
                    requestEntity,
                    KakaoCancelResponseVO.class);
-           
-           kservice.paycancelDelete(orderId);
-           kservice.paySuccessStatusUpdate(orderId);
-           System.out.println(orderId);
+
+			kservice.paycancelDelete(orderId);
+
+			kservice.paySuccessStatusUpdate(orderId);
            return cancelResponse;
        }
        
