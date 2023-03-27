@@ -166,8 +166,7 @@ public class UserController {
    
    @RequestMapping(value = "/login.do" , method = RequestMethod.GET)
    public String login(ModelMap model) {
-	   System.out.println("get방식");
-	   String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
+	   String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://3.39.221.200:8080/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
        model.addAttribute( "naverUrl", naverUrl ); 
       return "User/login";
       }
