@@ -8,7 +8,9 @@
 <title>Chart</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-	
+	h4{
+	text-align: center;
+	}
 	footer{
 		width: 100%;
 		margin-top: 100px;
@@ -26,27 +28,30 @@
   justify-content: center;
   align-items: center;
   height: 300px;
-  margin: 50px 0;
 }
 
 .chart1 {
   grid-row: 1;
   grid-column: 1;
+  margin: 50px 0;
 }
 
 .chart2 {
   grid-row: 1;
   grid-column: 2;
+  margin: 50px 0;
 }
 
 .chart3 {
   grid-row: 2;
   grid-column: 1;
+  margin: 50px 0;
 }
 
 .chart4 {
   grid-row: 2;
   grid-column: 2;
+  margin: 50px 0;
 }
 canvas{
 	width: 50%;
@@ -59,19 +64,44 @@ canvas{
 	<jsp:include
 		page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
 </header>
-							<div class="grid-container">
-  <div class="chart1 chart-item">
-    <canvas id="myChart1"></canvas>
+
+
+	<div class="grid-container">
+	<div class="chart1">
+  <div class="chart-container">
+    <h4>상품별 주문 횟수</h4>
+    <div class="chart-item">
+      <canvas id="myChart1"></canvas>
+    </div>
   </div>
-  <div class="chart2 chart-item">
-    <canvas id="myChart2"></canvas>
+</div>
+
+<div class="chart2">
+  <div class="chart-container">
+    <h4>상품별 장바구니 횟수</h4>
+    <div class="chart-item">
+      <canvas id="myChart2"></canvas>
+    </div>
   </div>
-  <div class="chart3 chart-item">
-    <canvas id="myChart3"></canvas>
+</div>
+  
+<div class="chart3">
+  <div class="chart-container">
+    <h4>요일별 매출(올해 기준)</h4>
+    <div class="chart-item">
+      <canvas id="myChart3"></canvas>
+    </div>
   </div>
-  <div class="chart4 chart-item">
-    <canvas id="myChart4"></canvas>
+</div>
+  
+<div class="chart4">
+  <div class="chart-container">
+    <h4>성별/연령별 구매분포도(카테고리)</h4>
+    <div class="chart-item">
+      <canvas id="myChart4"></canvas>
+    </div>
   </div>
+</div>
 </div>
 							
 							<c:set var="index1" value="0" />
