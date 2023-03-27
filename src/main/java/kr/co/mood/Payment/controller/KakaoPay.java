@@ -124,10 +124,11 @@ public class KakaoPay {
 
        }
        public KakaoCancelResponseVO kakaoCancel(@RequestParam("tid") String tid
-    		   ,@RequestParam("price") String price,
+    		   ,@RequestParam("price") int price,
     		   @RequestParam("pro_number") String pro_number,
     		   @RequestParam("orderId") int orderId
     		   ) {
+    	   String total = Integer.toString(price);
            HttpHeaders headers = new HttpHeaders();
            headers.add("Authorization", "KakaoAK " + "1310fb3a979458e032a8aecca6d5e96c");
            headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
@@ -137,7 +138,7 @@ public class KakaoPay {
            MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
            params.add("cid", "TC0ONETIME");
            params.add("tid", tid);
-           params.add("cancel_amount", price);
+           params.add("cancel_amount", total);
            params.add("cancel_tax_free_amount", "100");
            System.out.println(params);
            // 占쎈솁占쎌뵬沃섎챸苑�, 占쎈엘占쎈쐭

@@ -220,7 +220,7 @@ footer{
             <div class="dropdown">
  <c:forEach var="orderid" items="${orderid}">
   <button style="background: #AD8E70;"class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${orderid.orderId}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    주문번호: ${orderid.orderId} /결제일:${orderid.approved_at}
+    주문번호: ${orderid.orderId} /결제일:${orderid.successTime}
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton${orderid.orderId}">
   
@@ -228,9 +228,9 @@ footer{
     <c:forEach var="order" items="${orders}">
       <c:if test="${order.orderId == orderid.orderId}">
     <input type="hidden" value="${order.orderId }" name="orderId">
-  <input type="hidden" value="${order.tid }" name="tid">
+  	<input type="hidden" value="${order.tid }" name="tid">
     <input type="hidden" value="${order.pro_number }" name="pro_number">
-    <input type="hidden" value="${order.price }" name="price">
+    <input type="hidden" value="${orderid.total}" name="price">
  <div class="deleteplz" style="display:flex; flex-wrap: wrap; align-items:center;  border-bottom: 1px solid lightgray; margin-bottom: 50px; padding-bottom: 30px;" >
 
 <img src="/resources/assets/img/product/${order.pro_img1 }"
@@ -255,7 +255,7 @@ footer{
 </div>
       </c:if>
     </c:forEach>
-    
+    <span>총 금액 : <small>${orderid.total}</small></span>
     <input type="submit" value="주문취소" class=".btn-primary">
         </form>
   </div>
