@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html>
+<jsp:include page="/WEB-INF/common/header.jsp" />
 <style>
 .hover:hover {
 	background: #da8862;
@@ -22,14 +23,12 @@
 }
 
 footer {
-	position: fixed;
-	bottom: 0;
+    bottom: 0;
 	left: 0;
 	right: 0;
 }
 </style>
 <head>
-<jsp:include page="/WEB-INF/common/header.jsp" />
 <section id="hero" style="height: 350px;">
 	<div class="hero-container">
 		<div id="heroCarousel" data-bs-interval="5000"
@@ -168,6 +167,8 @@ footer {
 		</div>
 	</div>
 
-	<footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
+	
+	
 </body>
+<footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
 </html>

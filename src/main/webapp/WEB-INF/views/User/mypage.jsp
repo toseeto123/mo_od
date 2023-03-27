@@ -38,13 +38,14 @@ input {
     font-style: normal;
 }
 }
+
 </style>
 </head>
 <body>
 	<section>
 		<ul class="nav nav-pills nav-justified">
 		  <li class="nav-item" >
-		    <a class="nav-link active" href="/mypage.do" style="background: #c8936ed4; color:white;">회원 정보</a>
+		    <a class="nav-link active" href="/mypage.do" style="background: #da8862; color:white;">회원 정보</a>
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="/cate.do" style="background: #c8936ed4; color:white;">장바 구니</a>

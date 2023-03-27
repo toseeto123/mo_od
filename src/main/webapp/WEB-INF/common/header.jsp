@@ -40,6 +40,7 @@
   <link href="/resources/assets/css/style.css" rel="stylesheet">
 
 <style>
+
 b{
 font-size: 18px;
 }
@@ -89,7 +90,7 @@ li {
 
                
 
-               <li class="/login_info" style="color : white;">${login_info.name } [ ${login_info.id } ]</li>
+               <li class="login_info" style="color : white;">${login_info.name } [ ${login_info.id } ]</li>
                <c:choose>
                <c:when test="${login_info.id == 'admin' }">
                <li><a href="/admin/chart.do"><span class="getstarted scrollto"> <b>Admin</b></span> </a></li>
