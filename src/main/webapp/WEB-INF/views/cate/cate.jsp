@@ -199,7 +199,15 @@ footer {
   bottom: 0;
   left: 0;
   right: 0;
-} 
+}
+.btnhover{
+font-size: 20px;
+font-weight: 700;
+}
+.btnhover:hover{
+background: #da8862;
+}
+
 
 </style>
 <jsp:include page="../../common/header.jsp" />
@@ -557,11 +565,11 @@ function deletecate(element) {
 
 
 				</p>
-				<div class="price_sum">
+				<div class="price_sum" style="display: flex; justify-content: center;">
 					<div class="price_sum_cont">
 						<div class="price_sum_list">
 							<dl style="font-size: 20px;">
-								<dt>
+								<dt style="text-align: center;">
 									총 <strong class="amount_total">0</strong> 개의 상품 금액<span>
 										: </span><strong class="value_total">0</strong> 원
 								</dt>
@@ -571,9 +579,9 @@ function deletecate(element) {
 								</dd>
 							</dl>
 							<input type="hidden" value="${login_info.adr }" name="address">
-							<input type="submit" value="주문하기" class="btn_buy"> <br>
+							<input type="submit" value="주문하기" class="btn_buy btnhover"> <br>
 							<br> <input type="button" value="더보러가기"
-								class="cancelbtn" onclick="window.location='/mo_od';">
+								class="cancelbtn btnhover" onclick="window.location='/mo_od';">
 
 						</div>
 					</div>
