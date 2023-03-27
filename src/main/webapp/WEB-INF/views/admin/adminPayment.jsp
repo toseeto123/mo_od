@@ -116,7 +116,7 @@ footer{
                   <td colspan="4" style="border-bottom:none"></td>
                   <td style="border-bottom:none">
                   	<form action="#" method="post">
-                  	<a href="#about" class="btn-get-started animate__animated">주문취소</a>
+                  	<a href="/admin/kakaoPayCancel" class="btn-get-started animate__animated">주문취소</a>
                   	</form>
                   	</td>
                   </tr>

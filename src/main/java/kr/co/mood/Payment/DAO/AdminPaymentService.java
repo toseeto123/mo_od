@@ -12,6 +12,7 @@ import org.springframework.ui.Model;
 
 import kr.co.mood.Payment.VO.AdminChartVO;
 import kr.co.mood.Payment.VO.AdminPaymentVO;
+import kr.co.mood.Payment.VO.KakaoPayApprovalVO;
 import kr.co.mood.module.ModuleCommon;
 import kr.co.mood.module.ModuleVO;
 import kr.co.mood.module.ViewPagingVO;
@@ -80,6 +81,10 @@ public class AdminPaymentService {
 		   map.put("vo", viewVO);
 		   map.put("productList", productList);
 		   return map;
+	}
+	
+	public List<KakaoPayApprovalVO> adminPaymentCancel(int orderid) {
+		return dao.adminPaymentCancel(orderid);
 	}
 	
 	
