@@ -142,7 +142,8 @@ footer {
 						</a></li>
 
 						<li class="box_list"><a
-							href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://3.39.221.200:8080/member/kakaoLogin&response_type=code">
+						   href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/member/kakaoLogin&response_type=code">
+						   <!--  href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://3.39.221.200:8080/member/kakaoLogin&response_type=code"> -->
 								<img style="width: 50px;" src="/resources/user/img/kakao.png"
 								alt="kakao" class="imghover"> <span class="box_list_txt">카카오</span>
 						</a></li>

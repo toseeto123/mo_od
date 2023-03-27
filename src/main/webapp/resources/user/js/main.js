@@ -178,6 +178,7 @@ function fn_idChk(){
       }
    }
    
+
    
    
     $.ajax({
@@ -202,7 +203,7 @@ function fn_idChk(){
    
    
    
-    
+
     function sample6_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
