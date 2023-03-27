@@ -101,7 +101,8 @@ public class UserController {
 	       session.setAttribute("access_token", access_Token);
 	       String path = (String) session.getAttribute("path");
 	       
-	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080";
+	     //  String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080";
+	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://3.39.221.200:8080";
 
 	       response.setContentType("text/html; charset=UTF-8");
 	       PrintWriter out = response.getWriter();
@@ -118,7 +119,6 @@ public class UserController {
 	    String access_Token = ms.getAccessToken(code);
 	    UserVO userInfo = ms.getUserInfo(access_Token);
 	    String path = (String) session.getAttribute("path");
-//	    session.invalidate();
 	    session.setAttribute("login_info", userInfo);
 	    if (path == null) {
 	        return "redirect:/";
