@@ -130,8 +130,8 @@ public class MemberService {
                sb.append("&client_id=dClx55_VYi9U61rOGPS2");
                sb.append("&client_secret=MtrUDxfIj0");
 
-//             sb.append("&redirect_uri=http://localhost:8080/login.do");
-               sb.append("&redirect_uri=http://3.39.221.200:8080/login.do");
+             sb.append("&redirect_uri=http://localhost:8080/login.do");
+ //              sb.append("&redirect_uri=http://3.39.221.200:8080/login.do");
 
                sb.append("&code="+authorize_code);
                sb.append("&state=url_parameter");

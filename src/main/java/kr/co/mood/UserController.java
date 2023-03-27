@@ -11,7 +11,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -94,16 +93,46 @@ public class UserController {
 	   }
 	
 	@RequestMapping("/naverLogin")
-	   public void naverLogin(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request) throws IOException {
+	   public void naverLogin(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request,Model model) throws IOException {
 	       String access_Token = ms.getNaverAccessToken(code, session);
 	       UserVO naverUserInfo =  ms.getNaverUserInfo(access_Token, session);
 	       session.setAttribute("login_info", naverUserInfo);
 	       session.setAttribute("access_token", access_Token);
 	       String path = (String) session.getAttribute("path");
+	      
+	       String pathgo = "";
+	       if (path.contains("catelogin.do")) {
+	           pathgo = "cate.do";
+	       } else if (path.contains("proCatelogin.do")) {
+	           CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
+	           int userid = naverUserInfo.getNo();
+	           sessionCvo.setUser_no(userid);
+	           if (sessionCvo != null) {
+	               cateService.addcate(sessionCvo, naverUserInfo, null);
+	           }
+	           pathgo = "cate.do";
+	       } else if (path.contains("payBeLogin.do")) {
+	           userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
+	           userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
+	           int userid = naverUserInfo.getNo();
+	           sessionordervo.setUserNo(userid);
+	           payService.insert(sessionordervo, naverUserInfo, null);
+	           int orderid = sessionordervo.getOrderId();
+	           sessionorderprovo.setUserno(userid);
+	           sessionorderprovo.setOrderId(orderid);
+	           productPayService.insert(sessionorderprovo, naverUserInfo, null);
+	           model.addAttribute("onelist", productPayService.selectList(orderid));
+	           pathgo = "orders";
+	           
+	       } else {
+	           pathgo = path;
+	       }
 	       
-	     //  String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080";
-	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://3.39.221.200:8080";
-
+	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080/"+pathgo;
+//	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://3.39.221.200:8080";
+	       
+	       System.out.println(referer);
+	       System.out.println(request.getHeader("Referer"));
 	       response.setContentType("text/html; charset=UTF-8");
 	       PrintWriter out = response.getWriter();
 	       out.println("<script>");
@@ -111,6 +140,7 @@ public class UserController {
 	       out.println("window.close();");
 	       out.println("</script>");
 	       out.flush();
+		
 	       
 	   }
 	
@@ -166,7 +196,7 @@ public class UserController {
    
    @RequestMapping(value = "/login.do" , method = RequestMethod.GET)
    public String login(ModelMap model) {
-	   String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://3.39.221.200:8080/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
+	   String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
        model.addAttribute( "naverUrl", naverUrl ); 
       return "User/login";
       }
@@ -217,7 +247,7 @@ public class UserController {
             
             
             model.addAttribute("onelist", productPayService.selectList(orderid));
-
+            
          	return "/User/userPay";
            }
            else {
