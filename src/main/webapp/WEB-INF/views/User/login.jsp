@@ -4,31 +4,28 @@
 
 <!DOCTYPE html>
 <html>
-<jsp:include page="/WEB-INF/common/header.jsp" />
 <style>
 .hover:hover {
 	background: #da8862;
 }
-
 .fonthover {
 	color: gray;
 }
-
 .fonthover:hover {
 	color: #da8862;
 }
-
 .imghover:hover {
 	transform: scale(1.2);
 }
-
 footer {
-    bottom: 0;
+	position: fixed;
+	bottom: 0;
 	left: 0;
 	right: 0;
 }
 </style>
 <head>
+<jsp:include page="/WEB-INF/common/header.jsp" />
 <section id="hero" style="height: 350px;">
 	<div class="hero-container">
 		<div id="heroCarousel" data-bs-interval="5000"
@@ -82,14 +79,19 @@ footer {
 
 </head>
 
-<body>
+<body onload="noBack();" onpageshow="if(event.persisted) noBack();"
+	onunload="">
 	<div class="login">
 		<div class="form-login">
 
 
+			<!-- 		                <div class="button-wrap"> -->
+			<!-- 		                     <h2 style="display: block; padding-left:140px; font-size: 30px; font-weight: bold;" >로그인</h2> -->
+			<!-- 		                     <span style="  font-size: 18px;">로그인을 하시면 다양한 혜택을 누리실 수 있습니다.</span> -->
+			<!-- 		                </div> -->
 			<div class="social-icons">
 
-				<form id="login" action="/login.do" class="input-group"
+				<form id="login" action="/users/login" class="input-group"
 					method="post" style="margin-bottom: 15px;">
 					<input type="text" name="id" class="input-field" placeholder=" 아이디"
 						required autofocus style="border-radius: 3px;"> <input
@@ -136,13 +138,13 @@ footer {
 					<ul class="social_logo" style="height: 150px; margin-left: -20px;">
 						<li class="box_list"><a id="custom-login-btn"
 							href="javascript:void(0);"
-							onclick="window.open('${naverUrl}','naverLogin','width=430,height=500,location=no,status=no,scrollbars=yes');">
+							onclick="window.open('${naverUrl}','/users/naverLogin','width=830,height=500,location=no,status=no,scrollbars=yes');">
 								<img style="width: 50px;" src="/resources/user/img/naver.png"
 								alt="naver" class="imghover"> <span class="box_list_txt">네이버</span>
 						</a></li>
 
 						<li class="box_list"><a
-							href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://3.39.221.200:8080/member/kakaoLogin&response_type=code">
+							href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/member/kakaoLogin&response_type=code">
 								<img style="width: 50px;" src="/resources/user/img/kakao.png"
 								alt="kakao" class="imghover"> <span class="box_list_txt">카카오</span>
 						</a></li>
@@ -165,9 +167,12 @@ footer {
 			</div>
 		</div>
 	</div>
-
-	
-	
+	<!-- <script type="text/javascript">
+window.history.forward(); 
+function noBack(){
+	window.history.forward();
+} 
+</script> -->
+	<footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
 </body>
-<footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
 </html>

@@ -83,7 +83,7 @@ function fn_idChk(){
         return false;
     }
     $.ajax({
-        url : "/idChk",
+        url : "/users/idChk",
         type : "post",
         dataType : "json",
         data : {"id" : $("#id").val()},
