@@ -40,7 +40,6 @@ public class ProductController {
 		System.out.println(ps.selectProList(moduleVO));
 		model.addAttribute("list", list);
 		System.out.println("筌뤴뫀�쑞"+model);
-		System.out.println("�뵳�딅뮞占쎈뱜"+list);
 		System.out.println("ps"+ps.selectProList(moduleVO));
 		
 		return "Product/productList";
