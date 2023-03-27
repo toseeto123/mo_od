@@ -8,6 +8,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>비밀번호 재설정</title>
 <style>
+body{
+	overflow-x: hidden;
+}
 input[type=button] {
 	background: #c8936ed4;
 	border: 1px solid #c8936ed4;

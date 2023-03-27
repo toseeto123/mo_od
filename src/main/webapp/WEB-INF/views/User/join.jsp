@@ -78,7 +78,7 @@ background: #da8862;
                 <div>
                     <h3 class="join_title"><label for="pwd">비밀번호</label></h3>
                     <span class="box int_pass">
-                        <input type="password" id="pwd" name="pwd" class="string" pattern="^[A-Za-z0-9]{10,20}$" maxlength="20">
+                        <input type="password" id="pwd" name="pwd" class="string" pattern="^[A-Za-z0-9]{10,20}$" maxlength="20" placeholder="10~20자 내외의 숫자+영문대소문자의 조합으로 구성해주세요">
                     </span>
                 </div>
 
@@ -130,9 +130,11 @@ background: #da8862;
                 <div>
                     <h3 class="join_title"><label for="email">본인확인 이메일</label></h3>
                     <div>
-                        <input type="text" id="email" name="email" class="email box string_email" maxlength="100" placeholder="선택입력">
+                        <input type="text" id="email" name="email" class="email box string_email" maxlength="100" onkeyup="emailConfirm()" placeholder="ooo@ooo.com">
+                        <input type="hidden" class="myinfo_email" id="myinfo_email" name="email" value="${login_info.email}">
                     </div>
                      <span class="final_mail_ck">이메일을 입력해주세요.</span>
+                     <span id="conemail"></span>
                  <span class="mail_input_box_warn"></span>
              <div class="mail_check_wrap">
                <div class="mail_check_input_box" id="mail_check_input_box_false">
@@ -235,8 +237,7 @@ background: #da8862;
           checkResult.attr("class", "incorrect");
           mailnumCheck = false;
        }   
-       
-       
+ 
     });
     
       </script>

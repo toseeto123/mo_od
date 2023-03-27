@@ -77,7 +77,7 @@ dl, ul, ol, li {
 }
 
 .price_sum {
-	margin: 40px 100px 50px;
+	margin: 40px 100px 120px;
 	padding: 20px 40px 25px 40px;
 	border: 2px solid #c8936ed4;
 	border-radius: 5px;
