@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -92,66 +91,96 @@ public class UserController {
 	}
 
 	@RequestMapping("/naverLogin")
-
-	public void naverLogin(@RequestParam("code") String code, HttpSession session, HttpServletResponse response,
-			HttpServletRequest request) throws IOException {
-		String access_Token = ms.getNaverAccessToken(code, session);
-		UserVO naverUserInfo = ms.getNaverUserInfo(access_Token, session);
-		session.setAttribute("login_info", naverUserInfo);
-		session.setAttribute("access_token", access_Token);
-		String path = (String) session.getAttribute("path");
-
-//		String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080";
-		String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://3.39.221.200:8080";
-		response.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = response.getWriter();
-		out.println("<script>");
-		out.println("window.opener.location.href='" + referer + "';");
-		out.println("window.close();");
-		out.println("</script>");
-		out.flush();
-
+	 public void naverLogin(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request,Model model) throws IOException {
+	       String access_Token = ms.getNaverAccessToken(code, session);
+	       UserVO naverUserInfo =  ms.getNaverUserInfo(access_Token, session);
+	       session.setAttribute("login_info", naverUserInfo);
+	       session.setAttribute("access_token", access_Token);
+	       String path = (String) session.getAttribute("path");
+	      
+	       String pathgo = "";
+	       if (path.contains("catelogin.do")) {
+	           pathgo = "cate.do";
+	       } else if (path.contains("proCatelogin.do")) {
+	           CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
+	           int userid = naverUserInfo.getNo();
+	           sessionCvo.setUser_no(userid);
+	           if (sessionCvo != null) {
+	               cateService.addcate(sessionCvo, naverUserInfo, null);
+	           }
+	           pathgo = "cate.do";
+	       } else if (path.contains("payBeLogin.do")) {
+	           userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
+	           userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
+	           int userid = naverUserInfo.getNo();
+	           sessionordervo.setUserNo(userid);
+	           payService.insert(sessionordervo, naverUserInfo, null);
+	           int orderid = sessionordervo.getOrderId();
+	           sessionorderprovo.setUserno(userid);
+	           sessionorderprovo.setOrderId(orderid);
+	           productPayService.insert(sessionorderprovo, naverUserInfo, null);
+	           model.addAttribute("onelist", productPayService.selectList(orderid));
+	           pathgo = "orders";
+	           
+	       } else {
+	           pathgo = path;
+	       }
+	       
+	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080/"+pathgo;
+//	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://3.39.221.200:8080";
+	       
+	       System.out.println(referer);
+	       System.out.println(request.getHeader("Referer"));
+	       response.setContentType("text/html; charset=UTF-8");
+	       PrintWriter out = response.getWriter();
+	       out.println("<script>");
+	       out.println("window.opener.location.href='" + referer + "';");
+	       out.println("window.close();");
+	       out.println("</script>");
+	       out.flush();
+		
+	       
+	   }
+	
+	
+	@RequestMapping(value={"/kakaoLogin" ,"/member/*"}, method=RequestMethod.GET)
+	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpServletRequest request, Model model , HttpSession session) throws Exception {
+	    String access_Token = ms.getAccessToken(code);
+	    UserVO userInfo = ms.getUserInfo(access_Token);
+	    String path = (String) session.getAttribute("path");
+	    session.setAttribute("login_info", userInfo);
+	    if (path == null) {
+	        return "redirect:/";
+	    } else {
+	        session.setAttribute("path", request.getRequestURI());
+	        if (path.contains("catelogin.do")) {
+	            return "redirect:/cate.do";
+	        } else if (path.contains("proCatelogin.do")) {
+	            CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
+	            int userid = userInfo.getNo();
+	            sessionCvo.setUser_no(userid);
+	            if (sessionCvo != null) {
+	                cateService.addcate(sessionCvo, userInfo, null);
+	            }
+	            return "redirect:/cate.do";
+	        } else if(path.contains("payBeLogin.do")) {
+	            userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
+	            userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
+	            int userid = userInfo.getNo();
+	            sessionordervo.setUserNo(userid);
+	            payService.insert(sessionordervo, userInfo, null);
+	            int orderid = sessionordervo.getOrderId();
+	            sessionorderprovo.setUserno(userid);
+	            sessionorderprovo.setOrderId(orderid);
+	            productPayService.insert(sessionorderprovo, userInfo, null);
+	            model.addAttribute("onelist", productPayService.selectList(orderid));
+	            return "/User/userPay";
+	        } else {
+	            return "redirect:" + path;
+	        }
+	    }
 	}
 
-	@RequestMapping(value = { "/kakaoLogin", "/member/*" }, method = RequestMethod.GET)
-	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpServletRequest request,
-			Model model, HttpSession session) throws Exception {
-		String access_Token = ms.getAccessToken(code);
-		UserVO userInfo = ms.getUserInfo(access_Token);
-		String path = (String) session.getAttribute("path");
-//	    session.invalidate();
-		session.setAttribute("login_info", userInfo);
-		if (path == null) {
-			return "redirect:/";
-		} else {
-			session.setAttribute("path", request.getRequestURI());
-			if (path.contains("catelogin.do")) {
-				return "redirect:/cate.do";
-			} else if (path.contains("proCatelogin.do")) {
-				CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
-				int userid = userInfo.getNo();
-				sessionCvo.setUser_no(userid);
-				if (sessionCvo != null) {
-					cateService.addcate(sessionCvo, userInfo, null);
-				}
-				return "redirect:/cate.do";
-			} else if (path.contains("payBeLogin.do")) {
-				userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
-				userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
-				int userid = userInfo.getNo();
-				sessionordervo.setUserNo(userid);
-				payService.insert(sessionordervo, userInfo, null);
-				int orderid = sessionordervo.getOrderId();
-				sessionorderprovo.setUserno(userid);
-				sessionorderprovo.setOrderId(orderid);
-				productPayService.insert(sessionorderprovo, userInfo, null);
-				model.addAttribute("onelist", productPayService.selectList(orderid));
-				return "/User/userPay";
-			} else {
-				return "redirect:" + path;
-			}
-		}
-	}
 
 	@RequestMapping(value = "/join.do", method = RequestMethod.GET)
 	public String join() {
