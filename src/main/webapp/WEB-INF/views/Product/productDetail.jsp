@@ -51,12 +51,10 @@
 pre{
     overflow: auto;
     white-space: pre-wrap; /* pre tag내에 word wrap */
-
 }
 .chk_option{
    cursor: pointer;
 }
-
 .cateBtn , .btn_buy{
    background-color: #c8936ed4;
    width: 416px;
@@ -81,13 +79,11 @@ input[type="radio"] {
   position: relative;
   overflow: hidden;
 }
-
 /* 선택된 라디오 버튼 스타일링 */
 input[type="radio"]:checked {
   background-color: #4f88f7; /* 선택 시 배경색 변경 */
   border-color: #4f88f7; /* 선택 시 보더 색 변경 */
 }
-
 /* 라디오 버튼의 가짜 내부 원 스타일링 */
 input[type="radio"]:before {
   content: ""; /* 내용 없음 */
@@ -102,32 +98,26 @@ input[type="radio"]:before {
   transform: translate(-50%, -50%) scale(0); /* 가짜 원 초기 크기와 위치 설정 */
   transition: all 0.3s ease-in-out; /* 호버 애니메이션 처리 */
 }
-
 /* 선택된 라디오 버튼의 가짜 내부 원 스타일링 */
 input[type="radio"]:checked:before {
   width: 18px; /* 가짜 원 크기 변경 */
   height: 18px;
   transform: translate(-50%, -50%) scale(1); /* 가짜 원 크기와 위치 변경 */
 }
-
 .portfolio-info li {
 font-size: 20px;
 margin: 0;
-
-
 }
 .portfolio-info li+li{
 margin-top: 0;
-
 }
 .btnhover:hover{
 background: #da8862;
 }
-
 </style>
 <body>
 <jsp:include page="/WEB-INF/common/header.jsp" />
-<form method="post" action="/cateinsert.do" class="cateinsert">
+<form method="post" action="/users/cateinsert" class="cateinsert">
    <main id="main">
 <c:if test="${list.pro_number eq list.pro_number }">
       <!-- ======= Breadcrumbs ======= -->
@@ -295,8 +285,8 @@ background: #da8862;
          
    <!-- 주문 form toseet123 생성 -->
          <form action="/products/orders" class="order_form" method="post">
-            <input type="hidden" id="userNo" name="userNo" value="${login_info.no}">
-            <input type="hidden" id="userAdr" value="${login_info.adr}" name="adr">
+             <input type="hidden" id="userNo" name="userNo" value="${login_info.no}">
+            <input type="hidden" id="userAdr" value="${login_info.adr}">
             <input type="hidden" name="radioOption" value="${list.pro_option1 }">
             <input type="hidden" name="radioOption" value="${list.pro_option2 }">
             <input type="hidden" name="radioOption" value="${list.pro_option3 }">
@@ -304,6 +294,7 @@ background: #da8862;
             <input type="hidden" name="pro_number" value="${list.pro_number}">
             <input type="hidden" name="pro_name" value="${list.pro_name}">
             <input type="hidden" name="status" value="준비중">
+            
          </form>
 
     
@@ -369,7 +360,6 @@ background: #da8862;
    
    
     <script>
-
    var userNo = $('#userNo').val();
    var userAdr = $('#userAdr').val();
    /* 바로구매 버튼 */
@@ -389,12 +379,11 @@ background: #da8862;
 	   if(userAdr=="" && userNo!=""){
 		   var adr_chk = confirm('필수입력정보를 입력해주세요.\n(간편 로그인경우 주소,휴대폰번호 정보가 부족할 수 있습니다.)');
 		   if(adr_chk) {
-			   location.href = '/mypage.do';
+			   location.href = '/users/mypage';
 			} else {
 				location.href = location.href;
 			}
 	   }
-
    });
   
    /* 장바구니 버튼 */
@@ -415,14 +404,12 @@ background: #da8862;
 	   if(userAdr=="" && userNo!=""){
 		   var adr_chk = confirm('필수입력정보를 입력해주세요.\n(간편 로그인경우 주소,휴대폰번호 정보가 부족할 수 있습니다.)');
 		   if(adr_chk) {
-			   location.href = '/mypage.do';
+			   location.href = '/users/mypage';
 			} else {
 				location.href = location.href;
 			}
 	   }
-
    });
-
    </script>
    
 </body>
