@@ -12,25 +12,31 @@
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
 
 <style type="text/css">
-body{
+body {
 	overflow-x: hidden;
 }
+
 input[type=button] {
 	background: #c8936ed4;
 	border: 1px solid #c8936ed4;
 	color: white;
 	border-radius: 6px;
 }
-span.span{
+
+span.span {
 	color: #c8936ed4;
 }
+
 .link {
 	font-size: 20px;
-	width:150px;
-	height:auto;
+	width: 150px;
+	height: auto;
 }
-footer {
 
+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
 }
 </style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
@@ -57,8 +63,7 @@ footer {
 		</div>
 	</section>
 
-	<div class="d-flex align-items-center justify-content-center"
-		>
+	<div class="d-flex align-items-center justify-content-center">
 		<div class="row justify-content-center mt-5">
 			<div class="col-md-6">
 				<div class="card border-0">
@@ -99,25 +104,27 @@ footer {
 								</div>
 							</div>
 							<div class="card-body">
-							<div class="form-group row">
-								<div class="col-3"></div>
-								<div class="col-7">
-									<span class="span" id="show"></span>
-								</div>
+								<div class="form-group row">
+									<div class="col-3"></div>
+									<div class="col-7">
+										<span class="span" id="show"></span>
+									</div>
 								</div>
 								<div class="card-body">
-								<div class="form-group row" >
-								<div class="col-6" style="padding-left:70px">
-								<input type="button" class="link" value="비밀번호 찾기" onclick="location.href='/searchPwd'">
+									<div class="form-group row">
+										<div class="col-6" style="padding-left: 70px">
+											<input type="button" class="link" value="비밀번호 찾기"
+												onclick="location.href='/searchPwd'">
+										</div>
+										<div class="col-6 text-right" style="padding-right: 70px">
+											<input type="button" class="link" value="돌아가기"
+												onclick="location.href='/login.do'">
+										</div>
+									</div>
 								</div>
-								<div class="col-6 text-right" style="padding-right:70px">
-								<input type="button" class="link" value="돌아가기" onclick="location.href='/login.do'">
-								</div>
-								</div>
-							</div>
 							</div>
 						</div>
-						
+
 					</div>
 				</div>
 			</div>
@@ -132,12 +139,12 @@ footer {
 		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
-		
+
 	<script src="/resources/user/js/findId.js"></script>
-		
-    
-    
-	
+
+
+
+
 </body>
 <footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
 </html>

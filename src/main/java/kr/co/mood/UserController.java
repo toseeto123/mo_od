@@ -1,7 +1,5 @@
 package kr.co.mood;
 
-
-
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Random;
@@ -44,11 +42,11 @@ import kr.co.mood.user.dao.UserVO;
 @Controller
 @SessionAttributes("loginUser")
 public class UserController {
-	
+
 	@Autowired
-	private UserService userservice ;
+	private UserService userservice;
 	@Autowired
-	private HttpSession session;	
+	private HttpSession session;
 	@Autowired
 	private JavaMailSender mailSender;
 	@Autowired
@@ -64,36 +62,36 @@ public class UserController {
 //	private SqlSessionTemplate mybatis;
 //	private UserVO vo;
 //	private ModelAndView mav;
-	
+
 	@RequestMapping(value = "/googleSave", method = RequestMethod.POST)
-	   @ResponseBody
-	   public String googleSave(@RequestBody String googleJsonData, HttpSession session) throws Exception {
+	@ResponseBody
+	public String googleSave(@RequestBody String googleJsonData, HttpSession session) throws Exception {
 
-	      ObjectMapper mapper = new ObjectMapper();
-	      JsonNode jsonParsing;
-	      jsonParsing = mapper.readTree(googleJsonData);
-	      int age = Integer.parseInt(jsonParsing.get("age").asText()) / 10;
-	      
-	      UserVO googleVO = new UserVO();
-	      googleVO.setEmail(jsonParsing.get("email").asText());
-	      googleVO.setId(jsonParsing.get("email").asText());
-	      googleVO.setName(jsonParsing.get("name").asText());
-	      googleVO.setAge((age * 10) + "~" + ((age * 10) + 9));
-	      
-	      int result = userservice.idChk(googleVO);
-	     
-	      if (result == 0) {
-	         userservice.insertnaver(googleVO);	       
-	         session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
-	      } else {	    	  
-	         session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
-	      }
+		ObjectMapper mapper = new ObjectMapper();
+		JsonNode jsonParsing;
+		jsonParsing = mapper.readTree(googleJsonData);
+		int age = Integer.parseInt(jsonParsing.get("age").asText()) / 10;
 
-	      return (String) session.getAttribute("path");
-	   }
-	
+		UserVO googleVO = new UserVO();
+		googleVO.setEmail(jsonParsing.get("email").asText());
+		googleVO.setId(jsonParsing.get("email").asText());
+		googleVO.setName(jsonParsing.get("name").asText());
+		googleVO.setAge((age * 10) + "~" + ((age * 10) + 9));
+
+		int result = userservice.idChk(googleVO);
+
+		if (result == 0) {
+			userservice.insertnaver(googleVO);
+			session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
+		} else {
+			session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
+		}
+
+		return (String) session.getAttribute("path");
+	}
+
 	@RequestMapping("/naverLogin")
-	   public void naverLogin(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request,Model model) throws IOException {
+	 public void naverLogin(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request,Model model) throws IOException {
 	       String access_Token = ms.getNaverAccessToken(code, session);
 	       UserVO naverUserInfo =  ms.getNaverUserInfo(access_Token, session);
 	       session.setAttribute("login_info", naverUserInfo);
@@ -144,6 +142,7 @@ public class UserController {
 	       
 	   }
 	
+	
 	@RequestMapping(value={"/kakaoLogin" ,"/member/*"}, method=RequestMethod.GET)
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpServletRequest request, Model model , HttpSession session) throws Exception {
 	    String access_Token = ms.getAccessToken(code);
@@ -182,121 +181,123 @@ public class UserController {
 	    }
 	}
 
-	
-	
-	@RequestMapping(value = "/join.do" , method = RequestMethod.GET)
-   public String join() {
-      return "User/join";
-   }
 
-   @RequestMapping(value = "/idchk" , method = RequestMethod.POST)
-   public String idchk() {
-      return "User/join";
-   }
-   
-   @RequestMapping(value = "/login.do" , method = RequestMethod.GET)
-   public String login(ModelMap model) {
-	   String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
-       model.addAttribute( "naverUrl", naverUrl ); 
-      return "User/login";
-      }
-   
-   
-   @RequestMapping(value = "/login.do", method = RequestMethod.POST)
-   public String loginAction(@ModelAttribute("cvo") CateVO cvo,UserVO vo, HttpSession session, HttpServletRequest request, RedirectAttributes ra,Model model) {
-	   System.out.println("post방식");
-       UserVO vo1 = userservice.selectId(vo);
-       
-       if (vo1 == null || vo1.getId().equals("admin")) {
-           session.setAttribute("login_info", null);
-           ra.addFlashAttribute("msg", false);
-           return "redirect:/login.do";
-       } else {
-           session.setAttribute("login_info", vo1);
-           String path = (String) session.getAttribute("path");
-           
-           if (path == null) {
-               return "redirect:/";
-           } else if (path.contains("catelogin.do")) {
-        	   session.setAttribute("path", request.getRequestURI()); 
-               return "redirect:/cate.do";
-           } else if (path.contains("proCatelogin.do")) {
-        	   session.setAttribute("path", request.getRequestURI()); 
-        	   CateVO sessionCvo = (CateVO) session.getAttribute("cvo"); 
-               int userid = vo1.getNo();
-               sessionCvo.setUser_no(userid);
-        	   if (sessionCvo != null) {
-        		   cateService.addcate(sessionCvo, vo1, null);
-               }
-               return "redirect:/cate.do";
-           } else if(path.contains("payBeLogin.do")) {	   
-        	session.setAttribute("path", request.getRequestURI());
-        	
+	@RequestMapping(value = "/join.do", method = RequestMethod.GET)
+	public String join() {
+		return "User/join";
+	}
 
-         	userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
-         	userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
-         	int userid = vo1.getNo();
+	@RequestMapping(value = "/idchk", method = RequestMethod.POST)
+	public String idchk() {
+		return "User/join";
+	}
 
-         	sessionordervo.setUserNo(userid);
-         	payService.insert(sessionordervo, vo1, null);
-         	int orderid = sessionordervo.getOrderId();
-         	sessionorderprovo.setUserno(userid);
-         	sessionorderprovo.setOrderId(orderid);
+	@RequestMapping(value = "/login.do", method = RequestMethod.GET)
+	public String login(ModelMap model) {
+		String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://3.39.221.200:8080/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
+		model.addAttribute("naverUrl", naverUrl);
+		return "User/login";
+	}
 
-            productPayService.insert(sessionorderprovo, vo1, null);
-            
-            
-            model.addAttribute("onelist", productPayService.selectList(orderid));
-            
-         	return "/User/userPay";
-           }
-           else {
-               return "redirect:" + path;
-           }
-       }
-   }
-   @RequestMapping(value = "/catelogin.do", method = RequestMethod.GET)
-   public String catelogin(HttpSession session, HttpServletRequest request) {
-       session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
-       
-       return "redirect:/login.do";
-   }
-   @RequestMapping(value = "/proCatelogin.do", method = RequestMethod.GET)
-   public String proCatelogin(@ModelAttribute("cvo") CateVO cvo, HttpSession session, ModelAndView mav,HttpServletRequest request) {
-	  session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
-	  
-      session.setAttribute("cvo", cvo); // CateVO 媛앹껜瑜� �꽭�뀡�뿉 ���옣
-      return "redirect:/login.do";
-   }
-   @RequestMapping(value = "/payBeLogin.do", method = RequestMethod.GET)
-   public String payBeLogin(@ModelAttribute("ordervo") userOrderVO ordervo,@ModelAttribute("orderProVo") userOrderProductVO orderProVo, HttpSession session, ModelAndView mav,HttpServletRequest request) {
-	  session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
-      
+	@RequestMapping(value = "/login.do", method = RequestMethod.POST)
+	public String loginAction(@ModelAttribute("cvo") CateVO cvo, UserVO vo, HttpSession session,
+			HttpServletRequest request, RedirectAttributes ra, Model model) {
+		System.out.println("post방식");
+		UserVO vo1 = userservice.selectId(vo);
 
-      return "redirect:/login.do";
-   }
-   
-   @RequestMapping("/logout.do")
-   public String logout(HttpSession session) {
-      session.getAttribute("login_info");
-      session.invalidate();
-      
-      return "redirect:/";
-   }
+		if (vo1 == null || vo1.getId().equals("admin")) {
+			session.setAttribute("login_info", null);
+			ra.addFlashAttribute("msg", false);
+			return "redirect:/login.do";
+		} else {
+			session.setAttribute("login_info", vo1);
+			String path = (String) session.getAttribute("path");
 
- 	@RequestMapping(value = "/mypage.do" , method = RequestMethod.GET)
-    public String mypage(UserVO vo,HttpSession session , Model model) {
+			if (path == null) {
+				return "redirect:/";
+			} else if (path.contains("catelogin.do")) {
+				session.setAttribute("path", request.getRequestURI());
+				return "redirect:/cate.do";
+			} else if (path.contains("proCatelogin.do")) {
+				session.setAttribute("path", request.getRequestURI());
+				CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
+				int userid = vo1.getNo();
+				sessionCvo.setUser_no(userid);
+				if (sessionCvo != null) {
+					cateService.addcate(sessionCvo, vo1, null);
+				}
+				return "redirect:/cate.do";
+			} else if (path.contains("payBeLogin.do")) {
+				session.setAttribute("path", request.getRequestURI());
+
+				userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
+				userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
+				int userid = vo1.getNo();
+
+				sessionordervo.setUserNo(userid);
+				payService.insert(sessionordervo, vo1, null);
+				int orderid = sessionordervo.getOrderId();
+				sessionorderprovo.setUserno(userid);
+				sessionorderprovo.setOrderId(orderid);
+
+				productPayService.insert(sessionorderprovo, vo1, null);
+
+				model.addAttribute("onelist", productPayService.selectList(orderid));
+
+				return "/User/userPay";
+			} else {
+				return "redirect:" + path;
+			}
+		}
+	}
+
+	@RequestMapping(value = "/catelogin.do", method = RequestMethod.GET)
+	public String catelogin(HttpSession session, HttpServletRequest request) {
+		session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
+
+		return "redirect:/login.do";
+	}
+
+	@RequestMapping(value = "/proCatelogin.do", method = RequestMethod.GET)
+	public String proCatelogin(@ModelAttribute("cvo") CateVO cvo, HttpSession session, ModelAndView mav,
+			HttpServletRequest request) {
+		session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
+
+		session.setAttribute("cvo", cvo); // CateVO 媛앹껜瑜� �꽭�뀡�뿉 ���옣
+		return "redirect:/login.do";
+	}
+
+	@RequestMapping(value = "/payBeLogin.do", method = RequestMethod.GET)
+	public String payBeLogin(@ModelAttribute("ordervo") userOrderVO ordervo,
+			@ModelAttribute("orderProVo") userOrderProductVO orderProVo, HttpSession session, ModelAndView mav,
+			HttpServletRequest request) {
+		session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
+
+		return "redirect:/login.do";
+	}
+
+	@RequestMapping("/logout.do")
+	public String logout(HttpSession session) {
+		session.getAttribute("login_info");
+		session.invalidate();
+
+		return "redirect:/";
+
+	}
+
+	@RequestMapping(value = "/mypage.do", method = RequestMethod.GET)
+	public String mypage(UserVO vo, HttpSession session, Model model) {
 		UserVO uvo = (UserVO) session.getAttribute("login_info");
 		String str = uvo.getAdr();
-		if(str==null) {
+		if (str == null) {
 			session.setAttribute("myinfo_adr1", "  ");
 			session.setAttribute("myinfo_adr2", "  ");
 			session.setAttribute("myinfo_adr3", "  ");
-		}else {
-		String[] array = str.split("   ");
-		session.setAttribute("myinfo_adr1", array[0]);
-		session.setAttribute("myinfo_adr2", array[1]);
-		session.setAttribute("myinfo_adr3", array[2]);
+		} else {
+			String[] array = str.split("   ");
+			session.setAttribute("myinfo_adr1", array[0]);
+			session.setAttribute("myinfo_adr2", array[1]);
+			session.setAttribute("myinfo_adr3", array[2]);
 		}
 		int userid = uvo.getNo();
 		model.addAttribute("map", cateService.selectCateList(userid));
