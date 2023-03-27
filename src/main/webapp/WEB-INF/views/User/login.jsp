@@ -88,10 +88,6 @@ footer {
 		<div class="form-login">
 
 
-			<!-- 		                <div class="button-wrap"> -->
-			<!-- 		                     <h2 style="display: block; padding-left:140px; font-size: 30px; font-weight: bold;" >로그인</h2> -->
-			<!-- 		                     <span style="  font-size: 18px;">로그인을 하시면 다양한 혜택을 누리실 수 있습니다.</span> -->
-			<!-- 		                </div> -->
 			<div class="social-icons">
 
 				<form id="login" action="/login.do" class="input-group"
