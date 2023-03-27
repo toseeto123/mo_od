@@ -84,11 +84,6 @@ public class ProductController {
 		// �꽭�뀡�뿉 ���옣
 		session.setAttribute(sessionKey, productList);
 
-		System.out.println("�꽭�뀡�뿉 ���옣�맂 理쒓렐 蹂� �긽�뭹 紐⑸줉: " + productList);
-
-
-		
-		
 		return "Product/productDetail";
 	}
 	
