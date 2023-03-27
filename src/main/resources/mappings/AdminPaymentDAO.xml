@@ -135,6 +135,16 @@
 		order by orderNo desc
     </select>
     
+    <select id="adminPaymentCancel" resultType="kr.co.mood.Payment.VO.KakaoPayApprovalVO">
+    	select payment.tid, orders.orderId, orders.price
+		from payment 
+		inner join moodorder as orders
+			on payment.orderid = orders.orderid
+		where orders.orderid = #{orderid} and payment.Success = '결제 완료'
+		group by payment.tid;
+    </select>
+
+    
     
 </mapper>
 

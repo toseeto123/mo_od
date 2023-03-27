@@ -90,6 +90,30 @@ public class UserController {
 		return (String) session.getAttribute("path");
 	}
 
+	      ObjectMapper mapper = new ObjectMapper();
+	      JsonNode jsonParsing;
+	      jsonParsing = mapper.readTree(googleJsonData);
+	      int age = Integer.parseInt(jsonParsing.get("age").asText()) / 10;
+	      
+	      UserVO googleVO = new UserVO();
+	      googleVO.setEmail(jsonParsing.get("email").asText());
+	      googleVO.setId(jsonParsing.get("email").asText());
+	      googleVO.setName(jsonParsing.get("name").asText());
+	      googleVO.setAge((age * 10) + "~" + ((age * 10) + 9));
+	      
+	      int result = userservice.idChk(googleVO);
+	     
+	      if (result == 0) {
+	         userservice.googleInsert(googleVO);	       
+	         session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
+	      } else {	    	  
+	         session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
+	      }
+
+	      return (String) session.getAttribute("path");
+	   }
+	
+
 	@RequestMapping("/naverLogin")
 	 public void naverLogin(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request,Model model) throws IOException {
 	       String access_Token = ms.getNaverAccessToken(code, session);

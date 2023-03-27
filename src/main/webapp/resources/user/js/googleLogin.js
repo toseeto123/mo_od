@@ -93,7 +93,7 @@
             			google.accounts.oauth2.revoke(token.access_token);
             			gapi.client.setToken('');
           			}
-  					if(googleXHT.responseText.trim()==''){
+  					if(googleXHT.responseText.trim()=='' || googleXHT.responseText == null){
   						location.href='/';
   					}else{
   						location.href=googleXHT.responseText

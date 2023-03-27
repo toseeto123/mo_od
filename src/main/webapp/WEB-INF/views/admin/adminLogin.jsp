@@ -91,7 +91,7 @@
 		</div>
 	</section>
 
-	<form id="login" action="/adminLogin.do" method="post">
+	<form id="login" action="/adminLogin" method="post">
 		<div class="d-flex align-items-center justify-content-center"
 			style="height: 63vh;">
 			<div class="row justify-content-center mt-5">
@@ -138,7 +138,7 @@
 									<div class="col-2"></div>
 									<div class="col-5">
 										<input type="button" class="form-control" value="Client"
-											onclick="location.href='/goclient.do'">
+											onclick="location.href='/goclient'">
 									</div>
 								</div>
 							</div>
