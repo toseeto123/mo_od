@@ -220,7 +220,7 @@ footer{
             <div class="dropdown">
  <c:forEach var="orderid" items="${orderid}">
   <button style="background: #AD8E70;"class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${orderid.orderId}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    주문번호: ${orderid.orderId} /결제일:${orderid.approved_at}
+    주문번호: ${orderid.orderId} /결제일:${orderid.SuccessTime}
   </button>
 
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton${orderid.orderId}">
@@ -228,24 +228,24 @@ footer{
     <c:forEach var="order" items="${orders}">
       <c:if test="${order.orderId == orderid.orderId}">
         <form action="/User/kakaoPayCancel">
- <div class="deleteplz" style="display:flex; flex-wrap: wrap; align-items:center;  border-bottom: 1px solid lightgray; margin-bottom: 50px; padding-bottom: 30px;" >
+ <div class="deleteplz" style="display:flex; flex-wrap: wrap; align-items:center;  border-bottom: 1px solid lightgray; margin-bottom: 50px;" >
 
   <img src="/resources/assets/img/product/${order.pro_img1 }"
   alt="${order.pro_name}"
   title="${order.pro_name}"
   class="img-fluid"
-  style="width: 150px; height: 150px; margin-right: 30px; max-width: 100%;">
+  style="width: 200px; height: 200px;max-width: 100%; margin-bottom: 45px;">
 
-<div style="display: flex; flex-direction: column; flex-grow: 1; font-size: 1.2em; margin: 10px 0;">
-  <div style="text-align: left; margin-bottom: 10px;">
-    <span>상품명: <small>${order.pro_name}</small></span><br>
-    <span>옵션: <small>${order.pro_option}</small></span><br>
-    <span>상품정보: <small>${order.pro_maindesctitle}</small></span>
+<div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; font-size: 1.2em; margin: 10px 10px;">
+  <div style="text-align: left;width: 400px; height: 200px;">
+    <span>상 품 명 : <small>${order.pro_name}</small></span><br><br>
+    <span>옵 션 : <small>${order.pro_option}</small></span><br><br>
+    <span>상품정보 : <small>${order.pro_maindesctitle}</small></span>
   </div>
 
-  <div style="text-align: left;">
-    <span>수량: <small style="display: inline;">${order.count}</small></span><br>
-    <span>가격: <small class="total"><fmt:formatNumber value="${order.price}" type="currency" currencySymbol="₩" /></small></span>
+  <div style="text-align: left;width: 200px; height: 200px;">
+    <span>수 량 : <small style="display: inline;">${order.count}</small></span><br><br>
+    <span>가 격 : <small class="total"><fmt:formatNumber value="${order.price}" type="currency" currencySymbol="₩" /></small></span>
   </div>
 </div>
 

@@ -14,7 +14,7 @@ public class KakaoPayApprovalVO {
     private CardVO card_info;
     private String item_name, item_code, payload;
     private Integer quantity, tax_free_amount, vat_amount;
-    private Date created_at, approved_at;
+    private Date created_at, SuccessTime;
     
     //결제확인용값들
     //product
@@ -27,7 +27,13 @@ public class KakaoPayApprovalVO {
     private int count;
     
     
-    public String getPro_option() {
+    public Date getSuccessTime() {
+		return SuccessTime;
+	}
+	public void setSuccessTime(Date successTime) {
+		SuccessTime = successTime;
+	}
+	public String getPro_option() {
 		return pro_option;
 	}
 	public void setPro_option(String pro_option) {
@@ -180,12 +186,7 @@ public class KakaoPayApprovalVO {
 	public void setCreated_at(Date created_at) {
 		this.created_at = created_at;
 	}
-	public Date getApproved_at() {
-		return approved_at;
-	}
-	public void setApproved_at(Date approved_at) {
-		this.approved_at = approved_at;
-	}
+
 	
     
     
