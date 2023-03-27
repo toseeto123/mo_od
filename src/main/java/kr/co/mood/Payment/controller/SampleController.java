@@ -9,11 +9,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import kr.co.mood.pay.DAO.KakaoPayApprovalService;
+
 @Controller
 public class SampleController {
 
    @Autowired
-    private KakaoPay kakaopay;
+   private KakaoPay kakaopay;
+   @Autowired
+   private KakaoPayApprovalService kakaoPayApprovalService;
    
    
    
@@ -41,8 +45,10 @@ public class SampleController {
 		   @RequestParam("userno") String userno ,
 		   @RequestParam("pro_number") String pro_number,
 		   Model model) {
-
+	  
       model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token,orderId,userno,pro_number));
+      model.addAttribute("orders", kakaoPayApprovalService.selectlist(Integer.parseInt(userno)));
+      
    }
 
 	   

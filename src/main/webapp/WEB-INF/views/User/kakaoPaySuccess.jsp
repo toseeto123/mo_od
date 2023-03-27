@@ -244,7 +244,7 @@ body {
                      <label for="lastName">주문 수량 : </label> <strong>${info.quantity}</strong>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="address">결제 금액 : </label> <strong>${info.amount.total}</strong>
+                     <label for="address">결제 금액 : </label> <strong><fmt:formatNumber value="${info.amount.total}" type="currency" currencySymbol="₩" />원</strong>
                   </div>
                   <div class="col-md-6 mb-3">
                      <label for="lastName">결제승인시간 : </label> <strong><fmt:formatDate value="${info.approved_at}" pattern="yyyy-MM-dd HH:mm:ss"/></strong>
