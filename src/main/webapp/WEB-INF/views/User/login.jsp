@@ -83,16 +83,11 @@ footer {
 
 </head>
 
-<body onload="noBack();" onpageshow="if(event.persisted) noBack();"
-	onunload="">
+<body>
 	<div class="login">
 		<div class="form-login">
 
 
-			<!-- 		                <div class="button-wrap"> -->
-			<!-- 		                     <h2 style="display: block; padding-left:140px; font-size: 30px; font-weight: bold;" >로그인</h2> -->
-			<!-- 		                     <span style="  font-size: 18px;">로그인을 하시면 다양한 혜택을 누리실 수 있습니다.</span> -->
-			<!-- 		                </div> -->
 			<div class="social-icons">
 
 				<form id="login" action="/login.do" class="input-group"
@@ -171,12 +166,6 @@ footer {
 			</div>
 		</div>
 	</div>
-	<!-- <script type="text/javascript">
-window.history.forward(); 
-function noBack(){
-	window.history.forward();
-} 
-</script> -->
 	<footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
 </body>
 </html>

@@ -48,12 +48,8 @@ public class UserController {
 	
 	@Autowired
 	private UserService userservice ;
-	private SqlSessionTemplate mybatis;
-	private UserVO vo;
-	private ModelAndView mav;
-	private HttpSession session;
-	
-	
+	@Autowired
+	private HttpSession session;	
 	@Autowired
 	private JavaMailSender mailSender;
 	@Autowired
@@ -66,6 +62,9 @@ public class UserController {
 	productPaymentService productPayService;
 	@Autowired
 	private MemberService ms;
+//	private SqlSessionTemplate mybatis;
+//	private UserVO vo;
+//	private ModelAndView mav;
 	
 	@RequestMapping(value = "/googleSave", method = RequestMethod.POST)
 	   @ResponseBody
@@ -114,6 +113,47 @@ public class UserController {
 	       
 	   }
 	
+	@RequestMapping(value={"/kakaoLogin" ,"/member/*"}, method=RequestMethod.GET)
+	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpServletRequest request, Model model , HttpSession session) throws Exception {
+	    String access_Token = ms.getAccessToken(code);
+	    UserVO userInfo = ms.getUserInfo(access_Token);
+	    String path = (String) session.getAttribute("path");
+//	    session.invalidate();
+	    session.setAttribute("login_info", userInfo);
+	    if (path == null) {
+	        return "redirect:/";
+	    } else {
+	        session.setAttribute("path", request.getRequestURI());
+	        if (path.contains("catelogin.do")) {
+	            return "redirect:/cate.do";
+	        } else if (path.contains("proCatelogin.do")) {
+	            CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
+	            int userid = userInfo.getNo();
+	            sessionCvo.setUser_no(userid);
+	            if (sessionCvo != null) {
+	                cateService.addcate(sessionCvo, userInfo, null);
+	            }
+	            return "redirect:/cate.do";
+	        } else if(path.contains("payBeLogin.do")) {
+	            userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
+	            userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
+	            int userid = userInfo.getNo();
+	            sessionordervo.setUserNo(userid);
+	            payService.insert(sessionordervo, userInfo, null);
+	            int orderid = sessionordervo.getOrderId();
+	            sessionorderprovo.setUserno(userid);
+	            sessionorderprovo.setOrderId(orderid);
+	            productPayService.insert(sessionorderprovo, userInfo, null);
+	            model.addAttribute("onelist", productPayService.selectList(orderid));
+	            return "/User/userPay";
+	        } else {
+	            return "redirect:" + path;
+	        }
+	    }
+	}
+
+	
+	
 	@RequestMapping(value = "/join.do" , method = RequestMethod.GET)
    public String join() {
       return "User/join";
@@ -129,9 +169,10 @@ public class UserController {
 	   System.out.println("get방식");
 	   String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
        model.addAttribute( "naverUrl", naverUrl ); 
-      
       return "User/login";
       }
+   
+   
    @RequestMapping(value = "/login.do", method = RequestMethod.POST)
    public String loginAction(@ModelAttribute("cvo") CateVO cvo,UserVO vo, HttpSession session, HttpServletRequest request, RedirectAttributes ra,Model model) {
 	   System.out.println("post방식");
@@ -160,7 +201,7 @@ public class UserController {
                }
                return "redirect:/cate.do";
            } else if(path.contains("payBeLogin.do")) {	   
-        	session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
+        	session.setAttribute("path", request.getRequestURI());
         	
 
          	userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");

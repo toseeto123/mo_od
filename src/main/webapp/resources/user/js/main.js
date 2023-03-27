@@ -180,20 +180,23 @@ function fn_idChk(){
    
    
    
-   function emailConfirm() {
-  var ssemail = $('input#myinfo_email').val();
-  var email = document.getElementById('email');
-  var conemail = document.getElementById('conemail');            //확인 메세지
-  var correctColor = "#00ff00";   //맞았을 때 출력되는 색깔.
-  var wrongColor ="#ff0000";   //틀렸을 때 출력되는 색깔
-      
-  if(email.value === ssemail){       //password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
-    conemail.style.color = wrongColor;    /* span 태그의 ID(confirmMsg) 사용  */
-    conemail.innerHTML ="중복된 이메일 입니다";    /* innerHTML : HTML 내부에 추가적인 내용을 넣을 때 사용하는 것. */
-  } else {
-    conemail.style.color = correctColor;
-    conemail.innerHTML ="사용 가능한 이메일입니다";
-  }
+    $.ajax({
+    url: '/check_email',
+    type: 'POST',
+    data: {email: email},
+    success: function(response) {
+      if (response.result === 'duplicate') {
+        conemail.style.color = wrongColor;
+        conemail.innerHTML = "중복된 이메일입니다.";
+      } else {
+        conemail.style.color = correctColor;
+        conemail.innerHTML = "사용 가능한 이메일입니다.";
+      }
+    },
+    error: function(xhr, status, error) {
+      console.log(error);
+    }
+  });
 }
    
    
