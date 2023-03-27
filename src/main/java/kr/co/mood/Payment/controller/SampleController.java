@@ -1,15 +1,13 @@
 package kr.co.mood.Payment.controller;
 
+import java.util.Set;
+
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
-import kr.co.mood.Payment.VO.KakaoCancelResponseVO;
 
 @Controller
 public class SampleController {
@@ -49,10 +47,14 @@ public class SampleController {
 
 	   
    @RequestMapping(value = "/User/kakaoPayCancel" )
-   public void payCancel(Model model,@RequestParam("tid") String tid,@RequestParam("price") String price,@RequestParam("pro_number") String pro_number,
-		   @RequestParam("orderId") int orderId  ) {
-	   System.out.println(" cancel.......");
-
-      model.addAttribute("info" , kakaopay.kakaoCancel(tid,price,pro_number,orderId));
+   public void payCancel(Model model,
+                         @RequestParam("tid") Set<String> tids,
+                         @RequestParam("price") int price,
+                         @RequestParam("pro_number") String pro_number,
+                         @RequestParam("orderId") int orderId) {
+       System.out.println(" cancel.......");
+       for (String tid : tids) {
+           model.addAttribute("info", kakaopay.kakaoCancel(tid, price, pro_number, orderId));
+       }
    }
 }

@@ -78,7 +78,7 @@ background: #da8862;
                 <div>
                     <h3 class="join_title"><label for="pwd">비밀번호</label></h3>
                     <span class="box int_pass">
-                        <input type="password" id="pwd" name="pwd" class="string" pattern="^[A-Za-z0-9]{10,20}$" maxlength="20">
+                        <input type="password" id="pwd" name="pwd" class="string" pattern="^[A-Za-z0-9]{10,20}$" maxlength="20" placeholder="10~20자 내외의 숫자+영문대소문자의 조합으로 구성해주세요">
                     </span>
                 </div>
 

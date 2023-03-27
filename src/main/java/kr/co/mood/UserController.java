@@ -82,12 +82,12 @@ public class UserController {
 	      googleVO.setAge((age * 10) + "~" + ((age * 10) + 9));
 	      
 	      int result = userservice.idChk(googleVO);
-	      
+	     
 	      if (result == 0) {
-	         userservice.insertnaver(googleVO);
-	         session.setAttribute("login_info", googleVO);
-	      } else {
-	         session.setAttribute("login_info", googleVO);
+	         userservice.insertnaver(googleVO);	       
+	         session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
+	      } else {	    	  
+	         session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
 	      }
 
 	      return (String) session.getAttribute("path");

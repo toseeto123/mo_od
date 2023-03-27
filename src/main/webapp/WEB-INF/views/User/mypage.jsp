@@ -133,7 +133,7 @@ input {
 				</button>
 				</div>
 				<div class="col-md-4">
-				<button type="button" class="btn btn-primary" style="background:#c8936ed4;border:#c8936ed4;color:white;" onclick="location.href='/index.jsp'">
+				<button type="button" class="btn btn-primary" style="background:#c8936ed4;border:#c8936ed4;color:white;" onclick="location.href='/'">
   					메인으로
 				</button>
 				</div>

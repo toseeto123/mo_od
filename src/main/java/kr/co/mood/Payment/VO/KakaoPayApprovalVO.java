@@ -1,6 +1,8 @@
 package kr.co.mood.Payment.VO;
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
 
 public class KakaoPayApprovalVO {
 	
@@ -14,12 +16,21 @@ public class KakaoPayApprovalVO {
     private CardVO card_info;
     private String item_name, item_code, payload;
     private Integer quantity, tax_free_amount, vat_amount;
-    private Date created_at, approved_at;
+    private Timestamp created_at, approved_at;
+    private Date successTime;
     
-    //결제확인용값들
+    
+    
+	public Date getSuccessTime() {
+		return successTime;
+	}
+	public void setSuccessTime(Date successTime) {
+		this.successTime = successTime;
+	}
+	//결제확인용값들
     //product
     private String pro_img1,pro_name,pro_maindesctitle,pro_option;
-    private int pro_number,price;
+    private int pro_number,price,total;
     //user
     private int userno;
     //order
@@ -27,7 +38,13 @@ public class KakaoPayApprovalVO {
     private int count;
     
     
-    public String getPro_option() {
+	public int getTotal() {
+		return total;
+	}
+	public void setTotal(int total) {
+		this.total = total;
+	}
+	public String getPro_option() {
 		return pro_option;
 	}
 	public void setPro_option(String pro_option) {
@@ -174,18 +191,21 @@ public class KakaoPayApprovalVO {
 	public void setVat_amount(Integer vat_amount) {
 		this.vat_amount = vat_amount;
 	}
-	public Date getCreated_at() {
+	public Timestamp getCreated_at() {
 		return created_at;
 	}
-	public void setCreated_at(Date created_at) {
+	public void setCreated_at(Timestamp created_at) {
 		this.created_at = created_at;
 	}
-	public Date getApproved_at() {
+	public Timestamp getApproved_at() {
 		return approved_at;
 	}
-	public void setApproved_at(Date approved_at) {
+	public void setApproved_at(Timestamp approved_at) {
 		this.approved_at = approved_at;
 	}
+
+
+
 	
     
     
