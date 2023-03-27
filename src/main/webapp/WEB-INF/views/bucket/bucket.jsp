@@ -2,81 +2,68 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
-
+<!DOCTYPE html>
+<html>
+<head>
+<jsp:include page="../../common/header.jsp" />
 
 <meta charset="UTF-8">
 <title>장바구니</title>
-
 <style>
-body{
-overflow-y: scroll;
-}
 section {
 	width: 1000px;
 	margin: 0 auto;
-	
 }
 dl, ul, ol, li {
 	list-style: none;
 }
-
 .content_box {
 	float: left;
 	width: 100%;
 	background-color: white;
 }
-
 .order_wrap {
 	max-width: 1200px;
 	width: 100%;
 	margin: auto;
 }
-
 @media only screen and (max-width: 768px) {
 	.order_wrap {
 		max-width: 768px;
 	}
 }
-
 @media only screen and (max-width: 576px) {
 	.order_wrap {
 		max-width: 576px;
 	}
 }
-
 .order_wrap .order_tit {
 	overflow: hidden;
 	border-bottom: 2px solid #c8936ed4;
-
+	margin-bottom: 10px;
 }
-
 .order_wrap .order_tit ol {
 	float: right;
 	line-height: 62px;
 }
-
 .order_wrap .order_tit h2 {
 	float: left;
 	font-size: 28px;
 	color: #222222;
 }
-
 .order_wrap .order_tit ol li {
 	float: left;
 	font-size: 14px;
 	color: #d1d1d1;
 }
-
 .order_wrap .order_tit li span {
 	font-size: 16px;
 	font-weight: bold;
 }
-
 .order_wrap .order_tit .page_on {
 	color: #c8936ed4;
 	font-weight: bold;
 }
-
 .price_sum {
 	margin: 40px 100px 120px;
 	padding: 20px 40px 25px 40px;
@@ -84,17 +71,14 @@ dl, ul, ol, li {
 	border-radius: 5px;
 	height: 250px;
 }
-
 .price_sum_cont {
 	display: table;
 	float: right;
 	text-align: right;
 }
-
 .price_sum_cont .price_sum_list {
 	position: relative;
 }
-
 .price_sum_cont .price_sum_list dl {
 	display: table-cell;
 	padding: 5px 10px 5px 10px;
@@ -102,11 +86,9 @@ dl, ul, ol, li {
 	text-align: right;
 	display: table-cell;
 }
-
 .price_sum_cont .price_sum_list dl {
 	display: block;
 }
-
 ol {
 	display: flex;
 	flex-wrap: wrap;
@@ -116,13 +98,11 @@ ol {
 	padding: 0;
 	list-style: none;
 }
-
 li {
 	display: flex;
 	align-items: center;
 	margin: 10px;
 }
-
 li .btnspan {
 	display: inline-flex;
 	justify-content: center;
@@ -135,11 +115,9 @@ li .btnspan {
 	font-size: 16px;
 	color: #fff;
 }
-
 li .btnspan_on {
 	background-color: #c8936ed4;
 }
-
 @media only screen and (max-width: 768px) {
 	ol {
 		position: fixed;
@@ -160,7 +138,6 @@ li .btnspan_on {
 		font-size: 12px;
 	}
 }
-
 .plus_btn, .minus_btn, .delete_btn {
 	width: 30px;
 	height: 30px;
@@ -173,18 +150,9 @@ li .btnspan_on {
 	font-weight: bold;
 	margin: 0 1px;
 }
-.delete_btn{
-float: right;
-margin-right: 50px;
-width: 40px;
-height: 40px;
-margin-bottom: 40px;
-}
-
 .plus_btn:hover, .minus_btn:hover, .delete_btn:hover {
 	background-color: #FFA500;
 }
-
 .cateBtn, .btn_buy, .cancelbtn {
 	background-color: #c8936ed4;
 	width: 416px;
@@ -200,11 +168,8 @@ footer {
   left: 0;
   right: 0;
 } 
-
 </style>
-<jsp:include page="../../common/header.jsp" />
 <script type="text/javascript">
-
 window.onload = function() {
 	updateTotalCount();
 	minusTotalCount();
@@ -222,11 +187,9 @@ window.onload = function() {
 	}
 	
 }
-
 function parseCurrency(num) {
    return `₩` + num.toLocaleString('ko-KR');
 }
-
 function updateTotalCount() {
    const amountTotal = document.querySelector('.amount_total');
    const valueTotal = document.querySelector('.value_total');
@@ -250,7 +213,6 @@ function updateTotalCount() {
    valueTotal.innerText = parseCurrency(totalValue);
    totalValueInput.value = totalValue;
 }
-
 function minusTotalCount() {
    
    
@@ -276,12 +238,10 @@ function minusTotalCount() {
    valueTotal.innerText = (totalValue < 0) ? '₩' + parseCurrency(-totalValue).substring(1) : '₩' + parseCurrency(totalValue).substring(1);
    totalValueInput.value = Math.abs(totalValue);
 }
-
 function flush(type, element) {
    const itemWrapper = element.parentNode.parentNode;
      const resultElement = element.parentNode.previousElementSibling.previousElementSibling;
      let number = resultElement.innerText;
-
      const cateIdList = document.querySelectorAll('.cate_id');
      const cateIdArray = Array.from(cateIdList);
      const cateIdValues = cateIdArray.map(function(element) {
@@ -308,7 +268,6 @@ function flush(type, element) {
      totalSpan.innerText = parseCurrency(totalPrice);
      
      // get the index of the current loop iteration
-
      
      if (type === 'plus') {
        number = parseInt(number) + 1;
@@ -325,15 +284,13 @@ function flush(type, element) {
          body: JSON.stringify(data),
      }); */
      let xhr = new XMLHttpRequest();
-     xhr.open('POST', 'plus.do', true);
+     xhr.open('POST', '/users/plus', true);
      xhr.setRequestHeader('Content-Type', 'application/json'); // JSON 형태의 데이터 전송을 위한 설정
-
      xhr.onreadystatechange = function() {
        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
          
        }
      };
-
      
        xhr.send(JSON.stringify(data)); // JSON 형태의 데이터 전송
      
@@ -341,12 +298,10 @@ function flush(type, element) {
      updateTotalCount();
      
 }
-
 function minus(type, element) {
    const itemWrapper = element.parentNode.parentNode;
      const resultElement = element.parentNode.previousElementSibling.previousElementSibling;
      let number = resultElement.innerText;
-
      const cateIdList = document.querySelectorAll('.cate_id');
      const cateIdArray = Array.from(cateIdList);
      const cateIdValues = cateIdArray.map(function(element) {
@@ -375,7 +330,6 @@ function minus(type, element) {
        }
      
      // get the index of the current loop iteration
-
      
      if (type === 'minus' && number > 1) {
        number = parseInt(number) - 1;
@@ -385,17 +339,14 @@ function minus(type, element) {
        proprice : proprice,
        cateId: cateId,
      };
-
      let xhr = new XMLHttpRequest();
-     xhr.open('POST', 'minus.do', true);
+     xhr.open('POST', '/users/minus', true);
      xhr.setRequestHeader('Content-Type', 'application/json'); // JSON 형태의 데이터 전송을 위한 설정
-
      xhr.onreadystatechange = function() {
        if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
          
        }
      };
-
      
        xhr.send(JSON.stringify(data)); // JSON 형태의 데이터 전송
      
@@ -407,7 +358,6 @@ function deletecate(element) {
    const itemWrapper = element.parentNode.parentNode;
     const resultElement = element.parentNode.previousElementSibling.previousElementSibling;
     let number = resultElement.innerText;
-
     const cateIdList = document.querySelectorAll('.cate_id');
     const cateIdArray = Array.from(cateIdList);
     const cateIdValues = cateIdArray.map(function(element) {
@@ -434,9 +384,8 @@ function deletecate(element) {
          totalSpan.innerText = parseCurrency(totalPrice);
        }
    let xhr = new XMLHttpRequest();
-   xhr.open('POST', 'catedelete.do', true);
+   xhr.open('POST', '/users/catedelete', true);
    xhr.setRequestHeader('Content-Type', 'application/json'); // JSON 형태의 데이터 전송을 위한 설정
-
    xhr.onreadystatechange = function() {
       if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
          const categoryItem = element.closest('.deleteplz');
@@ -464,7 +413,6 @@ function deletecate(element) {
       }
       }
    };
-
    if (cateId != null) {
       const data = {
          number : number,
@@ -474,23 +422,18 @@ function deletecate(element) {
    minusTotalCount();
    }
 }
-
-
-
-
-
 </script>
 </head>
-<body>
+<body style="font-size: 20px;">
 	<form action="/products/cateorders" method="post">
 	<input type="hidden" value="${login_info.adr }" name="adr">
 		<section>
 				<ul class="nav nav-pills nav-justified">
 				  <li class="nav-item" >
-				    <a class="nav-link active" href="/mypage.do" style="background: #c8936ed4; color:white; font-size: 16px;">회원 정보</a>
+				    <a class="nav-link active" href="/users/mypage" style="background: #c8936ed4; color:white; font-size: 16px;">회원 정보</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" href="/cate.do" style="background: #da8862; color:white; font-size: 16px;">장바 구니</a>
+				    <a class="nav-link" href="/users/bucket" style="background: #c8936ed4; color:white; font-size: 16px;">장바 구니</a>
 				  </li>
 				  <li class="nav-item">
 				    <a class="nav-link" href="/products/payMypage" style="background: #c8936ed4; color:white; font-size: 16px;">결제 내역</a>
@@ -511,12 +454,12 @@ function deletecate(element) {
 				<c:when test="${empty map }"><h2 style="text-align: center; margin-top: 70px; margin-bottom: 70px;">장바구니에 담긴 상품이 없습니다.</h2></c:when>
 				<c:otherwise>
 				<c:forEach var="map" items="${map}">
-					<div class="deleteplz" style="height: 225;">
-						<img src="resources/assets/img/product/${map.pro_img1 }"
+					<div class="deleteplz">
+						<img src="/resources/assets/img/product/${map.pro_img1 }"
 							class="img-fluid"
 							alt="${map.pro_name}"
 							title="${map.pro_maindesctitle}"
-							style="width: 180px; height: 180px; position: absolute; right: 150px;">
+							style="width: 160px; height: 160px; position: absolute; right: 150px;">
 						<p style="text-align: center; margin-top: 30px;">
 
 
