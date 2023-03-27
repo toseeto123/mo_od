@@ -17,6 +17,7 @@ public interface UserService {
 		
 		public void insert(UserVO vo);
 
+		public void googleInsert(UserVO vo);
 		
 		public void update(UserVO vo) throws Exception;
 		
