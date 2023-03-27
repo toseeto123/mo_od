@@ -83,7 +83,7 @@ public class AdminPaymentService {
 		   return map;
 	}
 	
-	public List<KakaoPayApprovalVO> adminPaymentCancel(int orderid) {
+	public KakaoPayApprovalVO adminPaymentCancel(int orderid) {
 		return dao.adminPaymentCancel(orderid);
 	}
 	

@@ -114,5 +114,9 @@
 		 ]]>
 	</insert>
     
+    <insert id="googleInsert" parameterType="kr.co.mood.user.dao.UserVO">
+    	insert into moodjoin(no, id, pwd, name, age, gender, adr, email, phone, day) values(null, #{id}, null, #{name}, null, null, null, #{email}, null, now())
+    </insert>
+    
     
 	</mapper>

@@ -85,7 +85,7 @@ public class UserController {
 	      int result = userservice.idChk(googleVO);
 	     
 	      if (result == 0) {
-	         userservice.insertnaver(googleVO);	       
+	         userservice.googleInsert(googleVO);	       
 	         session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
 	      } else {	    	  
 	         session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));

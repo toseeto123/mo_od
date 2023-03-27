@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Chart</title>
+<title>AdminPayment</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
 select, option{
@@ -115,9 +115,7 @@ footer{
                   <tr>
                   <td colspan="4" style="border-bottom:none"></td>
                   <td style="border-bottom:none">
-                  	<form action="#" method="post">
-                  	<a href="/admin/kakaoPayCancel" class="btn-get-started animate__animated">주문취소</a>
-                  	</form>
+                  	<a href="/admin/kakaoPayCancel?orderid=${member.orderNo}" class="btn-get-started animate__animated">주문취소</a>
                   	</td>
                   </tr>
                   
@@ -131,23 +129,23 @@ footer{
 			<div id="modulePaging"
 				style="display: inline-block; position: absolute; left: 50%; transform: translateX(-50%); font-size: 20px;">
 				<c:if test="${prePage!=null }">
-					<a href="/admin/adminMemberList.do/${prePage}">&lt;</a>
+					<a href="/admin/adminMemberList/${prePage}">&lt;</a>
 				</c:if>
 
 				<c:forEach items="${ pagingNo }" var="no">
 					<c:choose>
 						<c:when test="${selectPage == no}">
                   &nbsp;<a style="color: green"
-								href="/admin/payment.do/${no}">${no}</a>&nbsp;
+								href="/admin/payment/${no}">${no}</a>&nbsp;
                   </c:when>
 						<c:otherwise>
-                  &nbsp;<a href="/admin/payment.do/${no}">${no}</a>&nbsp;
+                  &nbsp;<a href="/admin/payment/${no}">${no}</a>&nbsp;
                   </c:otherwise>
 					</c:choose>
 				</c:forEach>
 
 				<c:if test="${nextPage != null }">
-					<a href="/admin/payment.do/${nextPage}">&gt;</a>
+					<a href="/admin/payment/${nextPage}">&gt;</a>
 				</c:if>
 			</div>
 			

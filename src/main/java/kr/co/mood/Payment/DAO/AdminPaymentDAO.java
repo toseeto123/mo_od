@@ -17,5 +17,5 @@ public interface AdminPaymentDAO {
 	public List<AdminPaymentVO> adminPaymentList();
 	public List<AdminPaymentVO> adminPaymentMemberList(@Param("startNo") int startNo, @Param("endNo") int endNo);
 	public List<AdminPaymentVO> adminPaymentSearchingList(ModuleVO vo);
-	public List<KakaoPayApprovalVO> adminPaymentCancel(int orderid);
+	public KakaoPayApprovalVO adminPaymentCancel(int orderid);
 }

@@ -86,13 +86,13 @@ footer{
 				<tbody id="tbody" style="font-weight: normal;">
 					<c:forEach var="user" items="${userList}">
 						<tr>
-							<td onClick="location.href = '/admin/adminMemberDetail.do/${user.no}'" scope="col">${user.no}</td>
-							<td onClick="location.href = '/admin/adminMemberDetail.do/${user.no}'" scope="col">${user.id}</td>
-							<td onClick="location.href = '/admin/adminMemberDetail.do/${user.no}'" scope="col">${user.name}</td>
-							<td onClick="location.href = '/admin/adminMemberDetail.do/${user.no}'" scope="col">${user.phone}</td>
-							<td onClick="location.href = '/admin/adminMemberDetail.do/${user.no}'" scope="col">${user.email}</td>
-							<td onClick="location.href = '/admin/adminMemberDetail.do/${user.no}'" scope="col"><a
-								href="/admin/adminMemberDetail.do/${user.no}">상세정보</a></td>
+							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}'" scope="col">${user.no}</td>
+							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}'" scope="col">${user.id}</td>
+							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}'" scope="col">${user.name}</td>
+							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}'" scope="col">${user.phone}</td>
+							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}'" scope="col">${user.email}</td>
+							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}'" scope="col"><a
+								href="/admin/adminMemberDetail/${user.no}">상세정보</a></td>
 						</tr>
 					</c:forEach>
 				</tbody>
@@ -102,23 +102,23 @@ footer{
 			<div id="modulePaging"
 				style="display: inline-block; position: absolute; left: 50%; transform: translateX(-50%); font-size: 20px;">
 				<c:if test="${prePage!=null }">
-					<a href="/admin/adminMemberList.do/${prePage}">&lt;</a>
+					<a href="/admin/adminMemberList/${prePage}">&lt;</a>
 				</c:if>
 
 				<c:forEach items="${ pagingNo }" var="no">
 					<c:choose>
 						<c:when test="${selectPage == no}">
                   &nbsp;<a style="color: green"
-								href="/admin/adminMemberList.do/${no}">${no}</a>&nbsp;
+								href="/admin/adminMemberList/${no}">${no}</a>&nbsp;
                   </c:when>
 						<c:otherwise>
-                  &nbsp;<a href="/admin/adminMemberList.do/${no}">${no}</a>&nbsp;
+                  &nbsp;<a href="/admin/adminMemberList/${no}">${no}</a>&nbsp;
                   </c:otherwise>
 					</c:choose>
 				</c:forEach>
 
 				<c:if test="${nextPage != null }">
-					<a href="/admin/adminMemberList.do/${nextPage}">&gt;</a>
+					<a href="/admin/adminMemberList/${nextPage}">&gt;</a>
 				</c:if>
 			</div>
 			
