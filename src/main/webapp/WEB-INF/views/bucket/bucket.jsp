@@ -315,7 +315,7 @@ function flush(type, element) {
          body: JSON.stringify(data),
      }); */
      let xhr = new XMLHttpRequest();
-     xhr.open('POST', 'plus.do', true);
+     xhr.open('POST', '/users/plus', true);
      xhr.setRequestHeader('Content-Type', 'application/json'); // JSON 형태의 데이터 전송을 위한 설정
 
      xhr.onreadystatechange = function() {
@@ -377,7 +377,7 @@ function minus(type, element) {
      };
 
      let xhr = new XMLHttpRequest();
-     xhr.open('POST', 'minus.do', true);
+     xhr.open('POST', '/users/minus', true);
      xhr.setRequestHeader('Content-Type', 'application/json'); // JSON 형태의 데이터 전송을 위한 설정
 
      xhr.onreadystatechange = function() {
@@ -424,7 +424,7 @@ function deletecate(element) {
          totalSpan.innerText = parseCurrency(totalPrice);
        }
    let xhr = new XMLHttpRequest();
-   xhr.open('POST', 'catedelete.do', true);
+   xhr.open('POST', '/users/catedelete', true);
    xhr.setRequestHeader('Content-Type', 'application/json'); // JSON 형태의 데이터 전송을 위한 설정
 
    xhr.onreadystatechange = function() {
@@ -477,10 +477,10 @@ function deletecate(element) {
 		<section>
 				<ul class="nav nav-pills nav-justified">
 				  <li class="nav-item" >
-				    <a class="nav-link active" href="/mypage.do" style="background: #c8936ed4; color:white; font-size: 16px;">회원 정보</a>
+				    <a class="nav-link active" href="/users/mypage" style="background: #c8936ed4; color:white; font-size: 16px;">회원 정보</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" href="/cate.do" style="background: #c8936ed4; color:white; font-size: 16px;">장바 구니</a>
+				    <a class="nav-link" href="/users/bucket" style="background: #c8936ed4; color:white; font-size: 16px;">장바 구니</a>
 				  </li>
 				  <li class="nav-item">
 				    <a class="nav-link" href="/products/payMypage" style="background: #c8936ed4; color:white; font-size: 16px;">결제 내역</a>
@@ -502,7 +502,7 @@ function deletecate(element) {
 				<c:otherwise>
 				<c:forEach var="map" items="${map}">
 					<div class="deleteplz">
-						<img src="resources/assets/img/product/${map.pro_img1 }"
+						<img src="/resources/assets/img/product/${map.pro_img1 }"
 							class="img-fluid"
 							alt="${map.pro_name}"
 							title="${map.pro_maindesctitle}"

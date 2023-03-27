@@ -127,7 +127,7 @@ background: #da8862;
 </style>
 <body>
 <jsp:include page="/WEB-INF/common/header.jsp" />
-<form method="post" action="/cateinsert.do" class="cateinsert">
+<form method="post" action="/users/cateinsert" class="cateinsert">
    <main id="main">
 <c:if test="${list.pro_number eq list.pro_number }">
       <!-- ======= Breadcrumbs ======= -->
@@ -390,7 +390,7 @@ background: #da8862;
 	   if(userAdr=="" && userNo!=""){
 		   var adr_chk = confirm('필수입력정보를 입력해주세요.\n(간편 로그인경우 주소,휴대폰번호 정보가 부족할 수 있습니다.)');
 		   if(adr_chk) {
-			   location.href = '/mypage.do';
+			   location.href = '/users/mypage';
 			} else {
 				location.href = location.href;
 			}
@@ -416,7 +416,7 @@ background: #da8862;
 	   if(userAdr=="" && userNo!=""){
 		   var adr_chk = confirm('필수입력정보를 입력해주세요.\n(간편 로그인경우 주소,휴대폰번호 정보가 부족할 수 있습니다.)');
 		   if(adr_chk) {
-			   location.href = '/mypage.do';
+			   location.href = '/users/mypage';
 			} else {
 				location.href = location.href;
 			}

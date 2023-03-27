@@ -1,147 +1,163 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-   pageEncoding="UTF-8"%>
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>상품 관리자</title>
+<style type="text/css">
+section.container {
+	margin-bottom: 20px;
+}
+
+select, option {
+	height: 30px;
+	font-size: 18px;
+}
+
+.searchParent {
+	text-align: center;
+}
+
+.search {
+	display: inline-block;
+}
+
+a {
+	color: #c8936ed4;
+}
+
+a:hover {
+	cursor: pointer;
+	color: #78E150;
+}
+
+*:focus {
+	outline: 0;
+}
+
+input[type=button] {
+	color: white;
+	background: #d2b48c;
+	width: 100px;
+	border-radius: 10px;
+	border: none;
+	font-size: 20px;
+}
+
+input[type=search] {
+	font-size: 18px;
+}
+
+footer {
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+}
+</style>
 </head>
 <body>
-   <jsp:include page="../../common/adminHeader.jsp" />
-      <section id="breadcrumbs" class="breadcrumbs">
-         <div class="container">
-         <div class="d-flex align-items-center">
-               <strong>상품관리 > 상품목록/수정<strong>
-            </div>
-         </div>
-      </section>
-   <!-- ======= Hero Section ======= -->
-   <section id="hero" style="background: white; height: 800px;">
-      <div class="hero-container">
-         <div id="heroCarousel" data-bs-interval="5000"
-            class="carousel slide carousel-fade" data-bs-ride="carousel"
-            style="background: white;">
-            <div class="carousel-inner">
-               <div class="carousel-item active" style="height: 800px;">
-                  <div class="carousel-container" style="background: white;">
-                     <div>
+	<jsp:include page="../../common/adminHeader.jsp" />
+	
+	<section id="hero" style="background: white; height: 620px;" class="container">
+		<div class="searchParent">
+			<div class="search" style="margin-top: 110px; margin-bottom: 50px;">
+				<select id="searchWhat">
+					<option value="name">상품명</option>
+					<option value="id">일련번호</option>
+				</select> <input type="search" id="search"> 
+				<input type="button" id="searchBtn" value="찾기" onclick="search()">
+				<input type="button" id="searchBtn" value="상품등록" onclick="location.href='/admin/insert.do'">
+			</div>
+			<table class="table"  id="table">
+				<thead>
+					<tr>
+						<th scope="col">이미지</th>
+						<th scope="col">카테고리</th>
+						<th scope="col">상품일련번호</th>
+						<th scope="col">상품명</th>
+						<th scope="col">가격</th>
+						<th scope="col">품절여부(판매여부)</th>
+					</tr>
+				</thead>
+				<tbody id="tbody">
 
-                        <table class="table">
-                        	<div style="width:100%; margin-bottom:3%; margin-left:50%;">
-							<select id="searchWhat">
-							<option value="name">상품명</option>
-							<option value="id">일련번호</option>
-							</select> <input type="search" id="search">
-			
-			
-			<input type="button" style="background: transparent; width:70px; color:black; border-radius:10px; border: 2px solid #deb887;"
-				id="searchBtn" value="찾기" onMouseover="this.style.background='#d2b48c';" onMouseout="this.style.background='transparent'" onclick="search()">
-				</div>
-                           <thead>
-                              <tr>
-                              <th scope="col">이미지</th>
-                                 <th scope="col">카테고리</th>
-                                 <th scope="col">상품일련번호</th>
-                                 <th scope="col">상품명</th>
-                                 <th scope="col">가격</th>
-                                 <th scope="col">품절여부(판매여부)</th>
-                              </tr>
-                           </thead>
-							<tbody id="tbody">
+					<c:forEach var="list" items="${list}">
+						<tr>
+							<th scope="col"><img alt=""
+								src="/resources/assets/img/product/${list.pro_img1}"
+								style="width: 60px; height: 60px;"></th>
 
-                              <c:forEach var="list" items="${list}">
-                              <tr> 
-                   <td scope="col"><img alt="" src="/resources/assets/img/product/${list.pro_img1}" style="width: 60px; height: 60px;"></td>              
-                                 
-                  <td>                 
-                        <c:if test="${list.pro_categoryserial  eq 'A0' }">
+							<th><c:if test="${list.pro_categoryserial  eq 'A0' }">
                   가구 > 매트리스
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'A1' }">
+                  </c:if> <c:if test="${list.pro_categoryserial  eq 'A1' }">
                   가구 > 침대프레임
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'A2' }">
+                  </c:if> <c:if test="${list.pro_categoryserial  eq 'A2' }">
                   가구 > 침대프레임
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'B0' }">
+                  </c:if> <c:if test="${list.pro_categoryserial  eq 'B0' }">
                   조명 > 무드등
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'B1' }">
+                  </c:if> <c:if test="${list.pro_categoryserial  eq 'B1' }">
                   조명 > 스탠드조명
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'C0' }">
+                  </c:if> <c:if test="${list.pro_categoryserial  eq 'C0' }">
                   수납 > 옷장/행거
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'C1' }">
+                  </c:if> <c:if test="${list.pro_categoryserial  eq 'C1' }">
                   수납 > 서랍
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'D0' }">
+                  </c:if> <c:if test="${list.pro_categoryserial  eq 'D0' }">
                   침실시공
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'D1' }">
+                  </c:if> <c:if test="${list.pro_categoryserial  eq 'D1' }">
                   거실시공
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'D2' }">
+                  </c:if> <c:if test="${list.pro_categoryserial  eq 'D2' }">
                   주방시공
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'D3' }">
+                  </c:if> <c:if test="${list.pro_categoryserial  eq 'D3' }">
                   욕조시공
-                  </c:if>
-                  </td>
-                  <td scope="col">${list.pro_categoryserial}${list.pro_number}</td>
-                                 
-                                 <td scope="col"><a href="/admin/adminProDetail?pro_number=${list.pro_number}">${list.pro_name}</a></td>
-                                 <td scope="col"><fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></td>
-                                 <c:if test="${list.pro_soldout eq 0}">
-                                 <td scope="col">판매중</td>
-                                 </c:if>
-                                 <c:if test="${list.pro_soldout eq 1}">
-                                 <td scope="col"><td>판매중지</td>
-                                 </c:if>
-                              </tr>
-                              </c:forEach>
-                           </tbody>
-                        </table>
-                        <div id="modulePaging"
-                        style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;">
-                  
-                  
-                  <c:if test="${prePage!=null }">
-                  <a href="/admin/adminProList.do/${prePage}">&lt;</a>
-                  </c:if>
-                  
-                  <c:forEach items="${ pagingNo }" var="no">
-                  <c:choose>
-                  <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:green" href="/admin/adminProList.do/${no}">${no}</a>&nbsp;
+                  </c:if></th>
+							<th scope="col">${list.pro_categoryserial}${list.pro_number}</th>
+
+							<th scope="col">
+							<a href="/admin/adminProDetail?pro_number=${list.pro_number}">${list.pro_name}</a>
+							</th>
+							<th scope="col"><fmt:formatNumber value="${list.pro_price}"
+									type="currency" currencySymbol="₩" /></th>
+							<c:if test="${list.pro_soldout eq 0}">
+								<th scope="col">판매중</th>
+							</c:if>
+							<c:if test="${list.pro_soldout eq 1}">
+								<th scope="col"></th>
+								<th>판매중지</th>
+							</c:if>
+						</tr>
+					</c:forEach>
+				</tbody>
+			</table>
+			<div id="modulePaging"
+				style="display: inline-block; position: absolute; left: 50%; top:80%; transform: translateX(-50%);  font-size: 20px;">
+				<c:if test="${prePage!=null }">
+					<a href="/admin/adminProList.do/${prePage}">&lt;</a>
+				</c:if>
+
+				<c:forEach items="${ pagingNo }" var="no">
+					<c:choose>
+						<c:when test="${selectPage == no}">
+                  &nbsp;<a style="color: green"
+								href="/admin/adminProList.do/${no}">${no}</a>&nbsp;
                   </c:when>
-                  <c:otherwise>
+						<c:otherwise>
                   &nbsp;<a href="/admin/adminProList.do/${no}">${no}</a>&nbsp;
                   </c:otherwise>
-                  </c:choose>
-                  </c:forEach>
+					</c:choose>
+				</c:forEach>
 
-                  <c:if test="${nextPage != null }">
-                  <a href="/admin/adminProList.do/${nextPage}">&gt;</a>
-                  </c:if>
+				<c:if test="${nextPage != null }">
+					<a href="/admin/adminProList.do/${nextPage}">&gt;</a>
+				</c:if>
 
-                  </div>
-                  
-                  </div>
-                  
-                  
-                        <div></div>
-                     </div>
-                  </div>
-               </div>
-
-            </div>
-         </div>
-      <input type="hidden" value="${selectPage}" id="selectPage">
-   </section>
-   <!-- End Hero -->
+			</div>
+		</div>
+		<input type="hidden" value="${selectPage}" id="selectPage">
+	</section>
+	<!-- End Hero -->
 
 
 	<script type="text/javascript">
@@ -298,4 +314,7 @@
 		});
 		
 	</script>
-<jsp:include page="../../common/footer.jsp" />
+	<jsp:include page="../../common/footer.jsp" />
+</body>
+
+</html>

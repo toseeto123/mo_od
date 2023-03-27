@@ -95,17 +95,16 @@ li {
                <li><a href="/admin/chart.do"><span class="getstarted scrollto"> Admin</span> </a></li>
                </c:when>
                <c:otherwise>
-               <li><a href="/mypage.do"><span class="getstarted scrollto"> <b>Mypage</b></span> </a></li>
+               <li><a href="/users/mypage"><span class="getstarted scrollto"> <b>Mypage</b></span> </a></li>
                </c:otherwise>
                </c:choose>
-               <li><a href="/logout.do"><span class="getstarted scrollto"><b>Logout</b></span></a></li>
+               <li><a href="/users/logout"><span class="getstarted scrollto"><b>Logout</b></span></a></li>
                
 
             </c:if>
 			<c:if test="${empty login_info.id}">
-				<li><a class="getstarted scrollto" href="/join.do"><b>회원가입</b></a></li>
-				<li><a class="getstarted scrollto" href="/login.do"><b>로그인</b></a></li>
-				
+				<li><a class="getstarted scrollto" href="/users/join"><b>Join</b></a></li>
+				<li><a class="getstarted scrollto" href="/users/login"><b>Login</b></a></li>
 			</c:if>
         </ul>
 

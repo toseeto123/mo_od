@@ -95,7 +95,7 @@ footer {
 			<!-- 		                </div> -->
 			<div class="social-icons">
 
-				<form id="login" action="/login.do" class="input-group"
+				<form id="login" action="/users/login" class="input-group"
 					method="post" style="margin-bottom: 15px;">
 					<input type="text" name="id" class="input-field" placeholder=" 아이디"
 						required autofocus style="border-radius: 3px;"> <input
@@ -142,7 +142,7 @@ footer {
 					<ul class="social_logo" style="height: 150px; margin-left: -20px;">
 						<li class="box_list"><a id="custom-login-btn"
 							href="javascript:void(0);"
-							onclick="window.open('${naverUrl}','naverLogin','width=430,height=500,location=no,status=no,scrollbars=yes');">
+							onclick="window.open('${naverUrl}','/users/naverLogin','width=830,height=500,location=no,status=no,scrollbars=yes');">
 								<img style="width: 50px;" src="/resources/user/img/naver.png"
 								alt="naver" class="imghover"> <span class="box_list_txt">네이버</span>
 						</a></li>

@@ -23,6 +23,7 @@ import kr.co.mood.user.dao.UserService;
 import kr.co.mood.user.dao.UserVO;
 
 
+@RequestMapping("/users")
 @Controller
 public class CateController {
 
@@ -45,17 +46,17 @@ public class CateController {
 			 return "redirect:login.do";
 		}
 		else {
-			return "cate/cate";
+			return "bucket/bucket";
 		}
 	}
 	
-	@RequestMapping(value = "/cate.do" , method = RequestMethod.POST)
+	@RequestMapping(value = "/cate" , method = RequestMethod.POST)
 	public ModelAndView selectAllList(HttpSession session , ModelAndView mav) {
 		
 		return mav;
 	}
 
-	@RequestMapping(value="/cateinsert.do" , method = RequestMethod.POST)
+	@RequestMapping(value="/cateinsert" , method = RequestMethod.POST)
 	public String insertcate(HttpSession session, @RequestParam("pro_number") String pro_number,
 	                         @RequestParam("pro_price") int pro_price, @RequestParam("radioOption") String pro_option,
 	                         RedirectAttributes redirectAttributes) {
@@ -79,16 +80,16 @@ public class CateController {
        cvo.setPro_option(pro_option);
        cservice.addcate(cvo, uvo, null);
        productService.catecountupdate(pro_number);
-       return "redirect:/cate";
+       return "redirect:/users/bucket";
 	   }
    }
 
-   @RequestMapping(value = "/cate", method = RequestMethod.GET)
+   @RequestMapping(value = "/bucket", method = RequestMethod.GET)
    public String showCateList(HttpSession session, Model model) {
        UserVO uvo = (UserVO) session.getAttribute("login_info");
        int userid = uvo.getNo();
        model.addAttribute("map", cservice.selectCateList(userid));
-       return "/cate/cate";
+       return "/bucket/bucket";
    }
    
    @RequestMapping(value = "/beLoginCate", method = RequestMethod.GET)
@@ -96,44 +97,35 @@ public class CateController {
        UserVO uvo = (UserVO) session.getAttribute("login_info");
        
 
-       return "/cate/cate";
+       return "/bucket/bucket";
    }
    
    
    
-   @RequestMapping(value = "/plus.do", method = RequestMethod.POST)
+   @RequestMapping(value = "/plus", method = RequestMethod.POST)
    public String update(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
       int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
       
        cservice.modifyflashamount(cateId);
        
-       return "/cate/cate";
+       return "/bucket/bucket";
    }
    
-   @RequestMapping(value = "/minus.do", method = RequestMethod.POST)
+   @RequestMapping(value = "/minus", method = RequestMethod.POST)
    public String minus(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
       int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
 
        cservice.modifyminusamount(cateId);
        
-       return "/cate/cate";
+       return "/bucket/bucket";
    }
    
-   
-   @RequestMapping(value = "/mycate.do", method = RequestMethod.GET)
-   public String mycate(HttpSession session, Model model) {
-      UserVO uvo = (UserVO) session.getAttribute("login_info");
-      int userid = uvo.getNo();
-      model.addAttribute("map", cservice.selectCateList(userid));
-      return "/User/my_cateinfo";
-   }
-
-   @RequestMapping(value = "/catedelete.do", method = RequestMethod.POST)
+   @RequestMapping(value = "/catedelete", method = RequestMethod.POST)
    public String deleteCate(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
       int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
 
       cservice.deletecate(cateId);
-      return "cate/cate";
+      return "bucket/bucket";
    }
    
 }

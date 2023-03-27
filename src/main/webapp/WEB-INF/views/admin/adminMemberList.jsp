@@ -48,6 +48,8 @@ input[type=search]{
 }
 footer{
 	width: 100%;
+	position: absolute;
+	bottom: 0;
 }
 </style>
 </head>
@@ -55,10 +57,10 @@ footer{
 <body>
 	<jsp:include
 		page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
-	<section class="container">
-			<div class="searchParent">
-			<div class="search" style="margin-top: 50px; margin-bottom: 50px;">
-			<select id="searchWhat">
+	<section id="hero" class="container" style="overflow:hidden; background: white;">
+	<div class="searchParent">
+			<div class="search" style="margin : 111px 0px 50px 10px;">
+			<select id="searchWhat"> 
 				<option value="id">아이디</option>
 				<option value="name">이름</option>
 			</select> <input type="search" id="search">

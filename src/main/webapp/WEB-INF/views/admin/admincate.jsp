@@ -116,7 +116,6 @@ footer{
 				</c:if>
 			</div>
 
-			<div></div>
 		</div>
 		<input type="hidden" value="${selectPage}" id="selectPage">
 	</section>

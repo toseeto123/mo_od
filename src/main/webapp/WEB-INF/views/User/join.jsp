@@ -58,7 +58,7 @@ background: #da8862;
 <body>
    
         <div id="wrapper">
-    <form action="join.do" method="post" name="join" id="join">
+    <form action="/users/join" method="post" name="join" id="join">
             <!-- content-->
             <div id="content">
 
