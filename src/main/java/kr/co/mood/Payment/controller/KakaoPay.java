@@ -65,8 +65,8 @@ public class KakaoPay {
            params.add("total_amount", pro_pricestr);
            
            params.add("tax_free_amount", "100");
-           params.add("approval_url", "http://3.39.221.200:8080/User/kakaoPaySuccess?orderId=" + orderIdstr + "&userno=" + userno + "&pro_number="+ pro_number);
-           params.add("cancel_url", "http://3.39.221.200:8080/User/kakaoPayCancel?");
+           params.add("approval_url", "http://localhost:8080/User/kakaoPaySuccess?orderId=" + orderIdstr + "&userno=" + userno + "&pro_number="+ pro_number);
+           params.add("cancel_url", "http://localhost:8080/User/kakaoPayCancel?");
            params.add("fail_url", "http://3.39.221.200:8080/kakaoPaySuccessFail");
             HttpEntity<MultiValueMap<String, String>> body = new HttpEntity<MultiValueMap<String, String>>(params, headers);
     
@@ -124,25 +124,26 @@ public class KakaoPay {
 
        }
        public KakaoCancelResponseVO kakaoCancel(@RequestParam("tid") String tid
-    		   ,@RequestParam("price") String price,@RequestParam("pro_number") String pro_number,@RequestParam("orderId") int orderId
+    		   ,@RequestParam("price") String price,
+    		   @RequestParam("pro_number") String pro_number,
+    		   @RequestParam("orderId") int orderId
     		   ) {
-    	   System.out.println("痍⑥냼 濡쒖쭅 �뱾�뼱 �솕�뼱�쑀~");
            HttpHeaders headers = new HttpHeaders();
            headers.add("Authorization", "KakaoAK " + "1310fb3a979458e032a8aecca6d5e96c");
            headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
            headers.add("Content-Type", MediaType.APPLICATION_FORM_URLENCODED_VALUE + ";charset=UTF-8");
            
-           // 移댁뭅�삤�럹�씠 �슂泥�
+           // 燁삳똻萸낉옙�궎占쎈읂占쎌뵠 占쎌뒄筌ｏ옙
            MultiValueMap<String, String> params = new LinkedMultiValueMap<String, String>();
            params.add("cid", "TC0ONETIME");
            params.add("tid", tid);
            params.add("cancel_amount", price);
            params.add("cancel_tax_free_amount", "100");
            System.out.println(params);
-           // �뙆�씪誘명꽣, �뿤�뜑
+           // 占쎈솁占쎌뵬沃섎챸苑�, 占쎈엘占쎈쐭
            HttpEntity<MultiValueMap<String, String>> requestEntity = new HttpEntity<MultiValueMap<String, String>>(params, headers);
        
-           // �쇅遺��뿉 蹂대궪 url
+           // 占쎌뇚�겫占쏙옙肉� 癰귣�沅� url
            RestTemplate restTemplate = new RestTemplate();
        
            KakaoCancelResponseVO cancelResponse = restTemplate.postForObject(
