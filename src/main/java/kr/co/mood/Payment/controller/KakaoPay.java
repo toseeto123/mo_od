@@ -108,7 +108,7 @@ public class KakaoPay {
            try {
         	    kakaoPayApprovalVO = restTemplate.postForObject(new URI(HOST + "/v1/payment/approve"), body, KakaoPayApprovalVO.class);
         	    kservice.paymentinsert(kakaoPayApprovalVO);
-        	    kservice.paysuccessupdate(pro_number);
+        	    kservice.paysuccessupdate(pro_number); 
         	    kservice.paysuccessdelete(userno);
         	    return kakaoPayApprovalVO;
         	} catch (RestClientException e) {
@@ -129,6 +129,7 @@ public class KakaoPay {
     		   @RequestParam("orderId") int orderId
     		   ) {
     	   String total = Integer.toString(price);
+    	   Integer orderidchk = orderId;
            HttpHeaders headers = new HttpHeaders();
            headers.add("Authorization", "KakaoAK " + "1310fb3a979458e032a8aecca6d5e96c");
            headers.add("Accept", MediaType.APPLICATION_JSON_UTF8_VALUE);
@@ -151,10 +152,10 @@ public class KakaoPay {
                    "https://kapi.kakao.com/v1/payment/cancel",
                    requestEntity,
                    KakaoCancelResponseVO.class);
-           
-           kservice.paycancelDelete(orderId);
-           kservice.paySuccessStatusUpdate(orderId);
-           System.out.println(orderId);
+
+			kservice.paycancelDelete(orderId);
+
+			kservice.paySuccessStatusUpdate(orderId);
            return cancelResponse;
        }
        
