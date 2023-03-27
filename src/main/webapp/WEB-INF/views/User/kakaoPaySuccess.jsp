@@ -186,7 +186,7 @@ body {
                         <h2 class="animate__animated animate__fadeInDown">결제 완료</h2>
                         <p class="animate__animated animate__fadeInUp">"${login_info.name}"님 mo_od를 <br> 이용해주셔서 감사합니다.</p>
                         <div>
-                           <a href="/mypage.do" class="btn-get-started animate__animated animate__fadeInUp scrollto">결제 내역</a>
+                           <a href="/users/mypage" class="btn-get-started animate__animated animate__fadeInUp scrollto">결제 내역</a>
                         </div>
                      </div>
                   </div>
@@ -247,7 +247,7 @@ body {
                      <label for="address">결제 금액 : </label> <strong><fmt:formatNumber value="${info.amount.total}" type="currency" currencySymbol="₩" />원</strong>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="lastName">결제승인시간 : </label> <strong><fmt:formatDate value="${info.approved_at}" pattern="yyyy-MM-dd HH:mm:ss"/></strong>
+                     <label for="lastName">결제승인시간 : </label> <strong><fmt:formatDate value="${info.approved_at}" pattern="yyyy-MM-dd HH:mm:ss" timeZone="Asia/Seoul"/></strong>
                   </div>
 				
                </div>
@@ -264,14 +264,7 @@ body {
             </div>
       </div>
    </div>
-<%-- 결제일시:     [[${info.approved_at}]]<br/>
-주문번호:    [[${info.partner_order_id}]]<br/>
-상품명:    [[${info.item_name}]]<br/>
-상품수량:    [[${info.quantity}]]<br/>
-결제금액:    [[${info.amount.total}]]<br/>
-결제방법:    [[${info.payment_method_type}]]<br/> --%>
 
-<%-- <h2>[[${info}]]</h2> --%>
 
 </body>
 <jsp:include page="/WEB-INF/common/footer.jsp" />
