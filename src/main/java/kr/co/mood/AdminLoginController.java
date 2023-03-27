@@ -17,28 +17,28 @@ public class AdminLoginController {
 	@Autowired
 	   private UserService userService;
 	
-	@RequestMapping("/adminLogin.do")
+	@RequestMapping("/adminLogin")
 	public String adminLogin() {
 		return "/admin/adminLogin";
 	}
 	
-	   @RequestMapping(value = "/adminLogin.do", method = RequestMethod.POST)
+	   @RequestMapping(value = "/adminLogin", method = RequestMethod.POST)
 	   public String adminLoginCheck(UserVO vo, HttpSession session, RedirectAttributes rttr) {
 	      if(userService.selectId(vo) == null || !userService.selectId(vo).getId().equals("admin")) {
 	         session.invalidate();
 	         rttr.addFlashAttribute("msg", false);
-	         return "redirect:/adminLogin.do";
+	         return "redirect:/adminLogin";
 	      }
 	      session.setAttribute("login_info", userService.selectId(vo));
-	      return "redirect:/admin/chart.do";
+	      return "redirect:/admin/chart";
 	   }
 
-	   @RequestMapping("/adminLogout.do")
+	   @RequestMapping("/adminLogout")
 	   public String adminLogout(HttpSession session){
 	      session.invalidate();
-	      return "redirect:/adminLogin.do";
+	      return "redirect:/adminLogin";
 	   }
-	   @RequestMapping("/goclient.do")
+	   @RequestMapping("/goclient")
 	   public String goClient(HttpSession session){
 	      session.invalidate();
 	      return "redirect:/";

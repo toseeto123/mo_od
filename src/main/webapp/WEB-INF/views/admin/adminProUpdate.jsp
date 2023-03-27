@@ -10,63 +10,52 @@
 
 </head>
 <style type="text/css">
-
 .warp{
 	width: 900px;
 	margin : 0 auto;
 }
+.inputArea label {
+  margin-bottom: 10px;
+}
+/* 버튼 스타일 */
+.btn {
+  padding: 10px 20px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+  background-color: #007bff;
+  border: none;
+  color: #fff;
+}
+/* 버튼에 호버 효과 추가 */
+.btn:hover {
+  background-color: #0069d9;
+}
+input[type=button] {
+	color: white;
+	background: #d2b48c;
+	width: 100px;
+	border-radius: 10px;
+	border: none;
+	font-size: 20px;
+}
+input[type=search] {
+	font-size: 18px;
+}
+#searchBtn {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 250px;
+}
 </style>
 <body>
 <jsp:include page="../../common/adminHeader.jsp" />
-	<section id="breadcrumbs" class="breadcrumbs">
-			<div class="container">
-			<div class="d-flex align-items-center">
-					<strong>상품관리 > 상품목록/수정 > 상품수정</<strong>
-				</div>
-
-			</div>
-		</section>
 <form role="form" method="get" action="updatePro">
+<input type="button" style="" id="searchBtn" value="상품리스트 이동" onclick="location.href='/admin/adminProList.do'">
 <div class="warp">
 <c:if test="${list.pro_number eq list.pro_number }">
-<div class="inputArea"> 
-카테고리 : 
-                        <c:if test="${list.pro_categoryserial  eq 'A0' }">
-						가구 > 매트리스
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'A1' }">
-						가구 > 침대프레임
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'A2' }">
-						가구 > 침대프레임
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'B0' }">
-						조명 > 무드등
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'B1' }">
-						조명 > 스탠드조명
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'C0' }">
-						수납 > 옷장/행거
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'C1' }">
-						수납 > 서랍
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'D0' }">
-						침실시공
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'D1' }">
-						거실시공
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'D2' }">
-						주방시공
-						</c:if>
-						<c:if test="${list.pro_categoryserial  eq 'D3' }">
-						욕조시공
-						</c:if>
-
-
-<div class="inputArea">
+<div class="inputArea" style="margin-top: 100px;">
  <label for="">상품명</label>
  <input type="text" id="" name="pro_name" value="${list.pro_name}"/>
 </div>
@@ -77,7 +66,7 @@
 
 <div class="inputArea">
  <label for="">판매여부</label>
- <input type="text" id="" name="pro_soldout" value="${list.pro_soldout}"/> <span style="color:red; font-size: 5px;"> 1 : 판매중지  /  0 : 판매중</span>
+ <input type="text" id="" name="pro_soldout" value="${list.pro_soldout}"/> <span style="color:red; font-size: 15px;"> 1 : 판매중지  /  0 : 판매중</span>
 </div>
 
 <div class="inputArea">
@@ -179,7 +168,6 @@ function readURL(input) {
 	    document.getElementById('preview').src = "";
 	  }
 	}
-
 </script>
 </body>
 <jsp:include page="../../common/footer.jsp" />

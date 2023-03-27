@@ -49,18 +49,18 @@ public class AdminController {
 	private AdminPaymentService adminPaymentService;
 
 
-   @RequestMapping("/chart.do")
+   @RequestMapping("/chart")
    public String adminIndex(Model model) {
 	   adminPaymentService.getCategoryChart(model);
       return "admin/chart";   
    }
    
-   @RequestMapping("/adminMemberList.do")
+   @RequestMapping("/adminMemberList")
    public String adminMember() {
-	   return "redirect:/admin/adminMemberList.do/1";
+	   return "redirect:/admin/adminMemberList/1";
    }
   
-   @RequestMapping("/adminMemberList.do/{paging}/{searchWhat}/{search}")
+   @RequestMapping("/adminMemberList/{paging}/{searchWhat}/{search}")
    @ResponseBody
    public Map<String, Object> adminMemberList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//異붽��맂 遺�遺�
 	   ModuleVO moduleVO = new ModuleVO();
@@ -84,7 +84,7 @@ public class AdminController {
    }
    
    
-   @RequestMapping("/adminMemberList.do/{paging}")
+   @RequestMapping("/adminMemberList/{paging}")
    public String adminMemberList(@PathVariable String paging, Model model) {//異붽��맂 遺�遺�
 	   ModuleVO moduleVO = new ModuleVO();
 	   List<UserVO> userList = userService.selectAll(null);
@@ -94,19 +94,19 @@ public class AdminController {
 	   return "admin/adminMemberList";
    }
   
-   @RequestMapping("/adminMemberDetail.do/{userNo}")
+   @RequestMapping("/adminMemberDetail/{userNo}")
    public String adminMemberDetail(@PathVariable String userNo, UserVO vo, Model model){
 	   UserVO vo1 = userService.selectMemberNo(Integer.parseInt(userNo));
 	   model.addAttribute("userInfo", vo1);
 	   return "admin/adminMemeberDetail";
    }
    
-   @RequestMapping("/admincate.do")
+   @RequestMapping("/admincate")
    public String adminCate(){
-      return "redirect:/admin/admincate.do/1";
+      return "redirect:/admin/admincate/1";
    }
    
-   @RequestMapping("/admincate.do/{paging}")
+   @RequestMapping("/admincate/{paging}")
    public String admincateList(@PathVariable String paging,Model model,HttpSession session) {
 	   ModuleVO moduleVO = new ModuleVO();
 	   
@@ -121,7 +121,7 @@ public class AdminController {
 	   
 	   return "admin/admincate";
    }
-   @RequestMapping("/admincate.do/{paging}/{searchWhat}/{search}")
+   @RequestMapping("/admincate/{paging}/{searchWhat}/{search}")
    @ResponseBody
    public Map<String, Object> adminCateserach(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model,HttpSession session) {
 	   ModuleVO moduleVO = new ModuleVO();
@@ -147,12 +147,12 @@ public class AdminController {
 	   return map;
    }
    
-   @RequestMapping(value="insert.do" ,method=RequestMethod.GET)
+   @RequestMapping(value="insert" ,method=RequestMethod.GET)
    public String insertProductPage(){
       return "admin/insertPro";
    }
    
-   @RequestMapping(value="insert.do" ,method=RequestMethod.POST)
+   @RequestMapping(value="insert" ,method=RequestMethod.POST)
    public String insertProduct(@RequestParam MultipartFile file,
                            @RequestParam MultipartFile file1,
                            @RequestParam MultipartFile file2,
@@ -185,12 +185,12 @@ public class AdminController {
    
    
 
-      @RequestMapping(value = "adminProList.do")
+      @RequestMapping(value = "adminProList")
       public String ProductList() {
-         return "redirect:/admin/adminProList.do/1";
+         return "redirect:/admin/adminProList/1";
       }
 
-      @RequestMapping("/adminProList.do/{paging}/{searchWhat}/{search}")
+      @RequestMapping("/adminProList/{paging}/{searchWhat}/{search}")
       @ResponseBody
       public Map<String, Object> adminProList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//異붽��맂 遺�遺�
    	   ModuleVO moduleVO = new ModuleVO();
@@ -219,7 +219,7 @@ public class AdminController {
       
       
 
-  	@RequestMapping(value = "/adminProList.do/{page}") // FIX
+  	@RequestMapping(value = "/adminProList/{page}") // FIX
   	public String ProductListPage(@PathVariable String page, ModuleVO vo, Model model) {
   		ModuleVO moduleVO = new ModuleVO();
   		List<ProVO> allList = ps.selectProList(moduleVO);

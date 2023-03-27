@@ -13,16 +13,13 @@
 <script type="text/javascript" src="/resources/user/js/main.js"></script>
 
 <style>
-
 section {
 	width: 1000px;
 	margin: 0 auto;
 }
-
 input {
 	padding:10px;
 }
-
  body tr td:first-child {
 	font-weight:bold;
 	font-size :20px;
@@ -38,17 +35,16 @@ input {
     font-style: normal;
 }
 }
-
 </style>
 </head>
 <body>
 	<section>
 		<ul class="nav nav-pills nav-justified">
 		  <li class="nav-item" >
-		    <a class="nav-link active" href="/mypage.do" style="background: #da8862; color:white;">회원 정보</a>
+		    <a class="nav-link active" href="/uesrs/mypage" style="background: #da8862; color:white;">회원 정보</a>
 		  </li>
 		  <li class="nav-item">
-		    <a class="nav-link" href="/cate.do" style="background: #c8936ed4; color:white;">장바 구니</a>
+		    <a class="nav-link" href="/users/bucket" style="background: #c8936ed4; color:white;">장바 구니</a>
 		  </li>
 		  <li class="nav-item">
 		    <a class="nav-link" href="/products/payMypage" style="background: #c8936ed4; color:white;">결제 내역</a>
@@ -134,7 +130,7 @@ input {
 				</button>
 				</div>
 				<div class="col-md-4">
-				<button type="button" class="btn btn-primary" style="background:#c8936ed4;border:#c8936ed4;color:white;" onclick="location.href='/'">
+				<button type="button" class="btn btn-primary" style="background:#c8936ed4;border:#c8936ed4;color:white;" onclick="location.href='/index.jsp'">
   					메인으로
 				</button>
 				</div>

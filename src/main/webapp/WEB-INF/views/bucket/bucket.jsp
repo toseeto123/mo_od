@@ -3,14 +3,19 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<!DOCTYPE html>
-<html>
-<head>
-<jsp:include page="../../common/header.jsp" />
 
 <meta charset="UTF-8">
 <title>장바구니</title>
+
 <style>
+body{
+overflow-y: scroll;
+}
+section {
+	width: 1000px;
+	margin: 0 auto;
+	
+}
 dl, ul, ol, li {
 	list-style: none;
 }
@@ -42,7 +47,7 @@ dl, ul, ol, li {
 .order_wrap .order_tit {
 	overflow: hidden;
 	border-bottom: 2px solid #c8936ed4;
-	margin-bottom: 10px;
+
 }
 
 .order_wrap .order_tit ol {
@@ -73,11 +78,11 @@ dl, ul, ol, li {
 }
 
 .price_sum {
-	margin: 40px 100px 50px;
+	margin: 40px 100px 120px;
 	padding: 20px 40px 25px 40px;
 	border: 2px solid #c8936ed4;
 	border-radius: 5px;
-	height: 300px;
+	height: 250px;
 }
 
 .price_sum_cont {
@@ -168,6 +173,13 @@ li .btnspan_on {
 	font-weight: bold;
 	margin: 0 1px;
 }
+.delete_btn{
+float: right;
+margin-right: 50px;
+width: 40px;
+height: 40px;
+margin-bottom: 40px;
+}
 
 .plus_btn:hover, .minus_btn:hover, .delete_btn:hover {
 	background-color: #FFA500;
@@ -180,13 +192,25 @@ li .btnspan_on {
 	border: none;
 	border-radius: 30px;
 	box-shadow: 1px 1px 1px 1px lightgray;
+	color:white;
+}
+footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.btnhover{
+font-size: 20px;
+font-weight: 700;
+}
+.btnhover:hover{
+background: #da8862;
 }
 
-section {
-	width: 1000px;
-	margin: 0 auto;
-}
+
 </style>
+<jsp:include page="../../common/header.jsp" />
 <script type="text/javascript">
 
 window.onload = function() {
@@ -467,18 +491,19 @@ function deletecate(element) {
 </head>
 <body>
 	<form action="/products/cateorders" method="post">
+	<input type="hidden" value="${login_info.adr }" name="adr">
 		<section>
-			<ul class="nav nav-pills nav-fill">
-				<li class="nav-item"><a class="nav-link active" href="#"
-					style="background: #c8936ed4; color: white; font-size: 16px;">회원
-						정보</a></li>
-				<li class="nav-item"><a class="nav-link" href="cate.do"
-					style="background: #c8936ed4; color: white; font-size: 16px;">장바
-						구니</a></li>
-				<li class="nav-item"><a class="nav-link" href="#"
-					style="background: #c8936ed4; color: white; font-size: 16px;">결제
-						내역</a></li>
-			</ul>
+				<ul class="nav nav-pills nav-justified">
+				  <li class="nav-item" >
+				    <a class="nav-link active" href="/users/mypage" style="background: #c8936ed4; color:white; font-size: 16px;">회원 정보</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="/users/bucket" style="background: #da8862; color:white; font-size: 16px;">장바 구니</a>
+				  </li>
+				  <li class="nav-item">
+				    <a class="nav-link" href="/products/payMypage" style="background: #c8936ed4; color:white; font-size: 16px;">결제 내역</a>
+				  </li>
+				</ul>
 		</section>
 		<div class="content_box">
 			<div class="order_wrap" style="position: relative;">
@@ -489,52 +514,63 @@ function deletecate(element) {
 						<li style="font-size: 20px;"><span class="btnspan">02</span>주문서작성/결제</li>
 						<li style="font-size: 20px;"><span class="btnspan">03</span>주문완료</li>
 					</ol>
-					
 				</div>
-						<c:forEach var="map" items="${map}">
-							<div class="deleteplz">
-								
-								<img src="resources/assets/img/product/${map.pro_img1 }"
-									class="img-fluid"
-									style="width: 160px; height: 160px; position: absolute; right: 150px;">
-								<p style="text-align: center; margin-top: 30px;">
-									<input type="hidden" value="${map.user_no}"> 
-									<input type="hidden" value="${map.pro_number}" name="pro_number">
-								<h2 style="margin-left: 100px;">${map.pro_name}</h2>
-								<p style="margin-left: 100px;">${map.pro_maindesctitle }</p>
-								<span style="margin-left: 100px;">수 량 : </span>
-								<div class="amount" style="display: inline;">${map.amount}</div>
-								<input type="hidden" value="${map.cate_id}" name="cateId"
-									class="cate_id" /> <span class="btnspan">
-									<button type="button" class="plus_btn"
-										onclick='flush("plus", this)' title="수량 추가">+</button>
-									<button type="button" class="minus_btn"
-										onclick='minus("minus", this)' title="수량 감소">-</button>
-									<button class="delete_btn" type="button"
-										onclick='deletecate(this)' title="상품 삭제">
-										
-										<i class="ph ph-trash"></i>
-									</button>
-
-								</span> <input type="hidden" value="${map.pro_price}" name="pro_price"
-									class="pro_price" /> <br> <span
-									style="margin-left: 100px;">옵 션 : </span>${map.pro_option }
-								<p style="margin-left: 100px;">
-									가 격 : <span class="total"><fmt:formatNumber
-											value="${map.total}" type="currency" currencySymbol="₩" /></span>
-								</p>
-								<br>
-								<hr>
-							</div>
-							<input type="hidden" value="${map.total }" name="total">
-							</c:forEach>
+				<c:choose>
+				<c:when test="${empty map }"><h2 style="text-align: center; margin-top: 70px; margin-bottom: 70px;">장바구니에 담긴 상품이 없습니다.</h2></c:when>
+				<c:otherwise>
+				<c:forEach var="map" items="${map}">
+					<div class="deleteplz" style="height: 225;">
+						<img src="/resources/assets/img/product/${map.pro_img1 }"
+							class="img-fluid"
+							alt="${map.pro_name}"
+							title="${map.pro_maindesctitle}"
+							style="width: 180px; height: 180px; position: absolute; right: 150px;">
 							
+						<p style="text-align: center; margin-top: 30px;">
+
+
+							<input type="hidden" value="${map.user_no}" name="user_no"> <input
+								type="hidden" value="${map.pro_number}" name="pro_number">
+						<a href="/products/${map.pro_number }/${map.pro_name }"><h2 style="margin-left: 100px;">${map.pro_name}</h2></a>
+						<p style="margin-left: 100px;">${map.pro_maindesctitle }</p>
+						<span style="margin-left: 100px;">수 량 : </span>
+						<div class="amount" style="display: inline;">${map.amount}</div>
+						<input type="hidden" value="${map.cate_id}" name="cateId"
+							class="cate_id" /> <span class="btnspan">
+							<button type="button" class="plus_btn"
+								onclick='flush("plus", this)' title="수량 추가">+</button>
+							<button type="button" class="minus_btn"
+								onclick='minus("minus", this)' title="수량 감소">-</button>
+							<button class="delete_btn" type="button"
+								onclick='deletecate(this)' title="상품 삭제">
+								<i class="ph ph-trash"></i>
+							</button>
+
+						</span> <input type="hidden" value="${map.pro_price}" name="pro_price"
+							class="pro_price" /> <br>
+						<span style="margin-left: 100px;">옵 션 : </span>${map.pro_option }
+						<p style="margin-left: 100px;">
+							가 격 : <span class="total"><fmt:formatNumber
+									value="${map.total}" type="currency" currencySymbol="₩" /></span>
+						</p>
+						<br>
+						<hr>
+
+					</div>
+					<input type="hidden" value="${map.total }" name="total">
+					
+
+				</c:forEach>
+				</c:otherwise>
+				</c:choose>
+
+
 				</p>
-				<div class="price_sum">
+				<div class="price_sum" style="display: flex; justify-content: center;">
 					<div class="price_sum_cont">
 						<div class="price_sum_list">
 							<dl style="font-size: 20px;">
-								<dt>
+								<dt style="text-align: center;">
 									총 <strong class="amount_total">0</strong> 개의 상품 금액<span>
 										: </span><strong class="value_total">0</strong> 원
 								</dt>
@@ -544,9 +580,9 @@ function deletecate(element) {
 								</dd>
 							</dl>
 							<input type="hidden" value="${login_info.adr }" name="address">
-							<input type="submit" value="바로결제하기" class="btn_buy"> <br>
-							<br> <input type="button" value="메인페이지로 이동"
-								class="cancelbtn" onclick="window.location='/mo_od';">
+							<input type="submit" value="주문하기" class="btn_buy btnhover"> <br>
+							<br> <input type="button" value="더보러가기"
+								class="cancelbtn btnhover" onclick="window.location='/mo_od';">
 
 						</div>
 					</div>
@@ -554,8 +590,8 @@ function deletecate(element) {
 			</div>
 		</div>
 	</form>
-	<jsp:include page="../../common/footer.jsp" />
 </body>
+<jsp:include page="../../common/footer.jsp" />
 <script>
  
 </script>

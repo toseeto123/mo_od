@@ -73,10 +73,12 @@ function mainPagingEngine(url){
 			tables.innerHTML = '';
 			let text = '';
 			for(var i=0; i<tableData.list.length; i++){
+			
 			var fullDate = new Date(tableData.list[i].payDate);
 			var month = (fullDate.getMonth() < 9 ? '0' : '') + (fullDate.getMonth()+1);
 			console.log(month);
 			var date = fullDate.getFullYear() + '-' + month + '-' + fullDate.getDate();
+			var no = tableData.list[i].orderNo;
 				text = text +
 				"<table id='table' class='table' style='margin-top:5%; margin-left:15%; width:70%;'>"
                 +"<thead id='thead'>"
@@ -119,9 +121,7 @@ function mainPagingEngine(url){
                   +"<tr>"
                   +"<td colspan='4' style='border-bottom:none'></td>"
                   +"<td style='border-bottom:none'>"
-                  	+"<form action='#' method='post'>"
-                  	+"<a href='#about' class='btn-get-started animate__animated'>주문취소</a>"
-                  	+"</form>"
+                  	+"<a onclick='$(`#myModal"+no+"`).modal(`show`);' class='btn-get-started animate__animated'>주문취소</a>"
                   	+"</td>"
                   +"</tr>"
                   
@@ -129,7 +129,105 @@ function mainPagingEngine(url){
               +"</table>";
 				
 				tables.innerHTML = text;
-				
+				let newDiv = document.createElement('div');
+newDiv.classList.add('modal', 'fade');
+newDiv.id = 'myModal' + no;
+newDiv.tabIndex = '-1';
+newDiv.setAttribute('role', 'dialog');
+newDiv.setAttribute('aria-labelledby', 'myModalLabel');
+newDiv.setAttribute('aria-hidden', 'true');
+
+let modalDialog = document.createElement('div');
+modalDialog.classList.add('modal-dialog');
+modalDialog.setAttribute('role', 'document');
+
+let modalContent = document.createElement('div');
+modalContent.classList.add('modal-content');
+
+let modalHeader = document.createElement('div');
+modalHeader.classList.add('modal-header');
+
+let modalTitle = document.createElement('h5');
+modalTitle.classList.add('modal-title');
+modalTitle.id = 'myModalLabel';
+modalTitle.innerText = '주문취소';
+
+let modalCloseButton = document.createElement('button');
+modalCloseButton.classList.add('close');
+modalCloseButton.setAttribute('type', 'button');
+modalCloseButton.setAttribute('data-dismiss', 'modal');
+modalCloseButton.setAttribute('aria-label', 'Close');
+modalCloseButton.style.border = 'none';
+modalCloseButton.style.background = 'none';
+modalCloseButton.addEventListener('click', function() {
+  $('#myModal' + no).modal('hide');
+});
+
+let closeButtonSpan = document.createElement('span');
+closeButtonSpan.classList.add('span');
+closeButtonSpan.setAttribute('aria-hidden', 'true');
+closeButtonSpan.innerText = '×';
+
+modalCloseButton.appendChild(closeButtonSpan);
+modalHeader.appendChild(modalTitle);
+modalHeader.appendChild(modalCloseButton);
+
+let modalBody = document.createElement('div');
+modalBody.classList.add('modal-body');
+
+let dFlexDiv = document.createElement('div');
+dFlexDiv.classList.add('d-flex', 'align-items-center', 'justify-content-center');
+
+let cardBodyDiv = document.createElement('div');
+cardBodyDiv.classList.add('card-body');
+
+let formGroupDiv1 = document.createElement('div');
+formGroupDiv1.classList.add('form-group');
+
+let formGroupDiv2 = document.createElement('div');
+formGroupDiv2.innerHTML = "<h5>결제를 취소하시겠습니까?</h5>"
+formGroupDiv2.classList.add('form-group');
+
+let formGroupDiv3 = document.createElement('div');
+formGroupDiv3.classList.add('form-group', 'text-center');
+
+let cancelBtn = document.createElement('input');
+cancelBtn.setAttribute('type', 'button');
+cancelBtn.setAttribute('value', '결제취소');
+
+cancelBtn.addEventListener("click", function() {
+  location.href = '/admin/kakaoPayCancel?orderid='+ no;
+});
+
+let closeButton = document.createElement('input');
+closeButton.setAttribute('type', 'button');
+closeButton.setAttribute('value', '닫기');
+closeButton.addEventListener('click', function() {
+  $('#myModal' + no).modal('hide');
+});
+let space = document.createElement('span');
+space.innerHTML = " ";
+formGroupDiv3.appendChild(cancelBtn);
+formGroupDiv3.appendChild(space);
+formGroupDiv3.appendChild(closeButton);
+
+cardBodyDiv.appendChild(formGroupDiv1);
+cardBodyDiv.appendChild(formGroupDiv2);
+cardBodyDiv.appendChild(formGroupDiv3);
+
+dFlexDiv.appendChild(cardBodyDiv);
+
+modalBody.appendChild(dFlexDiv);
+
+modalContent.appendChild(modalHeader);
+modalContent.appendChild(modalBody);
+
+modalDialog.appendChild(modalContent);
+
+newDiv.appendChild(modalDialog);
+
+
+				tables.appendChild(newDiv);
 				
 						
 			}
@@ -152,7 +250,7 @@ function mainPagingEngine(url){
 
 
 
-xhttp.open("GET", "/admin/payment.do/"+data.page+ "/" + data.searchWhat + "/" + data.search, true);
+xhttp.open("GET", "/admin/payment/"+data.page+ "/" + data.searchWhat + "/" + data.search, true);
 xhttp.send();
 }
 	

@@ -1,5 +1,7 @@
 package kr.co.mood.Product.controller;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -46,24 +48,25 @@ public class ProductController {
 
 
 	@RequestMapping(value = "/products/{pro_number}/{pro_name}", method = RequestMethod.GET)
-	public String proDetails(@PathVariable("pro_number") int pro_number,@PathVariable("pro_name") String pro_name, ArrayList<ProVO> vo, Model model, HttpSession session,HttpServletRequest request,HttpServletResponse response) {
+	public String proDetails(@PathVariable("pro_number") int pro_number,@PathVariable("pro_name") String pro_name, ArrayList<ProVO> vo, Model model, HttpSession session,HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {
+		pro_name = URLEncoder.encode(pro_name, "UTF-8");
 		model.addAttribute("list", ps.selectProOne(pro_number));
 		model.addAttribute("randomList", ps.selectProRandom(vo));
 		session.setAttribute("pro_number", ps.selectProOne(pro_number));
-		session.setAttribute("path", "/products/"+Integer.toString(pro_number));
+		session.setAttribute("path", "/products/"+Integer.toString(pro_number)+"/"+pro_name);
 		String path = (String) session.getAttribute("path");
 		
-		// 최근본상품 세션에 저장
+		// 理쒓렐蹂몄긽�뭹 �꽭�뀡�뿉 ���옣
 		String sessionKey = "recentlyViewedProducts";
 		int proNumber = pro_number;
 		String proName = pro_name;
-
+		proName = java.net.URLDecoder.decode(proName, "UTF-8");
 		List<Map<String, Object>> productList = (List<Map<String, Object>>) session.getAttribute(sessionKey);
 		if (productList == null) {
 		    productList = new ArrayList<Map<String, Object>>();
 		}
-		if (productList.size() >= 7) { // 최근본상품이 5개 이상이면
-		    productList.remove(0); // 가장 오래된 상품 삭제
+		if (productList.size() >= 7) { // 理쒓렐蹂몄긽�뭹�씠 5媛� �씠�긽�씠硫�
+		    productList.remove(0); // 媛��옣 �삤�옒�맂 �긽�뭹 �궘�젣
 		}
 		boolean isProductExist = false;
 		for (Map<String, Object> product : productList) {
@@ -72,20 +75,15 @@ public class ProductController {
 		        break;
 		    }
 		}
-		if (!isProductExist) { // 이미 본 상품이 아니면
+		if (!isProductExist) { // �씠誘� 蹂� �긽�뭹�씠 �븘�땲硫�
 		    Map<String, Object> product = new HashMap<String, Object>();
 		    product.put("proNumber", proNumber);
 		    product.put("proName", proName);
-		    productList.add(product); // 새로운 상품 추가
+		    productList.add(product); // �깉濡쒖슫 �긽�뭹 異붽�
 		}
-		// 세션에 저장
+		// �꽭�뀡�뿉 ���옣
 		session.setAttribute(sessionKey, productList);
 
-		System.out.println("세션에 저장된 최근 본 상품 목록: " + productList);
-
-
-		
-		
 		return "Product/productDetail";
 	}
 	

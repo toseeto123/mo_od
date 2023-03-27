@@ -38,6 +38,10 @@ public class UserServiceImpl implements UserService{
 	public void insert(UserVO vo) {
 		userdao.insert(vo);
 	}
+	
+	public void googleInsert(UserVO vo) {
+		userdao.googleInsert(vo);
+	}
 
 	public void update(UserVO vo) throws Exception{
 		userdao.update(vo);

@@ -39,6 +39,10 @@ public class UserDAO {
 		
 	}
 	
+	public void googleInsert(UserVO vo) {
+		mybatis.insert("UserDAO.googleInsert", vo);
+	}
+	
 
 	public UserVO selectId(UserVO vo) {
 		return mybatis.selectOne("UserDAO.selectId",vo);

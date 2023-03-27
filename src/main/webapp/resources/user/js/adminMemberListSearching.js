@@ -74,12 +74,12 @@ const data = {}
 	for(var i=0; i<tableData.list.length; i++){
 		var newRow = document.createElement("tr");
 		var aTag = document.createElement("a");
-		aTag.setAttribute("href", "/admin/adminMemberDetail.do/"+tableData.list[i].no);
+		aTag.setAttribute("href", "/admin/adminMemberDetail/"+tableData.list[i].no);
 		var newCell = [];
 		for(var t=0; t<6; t++){
 			newCell.push(document.createElement("td"));
 			newCell[t].setAttribute("scope", "col");
-			newCell[t].setAttribute("onClick", "location.href='/admin/adminMemberDetail.do/"+ tableData.list[i].no +"'")
+			newCell[t].setAttribute("onClick", "location.href='/admin/adminMemberDetail/"+ tableData.list[i].no +"'")
 		}				
 		newCell[0].innerHTML = tableData.list[i].no;
 		newCell[1].innerHTML = tableData.list[i].id;
@@ -97,7 +97,7 @@ const data = {}
 
 	}
 
-	xhttp.open("GET", "/admin/adminMemberList.do/"+data.page+ "/" + data.searchWhat + "/" + data.search, true);
+	xhttp.open("GET", "/admin/adminMemberList/"+data.page+ "/" + data.searchWhat + "/" + data.search, true);
 	xhttp.send();
 	}
 	
