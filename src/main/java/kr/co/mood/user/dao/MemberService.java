@@ -38,8 +38,8 @@ public class MemberService {
          StringBuilder sb = new StringBuilder();
          sb.append("grant_type=authorization_code");
          sb.append("&client_id=e862dc15e41ee83edaac20240a8bc9e5"); //본인이 발급받은 key
-         sb.append("&redirect_uri=http://localhost:8080/member/kakaoLogin"); 
-//         sb.append("&redirect_uri=http://http://3.39.221.200:8080/member/kakaoLogin"); 
+//         sb.append("&redirect_uri=http://localhost:8080/member/kakaoLogin"); 
+         sb.append("&redirect_uri=http://3.39.221.200:8080/member/kakaoLogin"); 
          sb.append("&code=" + authorize_code);
          bw.write(sb.toString());
          bw.flush();
