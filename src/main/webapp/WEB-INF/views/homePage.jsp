@@ -42,7 +42,7 @@
           </div>
 
           <!-- Slide 2 -->
-          <div class="carousel-item" style="background-image: url(resources/assets/img/slide/slide-2.jpg);">
+          <div class="carousel-item" style="background-image: url(resources/assets/img/slide/mood2.png);">
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">3월의 mo_od</h2>
@@ -52,7 +52,7 @@
           </div>
 
           <!-- Slide 3 -->
-          <div class="carousel-item" style="background-image: url(resources/assets/img/slide/slide3.jpg);">
+          <div class="carousel-item" style="background-image: url(resources/assets/img/slide/mood3.png);">
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">컬러에 담겨진 mo_od </h2>
