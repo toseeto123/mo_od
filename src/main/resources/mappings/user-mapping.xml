@@ -61,6 +61,12 @@
 		 ]]>
 	</select>
 	
+	<select id="myinfo_email" parameterType="kr.co.mood.user.dao.UserVO" resultType="int">
+		<![CDATA[
+		select count(*) from moodjoin where email=#{email}
+		 ]]>
+	</select>
+	
 	 <insert id="insertnaver" parameterType="kr.co.mood.user.dao.UserVO">
       <![CDATA[
       INSERT INTO moodjoin VALUES(no, #{id}, "", #{name}, #{age} , #{gender}, "", #{email}, "", now())

@@ -10,6 +10,7 @@
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 <script
    src="https://cdnjs.cloudflare.com/ajax/libs/spring-webmvc/5.3.8/spring-webmvc.min.js"></script>
+   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <meta charset="UTF-8">
 
 <title>결제상세</title>
@@ -189,7 +190,6 @@ footer{
 }
 .cancelbox{
 margin:0 auto;
-border: 2px solid #c8936ed4;
 border-radius: 5px;
 padding: 10px;
 text-align: center;
@@ -217,6 +217,12 @@ width: 300px;
   .dropdown-toggle.active {
     background-color: #86765c !important;
   }
+  
+  i{
+  color:#333333; 
+  font-size: 25px; 
+  vertical-align:bottom;
+  }
 
 
 </style>
@@ -228,13 +234,13 @@ width: 300px;
    <section>
       <ul class="nav nav-pills nav-justified">
         <li class="nav-item" >
-          <a class="nav-link active" href="/users/mypage" style="background: #c8936ed4; color:white;">회원 정보</a>
+          <a class="nav-link active" href="/users/mypage" style="background: #c8936ed4; color:#333333; font-weight: 700;"><i class="xi-profile"></i> 회원 정보</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/users/bucket" style="background: #c8936ed4; color:white;">장바 구니</a>
+          <a class="nav-link" href="/users/bucket" style="background: #c8936ed4; color:#333333; font-weight: 700;"><i class="xi-cart"></i> 장바 구니</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/products/payMypage" style="background: #da8862; color:white;">결제 내역</a>
+          <a class="nav-link" href="/products/payMypage" style="background: #da8862; color:#333333; font-weight: 700;"><i class="xi-list-dot"></i> 결제 내역</a>
         </li>
       </ul>
    </section>
@@ -248,16 +254,16 @@ width: 300px;
          <c:otherwise>
             <div class="dropdown">
  <c:forEach var="orderid" items="${orderid}">
-  <button style="background: #AD8E70; border: none;"class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${orderid.orderId}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    주문번호: ${orderid.orderId}　/　결제일:<fmt:formatDate value="${orderid.successTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+  <button style="background: #AD8E70; border: none;"class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${orderid.orderid}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    주문번호: ${orderid.orderid}　/　결제일:<fmt:formatDate value="${orderid.successTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
     
   </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton${orderid.orderId}" style=" border: 2px solid #AD8E70;">
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton${orderid.orderid}" style=" border: 2px solid #AD8E70;">
   
         <form action="/User/kakaoPayCancel" id="cancel-form">
     <c:forEach var="order" items="${orders}">
       <c:if test="${order.orderId == orderid.orderId}">
-    <input type="hidden" value="${order.orderId }" name="orderId">
+    <input type="hidden" value="${orderid.orderid }" name="orderId">
   	<input type="hidden" value="${order.tid }" name="tid">
     <input type="hidden" value="${order.pro_number }" name="pro_number">
     <input type="hidden" value="${orderid.total}" name="price">
@@ -286,8 +292,7 @@ width: 300px;
       </c:if>
     </c:forEach>
     <div class="cancelbox">
-    <span>총 금액 : <span><fmt:formatNumber value="${orderid.total}" type="currency" currencySymbol="₩" /></span></span>
-    <button type="button" class="btn-primary" onclick="confirmCancel()">주문취소</button>
+    <button type="button" class="btn-primary" onclick="confirmCancel()"><fmt:formatNumber value="${orderid.total}" type="currency" currencySymbol="₩" />주문취소</button>
     </div>
         </form>
   </div>
