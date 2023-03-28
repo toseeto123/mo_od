@@ -195,7 +195,6 @@ margin-bottom: 40px;
 	color:white;
 }
 footer {
-  position: fixed;
   bottom: 0;
   left: 0;
   right: 0;
@@ -581,7 +580,7 @@ function deletecate(element) {
 							<input type="hidden" value="${login_info.adr }" name="address">
 							<input type="submit" value="주문하기" class="btn_buy btnhover"> <br>
 							<br> <input type="button" value="더보러가기"
-								class="cancelbtn btnhover" onclick="window.location='/mo_od';">
+								class="cancelbtn btnhover" onclick="window.location='/';">
 
 						</div>
 					</div>

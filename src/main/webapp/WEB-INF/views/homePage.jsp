@@ -34,9 +34,6 @@
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">나만의 작은 문명 mo_od </h2>
                 <p class="animate__animated animate__fadeInUp"> 여러분의 취향을 가득담은 mo_od를 통해 &nbsp; 나만의 문명을 완성해보세요</p>
-                <div>
-                  <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-                </div>
               </div>
             </div>
           </div>
