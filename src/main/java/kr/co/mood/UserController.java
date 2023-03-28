@@ -148,7 +148,7 @@ public class UserController {
 	}
 
 	
-	@RequestMapping(value={"/kakaoLogin" ,"/member/*"}, method=RequestMethod.GET)
+	@RequestMapping(value="/kakaoLogin", method=RequestMethod.GET)
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpServletRequest request, Model model , HttpSession session) throws Exception {
 	    String access_Token = ms.getAccessToken(code);
 	    UserVO userInfo = ms.getUserInfo(access_Token);
@@ -270,7 +270,7 @@ public class UserController {
 	public String payBeLogin(@ModelAttribute("ordervo") userOrderVO ordervo,
 			@ModelAttribute("orderProVo") userOrderProductVO orderProVo, HttpSession session, ModelAndView mav,
 			HttpServletRequest request) {
-		session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
+		session.setAttribute("path", request.getRequestURI()); 
 
 		return "redirect:/users/login";
 	}
@@ -306,7 +306,7 @@ public class UserController {
 
 
 
-	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/join", method= RequestMethod.POST)
 	public String postRegister(UserVO vo) throws Exception {
 		int result = userservice.idChk(vo);
 		try {
