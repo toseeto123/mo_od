@@ -2,6 +2,7 @@ package kr.co.mood;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
@@ -66,7 +67,7 @@ public class UserController {
 
 	@RequestMapping(value = "/googleSave", method = RequestMethod.POST)
 	@ResponseBody
-	public String googleSave(@RequestBody String googleJsonData, HttpSession session) throws Exception {
+	public String googleSave(@RequestBody String googleJsonData, HttpSession session, HttpServletRequest request) throws Exception {
 
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode jsonParsing;
@@ -87,8 +88,17 @@ public class UserController {
 		} else {
 			session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
 		}
-
-		return (String) session.getAttribute("path");
+		
+		if(jsonParsing.get("url").asText() != null){
+			for(String url : URLDecoder.decode(jsonParsing.get("url").asText(), "UTF-8").split("/")) {
+				System.out.println(url);
+				if(url.equals("products")) {
+					return "Success";
+				}
+			}
+		}
+		return "";
+		
 	}
 
 	@RequestMapping("/naverLogin")

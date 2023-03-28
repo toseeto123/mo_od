@@ -7,6 +7,8 @@
 	let googleGapiInited = false;
 	let googleGisInited = false;
 
+	
+
 	function googleGapiLoaded() {
 		gapi.load('client', googleInitializeGapiClient);
 	}     
@@ -79,10 +81,11 @@
 
 			const googleData = { name: response.result.names[0].displayName, 
 								email: response.result.emailAddresses[0].value, 
-								age: new Date().getFullYear()-response.result.birthdays[0].date.year};
+								age: new Date().getFullYear()-response.result.birthdays[0].date.year,
+								url: document.referrer};
 
 			const googleJsonData = JSON.stringify(googleData);
-			googleXHT.open('POST', '/googleSave');
+			googleXHT.open('POST', '/users/googleSave');
 			googleXHT.setRequestHeader('Content-Type', 'application/json');
 
 
@@ -95,8 +98,8 @@
           			}
   					if(googleXHT.responseText.trim()=='' || googleXHT.responseText == null){
   						location.href='/';
-  					}else{
-  						location.href=googleXHT.responseText
+  					}else{  						
+  						location.href=document.referrer
   					}
   				} else {
     				console.error(googleXHT.statusText);
