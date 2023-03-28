@@ -82,7 +82,7 @@ public class userPaymentController {
 
 			session.setAttribute("ordervo", ordervo1);
 			session.setAttribute("orderProVo", orderProVo);
-			return "redirect:/payBeLogin.do";
+			return "redirect:/users/payBeLogin";
 		}
 		int userid = uvo.getNo();
 
