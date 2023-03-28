@@ -3,7 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-
+   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <meta charset="UTF-8">
 <title>장바구니</title>
 
@@ -206,6 +206,12 @@ font-weight: 700;
 .btnhover:hover{
 background: #da8862;
 }
+
+  i{
+  color:#333333; 
+  font-size: 25px; 
+  vertical-align:bottom;
+  }
 
 
 </style>
@@ -492,18 +498,18 @@ function deletecate(element) {
 	<form action="/products/cateorders" method="post">
 	<input type="hidden" value="${login_info.adr }" name="adr">
 		<section>
-				<ul class="nav nav-pills nav-justified">
-				  <li class="nav-item" >
-				    <a class="nav-link active" href="/users/mypage" style="background: #c8936ed4; color:white; font-size: 16px;">회원 정보</a>
-				  </li>
-				  <li class="nav-item">
-				    <a class="nav-link" href="/users/bucket" style="background: #da8862; color:white; font-size: 16px;">장바 구니</a>
-				  </li>
-				  <li class="nav-item">
-				    <a class="nav-link" href="/products/payMypage" style="background: #c8936ed4; color:white; font-size: 16px;">결제 내역</a>
-				  </li>
-				</ul>
-		</section>
+      <ul class="nav nav-pills nav-justified">
+        <li class="nav-item" >
+          <a class="nav-link active" href="/users/mypage" style="background: #c8936ed4; color:#333333; font-weight: 700;"><i class="xi-profile"></i> 회원 정보</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/bucket" style="background: #da8862; color:#333333; font-weight: 700;"><i class="xi-cart"></i> 장바 구니</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/products/payMypage" style="background: #c8936ed4; color:#333333; font-weight: 700;"><i class="xi-list-dot"></i> 결제 내역</a>
+        </li>
+      </ul>
+   </section>
 		<div class="content_box">
 			<div class="order_wrap" style="position: relative;">
 				<div class="order_tit">
