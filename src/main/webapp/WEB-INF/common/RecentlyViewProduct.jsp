@@ -19,7 +19,7 @@
   align-items: center;
   height: 100%;">
 <%--   <span style="margin-right: 10px;">${product.proName }</span> --%>
-  <img src="/resources/assets/img/product/${product.proIMG }" width="120px;" height="120px;">
+<img src="/resources/assets/img/product/${product.proIMG}.png" onerror="this.onerror=null;this.src='/resources/assets/img/product/${product.proIMG}.jpg'" width="120px;" height="120px;">
   </a>
     </c:forEach>
 
