@@ -18,7 +18,6 @@
 	transform: scale(1.2);
 }
 footer {
-	position: fixed;
 	bottom: 0;
 	left: 0;
 	right: 0;
@@ -168,7 +167,6 @@ footer {
 			</div>
 		</div>
 	</div>
-	
-	<footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
 </body>
+<footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
 </html>
