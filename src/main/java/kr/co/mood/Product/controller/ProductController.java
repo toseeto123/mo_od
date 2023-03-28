@@ -23,6 +23,7 @@ import kr.co.mood.Product.VO.ProVO;
 import kr.co.mood.module.ModuleCommon;
 import kr.co.mood.module.ModuleVO;
 
+@RequestMapping("/products")
 @Controller
 public class ProductController {
 
@@ -47,7 +48,7 @@ public class ProductController {
 	}
 
 
-	@RequestMapping(value = "/products/{pro_number}/{pro_name}", method = RequestMethod.GET)
+	@RequestMapping(value = "/{pro_number}/{pro_name}", method = RequestMethod.GET)
 	public String proDetails(@PathVariable("pro_number") int pro_number,@PathVariable("pro_name") String pro_name, ArrayList<ProVO> vo, Model model, HttpSession session,HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {
 		pro_name = URLEncoder.encode(pro_name, "UTF-8");
 		model.addAttribute("list", ps.selectProOne(pro_number));
@@ -87,23 +88,22 @@ public class ProductController {
 		return "Product/productDetail";
 	}
 	
-	@RequestMapping(value = "/products/category/{pro_categoryserial}", method = RequestMethod.GET)
+	@RequestMapping(value = "/category/{pro_categoryserial}", method = RequestMethod.GET)
 	public String cateDetails(@PathVariable("pro_categoryserial") String pro_categoryserial, ArrayList<ProVO> vo, Model model, HttpSession session) {
-		System.out.println("몰까?"+pro_categoryserial);
 	    if (pro_categoryserial.equals("A0")) {
-	        return "redirect:/A0categoryList"; 
+	        return "redirect:/products/A0categoryList"; 
 	    } else if (pro_categoryserial.equals("A1")) {
-	        return "redirect:/A1categoryList"; 
+	        return "redirect:/products/A1categoryList"; 
 	    } else if (pro_categoryserial.equals("A2")) {
-	        return "redirect:/A2categoryList"; 
+	        return "redirect:/products/A2categoryList"; 
 	    } else if (pro_categoryserial.equals("B0")) {
-	        return "redirect:/B0categoryList"; 
+	        return "redirect:/products/B0categoryList"; 
 	    } else if (pro_categoryserial.equals("B1")) {
-	        return "redirect:/B1categoryList"; 
+	        return "redirect:/products/B1categoryList"; 
 	    } else if (pro_categoryserial.equals("C0")) {
-	        return "redirect:/C0categoryList"; 
+	        return "redirect:/products/C0categoryList"; 
 	    } else if (pro_categoryserial.equals("C1")) {
-	        return "redirect:/C1categoryList"; 
+	        return "redirect:/products/C1categoryList"; 
 	    }else{
 	        return "Product/productList"; // 다른 경우는 "Product/productList"로 리턴
 	    }
@@ -153,7 +153,7 @@ public class ProductController {
 	
     @RequestMapping(value = "/A0categoryList")
     public String ProductListA0(ArrayList<ProVO> vo, Model model) {
-       return "redirect:/A0categoryList/1";
+       return "redirect:/products/A0categoryList/1";
     }
 
 	@RequestMapping(value = "/A0categoryList/{page}") // FIX
@@ -170,7 +170,7 @@ public class ProductController {
 	
     @RequestMapping(value = "/A1categoryList")
     public String ProductListA1(ArrayList<ProVO> vo, Model model) {
-       return "redirect:/A1categoryList/1";
+       return "redirect:/products/A1categoryList/1";
     }
 
 	@RequestMapping(value = "/A1categoryList/{page}") // FIX
@@ -185,7 +185,7 @@ public class ProductController {
 	
     @RequestMapping(value = "/A2categoryList")
     public String ProductListA2(ArrayList<ProVO> vo, Model model) {
-       return "redirect:/A2categoryList/1";
+       return "redirect:/products/A2categoryList/1";
     }
 
 	@RequestMapping(value = "/A2categoryList/{page}") // FIX
@@ -201,7 +201,7 @@ public class ProductController {
 	
     @RequestMapping(value = "/B0categoryList")
     public String ProductListB0(ArrayList<ProVO> vo, Model model) {
-       return "redirect:/B0categoryList/1";
+       return "redirect:/products/B0categoryList/1";
     }
 
 	@RequestMapping(value = "/B0categoryList/{page}") // FIX
@@ -217,7 +217,7 @@ public class ProductController {
 	
     @RequestMapping(value = "/B1categoryList")
     public String ProductListB1(ArrayList<ProVO> vo, Model model) {
-       return "redirect:/B1categoryList/1";
+       return "redirect:/products/B1categoryList/1";
     }
 
 	@RequestMapping(value = "/B1categoryList/{page}") // FIX
@@ -233,7 +233,7 @@ public class ProductController {
 	
     @RequestMapping(value = "/C0categoryList")
     public String ProductListC0(ArrayList<ProVO> vo, Model model) {
-       return "redirect:/C0categoryList/1";
+       return "redirect:/products/C0categoryList/1";
     }
 
 	@RequestMapping(value = "/C0categoryList/{page}") // FIX
@@ -248,7 +248,7 @@ public class ProductController {
 	
     @RequestMapping(value = "/C1categoryList")
     public String ProductListC1(ArrayList<ProVO> vo, Model model) {
-       return "redirect:/C1categoryList/1";
+       return "redirect:/products/C1categoryList/1";
     }
 
 	@RequestMapping(value = "/C1categoryList/{page}") // FIX
@@ -269,7 +269,7 @@ public class ProductController {
 	
 	
 	
-	
+	/*
 	@RequestMapping(value="/D0categoryList")
 	public String D0categoryProList(ArrayList<ProVO> vo, Model model) throws Exception {
 		ProVO list = ps.D0selectCategoryProList(vo);
@@ -298,6 +298,6 @@ public class ProductController {
 
 		return "/Product/interiorDetail";
 	}
-	
+	*/
 
 }
