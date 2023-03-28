@@ -18,14 +18,18 @@
 .imghover:hover {
 	transform: scale(1.2);
 }
+
 footer {
 	bottom: 0;
 	left: 0;
 	right: 0;
 }
+.login_li, .box_list {
+    margin: 5px 5px;
+}
 </style>
-<head>
 
+<head>
 <section id="hero" style="height: 350px;">
 	<div class="hero-container">
 		<div id="heroCarousel" data-bs-interval="5000"
