@@ -59,7 +59,7 @@ input {
     margin: 0 auto;
 ">
 
-	<form action="/update.do?id=${login_info.id}" method="post" name="mypage" id="mypage" style="width:950px;border:2px solid #c8936ed4;padding-bottom: 50px;">
+	<form action="/users/update?id=${login_info.id}" method="post" name="mypage" id="mypage" style="width:950px;border:2px solid #c8936ed4;padding-bottom: 50px;">
 		<table>
 		<tr style="border-top:20px solid white;">
 			<td style="padding-left: 80px;"><label for="id">아이디</label></td>
@@ -154,7 +154,7 @@ input {
       	탈퇴하시겠습니까?<br>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary"id="modal_delbtn"  style="background:#c8936ed4;border:#c8936ed4;color:white;" onclick="location.href = '/delete.do'">탈퇴하기</button>
+        <button type="button" class="btn btn-primary"id="modal_delbtn"  style="background:#c8936ed4;border:#c8936ed4;color:white;" onclick="location.href = '/users/delete'">탈퇴하기</button>
         <button type="button" class="btn btn-secondary" style="background:#c8936ed4;border:#c8936ed4;color:white;" onclick="$('#exampleModal').modal('hide')">닫기</button>
       </div>
     </div>

@@ -83,12 +83,12 @@ public class UserController {
 		int result = userservice.idChk(googleVO);
 
 		if (result == 0) {
-			userservice.insertnaver(googleVO);
+			userservice.googleInsert(googleVO);
 			session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
 		} else {
 			session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
 		}
-		
+		System.out.println(jsonParsing.get("url").asText());
 		if(jsonParsing.get("url").asText() != null){
 			for(String url : URLDecoder.decode(jsonParsing.get("url").asText(), "UTF-8").split("/")) {
 				System.out.println(url);
@@ -267,7 +267,7 @@ public class UserController {
 		return "redirect:/users/login";
 	}
 
-	@RequestMapping(value = "/proCatelogin.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/proCatelogin", method = RequestMethod.GET)
 	public String proCatelogin(@ModelAttribute("cvo") CateVO cvo, HttpSession session, ModelAndView mav,
 			HttpServletRequest request) {
 		session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
@@ -276,7 +276,7 @@ public class UserController {
 		return "redirect:/users/login";
 	}
 
-	@RequestMapping(value = "/payBeLogin.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/payBeLogin", method = RequestMethod.GET)
 	public String payBeLogin(@ModelAttribute("ordervo") userOrderVO ordervo,
 			@ModelAttribute("orderProVo") userOrderProductVO orderProVo, HttpSession session, ModelAndView mav,
 			HttpServletRequest request) {
@@ -316,7 +316,7 @@ public class UserController {
 
 
 
-	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String postRegister(UserVO vo) throws Exception {
 		int result = userservice.idChk(vo);
 		try {
@@ -331,16 +331,16 @@ public class UserController {
 		return "User/login";
 	}
 
-	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String deletemember(HttpSession session) throws Exception {
 		UserVO ssvo = (UserVO) session.getAttribute("login_info");
 		String ssid = ssvo.getId();
 		userservice.delete(ssid);
 		session.invalidate();
-		return "redirect:index.jsp";
+		return "redirect:/";
 	}
 
-	@RequestMapping(value = "/update.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(UserVO vo, HttpSession session) throws Exception {
 		userservice.update(vo);
 		session.invalidate();

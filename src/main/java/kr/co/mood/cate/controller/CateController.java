@@ -42,7 +42,7 @@ public class CateController {
 		
 		if(uvo==null) {
 			 rttr.addFlashAttribute("msg", "loginmsg");
-			 return "redirect:login.do";
+			 return "redirect:/users/login";
 		}
 		else {
 			return "bucket/bucket";
@@ -67,7 +67,7 @@ public class CateController {
 	        cvo.setTotal(pro_price);
 	        cvo.setPro_option(pro_option);
 	        redirectAttributes.addFlashAttribute("cvo", cvo);
-	        return "redirect:/proCatelogin.do";
+	        return "redirect:/users/proCatelogin";
 	    } else {
        int userid = uvo.getNo();
        CateVO cvo = new CateVO();
