@@ -13,9 +13,7 @@ select, option{
 	height: 30px;
 	font-size: 18px;
 }
-.tableContainer{
-	height: 450px;
-}
+
 #hero{
 	height: auto;
 	margin-bottom: 100px;
