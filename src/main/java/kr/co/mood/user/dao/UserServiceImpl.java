@@ -57,6 +57,12 @@ public class UserServiceImpl implements UserService{
 		return result;
 	}
 	
+	@Override
+	public int myinfo_email(UserVO vo) throws Exception {
+		int result = userdao.myinfo_email(vo);
+		return result;
+	}
+	
 	
 
 	@Override

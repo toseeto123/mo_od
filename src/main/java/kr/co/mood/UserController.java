@@ -172,7 +172,6 @@ public class UserController {
 	    } else {
 	        session.setAttribute("path", request.getRequestURI());
 	        if (path.contains("catelogin.do")) {
-	        	System.out.println("catelogin.do 포함 돼있는거");
 	            return "redirect:/users/bucket";
 	        } else if (path.contains("proCatelogin")) {
 	        	System.out.println("proCatelogin 포함 돼있는거");
@@ -226,7 +225,7 @@ public class UserController {
 			} else if (path.contains("catelogin.do")) {
 				session.setAttribute("path", request.getRequestURI());
 				return "redirect:/users/bucket";
-			} else if (path.contains("proCatelogin.do")) {
+			} else if (path.contains("proCatelogin")) {
 				session.setAttribute("path", request.getRequestURI());
 				CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
 				int userid = vo1.getNo();
@@ -235,7 +234,7 @@ public class UserController {
 					cateService.addcate(sessionCvo, vo1, null);
 				}
 				return "redirect:/users/bucket";
-			} else if (path.contains("payBeLogin.do")) {
+			} else if (path.contains("payBeLogin")) {
 				session.setAttribute("path", request.getRequestURI());
 
 				userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
@@ -262,6 +261,13 @@ public class UserController {
 	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
 	public int idChk(UserVO vo) throws Exception {
 		int result = userservice.idChk(vo);
+		return result;
+	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/check_email", method = RequestMethod.POST)
+	public int myinfo_email(UserVO vo) throws Exception {
+		int result = userservice.myinfo_email(vo);
 		return result;
 	}
 

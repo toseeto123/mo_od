@@ -46,7 +46,6 @@ public class userPaymentController {
 			RedirectAttributes redirectAttributes,@RequestParam("adr") String address) {
 		UserVO uvo = (UserVO) session.getAttribute("login_info");
 		userOrderVO ordervo = new userOrderVO();
-
 		if (uvo == null) {
 			CateVO cvo = new CateVO();
 			cvo.setPro_number(pro_number);
