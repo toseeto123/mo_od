@@ -2,6 +2,7 @@ package kr.co.mood.Payment.DAO;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -10,13 +11,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import kr.co.mood.Payment.VO.AdminChartVO;
 import kr.co.mood.Payment.VO.AdminPaymentVO;
 import kr.co.mood.Payment.VO.KakaoPayApprovalVO;
 import kr.co.mood.module.ModuleCommon;
 import kr.co.mood.module.ModuleVO;
 import kr.co.mood.module.ViewPagingVO;
-import kr.co.mood.user.dao.UserVO;
 
 @Service
 public class AdminPaymentService {
@@ -26,15 +29,68 @@ public class AdminPaymentService {
 	ModuleCommon module;
 	
 	public void getCategoryChart(Model model) {
+		
 		String year =LocalDate.now().toString().split("-")[0];
 		List<AdminChartVO> chart1 = dao.getCategoryChart1();
 		List<AdminChartVO> chart2 = dao.getCategoryChart2();
 		List<AdminChartVO> chart3 = dao.getCategoryChart3(year);
 		List<AdminChartVO> chart4 = dao.getCategoryChart4(year);
+		
+		List<String> categorys = new ArrayList<String>();
+		List<String> ages = new ArrayList<String>();
+		List<AdminChartVO> woman = new ArrayList<AdminChartVO>();
+		List<AdminChartVO> man = new ArrayList<AdminChartVO>();
+		
+		boolean categoryFlag;
+		boolean ageFlag;
+		
+		for(AdminChartVO vo : chart4) {			
+			
+			categoryFlag = true;
+			ageFlag = true;
+			for(String category : categorys) {
+				if(vo.getCategorySerial().equals(category)) {
+					categoryFlag = false;
+				}		
+			}
+			if(categoryFlag) {
+				categorys.add(vo.getCategorySerial());
+			}			
+		
+			for(String age: ages) {
+				if(vo.getAge().equals(age)) {
+					ageFlag = false;
+				}
+			}			
+			if(ageFlag) {
+				ages.add(vo.getAge());
+			}
+			
+			if(vo.getGender().equals("F")) {
+				woman.add(vo);
+			}else if(vo.getGender().equals("M")) {
+				man.add(vo);
+			}
+		}	
+		Collections.sort(ages, Collections.reverseOrder());
+		
+		try {
+			ObjectMapper objectMapper = new ObjectMapper();
+			model.addAttribute("chart4Woman", objectMapper.writeValueAsString(woman));
+			model.addAttribute("chart4Man", objectMapper.writeValueAsString(man));
+			model.addAttribute("chart4Age", objectMapper.writeValueAsString(ages));
+			model.addAttribute("chart4Category", objectMapper.writeValueAsString(categorys));
+		} catch (JsonProcessingException e) {
+			e.printStackTrace();
+		}
+
+		
 		model.addAttribute("chart1", chart1);
 		model.addAttribute("chart2", chart2);
 		model.addAttribute("chart3", chart3);
-		model.addAttribute("chart4", chart4);		
+		
+;
+		
 	}
 	
 	public void adminPaymentList(Model model, String num) {

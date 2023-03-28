@@ -68,14 +68,18 @@ public class AdminChartVO {
 	public void setSerialNumber(String serialNumber) {
 		this.serialNumber = serialNumber;
 	}
-
-
 	@Override
 	public String toString() {
-		return "AdminPaymentVO [payCount=" + payCount + ", bucketCount=" + bucketCount + ", serialNumber="
-				+ serialNumber + ", week=" + week + ", sales=" + sales + ", productCount=" + productCount
-				+ ", categorySerial=" + categorySerial + ", gender=" + gender + "]";
-	} 
+		return "AdminChartVO [payCount=" + payCount + ", bucketCount=" + bucketCount + ", serialNumber=" + serialNumber
+				+ ", week=" + week + ", sales=" + sales + ", productCount=" + productCount + ", categorySerial="
+				+ categorySerial + ", gender=" + gender + ", age=" + age + "]";
+	}
+
+	
+	
+
+
+
 	 
 	 
 }
