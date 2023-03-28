@@ -4,6 +4,7 @@
 
 <!DOCTYPE html>
 <html>
+<jsp:include page="/WEB-INF/common/header.jsp" />
 <style>
 .hover:hover {
 	background: #da8862;
@@ -24,7 +25,7 @@ footer {
 }
 </style>
 <head>
-<jsp:include page="/WEB-INF/common/header.jsp" />
+
 <section id="hero" style="height: 350px;">
 	<div class="hero-container">
 		<div id="heroCarousel" data-bs-interval="5000"
@@ -142,9 +143,9 @@ footer {
 								alt="naver" class="imghover"> <span class="box_list_txt">네이버</span>
 						</a></li>
 
-						<li class="box_list"><a
-						   href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/kakaoLogin&response_type=code">
-						   <!--  href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://3.39.221.200:8080/member/kakaoLogin&response_type=code"> -->
+						<li class="box_list">
+						<!-- <a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/kakaoLogin&response_type=code"> -->
+						<a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://3.39.221.200:8080/member/kakaoLogin&response_type=code"> 
 
 								<img style="width: 50px;" src="/resources/user/img/kakao.png"
 								alt="kakao" class="imghover"> <span class="box_list_txt">카카오</span>

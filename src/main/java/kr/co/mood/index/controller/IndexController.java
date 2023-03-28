@@ -1,4 +1,4 @@
-package kr.co.mood;
+package kr.co.mood.index.controller;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,4 @@
-package kr.co.mood;
+package kr.co.mood.user.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -125,14 +125,14 @@ public class UserController {
 	           sessionorderprovo.setOrderId(orderid);
 	           productPayService.insert(sessionorderprovo, naverUserInfo, null);
 	           model.addAttribute("onelist", productPayService.selectList(orderid));
-	           pathgo = "products/orders";
+	           pathgo = "/products/orders";
 	           
 	       } else {
 	           pathgo = path;
 	       }
 		    }
-	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080/"+pathgo;
-//	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://3.39.221.200:8080";
+//	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080/"+pathgo;
+	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://3.39.221.200:8080";
 	       
 	       response.setContentType("text/html; charset=UTF-8");
 	       PrintWriter out = response.getWriter();
@@ -145,8 +145,8 @@ public class UserController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(ModelMap model) {
-		String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
-		//String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://3.39.221.200:8080/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
+//		String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
+		String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://3.39.221.200:8080/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
 		model.addAttribute("naverUrl", naverUrl);
 		return "User/login";
 	}
