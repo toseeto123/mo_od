@@ -64,23 +64,23 @@ li {
       <nav id="navbar" class="navbar">
         <ul>
 
-          <li class="dropdown"><a href="/AcategoryList"><b>가 구</b> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="/products/AcategoryList"><b>가 구</b> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                 <li><a href="/A0categoryList"><b>매트리스</b></a></li>
-                 <li><a href="/A1categoryList"><b>침대 프레임</b></a></li>
-                 <li><a href="/A2categoryList"><b>소 파</b></a></li>
+                 <li><a href="/products/A0categoryList"><b>매트리스</b></a></li>
+                 <li><a href="/products/A1categoryList"><b>침대 프레임</b></a></li>
+                 <li><a href="/products/A2categoryList"><b>소 파</b></a></li>
                 </ul>
           </li>
-          <li class="dropdown"><a href="/BcategoryList"><b>조 명</b> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="/products/BcategoryList"><b>조 명</b> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                  <li><a href="/B0categoryList"><b>무드등</b></a></li>
-                  <li><a href="/B1categoryList"><b>스탠드조명</b></a></li>
+                  <li><a href="/products/B0categoryList"><b>무드등</b></a></li>
+                  <li><a href="/products/B1categoryList"><b>스탠드조명</b></a></li>
                 </ul>
           </li>
-          <li class="dropdown"><a href="/CcategoryList"><b>수 납</b> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="/products/CcategoryList"><b>수 납</b> <i class="bi bi-chevron-down"></i></a>
                 <ul>
-                  <li><a href="/C0categoryList"><b>옷장 / 행거</b></a></li>
-                  <li><a href="/C1categoryList"><b>서 랍</b></a></li>
+                  <li><a href="/products/C0categoryList"><b>옷장 / 행거</b></a></li>
+                  <li><a href="/products/C1categoryList"><b>서 랍</b></a></li>
                 </ul>
           </li>
 			<c:if test="${!empty login_info.id}">
