@@ -69,5 +69,27 @@ GROUP BY o.orderid, pa.SuccessTime, pa.amount
 ORDER BY o.orderid DESC;
 	</select>
 	
+		<select id="selectsuccesslist"
+		resultType="kr.co.mood.Payment.VO.KakaoPayApprovalVO">
+SELECT o.orderid, p.pro_name, p.pro_img1,
+    op.pro_number, p.pro_maindesc, p.pro_maindesctitle, pa.amount, pa.payment_id,
+    pa.payment_method, pa.SuccessTime, op.count, pa.tid, op.pro_option, o.price, pa.orderid, (
+        SELECT COUNT(*) 
+        FROM payment 
+        WHERE orderid = #{orderid}
+    ) AS row_count
+FROM moodorder o
+JOIN orderProduct op ON op.orderid = o.orderid
+JOIN payment pa ON pa.orderid = o.orderid
+JOIN product p ON p.pro_number = op.pro_number
+WHERE pa.orderid = #{orderid} AND op.orderid IN (
+  SELECT DISTINCT op2.orderid 
+  FROM orderProduct op2 
+  WHERE op2.pro_option = op.pro_option
+)
+GROUP BY o.orderid, op.pro_option
+ORDER BY o.orderid DESC;
+	</select>
+	
 
 </mapper>

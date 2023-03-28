@@ -31,6 +31,9 @@ public class KakaoPayApprovalDAO {
 	public List<KakaoPayApprovalVO>selectorderid(int userno) {
 		return sql.selectList("KakaoPayApprovalDAO.selectorderid", userno);
 	}
+	public List<KakaoPayApprovalVO>selectsuccesslist(int orderid) {
+		return sql.selectList("KakaoPayApprovalDAO.selectsuccesslist", orderid);
+	}
 
 	public void paycancelDelete(int orderId) {
 		sql.delete("KakaoPayApprovalDAO.cancelDelete" , orderId);

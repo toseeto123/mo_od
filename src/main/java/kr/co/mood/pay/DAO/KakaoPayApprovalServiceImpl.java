@@ -34,6 +34,11 @@ public class KakaoPayApprovalServiceImpl implements KakaoPayApprovalService{
 	public List<KakaoPayApprovalVO> selectorderid(int userno) {
 		return kdao.selectorderid(userno);
 	}
+	
+	@Override
+	public List<KakaoPayApprovalVO> selectsuccesslist(int orderid) {
+		return kdao.selectsuccesslist(orderid);
+	}
 
 	public void paycancelDelete(int orderId) {
 		kdao.paycancelDelete(orderId);
