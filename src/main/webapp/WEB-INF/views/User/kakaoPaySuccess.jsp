@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +12,7 @@
 <meta name="author"
    content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.101.0">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <title>결제완료</title>
 <jsp:include page="/WEB-INF/common/header.jsp" />
 <style>
@@ -156,12 +158,19 @@ body {
 	height:100%;
 }
 .returnbtn {
+	color:white;
+	font-size:20px;
    background-color: #c8936ed4;
    width: 416px;
    height: 50px;
    border : none;
    border-radius: 30px;
    box-shadow: 1px 1px 1px 1px lightgray;
+   margin: 20px 0 20px 0;
+   
+}
+.returnbtn:hover{
+	background: #da8862;
 }
 
 </style>
@@ -184,7 +193,7 @@ body {
                   <div class="carousel-container">
                      <div class="carousel-content">
                         <h2 class="animate__animated animate__fadeInDown">결제 완료</h2>
-                        <p class="animate__animated animate__fadeInUp">"${login_info.name}"님 mo_od를 <br> 이용해주셔서 감사합니다.</p>
+                        <p class="animate__animated animate__fadeInUp" style="width: 100%;">"${login_info.name}"님 mo_od를 <br> 이용해주셔서 감사합니다.</p>
                         <div>
                            <a href="/mypage.do" class="btn-get-started animate__animated animate__fadeInUp scrollto">결제 내역</a>
                         </div>
@@ -206,21 +215,20 @@ body {
          </div>
          
          <div class="container">
-      <div class="py-4 text-center"></div>
-
       <div class="row">
             <div class="col-md-12 order-md-1">
-               <h4 class="mb-3">주문자 정보</h4>
+      
+               <h2 class="mb-3" style="margin:18px 0 18px 0; color:#da8862;"><i class="xi-user" style="color:#000;"></i> 주문자 정보</h2>
                <div class="row">
                   <div class="col-md-6 mb-3">
-                     <label for="firstName">성 함 : </label><strong>
+                     <label for="firstName">성　　함 : </label><strong>
                         ${login_info.name}</strong>
                   </div>
                   <div class="col-md-6 mb-3">
                      <label for="lastName">전화번호 : </label> <strong>${login_info.phone}</strong>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="address">주소 : </label> <strong>${login_info.adr}</strong>
+                     <label for="address">주　　소 : </label> <strong>${login_info.adr}</strong>
                   </div>
                   <div class="col-md-6 mb-3">
                      <label for="lastName">E-mail : </label> <strong>${login_info.email}</strong>
@@ -228,36 +236,38 @@ body {
 
                </div>
 		
+		<c:forEach var="orders" items="${orders}">
                <div class="mb-3">
-                  <label for="address">주문번호 : </label> <strong>${info.partner_order_id }</strong>
+                  <label for="address">주문번호 : </label> <strong>${orders.orderid }</strong>
                </div>
-				
+		
 			  <hr>
          
-               <h4 class="mb-4">결제 상품정보</h4>
-               <c:forEach var="info" items="${info}">
+               <h2 class="mb-3" style="margin:22px 0 22px 0; color:#da8862;"><i class="xi-box" style="color:#000;"></i> 결제상품 정보</h2>
+               
                  <div class="col-md-6 mb-3">
                      <label for="firstName">상품명 : </label><strong>
-                        ${info.item_name}</strong>
+                        orders.pro_number</strong>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="lastName">주문 수량 : </label> <strong>${info.quantity}</strong>
+                     <label for="lastName">주문 수량 : </label> <strong>orders.pro_number</strong>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="address">결제 금액 : </label> <strong><fmt:formatNumber value="${info.amount.total}" type="currency" currencySymbol="₩" />원</strong>
+                     <label for="address">결제 금액 : </label> <strong><fmt:formatNumber value="" type="currency" currencySymbol="₩" />원</strong>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="lastName">결제승인시간 : </label> <strong><fmt:formatDate value="${info.approved_at}" pattern="yyyy-MM-dd HH:mm:ss"/></strong>
+                     <label for="lastName">결제승인시간 : </label> <strong>${orders.successTime }</strong>
                   </div>
 				
                </div>
+            
               
-		
-             </c:forEach>
+		</c:forEach>
                   </div>
                <hr>
-               <label><a href="/"><button class="returnbtn"> mo_od의 또 다른 상품 구경하기</button></a></label> <br><br>
-               
+
+               <label class="returnbtnbox"><a href="/"><button class="returnbtn"> mo_od의 또 다른 상품 구경하기</button></a></label> <br><br>
+
  
  			
  

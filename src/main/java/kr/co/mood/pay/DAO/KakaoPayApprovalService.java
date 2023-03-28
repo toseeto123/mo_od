@@ -16,6 +16,8 @@ public interface KakaoPayApprovalService {
 	
 	public List<KakaoPayApprovalVO>selectorderid(int userno);
 	
+	public List<KakaoPayApprovalVO>selectsuccesslist(int orderid);
+	
 	public void paycancelDelete(int orderId);
 	
 	public void paySuccessStatusUpdate(int orderId);

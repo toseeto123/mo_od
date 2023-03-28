@@ -47,7 +47,7 @@ public class SampleController {
 		   Model model) {
 	  
       model.addAttribute("info" , kakaopay.kakaoPayInfo(pg_token,orderId,userno,pro_number));
-      model.addAttribute("orders", kakaoPayApprovalService.selectlist(Integer.parseInt(userno)));
+      model.addAttribute("orders", kakaoPayApprovalService.selectsuccesslist(orderId));
       
    }
 

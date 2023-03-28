@@ -18,9 +18,18 @@ public class KakaoPayApprovalVO {
     private Integer quantity, tax_free_amount, vat_amount;
     private Timestamp created_at, approved_at;
     private Timestamp successTime;
+    private int orderid;
     
     
     
+    
+    
+	public int getOrderid() {
+		return orderid;
+	}
+	public void setOrderid(int orderid) {
+		this.orderid = orderid;
+	}
 	public Timestamp getSuccessTime() {
 		return successTime;
 	}
