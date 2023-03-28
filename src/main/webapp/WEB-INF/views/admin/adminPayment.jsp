@@ -7,14 +7,16 @@
 <meta charset="UTF-8">
 <title>Chart</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<jsp:include page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
 <style>
 select, option{
 	height: 30px;
 	font-size: 18px;
 }
 
-section.container{
-	margin-bottom: 20px;
+#hero{
+	height: auto;
+	margin-bottom: 100px;
 }
 .searchParent{
 	text-align: center;
@@ -42,18 +44,15 @@ input[type=search]{
 	font-size: 18px;
 }
 footer{
-	width: 100%;
-	position: absolute;
-	bottom: 0;
+	margin-top: 40px;
 }
 </style>
 
 </head>
 
 <body>
-	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
 
-	<section id="hero" class="container" style="overflow:hidden; background: white;">
+	<section id="hero"class="container"  style="background: white;">
 	<div class="searchParent">
 			<div class="search" style="margin-top: 110px; margin-bottom: 50px;">
 			<select id="searchWhat">

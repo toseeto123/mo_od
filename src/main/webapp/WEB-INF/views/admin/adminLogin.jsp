@@ -69,7 +69,7 @@
 
 </head>
 <body>
-
+ <% session.invalidate(); %>
 	<section id="hero" style="height: 200px;">
 		<div class="hero-container">
 			<div id="heroCarousel" data-bs-interval="5000"
