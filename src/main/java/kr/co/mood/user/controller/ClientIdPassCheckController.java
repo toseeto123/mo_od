@@ -26,12 +26,12 @@ public class ClientIdPassCheckController {
 	@Autowired
 	private JavaMailSender mailSender;
 
-	@RequestMapping("/searchId")
+	@RequestMapping("/users/searchId")
 	public String toGoIdCheck() {
 		return "User/search_id";
 	}
 	
-	@RequestMapping("/searchPwd")
+	@RequestMapping("/users/searchPwd")
 	public String toGoPwdCheck() {
 		return "User/search_pwd";
 	}
