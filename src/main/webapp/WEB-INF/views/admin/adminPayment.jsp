@@ -12,9 +12,7 @@ select, option{
 	height: 30px;
 	font-size: 18px;
 }
-.tableContainer{
-	height: 450px;
-}
+
 section.container{
 	margin-bottom: 20px;
 }
