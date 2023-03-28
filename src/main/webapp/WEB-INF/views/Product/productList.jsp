@@ -64,25 +64,25 @@
                
                <ol>
                   <c:if test="${list.pro_categoryserial  eq 'A0' }">
-                  <a href="/AcategoryList" style="margin-top: 20px;">가구</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/AcategoryList" style="margin-top: 20px;">가구</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'A1' }">
-                  <a href="/AcategoryList" style="margin-top: 20px;">가구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/AcategoryList" style="margin-top: 20px;">가구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'A2' }">
-                  <a href="/AcategoryList" style="margin-top: 20px;">가구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/AcategoryList" style="margin-top: 20px;">가구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B0' }">
-                  <a href="/BcategoryList" style="margin-top: 20px;">조명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/BcategoryList" style="margin-top: 20px;">조명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B1' }">
-                  <a href="/BcategoryList" style="margin-top: 20px;">조명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/BcategoryList" style="margin-top: 20px;">조명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C0' }">
-                  <a href="/CcategoryList" style="margin-top: 20px;">수납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/CcategoryList" style="margin-top: 20px;">수납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C1' }">
-                  <a href="/CcategoryList" style="margin-top: 20px;">수납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/CcategoryList" style="margin-top: 20px;">수납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if> 
                   
                   <c:if test="${list.pro_categoryserial  eq 'A0' }">
@@ -158,22 +158,22 @@
                   
                   
                   <c:if test="${prePage!=null }">
-                  <a href="/A0categoryList/${prePage}">&lt;</a>
+                  <a href="/products/A0categoryList/${prePage}">&lt;</a>
                   </c:if>
                   
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:#FF9500" href="/A0categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="color:#FF9500" href="/products/A0categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
-                  &nbsp;<a href="/A0categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a href="/products/A0categoryList/${no}">${no}</a>&nbsp;
                   </c:otherwise>
                   </c:choose>
                   </c:forEach>
 
                   <c:if test="${nextPage != null }">
-                  <a href="/A0categoryList/${nextPage}">&gt;</a>
+                  <a href="/products/A0categoryList/${nextPage}">&gt;</a>
                   </c:if>
                   </div>
                   </c:if>
@@ -187,22 +187,22 @@
                   
                   
                   <c:if test="${prePage!=null }">
-                  <a href="/A1categoryList/${prePage}">&lt;</a>
+                  <a href="/products/A1categoryList/${prePage}">&lt;</a>
                   </c:if>
                   
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:green" href="/A1categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="color:green" href="/products/A1categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
-                  &nbsp;<a href="/A1categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a href="/products/A1categoryList/${no}">${no}</a>&nbsp;
                   </c:otherwise>
                   </c:choose>
                   </c:forEach>
 
                   <c:if test="${nextPage != null }">
-                  <a href="/A1categoryList/${nextPage}">&gt;</a>
+                  <a href="/products/A1categoryList/${nextPage}">&gt;</a>
                   </c:if>
                   </div>
                   
@@ -216,22 +216,22 @@
                   
                   
                   <c:if test="${prePage!=null }">
-                  <a href="/A2categoryList/${prePage}">&lt;</a>
+                  <a href="/products/A2categoryList/${prePage}">&lt;</a>
                   </c:if>
                   
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:green" href="/A2categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="color:green" href="/products/A2categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
-                  &nbsp;<a href="/A2categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a href="/products/A2categoryList/${no}">${no}</a>&nbsp;
                   </c:otherwise>
                   </c:choose>
                   </c:forEach>
 
                   <c:if test="${nextPage != null }">
-                  <a href="/A2categoryList/${nextPage}">&gt;</a>
+                  <a href="/products/A2categoryList/${nextPage}">&gt;</a>
                   </c:if>
                   </div>
                   
@@ -244,22 +244,22 @@
                   
                   
                   <c:if test="${prePage!=null }">
-                  <a href="/B0categoryList/${prePage}">&lt;</a>
+                  <a href="/products/B0categoryList/${prePage}">&lt;</a>
                   </c:if>
                   
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:green" href="/B0categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="color:green" href="/products/B0categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
-                  &nbsp;<a href="/B0categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a href="/products/B0categoryList/${no}">${no}</a>&nbsp;
                   </c:otherwise>
                   </c:choose>
                   </c:forEach>
 
                   <c:if test="${nextPage != null }">
-                  <a href="/B0categoryList/${nextPage}">&gt;</a>
+                  <a href="/products/B0categoryList/${nextPage}">&gt;</a>
                   </c:if>
                   </div>
                   
@@ -273,22 +273,22 @@
                   
                   
                   <c:if test="${prePage!=null }">
-                  <a href="/B1categoryList/${prePage}">&lt;</a>
+                  <a href="/products/B1categoryList/${prePage}">&lt;</a>
                   </c:if>
                   
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:green" href="/B1categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="color:green" href="/products/B1categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
-                  &nbsp;<a href="/B1categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a href="/products/B1categoryList/${no}">${no}</a>&nbsp;
                   </c:otherwise>
                   </c:choose>
                   </c:forEach>
 
                   <c:if test="${nextPage != null }">
-                  <a href="/B1categoryList/${nextPage}">&gt;</a>
+                  <a href="/products/B1categoryList/${nextPage}">&gt;</a>
                   </c:if>
                   </div>
                   
@@ -301,22 +301,22 @@
                   
                   
                   <c:if test="${prePage!=null }">
-                  <a href="/C0categoryList/${prePage}">&lt;</a>
+                  <a href="/products/C0categoryList/${prePage}">&lt;</a>
                   </c:if>
                   
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:green" href="/C0categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="color:green" href="/products/C0categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
-                  &nbsp;<a href="/C0categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a href="/products/C0categoryList/${no}">${no}</a>&nbsp;
                   </c:otherwise>
                   </c:choose>
                   </c:forEach>
 
                   <c:if test="${nextPage != null }">
-                  <a href="/C0categoryList/${nextPage}">&gt;</a>
+                  <a href="/products/C0categoryList/${nextPage}">&gt;</a>
                   </c:if>
                   </div>
                   
@@ -329,22 +329,22 @@
                   
                   
                   <c:if test="${prePage!=null }">
-                  <a href="/C1categoryList/${prePage}">&lt;</a>
+                  <a href="/products/C1categoryList/${prePage}">&lt;</a>
                   </c:if>
                   
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:green" href="/C1categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="color:green" href="/products/C1categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
-                  &nbsp;<a href="/C1categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a href="/products/C1categoryList/${no}">${no}</a>&nbsp;
                   </c:otherwise>
                   </c:choose>
                   </c:forEach>
 
                   <c:if test="${nextPage != null }">
-                  <a href="/C1categoryList/${nextPage}">&gt;</a>
+                  <a href="/products/C1categoryList/${nextPage}">&gt;</a>
                   </c:if>
                   </div>
                   

@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
@@ -110,8 +111,11 @@ public class UserController {
 	       String path = (String) session.getAttribute("path");
 	      
 	       String pathgo = "";
+	       if (path == null) {
+		        pathgo = "";
+		    } else {
 	       if (path.contains("catelogin.do")) {
-	           pathgo = "/users/bucket";
+	           pathgo = "users/bucket";
 	       } else if (path.contains("proCatelogin.do")) {
 	           CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
 	           int userid = naverUserInfo.getNo();
@@ -119,7 +123,7 @@ public class UserController {
 	           if (sessionCvo != null) {
 	               cateService.addcate(sessionCvo, naverUserInfo, null);
 	           }
-	           pathgo = "cate.do";
+	           pathgo = "users/bucket";
 	       } else if (path.contains("payBeLogin.do")) {
 	           userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
 	           userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
@@ -131,17 +135,15 @@ public class UserController {
 	           sessionorderprovo.setOrderId(orderid);
 	           productPayService.insert(sessionorderprovo, naverUserInfo, null);
 	           model.addAttribute("onelist", productPayService.selectList(orderid));
-	           pathgo = "orders";
+	           pathgo = "products/orders";
 	           
 	       } else {
 	           pathgo = path;
 	       }
-	       
+		    }
 	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080/"+pathgo;
 //	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://3.39.221.200:8080";
 	       
-	       System.out.println(referer);
-	       System.out.println(request.getHeader("Referer"));
 	       response.setContentType("text/html; charset=UTF-8");
 	       PrintWriter out = response.getWriter();
 	       out.println("<script>");
@@ -150,9 +152,11 @@ public class UserController {
 	       out.println("</script>");
 	       out.flush();
 	}
+	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(ModelMap model) {
 		String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
+		//String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://3.39.221.200:8080/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
 		model.addAttribute("naverUrl", naverUrl);
 		return "User/login";
 	}
@@ -328,7 +332,7 @@ public class UserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "User/login";
+		return "/User/login";
 	}
 
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)

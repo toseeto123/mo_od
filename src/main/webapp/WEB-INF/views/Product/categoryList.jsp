@@ -71,25 +71,25 @@
                
                <ol>
                   <c:if test="${list.pro_categoryserial  eq 'A%' }">
-                  <li><a href="/A0categoryList">가구</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/products/A0categoryList">가구</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'A1' }">
-                  <li><a href="/A1categoryList">가구</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/products/A1categoryList">가구</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'A2' }">
-                  <li><a href="/A3categoryList">가구</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/products/A3categoryList">가구</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B0' }">
-                  <li><a href="/B0categoryList">조명</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/products/B0categoryList">조명</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B1' }">
-                  <li><a href="/B1categoryList">조명</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/products/B1categoryList">조명</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C0' }">
-                  <li><a href="/C0categoryList">수납</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/products/C0categoryList">수납</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C1' }">
-                  <li><a href="/C1categoryList">수납</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
+                  <li><a href="/products/C1categoryList">수납</a>&nbsp; <i class="fa fa-angle-right" aria-hidden="true"></i></li>
                   </c:if>                   
                </ol>
             </div>

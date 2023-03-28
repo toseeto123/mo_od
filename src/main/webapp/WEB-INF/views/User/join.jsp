@@ -168,7 +168,7 @@ background: #da8862;
                 <div class="btn_area">
                     <input type="submit" value="가입하기" id="btnJoin" class="join_now bt_submit mainBgColor" onclick="return JoinCheck()">
                     <input type="reset" value="취소" id="btnReset" class="join_now bt_submit mainBgColor">
-                    <input type="button" value="뒤로가기" id="btnBack" class="join_now bt_submit mainBgColor" onclick="location.href='index.jsp'">
+                    <input type="button" value="뒤로가기" id="btnBack" class="join_now bt_submit mainBgColor" onclick="location.href='/'">
                 </div>
 
             </div> 
@@ -240,7 +240,6 @@ background: #da8862;
     });
     
       </script>
-
-<jsp:include page="/WEB-INF/common/footer.jsp" />
 </body>
+<jsp:include page="/WEB-INF/common/footer.jsp" />
 </html>
