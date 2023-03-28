@@ -2,6 +2,7 @@ package kr.co.mood.user.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.net.URLDecoder;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
@@ -67,7 +68,7 @@ public class UserController {
 
 	@RequestMapping(value = "/googleSave", method = RequestMethod.POST)
 	@ResponseBody
-	public String googleSave(@RequestBody String googleJsonData, HttpSession session) throws Exception {
+	public String googleSave(@RequestBody String googleJsonData, HttpSession session, HttpServletRequest request) throws Exception {
 
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode jsonParsing;
@@ -83,13 +84,22 @@ public class UserController {
 		int result = userservice.idChk(googleVO);
 
 		if (result == 0) {
-			userservice.insertnaver(googleVO);
+			userservice.googleInsert(googleVO);
 			session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
 		} else {
 			session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
 		}
-
-		return (String) session.getAttribute("path");
+		System.out.println(jsonParsing.get("url").asText());
+		if(jsonParsing.get("url").asText() != null){
+			for(String url : URLDecoder.decode(jsonParsing.get("url").asText(), "UTF-8").split("/")) {
+				System.out.println(url);
+				if(url.equals("products")) {
+					return "Success";
+				}
+			}
+		}
+		return "";
+		
 	}
 
 	@RequestMapping("/naverLogin")
@@ -125,14 +135,14 @@ public class UserController {
 	           sessionorderprovo.setOrderId(orderid);
 	           productPayService.insert(sessionorderprovo, naverUserInfo, null);
 	           model.addAttribute("onelist", productPayService.selectList(orderid));
-	           pathgo = "/products/orders";
+	           pathgo = "products/orders";
 	           
 	       } else {
 	           pathgo = path;
 	       }
 		    }
-//	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080/"+pathgo;
-	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://3.39.221.200:8080";
+	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080/"+pathgo;
+//	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://3.39.221.200:8080";
 	       
 	       response.setContentType("text/html; charset=UTF-8");
 	       PrintWriter out = response.getWriter();
@@ -145,14 +155,14 @@ public class UserController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(ModelMap model) {
-//		String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
-		String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://3.39.221.200:8080/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
+		String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
+		//String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://3.39.221.200:8080/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
 		model.addAttribute("naverUrl", naverUrl);
 		return "User/login";
 	}
 
 	
-	@RequestMapping(value={"/kakaoLogin" ,"/member/*"}, method=RequestMethod.GET)
+	@RequestMapping(value="/kakaoLogin", method=RequestMethod.GET)
 	public String kakaoLogin(@RequestParam(value = "code", required = false) String code, HttpServletRequest request, Model model , HttpSession session) throws Exception {
 	    String access_Token = ms.getAccessToken(code);
 	    UserVO userInfo = ms.getUserInfo(access_Token);
@@ -261,7 +271,7 @@ public class UserController {
 		return "redirect:/users/login";
 	}
 
-	@RequestMapping(value = "/proCatelogin.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/proCatelogin", method = RequestMethod.GET)
 	public String proCatelogin(@ModelAttribute("cvo") CateVO cvo, HttpSession session, ModelAndView mav,
 			HttpServletRequest request) {
 		session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
@@ -270,11 +280,11 @@ public class UserController {
 		return "redirect:/users/login";
 	}
 
-	@RequestMapping(value = "/payBeLogin.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/payBeLogin", method = RequestMethod.GET)
 	public String payBeLogin(@ModelAttribute("ordervo") userOrderVO ordervo,
 			@ModelAttribute("orderProVo") userOrderProductVO orderProVo, HttpSession session, ModelAndView mav,
 			HttpServletRequest request) {
-		session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
+		session.setAttribute("path", request.getRequestURI()); 
 
 		return "redirect:/users/login";
 	}
@@ -310,7 +320,9 @@ public class UserController {
 
 
 
+
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
+
 	public String postRegister(UserVO vo) throws Exception {
 		int result = userservice.idChk(vo);
 		try {
@@ -325,16 +337,16 @@ public class UserController {
 		return "/User/login";
 	}
 
-	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
 	public String deletemember(HttpSession session) throws Exception {
 		UserVO ssvo = (UserVO) session.getAttribute("login_info");
 		String ssid = ssvo.getId();
 		userservice.delete(ssid);
 		session.invalidate();
-		return "redirect:index.jsp";
+		return "redirect:/";
 	}
 
-	@RequestMapping(value = "/update.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(UserVO vo, HttpSession session) throws Exception {
 		userservice.update(vo);
 		session.invalidate();
