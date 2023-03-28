@@ -306,7 +306,7 @@ public class UserController {
 
 
 
-	@RequestMapping(value = "/join.do", method = RequestMethod.POST)
+	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String postRegister(UserVO vo) throws Exception {
 		int result = userservice.idChk(vo);
 		try {
@@ -318,7 +318,7 @@ public class UserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "User/login";
+		return "/User/login";
 	}
 
 	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)
