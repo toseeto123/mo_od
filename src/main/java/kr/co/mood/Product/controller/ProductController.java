@@ -49,20 +49,19 @@ public class ProductController {
 	}
 
 
-	@RequestMapping(value = "/{pro_number}/{pro_name}/{pro_img}.{ext}", method = RequestMethod.GET)
-	public String proDetails(@PathVariable("ext") String ext, @PathVariable("pro_img") String pro_img,@PathVariable("pro_number") int pro_number,@PathVariable("pro_name") String pro_name, ArrayList<ProVO> vo, Model model, HttpSession session,HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {
+	@RequestMapping(value = "/{pro_number}/{pro_name}/{pro_img1}", method = RequestMethod.GET)
+	public String proDetails(@PathVariable("pro_img1") String pro_img,@PathVariable("pro_number") int pro_number,@PathVariable("pro_name") String pro_name, ArrayList<ProVO> vo, Model model, HttpSession session,HttpServletRequest request,HttpServletResponse response) throws UnsupportedEncodingException {
 		pro_name = URLEncoder.encode(pro_name, "UTF-8");
 		model.addAttribute("list", ps.selectProOne(pro_number));
 		model.addAttribute("randomList", ps.selectProRandom(vo));
 		session.setAttribute("pro_number", ps.selectProOne(pro_number));
-		session.setAttribute("path", "/products/"+Integer.toString(pro_number)+"/"+pro_name + "/" + pro_img);
-		String path = (String) session.getAttribute("path");
+	    session.setAttribute("path", "/products/" + Integer.toString(pro_number) + "/" + pro_name + "/" + pro_img);
+	    String path = (String) session.getAttribute("path");
+	    String sessionKey = "recentlyViewedProducts";
+	    int proNumber = pro_number;
+	    String proName = pro_name;
+	    String proIMG = pro_img;
 		
-		// 理쒓렐蹂몄긽�뭹 �꽭�뀡�뿉 ���옣
-		String sessionKey = "recentlyViewedProducts";
-		int proNumber = pro_number;
-		String proName = pro_name;
-		String proIMG = pro_img+"."+ext;
 		proName = java.net.URLDecoder.decode(proName, "UTF-8");
 		List<Map<String, Object>> productList = (List<Map<String, Object>>) session.getAttribute(sessionKey);
 		if (productList == null) {
