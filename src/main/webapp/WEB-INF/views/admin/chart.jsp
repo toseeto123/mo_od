@@ -166,12 +166,21 @@ canvas{
 	
 	const womanChartData = [];	
 	const manChartData = [];
+	let sum4 = 0;
+	for(var i=0; i<woman.length; i++){
+		sum4 += woman[i].productCount
+	}
+	for(var i=0; i<man.length; i++){
+		sum4 += man[i].productCount
+	}
+	console.log(sum4)
 	
 	for(var i=0; i<woman.length; i++){
 		let womanData = {};
 		womanData['x'] = woman[i].categorySerial
 		womanData['y'] = woman[i].age
-		womanData['r'] = woman[i].productCount
+		
+		womanData['r'] = Math.floor(woman[i].productCount/sum4*100)
 		womanChartData.push(womanData);
 	}
 	
@@ -179,7 +188,7 @@ canvas{
 		let manData = {};
 		manData['x'] = man[i].categorySerial
 		manData['y'] = man[i].age
-		manData['r'] = man[i].productCount
+		manData['r'] = Math.floor(man[i].productCount/sum4*100)
 		manChartData.push(manData);
 	}
 
