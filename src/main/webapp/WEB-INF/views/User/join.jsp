@@ -22,7 +22,7 @@ background: #da8862;
 
                Slide 1
                <div class="carousel-item active"
-                  style="background-image: url(resources/assets/img/slide/cate1.jpg); height: 500px;">
+                  style="background-image: url(/resources/assets/img/slide/cate1.jpg); height: 500px;">
                   <div class="carousel-container">
                      <div class="carousel-content">
                         <h2 class="animate__animated animate__fadeInDown">회원가입
@@ -130,10 +130,12 @@ background: #da8862;
                 <div>
                     <h3 class="join_title"><label for="email">본인확인 이메일</label></h3>
                     <div>
-                        <input type="text" id="email" name="email" class="email box string_email" maxlength="100" placeholder="선택입력">
+                        <input type="text" id="email" name="email" class="email box string_email" maxlength="100" onkeyup="emailConfirm()" placeholder="선택입력">
+                        <input type="hidden" class="myinfo_email" id="myinfo_email" name="myinfo_email" value="${login_info.email}">
                     </div>
                      <span class="final_mail_ck">이메일을 입력해주세요.</span>
-                 <span class="mail_input_box_warn"></span>
+                     <span class="mail_input_box_warn"></span>
+                     <span id="conemail"></span>
              <div class="mail_check_wrap">
                <div class="mail_check_input_box" id="mail_check_input_box_false">
                   <input class="mail_check_input" id="email1" disabled="disabled" required>
@@ -141,9 +143,9 @@ background: #da8862;
                <button class="mail_check_button btnhover">인증번호 전송</button>
                <div class="clearfix"></div>
                <span id="mail_check_input_box_warn" name="mail_check_input_box_warn"></span>
-            </div>
-                    
+            </div>   
                 </div>
+                
 
                
                 <div>
