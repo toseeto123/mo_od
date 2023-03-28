@@ -31,10 +31,8 @@ span.span {
 	width:150px;
 	height:auto;
 }
-footer {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
+footer{
+	margin-top: 50px;
 }
 </style>
 <link rel="stylesheet"
