@@ -127,16 +127,7 @@ canvas{
 							<input type="hidden" value="${index3=index3+1}">
 							</c:forEach>
 							<input type="hidden" id="chartValue3" value="${index3}">
-							
-							<c:set var="index4" value="0" />
-							<c:forEach var="list" items="${chart4}">
-							<input type="hidden" id="gender4${index4}" value="${list.gender}">
-							<input type="hidden" id="age${index4}" value="${list.age}">
-							<input type="hidden" id="productCount4${index4}" value="${list.productCount}">
-							<input type="hidden" id="categorySerial4${index4}" value="${list.categorySerial}">							
-							<input type="hidden" value="${index4=index4+1}">
-							</c:forEach>
-							<input type="hidden" id="chartValue4" value="${index4}">
+	
 				
 	
 	<!-- End Hero -->
@@ -168,52 +159,32 @@ canvas{
 			chartData3[document.getElementById('week1'+i).value] = document.getElementById('sales1'+i).value;
 		}
 	}
+	const woman = ${chart4Woman};
+	const man = ${chart4Man};
+	const ages = ${chart4Age};
+	const categorys = ${chart4Category};
 	
+	const womanChartData = [];	
+	const manChartData = [];
 	
-	let womanChartData = [];
-	let manChartData = [];
-	const categorySerial = [];
-	const productCount = []; 
-	const label4 = [];
-	for(var i = 0; i<document.getElementById('chartValue4').value; i++){
-		productCount.push(parseInt(document.getElementById('productCount4'+i).value))
-		let chart4Flag = true;
-		for(var j=0; j<label4.length; j++){
-			if(label4[j] == document.getElementById('age'+i).value){
-				chart4Flag = false;	
-			}
-		}
-		if(chart4Flag){
-			label4.push(document.getElementById('age'+i).value);
-		}
-		
+	for(var i=0; i<woman.length; i++){
+		let womanData = {};
+		womanData['x'] = woman[i].categorySerial
+		womanData['y'] = woman[i].age
+		womanData['r'] = woman[i].productCount
+		womanChartData.push(womanData);
 	}
-	if(productCount.length > 0){
-		sum = productCount.reduce((a,b)=>(a+b));
+	
+	for(var i=0; i<man.length; i++){
+		let manData = {};
+		manData['x'] = man[i].categorySerial
+		manData['y'] = man[i].age
+		manData['r'] = man[i].productCount
+		manChartData.push(manData);
 	}
-	for(var i = 0; i<document.getElementById('chartValue4').value; i++){
-		let chartDictionary = {};	
-		chartDictionary['x'] = document.getElementById('categorySerial4'+i).value;
-		 chartDictionary['y'] = document.getElementById('age'+i).value;
-		 chartDictionary['r'] = Math.floor(parseInt(document.getElementById('productCount4'+i).value)/sum*100);
-		categorySerial.push(document.getElementById('categorySerial4'+i).value)
-		if(document.getElementById('gender4'+i).value == 'F'){
-			womanChartData.push(chartDictionary)	
-		}else if(document.getElementById('gender4'+i).value == 'M'){
-			manChartData.push(chartDictionary);
-		}
-				
-	}
-	console.log(productCount)
-	
-	
-	
-	
 
-		// Get the canvas element
 		const ctx1 = document.getElementById('myChart1').getContext('2d');
 
-		// Define the data for the chart
 		const data1 = {
 			labels : chartProduct1,
 			datasets : [ {
@@ -225,7 +196,6 @@ canvas{
 			} ]
 		};
 
-		// Set options for the chart
 		const options1 = {
 				
 				scales: {
@@ -252,7 +222,6 @@ canvas{
 		        }
 		};
 
-		// Create the chart
 		const myChart1 = new Chart(ctx1, {
 			type : 'bar',
 			data : data1,
@@ -282,7 +251,6 @@ canvas{
 					}
 				});
 
-		// Line chart를 그릴 데이터를 정의합니다.
 		const data3 = {
 			labels : chartWeek1,
 			datasets : [ {
@@ -322,7 +290,6 @@ canvas{
 			        }
 		};
 
-		// Canvas 요소를 선택하고, Line chart를 생성합니다.
 		const ctx3 = document.getElementById('myChart3').getContext('2d');
 		const myChart3 = new Chart(ctx3, {
 			type : 'line',
@@ -330,7 +297,6 @@ canvas{
 			options : options3
 		});
 
-		// Bubble chart를 그릴 데이터를 정의합니다.
 		const data4 = {
 			
 			datasets : [ {
@@ -350,12 +316,11 @@ canvas{
 			]
 		};
 
-		// Bubble chart의 옵션을 정의합니다.
 		const options4 = {
 			scales : {
 				
 				x : { 
-					labels: categorySerial,
+					labels: categorys,
 					title:{
 	        		  display:true,
 	        		  text:'카테고리(판매비율)',
@@ -368,7 +333,7 @@ canvas{
 					position : 'bottom'
 				},
 				y : {
-					labels : label4,
+					labels : ages,
 					type : 'category',
 					position : 'left',
 					 title:{
@@ -383,13 +348,12 @@ canvas{
 			}
 		};
 
-		// Canvas 요소를 선택하고, Bubble chart를 생성합니다.
 		const ctx4 = document.getElementById('myChart4').getContext('2d');
 		const myChart4 = new Chart(ctx4, {
 			type : 'bubble',
 			data : data4,
 			options : options4
-		});
+		}); 
 	</script>
 </body>
 
