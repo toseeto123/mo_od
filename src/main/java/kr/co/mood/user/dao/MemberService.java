@@ -40,7 +40,7 @@ public class MemberService {
          sb.append("&client_id=e862dc15e41ee83edaac20240a8bc9e5"); //본인이 발급받은 key
 
 //         sb.append("&redirect_uri=http://localhost:8080/users/kakaoLogin"); 
-         sb.append("&redirect_uri=http://mo-od.co.kr/users/kakaoLogin/users/kakaoLogin"); 
+         sb.append("&redirect_uri=http://3.39.221.200:8080/users/kakaoLogin"); 
 
          sb.append("&code=" + authorize_code);
          bw.write(sb.toString());
@@ -132,8 +132,8 @@ public class MemberService {
                sb.append("&client_id=dClx55_VYi9U61rOGPS2");
                sb.append("&client_secret=MtrUDxfIj0");
 
-             sb.append("&redirect_uri=http://localhost:8080/login.do");
- //              sb.append("&redirect_uri=http://3.39.221.200:8080/login.do");
+//             sb.append("&redirect_uri=http://localhost:8080/login.do");
+               sb.append("&redirect_uri=http://3.39.221.200:8080/login.do");
 
                sb.append("&code="+authorize_code);
                sb.append("&state=url_parameter");
@@ -241,4 +241,3 @@ public class MemberService {
    }
    
 }
-   

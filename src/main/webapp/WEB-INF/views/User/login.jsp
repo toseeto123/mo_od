@@ -39,7 +39,7 @@ footer {
 
 				<!-- Slide 1 -->
 				<div class="carousel-item active"
-					style="background-image: url(/resources/assets/img/slide/cate1.jpg); height: 500px;">
+					style="background-image: url(resources/assets/img/slide/cate1.jpg); height: 500px;">
 					<div class="carousel-container">
 						<div class="carousel-content">
 							<h2 class="animate__animated animate__fadeInDown">로그인</h2>
@@ -116,13 +116,13 @@ footer {
 
 				</form>
 				<ul class="login_link_box">
-					<li class="login_li"><a href="/searchId" class="fonthover">아이디
+					<li class="login_li"><a href="/users/searchId" class="fonthover">아이디
 							찾기</a> &nbsp;</li>
 
-					<li class="login_li"><a href="/searchPwd" class="fonthover">비밀번호
-							재설정</a> &nbsp;</li>
+					<li class="login_li"><a href="/users/searchPwd" class="fonthover">비밀번호
+							찾기</a> &nbsp;</li>
 
-					<li class="login_li"><a href="join.do" class="fonthover">회원가입</a>
+					<li class="login_li"><a href="/users/join" class="fonthover">회원가입</a>
 						&nbsp;</li>
 
 				</ul>
@@ -148,9 +148,8 @@ footer {
 
 
 						<li class="box_list">
-<!-- 						 <a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/users/kakaoLogin&response_type=code"> -->
-<!-- 						<a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://3.39.221.200/users/kakaoLogin&response_type=code">  -->
-							<a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://mo-od.co.kr/users/kakaoLogin&response_type=code">  -->
+						 <!-- <a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/users/kakaoLogin&response_type=code"> -->
+ 						<a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://3.39.221.200:8080/kakaoLogin&response_type=code"> 
 
 								<img style="width: 50px;" src="/resources/user/img/kakao.png"
 								alt="kakao" class="imghover"> <span class="box_list_txt">카카오</span>
