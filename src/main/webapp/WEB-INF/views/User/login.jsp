@@ -120,9 +120,9 @@ footer {
 							찾기</a> &nbsp;</li>
 
 					<li class="login_li"><a href="/searchPwd" class="fonthover">비밀번호
-							재설정</a> &nbsp;</li>
+							찾기</a> &nbsp;</li>
 
-					<li class="login_li"><a href="join.do" class="fonthover">회원가입</a>
+					<li class="login_li"><a href="/users/join" class="fonthover">회원가입</a>
 						&nbsp;</li>
 
 				</ul>

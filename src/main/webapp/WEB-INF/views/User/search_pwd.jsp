@@ -125,10 +125,10 @@ footer {
 
 								<div class="form-group row">
 									<div class="col-6" style="padding-left:70px">
-										<input type="button" class="link" value="아이디 찾기" onclick="location.href='/searchId'">
+										<input type="button" class="link" value="아이디 찾기" onclick="location.href='/users/searchId'">
 									</div>
 									<div class="col-6 text-right" style="padding-right:70px">
-										<input type="button" class="link" value="돌아가기" onclick="location.href='/login.do'">
+										<input type="button" class="link" value="돌아가기" onclick="location.href='/users/login'">
 									</div>
 
 								</div>
