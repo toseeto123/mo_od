@@ -33,10 +33,8 @@ span.span {
 	height: auto;
 }
 
-footer {
-	position: fixed;
-	bottom: 0;
-	width: 100%;
+footer{
+	margin-top: 50px;
 }
 </style>
 <jsp:include page="/WEB-INF/common/header.jsp" />

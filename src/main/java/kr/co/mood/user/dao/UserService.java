@@ -25,12 +25,12 @@ public interface UserService {
 		
 		public void delete(String id) throws Exception;
 
-
 		public UserVO selectId(UserVO vo);
 		
 		public int idChk(UserVO vo) throws Exception;
 
-
+		public int myinfo_email(UserVO vo) throws Exception;
+		
 		public void insertnaver(UserVO naver);
 		
 		

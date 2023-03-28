@@ -26,7 +26,7 @@ function JoinCheck(){
               join.pwd.focus();
               return false;
            }
-           if (!document.join.pwd.value.match(/^[A-Za-z0-9]{10,20}$/)) {
+           if (!document.join.pwd.value.match(/^[a-z0-9]{10,20}$/)) {
             alert("암호는 영문 대소문자와 숫자의 조합으로 10~20자리 이내로 입력해주세요.");
             join.pwd.focus();
             return false;
@@ -180,11 +180,17 @@ function fn_idChk(){
    
 
    
-   
-    $.ajax({
-    url: '/check_email',
+    function emailConfirm() {
+  var ssemail = $('input#myinfo_email').val();
+  var email = document.getElementById('email').value;
+  var conemail = document.getElementById('conemail'); //확인 메세지
+  var correctColor = "#00ff00"; //맞았을 때 출력되는 색깔.
+  var wrongColor = "#ff0000"; //틀렸을 때 출력되는 색깔
+
+  $.ajax({
+    url: '/users/check_email',
     type: 'POST',
-    data: {email: email},
+    data: {"email" : $("#email").val()},
     success: function(response) {
       if (response.result === 'duplicate') {
         conemail.style.color = wrongColor;
@@ -198,11 +204,9 @@ function fn_idChk(){
       console.log(error);
     }
   });
+}
 
-   
-   
-   
-   
+
 
     function sample6_execDaumPostcode() {
         new daum.Postcode({

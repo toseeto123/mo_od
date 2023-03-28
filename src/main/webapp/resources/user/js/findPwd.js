@@ -142,7 +142,7 @@
 			        const data = xhr.responseText;
 			        if(data == 'Success'){
 			        	alert("비밀번호가 발급되었습니다.")
-			        	location.href='/login';
+			        	location.href='/users/login';
 			        }else{
 			        	alert('비밀번호가 변경되지 않았습니다.')
 			        }

@@ -178,7 +178,7 @@ footer{
 				</c:forEach>
 
 				<c:if test="${nextPage != null }">
-					<a href="/admin/payment.do/${nextPage}">&gt;</a>
+					<a href="/admin/payment/${nextPage}">&gt;</a>
 				</c:if>
 			</div>
 			

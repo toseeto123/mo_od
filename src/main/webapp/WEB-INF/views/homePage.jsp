@@ -97,7 +97,7 @@
         <div class="row portfolio-container">
         
 	<c:forEach var="Alist" items="${Alist}" begin="0" end="0">
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app" onclick="location.href='/products/${Alist.pro_number }/${Alist.pro_name}'" style="cursor: pointer">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app" onclick="location.href='/products/${Alist.pro_number }/${Alist.pro_name}/${Alist.pro_img1}'" style="cursor: pointer">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Alist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -111,7 +111,7 @@
           </c:forEach>
 
 <c:forEach var="Blist" items="${Blist}" begin="0" end="0">
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card" onclick="location.href='/products/${Blist.pro_number }/${Blist.pro_name}'" style="cursor: pointer">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card" onclick="location.href='/products/${Blist.pro_number }/${Blist.pro_name}/${Blist.pro_img1}'" style="cursor: pointer">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Blist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -124,7 +124,7 @@
           </div>
           </c:forEach>
 		<c:forEach var="Clist" items="${Clist}" begin="0" end="0">
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web" onclick="location.href='/products/${Clist.pro_number }/${Clist.pro_name}'" style="cursor: pointer">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web" onclick="location.href='/products/${Clist.pro_number }/${Clist.pro_name}/${Clist.pro_img1}'" style="cursor: pointer">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Clist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -138,7 +138,7 @@
           </c:forEach>
 
           <c:forEach var="Alist" items="${Alist}" begin="1" end="1">
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app" onclick="location.href='/products/${Alist.pro_number }/${Alist.pro_name}'" style="cursor: pointer">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app" onclick="location.href='/products/${Alist.pro_number }/${Alist.pro_name}/${Alist.pro_img1}'" style="cursor: pointer">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Alist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -152,7 +152,7 @@
           </c:forEach>
 
           <c:forEach var="Blist" items="${Blist}" begin="1" end="1">
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card" onclick="location.href='/products/${Blist.pro_number }/${Blist.pro_name}'" style="cursor: pointer">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card" onclick="location.href='/products/${Blist.pro_number }/${Blist.pro_name}/${Blist.pro_img1}'" style="cursor: pointer">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Blist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -166,7 +166,7 @@
           </c:forEach>
           
           <c:forEach var="Clist" items="${Clist}" begin="2" end="2">
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web" onclick="location.href='/products/${Clist.pro_number }/${Clist.pro_name}'" style="cursor: pointer">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web" onclick="location.href='/products/${Clist.pro_number }/${Clist.pro_name}/${Clist.pro_img1}'" style="cursor: pointer">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Clist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -180,7 +180,7 @@
           </c:forEach>
 
           <c:forEach var="Blist" items="${Blist}" begin="2" end="2">
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card" onclick="location.href='/products/${Blist.pro_number }/${Blist.pro_name}'" style="cursor: pointer">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card" onclick="location.href='/products/${Blist.pro_number }/${Blist.pro_name}/${Blist.pro_img1}'" style="cursor: pointer">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Blist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -194,7 +194,7 @@
           </c:forEach>
 
           <c:forEach var="Clist" items="${Clist}" begin="1" end="1">
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web" onclick="location.href='/products/${Clist.pro_number }/${Clist.pro_name}'" style="cursor: pointer">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web" onclick="location.href='/products/${Clist.pro_number }/${Clist.pro_name}/${Clist.pro_img1}'" style="cursor: pointer">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Clist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -208,7 +208,7 @@
           </c:forEach>
           
           <c:forEach var="Alist" items="${Alist}" begin="2" end="2">
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app" onclick="location.href='/products/${Alist.pro_number }/${Alist.pro_name}'" style="cursor: pointer">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app" onclick="location.href='/products/${Alist.pro_number }/${Alist.pro_name}/${Alist.pro_img1}'" style="cursor: pointer">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Alist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">

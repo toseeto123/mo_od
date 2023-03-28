@@ -54,6 +54,11 @@ public class UserDAO {
 		return result;
 	}
 	
+	public int myinfo_email(UserVO vo) throws Exception{
+		int result = mybatis.selectOne("UserDAO.myinfo_email", vo);
+		return result;
+	}
+	
 	public int idChk1(UserVO vo) throws Exception{
 		int result1 = mybatis.selectOne("UserDAO.idChk", vo);
 		return result1;
