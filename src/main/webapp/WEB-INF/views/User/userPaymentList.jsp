@@ -190,7 +190,6 @@ footer{
 }
 .cancelbox{
 margin:0 auto;
-border: 2px solid #c8936ed4;
 border-radius: 5px;
 padding: 10px;
 text-align: center;
@@ -264,7 +263,7 @@ width: 300px;
         <form action="/User/kakaoPayCancel" id="cancel-form">
     <c:forEach var="order" items="${orders}">
       <c:if test="${order.orderId == orderid.orderId}">
-    <input type="hidden" value="${order.orderId }" name="orderId">
+    <input type="hidden" value="${orderid.orderid }" name="orderId">
   	<input type="hidden" value="${order.tid }" name="tid">
     <input type="hidden" value="${order.pro_number }" name="pro_number">
     <input type="hidden" value="${orderid.total}" name="price">
@@ -293,8 +292,7 @@ width: 300px;
       </c:if>
     </c:forEach>
     <div class="cancelbox">
-    <span>총 금액 : <span><fmt:formatNumber value="${orderid.total}" type="currency" currencySymbol="₩" /></span></span>
-    <button type="button" class="btn-primary" onclick="confirmCancel()">주문취소</button>
+    <button type="button" class="btn-primary" onclick="confirmCancel()"><fmt:formatNumber value="${orderid.total}" type="currency" currencySymbol="₩" />주문취소</button>
     </div>
         </form>
   </div>
