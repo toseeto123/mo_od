@@ -47,6 +47,8 @@ input[type=search]{
 	font-size: 18px;
 }
 footer{
+	position: absolute;
+	top: 120%;
 	width: 100%;
 }
 </style>

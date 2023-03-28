@@ -48,7 +48,7 @@
     <select id="getCategoryChart4" resultType="kr.co.mood.Payment.VO.AdminChartVO">
 		<![CDATA[
 		select member.gender as gender,
-			orderProduct.count as 'productCount',
+			sum(orderProduct.count) as 'productCount',
 			product.pro_categoryserial as 'categorySerial',
 			member.age as 'age'
 		from orderProduct
@@ -62,6 +62,7 @@
 			on payment.orderid = orderProduct.orderid
 		where payment.Success = '결제 완료'
 			and payment.SuccessTime like concat(#{year}, '%')
+		group by product.pro_categoryserial
 		order by member.age desc 
 		limit 0, 5
 			]]>
