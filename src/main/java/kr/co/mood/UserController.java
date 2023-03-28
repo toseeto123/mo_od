@@ -322,7 +322,7 @@ public class UserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "User/login";
+		return "/User/login";
 	}
 
 	@RequestMapping(value = "/delete.do", method = RequestMethod.GET)

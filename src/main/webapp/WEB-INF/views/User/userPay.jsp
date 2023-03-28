@@ -19,6 +19,9 @@
    href="https://getbootstrap.com/docs/4.6/examples/checkout/">
 <!-- Bootstrap core CSS -->
 <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
+
 
 <style>
 
@@ -155,12 +158,43 @@ background-color: #c8936ed4;
 .mb-3{
  	font-size: 24px;
 }
-.btn-primary {
-	background-color:#c8936ed4;
-}
+
 
 body {
 	height:100%;
+}
+.xi-kakaotalk{
+font-size: 30px;
+  vertical-align: bottom;
+  margin-left: 5px; /* 원하는 만큼 조절 가능 */
+}
+
+.btnhover{
+font-size: 20px;
+font-weight: 700;
+background: #c8936ed4;
+border: none;
+border-radius: 50px;
+width: 350px;
+height: 70px;
+padding: 20px;
+color:white;
+float: right;
+margin: 10px;
+box-shadow: 1px 1px 1px 1px lightgray; 
+
+
+}
+.btnhover:hover{
+background: #da8862;
+}
+.paybtn{
+border-radius: 50px;
+background: #F9E000;
+color: #000;
+}
+.paybtn:hover{
+background: #f9bf00;
 }
 
 </style>
@@ -296,15 +330,15 @@ body {
                      <hr class="mb-4">
                   </div>
                   
-                   <c:set var="totalPrice" value="0" />
+                  <c:set var="totalPrice" value="0" />
                   <c:set var="totalPrice" value="${totalPrice + onelist.pro_price}" />
     				<input type="hidden" value="${onelist.pro_name}" name="pro_name"> 
     				<input type="hidden" value="${onelist.pro_price}" name="pro_price"> 
     				<input type="hidden" value="${onelist.pro_number}" name="pro_number"> 
    				 	<input type="hidden" value="${onelist.orderId}" name="orderId"> 
    				 	<input type="hidden" value="${onelist.userno }" name="userno">
-    				<button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn"><fmt:formatNumber value="${totalPrice}" type="currency" currencySymbol="₩" />원 결제하기</button>
-    				<button class="btn btn-primary btn-lg btn-block" type="button" id="cancelbtn">주문 취소</button>
+    				<button class="paybtn btnhover" type="submit" id="apibtn"><i class="xi-kakaotalk"></i>결제하기 <fmt:formatNumber value="${totalPrice}" type="currency" currencySymbol="₩" />원</button>
+    				<button class="btnhover" type="button" id="cancelbtn" onclick="history.go(-1)">주문 취소</button>
                </c:forEach>
 
                <c:set var="totalPrice" value="0" />
@@ -312,8 +346,8 @@ body {
                   <c:set var="totalPrice" value="${totalPrice + list.pro_price}" />
                </c:forEach>
                <c:forEach var="orderprice" items="${orderprice}" begin="0" end="0">
-                  <button class="btn btn-primary btn-lg btn-block" type="submit" id="apibtn"><fmt:formatNumber value="${orderprice.price}" type="currency" currencySymbol="₩" />원 결제하기</button>
-                  <button class="btn btn-primary btn-lg btn-block" type="button" id="cancelbtn" onclick="history.go(-1)" >주문 취소</button>
+                  <button class="paybtn btnhover" type="submit" id="apibtn"><i class="xi-kakaotalk"></i>결제하기 <fmt:formatNumber value="${orderprice.price}" type="currency" currencySymbol="₩" />원</button>
+                  <button class="btnhover" type="button" id="cancelbtn" onclick="history.go(-1)" >주문 취소</button>
                   <input type="hidden" name="pro_price" value=${orderprice.price }>
                   <input type="hidden" name="orderId" value=${orderprice.orderId }>
                   <input type="hidden" name="userno" value=${login_info.no }>

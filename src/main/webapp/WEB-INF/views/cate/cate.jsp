@@ -494,10 +494,10 @@ function deletecate(element) {
 		<section>
 				<ul class="nav nav-pills nav-justified">
 				  <li class="nav-item" >
-				    <a class="nav-link active" href="/users/mypage" style="background: #c8936ed4; color:white; font-size: 16px;">회원 정보</a>
+				    <a class="nav-link active" href="/mypage.do" style="background: #c8936ed4; color:white; font-size: 16px;">회원 정보</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" href="/users/bucket" style="background: #da8862; color:white; font-size: 16px;">장바 구니</a>
+				    <a class="nav-link" href="/cate.do" style="background: #da8862; color:white; font-size: 16px;">장바 구니</a>
 				  </li>
 				  <li class="nav-item">
 				    <a class="nav-link" href="/products/payMypage" style="background: #c8936ed4; color:white; font-size: 16px;">결제 내역</a>
@@ -519,12 +519,11 @@ function deletecate(element) {
 				<c:otherwise>
 				<c:forEach var="map" items="${map}">
 					<div class="deleteplz" style="height: 225;">
-						<img src="/resources/assets/img/product/${map.pro_img1 }"
+						<img src="resources/assets/img/product/${map.pro_img1 }"
 							class="img-fluid"
 							alt="${map.pro_name}"
 							title="${map.pro_maindesctitle}"
 							style="width: 180px; height: 180px; position: absolute; right: 150px;">
-							
 						<p style="text-align: center; margin-top: 30px;">
 
 

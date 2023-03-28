@@ -34,15 +34,12 @@
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">나만의 작은 문명 mo_od </h2>
                 <p class="animate__animated animate__fadeInUp"> 여러분의 취향을 가득담은 mo_od를 통해 &nbsp; 나만의 문명을 완성해보세요</p>
-                <div>
-                  <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
-                </div>
               </div>
             </div>
           </div>
 
           <!-- Slide 2 -->
-          <div class="carousel-item" style="background-image: url(resources/assets/img/slide/slide-2.jpg);">
+          <div class="carousel-item" style="background-image: url(resources/assets/img/slide/mood2.png);">
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">3월의 mo_od</h2>
@@ -52,7 +49,7 @@
           </div>
 
           <!-- Slide 3 -->
-          <div class="carousel-item" style="background-image: url(resources/assets/img/slide/slide3.jpg);">
+          <div class="carousel-item" style="background-image: url(resources/assets/img/slide/mood3.png);">
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">컬러에 담겨진 mo_od </h2>
