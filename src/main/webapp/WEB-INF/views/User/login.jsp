@@ -22,6 +22,9 @@ footer {
 	left: 0;
 	right: 0;
 }
+.box_list, .login_li {
+   margin: 5px 5px;
+}
 </style>
 <head>
 <jsp:include page="/WEB-INF/common/header.jsp" />
