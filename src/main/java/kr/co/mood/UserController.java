@@ -114,9 +114,9 @@ public class UserController {
 	       if (path == null) {
 		        pathgo = "";
 		    } else {
-	       if (path.contains("catelogin.do")) {
+	       if (path.contains("catelogin")) {
 	           pathgo = "users/bucket";
-	       } else if (path.contains("proCatelogin.do")) {
+	       } else if (path.contains("proCatelogin")) {
 	           CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
 	           int userid = naverUserInfo.getNo();
 	           sessionCvo.setUser_no(userid);
@@ -124,7 +124,7 @@ public class UserController {
 	               cateService.addcate(sessionCvo, naverUserInfo, null);
 	           }
 	           pathgo = "users/bucket";
-	       } else if (path.contains("payBeLogin.do")) {
+	       } else if (path.contains("payBeLogin")) {
 	           userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
 	           userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
 	           int userid = naverUserInfo.getNo();
@@ -168,13 +168,16 @@ public class UserController {
 	    UserVO userInfo = ms.getUserInfo(access_Token);
 	    String path = (String) session.getAttribute("path");
 	    session.setAttribute("login_info", userInfo);
+	    System.out.println(path);
 	    if (path == null) {
 	        return "redirect:/";
 	    } else {
 	        session.setAttribute("path", request.getRequestURI());
 	        if (path.contains("catelogin.do")) {
+	        	System.out.println("catelogin.do 포함 돼있는거");
 	            return "redirect:/users/bucket";
-	        } else if (path.contains("proCatelogin.do")) {
+	        } else if (path.contains("proCatelogin")) {
+	        	System.out.println("proCatelogin 포함 돼있는거");
 	            CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
 	            int userid = userInfo.getNo();
 	            sessionCvo.setUser_no(userid);
@@ -182,7 +185,7 @@ public class UserController {
 	                cateService.addcate(sessionCvo, userInfo, null);
 	            }
 	            return "redirect:/users/bucket";
-	        } else if(path.contains("payBeLogin.do")) {
+	        } else if(path.contains("payBeLogin")) {
 	            userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
 	            userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
 	            int userid = userInfo.getNo();
@@ -268,7 +271,7 @@ public class UserController {
 	public String catelogin(HttpSession session, HttpServletRequest request) {
 		session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
 
-		return "redirect:/users/login";
+		return "redirect:/users/bucket";
 	}
 
 	@RequestMapping(value = "/proCatelogin", method = RequestMethod.GET)
