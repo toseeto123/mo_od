@@ -1,4 +1,4 @@
-package kr.co.mood.user.controller;
+package kr.co.mood;
 
 import java.io.IOException;
 import java.io.PrintWriter;
