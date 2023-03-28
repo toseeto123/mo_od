@@ -88,25 +88,23 @@ public class UserController {
 		} else {
 			session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
 		}
-
 		return (String) session.getAttribute("path");
 	}
 
 	@RequestMapping("/naverLogin")
-	 public void naverLogin(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request,Model model) throws IOException {
+	 public void naverLogin(@RequestParam("code") String code, @ModelAttribute("cvo") CateVO cvo,HttpSession session, HttpServletResponse response, HttpServletRequest request,Model model) throws IOException {
 	       String access_Token = ms.getNaverAccessToken(code, session);
 	       UserVO naverUserInfo =  ms.getNaverUserInfo(access_Token, session);
 	       session.setAttribute("login_info", naverUserInfo);
 	       session.setAttribute("access_token", access_Token);
 	       String path = (String) session.getAttribute("path");
-	      
 	       String pathgo = "";
 	       if (path == null) {
 		        pathgo = "";
 		    } else {
 	       if (path.contains("catelogin.do")) {
 	           pathgo = "users/bucket";
-	       } else if (path.contains("proCatelogin.do")) {
+	       } else if (path.contains("proCatelogin")) {
 	           CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
 	           int userid = naverUserInfo.getNo();
 	           sessionCvo.setUser_no(userid);
@@ -114,7 +112,7 @@ public class UserController {
 	               cateService.addcate(sessionCvo, naverUserInfo, null);
 	           }
 	           pathgo = "users/bucket";
-	       } else if (path.contains("payBeLogin.do")) {
+	       } else if (path.contains("payBeLogin")) {
 	           userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
 	           userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
 	           int userid = naverUserInfo.getNo();
@@ -126,7 +124,6 @@ public class UserController {
 	           productPayService.insert(sessionorderprovo, naverUserInfo, null);
 	           model.addAttribute("onelist", productPayService.selectList(orderid));
 	           pathgo = "products/orders";
-	           
 	       } else {
 	           pathgo = path;
 	       }
@@ -162,9 +159,9 @@ public class UserController {
 	        return "redirect:/";
 	    } else {
 	        session.setAttribute("path", request.getRequestURI());
-	        if (path.contains("catelogin.do")) {
+	        if (path.contains("catelogin")) {
 	            return "redirect:/users/bucket";
-	        } else if (path.contains("proCatelogin.do")) {
+	        } else if (path.contains("proCatelogin")) {
 	            CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
 	            int userid = userInfo.getNo();
 	            sessionCvo.setUser_no(userid);
@@ -199,7 +196,6 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginAction(@ModelAttribute("cvo") CateVO cvo, UserVO vo, HttpSession session,
 			HttpServletRequest request, RedirectAttributes ra, Model model) {
-		System.out.println("post방식");
 		UserVO vo1 = userservice.selectId(vo);
 
 		if (vo1 == null || vo1.getId().equals("admin")) {
@@ -209,7 +205,6 @@ public class UserController {
 		} else {
 			session.setAttribute("login_info", vo1);
 			String path = (String) session.getAttribute("path");
-
 			if (path == null) {
 				return "redirect:/";
 			} else if (path.contains("catelogin.do")) {
@@ -238,9 +233,7 @@ public class UserController {
 				sessionorderprovo.setOrderId(orderid);
 
 				productPayService.insert(sessionorderprovo, vo1, null);
-
 				model.addAttribute("onelist", productPayService.selectList(orderid));
-
 				return "/User/userPay";
 			} else {
 				return "redirect:" + path;
@@ -275,7 +268,7 @@ public class UserController {
 			@ModelAttribute("orderProVo") userOrderProductVO orderProVo, HttpSession session, ModelAndView mav,
 			HttpServletRequest request) {
 		session.setAttribute("path", request.getRequestURI()); // �쁽�옱 寃쎈줈 ���옣
-
+		System.out.println(ordervo);
 		return "redirect:/users/login";
 	}
 
@@ -307,8 +300,6 @@ public class UserController {
 		model.addAttribute("orders", kakaoService.selectlist(userid));
 		return "User/mypage";
 	}
-
-
 
 	@RequestMapping(value = "/join", method = RequestMethod.POST)
 	public String postRegister(UserVO vo) throws Exception {

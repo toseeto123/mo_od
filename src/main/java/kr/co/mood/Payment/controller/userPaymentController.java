@@ -82,7 +82,7 @@ public class userPaymentController {
 
 			session.setAttribute("ordervo", ordervo1);
 			session.setAttribute("orderProVo", orderProVo);
-			return "redirect:/payBeLogin.do";
+			return "redirect:/users/payBeLogin.do";
 		}
 		int userid = uvo.getNo();
 
@@ -107,6 +107,7 @@ public class userPaymentController {
 
 		return "User/userPay";
 	}
+
 
 	@RequestMapping(value = "/cateorders", method = RequestMethod.POST)
 	public String cateProcessOrder(HttpSession session, Model model, @RequestParam("pro_number") String pro_number,

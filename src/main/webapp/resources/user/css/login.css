@@ -1,6 +1,6 @@
 @charset "UTF-8";
 
-li{
+.login_link_box li{
     margin: 5px 5px;
 }
 .login {
