@@ -5,18 +5,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Chart</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<jsp:include page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
 <style>
 select, option{
 	height: 30px;
 	font-size: 18px;
 }
-.tableContainer{
-	height: 450px;
-}
-section.container{
-	margin-bottom: 20px;
+
+#hero{
+	height: auto;
+	margin-bottom: 100px;
 }
 .searchParent{
 	text-align: center;
@@ -44,18 +45,15 @@ input[type=search]{
 	font-size: 18px;
 }
 footer{
-	width: 100%;
-	position: absolute;
-	bottom: 0;
+	margin-top: 40px;
 }
 </style>
 
 </head>
 
 <body>
-	<jsp:include page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
 
-	<section id="hero" class="container" style="overflow:hidden; background: white;">
+	<section id="hero"class="container"  style="background: white;">
 	<div class="searchParent">
 			<div class="search" style="margin-top: 110px; margin-bottom: 50px;">
 			<select id="searchWhat">
@@ -115,13 +113,47 @@ footer{
                   <td colspan="4" style="border-bottom:none"></td>
                   <td style="border-bottom:none">
                   	<form action="#" method="post">
-                  	<a href="#about" class="btn-get-started animate__animated">주문취소</a>
+                  	<a onClick="$('#myModal${member.orderNo}').modal('show');" class="btn-get-started animate__animated">주문취소</a>
                   	</form>
                   	</td>
                   </tr>
                   
                 </tbody>
               </table>
+              
+              	<div class="modal fade" id="myModal${member.orderNo}">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="myModalLabel">결제 취소</h5>
+					<button type="button" style="background: transparent; border: none;" class="close"
+						onClick="$('#myModal${member.orderNo}').modal('hide');" data-dismiss="modal"
+						aria-label="Close">
+						<span class="span" aria-hidden="true">&times;</span>
+					</button>
+				</div>
+				<div class="modal-body">
+					<div class="d-flex align-items-center justify-content-center">
+
+
+						<div class="card-body">
+							<div class="form-group">
+								
+							</div>
+							<div class="form-group">
+								<h5>결제를 취소하시겠습니까?</h5>
+							</div>
+							<div class="form-group text-center">
+							<input type="button" onClick="location.href = '/admin/kakaoPayCancel?orderid=${member.orderNo}';" value="결제 취소">
+								<input type="button" onClick="$('#myModal${member.orderNo}').modal('hide');" value="닫기">								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+              
               </c:forEach>
               </div>
               <!-- End Default Table Example -->
@@ -130,17 +162,17 @@ footer{
 			<div id="modulePaging"
 				style="display: inline-block; position: absolute; left: 50%; transform: translateX(-50%); font-size: 20px;">
 				<c:if test="${prePage!=null }">
-					<a href="/admin/adminMemberList.do/${prePage}">&lt;</a>
+					<a href="/admin/adminMemberList/${prePage}">&lt;</a>
 				</c:if>
 
 				<c:forEach items="${ pagingNo }" var="no">
 					<c:choose>
 						<c:when test="${selectPage == no}">
                   &nbsp;<a style="color: green"
-								href="/admin/payment.do/${no}">${no}</a>&nbsp;
+								href="/admin/payment/${no}">${no}</a>&nbsp;
                   </c:when>
 						<c:otherwise>
-                  &nbsp;<a href="/admin/payment.do/${no}">${no}</a>&nbsp;
+                  &nbsp;<a href="/admin/payment/${no}">${no}</a>&nbsp;
                   </c:otherwise>
 					</c:choose>
 				</c:forEach>
@@ -154,7 +186,14 @@ footer{
 		<input type="hidden" value="${selectPage}" id="selectPage">
 
 	</section>
+	<script
+		src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+	<script
+		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/resources/user/js/adminPaymentSearching.js"></script> 
+
 </body>
 <footer><jsp:include
 					page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" /></footer>

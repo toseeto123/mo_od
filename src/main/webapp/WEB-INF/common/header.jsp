@@ -90,7 +90,7 @@ li {
                <li class="/login_info" style="color : white;">${login_info.name } [ ${login_info.id } ]</li>
                <c:choose>
                <c:when test="${login_info.id == 'admin' }">
-               <li><a href="/admin/chart.do"><span class="getstarted scrollto"> Admin</span> </a></li>
+               <li><a href="/admin/chart.do"><span class="getstarted scrollto"><b>Admin</b></span> </a></li>
                </c:when>
                <c:otherwise>
                <li><a href="/users/mypage"><span class="getstarted scrollto"> <b>Mypage</b></span> </a></li>

@@ -26,7 +26,7 @@
    </select>
    
    <select id="selectIdCheck" resultType="kr.co.mood.user.dao.UserVO">
-   	select no, id, name, age, gender, adr, email, phone, day
+   	select no, id, AES_DECRYPT(unhex(pwd), 'key') as pwd, name, age, gender, adr, email, phone, day
    	from moodjoin 
    	where id = #{id} 
    </select>

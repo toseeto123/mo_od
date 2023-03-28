@@ -1,4 +1,4 @@
-package kr.co.mood;
+package kr.co.mood.admin.controller;
 
 import java.io.IOException;
 import java.util.ArrayList;
