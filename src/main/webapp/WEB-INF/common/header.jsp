@@ -41,14 +41,15 @@
 
 <style>
 b{
-font-size: 18px;
+font-size: 24px;
 }
 li {
    display: flex;
    align-items: center;
-   margin: 20px;
-   margin-bottom: 20px;
+   margin: 30px;
+   margin-bottom: 30px;
 }
+
 </style>
 </head>
 
@@ -59,25 +60,25 @@ li {
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-       <h1 class="logo" style="font-family:'궁서'; font-size: 40px;"><a href="/">묻:<b class="logo2" style="font-family:'굴림'; font-size: 40px;">mo_od</b></a></h1>
+       <h1 class="logo" style="font-family:'궁서'; font-size: 50px;"><a href="/">묻:<b class="logo2" style="font-family:'굴림'; font-size: 56px;">mo_od</b></a></h1>
  
       <nav id="navbar" class="navbar">
         <ul>
 
-          <li class="dropdown"><a href="/products/AcategoryList"><b>가 구</b> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="/products/AcategoryList"><b>가 구</b></a>
                 <ul>
                  <li><a href="/products/A0categoryList"><b>매트리스</b></a></li>
                  <li><a href="/products/A1categoryList"><b>침대 프레임</b></a></li>
                  <li><a href="/products/A2categoryList"><b>소 파</b></a></li>
                 </ul>
           </li>
-          <li class="dropdown"><a href="/products/BcategoryList"><b>조 명</b> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="/products/BcategoryList"><b>조 명</b></a>
                 <ul>
                   <li><a href="/products/B0categoryList"><b>무드등</b></a></li>
                   <li><a href="/products/B1categoryList"><b>스탠드조명</b></a></li>
                 </ul>
           </li>
-          <li class="dropdown"><a href="/products/CcategoryList"><b>수 납</b> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="/products/CcategoryList"><b>수 납</b></a>
                 <ul>
                   <li><a href="/products/C0categoryList"><b>옷장 / 행거</b></a></li>
                   <li><a href="/products/C1categoryList"><b>서 랍</b></a></li>
@@ -87,7 +88,7 @@ li {
 
                
 
-               <li class="/login_info" style="color : white;">${login_info.name } [ ${login_info.id } ]</li>
+               <li class="/login_info" style="color : white;"></li>
                <c:choose>
                <c:when test="${login_info.id == 'admin' }">
                <li><a href="/admin/chart.do"><span class="getstarted scrollto"><b>Admin</b></span> </a></li>
@@ -101,7 +102,7 @@ li {
 
             </c:if>
 			<c:if test="${empty login_info.id}">
-				<li><a class="getstarted scrollto" href="/users/join"><b>Join</b></a></li>
+				<li style="padding:0px; margin:30px 0px 30px 50px;"><a class="getstarted scrollto" href="/users/join" ><b>Join</b></a></li>
 				<li><a class="getstarted scrollto" href="/users/login"><b>Login</b></a></li>
 			</c:if>
         </ul>
@@ -129,4 +130,4 @@ $(document).ready(function() {
     });
 });
 </script>
-<jsp:include page="../../WEB-INF/common/RecentlyViewProduct.jsp"/>
+<jsp:include page="/WEB-INF/common/RecentlyViewProduct.jsp"/>
