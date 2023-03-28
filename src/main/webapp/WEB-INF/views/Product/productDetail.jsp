@@ -317,7 +317,7 @@ background: #da8862;
         <div class="row">
 <c:forEach var="randomList" items="${randomList}" begin="0" end="3">
           <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="member" style="cursor: pointer;" onclick="location.href='/products/${randomList.pro_number}/${randomList.pro_name}'">
+            <div class="member" style="cursor: pointer;" onclick="location.href='/products/${randomList.pro_number}/${randomList.pro_name}/${randomList.pro_img1}'">
               <img src="${pageContext.request.contextPath}/resources/assets/img/product/${randomList.pro_img1}" class="img-fluid" alt="">
               <div class="member-info">
                 <div class="member-info-content">
@@ -325,7 +325,7 @@ background: #da8862;
                   <span>${randomList.pro_maindesctitle}</span>
                   <span><fmt:formatNumber value="${randomList.pro_price}" type="currency" currencySymbol="₩" /></span>
                   <div class="social">
-                    <a href="/products/${randomList.pro_number}/${randomList.pro_name}">상세보기</a>
+                    <a href="/products/${randomList.pro_number}/${randomList.pro_name}/${randomList.pro_img1}">상세보기</a>
                   </div>
                 </div>
               </div>
@@ -347,16 +347,7 @@ background: #da8862;
       class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
-   <!-- Vendor JS Files -->
-   <script src="${pageContext.request.contextPath}/resources/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-
-   <!-- Template Main JS File -->
-   <script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
    
    
     <script>

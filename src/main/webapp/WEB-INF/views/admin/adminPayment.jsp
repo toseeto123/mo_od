@@ -9,6 +9,7 @@
 <title>Chart</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
+
 <style>
 select, option{
 	height: 30px;
@@ -44,14 +45,15 @@ input[type=button]{
 input[type=search]{
 	font-size: 18px;
 }
-footer{
-	margin-top: 40px;
+.footer{
+	margin-top: 500px;
 }
 </style>
 
 </head>
 
 <body>
+
 
 	<section id="hero"class="container"  style="background: white;">
 	<div class="searchParent">
@@ -178,7 +180,7 @@ footer{
 				</c:forEach>
 
 				<c:if test="${nextPage != null }">
-					<a href="/admin/payment.do/${nextPage}">&gt;</a>
+					<a href="/admin/payment/${nextPage}">&gt;</a>
 				</c:if>
 			</div>
 			
@@ -193,8 +195,17 @@ footer{
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 <script src="/resources/user/js/adminPaymentSearching.js"></script> 
-
-</body>
-<footer><jsp:include
+<footer class="footer"><jsp:include
 					page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" /></footer>
+</body>
+
+<script>
+	
+var footerElement = document.querySelector('footer');
+if (footerElement.clientHeight > 400) {
+	footerElement.classList.remove('footer');
+} else {
+	  footerElement.classList.add('footer');
+}
+</script>
 </html>

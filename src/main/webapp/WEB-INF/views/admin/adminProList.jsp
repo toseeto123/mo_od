@@ -7,52 +7,53 @@
 <head>
 <meta charset="UTF-8">
 <title>상품 관리자</title>
-<style type="text/css">
-section.container {
-	margin-bottom: 20px;
-}
-select, option {
+<jsp:include page="../../common/adminHeader.jsp" />
+<style>
+select, option{
 	height: 30px;
 	font-size: 18px;
 }
-.searchParent {
+
+#hero{
+	height: auto;
+	margin-bottom: 100px;
+}
+.searchParent{
 	text-align: center;
 }
-.search {
+.search{
 	display: inline-block;
 }
-a {
+a{
 	color: #c8936ed4;
 }
 a:hover {
-	cursor: pointer;
+	cursor: pointer;	
 	color: #78E150;
 }
-*:focus {
-	outline: 0;
-}
-input[type=button] {
+*:focus { outline: 0; }
+input[type=button]{
 	color: white;
-	background: #d2b48c;
-	width: 100px;
-	border-radius: 10px;
+	background: #d2b48c;  
+	width:100px; 
+	border-radius:10px; 
 	border: none;
 	font-size: 20px;
 }
-input[type=search] {
+input[type=search]{
 	font-size: 18px;
 }
-footer {
-	width: 100%;
+footer{
 	position: absolute;
-	bottom: 0;
+	top: 120%;
+	width: 100%;
 }
 </style>
 </head>
 <body>
-	<jsp:include page="../../common/adminHeader.jsp" />
 	
-	<section id="hero" style="background: white; height: 620px;" class="container">
+	
+	<section id="hero" style="background: white; height: auto;" class="container">
 		<div class="searchParent">
 			<div class="search" style="margin-top: 110px; margin-bottom: 50px;">
 				<select id="searchWhat">
@@ -60,7 +61,7 @@ footer {
 					<option value="id">일련번호</option>
 				</select> <input type="search" id="search"> 
 				<input type="button" id="searchBtn" value="찾기" onclick="search()">
-				<input type="button" id="searchBtn" value="상품등록" onclick="location.href='/admin/insert.do'">
+				<input type="button" id="searchBtn" value="상품등록" onclick="location.href='/admin/insert'">
 			</div>
 			<table class="table"  id="table">
 				<thead>
@@ -123,25 +124,25 @@ footer {
 				</tbody>
 			</table>
 			<div id="modulePaging"
-				style="display: inline-block; position: absolute; left: 50%; top:80%; transform: translateX(-50%);  font-size: 20px;">
+				style="display: inline-block; position: absolute; left: 50%; transform: translateX(-50%);  font-size: 20px;">
 				<c:if test="${prePage!=null }">
-					<a href="/admin/adminProList.do/${prePage}">&lt;</a>
+					<a href="/admin/adminProList/${prePage}">&lt;</a>
 				</c:if>
 
 				<c:forEach items="${ pagingNo }" var="no">
 					<c:choose>
 						<c:when test="${selectPage == no}">
                   &nbsp;<a style="color: green"
-								href="/admin/adminProList.do/${no}">${no}</a>&nbsp;
+								href="/admin/adminProList/${no}">${no}</a>&nbsp;
                   </c:when>
 						<c:otherwise>
-                  &nbsp;<a href="/admin/adminProList.do/${no}">${no}</a>&nbsp;
+                  &nbsp;<a href="/admin/adminProList/${no}">${no}</a>&nbsp;
                   </c:otherwise>
 					</c:choose>
 				</c:forEach>
 
 				<c:if test="${nextPage != null }">
-					<a href="/admin/adminProList.do/${nextPage}">&gt;</a>
+					<a href="/admin/adminProList/${nextPage}">&gt;</a>
 				</c:if>
 
 			</div>
@@ -281,7 +282,7 @@ footer {
 		tbody.appendChild(newRow);
 		} 
 	}
-	xhttp.open("GET", "/admin/adminProList.do/"+data.page+ "/" + data.searchWhat + "/" + data.search, true);
+	xhttp.open("GET", "/admin/adminProList/"+data.page+ "/" + data.searchWhat + "/" + data.search, true);
 	xhttp.send();
 	}
 	
@@ -301,7 +302,7 @@ footer {
 		});
 		
 	</script>
-	<jsp:include page="../../common/footer.jsp" />
+	
 </body>
-
+	<footer><jsp:include page="../../common/footer.jsp" /></footer>
 </html>

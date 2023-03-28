@@ -237,10 +237,6 @@ body {
                	<div class="col-md-6 mb-3">
                      <label for="approved_at">결제승인시간 : </label> <strong>${info.approved_at}</strong>
                   </div>
-               	<div class="col-md-6 mb-3">
-                     <label for="orderid">주문번호 : </label><strong>
-                        ${info.item_name}</strong>
-                  </div>
                  <div class="col-md-6 mb-3">
                      <label for="firstName">상품명 : </label><strong>
                         ${info.item_name}</strong>

@@ -11,6 +11,7 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="/resources/user/js/main.js"></script>
+   <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 
 <style>
 section {
@@ -35,22 +36,28 @@ input {
     font-style: normal;
 }
 }
+
+  i{
+  color:#333333; 
+  font-size: 25px; 
+  vertical-align:bottom;
+  }
 </style>
 </head>
 <body>
 	<section>
-		<ul class="nav nav-pills nav-justified">
-		  <li class="nav-item" >
-		    <a class="nav-link active" href="/uesrs/mypage" style="background: #da8862; color:white;">회원 정보</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/users/bucket" style="background: #c8936ed4; color:white;">장바 구니</a>
-		  </li>
-		  <li class="nav-item">
-		    <a class="nav-link" href="/products/payMypage" style="background: #c8936ed4; color:white;">결제 내역</a>
-		  </li>
-		</ul>
-	</section>
+      <ul class="nav nav-pills nav-justified">
+        <li class="nav-item" >
+          <a class="nav-link active" href="/users/mypage" style="background: #da8862; color:#333333; font-weight: 700;"><i class="xi-profile"></i> 회원 정보</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/bucket" style="background: #c8936ed4; color:#333333; font-weight: 700;"><i class="xi-cart"></i> 장바 구니</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/products/payMypage" style="background: #c8936ed4; color:#333333; font-weight: 700;"><i class="xi-list-dot"></i> 결제 내역</a>
+        </li>
+      </ul>
+   </section>
 
 
 	<div class="container" style="border-top:2px solid #c8936ed4;padding:40px 0;">
