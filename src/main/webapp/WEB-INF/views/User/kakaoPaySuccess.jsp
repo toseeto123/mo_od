@@ -236,35 +236,35 @@ body {
 
                </div>
 		
-		<c:forEach var="orders" items="${orders}">
                <div class="mb-3">
-                  <label for="address">주문번호 : </label> <strong>${orders.orderid }</strong>
+                  <label for="address">주문번호 : </label> <strong>${info.partner_order_id }</strong>
                </div>
 		
 			  <hr>
          
                <h2 class="mb-3" style="margin:22px 0 22px 0; color:#da8862;"><i class="xi-box" style="color:#000;"></i> 결제상품 정보</h2>
                
+		<c:forEach var="orders" items="${orders}" begin="0" end="0">
                  <div class="col-md-6 mb-3">
                      <label for="firstName">상품명 : </label><strong>
-                        orders.pro_number</strong>
+                        ${info.item_name}</strong>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="lastName">주문 수량 : </label> <strong>orders.pro_number</strong>
+                     <label for="lastName">주문 수량 : </label> <strong>${orders.row_count }</strong>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="address">결제 금액 : </label> <strong><fmt:formatNumber value="" type="currency" currencySymbol="₩" />원</strong>
+                     <label for="address">결제 금액 : </label> <strong><fmt:formatNumber value="${orders.price }" type="currency" currencySymbol="₩" />원</strong>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="lastName">결제승인시간 : </label> <strong>${orders.successTime }</strong>
+                     <label for="lastName">결제승인시간 : </label> <strong><fmt:formatDate value="${orders.successTime}" pattern="yyyy-MM-dd HH:mm:ss"/></strong>
                   </div>
+               
 				
-               </div>
-            
-              
+            <hr>
 		</c:forEach>
+               </div>
+              
                   </div>
-               <hr>
 
                <label class="returnbtnbox"><a href="/"><button class="returnbtn"> mo_od의 또 다른 상품 구경하기</button></a></label> <br><br>
 

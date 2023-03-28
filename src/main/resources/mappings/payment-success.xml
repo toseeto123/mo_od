@@ -73,7 +73,11 @@ ORDER BY o.orderid DESC;
 		resultType="kr.co.mood.Payment.VO.KakaoPayApprovalVO">
 SELECT o.orderid, p.pro_name, p.pro_img1,
     op.pro_number, p.pro_maindesc, p.pro_maindesctitle, pa.amount, pa.payment_id,
-    pa.payment_method, pa.SuccessTime, op.count, pa.tid, op.pro_option, op.price,pa.orderid
+    pa.payment_method, pa.SuccessTime, op.count, pa.tid, op.pro_option, o.price, pa.orderid, (
+        SELECT COUNT(*) 
+        FROM payment 
+        WHERE orderid = #{orderid}
+    ) AS row_count
 FROM moodorder o
 JOIN orderProduct op ON op.orderid = o.orderid
 JOIN payment pa ON pa.orderid = o.orderid
