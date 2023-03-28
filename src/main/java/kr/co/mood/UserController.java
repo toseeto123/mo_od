@@ -89,10 +89,8 @@ public class UserController {
 		} else {
 			session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
 		}
-		System.out.println(jsonParsing.get("url").asText());
 		if(jsonParsing.get("url").asText() != null){
 			for(String url : URLDecoder.decode(jsonParsing.get("url").asText(), "UTF-8").split("/")) {
-				System.out.println(url);
 				if(url.equals("products")) {
 					return "Success";
 				}
