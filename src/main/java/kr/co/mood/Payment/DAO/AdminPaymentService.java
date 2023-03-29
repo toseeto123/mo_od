@@ -66,11 +66,6 @@ public class AdminPaymentService {
 				ages.add(vo.getAge());
 			}
 			
-			vo.setBucketCount(0);
-			vo.setPayCount(0);
-			vo.setSales(0);
-			vo.setSerialNumber(year);
-			vo.setWeek(year);
 			if(vo.getGender().equals("F")) {
 				woman.add(vo);
 			}else if(vo.getGender().equals("M")) {
@@ -88,13 +83,10 @@ public class AdminPaymentService {
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
-
 		
 		model.addAttribute("chart1", chart1);
 		model.addAttribute("chart2", chart2);
 		model.addAttribute("chart3", chart3);
-		
-;
 		
 	}
 	
