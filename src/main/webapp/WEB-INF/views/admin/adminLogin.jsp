@@ -8,7 +8,7 @@
 <head>
 
 <meta charset="UTF-8">
-<title>Home</title>
+<title>AdminHome</title>
 <link rel="stylesheet" href="/resources/user/css/login.css" />
 
 <!-- Google Fonts -->
@@ -44,8 +44,12 @@
 <link href="/resources/assets/css/style.css" rel="stylesheet">
 
 <style>
+	body{
+		background-color:#f5f6f7;
+	}
 	p{
-		font-size: 45px;
+		display: inline-block;
+		font-size: 36px;
 		font-weight: bold;
 	}
 	input[type=button], input[type=submit]{
@@ -59,98 +63,77 @@
 	input[type=text], input[type=password]{
 		font-size: 23px;
 	}
+	
 	footer{
+		position: absolute;		
+		bottom: 0;
 		width: 100%;
-   		position: absolute;
-   		bottom: -70px;
-}
+	}
 </style>
 
 
 </head>
 <body>
  <% session.invalidate(); %>
-	<section id="hero" style="height: 200px;">
-		<div class="hero-container">
-			<div id="heroCarousel" data-bs-interval="5000"
-				class="carousel slide carousel-fade" data-bs-ride="carousel">
-				<ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
+ 
+ 
 
-				<div class="carousel-inner" role="listbox">
+ 
+ 
+ 
+ 	<div class="login" style="margin-top: 140px;">
+		<div class="form-login">
 
-					<!-- Slide 1 -->
-					<div class="carousel-item active"
-						style="background-image: url(resources/assets/img/slide/cate1.jpg); height: 500px;">
+			<div class="social-icons">
+				<div style="text-align: center;"><p style="display: inline; font-family: 궁서;">묻:</p>
+							<p style="display: inline; font-family: 굴림;">mo_od</p><p>&nbsp; 관리자</p></div>
 
-						<h2 class="animate__animated animate__fadeInDown"
-							style="text-align: center; line-height: 200px;">관리자 로그인 페이지</h2>
+				<form id="login" action="/adminLogin" class="input-group"
+					method="post" style="margin-bottom: 15px;">
+					<input type="text" name="id" class="input-field" placeholder=" 아이디"
+						required autofocus style="border-radius: 3px;"> <input
+						type="password" name="pwd" class="input-field" placeholder=" 비밀번호"
+						required style="border-radius: 3px;">
 
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
 
-	<form id="login" action="/adminLogin" method="post">
-		<div class="d-flex align-items-center justify-content-center"
-			style="height: 63vh;">
-			<div class="row justify-content-center mt-5">
-				<div class="col-md-6">
-					<div class="card border-0">
-						<div class="card-title text-center">
-							<p style="display: inline; font-family: 궁서;">묻:</p>
-							<p style="display: inline; font-family: 굴림;">mo_od</p>
-						</div>
-						<div class="row">
+					<c:if test="${ msg == false }">
+						<br>
+						<br>
+						<p style="color: red; font-size: 15px;">존재하지 않는 아이디 또는 비밀번호입니다</p>
+					</c:if>
 
-							<div class="card-body">
-								<div class="form-group row">
-									<div class="col-12">
-										<input type="text" class="form-control" name="id"
-											placeholder="아이디" required autofocus>
-									</div>
-								</div>
-							</div>
-							<div class="card-body">
-								<div class="form-group row">
-									<div class="col-12">
-										<input type="password" class="form-control" name="pwd"
-											placeholder="비밀번호" required>
-									</div>
-								</div>
-							</div>
-							<div class="card-body">
-								<div class="form-group row">
-									<div class="col-12">
-										<c:if test="${ msg == false }">
-											<p  style="color: red; font-size: 15px;">존재하지 않는 아이디 또는
-												비밀번호입니다</p>
-										</c:if>
-									</div>
-								</div>
-							</div>
+					<br> <br>
 
-							<div class="card-body">
-								<div class="form-group row">
-									<div class="col-5">
-										<input type="submit" value="로그인" class="form-control">
-									</div>
-									<div class="col-2"></div>
-									<div class="col-5">
-										<input type="button" class="form-control" value="Client"
+
+										<input class="submit hover" style="width: 150px; color: white; border-radius: 2px;" type="submit" value="로그인">
+
+
+										<input type="button" style="width: 150px; margin-left: 80px; color: white; border-radius: 2px;" class="submit hover" value="Client"
 											onclick="location.href='/goclient'">
-									</div>
-								</div>
-							</div>
-							<div class="card-body">
-								<div class="col-12"></div>
-							</div>
-						</div>
-					</div>
+
+
+				</form>
+			
+
+				<!-- 			<a href="index.jsp" class="" style="color: black;">메인 페이지</a>  -->
+				<!-- 			<a href="join.do" class="" style="color: black; margin: 0 15px 0 15px;">회원가입</a> -->
+				<!-- 			<a href="" class="" style="color: black;">비밀번호재설정</a> -->
+
+
+
+				<div class="social_login" style="height: 100px;">
+				
+					
+
 				</div>
 			</div>
 		</div>
-	</form>
+	</div>
+ 
+ 
+ 
+ 
+
 
 
 

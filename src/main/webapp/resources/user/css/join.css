@@ -27,14 +27,7 @@ body {
     height: 100%;
 }
 
-#content {
-/*     position: absolute; */
-/*     left: 50%; */
-/*     transform: translate(-50%); */
-    width: 460px;
-    margin: 0 auto;
-    padding: 30px 0;
-}
+#content {/*     position: absolute; *//*     left: 50%; *//*     transform: translate(-50%); */width: 600px;margin: 0 auto;padding: 30px 0;}
 
 
 .error_next_box {
@@ -89,7 +82,7 @@ h3 {
 
 .box.string_id {
     display: inline-block;
-    width:370px;
+    width: 511px;
 }
 
 .box.stiring_pwd {
@@ -103,6 +96,7 @@ h3 {
 .idChk{
    display: inline-block;
    height: 50px;
+   width: 85px;
    border:none;
    border-radius: 5px;
    background-color: #c8936ed4;
@@ -142,7 +136,7 @@ select {
 /* 버튼 */
 
 .btn_area {
-    margin: 30px 0 91px;
+    margin: 29px 0 91px 0;
 }
 
 #btnJoin {
@@ -156,6 +150,7 @@ select {
     font-weight: 400;
    /*  font-family: Dotum,'돋움',Helvetica,sans-serif; */
     border-radius: 5px;
+    
 }
 
 #btnReset{
@@ -169,6 +164,7 @@ select {
     font-weight: 400;
    /*  font-family: Dotum,'돋움',Helvetica,sans-serif; */
     border-radius: 5px;
+    margin: 0 73px
 }
 
 #btnBack{
@@ -200,23 +196,23 @@ select {
 
 .mail_check_input_box{
    display: block;
-    width: 338px;
-    height: 51px;
-    border: solid 1px #dadada;
-    padding: 10px 14px 10px 14px;
-    box-sizing: border-box;
-    background: #fff;
-    position: relative;
-    display: inline-block;
-   
+   width: 480px;
+   height: 51px;
+   border: solid 1px #dadada;
+   padding: 10px 14px 10px 14px;
+   box-sizing: border-box;
+   background: #fff;
+   position: relative;
+   display: inline-block;
 }
 .mail_check_button{
 	display: inline-block;
+	width: 110px;
 	height: 50px;
-	 background-color: #c8936ed4;
-	 border:none;
-	 border-radius: 5px;
-	 color: white;
+	background-color: #c8936ed4;
+	border:none;
+	border-radius: 5px;
+	color: white;
 }
 .mail_check_input{
    display: block;
@@ -237,18 +233,18 @@ select {
 }
 .address_input_1{
 	display:inline-block;
-	width: 330px;
+	width: 480px;
 	height: 50px;
 	border: solid 1px #dadada;
 }
 .address_input_2{
-	width: 452px;
+	width: 600px;
 	height: 44px;
 	margin: 10px 0 10px 0;
 	border: solid 1px #dadada;
 }
 .address_input_3{
-	width: 452px;
+	width: 600px;
 	height: 44px;
 	border: solid 1px #dadada;
 }
