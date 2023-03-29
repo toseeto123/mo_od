@@ -159,10 +159,18 @@ canvas{
 			chartData3[document.getElementById('week1'+i).value] = document.getElementById('sales1'+i).value;
 		}
 	}
-	const woman = ${chart4Woman};
+	
+	
+	
+/*	const woman = ${chart4Woman};
 	const man = ${chart4Man};
 	const ages = ${chart4Age};
 	const categorys = ${chart4Category};
+	
+	console.log(woman);
+	console.log(man);
+	console.log(ages);
+	console.log(categorys);
 	
 	const womanChartData = [];	
 	const manChartData = [];
@@ -190,7 +198,7 @@ canvas{
 		manData['y'] = man[i].age
 		manData['r'] = Math.floor(man[i].productCount/sum4*100)
 		manChartData.push(manData);
-	}
+	} */
 
 		const ctx1 = document.getElementById('myChart1').getContext('2d');
 
@@ -306,7 +314,7 @@ canvas{
 			options : options3
 		});
 
-		const data4 = {
+/* 		const data4 = {
 			
 			datasets : [ {
 				label : '남자',
@@ -362,7 +370,7 @@ canvas{
 			type : 'bubble',
 			data : data4,
 			options : options4
-		}); 
+		});  */
 	</script>
 </body>
 
