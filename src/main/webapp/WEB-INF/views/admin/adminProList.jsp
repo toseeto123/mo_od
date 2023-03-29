@@ -43,9 +43,9 @@ input[type=button]{
 input[type=search]{
 	font-size: 18px;
 }
-footer{
+.footer{
 	position: absolute;
-	top: 120%;
+	top: 130%;
 	width: 100%;
 }
 </style>
