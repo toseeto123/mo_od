@@ -1,7 +1,7 @@
 package kr.co.mood.admin.controller;
 
+import java.io.File;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -158,13 +158,25 @@ public class AdminController {
                            @RequestParam MultipartFile file2,
                            @RequestParam MultipartFile file3,
                            @RequestParam MultipartFile file4,
+                           HttpServletRequest req,
                                                          ProVO vo) throws IOException{
          String fileRealName1 = file.getOriginalFilename(); 
          String fileRealName2 = file1.getOriginalFilename();
          String fileRealName3 = file2.getOriginalFilename();
          String fileRealName4 = file3.getOriginalFilename();
          String fileRealName5 = file4.getOriginalFilename();
-
+         
+         String webPath = "/home/tomcat/apache-tomcat-9.0.73/webapps/mo_od/resources/assets/img/product/";
+         File saveFile1 = new File(webPath, fileRealName1);
+         file.transferTo(saveFile1);
+         File saveFile2 = new File(webPath, fileRealName2);
+         file1.transferTo(saveFile2);
+         File saveFile3 = new File(webPath, fileRealName3);
+         File saveFile4 = new File(webPath, fileRealName4);
+         
+         File saveFile5 = new File(webPath, fileRealName5);
+         
+         
          try {
             vo.setPro_img1(fileRealName1);
             vo.setPro_img2(fileRealName2);
