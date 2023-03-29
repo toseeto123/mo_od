@@ -32,8 +32,11 @@
   <link href="/resources/assets/css/style.css" rel="stylesheet">
 
 <style>
+*{
+font-family: 'SUIT-Regular', normal;font-weight:900;
+}
 b{
-font-size: 18px;
+font-size: 20px;
 }
 
 li {
@@ -50,7 +53,7 @@ li {
 <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
-      <h1 class="logo" style="font-family:'궁서'; font-size: 40px;"><a href="/admin/chart.do">묻:<span class="logo2" style="font-family:'굴림'; font-size: 40px;">mo_od</span></a></h1>
+      <h1 class="logo"><a href="/" style="font-family:'궁서'; font-size: 50px;">묻:<b class="logo2" style="font-family:'굴림'; font-size: 56px;">mo_od</b></a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="/index.html" class="logo"><img src="resources/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
@@ -72,12 +75,10 @@ li {
           </li>
           <li class="dropdown"><a href="/admin/payment.do"><b>결제</b></a>
           </li>
-           </ul>
-           <ul>
           <!-- 알아서 이거 활용하자 -->
-          <li><a href="/"><span class="getstarted scrollto"><b>클라이언트</b></span></a></li>
+          <li style="padding-left: 30px;margin: 40px 0px 30px 50px;width: 100px;"><a class="getstarted scrollto" href="/"><b>Client</b></a></li>
           
-          <li><a href="/adminLogout.do"><span class="getstarted scrollto"><b>로그아웃</b></span></a></li>
+          <li><a class="getstarted scrollto" href="/adminLogout.do"><b>Logout</b></a></li>
        </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
               </nav><!-- .navbar -->
