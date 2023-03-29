@@ -44,7 +44,9 @@ input[type=search]{
 	font-size: 18px;
 }
 .footer{
-	margin-top: 100px;
+	position: absolute;
+	top: 130%;
+	width: 100%;
 }
 </style>
 </head>
