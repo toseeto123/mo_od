@@ -66,6 +66,11 @@ public class AdminPaymentService {
 				ages.add(vo.getAge());
 			}
 			
+			vo.setBucketCount(0);
+			vo.setPayCount(0);
+			vo.setSales(0);
+			vo.setSerialNumber(year);
+			vo.setWeek(year);
 			if(vo.getGender().equals("F")) {
 				woman.add(vo);
 			}else if(vo.getGender().equals("M")) {
