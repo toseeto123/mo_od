@@ -52,14 +52,7 @@ li {
 *{
 font-family: 'SUIT-Regular', normal;font-weight:900;
 }
-ul {
-  display: flex;
-  justify-content: center;
-}
 
-li {
-  margin: 0 10px;
-}
 
 
 </style>

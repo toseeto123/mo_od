@@ -212,6 +212,7 @@ background: #323232;
   font-size: 25px; 
   vertical-align:bottom;
   }
+  
 
 
 </style>
@@ -512,7 +513,7 @@ function deletecate(element) {
    </section>
 		<div class="content_box">
 			<div class="order_wrap" style="position: relative;">
-				<div class="order_tit" style="height:43.5px; margin-top: 18px;">
+				<div class="order_tit" style="margin-top: -30px;">
 					<ol style="margin-bottom: 0; line-height:0;">
 						<li class="page_on" style="font-size: 20px;"><span
 							class="btnspan btnspan_on">01</span>장바구니</li>
