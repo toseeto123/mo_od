@@ -497,7 +497,7 @@ function deletecate(element) {
 <body>
 	<form action="/products/cateorders" method="post">
 	<input type="hidden" value="${login_info.adr }" name="adr">
-		<section>
+		<section style="padding-bottom: 0;">
       <ul class="nav nav-pills nav-justified">
         <li class="nav-item" >
           <a class="nav-link active" href="/users/mypage" style="background: #525252; color:#fff; font-weight: 700;"><i class="xi-profile"></i> 회원 정보</a>
@@ -512,8 +512,8 @@ function deletecate(element) {
    </section>
 		<div class="content_box">
 			<div class="order_wrap" style="position: relative;">
-				<div class="order_tit">
-					<ol>
+				<div class="order_tit" style="height:43.5px; margin-top: 18px;">
+					<ol style="margin-bottom: 0; line-height:0;">
 						<li class="page_on" style="font-size: 20px;"><span
 							class="btnspan btnspan_on">01</span>장바구니</li>
 						<li style="font-size: 20px;"><span class="btnspan">02</span>주문서작성/결제</li>
