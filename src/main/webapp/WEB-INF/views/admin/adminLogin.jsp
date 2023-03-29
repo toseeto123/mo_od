@@ -49,19 +49,15 @@
 	}
 	p{
 		display: inline-block;
-		font-size: 36px;
+		font-size: 45px;
 		font-weight: bold;
 	}
 	input[type=button], input[type=submit]{
 		height: 50px;
 		font-size: 27px;
-		background: #c8936ed4;
-		border: 1px solid #c8936ed4;
+		background: #323232;
+		transition: all 0.5s;
 		color: white;
-		border-radius: 6px;
-	}
-	input[type=text], input[type=password]{
-		font-size: 23px;
 	}
 	
 	footer{
@@ -105,10 +101,10 @@
 					<br> <br>
 
 
-										<input class="submit hover" style="width: 150px; color: white; border-radius: 2px;" type="submit" value="로그인">
+										<input class="submit hover" type="submit" value="로그인">
 
 
-										<input type="button" style="width: 150px; margin-left: 80px; color: white; border-radius: 2px;" class="submit hover" value="Client"
+										<input type="button" class="submit hover" value="Client"
 											onclick="location.href='/goclient'">
 
 

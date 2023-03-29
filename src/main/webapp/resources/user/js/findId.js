@@ -29,11 +29,14 @@
 				if (this.readyState == 4 && this.status == 200) {
 					console.log(this.responseText)
 					if (this.responseText != 'Success') {//만약 이메일이 없다면						
-						document.getElementById('emailCheck').innerHTML = '존재하지 않는 이메일입니다.'						
+						document.getElementById('emailCheck').innerHTML = '존재하지 않는 이메일입니다.'		
+						document.getElementById('emailCheck').style.color="red";				
 						return;
 					}					
 						sendEmail();
 						document.getElementById('emailCheck').innerHTML = '인증번호가 발송되었습니다.'
+						document.getElementById('emailCheck').style.color="green";	
+						document.getElementById('number').focus();	
 						
 				}
 			};
@@ -61,9 +64,9 @@
                 		pluralId.push(data.id[i].id);
                 	}       
                 	for(var i=0; i<pluralId.length; i++){
-                		someId.push("<span style='color: #505050; cursor: pointer;' onClick='copy(this)'>"+pluralId[i]+"</span>")
+                		someId.push("<span style='color: #323232; cursor: pointer;' onClick='copy(this)'>"+pluralId[i]+"</span>")
                 	}	
-                	concatPluralId = someId.join("<span style='color: #505050';>, </span>");
+                	concatPluralId = someId.join("<span style='color: #323232';>, </span>");
 				}
 			};
 			xhr.open("get", "/sendEmail?email="+document.getElementById('email').value, true);
@@ -74,6 +77,7 @@
 			if(num > 0 && num == document.getElementById('number').value && time > 0){
 				clearInterval(interval);
 				document.getElementById('time').innerHTML = '인증성공';
+				document.getElementById('time').style.color="green";	
 				document.getElementById('show').innerHTML = "아이디는 " + concatPluralId + "입니다.";
 			}
 			if(num == 0){
@@ -105,5 +109,19 @@
   		  temp.select();
   		  document.execCommand("copy");
   		  document.body.removeChild(temp);
-  		  alert("복사되었습니다.");
+  		  alert("복사되었습니다."); 		  
   		}	
+  		
+  		
+  		
+  		document.getElementById('email').addEventListener("keyup", function(event) {
+  if (event.keyCode === 13) {
+	  emailValidate();
+  }
+});
+
+document.getElementById('number').addEventListener("keyup", function(event) {
+	  if (event.keyCode === 13) {
+		  numValidate();
+	  }
+	});
