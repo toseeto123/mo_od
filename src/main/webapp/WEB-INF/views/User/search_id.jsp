@@ -17,14 +17,14 @@ body {
 }
 
 label{
-	color: gray;
+	color: #323232;
 }
 
 .fonthover {
-	color: gray;
+	color: #323232;
 }
-.fonthover:hover {
-	color: #da8862;
+.fonthover:hover{
+	color: #323232;
 }
 
 
@@ -40,16 +40,17 @@ input[type=text], input[type=email]{
 
 input[type=button] {
     font-color:white;
-    font-size:30px;
+    font-size:27px;
     cursor: pointer;
     color: white;
-    background: #c8936ed4	;
+   	background: #323232;
+	transition: all 0.5s;
     border: 0;
     outline: none;    
 }
 
 span.span {
-	color: #c8936ed4;
+	color: #323232;
 }
 
 
@@ -166,7 +167,6 @@ input[type=text]:focus, input[type=email]:focus {
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 	<script src="/resources/user/js/findId.js"></script>
-
 
 
 

@@ -19,11 +19,15 @@
 				if (this.readyState == 4 && this.status == 200) {
 					console.log(this.responseText)
 					if (this.responseText != 'Success') {//만약 이메일이 없다면						
-						document.getElementById('idCheck').innerHTML = '존재하지 않는 아이디입니다.'						
+						document.getElementById('idCheck').innerHTML = '존재하지 않는 아이디입니다.'		
+						document.getElementById('idCheck').style.color = "red";				
 						return;
 					}
 						id = document.getElementById('id').value;
-						document.getElementById('idCheck').innerHTML = '인증성공'						
+						document.getElementById('idCheck').innerHTML = '인증성공'	
+						document.getElementById('idCheck').style.color = "green";		
+						document.getElementById('email').focus();
+											
 				}
 			};
 			xhr.open("get", "/searchIdCheck?id="+document.getElementById('id').value, true);
@@ -48,12 +52,15 @@
 			xhr.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					if (this.responseText != 'Success') {						
-						document.getElementById('emailCheck').innerHTML = '존재하지 않는 이메일입니다.'						
+						document.getElementById('emailCheck').innerHTML = '존재하지 않는 이메일입니다.'
+						document.getElementById('emailCheck').style.color = "red";						
 						return;
 					}
 						email = document.getElementById('email').value;
 						sendEmail();
-						document.getElementById('emailCheck').innerHTML = '이메일이 발송되었습니다.'						
+						document.getElementById('emailCheck').innerHTML = '이메일이 발송되었습니다.'
+						document.getElementById('emailCheck').style.color = "green";
+						document.getElementById('number').focus();						
 				}
 			};
 			xhr.open("get", "/searchIdEmail?id=" + id + "&email="+document.getElementById('email').value, true);
@@ -92,6 +99,7 @@
 			}else{				
 				if(num>0){
 					document.getElementById('time').innerHTML = '인증시간 만료';
+					document.getElementById('time').style.color = "red";
 				}
 				clearInterval(interval);	
 			}	
@@ -115,6 +123,7 @@
 			if(num > 0 && num == document.getElementById('number').value && time > 0){
 				clearInterval(interval);
 				document.getElementById('time').innerHTML = '인증성공';
+				document.getElementById('time').style.color = "green";
 				$('#myModal').modal('show');
 			}
 			if(num == 0){
@@ -150,5 +159,25 @@
 			};
 			xhr.send();
 		}
+		
+		
+		
+		
+		document.getElementById('id').addEventListener("keyup", function(event) {
+	  if (event.keyCode === 13) {
+		  idValidate();
+	  }
+	});
+
+	document.getElementById('email').addEventListener("keyup", function(event) {
+		  if (event.keyCode === 13) {
+			  emailValidate();
+		  }
+		});
+	document.getElementById('number').addEventListener("keyup", function(event) {
+		  if (event.keyCode === 13) {
+			  numValidate();
+		  }
+		});
 		
 		
