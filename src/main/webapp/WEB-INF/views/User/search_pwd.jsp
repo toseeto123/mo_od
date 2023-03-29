@@ -22,28 +22,29 @@ input[type=text], input[type=email]{
     background-color: white;
 }
 .fonthover {
-	color: gray;
+	color: #323232;
 }
-.fonthover:hover {
-	color: #da8862;
+.fonthover:hover{
+	color: #323232;
 }
 
 label{
-	color: gray;
+	color: #323232;
 }
 
 input[type=button] {
     font-color:white;
-    font-size:30px;
+    font-size:27px;
     cursor: pointer;
     color: white;
-    background: #c8936ed4	;
+   	background: #323232;
+	transition: all 0.5s;
     border: 0;
     outline: none;    
 }
 
 span.span {
-	color: #c8936ed4;
+	color: #323232;
 }
 .modal-dialog {
   display: flex;
@@ -169,10 +170,9 @@ input[type=text]:focus, input[type=email]:focus {
 				</div>
 			</div>
 		</div>
-	</div>
 
 
-	<div class="modal fade" id="myModal">
+	<div class="modal fade" id="myModal" style="color: #323232;">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
@@ -195,7 +195,7 @@ input[type=text]:focus, input[type=email]:focus {
 								<h5>임시비밀번호가 이메일로 발송됩니다.</h5>
 							</div>
 							<div class="form-group text-center">
-								<input type="button" onClick="passwordChange()" value="비밀번호 재설정">
+								<input type="button" id="passChange" onClick="passwordChange()" value="비밀번호 재설정">
 							</div>
 						</div>
 					</div>
@@ -214,7 +214,6 @@ input[type=text]:focus, input[type=email]:focus {
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 		
 	<script src="/resources/user/js/findPwd.js"></script>
-		
 
 </body>
 <footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
