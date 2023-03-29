@@ -98,6 +98,32 @@ function fn_idChk(){
     });
 }
 
+function emailCheck() {
+    	  var email = $(".email").val(); 
+    	  console.log(email);
+    	  var conemail = document.getElementById('conemail');
+    	  var correctColor = "#00ff00"; 
+    	  var wrongColor = "#ff0000"; 
+
+    	  $.ajax({
+    	    url: "/users/check_email",
+    	    type: 'POST',
+    	    dataType: 'json',
+    	    data: { "email" : $("#email").val() },
+    	    success: function (data){
+    	      if (data.result == 0){  
+    	    	 conemail.innerHTML("사용가능한 이메일입니다");
+    	         conemail.css("color", correctColor); // jQuery를 사용하여 내용 변경
+    	      } else if (data.result == 1){ 
+    	    	 conemail.innerHTML("중복된 이메일입니다");
+    	         conemail.css("color", wrongColor);
+    	      }
+    	    }
+    	  });
+    	}
+
+
+
   
       function UpdateCheck(){
            if (document.mypage.pwd.value == ""){
@@ -178,38 +204,7 @@ function fn_idChk(){
       }
    }
    
-
-   
- function emailCheck() {
-   var ssemail = $('input#myinfo_email').val();
-  var email = $('.email').val(); // 입력된 이메일
-  console.log(email);
-  console.log(ssemail);
-  var conemail = $('#conemail'); // 확인 메세지
-  var correctColor = "#00ff00"; // 맞았을 때 출력되는 색깔.
-  var wrongColor = "#ff0000"; // 틀렸을 때 출력되는 색깔
-
-  // 이메일 중복 체크 AJAX 호출
-  $.ajax({
-    url: '/users/check_email',
-    type: 'POST',
-    dataType: 'json',
-    data: { "email" : $("#email").val() },
-    success: function (response){
-      if (response.result == 0){ 
-      	
-        conemail.css('color', correctColor);
-        conemail.text("사용 가능한 이메일입니다.");
-        console.log(response.result)
-      } else(response.result == 1){ 
-        conemail.css('color', wrongColor);
-        conemail.text("중복된 이메일입니다.");
-        console.log(response.result);
-      }
-    }
-  });
-}
-
+    
 
 
     function sample6_execDaumPostcode() {
