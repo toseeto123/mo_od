@@ -46,6 +46,11 @@ input[type=button] {
 span.span {
 	color: #323232;
 }
+
+span.br{
+	display: inline-block;
+	padding-top: 15px;
+}
 .modal-dialog {
   display: flex;
   align-items: center;
@@ -108,7 +113,7 @@ input[type=text]:focus, input[type=email]:focus {
 										onClick="idValidate()">
 									<div class="col-3"></div>
 									<div class="col-7">
-										<span class="span" id="idCheck"></span>
+										<span class="span br" id="idCheck"></span>
 									</div>
 								</div>
 							</div>
@@ -125,7 +130,7 @@ input[type=text]:focus, input[type=email]:focus {
 										onclick="emailValidate();">
 									<div class="col-3"></div>
 									<div class="col-6">
-										<span class="span" id="emailCheck"></span>
+										<span class="span br" id="emailCheck"></span>
 									</div>
 								</div>
 
@@ -141,7 +146,7 @@ input[type=text]:focus, input[type=email]:focus {
 										onClick="numValidate()">
 									<div class="col-3"></div>
 									<div class="col-7">
-										<span class="span" id="time"></span> <input type="hidden"
+										<span class="span br" id="time"></span> <input type="hidden"
 											id="status" value="pwd"> <input type="hidden"
 											id="storage">
 									</div>
