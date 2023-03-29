@@ -43,10 +43,8 @@ input[type=button]{
 input[type=search]{
 	font-size: 18px;
 }
-footer{
-	position: absolute;
-	top: 120%;
-	width: 100%;
+.footer{
+	margin-top: 100px;
 }
 </style>
 </head>
@@ -116,8 +114,7 @@ footer{
 								<th scope="col">판매중</th>
 							</c:if>
 							<c:if test="${list.pro_soldout eq 1}">
-								<th scope="col"></th>
-								<th>판매중지</th>
+								<th scope="col">판매중지</th>
 							</c:if>
 						</tr>
 					</c:forEach>
@@ -304,5 +301,5 @@ footer{
 	</script>
 	
 </body>
-	<footer><jsp:include page="../../common/footer.jsp" /></footer>
+	<footer class="footer"><jsp:include page="../../common/footer.jsp" /></footer>
 </html>

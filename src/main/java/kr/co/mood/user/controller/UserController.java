@@ -141,7 +141,7 @@ public class UserController {
 		    }
 
 //	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080/"+pathgo;
-	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://mo-od.co.kr/";
+	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://mo-od.co.kr/" +pathgo;
 
 	       
 	       response.setContentType("text/html; charset=UTF-8");
@@ -176,10 +176,10 @@ public class UserController {
 	    } else {
 	        session.setAttribute("path", request.getRequestURI());
 	        if (path.contains("catelogin.do")) {
-	        	System.out.println("catelogin.do �룷�븿 �뤌�엳�뒗嫄�");
+	        	System.out.println("catelogin.do");
 	            return "redirect:/users/bucket";
 	        } else if (path.contains("proCatelogin")) {
-	        	System.out.println("proCatelogin �룷�븿 �뤌�엳�뒗嫄�");
+	        	System.out.println("proCatelogin ");
 	            CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
 	            int userid = userInfo.getNo();
 	            sessionCvo.setUser_no(userid);
@@ -214,7 +214,7 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginAction(@ModelAttribute("cvo") CateVO cvo, UserVO vo, HttpSession session,
 			HttpServletRequest request, RedirectAttributes ra, Model model) {
-		System.out.println("post諛⑹떇");
+		System.out.println("post");
 		UserVO vo1 = userservice.selectId(vo);
 
 		if (vo1 == null || vo1.getId().equals("admin")) {
@@ -378,6 +378,7 @@ public class UserController {
 		String title = "회원가입 인증 이메일 입니다.";
 		String content = "홈페이지를 방문해주셔서 감사합니다." + "<br><br>" + "인증 번호는 " + checkNum + "입니다." + "<br>"
 				+ "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+
 		try {
 
 			MimeMessage message = mailSender.createMimeMessage();

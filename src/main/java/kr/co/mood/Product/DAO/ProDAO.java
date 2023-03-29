@@ -33,6 +33,12 @@ public class ProDAO {
 	public void catecountupdate(String pro_no) {
 		session.update("ProDAO.updatecatecount" , pro_no);
 	}
+	public void updateSoldOut(ProVO vo) {
+		session.update("ProDAO.updateSoldOut" , vo);
+	}
+	public void updateOnSale(ProVO vo) {
+		session.update("ProDAO.updateOnSale" , vo);
+	}
 	
 	
 	
