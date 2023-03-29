@@ -116,8 +116,7 @@ footer{
 								<th scope="col">판매중</th>
 							</c:if>
 							<c:if test="${list.pro_soldout eq 1}">
-								<th scope="col"></th>
-								<th>판매중지</th>
+								<th scope="col">판매중지</th>
 							</c:if>
 						</tr>
 					</c:forEach>
