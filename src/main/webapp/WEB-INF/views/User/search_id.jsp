@@ -16,26 +16,53 @@ body {
 	overflow-x: hidden;
 }
 
+label{
+	color: gray;
+}
+
+.fonthover {
+	color: gray;
+}
+.fonthover:hover {
+	color: #da8862;
+}
+
+
+input[type=text], input[type=email]{
+    height:50px;
+    border: none;
+    border-radius: 0;
+    border: 1px solid #999;
+    outline: none;
+    background: transparent;
+    background-color: white;
+}
+
 input[type=button] {
-	background: #c8936ed4;
-	border: 1px solid #c8936ed4;
-	color: white;
-	border-radius: 6px;
+    font-color:white;
+    font-size:30px;
+    cursor: pointer;
+    color: white;
+    background: #c8936ed4	;
+    border: 0;
+    outline: none;    
 }
 
 span.span {
 	color: #c8936ed4;
 }
 
-.link {
-	font-size: 20px;
-	width: 150px;
-	height: auto;
-}
 
 footer{
-	margin-top: 50px;
+	background-color:#f5f6f7;
+	padding-top: 50px;
 }
+input[type=text]:focus, input[type=email]:focus {
+	box-shadow: none;
+	border: 1px solid #999;
+  outline: none;
+}
+
 </style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
 </head>
@@ -61,17 +88,17 @@ footer{
 		</div>
 	</section>
 
-	<div class="d-flex align-items-center justify-content-center">
+	<div class="d-flex align-items-center justify-content-center" style=" background-color:#f5f6f7;">
 		<div class="row justify-content-center mt-5">
 			<div class="col-md-6">
-				<div class="card border-0">
+				<div class="card border-0" style=" background-color:#f5f6f7;">
 					<div class="card-body">
 						<br>
 						<div class="row">
 
 							<div class="card-body">
 								<div class="form-group row">
-									<label class="col-3 col-form-label" for="email">이메일</label>
+									<label style="font-size: 25px; line-height:25px;" class="col-3 col-form-label" for="email">이메일</label>
 									<div class="col-6">
 										<input class="form-control" type="email" id="email"
 											placeholder="이메일을 입력해주세요" required autofocus>
@@ -88,7 +115,7 @@ footer{
 							</div>
 							<div class="card-body">
 								<div class="form-group row">
-									<label class="col-3 col-form-label" for="number">인증번호</label>
+									<label style="font-size: 25px; line-height:25px;" class="col-3 col-form-label" for="number">인증번호</label>
 									<div class="col-6">
 										<input class="form-control" type="text" id="number"
 											placeholder="인증번호 입력">
@@ -109,15 +136,15 @@ footer{
 									</div>
 								</div>
 								<div class="card-body">
+								
 									<div class="form-group row">
-										<div class="col-6" style="padding-left: 70px">
-											<input type="button" class="link" value="비밀번호 찾기"
-												onclick="location.href='/users/searchPwd'">
-										</div>
-										<div class="col-6 text-right" style="padding-right: 70px">
-											<input type="button" class="link" value="돌아가기"
-												onclick="location.href='/users/login'">
-										</div>
+										
+											<a href="/users/searchPwd" class="col-4 fonthover"
+												>비밀번호 찾기</a>
+										
+										<div class="col-6"></div>
+											<a href="/users/login" class="col-2 fonthover">돌아가기</a>
+										
 									</div>
 								</div>
 							</div>
