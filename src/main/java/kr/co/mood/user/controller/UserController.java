@@ -279,7 +279,7 @@ public class UserController {
 
 	@RequestMapping(value = "/catelogin.do", method = RequestMethod.GET)
 	public String catelogin(HttpSession session, HttpServletRequest request) {
-		session.setAttribute("path", request.getRequestURI()); // 占쎌겱占쎌삺 野껋럥以� 占쏙옙占쎌삢
+		session.setAttribute("path", request.getRequestURI()); 
 
 		return "redirect:/users/bucket";
 	}
@@ -287,9 +287,9 @@ public class UserController {
 	@RequestMapping(value = "/proCatelogin", method = RequestMethod.GET)
 	public String proCatelogin(@ModelAttribute("cvo") CateVO cvo, HttpSession session, ModelAndView mav,
 			HttpServletRequest request) {
-		session.setAttribute("path", request.getRequestURI()); // 占쎌겱占쎌삺 野껋럥以� 占쏙옙占쎌삢
+		session.setAttribute("path", request.getRequestURI()); 
 
-		session.setAttribute("cvo", cvo); // CateVO 揶쏆빘猿쒐몴占� 占쎄쉭占쎈�∽옙肉� 占쏙옙占쎌삢
+		session.setAttribute("cvo", cvo); 
 		return "redirect:/users/login";
 	}
 
