@@ -41,7 +41,7 @@ background: #da8862;
 
 
 <script type="text/javascript" src="/resources/user/js/main.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <link rel="stylesheet" href="/resources/user/css/join.css">
 
 <style>
@@ -130,12 +130,12 @@ background: #da8862;
                 <div>
                     <h3 class="join_title"><label for="email">본인확인 이메일</label></h3>
                     <div>
-                        <input type="text" id="email" name="email" class="email box string_email" maxlength="100" onkeyup="emailConfirm()" placeholder="선택입력">
+                        <input type="text" id="email" name="email" class="email box string_email" maxlength="100" onkeyup="emailCheck()" placeholder="선택입력">
                         <input type="hidden" class="myinfo_email" id="myinfo_email" name="myinfo_email" value="${login_info.email}">
                     </div>
+                    <span id="conemail"></span>
                      <span class="final_mail_ck">이메일을 입력해주세요.</span>
                      <span class="mail_input_box_warn"></span>
-                     <span id="conemail"></span>
              <div class="mail_check_wrap">
                <div class="mail_check_input_box" id="mail_check_input_box_false">
                   <input class="mail_check_input" id="email1" disabled="disabled" required>
@@ -226,7 +226,7 @@ background: #da8862;
     $(".mail_check_input").blur(function(){
        
        var inputCode = $(".mail_check_input").val();      // 입력코드   
-       var checkResult = $("#mail_check_input_box_warn");   // 비교 결과    
+       var checkResult = $("#mail_check_input_box_warn");   // 비교 결과   
        
        if(inputCode == code){                     // 일치할 경우
           checkResult.html("인증번호가 일치합니다.");
@@ -237,9 +237,12 @@ background: #da8862;
           checkResult.attr("class", "incorrect");
           mailnumCheck = false;
        }   
-       
-       
+
     });
+    
+    
+   
+ 
     
       </script>
 </body>

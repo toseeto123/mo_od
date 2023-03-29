@@ -83,13 +83,10 @@ public class AdminPaymentService {
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
-
 		
 		model.addAttribute("chart1", chart1);
 		model.addAttribute("chart2", chart2);
 		model.addAttribute("chart3", chart3);
-		
-;
 		
 	}
 	

@@ -62,7 +62,7 @@ public class AdminController {
   
    @RequestMapping("/adminMemberList/{paging}/{searchWhat}/{search}")
    @ResponseBody
-   public Map<String, Object> adminMemberList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//異붽��맂 遺�遺�
+   public Map<String, Object> adminMemberList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//�빊遺쏙옙占쎈쭆 �겫占썽겫占�
 	   ModuleVO moduleVO = new ModuleVO();
 	   Map<String, Object> map = new HashMap<String, Object>();
 	   if(search.equals("(none)")) {
@@ -85,7 +85,7 @@ public class AdminController {
    
    
    @RequestMapping("/adminMemberList/{paging}")
-   public String adminMemberList(@PathVariable String paging, Model model) {//異붽��맂 遺�遺�
+   public String adminMemberList(@PathVariable String paging, Model model) {//�빊遺쏙옙占쎈쭆 �겫占썽겫占�
 	   ModuleVO moduleVO = new ModuleVO();
 	   List<UserVO> userList = userService.selectAll(null);
 	   module.pagingModule(model, moduleVO, userList, paging, 10);
@@ -192,7 +192,7 @@ public class AdminController {
 
       @RequestMapping("/adminProList/{paging}/{searchWhat}/{search}")
       @ResponseBody
-      public Map<String, Object> adminProList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//異붽��맂 遺�遺�
+      public Map<String, Object> adminProList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//�빊遺쏙옙占쎈쭆 �겫占썽겫占�
    	   ModuleVO moduleVO = new ModuleVO();
    	   Map<String, Object> map = new HashMap<String, Object>();
    	   if(search.equals("(none)")) {
@@ -246,5 +246,15 @@ public class AdminController {
       
       return "/admin/adminProList";
    }
+   @RequestMapping(value = "/updateSoldOut", method = RequestMethod.POST)
+	   public String proSoldOutUpdate(@RequestParam("pro_number") int pro_number,ProVO vo) {
+		   ps.updateSoludOut(vo);
+		   return "/admin/adminProList";
+	   }
+   @RequestMapping(value = "/updateOnSale", method = RequestMethod.POST)
+   public String proSoldOnSale(@RequestParam("pro_number") int pro_number,ProVO vo) {
+	   ps.updateOnSale(vo);
+	   return "/admin/adminProList";
+   }
+   }
    
-}

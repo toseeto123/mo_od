@@ -98,33 +98,30 @@ function fn_idChk(){
     });
 }
 
-  
-      function UpdateCheck(){
-           if (document.mypage.pwd.value == ""){
-              alert("암호를 반드시 입력해주세여");
-              mypage.pwd.focus();
-              return false;
-           }
-           if(document.mypage.pwd.value != document.mypage.pwd2.value){
-              alert("암호가 일치하지 않습니다");
-              mypage.pwd.value="";
-              mypage.pwd2.value="";
-              mypage.pwd.focus();
-              return false;
-             
-           }
-           if (document.mypage.email.value == "") {
-              alert("이메일을 입력해주세요");
-              mypage.email.focus();
-              return false;
-           }
-           if (document.mypage.phone.value == "") {
-              alert("전화번호를 입력해주세요");
-              mypage.phone.focus();
-              return false;
-           }   
-           return true;   
-        }
+function emailCheck() {
+    	  var email = $(".email").val(); 
+    	  console.log(email);
+    	  var conemail = document.getElementById('conemail');
+    	  var correctColor = "#00ff00"; 
+    	  var wrongColor = "#ff0000"; 
+
+    	  $.ajax({
+    	    url: "/users/check_email",
+    	    type: 'POST',
+    	    dataType: 'json',
+    	    data: { "email" : $("#email").val() },
+    	    success: function (data){
+    	      if (data.result == 0){  
+    	    	 conemail.innerHTML("사용가능한 이메일입니다");
+    	         conemail.css("color", correctColor); // jQuery를 사용하여 내용 변경
+    	      } else if (data.result == 1){ 
+    	    	 conemail.innerHTML("중복된 이메일입니다");
+    	         conemail.css("color", wrongColor);
+    	      }
+    	    }
+    	  });
+    	}
+
 
       function DeleteCheck() {
   var sspwd = $('input#sspwd').val();
@@ -178,34 +175,7 @@ function fn_idChk(){
       }
    }
    
-
-   
-    function emailConfirm() {
-  var ssemail = $('input#myinfo_email').val();
-  var email = document.getElementById('email').value;
-  var conemail = document.getElementById('conemail'); //확인 메세지
-  var correctColor = "#00ff00"; //맞았을 때 출력되는 색깔.
-  var wrongColor = "#ff0000"; //틀렸을 때 출력되는 색깔
-
-  $.ajax({
-    url: '/users/check_email',
-    type: 'POST',
-    data: {"email" : $("#email").val()},
-    success: function(response) {
-      if (response.result === 'duplicate') {
-        conemail.style.color = wrongColor;
-        conemail.innerHTML = "중복된 이메일입니다.";
-      } else {
-        conemail.style.color = correctColor;
-        conemail.innerHTML = "사용 가능한 이메일입니다.";
-      }
-    },
-    error: function(xhr, status, error) {
-      console.log(error);
-    }
-  });
-}
-
+    
 
 
     function sample6_execDaumPostcode() {
@@ -262,6 +232,13 @@ function fn_idChk(){
 
 
   function UpdateCheck(){
+  if (document.mypage.address_input_1.value == ""){
+              alert("주소를 반드시 입력해주세여");
+              mypage.pwd.focus();
+              return false;
+           }
+  
+  
            if (document.mypage.pwd.value == ""){
               alert("암호를 반드시 입력해주세여");
               mypage.pwd.focus();

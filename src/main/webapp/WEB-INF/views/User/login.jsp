@@ -87,11 +87,6 @@ footer {
 	<div class="login">
 		<div class="form-login">
 
-
-			<!-- 		                <div class="button-wrap"> -->
-			<!-- 		                     <h2 style="display: block; padding-left:140px; font-size: 30px; font-weight: bold;" >로그인</h2> -->
-			<!-- 		                     <span style="  font-size: 18px;">로그인을 하시면 다양한 혜택을 누리실 수 있습니다.</span> -->
-			<!-- 		                </div> -->
 			<div class="social-icons">
 
 				<form id="login" action="/users/login" class="input-group"
@@ -116,7 +111,7 @@ footer {
 
 				</form>
 				<ul class="login_link_box">
-					<li class="login_li"><a href="/users/searchId" class="fonthover">아이디
+					<li class="login_li"style="margin-left: 0;"><a href="/users/searchId" class="fonthover">아이디
 							찾기</a> &nbsp;</li>
 
 					<li class="login_li"><a href="/users/searchPwd" class="fonthover">비밀번호
@@ -148,8 +143,11 @@ footer {
 
 
 						<li class="box_list">
+
 						 <!-- <a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/users/kakaoLogin&response_type=code"> -->
- 						<a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://mo-od.co.kr/users/kakaoLogin"> 
+ 						<a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://mo-od.co.kr/users/kakaoLogin&response_type=code">  
+
+
 
 								<img style="width: 50px;" src="/resources/user/img/kakao.png"
 								alt="kakao" class="imghover"> <span class="box_list_txt">카카오</span>

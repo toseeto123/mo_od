@@ -139,8 +139,10 @@ public class UserController {
 	           pathgo = path;
 	       }
 		    }
+
 //	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080/"+pathgo;
-	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://mo-od.co.kr/";
+	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://mo-od.co.kr/" +pathgo;
+
 	       
 	       response.setContentType("text/html; charset=UTF-8");
 	       PrintWriter out = response.getWriter();
@@ -153,8 +155,10 @@ public class UserController {
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(ModelMap model) {
+
 //		String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
 		String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://mo-od.co.kr/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
+
 		model.addAttribute("naverUrl", naverUrl);
 		return "User/login";
 	}
@@ -172,10 +176,10 @@ public class UserController {
 	    } else {
 	        session.setAttribute("path", request.getRequestURI());
 	        if (path.contains("catelogin.do")) {
-	        	System.out.println("catelogin.do 占쎈７占쎈맙 占쎈쨲占쎌뿳占쎈뮉椰꾬옙");
+	        	System.out.println("catelogin.do");
 	            return "redirect:/users/bucket";
 	        } else if (path.contains("proCatelogin")) {
-	        	System.out.println("proCatelogin 占쎈７占쎈맙 占쎈쨲占쎌뿳占쎈뮉椰꾬옙");
+	        	System.out.println("proCatelogin ");
 	            CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
 	            int userid = userInfo.getNo();
 	            sessionCvo.setUser_no(userid);
@@ -210,7 +214,7 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginAction(@ModelAttribute("cvo") CateVO cvo, UserVO vo, HttpSession session,
 			HttpServletRequest request, RedirectAttributes ra, Model model) {
-		System.out.println("post獄쎻뫗�뻼");
+		System.out.println("post");
 		UserVO vo1 = userservice.selectId(vo);
 
 		if (vo1 == null || vo1.getId().equals("admin")) {
@@ -264,10 +268,18 @@ public class UserController {
 		int result = userservice.idChk(vo);
 		return result;
 	}
+	
+	@ResponseBody
+	@RequestMapping(value = "/check_email", method = RequestMethod.POST)
+	public int myinfo_email(UserVO vo) throws Exception {
+		int result = userservice.myinfo_email(vo);
+		System.out.println(result);
+		return result;
+	}
 
 	@RequestMapping(value = "/catelogin.do", method = RequestMethod.GET)
 	public String catelogin(HttpSession session, HttpServletRequest request) {
-		session.setAttribute("path", request.getRequestURI()); // �뜝�럩寃긷뜝�럩�궨 �뇦猿뗫윥餓ο옙 �뜝�룞�삕�뜝�럩�궋
+		session.setAttribute("path", request.getRequestURI()); 
 
 		return "redirect:/users/bucket";
 	}
@@ -275,9 +287,9 @@ public class UserController {
 	@RequestMapping(value = "/proCatelogin", method = RequestMethod.GET)
 	public String proCatelogin(@ModelAttribute("cvo") CateVO cvo, HttpSession session, ModelAndView mav,
 			HttpServletRequest request) {
-		session.setAttribute("path", request.getRequestURI()); // �뜝�럩寃긷뜝�럩�궨 �뇦猿뗫윥餓ο옙 �뜝�룞�삕�뜝�럩�궋
+		session.setAttribute("path", request.getRequestURI()); 
 
-		session.setAttribute("cvo", cvo); // CateVO �뤆�룇鍮섊뙼�뮁紐닷뜝占� �뜝�럡�돪�뜝�럥占썩댙�삕�굢占� �뜝�룞�삕�뜝�럩�궋
+		session.setAttribute("cvo", cvo); 
 		return "redirect:/users/login";
 	}
 
@@ -363,9 +375,9 @@ public class UserController {
 
 		String setFrom = "cwj9799@naver.com";
 		String toMail = email;
-		String title = "占쎌돳占쎌뜚揶쏉옙占쎌뿯 占쎌뵥筌앾옙 占쎌뵠筌롫뗄�뵬 占쎌뿯占쎈빍占쎈뼄.";
-		String content = "占쎌냳占쎈읂占쎌뵠筌욑옙�몴占� 獄쎻뫖揆占쎈퉸雅뚯눘�쏉옙苑� 揶쏅Ŋ沅쀯옙鍮�占쎈빍占쎈뼄." + "<br><br>" + "占쎌뵥筌앾옙 甕곕뜇�깈占쎈뮉 " + checkNum + "占쎌뿯占쎈빍占쎈뼄." + "<br>"
-				+ "占쎈퉸占쎈뼣 占쎌뵥筌앹빖苡뀐옙�깈�몴占� 占쎌뵥筌앹빖苡뀐옙�깈 占쎌넇占쎌뵥占쏙옙占쎈퓠 疫꿸퀣�뿯占쎈릭占쎈연 雅뚯눘苑�占쎌뒄.";
+		String title = "회원가입 인증 이메일 입니다.";
+		String content = "홈페이지를 방문해주셔서 감사합니다." + "<br><br>" + "인증 번호는 " + checkNum + "입니다." + "<br>"
+				+ "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
 
 		try {
 

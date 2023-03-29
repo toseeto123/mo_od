@@ -21,6 +21,8 @@ public interface ProductService {
 	public List<ProVO> CselectProListByPayCount(List<ProVO> vo);
 	public void updatePro(ProVO vo);
 	public void catecountupdate(String pro_no);
+	public void updateSoludOut(ProVO vo);
+	public void updateOnSale(ProVO vo);
 
 	
 	
