@@ -117,14 +117,12 @@
 
 
 
-				<div class="social_login" style="height: 100px;">
 				
 					
 
 				</div>
 			</div>
 		</div>
-	</div>
  
  
  
