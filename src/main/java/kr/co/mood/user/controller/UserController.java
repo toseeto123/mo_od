@@ -172,10 +172,10 @@ public class UserController {
 	    } else {
 	        session.setAttribute("path", request.getRequestURI());
 	        if (path.contains("catelogin.do")) {
-	        	System.out.println("catelogin.do �룷�븿 �뤌�엳�뒗嫄�");
+	        	System.out.println("catelogin.do 占쎈７占쎈맙 占쎈쨲占쎌뿳占쎈뮉椰꾬옙");
 	            return "redirect:/users/bucket";
 	        } else if (path.contains("proCatelogin")) {
-	        	System.out.println("proCatelogin �룷�븿 �뤌�엳�뒗嫄�");
+	        	System.out.println("proCatelogin 占쎈７占쎈맙 占쎈쨲占쎌뿳占쎈뮉椰꾬옙");
 	            CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
 	            int userid = userInfo.getNo();
 	            sessionCvo.setUser_no(userid);
@@ -210,7 +210,7 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginAction(@ModelAttribute("cvo") CateVO cvo, UserVO vo, HttpSession session,
 			HttpServletRequest request, RedirectAttributes ra, Model model) {
-		System.out.println("post諛⑹떇");
+		System.out.println("post獄쎻뫗�뻼");
 		UserVO vo1 = userservice.selectId(vo);
 
 		if (vo1 == null || vo1.getId().equals("admin")) {
@@ -267,7 +267,7 @@ public class UserController {
 
 	@RequestMapping(value = "/catelogin.do", method = RequestMethod.GET)
 	public String catelogin(HttpSession session, HttpServletRequest request) {
-		session.setAttribute("path", request.getRequestURI()); // 占쎌겱占쎌삺 野껋럥以� 占쏙옙占쎌삢
+		session.setAttribute("path", request.getRequestURI()); // �뜝�럩寃긷뜝�럩�궨 �뇦猿뗫윥餓ο옙 �뜝�룞�삕�뜝�럩�궋
 
 		return "redirect:/users/bucket";
 	}
@@ -275,9 +275,9 @@ public class UserController {
 	@RequestMapping(value = "/proCatelogin", method = RequestMethod.GET)
 	public String proCatelogin(@ModelAttribute("cvo") CateVO cvo, HttpSession session, ModelAndView mav,
 			HttpServletRequest request) {
-		session.setAttribute("path", request.getRequestURI()); // 占쎌겱占쎌삺 野껋럥以� 占쏙옙占쎌삢
+		session.setAttribute("path", request.getRequestURI()); // �뜝�럩寃긷뜝�럩�궨 �뇦猿뗫윥餓ο옙 �뜝�룞�삕�뜝�럩�궋
 
-		session.setAttribute("cvo", cvo); // CateVO 揶쏆빘猿쒐몴占� 占쎄쉭占쎈�∽옙肉� 占쏙옙占쎌삢
+		session.setAttribute("cvo", cvo); // CateVO �뤆�룇鍮섊뙼�뮁紐닷뜝占� �뜝�럡�돪�뜝�럥占썩댙�삕�굢占� �뜝�룞�삕�뜝�럩�궋
 		return "redirect:/users/login";
 	}
 
@@ -363,9 +363,9 @@ public class UserController {
 
 		String setFrom = "cwj9799@naver.com";
 		String toMail = email;
-		String title = "�쉶�썝媛��엯 �씤利� �씠硫붿씪 �엯�땲�떎.";
-		String content = "�솃�럹�씠吏�瑜� 諛⑸Ц�빐二쇱뀛�꽌 媛먯궗�빀�땲�떎." + "<br><br>" + "�씤利� 踰덊샇�뒗 " + checkNum + "�엯�땲�떎." + "<br>"
-				+ "�빐�떦 �씤利앸쾲�샇瑜� �씤利앸쾲�샇 �솗�씤���뿉 湲곗엯�븯�뿬 二쇱꽭�슂.";
+		String title = "占쎌돳占쎌뜚揶쏉옙占쎌뿯 占쎌뵥筌앾옙 占쎌뵠筌롫뗄�뵬 占쎌뿯占쎈빍占쎈뼄.";
+		String content = "占쎌냳占쎈읂占쎌뵠筌욑옙�몴占� 獄쎻뫖揆占쎈퉸雅뚯눘�쏉옙苑� 揶쏅Ŋ沅쀯옙鍮�占쎈빍占쎈뼄." + "<br><br>" + "占쎌뵥筌앾옙 甕곕뜇�깈占쎈뮉 " + checkNum + "占쎌뿯占쎈빍占쎈뼄." + "<br>"
+				+ "占쎈퉸占쎈뼣 占쎌뵥筌앹빖苡뀐옙�깈�몴占� 占쎌뵥筌앹빖苡뀐옙�깈 占쎌넇占쎌뵥占쏙옙占쎈퓠 疫꿸퀣�뿯占쎈릭占쎈연 雅뚯눘苑�占쎌뒄.";
 
 		try {
 

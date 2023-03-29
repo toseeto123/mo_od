@@ -22,7 +22,7 @@ background: #da8862;
 
                Slide 1
                <div class="carousel-item active"
-                  style="background-image: url(/resources/assets/img/slide/cate1.jpg); height: 500px;">
+                  style="background-image: url(/resources/assets/img/slide/joinimg.png); height: 500px;">
                   <div class="carousel-container">
                      <div class="carousel-content">
                         <h2 class="animate__animated animate__fadeInDown">회원가입
