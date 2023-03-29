@@ -62,7 +62,7 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-       <h1 class="logo" style="font-family:'궁서'; font-size: 50px;"><a href="/">묻:<b class="logo2" style="font-family:'굴림'; font-size: 56px;">mo_od</b></a></h1>
+       <h1 class="logo"><a href="/" style="font-family:'궁서'; font-size: 50px;">묻:<b class="logo2" style="font-family:'굴림'; font-size: 56px;">mo_od</b></a></h1>
  
       <nav id="navbar" class="navbar">
         <ul>
@@ -89,21 +89,22 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
 			<c:if test="${!empty login_info.id}">
                <c:choose>
                <c:when test="${login_info.id == 'admin' }">
-               <li><a href="/admin/chart.do"><span class="getstarted scrollto"><b>Admin</b></span> </a></li>
+               <li><a class="getstarted scrollto" href="/admin/chart.do"><b>Admin</b></a></li>
                </c:when>
                <c:otherwise>
-               <li><a href="/users/mypage"><span class="getstarted scrollto"> <b>Mypage</b></span> </a></li>
+               <li style="padding-left: 0px;margin: 30px 0px 30px 70px;width: 100px;"><a class="getstarted scrollto" href="/users/mypage"><b>Mypage</b></a></li>
                </c:otherwise>
                </c:choose>
-               <li><a href="/users/logout"><span class="getstarted scrollto"><b>Logout</b></span></a></li>
+               <li><a class="getstarted scrollto" href="/users/logout"><b>Logout</b></a></li>
                
 
             </c:if>
-			<c:if test="${empty login_info.id}">
-				<li style="padding-left: 30px;margin: 30px 0px 30px 50px;width: 100px;"><a class="getstarted scrollto" href="/users/join" ><b>Join</b></a></li>
-				<li><a class="getstarted scrollto" href="/users/login"><b>Login</b></a></li>
-			</c:if>
+         <c:if test="${empty login_info.id}">
+            <li style="padding-left: 30px;margin: 30px 0px 30px 50px;width: 100px;"><a class="getstarted scrollto" href="/users/join" ><b>Join</b></a></li>
+            <li><a class="getstarted scrollto" href="/users/login"><b>Login</b></a></li>
+         </c:if>
         </ul>
+
 
         
         

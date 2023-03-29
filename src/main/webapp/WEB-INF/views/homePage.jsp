@@ -84,7 +84,7 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
     <section id="portfolio" class="portfolio" style="padding-bottom: 50px; padding-top: 50px;">
       <div class="container">
         <div class="section-title">
-          <b style="font-size: 30px; color: black; letter-spacing: 5px;">많은 사랑을 받고있는 상품</b>
+          <b style="font-size: 30px; color: #323232; letter-spacing: 5px;">많은 사랑을 받고있는 상품</b>
         </div>
 
        <!--  <div class="row">
