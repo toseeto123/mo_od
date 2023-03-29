@@ -128,44 +128,44 @@ background: #da8862;
                
                <ol>
                   <c:if test="${list.pro_categoryserial  eq 'A0' }">
-                  <a href="/AcategoryList" style="margin-top: 20px;">가 구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/AcategoryList" style="margin-top: 20px;">가 구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'A1' }">
-                  <a href="/AcategoryList" style="margin-top: 20px;">가 구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/AcategoryList" style="margin-top: 20px;">가 구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'A2' }">
-                  <a href="/AcategoryList" style="margin-top: 20px;">가 구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/AcategoryList" style="margin-top: 20px;">가 구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B0' }">
-                  <a href="/BcategoryList" style="margin-top: 20px;">조 명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/BcategoryList" style="margin-top: 20px;">조 명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B1' }">
-                  <a href="/BcategoryList" style="margin-top: 20px;">조 명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/BcategoryList" style="margin-top: 20px;">조 명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C0' }">
-                  <a href="/CcategoryList" style="margin-top: 20px;">수 납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/CcategoryList" style="margin-top: 20px;">수 납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C1' }">
-                  <a href="/CcategoryList" style="margin-top: 20px;">수 납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/CcategoryList" style="margin-top: 20px;">수 납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if> 
                   
                   <c:if test="${list.pro_categoryserial  eq 'A0' }">
-                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/A0categoryList" style="margin-top: 20px;">매트리스</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/products/A0categoryList" style="margin-top: 20px;">매트리스</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'A1' }">
-                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/A1categoryList" style="margin-top: 20px;">침대프레임</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/products/A1categoryList" style="margin-top: 20px;">침대프레임</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'A2' }">
-                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/A2categoryList" style="margin-top: 20px;">소 파</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/products/A2categoryList" style="margin-top: 20px;">소 파</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B0' }">
-                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/B0categoryList" style="margin-top: 20px;">무드등</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/products/B0categoryList" style="margin-top: 20px;">무드등</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B1' }">
-                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/B1categoryList" style="margin-top: 20px;">스탠드조명</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/products/B1categoryList" style="margin-top: 20px;">스탠드조명</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C0' }">
-                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/C0categoryList" style="margin-top: 20px;">옷장/행거</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/products/C0categoryList" style="margin-top: 20px;">옷장/행거</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C1' }">
                   &nbsp;&nbsp;&nbsp;&nbsp;<a href="/C1categoryList" style="margin-top: 20px;">서 랍</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
@@ -347,16 +347,7 @@ background: #da8862;
       class="back-to-top d-flex align-items-center justify-content-center"><i
       class="bi bi-arrow-up-short"></i></a>
 
-   <!-- Vendor JS Files -->
-   <script src="${pageContext.request.contextPath}/resources/assets/vendor/purecounter/purecounter_vanilla.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/assets/vendor/glightbox/js/glightbox.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
-   <script src="${pageContext.request.contextPath}/resources/assets/vendor/swiper/swiper-bundle.min.js"></script>
 
-
-   <!-- Template Main JS File -->
-   <script src="${pageContext.request.contextPath}/resources/assets/js/main.js"></script>
    
    
     <script>

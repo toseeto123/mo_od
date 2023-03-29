@@ -6,26 +6,32 @@
 
 <mapper namespace="kr.co.mood.Payment.DAO.AdminPaymentDAO">
 
-    <select id="getCategoryChart1" resultType="kr.co.mood.Payment.VO.AdminChartVO">
-         SELECT pro_name as 'serialNumber', 
-         		SUM(pro_paycount) as 'payCount' 
-         	FROM product 
-         	where pro_paycount > 0 
-         	group by pro_serialnumber 
-         	order by SUM(pro_paycount) desc
-         	limit 0, 5
-    </select>
-    
-    <select id="getCategoryChart2" resultType="kr.co.mood.Payment.VO.AdminChartVO">
-         select pro_name as 'serialNumber', 
-         		pro_bucketcount as 'bucketCount' 
-         	from product 
-         	where pro_bucketcount > 0
-         	order by pro_bucketcount desc 
-         	limit 0, 5
-    </select>
-    
-    <select id="getCategoryChart3" resultType="kr.co.mood.Payment.VO.AdminChartVO">
+	<select id="getCategoryChart1"
+		resultType="kr.co.mood.Payment.VO.AdminChartVO">
+		SELECT pro_name as 'serialNumber',
+		SUM(pro_paycount) as
+		'payCount'
+		FROM product
+		where pro_paycount > 0
+		group by pro_serialnumber
+		order by SUM(pro_paycount) desc
+		limit 0, 5
+	</select>
+
+	<select id="getCategoryChart2"
+		resultType="kr.co.mood.Payment.VO.AdminChartVO">
+		select pro_name as 'serialNumber',
+		pro_bucketcount as
+		'bucketCount'
+		from product
+		where pro_bucketcount > 0
+		order by
+		pro_bucketcount desc
+		limit 0, 5
+	</select>
+
+	<select id="getCategoryChart3"
+		resultType="kr.co.mood.Payment.VO.AdminChartVO">
          <![CDATA[
           SELECT  CASE DAYOFWEEK(SuccessTime) 
          		WHEN 2 THEN '월요일' 
@@ -43,109 +49,131 @@
 			group by orderid
          	order by DAYOFWEEK(SuccessTime)
          	]]>
-    </select>
-    
-    <select id="getCategoryChart4" resultType="kr.co.mood.Payment.VO.AdminChartVO">
+	</select>
+
+
+	<select id="getCategoryChart4"
+		resultType="kr.co.mood.Payment.VO.AdminChartVO">
 		<![CDATA[
-		select member.gender as gender,
-			orderProduct.count as 'productCount',
-			product.pro_categoryserial as 'categorySerial',
-			member.age as 'age'
-		from orderProduct
+		select member.gender, member.age, product.pro_categoryserial as 'categorySerial', sum(orderProduct.count) as 'productCount'
+			from moodjoin as member
 		inner join moodorder
-			on moodorder.orderid = orderProduct.orderid
-		inner join moodjoin as member
-			on moodorder.userno = member.no
+			on moodorder.userNo = member.no
+		inner join orderProduct
+			on orderProduct.orderId = moodorder.orderId
+		inner join payment
+			on payment.orderid = orderProduct.orderId
 		inner join product
 			on product.pro_number = orderProduct.pro_number
-		inner join payment
-			on payment.orderid = orderProduct.orderid
+		inner join (select product.pro_categoryserial as categoryserial, sum(orderProduct.count) 
+					from orderProduct
+					inner join product
+						on product.pro_number = orderProduct.pro_number
+					inner join payment
+						on payment.orderid = orderProduct.orderId
+					group by product.pro_categoryserial
+					limit 0, 5) as category
+			on category.categoryserial = product.pro_categoryserial	
 		where payment.Success = '결제 완료'
-			and payment.SuccessTime like concat(#{year}, '%')
-		order by member.age desc 
-		limit 0, 5
+		and payment.SuccessTime like concat('%' ,#{year}, '%')
+		group by member.gender,product.pro_categoryserial, member.age
+
 			]]>
-    </select>
-    
-    <select id="adminPaymentMemberList" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
-    	select moodorder.orderid as 'orderNo', 
-			moodorder.address as 'address', 
-			member.name as 'name', 
-			member.phone as 'phone', 
-			moodorder.price as 'amount',
-			payment.SuccessTime as 'payDate'
+	</select>
+
+	<select id="adminPaymentMemberList"
+		resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
+		select moodorder.orderid as 'orderNo',
+		moodorder.address as 'address',
+		member.name as 'name',
+		member.phone as 'phone',
+		moodorder.price as
+		'amount',
+		payment.SuccessTime as 'payDate'
 		from moodorder
-		inner join moodjoin as member
-			on member.no = moodorder.userNo
+		inner join
+		moodjoin as member
+		on member.no = moodorder.userNo
 		inner join payment
-			on payment.orderid = moodorder.orderid
+		on
+		payment.orderid = moodorder.orderid
 		where payment.Success = '결제 완료'
 		group by orderNo
 		order by orderNo desc
 		<if test="endNo != 0">
-		limit #{startNo}, #{endNo}
-    	</if>
-    	
-    </select>    
+			limit #{startNo}, #{endNo}
+		</if>
+
+	</select>
 
 
-    <select id="adminPaymentSearchingList"
-    	parameterType="kr.co.mood.module.ModuleVO"
-     resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
- 		select moodorder.orderid as 'orderNo', 
-			moodorder.address as 'address', 
-			member.name as 'name', 
-			member.phone as 'phone', 
-			moodorder.price as 'amount',
-			payment.SuccessTime as 'payDate'
+	<select id="adminPaymentSearchingList"
+		parameterType="kr.co.mood.module.ModuleVO"
+		resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
+		select moodorder.orderid as 'orderNo',
+		moodorder.address as 'address',
+		member.name as 'name',
+		member.phone as 'phone',
+		moodorder.price as
+		'amount',
+		payment.SuccessTime as 'payDate'
 		from moodorder
-		inner join moodjoin as member
-			on member.no = moodorder.userNo
+		inner join
+		moodjoin as member
+		on member.no = moodorder.userNo
 		inner join payment
-			on payment.orderid = moodorder.orderid
+		on
+		payment.orderid = moodorder.orderid
 		where payment.Success = '결제 완료'
 		<if test="searchName != null">
-		and member.name like concat('%', #{searchName}, '%')
+			and member.name like concat('%', #{searchName}, '%')
 		</if>
 		<if test="orderNo > 0">
-		and moodorder.orderid = #{orderNo}
+			and moodorder.orderid = #{orderNo}
 		</if>
 		<if test="phone != null">
-		and member.phone like concat('%', #{phone}, '%')
+			and member.phone like concat('%', #{phone}, '%')
 		</if>
 		<if test="date != null">
-		and payment.SuccessTime like concat('%', #{date}, '%')
+			and payment.SuccessTime like concat('%', #{date}, '%')
 		</if>
 		group by orderNo
 		order by orderNo desc
 		<if test="endNo > 0">
-		limit #{startNo}, #{endNo}
-    	</if>    	
-    </select>
-    
-    <select id="adminPaymentList" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
-    	select orderProduct.orderid as'orderNo',
-			(orderProduct.price/orderProduct.count) as 'price',
-			orderProduct.count as 'productCount',
-			product.pro_serialnumber as 'productNo',
-			product.pro_name as 'productName'
+			limit #{startNo}, #{endNo}
+		</if>
+	</select>
+
+	<select id="adminPaymentList"
+		resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
+		select orderProduct.orderid as'orderNo',
+		(orderProduct.price/orderProduct.count) as 'price',
+		orderProduct.count
+		as 'productCount',
+		product.pro_serialnumber as 'productNo',
+		product.pro_name as 'productName'
 		from orderProduct
 		inner join product
-			on product.pro_number = orderProduct.pro_number
+		on product.pro_number = orderProduct.pro_number
 		order by orderNo desc
-    </select>
-    
-    <select id="adminPaymentCancel" resultType="kr.co.mood.Payment.VO.KakaoPayApprovalVO">
-    	select payment.tid, orders.orderId, orders.price
-		from payment 
-		inner join moodorder as orders
-			on payment.orderid = orders.orderid
-		where orders.orderid = #{orderid} and payment.Success = '결제 완료'
-		group by payment.tid;
-    </select>
+	</select>
 
-    
-    
+	<select id="adminPaymentCancel"
+		resultType="kr.co.mood.Payment.VO.KakaoPayApprovalVO">
+		select payment.tid, orders.orderId, orders.price
+		from
+		payment
+		inner join moodorder as orders
+		on payment.orderid =
+		orders.orderid
+		where orders.orderid = #{orderid} and
+		payment.Success =
+		'결제 완료'
+		group by payment.tid;
+	</select>
+
+
+
 </mapper>
 
 
