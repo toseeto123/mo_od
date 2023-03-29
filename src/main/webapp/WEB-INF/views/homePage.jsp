@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+ 
 <!DOCTYPE html>
 
 <html lang="en">
@@ -9,6 +10,9 @@
 
 <jsp:include page="/WEB-INF/common/header.jsp" />
 <style>
+*{
+font-family: 'SUIT-Regular', normal;font-weight:900;
+}
 .animate__fadeInDown{
  font-size:30px;
 }
@@ -77,13 +81,13 @@
     
 
     <!-- ======= Portfolio Section ======= -->
-    <section id="portfolio" class="portfolio" style="padding-bottom: 80px; padding-top: 100px;">
+    <section id="portfolio" class="portfolio" style="padding-bottom: 50px; padding-top: 50px;">
       <div class="container">
         <div class="section-title">
-          <b style="font-size: 30px; color: #c8936ed4;">많은 사랑을 받고있는 mo_od 상품</b>
+          <b style="font-size: 30px; color: black; letter-spacing: 5px;">많은 사랑을 받고있는 상품</b>
         </div>
 
-        <div class="row">
+       <!--  <div class="row">
           <div class="col-lg-12 d-flex justify-content-center">
             <ul id="portfolio-flters">
               <li data-filter="*" class="filter-active" style="font-size: 20px;">전체보기</li>
@@ -92,11 +96,11 @@
               <li data-filter=".filter-web" style="font-size: 20px;">수납</li>
             </ul>
           </div>
-        </div>
+        </div> -->
 
         <div class="row portfolio-container">
         
-	<c:forEach var="Alist" items="${Alist}" begin="0" end="0">
+		<c:forEach var="Alist" items="${Alist}" begin="0" end="0">
           <div class="col-lg-4 col-md-6 portfolio-item filter-app" onclick="location.href='/products/${Alist.pro_number }/${Alist.pro_name}/${Alist.pro_img1.substring(0, Alist.pro_img1.lastIndexOf('.'))}'" style="cursor: pointer">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Alist.pro_img1 }" class="img-fluid" alt="">
@@ -110,7 +114,7 @@
           </div>
           </c:forEach>
 
-<c:forEach var="Blist" items="${Blist}" begin="0" end="0">
+		<c:forEach var="Blist" items="${Blist}" begin="0" end="0">
           <div class="col-lg-4 col-md-6 portfolio-item filter-card" onclick="location.href='/products/${Blist.pro_number }/${Blist.pro_name}/${Blist.pro_img1.substring(0, Blist.pro_img1.lastIndexOf('.'))}'" style="cursor: pointer">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Blist.pro_img1 }" class="img-fluid" alt="">
@@ -165,34 +169,6 @@
           </div>
           </c:forEach>
           
-          <c:forEach var="Clist" items="${Clist}" begin="2" end="2">
-          <div class="col-lg-4 col-md-6 portfolio-item filter-web" onclick="location.href='/products/${Clist.pro_number }/${Clist.pro_name}/${Clist.pro_img1.substring(0, Clist.pro_img1.lastIndexOf('.'))}'" style="cursor: pointer">
-            <div class="portfolio-wrap">
-              <img src="resources/assets/img/product/${Clist.pro_img1 }" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>${Clist.pro_name }</h4>
-                <p><fmt:formatNumber value="${Clist.pro_price}" type="currency" currencySymbol="₩" /></p>
-                <div class="portfolio-links">
-                </div>
-              </div>
-            </div>
-          </div>
-          </c:forEach>
-
-          <c:forEach var="Blist" items="${Blist}" begin="2" end="2">
-          <div class="col-lg-4 col-md-6 portfolio-item filter-card" onclick="location.href='/products/${Blist.pro_number }/${Blist.pro_name}/${Blist.pro_img1.substring(0, Blist.pro_img1.lastIndexOf('.'))}'" style="cursor: pointer">
-            <div class="portfolio-wrap">
-              <img src="resources/assets/img/product/${Blist.pro_img1 }" class="img-fluid" alt="">
-              <div class="portfolio-info">
-                <h4>${Blist.pro_name }</h4>
-                <p><fmt:formatNumber value="${Blist.pro_price}" type="currency" currencySymbol="₩" /></p>
-                <div class="portfolio-links">   
-                </div>
-              </div>
-            </div>
-          </div>
-          </c:forEach>
-
           <c:forEach var="Clist" items="${Clist}" begin="1" end="1">
           <div class="col-lg-4 col-md-6 portfolio-item filter-web" onclick="location.href='/products/${Clist.pro_number }/${Clist.pro_name}/${Clist.pro_img1.substring(0, Clist.pro_img1.lastIndexOf('.'))}'" style="cursor: pointer">
             <div class="portfolio-wrap">
@@ -207,7 +183,7 @@
           </div>
           </c:forEach>
           
-          <c:forEach var="Alist" items="${Alist}" begin="2" end="2">
+          <%--  <c:forEach var="Alist" items="${Alist}" begin="2" end="2">
           <div class="col-lg-4 col-md-6 portfolio-item filter-app" onclick="location.href='/products/${Alist.pro_number }/${Alist.pro_name}/${Alist.pro_img1.substring(0, Alist.pro_img1.lastIndexOf('.'))}'" style="cursor: pointer">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Alist.pro_img1 }" class="img-fluid" alt="">
@@ -220,6 +196,34 @@
             </div>
           </div>
           </c:forEach>
+          
+           <c:forEach var="Blist" items="${Blist}" begin="2" end="2">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card" onclick="location.href='/products/${Blist.pro_number }/${Blist.pro_name}/${Blist.pro_img1.substring(0, Blist.pro_img1.lastIndexOf('.'))}'" style="cursor: pointer">
+            <div class="portfolio-wrap">
+              <img src="resources/assets/img/product/${Blist.pro_img1 }" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>${Blist.pro_name }</h4>
+                <p><fmt:formatNumber value="${Blist.pro_price}" type="currency" currencySymbol="₩" /></p>
+                <div class="portfolio-links">   
+                </div>
+              </div>
+            </div>
+          </div>
+          </c:forEach>
+          
+          <c:forEach var="Clist" items="${Clist}" begin="2" end="2">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-web" onclick="location.href='/products/${Clist.pro_number }/${Clist.pro_name}/${Clist.pro_img1.substring(0, Clist.pro_img1.lastIndexOf('.'))}'" style="cursor: pointer">
+            <div class="portfolio-wrap">
+              <img src="resources/assets/img/product/${Clist.pro_img1 }" class="img-fluid" alt="">
+              <div class="portfolio-info">
+                <h4>${Clist.pro_name }</h4>
+                <p><fmt:formatNumber value="${Clist.pro_price}" type="currency" currencySymbol="₩" /></p>
+                <div class="portfolio-links">
+                </div>
+              </div>
+            </div>
+          </div>
+          </c:forEach> --%>
 
         </div>
 
