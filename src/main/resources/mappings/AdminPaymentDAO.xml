@@ -8,13 +8,16 @@
 
 	<select id="getCategoryChart1"
 		resultType="kr.co.mood.Payment.VO.AdminChartVO">
-		SELECT pro_name as 'serialNumber',
-		SUM(pro_paycount) as
-		'payCount'
-		FROM product
-		where pro_paycount > 0
-		group by pro_serialnumber
-		order by SUM(pro_paycount) desc
+		select product.pro_name as 'serialNumber',
+			sum(orderProduct.count) as 'payCount'
+		from product
+		inner join orderProduct 
+			on orderProduct.pro_number = product.pro_number
+		inner join payment
+			on payment.orderid = orderProduct.orderid
+		where payment.Success = '결제 완료'
+		group by product.pro_name
+		order by payCount desc
 		limit 0, 5
 	</select>
 
@@ -77,6 +80,7 @@
 		where payment.Success = '결제 완료'
 		and payment.SuccessTime like concat('%' ,#{year}, '%')
 		group by member.gender,product.pro_categoryserial, member.age
+		order by productCount desc
 
 			]]>
 	</select>
