@@ -19,6 +19,7 @@
 section {
    width: 1000px;
    margin: 0 auto;
+   padding-bottom : 0px;
 }
 dl, ul, ol, li {
    list-style: none;
@@ -51,7 +52,7 @@ dl, ul, ol, li {
 
 .order_wrap .order_tit {
    overflow: hidden;
-   border-bottom: 2px solid #c8936ed4;
+   border-bottom: 2px solid #525252;
    margin-bottom: 10px;
 }
 
@@ -78,14 +79,14 @@ dl, ul, ol, li {
 }
 
 .order_wrap .order_tit .page_on {
-   color: #c8936ed4;
+   color: #525252;
    font-weight: bold;
 }
 
 .price_sum {
    margin: 40px 100px 50px;
    padding: 20px 40px 25px 40px;
-   border: 2px solid #c8936ed4;
+   border: 2px solid #525252;
    border-radius: 5px;
    height: 300px;
 }
@@ -142,7 +143,7 @@ li .btnspan {
 }
 
 li .btnspan_on {
-   background-color: #c8936ed4;
+   background-color: #525252;
 }
 
 @media only screen and (max-width: 768px) {
@@ -197,7 +198,7 @@ width: 300px;
 
 }
 .btn-primary {
-	background:#c8936ed4;
+	background:#525252;
 	border: none;
 	padding: 5px;
 	border-radius: 5px;
@@ -219,7 +220,7 @@ width: 300px;
   }
   
   i{
-  color:#333333; 
+  color:#fff; 
   font-size: 25px; 
   vertical-align:bottom;
   }
@@ -234,13 +235,13 @@ width: 300px;
    <section>
       <ul class="nav nav-pills nav-justified">
         <li class="nav-item" >
-          <a class="nav-link active" href="/users/mypage" style="background: #c8936ed4; color:#333333; font-weight: 700;"><i class="xi-profile"></i> 회원 정보</a>
+          <a class="nav-link active" href="/users/mypage" style="background: #525252; color:#fff; font-weight: 700;"><i class="xi-profile"></i> 회원 정보</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/users/bucket" style="background: #c8936ed4; color:#333333; font-weight: 700;"><i class="xi-cart"></i> 장바 구니</a>
+          <a class="nav-link" href="/users/bucket" style="background: #525252; color:#fff; font-weight: 700;"><i class="xi-cart"></i> 장바 구니</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/products/payMypage" style="background: #da8862; color:#333333; font-weight: 700;"><i class="xi-list-dot"></i> 결제 내역</a>
+          <a class="nav-link" href="/products/payMypage" style="background: #323232; color:#fff; font-weight: 700;"><i class="xi-list-dot"></i> 결제 내역</a>
         </li>
       </ul>
    </section>
@@ -277,7 +278,7 @@ width: 300px;
 
 <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: center; font-size: 1.2em; margin: 10px 10px;">
   <div style="text-align: left;width: 400px; height: 200px;">
-    <span>상 품 명 : <b style="font-size: 23px; color:#c8936ed4">${order.pro_name}</b></span><br><br>
+    <span>상 품 명 : <b style="font-size: 23px; color:#525252">${order.pro_name}</b></span><br><br>
     <span>옵 션 : <small>${order.pro_option}</small></span><br><br>
     <span>상품정보 : <small>${order.pro_maindesctitle}</small></span>
   </div>
