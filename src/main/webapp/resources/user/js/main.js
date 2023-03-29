@@ -180,28 +180,32 @@ function fn_idChk(){
    
 
    
-    function emailConfirm() {
-  var ssemail = $('input#myinfo_email').val();
-  var email = document.getElementById('email').value;
-  var conemail = document.getElementById('conemail'); //확인 메세지
-  var correctColor = "#00ff00"; //맞았을 때 출력되는 색깔.
-  var wrongColor = "#ff0000"; //틀렸을 때 출력되는 색깔
+ function emailCheck() {
+   var ssemail = $('input#myinfo_email').val();
+  var email = $('.email').val(); // 입력된 이메일
+  console.log(email);
+  console.log(ssemail);
+  var conemail = $('#conemail'); // 확인 메세지
+  var correctColor = "#00ff00"; // 맞았을 때 출력되는 색깔.
+  var wrongColor = "#ff0000"; // 틀렸을 때 출력되는 색깔
 
+  // 이메일 중복 체크 AJAX 호출
   $.ajax({
     url: '/users/check_email',
     type: 'POST',
-    data: {"email" : $("#email").val()},
-    success: function(response) {
-      if (response.result === 'duplicate') {
-        conemail.style.color = wrongColor;
-        conemail.innerHTML = "중복된 이메일입니다.";
-      } else {
-        conemail.style.color = correctColor;
-        conemail.innerHTML = "사용 가능한 이메일입니다.";
+    dataType: 'json',
+    data: { "email" : $("#email").val() },
+    success: function (response){
+      if (response.result == 0){ 
+      	
+        conemail.css('color', correctColor);
+        conemail.text("사용 가능한 이메일입니다.");
+        console.log(response.result)
+      } else(response.result == 1){ 
+        conemail.css('color', wrongColor);
+        conemail.text("중복된 이메일입니다.");
+        console.log(response.result);
       }
-    },
-    error: function(xhr, status, error) {
-      console.log(error);
     }
   });
 }
@@ -262,6 +266,13 @@ function fn_idChk(){
 
 
   function UpdateCheck(){
+  if (document.mypage.address_input_1.value == ""){
+              alert("주소를 반드시 입력해주세여");
+              mypage.pwd.focus();
+              return false;
+           }
+  
+  
            if (document.mypage.pwd.value == ""){
               alert("암호를 반드시 입력해주세여");
               mypage.pwd.focus();
