@@ -126,6 +126,7 @@ public class ProductController {
 		List<ProVO> prolist = ps.AselectProListByPayCount(vo);
 		model.addAttribute("list", list);
 		model.addAttribute("prolist", prolist);
+		model.addAttribute("categoryImage", "gagu.png");
 		
 		return "/Product/categoryList";
 	}
@@ -136,7 +137,9 @@ public class ProductController {
 		List<ProVO> prolist = ps.BselectProListByPayCount(vo);
 		model.addAttribute("list", list);
 		model.addAttribute("prolist", prolist);
+		model.addAttribute("categoryImage", "jo.png");
 		return "/Product/categoryList";
+		
 	}
 	
 	@RequestMapping(value = "/CcategoryList")
@@ -145,6 +148,7 @@ public class ProductController {
 		List<ProVO> prolist = ps.CselectProListByPayCount(vo);
 		model.addAttribute("list", list);
 		model.addAttribute("prolist", prolist);
+		model.addAttribute("categoryImage", "su.png");
 		return "/Product/categoryList";
 	}
 	
@@ -156,6 +160,7 @@ public class ProductController {
     @RequestMapping(value = "/A0categoryList")
     public String ProductListA0(ArrayList<ProVO> vo, Model model) {
        return "redirect:/products/A0categoryList/1";
+       
     }
 
 	@RequestMapping(value = "/A0categoryList/{page}") // FIX
@@ -164,6 +169,7 @@ public class ProductController {
 		List<ProVO> allList = ps.A0selectCategoryProList(voa0);
 		module.pagingModule(model, moduleVO, allList, page, 8);
 		List<ProVO> showList = ps.A0selectProListPaging(moduleVO);
+		model.addAttribute("categoryImage", "me.png");
 		model.addAttribute("list", showList);
 		return "/Product/productList";
 	}
@@ -182,6 +188,7 @@ public class ProductController {
 		module.pagingModule(model, moduleVO, allList, page, 8);
 		List<ProVO> showList = ps.A1selectProListPaging(moduleVO);
 		model.addAttribute("list", showList);
+		model.addAttribute("categoryImage", "ch.png");
 		return "/Product/productList";
 	}
 	
@@ -197,6 +204,7 @@ public class ProductController {
 		module.pagingModule(model, moduleVO, allList, page, 8);
 		List<ProVO> showList = ps.A2selectProListPaging(moduleVO);
 		model.addAttribute("list", showList);
+		model.addAttribute("categoryImage", "sofa.png");
 		return "/Product/productList";
 	}
 	
@@ -213,6 +221,7 @@ public class ProductController {
 		module.pagingModule(model, moduleVO, allList, page, 8);
 		List<ProVO> showList = ps.B0selectProListPaging(moduleVO);
 		model.addAttribute("list", showList);
+		model.addAttribute("categoryImage", "mo.png");
 		return "/Product/productList";
 	}
 	
@@ -229,6 +238,7 @@ public class ProductController {
 		module.pagingModule(model, moduleVO, allList, page, 8);
 		List<ProVO> showList = ps.B1selectProListPaging(moduleVO);
 		model.addAttribute("list", showList);
+		model.addAttribute("categoryImage", "stmo.png");
 		return "/Product/productList";
 	}
 	
@@ -245,6 +255,7 @@ public class ProductController {
 		module.pagingModule(model, moduleVO, allList, page, 8);
 		List<ProVO> showList = ps.C0selectProListPaging(moduleVO);
 		model.addAttribute("list", showList);
+		model.addAttribute("categoryImage", "ot.png");
 		return "/Product/productList";
 	}
 	
@@ -260,6 +271,7 @@ public class ProductController {
 		module.pagingModule(model, moduleVO, allList, page, 8);
 		List<ProVO> showList = ps.C1selectProListPaging(moduleVO);
 		model.addAttribute("list", showList);
+		model.addAttribute("categoryImage", "surab.png");
 		return "/Product/productList";
 	}
 	
