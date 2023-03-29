@@ -41,8 +41,7 @@ public class MemberService {
 
 
 //         sb.append("&redirect_uri=http://localhost:8080/users/kakaoLogin"); 
-         sb.append("&redirect_uri=http://3.39.221.200:8080/users/kakaoLogin"); 
-         sb.append("&redirect_uri=http://mo-od.co.kr/users/kakaoLogin/users/kakaoLogin");
+         sb.append("&redirect_uri=http://mo-od.co.kr/users/kakaoLogin");
 
 
 
@@ -137,7 +136,7 @@ public class MemberService {
                sb.append("&client_secret=MtrUDxfIj0");
 
 //             sb.append("&redirect_uri=http://localhost:8080/users/login");
-               sb.append("&redirect_uri=http://mood.co.kr/users/login");
+               sb.append("&redirect_uri=http://mo-od.co.kr/users/login");
 
                sb.append("&code="+authorize_code);
                sb.append("&state=url_parameter");
