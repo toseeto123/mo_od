@@ -87,10 +87,6 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
                 </ul>
           </li>
 			<c:if test="${!empty login_info.id}">
-
-               
-
-               <li class="/login_info" style="color : white;"></li>
                <c:choose>
                <c:when test="${login_info.id == 'admin' }">
                <li><a href="/admin/chart.do"><span class="getstarted scrollto"><b>Admin</b></span> </a></li>
