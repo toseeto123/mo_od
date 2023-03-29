@@ -19,6 +19,11 @@ function JoinCheck(){
               join.pwd.focus();
               return false;
            }
+            if (document.join.pwd2.value == ""){
+              alert("암호를 반드시 입력해주세여");
+              join.pwd2.focus();
+              return false;
+           }
            if(document.join.pwd.value != document.join.pwd2.value){
               alert("암호가 일치하지 않습니다");
               join.pwd.value="";
