@@ -14,6 +14,10 @@
 	width: 900px;
 	margin : 0 auto;
 }
+.top_Area{
+	margin-left: 260px;
+}
+
 .inputArea label {
   margin-bottom: 10px;
 }
@@ -38,55 +42,75 @@ input[type=button] {
 	border: none;
 	font-size: 20px;
 }
+button[type=submit] {
+	color: white;
+	background: #d2b48c;
+	width: 100px;
+	border-radius: 10px;
+	border: none;
+	font-size: 20px;
+}
 input[type=search] {
 	font-size: 18px;
 }
 #searchBtn {
-  position: absolute;
-  top: 10%;
-  left: 50%;
-  transform: translateX(-50%);
+	color: white;
+	background: #d2b48c;
+	width: 100px;
+	border-radius: 10px;
+	border: none;
+	font-size: 20px;
+}
+.sbtn {
   width: 250px;
 }
 </style>
 <body>
 <jsp:include page="../../common/adminHeader.jsp" />
-<form role="form" method="get" action="updatePro">
-<input type="button" style="" id="searchBtn" value="상품리스트 이동" onclick="location.href='/admin/adminProList.do'">
 <div class="warp">
 <c:if test="${list.pro_number eq list.pro_number }">
-<div class="inputArea" style="margin-top: 100px;">
- <label for="">상품명</label>
- <input type="text" id="" name="pro_name" value="${list.pro_name}"/>
+<div style="margin-top: 80px; margin-left: 230px;">
+<form action="/admin/updateSoldOut" method="post" style="display: inline;">
+	<input type="hidden" id="" name="pro_number" value="${list.pro_number}"/>
+	 	<button type="submit" class="sbtn">판매중지</button>
+	 </form>
+	 
+<form action="/admin/updateOnSale" method="post" style="display: inline;">
+	<input type="hidden" id="" name="pro_number" value="${list.pro_number}"/>
+	 	<button type="submit" class="sbtn" >판매재개</button>
+	 </form>
+<input type="button" style="display: inline; width: 160px;" value="상품리스트 이동" onclick="location.href='/admin/adminProList.do'">
 </div>
-
-
- <input type="hidden" id="" name="pro_number" value="${list.pro_number}"/>
-
-
-<div class="inputArea">
- <label for="">판매여부</label>
- <input type="text" id="" name="pro_soldout" value="${list.pro_soldout}"/> <span style="color:red; font-size: 15px;"> 1 : 판매중지  /  0 : 판매중</span>
+<form role="form" method="get" action="updatePro">
+<div class="top_Area">
+	<div class="inputArea" style="margin-top: 50px;">
+	 <label for="">상품명</label>
+	 <input type="text" id="" name="pro_name" value="${list.pro_name}"/>
+	</div>
+	
+	
+	 <input type="hidden" id="" name="pro_number" value="${list.pro_number}"/>
+	
+	
+	
+	<div class="inputArea">
+	 <label for="">옵션1</label>
+	 <input type="text" id="" name="pro_option1" value="${list.pro_option1}"/>
+	</div>
+	<div class="inputArea">
+	 <label for="">옵션2</label>
+	 <input type="text" id="" name="pro_option2" value="${list.pro_option2}"/>
+	</div>
+	<div class="inputArea">
+	 <label for="">옵션3</label>
+	 <input type="text" id="" name="pro_option3" value="${list.pro_option3}" />
+	</div>
+	
+	<div class="inputArea">
+	 <label for="">상품가격</label>
+	 <input type="text" id="" name="pro_price" value="${list.pro_price}"/>
+	</div>
 </div>
-
-<div class="inputArea">
- <label for="">옵션1</label>
- <input type="text" id="" name="pro_option1" value="${list.pro_option1}"/>
-</div>
-<div class="inputArea">
- <label for="">옵션2</label>
- <input type="text" id="" name="pro_option2" value="${list.pro_option2}"/>
-</div>
-<div class="inputArea">
- <label for="">옵션3</label>
- <input type="text" id="" name="pro_option3" value="${list.pro_option3}" />
-</div>
-
-<div class="inputArea">
- <label for="">상품가격</label>
- <input type="text" id="" name="pro_price" value="${list.pro_price}"/>
-</div>
-
 <hr>
 <div class="inputArea">
  <label for="">이미지1</label>
@@ -144,16 +168,16 @@ input[type=search] {
 
 
 
+</form>
 </c:if>
 
 <div class="inputArea">
- <button type="submit" id="" class="btn btn-primary">수정완료</button>
+ <input type="submit" id="" class="btn btn-primary" value="수정완료">
  <button type="reset" id="" class="btn btn-primary">초기화</button>
 </div>
 
 
 </div>
-</form>
 
 
 <script type="text/javascript">
