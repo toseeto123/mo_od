@@ -43,10 +43,8 @@ input[type=button]{
 input[type=search]{
 	font-size: 18px;
 }
-footer{
-	position: absolute;
-	top: 120%;
-	width: 100%;
+.footer{
+	margin-top: 100px;
 }
 </style>
 </head>
@@ -304,5 +302,5 @@ footer{
 	</script>
 	
 </body>
-	<footer><jsp:include page="../../common/footer.jsp" /></footer>
+	<footer class="footer"><jsp:include page="../../common/footer.jsp" /></footer>
 </html>

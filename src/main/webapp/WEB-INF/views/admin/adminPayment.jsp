@@ -164,7 +164,7 @@ input[type=search]{
 			<div id="modulePaging"
 				style="display: inline-block; position: absolute; left: 50%; transform: translateX(-50%); font-size: 20px;">
 				<c:if test="${prePage!=null }">
-					<a href="/admin/adminMemberList/${prePage}">&lt;</a>
+					<a href="/admin/payment/${prePage}">&lt;</a>
 				</c:if>
 
 				<c:forEach items="${ pagingNo }" var="no">
