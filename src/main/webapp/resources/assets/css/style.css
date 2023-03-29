@@ -29,7 +29,7 @@ a {
 }
 
 a:hover {
-  color: #c9902d;
+  color: #323232;
   text-decoration: none;
 }
 
@@ -555,7 +555,7 @@ h6 {
 
 @media (min-width: 1024px) {
   #hero p {
-    width: 60%;
+    width: 100%;
   }
 
   #hero .carousel-control-prev,
