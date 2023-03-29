@@ -98,34 +98,6 @@ function fn_idChk(){
     });
 }
 
-  
-      function UpdateCheck(){
-           if (document.mypage.pwd.value == ""){
-              alert("암호를 반드시 입력해주세여");
-              mypage.pwd.focus();
-              return false;
-           }
-           if(document.mypage.pwd.value != document.mypage.pwd2.value){
-              alert("암호가 일치하지 않습니다");
-              mypage.pwd.value="";
-              mypage.pwd2.value="";
-              mypage.pwd.focus();
-              return false;
-             
-           }
-           if (document.mypage.email.value == "") {
-              alert("이메일을 입력해주세요");
-              mypage.email.focus();
-              return false;
-           }
-           if (document.mypage.phone.value == "") {
-              alert("전화번호를 입력해주세요");
-              mypage.phone.focus();
-              return false;
-           }   
-           return true;   
-        }
-
       function DeleteCheck() {
   var sspwd = $('input#sspwd').val();
   
