@@ -168,8 +168,8 @@ function emailCheck() {
       var pwd = document.getElementById('pwd');               //비밀번호 
       var pwd2 = document.getElementById('pwd2');   //비밀번호 확인 값
       var confrimMsg = document.getElementById('confirmMsg');            //확인 메세지
-      var correctColor = "#00ff00";   //맞았을 때 출력되는 색깔.
-      var wrongColor ="#ff0000";   //틀렸을 때 출력되는 색깔
+      var correctColor = "#64CD3C";   //맞았을 때 출력되는 색깔.
+      var wrongColor ="#CD1039";   //틀렸을 때 출력되는 색깔
       
       if(pwd.value == pwd2.value){       //password 변수의 값과 passwordConfirm 변수의 값과 동일하다.
          confirmMsg.style.color = correctColor;    /* span 태그의 ID(confirmMsg) 사용  */
