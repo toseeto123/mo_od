@@ -63,7 +63,7 @@
 	
 	<select id="myinfo_email" parameterType="kr.co.mood.user.dao.UserVO" resultType="int">
 		<![CDATA[
-		 select count(*) from moodjoin where email=#{email}
+		 select count(*) from moodjoin where email = #{email}
 		 ]]>
 	</select>
 	
