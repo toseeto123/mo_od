@@ -98,65 +98,38 @@ function fn_idChk(){
     });
 }
 
-  
-      function UpdateCheck(){
-           if (document.mypage.pwd.value == ""){
-              alert("암호를 반드시 입력해주세여");
-              mypage.pwd.focus();
-              return false;
-           }
-           if(document.mypage.pwd.value != document.mypage.pwd2.value){
-              alert("암호가 일치하지 않습니다");
-              mypage.pwd.value="";
-              mypage.pwd2.value="";
-              mypage.pwd.focus();
-              return false;
-             
-           }
-           if (document.mypage.email.value == "") {
-              alert("이메일을 입력해주세요");
-              mypage.email.focus();
-              return false;
-           }
-           if (document.mypage.phone.value == "") {
-              alert("전화번호를 입력해주세요");
-              mypage.phone.focus();
-              return false;
-           }   
-           return true;   
-        }
 
       function DeleteCheck() {
-  var sspwd = $('input#sspwd').val();
-  
-  if (sspwd != document.mypage.pwd.value) {
-    alert("저장된 암호와 입력한 암호가 일치하지 않습니다.");
-    mypage.pwd.value = "";
-    mypage.pwd2.value = "";
-    mypage.pwd.focus();
-    return false;
-  }
-  
-  if (document.mypage.pwd.value == "") {
-    alert("암호를 반드시 입력해주세요.");
-    mypage.pwd.focus();
-    return false;
-  }
-  
-  if (document.mypage.pwd.value != document.mypage.pwd2.value) {
-    alert("암호가 일치하지 않습니다.");
-    mypage.pwd.value = "";
-    mypage.pwd2.value = "";
-    mypage.pwd.focus();
-    return false;
-  }
-  
-  $(document.mypage).ready(function() {
-    $('#exampleModal').modal('show');
-  });
-  
-  return true;
-}
+	  var sspwd = $('input#sspwd').val();
+	  
+	  if (sspwd != document.mypage.pwd.value) {
+	    alert("저장된 암호와 입력한 암호가 일치하지 않습니다.");
+	    mypage.pwd.value = "";
+	    mypage.pwd2.value = "";
+	    mypage.pwd.focus();
+	    return false;
+	  }
+	  
+	  if (document.mypage.pwd.value == "") {
+	    alert("암호를 반드시 입력해주세요.");
+	    mypage.pwd.focus();
+	    return false;
+	  }
+	  
+	  if (document.mypage.pwd.value != document.mypage.pwd2.value) {
+	    alert("암호가 일치하지 않습니다.");
+	    mypage.pwd.value = "";
+	    mypage.pwd2.value = "";
+	    mypage.pwd.focus();
+	    return false;
+	  }
+	  
+	  $(document.mypage).ready(function() {
+	    $('#exampleModal').modal('show');
+	  });
+	  
+	  return true;
+	}
     
       
    function passConfirm() {
@@ -181,23 +154,6 @@ function fn_idChk(){
 
    
    
-    $.ajax({
-    url: '/check_email',
-    type: 'POST',
-    data: {email: email},
-    success: function(response) {
-      if (response.result === 'duplicate') {
-        conemail.style.color = wrongColor;
-        conemail.innerHTML = "중복된 이메일입니다.";
-      } else {
-        conemail.style.color = correctColor;
-        conemail.innerHTML = "사용 가능한 이메일입니다.";
-      }
-    },
-    error: function(xhr, status, error) {
-      console.log(error);
-    }
-  });
 
    
    
@@ -256,32 +212,49 @@ function fn_idChk(){
     }
 
 
+  
+     
 
   function UpdateCheck(){
-           if (document.mypage.pwd.value == ""){
-              alert("암호를 반드시 입력해주세여");
-              mypage.pwd.focus();
-              return false;
-           }
-           if(document.mypage.pwd.value != document.mypage.pwd2.value){
-              alert("암호가 일치하지 않습니다");
-              mypage.pwd.value="";
-              mypage.pwd2.value="";
-              mypage.pwd.focus();
-              return false;
-             
-           }
-           if (document.mypage.email.value == "") {
-              alert("이메일을 입력해주세요");
-              mypage.email.focus();
-              return false;
-           }
-           if (document.mypage.phone.value == "") {
-              alert("전화번호를 입력해주세요");
-              mypage.phone.focus();
-              return false;
-           }   
-           return true;   
+  			console.log("2222"+document.mypage.adr.value+"11111");
+  			var id = $('input#id').val();		
+  			console.log(id);
+      		if(id.include('@') {
+      		if(document.mypage.adr.value == "  ") {
+      			console.log('if문');
+      			alert("주소을 입력해주세요");
+              	mypage.adr.focus();
+              	return false;
+      		} 
+      		return true;
+      		}
+      		else  {
+				alert("else문");
+	           if (document.mypage.pwd.value == ""){
+	              alert("암호를 반드시 입력해주세여");
+	              mypage.pwd.focus();
+	              return false;
+	           }
+	           if(document.mypage.pwd.value != document.mypage.pwd2.value){
+	              alert("암호가 일치하지 않습니다");
+	              mypage.pwd.value="";
+	              mypage.pwd2.value="";
+	              mypage.pwd.focus();
+	              return false;
+	             
+	           }
+	           if (document.mypage.email.value == "") {
+	              alert("이메일을 입력해주세요");
+	              mypage.email.focus();
+	              return false;
+	           }
+	           if (document.mypage.phone.value == "") {
+	              alert("전화번호를 입력해주세요");
+	              mypage.phone.focus();
+	              return false;
+	           }   
+	          
+	           return true;    }
         }
         
         

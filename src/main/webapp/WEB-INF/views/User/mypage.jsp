@@ -1,3 +1,4 @@
+<%@page import="org.apache.ibatis.reflection.SystemMetaObject"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -8,9 +9,10 @@
 <jsp:include page="/WEB-INF/common/header.jsp" />
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="/resources/user/js/main.js"></script>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<!--  <script src="https://code.jquery.com/jquery-3.5.1.js"></script>-->
+
 
 <style>
 section {
@@ -63,7 +65,8 @@ input {
 		<table>
 		<tr style="border-top:20px solid white;">
 			<td style="padding-left: 80px;"><label for="id">아이디</label></td>
-			<td style="padding-left: 150px;" id="login_id">${login_info.id}<br></td>
+			<td style="padding-left: 150px;" id="login_id">${login_info.id}<input type="hidden"id="id" name="id" value="${login_info.id}"/><br></td>
+			
 		</tr>
 		<tr style="border-top:20px solid white;">
 			<td style="padding-left: 80px;"><label for="pwd">비밀번호</label></td>
@@ -108,7 +111,6 @@ input {
 		<tr style="border-top:20px solid white;">
 			<td style="padding-left: 80px;">주소</td>
 			<td colspan="2" style="padding-left: 150px;"><input type="text" size="50" class="address_input_2" name="adr2" id="adr2" placeholder="주소" value="${myinfo_adr2}" required></td><br>
-			
 		</tr>
 		<tr style="border-top:20px solid white;">
 			<td><input type="hidden"id="sspwd" name="sspwd" value="${login_info.pwd}"/> </td>
