@@ -86,7 +86,7 @@ background: #da8862;
                     <span class="box int_string_check" >
                         <input type="password" id="pwd2" name="pwd2" class="string" maxlength="20" pattern="^[A-Za-z0-9]{10,20}$" placeholder="비밀번호를 재입력해주세요" onkeyup="passConfirm()">
                     </span> 
-                    <span id="confirmMsg" style="font-size: 18px; margin-top: 100px;"></span>
+                    <span id="confirmMsg" style="font-size: 18px; display: block; margin-top: 13px;"></span>
                 </div>
 
                 
