@@ -53,6 +53,10 @@ span.span {
 	color: #323232;
 }
 
+span.br{
+	display: inline-block;
+	padding-top: 15px;
+}
 
 footer{
 	background-color:#f5f6f7;
@@ -109,7 +113,7 @@ input[type=text]:focus, input[type=email]:focus {
 										onclick="emailValidate()">
 									<div class="col-3"></div>
 									<div class="col-6">
-										<span class="span" id="emailCheck"></span>
+										<span class="span br" id="emailCheck"></span>
 									</div>
 								</div>
 
@@ -133,7 +137,7 @@ input[type=text]:focus, input[type=email]:focus {
 								<div class="form-group row">
 									<div class="col-3"></div>
 									<div class="col-7">
-										<span class="span" id="show"></span>
+										<span class="span br" id="show"></span>
 									</div>
 								</div>
 								<div class="card-body">
