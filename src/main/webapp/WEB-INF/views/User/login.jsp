@@ -111,7 +111,7 @@ footer {
 
 				</form>
 				<ul class="login_link_box">
-					<li class="login_li"><a href="/users/searchId" class="fonthover">아이디
+					<li class="login_li"style="margin-left: 0;"><a href="/users/searchId" class="fonthover">아이디
 							찾기</a> &nbsp;</li>
 
 					<li class="login_li"><a href="/users/searchPwd" class="fonthover">비밀번호
