@@ -5,12 +5,12 @@
 <!DOCTYPE html>
 <html>
 <style>
-.hover:hover {
-	background: #da8862;
-}
-.fonthover {
-	color: gray;
-}
+.hover:hover { 
+background: #da8862;
+ } 
+.fonthover { 
+ 	color: gray; 
+ } 
 .fonthover:hover {
 	color: #da8862;
 }
@@ -100,7 +100,7 @@ footer {
 					<c:if test="${ msg == false }">
 						<br>
 						<br>
-						<p style="color: red; font-size: 15px;">존재하지 않는 아이디 또는 비밀번호입니다</p>
+						<p style="color: red; font-size: 15px; margin: 20px 70px 0;">존재하지 않는 아이디 또는 비밀번호입니다</p>
 					</c:if>
 
 					<br> <br>
