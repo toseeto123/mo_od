@@ -4,9 +4,7 @@
 <html>
 <head>
 <style>
-.btnhover:hover{
-background: #da8862;
-}
+
 .bt_submit:hover{
 background: #da8862;
 }
@@ -87,8 +85,8 @@ background: #da8862;
                     <h3 class="join_title"><label for="pwd2" style="font-size: 20px;">* 비밀번호 재확인</label></h3>
                     <span class="box int_string_check" >
                         <input type="password" id="pwd2" name="pwd2" class="string" maxlength="20" pattern="^[A-Za-z0-9]{10,20}$" placeholder="비밀번호를 재입력해주세요" onkeyup="passConfirm()">
-                    </span>
-                    <span id="confirmMsg"></span>
+                    </span> 
+                    <span id="confirmMsg" style="font-size: 18px; margin-top: 100px;"></span>
                 </div>
 
                 
@@ -105,11 +103,11 @@ background: #da8862;
                     <h3 class="join_title" style="font-size: 20px;">* 나 이</h3>
                     <div id="bir_wrap">
                         <div>
-                               <input type="radio" value="10-19" class="age" name="age" id="age" checked/><label for="age">10대</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	                           <input type="radio" value="20-29" class="age" name="age" id="age1" /><label for="age1">20대</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	                           <input type="radio" value="30-39" class="age" name="age" id="age2" /><label for="age2">30대</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	                           <input type="radio" value="40-49" class="age" name="age" id="age3" /><label for="age3">40대</label> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-	                           <input type="radio" value="50대이상" class="age" name="age" id="age4" /><label for="age4">50대 이상</label> 
+                               <input type="radio" value="10-19" class="age" name="age" id="age" checked/>&ensp;<label for="age">10대</label> &emsp;&emsp;&emsp;
+	                           <input type="radio" value="20-29" class="age" name="age" id="age1" />&ensp;<label for="age1">20대</label> &emsp;&emsp;&emsp;
+	                           <input type="radio" value="30-39" class="age" name="age" id="age2" />&ensp;<label for="age2">30대</label> &emsp;&emsp;&emsp;
+	                           <input type="radio" value="40-49" class="age" name="age" id="age3" />&ensp;<label for="age3">40대</label> &emsp;&emsp;&emsp;
+	                           <input type="radio" value="50대이상" class="age" name="age" id="age4" />&ensp;<label for="age4">50대 이상</label> 
                         </div>
                     </div>
                 </div>

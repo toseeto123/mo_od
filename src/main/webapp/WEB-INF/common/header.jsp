@@ -102,7 +102,7 @@ li {
                <li><a class="getstarted scrollto" href="/admin/chart.do"><b>Admin</b></a></li>
                </c:when>
                <c:otherwise>
-               <li style="padding-left: 0px;margin: 30px 0px 30px 70px;width: 100px;"><a class="getstarted scrollto" href="/users/mypage"><b>Mypage</b></a></li>
+               <li style="padding-left: 0px;margin: 30px 0px 30px 25px;width: 100px;"><a class="getstarted scrollto" href="/users/mypage"><b>Mypage</b></a></li>
                </c:otherwise>
                </c:choose>
                <li><a class="getstarted scrollto" href="/users/logout"><b>Logout</b></a></li>

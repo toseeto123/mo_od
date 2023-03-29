@@ -5,14 +5,10 @@
 <!DOCTYPE html>
 <html>
 <style>
-.hover:hover {
-	background: #da8862;
-}
+
 .fonthover {
-	color: gray;
-}
-.fonthover:hover {
-	color: #da8862;
+	color: #323232;
+
 }
 .imghover:hover {
 	transform: scale(1.2);
@@ -43,8 +39,7 @@ footer {
 					<div class="carousel-container">
 						<div class="carousel-content">
 							<h2 class="animate__animated animate__fadeInDown">로그인</h2>
-							<p class="animate__animated animate__fadeInUp">로그인을 하시면 다양한
-								혜택을 누리실 수 있습니다.</p>
+							<p class="animate__animated animate__fadeInUp"> 회원만 서비스 이용이 가능합니다 </p>
 							<!--                         <div> -->
 							<!--                            <a href="#about" -->
 							<!--                               class="btn-get-started animate__animated animate__fadeInUp scrollto">Click</a> -->
@@ -91,22 +86,19 @@ footer {
 
 				<form id="login" action="/users/login" class="input-group"
 					method="post" style="margin-bottom: 15px;">
-					<input type="text" name="id" class="input-field" placeholder=" 아이디"
-						required autofocus style="border-radius: 3px;"> <input
-						type="password" name="pwd" class="input-field" placeholder=" 비밀번호"
-						required style="border-radius: 3px;">
+					<input type="text" name="id" class="input-field" placeholder=" 아이디" required autofocus style="border-radius: 3px;margin-bottom: 15px;">
+					<input type="password" name="pwd" class="input-field" placeholder=" 비밀번호" required style="border-radius: 3px;margin-bottom: 15px;">
 
 
 					<c:if test="${ msg == false }">
 						<br>
 						<br>
-						<p style="color: red; font-size: 15px;">존재하지 않는 아이디 또는 비밀번호입니다</p>
+						<p style="color: red; font-size: 15px; margin: 20px 70px 0;">존재하지 않는 아이디 또는 비밀번호입니다</p>
 					</c:if>
 
-					<br> <br>
+					
 
-					<button class="submit hover"
-						style="color: white; border-radius: 2px;">로그인</button>
+					<button class="submit hover" style="color: white; height: 60px;">로그인</button>
 
 
 				</form>
@@ -130,15 +122,15 @@ footer {
 
 				<div class="social_login">
 					<p class="snsname"
-						style="margin-bottom: 10px; margin-top: 38px; color: #c8936ed4; font-size: 20px; font-weight: 700">간편
+						style="margin-bottom: 10px; margin-top: 38px; color: #323232; font-size: 20px; font-weight: 700">간편
 						로그인</p>
 					<br>
-					<ul class="social_logo" style="height: 150px; margin-left: -20px;">
+					<ul class="social_logo" style="height: 80px; margin-left: -20px;">
 						<li class="box_list"><a id="custom-login-btn"
 							href="javascript:void(0);"
 							onclick="window.open('${naverUrl}','/users/naverLogin','width=830,height=500,location=no,status=no,scrollbars=yes');">
 								<img style="width: 50px;" src="/resources/user/img/naver.png"
-								alt="naver" class="imghover"> <span class="box_list_txt">네이버</span>
+								alt="naver" class="imghover"> <span class="box_list_txt" style="color: #323232;">네이버</span>
 						</a></li>
 
 
@@ -150,7 +142,7 @@ footer {
 
 
 								<img style="width: 50px;" src="/resources/user/img/kakao.png"
-								alt="kakao" class="imghover"> <span class="box_list_txt">카카오</span>
+								alt="kakao" class="imghover"> <span class="box_list_txt" style="color: #323232;">카카오</span>
 						</a></li>
 
 						<li class="box_list">
@@ -159,7 +151,7 @@ footer {
 								onclick="googleHandleAuthClick()">
 								<img style="width: 50px;" src="/resources/user/img/google.png"
 									alt="google" class="imghover"> <span class="box_list_txt"
-									style="color: #c8936ed4;">구글</span>
+									style="color: #323232;">구글</span>
 							</button>
 						</li>
 
