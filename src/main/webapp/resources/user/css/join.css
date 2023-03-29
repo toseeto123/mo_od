@@ -136,7 +136,7 @@ select {
 /* 버튼 */
 
 .btn_area {
-    margin: 29px 30px 91px 0;
+    margin: 29px 0 91px 0;
 }
 
 #btnJoin {
@@ -150,7 +150,7 @@ select {
     font-weight: 400;
    /*  font-family: Dotum,'돋움',Helvetica,sans-serif; */
     border-radius: 5px;
-    margin-left: 50px;
+    
 }
 
 #btnReset{
@@ -164,7 +164,7 @@ select {
     font-weight: 400;
    /*  font-family: Dotum,'돋움',Helvetica,sans-serif; */
     border-radius: 5px;
-    margin: 0 30px;
+    margin: 0 73px
 }
 
 #btnBack{
