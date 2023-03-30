@@ -92,7 +92,7 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
 			<c:if test="${!empty login_info.id}">
                <c:choose>
                <c:when test="${login_info.id == 'admin' }">
-               <li style="padding-left: 30px;margin: 30px 0px 30px 50px;width: 100px;"><a class="getstarted scrollto" href="/admin/chart.do"><b>Admin</b></a></li>
+               <li style="padding-left: 30px;margin: 30px 0px 30px 50px;width: 100px;"><a class="getstarted scrollto" href="/admin/chart"><b>Admin</b></a></li>
                </c:when>
                <c:otherwise>
                <li style="padding-left: 0px;margin: 30px 0px 30px 25px;width: 100px;"><a class="getstarted scrollto" href="/users/mypage"><b>Mypage</b></a></li>
