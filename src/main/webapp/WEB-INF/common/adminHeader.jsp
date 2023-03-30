@@ -49,8 +49,8 @@ font-size: 20px;
 li {
    display: flex;
    align-items: center;
-   margin: 30px;
-   margin-bottom: 30px;
+   margin: 10px;
+   margin-bottom: 0;
 }
 *{
 font-family: 'SUIT-Regular', normal;font-weight:900;
@@ -82,7 +82,7 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
           
           <li class="dropdown"><a href="/admin/payment"><b>결 제</b></a>
           </li>
-          <li style="padding-left: 0px;margin: 30px 0px 30px 25px; width: 100px;"><a class="getstarted scrollto" href="/"><b>Client</b></a></li>
+          <li style="padding-left: 0px;margin: 40px 0px 30px 25px; width: 100px;"><a class="getstarted scrollto" href="/"><b>Client</b></a></li>
           <li><a class="getstarted scrollto" href="/adminLogout"><b>Logout</b></a></li>
 		
         </ul>
