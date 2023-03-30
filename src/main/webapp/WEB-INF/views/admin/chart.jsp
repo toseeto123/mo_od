@@ -11,7 +11,6 @@
 
 
 b{
-	padding-left:50px;
 	text-align: center;
 	font-family: 'SUIT-Regular', normal;font-weight:900;
 }
@@ -82,7 +81,7 @@ background-color:#f5f6f7;
 	<div class="grid-container">
 	<div class="chart1">
   <div class="chart-container">
-     <div class="chartTitle"><b>상품별 주문 횟수</b></div>
+     <div class="chartTitle"><b style="padding-left:50px;">상품별 주문 횟수</b></div>
     <div class="chart-item">
       <canvas id="myChart1"></canvas>
     </div>
@@ -100,7 +99,7 @@ background-color:#f5f6f7;
   
 <div class="chart3">
   <div class="chart-container">
-    <div class="chartTitle"><b>주간 매출</b></div>
+    <div class="chartTitle"><b style="padding-left:50px;">주간 매출</b></div>
     <div class="chart-item">
       <canvas id="myChart3"></canvas>
     </div>
