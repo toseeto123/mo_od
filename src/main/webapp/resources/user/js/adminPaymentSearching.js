@@ -27,7 +27,7 @@ function pageView(event){
 
 
 
-function mainPagingEngine(url){
+function mainPagingEngine(){
 	const xhttp = new XMLHttpRequest();
 	
 	xhttp.onload = function() {
@@ -80,7 +80,7 @@ function mainPagingEngine(url){
 			var date = fullDate.getFullYear() + '-' + month + '-' + fullDate.getDate();
 			var no = tableData.list[i].orderNo;
 				text = text +
-				"<table id='table' class='table' style='margin-top:5%; margin-left:15%; width:70%;'>"
+				"<table id='table' class='table' style='width:1200px;'>"
                 +"<thead id='thead'>"
                 +"<tr>"
                 	+"<th id='orderNo' style='width:20%;'>주문번호 : " + tableData.list[i].orderNo + "</th>"
@@ -90,7 +90,7 @@ function mainPagingEngine(url){
                 +"<tr>"
                 +"<th id='name' scope='col'>이름 : " + tableData.list[i].name + "</th>"
                 +"<th id='address' colspan='3' scope='col'>주소 : " + tableData.list[i].address +" </th>"       
-              	+"<th id='phone' scope='col' style='width:30%;'>연락처 : " + tableData.list[i].phone + "</th>"
+              	+"<th id='phone' scope='col'>연락처 : " + tableData.list[i].phone + "</th>"
                 +"</tr>"
                   +"<tr>"
                     +"<th scope='col'>상품번호</th>"
@@ -121,7 +121,7 @@ function mainPagingEngine(url){
                   +"<tr>"
                   +"<td colspan='4' style='border-bottom:none'></td>"
                   +"<td style='border-bottom:none'>"
-                  	+"<a onclick='$(`#myModal"+no+"`).modal(`show`);' style='background: #323232; border: none; color: white;' class='btn-get-started animate__animated'>주문취소</a>"
+                  	+"<a onclick='$(`#myModal"+no+"`).modal(`show`);' style='padding: 4px 20px; background: #323232; border: none; color: white;' class='btn-get-started animate__animated'>주문취소</a>"
                   	+"</td>"
                   +"</tr>"
                   
@@ -233,8 +233,19 @@ newDiv.appendChild(modalDialog);
 			}
 			
 			
+			var footer = document.querySelector('#modulePaging');
+			var footerReal = document.querySelector('footer');
+			footerReal.classList.add("footer");
 			
 			
+				setTimeout(function(){					
+					var footerRect = footer.getBoundingClientRect();
+					var footerRealRect = footerReal.getBoundingClientRect();
+					if (footerRect.top + footerRect.height >= footerRealRect.top) {
+						footerReal.classList.remove("footer");
+					}	
+				
+				}, 0);
 			
 				
 				

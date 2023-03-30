@@ -6,8 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Chart</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<title>결 제</title>
 <jsp:include page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
 
 <style>
@@ -18,10 +17,10 @@ select, option{
 
 #hero{
 	height: auto;
-	margin-bottom: 100px;
 }
 .searchParent{
 	text-align: center;
+	margin: 50px 0;
 }
 .search{
 	display: inline-block;
@@ -45,19 +44,39 @@ input[type=button]{
 input[type=search]{
 	font-size: 18px;
 }
-.footer{
-	margin-top: 500px;
+section{
+	padding: 0;
+	margin: 0;
+	text-align: center;
 }
-</style>
+#tables{
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+#table{
+	width: 1200px;
+	text-align: left;
+}
+#modulePaging{
+	display: inline-block;
+	padding: 20px 0 26px;
+}
 
+.footer{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+</style>
 </head>
 
 <body style="background-color:#f5f6f7;">
 
 
-	<section id="hero"class="container" style="background-color:#f5f6f7;">
 	<div class="searchParent">
-			<div class="search" style="margin-top: 110px; margin-bottom: 50px;">
+			<div class="search">
 			<select id="searchWhat">
 				<option value="name">이름</option>
 				<option value="orderNo">주문번호</option>
@@ -70,10 +89,11 @@ input[type=search]{
 				id="searchBtn" value="찾기" onclick="search()">
 				</div>
 			</div>
-		<div class="hero-container">
+			<section style="padding: 0;
+	margin: 0;">
 			<div id="tables">
 			<c:forEach var="member" items="${member}">
-              <table id="table" class="table" style="margin-top:5%; margin-left:15%; width:70%;">
+              <table id="table" class="table">
                 <thead id="thead">
                 <tr>
                 	<th id="orderNo" style="width:20%;">주문번호 : ${member.orderNo}</th>
@@ -83,7 +103,7 @@ input[type=search]{
                 <tr>
                 <th id="name" scope="col">이름 : ${member.name}</th>
                 <th id="address" colspan="3" scope="col">주소 : ${member.address}</th>
-                <th id="phone" scope="col" style="width:30%;">연락처 : ${member.phone}</th>
+                <th id="phone" scope="col">연락처 : ${member.phone}</th>
                 </tr>
                   <tr>
                     <th scope="col">상품번호</th>
@@ -115,7 +135,7 @@ input[type=search]{
                   <td colspan="4" style="border-bottom:none"></td>
                   <td style="border-bottom:none">
                   	<form action="#" method="post">
-                  	<a onClick="$('#myModal${member.orderNo}').modal('show');" style="background: #323232; border: none; color: white;" class="btn-get-started animate__animated">주문취소</a>
+                  	<a onClick="$('#myModal${member.orderNo}').modal('show');" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated">주문취소</a>
                   	</form>
                   	</td>
                   </tr>
@@ -158,11 +178,14 @@ input[type=search]{
               
               </c:forEach>
               </div>
+              
+              </section>
               <!-- End Default Table Example -->
  
 					<!-- End Default Table Example -->
+			<section>
 			<div id="modulePaging"
-				style="display: inline-block; position: absolute; left: 50%; transform: translateX(-50%); font-size: 20px;">
+				style="display: inline-block;">
 				<c:if test="${prePage!=null }">
 					<a href="/admin/payment/${prePage}">&lt;</a>
 				</c:if>
@@ -183,29 +206,29 @@ input[type=search]{
 					<a href="/admin/payment/${nextPage}">&gt;</a>
 				</c:if>
 			</div>
-			
-		</div>
+			</section>
+		
 		<input type="hidden" value="${selectPage}" id="selectPage">
 
-	</section>
+<footer class="footer"><jsp:include
+					page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" /></footer>
 	<script
 		src="https://cdn.jsdelivr.net/npm/jquery@3.6.3/dist/jquery.slim.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+
 <script src="/resources/user/js/adminPaymentSearching.js"></script> 
-<footer class="footer"><jsp:include
-					page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" /></footer>
+<script defer>
+var footer = document.querySelector('#modulePaging');
+var footerReal = document.querySelector('footer');
+var footerRect = footer.getBoundingClientRect();
+var footerRealRect = footerReal.getBoundingClientRect();
+if (footerRect.top + footerRect.height >= footerRealRect.top) {
+	footerReal.classList.remove("footer");
+}	
+</script>
 </body>
 
-<script>
-	
-var footerElement = document.querySelector('footer');
-if (footerElement.clientHeight > 400) {
-	footerElement.classList.remove('footer');
-} else {
-	  footerElement.classList.add('footer');
-}
-</script>
 </html>
