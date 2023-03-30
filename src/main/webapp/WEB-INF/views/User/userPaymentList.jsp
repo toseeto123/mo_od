@@ -200,7 +200,7 @@ width: 300px;
 .btn-primary {
 	background:#525252;
 	border: none;
-	padding: 5px;
+	padding: 10px;
 	border-radius: 5px;
 	font-size: 20px;
 	color:white;
@@ -210,13 +210,11 @@ width: 300px;
 }
 
 .btn-primary:hover{
-	background: #da8862;
+	background: #323232;
 }
-.btn-secondary.dropdown-toggle:focus, .btn-secondary.dropdown-toggle:hover {
-    background-color: red;
-}
+
   .dropdown-toggle.active {
-    background-color: #86765c !important;
+    background-color: #323232 !important;
   }
   
   i{
@@ -255,11 +253,10 @@ width: 300px;
          <c:otherwise>
             <div class="dropdown">
  <c:forEach var="orderid" items="${orderid}">
-  <button style="background: #AD8E70; border: none;"class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${orderid.orderid}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    주문번호: ${orderid.orderid}　/　결제일:<fmt:formatDate value="${orderid.successTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
-    
+  <button style="background: #525252; border: none;"class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${orderid.orderid}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    <span>주문번호: ${orderid.orderid}</span>　<span style="margin: 0 60px 0 60px;">결제일:<fmt:formatDate value="${orderid.successTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span> <c:if test="${orderid.success eq '구매 확정'}"><span style="letter-spacing:8px;">구매확정</span></c:if><c:if test="${orderid.success eq '결제 완료'}"><span style="letter-spacing:1px;">결제취소가능</span></c:if>
   </button>
-  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton${orderid.orderid}" style=" border: 2px solid #AD8E70;">
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton${orderid.orderid}" style=" border: 2px solid #525252;">
   
         <form action="/User/kakaoPayCancel" id="cancel-form">
     <c:forEach var="order" items="${orders}">
@@ -268,6 +265,7 @@ width: 300px;
   	<input type="hidden" value="${order.tid }" name="tid">
     <input type="hidden" value="${order.pro_number }" name="pro_number">
     <input type="hidden" value="${orderid.total}" name="price">
+    <input type="hidden" value="${orderid.success}" name="paystatus">
  <div class="deleteplz" style="display:flex; flex-wrap: wrap; align-items:center;  border-bottom: 1px solid lightgray; margin: 50px;" >
 
 <img src="/resources/assets/img/product/${order.pro_img1 }"
@@ -292,8 +290,14 @@ width: 300px;
 </div>
       </c:if>
     </c:forEach>
+    
     <div class="cancelbox">
-    <button type="button" class="btn-primary" onclick="confirmCancel()"><fmt:formatNumber value="${orderid.total}" type="currency" currencySymbol="₩" />주문취소</button>
+    <c:if test="${orderid.success eq '결제 완료'}">
+    <button type="button" class="btn-primary" onclick="confirmCancel()"><fmt:formatNumber value="${orderid.total}" type="currency" currencySymbol="₩" />　주문취소</button>
+    </c:if>
+    <c:if test="${orderid.success eq '구매 확정'}">
+    <span style="white-space: nowrap;">구매확정 상태에는 결제취소가 불가능합니다.</span>
+    </c:if>
     </div>
         </form>
   </div>
@@ -305,7 +309,7 @@ width: 300px;
    </div>
 <script>
 function confirmCancel() {
-    if (confirm("주문을 취소하시겠습니까?")) {
+    if (confirm("주문을 취소하시겠습니까? \n결제승인시간 기준 24시간 이후 자동 구매확정 상태가됩니다.")) {
         document.getElementById("cancel-form").submit();
     } else {
         return false;

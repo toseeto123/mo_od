@@ -17,6 +17,8 @@ public class KakaoPayApprovalServiceImpl implements KakaoPayApprovalService{
 	public void paymentinsert(KakaoPayApprovalVO kvo) {
 		kdao.paymentinsert(kvo);
 	}
+	
+
 
 	public void paysuccessdelete(String userno) {
 		kdao.paysuccessdelete(userno);

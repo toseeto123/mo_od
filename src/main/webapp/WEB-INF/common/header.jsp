@@ -52,7 +52,12 @@ li {
 *{
 font-family: 'SUIT-Regular', normal;font-weight:900;
 }
-
+@font-face {
+    font-family: 'KimjungchulMyungjo-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302_01@1.0/KimjungchulMyungjo-Bold.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
 
 
 </style>
@@ -65,7 +70,7 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
 
-       <h1 class="logo"><a href="/" style="font-family:'궁서'; font-size: 50px;">묻:<b class="logo2" style="font-family:'굴림'; font-size: 56px;">mo_od</b></a></h1>
+       <h1 class="logo"><a href="/" style="font-family:'궁서'; font-size: 50px;">묻:<b class="logo2" style="font-family:'KimjungchulMyungjo-Bold'; font-size: 56px;">mo_od</b></a></h1>
  
       <nav id="navbar" class="navbar">
         <ul>

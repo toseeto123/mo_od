@@ -17,6 +17,7 @@ public class KakaoPayApprovalDAO {
 	public void paymentinsert(KakaoPayApprovalVO kvo) {
 		sql.insert("KakaoPayApprovalDAO.insert", kvo);
 	}
+
 	
 	public void paysuccessdelete(String userno) {
 		sql.delete("KakaoPayApprovalDAO.catedelete" , userno);

@@ -8,6 +8,7 @@ public interface KakaoPayApprovalService {
 	
 	public void paymentinsert(KakaoPayApprovalVO kvo);
 
+
 	public void paysuccessdelete(String userno);
 	
 	public void paysuccessupdate(String pro_no);

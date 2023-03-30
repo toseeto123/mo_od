@@ -38,6 +38,8 @@ public class userPaymentController {
 	ProductService productService;
 	@Autowired
 	KakaoPayApprovalService kakaoPayApprovalService;
+	
+	
 
 	@Transactional
 	@RequestMapping(value = "/orders", method = RequestMethod.POST)
@@ -106,6 +108,8 @@ public class userPaymentController {
 
 		return "User/userPay";
 	}
+	
+	
 
 	@RequestMapping(value = "/cateorders", method = RequestMethod.POST)
 	public String cateProcessOrder(HttpSession session, Model model, @RequestParam("pro_number") String pro_number,
