@@ -44,9 +44,6 @@
 <link href="/resources/assets/css/style.css" rel="stylesheet">
 
 <style>
-	body{
-		background-color:#f5f6f7;
-	}
 	p{
 		display: inline-block;
 		font-size: 45px;
@@ -59,17 +56,22 @@
 		transition: all 0.5s;
 		color: white;
 	}
+	input[type=text], input[type=password], input[type=button], input[type=submit]{
+		padding: 0; margin: 0;
+		margin-top: 35px;
+	}
 	
 	footer{
-		position: absolute;		
-		bottom: 0;
 		width: 100%;
+		position: absolute;
+		bottom: 0;
 	}
+
 </style>
 
 
 </head>
-<body>
+<body style="background-color:#f5f6f7;">
  <% session.invalidate(); %>
  
  
@@ -77,15 +79,15 @@
  
  
  
- 	<div class="login" style="margin-top: 140px;">
+ 	<div class="login" style="margin: 127px 0; ">
 		<div class="form-login">
 
-			<div class="social-icons">
+			<div>
 				<div style="text-align: center;"><p style="display: inline; font-family: 궁서;">묻:</p>
-							<p style="display: inline; font-family: 굴림;">mo_od</p><p>&nbsp; 관리자</p></div>
+							<p style="display: inline; font-family: 굴림;">mo_od</p><p style="padding: 0; margin: 0;">&nbsp; 관리자</p></div>
 
 				<form id="login" action="/adminLogin" class="input-group"
-					method="post" style="margin-bottom: 15px;">
+					method="post">
 					<input type="text" name="id" class="input-field" placeholder=" 아이디"
 						required autofocus style="border-radius: 3px;"> <input
 						type="password" name="pwd" class="input-field" placeholder=" 비밀번호"
@@ -93,14 +95,9 @@
 
 
 					<c:if test="${ msg == false }">
-						<br>
-						<br>
+
 						<p style="color: red; font-size: 15px;">존재하지 않는 아이디 또는 비밀번호입니다</p>
 					</c:if>
-
-					<br> <br>
-
-
 										<input class="submit hover" type="submit" value="로그인">
 
 
@@ -108,19 +105,10 @@
 											onclick="location.href='/goclient'">
 
 
-				</form>
-			
-
-				<!-- 			<a href="index.jsp" class="" style="color: black;">메인 페이지</a>  -->
-				<!-- 			<a href="join.do" class="" style="color: black; margin: 0 15px 0 15px;">회원가입</a> -->
-				<!-- 			<a href="" class="" style="color: black;">비밀번호재설정</a> -->
-
-
-
-				
+				</form>	
 					
 
-				</div>
+
 			</div>
 		</div>
  
@@ -131,7 +119,7 @@
 
 
 
-	<jsp:include page="/WEB-INF/common/footer.jsp" />
+<footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
 	<script type="text/javascript" src="/resources/user/js/main.js"></script>
 </body>
 </html>

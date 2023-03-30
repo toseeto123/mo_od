@@ -44,7 +44,7 @@ function mainPagingEngine(url){
 			let pagingNumber = "";
 	  
 		  	if(tableData.vo.prePage > 0){
-				pagingNumber += "<a "+"id='preView'"+" style='color:#deb887' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>&lt;</a> ";
+				pagingNumber += "<a "+"id='preView'"+" style='color:#323232;' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>&lt;</a> ";
 				preView = tableData.vo.prePage;
 			}
 
@@ -52,13 +52,13 @@ function mainPagingEngine(url){
 				if(data.page == tableData.vo.pagingNo[q]){
 					pagingNumber += " &nbsp;<a "+"id='page"+q+"'"+" style='color:green' onclick='pageView(this)'>"+tableData.vo.pagingNo[q]+"</a>&nbsp; ";
 				}else{
-					pagingNumber += " &nbsp;<a "+"id='page"+q+"'"+" style='color:#deb887' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>"+tableData.vo.pagingNo[q]+"</a>&nbsp; ";
+					pagingNumber += " &nbsp;<a "+"id='page"+q+"'"+" style='color:#323232;' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>"+tableData.vo.pagingNo[q]+"</a>&nbsp; ";
 				}		
 				pagingNo.push(tableData.vo.pagingNo[q]);
 			}
 			
 			if(tableData.vo.nextPage > 0){
-				pagingNumber += " <a "+"id='nextView'"+" style='color:#deb887' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>&gt;</a>"
+				pagingNumber += " <a "+"id='nextView'"+" style='color:#323232;' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>&gt;</a>"
 				nextView = tableData.vo.nextPage;
 			}	
 			paging.innerHTML = pagingNumber;
@@ -121,7 +121,7 @@ function mainPagingEngine(url){
                   +"<tr>"
                   +"<td colspan='4' style='border-bottom:none'></td>"
                   +"<td style='border-bottom:none'>"
-                  	+"<a onclick='$(`#myModal"+no+"`).modal(`show`);' class='btn-get-started animate__animated'>주문취소</a>"
+                  	+"<a onclick='$(`#myModal"+no+"`).modal(`show`);' style='background: #323232; border: none; color: white;' class='btn-get-started animate__animated'>주문취소</a>"
                   	+"</td>"
                   +"</tr>"
                   
@@ -255,10 +255,10 @@ xhttp.send();
 }
 	
 function colorChangeOver(event){//마우스 호버시
-	event.style.color='#78E150';
+	event.style.color='#323232;';
 }
 function colorChangeOut(event){// 마우스 아웃시
-	event.style.color='#deb887';
+	event.style.color='#323232;';
 }
 	
 	

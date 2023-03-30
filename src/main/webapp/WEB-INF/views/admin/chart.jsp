@@ -8,68 +8,80 @@
 <title>Chart</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <style>
-	h4{
+
+
+b{
 	text-align: center;
-	}
-	footer{
-		width: 100%;
-		margin-top: 100px;
-	}
+	font-family: 'SUIT-Regular', normal;font-weight:900;
+}
+	
+.chartTitle{
+	text-align: center;
+}
+	
 .grid-container {
+	background-color:#f5f6f7;
+	margin: 0 auto;	
+	width: 1000px;
+	display: grid;
+	grid-template-rows: auto;
+	grid-template-columns: repeat(2, 1fr);
+	column-gap: 40px;
+}
+.chart1, .chart2{
+background-color:#f5f6f7;
 	margin-top: 100px;
-  display: grid;
-  grid-template-rows: auto;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+}
+.chart3, .chart4{
+background-color:#f5f6f7;
+	margin-top: 100px;
+	margin-bottom: 100px;
 }
 
 .chart-item {
   display: flex;
   justify-content: center;
   align-items: center;
+  width: 500px;
   height: 300px;
 }
 
-.chart1 {
-  grid-row: 1;
-  grid-column: 1;
-  margin: 50px 0;
+#myChart1, #myChart2, #myChart3, #myChart4{
+	width: 500px;
+	height: 300px;
 }
 
-.chart2 {
-  grid-row: 1;
-  grid-column: 2;
-  margin: 50px 0;
-}
 
-.chart3 {
-  grid-row: 2;
-  grid-column: 1;
-  margin: 50px 0;
+#myChart1{
+	grid-row: 1;
+	grid-column: 1;
 }
-
-.chart4 {
-  grid-row: 2;
-  grid-column: 2;
-  margin: 50px 0;
+#myChart2{
+	grid-row: 1;
+	grid-column: 2;
 }
-canvas{
-	width: 50%;
+#myChart3{
+ 	 grid-row: 2;
+ 	 grid-column: 1;
+}
+#myChart4{
+	grid-row: 2;
+	grid-column: 2;
 }
 </style>
 </head>
-
-<body>
 <header>
 	<jsp:include
 		page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
 </header>
+<body>
 
 
+<div style="background-color:#f5f6f7;">
 	<div class="grid-container">
 	<div class="chart1">
   <div class="chart-container">
-    <h4>상품별 주문 횟수</h4>
+     <div class="chartTitle"><b>상품별 주문 횟수</b></div>
     <div class="chart-item">
       <canvas id="myChart1"></canvas>
     </div>
@@ -78,7 +90,7 @@ canvas{
 
 <div class="chart2">
   <div class="chart-container">
-    <h4>상품별 장바구니 횟수</h4>
+    <div class="chartTitle"><b>상품별 장바구니 횟수</b></div>
     <div class="chart-item">
       <canvas id="myChart2"></canvas>
     </div>
@@ -87,7 +99,7 @@ canvas{
   
 <div class="chart3">
   <div class="chart-container">
-    <h4>요일별 매출(올해 기준)</h4>
+    <div class="chartTitle"><b>요일별 매출(올해 기준)</b></div>
     <div class="chart-item">
       <canvas id="myChart3"></canvas>
     </div>
@@ -96,14 +108,14 @@ canvas{
   
 <div class="chart4">
   <div class="chart-container">
-    <h4>성별/연령별 구매분포도(카테고리)</h4>
+    <div class="chartTitle"><b>성별/연령별 구매분포도(카테고리)</b></div>
     <div class="chart-item">
       <canvas id="myChart4"></canvas>
     </div>
   </div>
 </div>
 </div>
-							
+	</div>						
 							<c:set var="index1" value="0" />
 							<c:forEach var="list" items="${chart1}">
 							<input type="hidden" id="serialNumber1${index1}" value="${list.serialNumber}">
@@ -130,7 +142,6 @@ canvas{
 	
 				
 	
-	<!-- End Hero -->
 
 <footer>
 	<jsp:include
@@ -178,8 +189,7 @@ canvas{
 	for(var i=0; i<woman.length; i++){
 		let womanData = {};
 		womanData['x'] = woman[i].categorySerial
-		womanData['y'] = woman[i].age
-		
+		womanData['y'] = woman[i].age		
 		womanData['r'] = Math.floor(woman[i].productCount/sum4*100)
 		womanChartData.push(womanData);
 	}
