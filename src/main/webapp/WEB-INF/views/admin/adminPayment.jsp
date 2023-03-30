@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html style="background-color:#f5f6f7;">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,18 +27,18 @@ select, option{
 	display: inline-block;
 }
 a{
-	color: #c8936ed4;
+	color: #323232;
+	cursor: pointer;
 }
 a:hover {
 	cursor: pointer;	
-	color: #78E150;
+	color: #323232;
 }
 *:focus { outline: 0; }
 input[type=button]{
 	color: white;
-	background: #d2b48c;  
+	background: #323232;  
 	width:100px; 
-	border-radius:10px; 
 	border: none;
 	font-size: 20px;
 }
@@ -52,10 +52,10 @@ input[type=search]{
 
 </head>
 
-<body>
+<body style="background-color:#f5f6f7;">
 
 
-	<section id="hero"class="container"  style="background: white;">
+	<section id="hero"class="container" style="background-color:#f5f6f7;">
 	<div class="searchParent">
 			<div class="search" style="margin-top: 110px; margin-bottom: 50px;">
 			<select id="searchWhat">
@@ -115,7 +115,7 @@ input[type=search]{
                   <td colspan="4" style="border-bottom:none"></td>
                   <td style="border-bottom:none">
                   	<form action="#" method="post">
-                  	<a onClick="$('#myModal${member.orderNo}').modal('show');" class="btn-get-started animate__animated">주문취소</a>
+                  	<a onClick="$('#myModal${member.orderNo}').modal('show');" style="background: #323232; border: none; color: white;" class="btn-get-started animate__animated">주문취소</a>
                   	</form>
                   	</td>
                   </tr>

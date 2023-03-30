@@ -1,15 +1,23 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+
 <!DOCTYPE html>
-<html>
+<html lang="utf-8">
+
 <head>
-<meta charset="UTF-8">
-<title>묻:mo_od</title>
+<script src="https://unpkg.com/phosphor-icons"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/spring-webmvc/5.3.8/spring-webmvc.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+	rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+  <title>묻:mo_od</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -19,7 +27,7 @@
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
-
+  
   <!-- Vendor CSS Files -->
   <link href="/resources/assets/vendor/animate.css/animate.min.css" rel="stylesheet">
   <link href="/resources/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -38,53 +46,53 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
 b{
 font-size: 20px;
 }
-
 li {
    display: flex;
    align-items: center;
-   margin: 10px;
-   margin-bottom: 0;
+   margin: 30px;
+   margin-bottom: 30px;
+}
+*{
+font-family: 'SUIT-Regular', normal;font-weight:900;
 }
 </style>
-
-
 </head>
+
 <body>
-<!-- ======= Header ======= -->
+
+
+  <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center justify-content-between">
-      <h1 class="logo"><a href="/" style="font-family:'궁서'; font-size: 50px;">묻:<b class="logo2" style="font-family:'굴림'; font-size: 56px;">mo_od</b></a></h1>
-      <!-- Uncomment below if you prefer to use an image logo -->
-      <!-- <a href="/index.html" class="logo"><img src="resources/assets/img/logo.png" alt="" class="img-fluid"></a>-->
 
+       <h1 class="logo"><a href="/admin/chart" style="font-family:'궁서'; font-size: 50px;">묻:<b class="logo2" style="font-family:'굴림'; font-size: 56px;">mo_od</b></a></h1>
+ 
       <nav id="navbar" class="navbar">
-        <ul class="headerMain">
-          <li class="dropdown"><a href="/admin/adminProList.do" ><b>상품관리</b></a>
-          
-          		<ul>
-                  <li><a href="/admin/insert.do"><b>상품등록</b></a></li>
+        <ul>
+
+          <li class="dropdown"><a href="/admin/adminProList"><b>상품관리</b></a>
+                <ul>
+                 <li><a href="/admin/insert"><b>상품등록</b></a></li>
                 </ul>
-
           </li>
-
-          <li class="dropdown"><a href="/admin/adminMemberList.do"><b>회원관리</b></a>
-                
+          <li class="dropdown"><a href="/admin/adminMemberList"><b>회원관리</b></a>
           </li>
-          <li class="dropdown"><a href="/admin/admincate.do"><b>버킷</b></a>
-                
+          <li class="dropdown"><a href="/admin/admincate"><b>버 킷</b></a>
           </li>
-          <li class="dropdown"><a href="/admin/payment.do"><b>결제</b></a>
-          </li>
-          <!-- 알아서 이거 활용하자 -->
-          <li style="padding-left: 30px;margin: 40px 0px 30px 50px;width: 100px;"><a class="getstarted scrollto" href="/"><b>Client</b></a></li>
           
-          <li><a class="getstarted scrollto" href="/adminLogout.do"><b>Logout</b></a></li>
-       </ul>
+          <li class="dropdown"><a href="/admin/payment"><b>결 제</b></a>
+          </li>
+          <li style="padding-left: 0px;margin: 30px 0px 30px 25px; width: 100px;"><a class="getstarted scrollto" href="/"><b>Client</b></a></li>
+          <li><a class="getstarted scrollto" href="/adminLogout"><b>Logout</b></a></li>
+		
+        </ul>
+
+
         <i class="bi bi-list mobile-nav-toggle"></i>
-              </nav><!-- .navbar -->
+      </nav><!-- .navbar -->
 
     </div>
   </header><!-- End Header -->
 
-</body>
-</html>
+
+<jsp:include page="/WEB-INF/common/RecentlyViewProduct.jsp"/>

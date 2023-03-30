@@ -45,7 +45,7 @@ const data = {}
 		console.log(tableData.vo.prePage)
 	
 		if(tableData.vo.prePage > 0){
-			pagingNumber += "<a "+"id='preView'"+" style='color:#c8936ed4' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>&lt;</a> ";
+				pagingNumber += "<a "+"id='preView'"+" style='color:#323232;' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>&lt;</a> ";
 			preView = tableData.vo.prePage;
 			}
 	
@@ -53,13 +53,13 @@ const data = {}
 		if(data.page == tableData.vo.pagingNo[q]){
 		pagingNumber += " &nbsp;<a "+"id='page"+q+"'"+" style='color:green' onclick='pageView(this)'>"+tableData.vo.pagingNo[q]+"</a>&nbsp; ";
 		}else{
-			pagingNumber += " &nbsp;<a "+"id='page"+q+"'"+" style='color:#c8936ed4' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>"+tableData.vo.pagingNo[q]+"</a>&nbsp; ";
+			pagingNumber += " &nbsp;<a "+"id='page"+q+"'"+" style='color:#323232;' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>"+tableData.vo.pagingNo[q]+"</a>&nbsp; ";
 		}
 		
 		pagingNo.push(tableData.vo.pagingNo[q]);
 	}
 	if(tableData.vo.nextPage > 0){
-		pagingNumber += " <a "+"id='nextView'"+" style='color:#c8936ed4' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>&gt;</a>"
+		pagingNumber += " <a "+"id='nextView'"+" style='color:#323232;' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>&gt;</a>"
 		nextView = tableData.vo.nextPage;
 	}
 	
@@ -102,10 +102,10 @@ const data = {}
 	}
 	
 		function colorChangeOver(event){
-			event.style.color='#D29953';
+			event.style.color='#323232;';
 		}
 		function colorChangeOut(event){
-			event.style.color='#c8936ed4';
+			event.style.color='#323232;';
 		}
 		
 		
