@@ -38,7 +38,7 @@ input {
 }
 
   i{
-  color:#333333; 
+  color:#323232; 
   font-size: 25px; 
   vertical-align:bottom;
   }
@@ -48,25 +48,25 @@ input {
 	<section>
       <ul class="nav nav-pills nav-justified">
         <li class="nav-item" >
-          <a class="nav-link active" href="/users/mypage" style="background: #da8862; color:#333333; font-weight: 700;"><i class="xi-profile"></i> 회원 정보</a>
+          <a class="nav-link active" href="/users/mypage" style="background: #323232; color:white; font-weight: 700;"><i class="xi-profile" style="color:white;"></i> 회원 정보</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/users/bucket" style="background: #c8936ed4; color:#333333; font-weight: 700;"><i class="xi-cart"></i> 장바 구니</a>
+          <a class="nav-link" href="/users/bucket" style="background: #323232; color:white; font-weight: 700;"><i class="xi-cart" style="color:white;"></i> 장바 구니</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/products/payMypage" style="background: #c8936ed4; color:#333333; font-weight: 700;"><i class="xi-list-dot"></i> 결제 내역</a>
+          <a class="nav-link" href="/products/payMypage" style="background: #323232; color:white; font-weight: 700;"><i class="xi-list-dot" style="color:white;"></i> 결제 내역</a>
         </li>
       </ul>
    </section>
 
 
-	<div class="container" style="border-top:2px solid #c8936ed4;padding:40px 0;">
+	<div class="container" style="border-top:2px solid #323232;padding:40px 0; width: 1200px;">
 		<fieldset style="
     width: fit-content;
     margin: 0 auto;
 ">
 
-	<form action="/users/update?id=${login_info.id}" method="post" name="mypage" id="mypage" style="width:950px;border:2px solid #c8936ed4;padding-bottom: 50px;">
+	<form action="/users/update?id=${login_info.id}" method="post" name="mypage" id="mypage" style="width:950px;border:2px solid#323232;padding-bottom: 10px;">
 		<table>
 		<tr style="border-top:20px solid white;">
 			<td style="padding-left: 80px;"><label for="id">아이디</label></td>
@@ -110,7 +110,7 @@ input {
 		
 			<td><label for="adr"></label></td>
 			<td style="width:310px;padding-left: 150px;"><input type="text" class="address_input_1" name=adr id="adr" placeholder="우편번호" value="${myinfo_adr1}" ><br></td>	
-			<td style="padding-left: 110px;"><input type="button" class="adrchk" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br></td>
+			<td style="padding-left: 110px;"><input type="button" class="adrchk" onclick="sample6_execDaumPostcode()" style="background-color:#323232; color: white; border:#323232;" value="우편번호 찾기"><br></td>
 		</tr>
 		<tr style="border-top:20px solid white;">
 			<td style="padding-left: 80px;">주소</td>
@@ -123,21 +123,20 @@ input {
 		</tr>
 		<tr style="border-top:20px solid white;">
 		<br>
-			<td colspan="2" style="padding-left: 200px;">
+			<td colspan="2" style="padding-left: 150px;">
 			<br><br>
-			<div class="row">
+			<div class="row" style="display: block">
 
 				<div class="col-md-4">
-				<input type="submit" id="updateBtn" class="btn btn-primary" value="수정하기" style="background:#c8936ed4;border:#c8936ed4;color:white;" onclick="return UpdateCheck()">
-  					
+				<input type="submit" id="updateBtn" class="btn btn-primary" value="수정하기" style="background:#323232;border:#323232;color:white; width: 416px; height: 50px; font-size: 20px; border-radius: 30px;" onclick="return UpdateCheck()">
 				</div>
 				<div class="col-md-4">
-				<button type="button" id="deleteBtn" class="btn btn-primary" style="background:#c8936ed4;border:#c8936ed4;color:white;" onclick="if (DeleteCheck()) $('#exampleModal').modal('show')">
+				<button type="button" id="deleteBtn" class="btn btn-primary" style="background:#323232;border:#323232;color:white; width: 416px; height: 50px; margin: 10px 0; font-size: 20px; border-radius: 30px;" onclick="if (DeleteCheck()) $('#exampleModal').modal('show')">
   					탈퇴하기
 				</button>
 				</div>
 				<div class="col-md-4">
-				<button type="button" class="btn btn-primary" style="background:#c8936ed4;border:#c8936ed4;color:white;" onclick="location.href='/index.jsp'">
+				<button type="button" class="btn btn-primary" style="background:#323232;border:#323232;color:white; width: 416px; height: 50px; font-size: 20px; border-radius: 30px;" onclick="location.href='/index.jsp'">
   					메인으로
 				</button>
 				</div>
