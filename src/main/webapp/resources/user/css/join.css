@@ -28,7 +28,7 @@ body {
     height: 100%;
 }
 
-#content {/*     position: absolute; *//*     left: 50%; *//*     transform: translate(-50%); */width: 600px;margin: 0 auto;padding: 30px 0;}
+#content {/*     position: absolute; *//*     left: 50%; *//*     transform: translate(-50%); */width: 600px;margin: 0 auto;  padding: 100px 0 60px;}
 
 
 .error_next_box {
@@ -50,7 +50,7 @@ input:focus {
 h3 {
     margin: 19px 0 8px;
     font-size: 14px;
-    font-weight: 700;
+    font-family: 'SUIT-Regular', normal;font-weight:900;
 }
 
 
@@ -138,7 +138,7 @@ select {
 /* 버튼 */
 
 .btn_area {
-    margin: 29px 0 91px 0;
+    margin: 60px 0 91px 0;
 }
 
 #btnJoin {
@@ -242,7 +242,7 @@ select {
 .address_input_2{
 	width: 600px;
 	height: 44px;
-	margin: 10px 0 10px 0;
+	margin: 25px 0 25px 0;
 	border: solid 1px #dadada;
 }
 .address_input_3{

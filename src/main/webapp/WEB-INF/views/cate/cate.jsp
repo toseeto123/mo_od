@@ -46,7 +46,7 @@ dl, ul, ol, li {
 
 .order_wrap .order_tit {
 	overflow: hidden;
-	border-bottom: 2px solid #c8936ed4;
+	border-bottom: 2px solid #323232;
 
 }
 
@@ -73,14 +73,14 @@ dl, ul, ol, li {
 }
 
 .order_wrap .order_tit .page_on {
-	color: #c8936ed4;
+	color: #323232;
 	font-weight: bold;
 }
 
 .price_sum {
 	margin: 40px 100px 120px;
 	padding: 20px 40px 25px 40px;
-	border: 2px solid #c8936ed4;
+	border: 2px solid #323232;
 	border-radius: 5px;
 	height: 250px;
 }
@@ -137,7 +137,7 @@ li .btnspan {
 }
 
 li .btnspan_on {
-	background-color: #c8936ed4;
+	background-color: #323232;
 }
 
 @media only screen and (max-width: 768px) {
@@ -186,7 +186,7 @@ margin-bottom: 40px;
 }
 
 .cateBtn, .btn_buy, .cancelbtn {
-	background-color: #c8936ed4;
+	background-color: #323232;
 	width: 416px;
 	height: 50px;
 	border: none;
@@ -494,13 +494,13 @@ function deletecate(element) {
 		<section>
 				<ul class="nav nav-pills nav-justified">
 				  <li class="nav-item" >
-				    <a class="nav-link active" href="/mypage.do" style="background: #c8936ed4; color:white; font-size: 16px;">회원 정보</a>
+				    <a class="nav-link active" href="/mypage.do" style="background: #323232; color:white; font-size: 16px;">회원 정보</a>
 				  </li>
 				  <li class="nav-item">
 				    <a class="nav-link" href="/cate.do" style="background: #da8862; color:white; font-size: 16px;">장바 구니</a>
 				  </li>
 				  <li class="nav-item">
-				    <a class="nav-link" href="/products/payMypage" style="background: #c8936ed4; color:white; font-size: 16px;">결제 내역</a>
+				    <a class="nav-link" href="/products/payMypage" style="background: #323232; color:white; font-size: 16px;">결제 내역</a>
 				  </li>
 				</ul>
 		</section>

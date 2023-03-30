@@ -128,25 +128,25 @@ background: #da8862;
                
                <ol>
                   <c:if test="${list.pro_categoryserial  eq 'A0' }">
-                  <a href="/products/AcategoryList" style="margin-top: 20px;">가 구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/A2categoryList" style="margin-top: 20px;">가 구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'A1' }">
-                  <a href="/products/AcategoryList" style="margin-top: 20px;">가 구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/A2categoryList" style="margin-top: 20px;">가 구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'A2' }">
-                  <a href="/products/AcategoryList" style="margin-top: 20px;">가 구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/A2categoryList" style="margin-top: 20px;">가 구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B0' }">
-                  <a href="/products/BcategoryList" style="margin-top: 20px;">조 명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/B0categoryList" style="margin-top: 20px;">조 명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'B1' }">
-                  <a href="/products/BcategoryList" style="margin-top: 20px;">조 명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/B0categoryList" style="margin-top: 20px;">조 명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C0' }">
-                  <a href="/products/CcategoryList" style="margin-top: 20px;">수 납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/C0categoryList" style="margin-top: 20px;">수 납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C1' }">
-                  <a href="/products/CcategoryList" style="margin-top: 20px;">수 납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  <a href="/products/C0categoryList" style="margin-top: 20px;">수 납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if> 
                   
                   <c:if test="${list.pro_categoryserial  eq 'A0' }">
@@ -165,14 +165,14 @@ background: #da8862;
                   &nbsp;&nbsp;&nbsp;&nbsp;<a href="/products/B1categoryList" style="margin-top: 20px;">스탠드조명</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C0' }">
-                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/products/C0categoryList" style="margin-top: 20px;">옷장/행거</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
+                  &nbsp;&nbsp;&nbsp;&nbsp;<a href="/products/C0categoryList" style="margin-top: 20px;">옷장 | 행거</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C1' }">
                   &nbsp;&nbsp;&nbsp;&nbsp;<a href="/C1categoryList" style="margin-top: 20px;">서 랍</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
                   </c:if> 
                   
                   
-                  <li><a href="">${list.pro_name}</a></li>
+                  <li><a href="" style="line-height:0.5;">${list.pro_name}</a></li>
                   
                   
                </ol>
@@ -231,25 +231,25 @@ background: #da8862;
                      <h3>${list.pro_name}</h3>
                      <ul>
                         <li><strong>특　　징 :　</strong>${list.pro_subdesc}</li>
-                        <li><strong>제품번호 :　</strong>${list.pro_serialnumber }</li>
+                        <li><strong style="letter-spacing:1px;">제품번호 :　</strong>${list.pro_serialnumber }</li>
                         <li><strong>가　　격 :　</strong><fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></li>   
                         <li><strong>옵　　션 :　</strong><li>
                         <c:if test="${empty list.pro_option1}">
-                        <li><label for="chk_option"><span class="chk_option">선택안함</span></label>
+                        <li><label for="chk_option"><span class="chk_option" style="letter-spacing:3px;">선택안함</span></label>
                         <input type="radio" value="선택안함" id="chk_option" name="radioOption" checked="checked"></li>
                         </c:if>  
                         <c:if test="${!empty list.pro_option1}">             
-                        <li><label for="chk_option 1"><span class="chk_option">${list.pro_option1}</span></label>
+                        <li><label for="chk_option 1"><span class="chk_option">${list.pro_option1}</span>　</label>
                         <input type="radio" value="${list.pro_option1}" id="chk_option 1" name="radioOption" checked="checked"></li>
                         </c:if>     
                          <c:if test="${!empty list.pro_option2}">
-                        <li><label for="chk_option 2"><span class="chk_option">${list.pro_option2}</span></label>
+                        <li><label for="chk_option 2"><span class="chk_option">${list.pro_option2}</span>　</label>
                         <input type="radio" value="${list.pro_option2}" id="chk_option 2" name="radioOption"></li>
                         </c:if>
               
                         </c:if>
                         <c:if test="${!empty list.pro_option3}">
-                        <li><label for="chk_option 3"><span class="chk_option">${list.pro_option3}</span></label>
+                        <li><label for="chk_option 3"><span class="chk_option">${list.pro_option3}</span>　</label>
                         <input type="radio" value="${list.pro_option3}" id="chk_option 3" name="radioOption">
                         </c:if>
                      </ul>

@@ -40,8 +40,11 @@
   <link href="/resources/assets/css/style.css" rel="stylesheet">
 
 <style>
+*{
+font-family: 'SUIT-Regular', normal;font-weight:900;
+}
 b{
-font-size: 24px;
+font-size: 20px;
 }
 li {
    display: flex;
@@ -79,15 +82,12 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
           
           <li class="dropdown"><a href="/admin/payment"><b>결 제</b></a>
           </li>
-          <li style="padding-left: 0px;margin: 30px 0px 30px 25px; width: 100px;"><a class="getstarted scrollto" href="/"><b>클라이언트</b></a></li>
-          <li><a class="getstarted scrollto" href="/adminLogout"><b>로그아웃</b></a></li>
+          <li style="padding-left: 0px;margin: 30px 0px 30px 25px; width: 100px;"><a class="getstarted scrollto" href="/"><b>Client</b></a></li>
+          <li><a class="getstarted scrollto" href="/adminLogout"><b>Logout</b></a></li>
 		
         </ul>
 
 
-        
-        
-        
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 

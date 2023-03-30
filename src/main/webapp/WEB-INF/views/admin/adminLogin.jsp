@@ -105,16 +105,12 @@
 											onclick="location.href='/goclient'">
 
 
-				</form>
-			
-
-				
+				</form>	
 					
 
 
 			</div>
 		</div>
-	</div>
  
  
  

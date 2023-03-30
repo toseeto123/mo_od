@@ -46,7 +46,7 @@ dl, ul, ol, li {
 
 .order_wrap .order_tit {
 	overflow: hidden;
-	border-bottom: 2px solid #c8936ed4;
+	border-bottom: 2px solid #525252;
 
 }
 
@@ -73,14 +73,14 @@ dl, ul, ol, li {
 }
 
 .order_wrap .order_tit .page_on {
-	color: #c8936ed4;
+	color: #525252;
 	font-weight: bold;
 }
 
 .price_sum {
 	margin: 40px 100px 120px;
 	padding: 20px 40px 25px 40px;
-	border: 2px solid #c8936ed4;
+	border: 2px solid #525252;
 	border-radius: 5px;
 	height: 250px;
 }
@@ -137,7 +137,7 @@ li .btnspan {
 }
 
 li .btnspan_on {
-	background-color: #c8936ed4;
+	background-color: #525252;
 }
 
 @media only screen and (max-width: 768px) {
@@ -186,7 +186,7 @@ margin-bottom: 40px;
 }
 
 .cateBtn, .btn_buy, .cancelbtn {
-	background-color: #c8936ed4;
+	background-color: #525252;
 	width: 416px;
 	height: 50px;
 	border: none;
@@ -204,14 +204,15 @@ font-size: 20px;
 font-weight: 700;
 }
 .btnhover:hover{
-background: #da8862;
+background: #323232;
 }
 
   i{
-  color:#333333; 
+  color:#fff; 
   font-size: 25px; 
   vertical-align:bottom;
   }
+  
 
 
 </style>
@@ -497,23 +498,23 @@ function deletecate(element) {
 <body>
 	<form action="/products/cateorders" method="post">
 	<input type="hidden" value="${login_info.adr }" name="adr">
-		<section>
+		<section style="padding-bottom: 0;">
       <ul class="nav nav-pills nav-justified">
         <li class="nav-item" >
-          <a class="nav-link active" href="/users/mypage" style="background: #c8936ed4; color:#333333; font-weight: 700;"><i class="xi-profile"></i> 회원 정보</a>
+          <a class="nav-link active" href="/users/mypage" style="background: #525252; color:#fff; font-weight: 700;"><i class="xi-profile"></i> 회원 정보</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/users/bucket" style="background: #da8862; color:#333333; font-weight: 700;"><i class="xi-cart"></i> 장바 구니</a>
+          <a class="nav-link" href="/users/bucket" style="background: #323232; color:#fff; font-weight: 700;"><i class="xi-cart"></i> 장바 구니</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/products/payMypage" style="background: #c8936ed4; color:#333333; font-weight: 700;"><i class="xi-list-dot"></i> 결제 내역</a>
+          <a class="nav-link" href="/products/payMypage" style="background: #525252; color:#fff; font-weight: 700;"><i class="xi-list-dot"></i> 결제 내역</a>
         </li>
       </ul>
    </section>
 		<div class="content_box">
 			<div class="order_wrap" style="position: relative;">
-				<div class="order_tit">
-					<ol>
+				<div class="order_tit" style="margin-top: -30px;">
+					<ol style="margin-bottom: 0; line-height:0;">
 						<li class="page_on" style="font-size: 20px;"><span
 							class="btnspan btnspan_on">01</span>장바구니</li>
 						<li style="font-size: 20px;"><span class="btnspan">02</span>주문서작성/결제</li>

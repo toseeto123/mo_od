@@ -4,7 +4,22 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
+<style>
+.aiccontainer{
+padding-top: 10px;
+}
+.aic{
+width: 800px;
+margin: 0 auto;
 
+
+}
+.align-items-center>a{
+margin: 0 auto;
+color : #323232;
+}
+
+</style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
    <section id="hero" style="height: 400px;">
       <div class="hero-container">
@@ -37,7 +52,7 @@
                   스탠드조명
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C0' }">
-                  옷장/행거
+                  옷장 | 행거
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C1' }">
                   서랍
@@ -58,58 +73,52 @@
 <!-- ======= Breadcrumbs ======= -->
 <c:forEach var="list" items="${list}" begin="0" end="0">
       <section id="breadcrumbs" class="breadcrumbs" style="height: 70px; padding-bottom: 80px; font-size: 22px;">
-         <div class="container">
-
-            <div class="d-flex align-items-center">
-               
-               <ol>
-                  <c:if test="${list.pro_categoryserial  eq 'A0' }">
-                  <a href="/products/AcategoryList" style="margin-top: 20px;">가구</a>&nbsp;&nbsp;&nbsp;&nbsp;<i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'A1' }">
-                  <a href="/products/AcategoryList" style="margin-top: 20px;">가구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'A2' }">
-                  <a href="/products/AcategoryList" style="margin-top: 20px;">가구</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'B0' }">
-                  <a href="/products/BcategoryList" style="margin-top: 20px;">조명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'B1' }">
-                  <a href="/products/BcategoryList" style="margin-top: 20px;">조명</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'C0' }">
-                  <a href="/products/CcategoryList" style="margin-top: 20px;">수납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'C1' }">
-                  <a href="/products/CcategoryList" style="margin-top: 20px;">수납</a>&nbsp;&nbsp;&nbsp;&nbsp; <i class="fa fa-angle-right" aria-hidden="true" style="margin-top: 23px;"></i>
-                  </c:if> 
-                  
-                  <c:if test="${list.pro_categoryserial  eq 'A0' }">
-                  <li><a href="#">매트리스</a></li>
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'A1' }">
-                  <li><a href="#">침대프레임</a></li>
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'A2' }">
-                  <li><a href="#">소 파</a></li>
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'B0' }">
-                  <li><a href="#">무드등</a></li>
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'B1' }">
-                  <li><a href="#">스탠드조명</a></li>
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'C0' }">
-                  <li><a href="#">옷장/행거</a></li>
-                  </c:if>
-                  <c:if test="${list.pro_categoryserial  eq 'C1' }">
-                  <li><a href="#">서랍</a></li>
-                  </c:if>
-                  
-               </ol>
+         <div class="container aiccontainer">
+<c:if test="${list.pro_categoryserial  eq 'A2' }">
+            <div class="d-flex align-items-center aic">
+				<a href="/products/A2categoryList" style="border-bottom: 2px solid #323232; font-size: 28px;">소 파</a>      
+				<a href="/products/A1categoryList">침대 프레임</a>
+				<a href="/products/A0categoryList">매트리스</a> 
             </div>
-
+</c:if>
+<c:if test="${list.pro_categoryserial  eq 'A1' }">
+            <div class="d-flex align-items-center aic">
+				<a href="/products/A2categoryList">소 파</a>      
+				<a href="/products/A1categoryList" style="border-bottom: 2px solid #323232; font-size: 28px;">침대 프레임</a>
+				<a href="/products/A0categoryList">매트리스</a> 
+            </div>
+</c:if>
+<c:if test="${list.pro_categoryserial  eq 'A0' }">
+            <div class="d-flex align-items-center aic">
+				<a href="/products/A2categoryList">소 파</a>      
+				<a href="/products/A1categoryList">침대 프레임</a>
+				<a href="/products/A0categoryList" style="border-bottom: 2px solid #323232; font-size: 28px;">매트리스</a> 
+            </div>
+</c:if>
+<c:if test="${list.pro_categoryserial  eq 'B0' }">
+            <div class="d-flex align-items-center aic">
+				<a href="/products/B0categoryList" style="border-bottom: 2px solid #323232; font-size: 28px;">무드등</a>      
+				<a href="/products/B1categoryList">스탠드 조명</a>
+            </div>
+</c:if>
+<c:if test="${list.pro_categoryserial  eq 'B1' }">
+            <div class="d-flex align-items-center aic">
+				<a href="/products/B0categoryList">무드등</a>      
+				<a href="/products/B1categoryList" style="border-bottom: 2px solid #323232; font-size: 28px;">스탠드 조명</a>
+            </div>
+</c:if>
+<c:if test="${list.pro_categoryserial  eq 'C0' }">
+            <div class="d-flex align-items-center aic">
+				<a href="/products/C0categoryList" style="border-bottom: 2px solid #323232; font-size: 28px;">옷장 | 행거</a>      
+				<a href="/products/C1categoryList">서 랍</a>
+            </div>
+</c:if>
+<c:if test="${list.pro_categoryserial  eq 'C1' }">
+            <div class="d-flex align-items-center aic">
+				<a href="/products/C0categoryList">옷장 | 행거</a>      
+				<a href="/products/C1categoryList" style="border-bottom: 2px solid #323232; font-size: 28px;">서 랍</a>
+            </div>
+</c:if>
          </div>
       </section>
       </c:forEach>
@@ -195,7 +204,7 @@
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:green" href="/products/A1categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="color:#323232;" href="/products/A1categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
                   &nbsp;<a href="/products/A1categoryList/${no}">${no}</a>&nbsp;
@@ -224,7 +233,7 @@
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:green" href="/products/A2categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="color:#323232;" href="/products/A2categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
                   &nbsp;<a href="/products/A2categoryList/${no}">${no}</a>&nbsp;
@@ -252,7 +261,7 @@
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:green" href="/products/B0categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="color:#323232;" href="/products/B0categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
                   &nbsp;<a href="/products/B0categoryList/${no}">${no}</a>&nbsp;
@@ -281,7 +290,7 @@
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:green" href="/products/B1categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="color:#323232;" href="/products/B1categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
                   &nbsp;<a href="/products/B1categoryList/${no}">${no}</a>&nbsp;
@@ -309,7 +318,7 @@
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:green" href="/products/C0categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="color:#323232;" href="/products/C0categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
                   &nbsp;<a href="/products/C0categoryList/${no}">${no}</a>&nbsp;
@@ -337,7 +346,7 @@
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:green" href="/products/C1categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="color:#323232;" href="/products/C1categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
                   &nbsp;<a href="/products/C1categoryList/${no}">${no}</a>&nbsp;
