@@ -27,7 +27,7 @@ b{
 	display: grid;
 	grid-template-rows: auto;
 	grid-template-columns: repeat(2, 1fr);
-	column-gap: 40px;
+	column-gap: 100px;
 }
 .chart1, .chart2{
 background-color:#f5f6f7;
