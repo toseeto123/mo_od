@@ -143,7 +143,11 @@ public class AdminPaymentService {
 			   if(searchWhat.equals("name")) {
 				   moduleVO.setSearchName(search);
 			   }else if(searchWhat.equals("orderNo")) {
-				   moduleVO.setOrderNo(search);
+				   try {
+					   moduleVO.setOrderNo(Integer.parseInt(search));
+				   }catch(Exception e) {
+					   moduleVO.setOrderNo(-1);
+				   }
 			   }else if(searchWhat.equals("payDate")) {
 				   moduleVO.setDate(search);
 			   }else if(searchWhat.equals("phone")) {
