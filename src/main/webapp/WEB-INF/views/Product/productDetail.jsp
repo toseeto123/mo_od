@@ -56,7 +56,7 @@ pre{
    cursor: pointer;
 }
 .cateBtn , .btn_buy{
-   background-color: #c8936ed4;
+   background-color: #525252;
    width: 416px;
    height: 50px;
    border : none;
@@ -112,7 +112,7 @@ margin: 0;
 margin-top: 0;
 }
 .btnhover:hover{
-background: #da8862;
+background: #323232;
 }
 </style>
 <body>

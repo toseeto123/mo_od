@@ -54,7 +54,7 @@ ol {
    margin: 0;
    padding: 0;
    list-style: none;
-   margin-bottom: 0;
+
    
 }
 
@@ -78,7 +78,7 @@ li .btnspan {
    color: #fff;
 }
 li .btnspan_on{
-background-color: #c8936ed4;
+background-color: #525252;
 }
 
 @media only screen and (max-width: 768px) {
@@ -122,13 +122,13 @@ background-color: #c8936ed4;
 
 .order_wrap .order_tit {
    overflow: hidden;
-   border-bottom: 2px solid #c8936ed4;
+   border-bottom: 2px solid #525252;
    margin-bottom: 10px;
 }
 
 .order_wrap .order_tit ol {
    float: right;
-   line-height: 62px;
+
 }
 
 .order_wrap .order_tit h2 {
@@ -149,7 +149,7 @@ background-color: #c8936ed4;
 }
 
 .order_wrap .order_tit .page_on {
-   color: #c8936ed4;
+   color: #525252;
    font-weight: bold;
 }
 .content_box {
@@ -172,7 +172,7 @@ font-size: 30px;
 .btnhover{
 font-size: 20px;
 font-weight: 700;
-background: #c8936ed4;
+background: #525252;
 border: none;
 border-radius: 50px;
 width: 350px;
@@ -186,7 +186,7 @@ box-shadow: 1px 1px 1px 1px lightgray;
 
 }
 .btnhover:hover{
-background: #da8862;
+background: #323232;
 }
 .paybtn{
 border-radius: 50px;
@@ -199,7 +199,7 @@ background: #f9bf00;
 
 </style>
 <jsp:include page="../../common/header.jsp" />
-<!-- Custom styles for this template -->
+
 <link href="form-validation.css" rel="stylesheet">
 <!-- jQuery -->
 <script type="text/javascript"
@@ -236,7 +236,7 @@ background: #f9bf00;
    <div class="content_box">
       <div class="order_wrap" style="position: relative;">
          <div class="order_tit">
-            <ol>
+            <ol style="margin-bottom: 0;">
                <li><span class="btnspan">01</span>장바구니</li>
                <li class="page_on"><span class="btnspan btnspan_on">02</span>주문서작성/결제</li>
                <li><span class="btnspan">03</span>주문완료</li>
@@ -252,32 +252,32 @@ background: #f9bf00;
          <form class="needs-validation" novalidate action="/kakaoPay"
             method="post">
             <div class="col-md-12 order-md-1">
-               <h4 class="mb-3">${login_info.id}님주문정보</h4>
+               <h2 class="mb-3" style="margin:18px 0 18px 0; color:#323232; font-size: 32px; font-weight: bold;"><i class="xi-user" style="color:#000;"></i> ${login_info.id}님주문 정보</h2>
                <div class="row">
                   <div class="col-md-6 mb-3">
-                     <label for="firstName">성 함 : </label><strong>
-                        ${login_info.name}</strong>
+                     <label for="firstName">성　　함 : </label><small>
+                        ${login_info.name}</small>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="lastName">전화번호 : </label> <strong>${login_info.phone}</strong>
+                     <label for="lastName">전화번호 : </label> <small>${login_info.phone}</small>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="address">주 소 : </label> <strong>${login_info.adr}</strong>
+                     <label for="address">주　　소 : </label> <small>${login_info.adr}</small>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="lastName">E-mail : </label> <strong>${login_info.email}</strong>
+                     <label for="lastName" style="letter-spacing:1px;">E-mail : </label> <small>${login_info.email}</small>
                   </div>
 
                </div>
 
                <div class="mb-3"><c:forEach var="orderprice" items="${orderprice}" begin="0" end="0">
-                  <label for="address">주문번호 : </label> <strong>${orderprice.orderId }</strong>
+                  <label for="address">주문번호 : </label> <small>${orderprice.orderId }</small>
                   </c:forEach>
                </div>
 
                <hr class="mb-4" style="margin-bottom:2rem !important;">
 
-               <h4 class="mb-4">결제 상품정보</h4>
+               <h2 class="mb-3" style="margin:22px 0 22px 0; color:#323232; font-size: 32px; font-weight: bold;"><i class="xi-box" style="color:#000;"></i> 결제상품 정보</h2>
                <c:forEach var="list" items="${list}">
                   <input type="hidden" name="pro_name" value=${list.pro_name }>
                   <input type="hidden" name="pro_number" value="${list.pro_number }">
@@ -288,17 +288,16 @@ background: #f9bf00;
                            src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}"
                            style="width: 100px; height: 100px; margin-bottom: 70px;">
                         <div style="display: inline-block;">
-                           <small class="text-muted"><a href="/products/${list.pro_number }/${list.pro_name}/${list.pro_img1}" style="color:#c8936ed4;">상품명 : ${list.pro_name}</a><c:if test="${!empty list.pro_option}"><br>옵 션 : ${list.pro_option}</c:if><br>설 명 : ${list.pro_maindesctitle}
+                           <small class="text-muted"><a href="/products/${list.pro_number }/${list.pro_name}/${list.pro_img1}" style="color:#525252;">상품명 : ${list.pro_name}</a><c:if test="${!empty list.pro_option}"><br>옵　션 : ${list.pro_option}</c:if><br>설　명 : ${list.pro_maindesctitle}
                            </small>
                         </div>
                      </div>
                      <div class="col-md-6 mb-3">
-                        <label for="cc-number">상품금액 : <fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></label><br>
-                        <label for="cc-number">수 량 : ${list.amount}</label><br>
-                        <label for="cc-number">총 금액 : <fmt:formatNumber value="${list.total}" type="currency" currencySymbol="₩" /></label>
-                     </div>    
-                     <br>
-                     <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
+                        <label for="cc-number"><span style="letter-spacing:1.5px;">상품금액 : </span><fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></label><br>
+                        <label for="cc-number" style="letter-spacing:4px;">수　 량 : ${list.amount}</label><br>
+                        <label for="cc-number"><span style="letter-spacing:1px;">총　금액 : </span><fmt:formatNumber value="${list.total}" type="currency" currencySymbol="₩" /></label>
+                     </div>               
+
                      <hr class="mb-4">
                   </div>
                </c:forEach>
@@ -316,16 +315,15 @@ background: #f9bf00;
                            style="width: 100px; height: 100px; margin-bottom: 70px;">
 
                         <div style="display: inline-block;">
-                            <small class="text-muted"><a href="/products/${onelist.pro_number }/${onelist.pro_name}/${onelist.pro_img1}" style="color:#c8936ed4;">상품명 : ${onelist.pro_name}</a><c:if test="${!empty onelist.pro_option}"><br>옵 션 : ${onelist.pro_option}</c:if><br>설 명 : ${onelist.pro_maindesctitle}
+                            <small class="text-muted"><a href="/products/${onelist.pro_number }/${onelist.pro_name}/${onelist.pro_img1}" style="color:#525252; letter-spacing:1px;">상품명 : ${onelist.pro_name}</a><c:if test="${!empty onelist.pro_option}"><br>옵　션 : ${onelist.pro_option}</c:if><br>설　명 : ${onelist.pro_maindesctitle}
                            </small>
                         </div>
                      </div>
                      <div class="col-md-6 mb-3">
-                        <label for="cc-number">상품금액 : <fmt:formatNumber value="${onelist.pro_price}" type="currency" currencySymbol="₩" /></label><br>
-                        <label for="cc-number">수 량 : ${onelist.count}</label><br>
-                        <label for="cc-number">총 금액 : <fmt:formatNumber value="${onelist.pro_price}" type="currency" currencySymbol="₩" /></label>
+                        <label for="cc-number"><span style="letter-spacing:1.5px;">상품금액 : </span><fmt:formatNumber value="${onelist.pro_price}" type="currency" currencySymbol="₩" /></label><br>
+                        <label for="cc-number" style="letter-spacing:4px;">수　 량 : ${onelist.count}</label><br>
+                        <label for="cc-number"><span style="letter-spacing:1px;">총　금액 : </span><fmt:formatNumber value="${onelist.pro_price}" type="currency" currencySymbol="₩" /></label>
                      </div>    
-                     <br>
                      <!--  userPaymentDatail에 나중에 ordernumber로 받아서 넘기-->
                      <hr class="mb-4">
                   </div>
