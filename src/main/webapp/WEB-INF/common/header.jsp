@@ -108,7 +108,7 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
 
             </c:if>
          <c:if test="${empty login_info.id}">
-            <li style="padding-left: 30px;margin: 30px 0px 30px 50px;width: 100px;"><a class="getstarted scrollto" href="/users/join" ><b>Join</b></a></li>
+            <li style="margin: 30px 0px 30px 28px;width: 100px;"><a class="getstarted scrollto" href="/users/join" ><b>Join</b></a></li>
             <li><a class="getstarted scrollto" href="/users/login"><b>Login</b></a></li>
          </c:if>
         </ul>

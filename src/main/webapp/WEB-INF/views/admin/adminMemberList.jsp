@@ -8,60 +8,75 @@
 <title>Chart</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style>
-a{
-	cursor: pointer;	
-	
-}
-a:hover {
-	color: #323232;
-}
-
 select, option{
 	height: 30px;
 	font-size: 18px;
 }
 
-.tableContainer{
-	height: 450px;
-}
-
-section.container{
-	margin-bottom: 20px;
-	background-color:#f5f6f7;
+#hero{
+	height: auto;
 }
 .searchParent{
 	text-align: center;
+	margin: 50px 0;
 }
 .search{
 	display: inline-block;
 }
-
+a{
+	color: #323232;
+	cursor: pointer;
+}
+a:hover {
+	cursor: pointer;	
+	color: #323232;
+}
 *:focus { outline: 0; }
 input[type=button]{
 	color: white;
-	background: #323232;
-	width:100px;  
+	background: #323232;  
+	width:100px; 
 	border: none;
 	font-size: 20px;
 }
 input[type=search]{
 	font-size: 18px;
 }
-footer{
+section{
+	padding: 0;
+	margin: 0;
+	text-align: center;
+}
+#tables{
+	display: inline-block;
+	padding: 0;
+	margin: 0;
+}
+#table{
+	width: 1200px;
+	text-align: left;
+}
+#modulePaging{
+	display: inline-block;
+	padding: 20px 0 26px;
+}
+
+.footer{
 	position: absolute;
-	top: 120%;
+	bottom: 0;
 	width: 100%;
 }
+
 </style>
 </head>
 
 <body style="background-color:#f5f6f7;">
 	<jsp:include
 		page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
-	<section class="container">
+	
 			<div class="searchParent">
-			<div class="search" style="margin-top: 50px; margin-bottom: 50px;">
-			<select id="searchWhat">
+			<div class="search">
+			<select id="searchWhat" style="font-size: 18px;">
 				<option value="id">아이디</option>
 				<option value="name">이름</option>
 			</select> <input type="search" id="search">
@@ -70,9 +85,12 @@ footer{
 			<input type="button" 
 				id="searchBtn" value="찾기" onclick="search()">
 				</div>
-			<div class="tableContainer">
+			
+			<section style="padding: 0;
+	margin: 0;">
+	<div id="tables">
 			<table class="table" id="table"
-				style="margin-top: 2%; margin-left: 15%; width: 70%;">
+				>
 				<thead>
 
 					<tr>
@@ -100,10 +118,14 @@ footer{
 					</c:forEach>
 				</tbody>
 			</table>
+			
 			</div>
+			</section>
 			<!-- End Default Table Example -->
-			<div id="modulePaging"
-				style="display: inline-block; position: absolute; left: 50%; transform: translateX(-50%); font-size: 20px;">
+			<section style="padding: 0;
+	margin: 0;
+	text-align: center;">
+			<div id="modulePaging" style="display: inline-block;">
 				<c:if test="${prePage!=null }">
 					<a style="color: #323232;" href="/admin/adminMemberList/${prePage}">&lt;</a>
 				</c:if>
@@ -124,15 +146,24 @@ footer{
 					<a style="color: #323232;" href="/admin/adminMemberList/${nextPage}">&gt;</a>
 				</c:if>
 			</div>
-			
+			</section>
 		<input type="hidden" value="${selectPage}" id="selectPage">
-	</section>
 	
+	<footer class="footer"><jsp:include
+					page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" />
+		</footer>
 	
 
 <script type="text/javascript" src="/resources/user/js/adminMemberListSearching.js"></script>
+<script defer>
+var footer = document.querySelector('#modulePaging');
+var footerReal = document.querySelector('footer');
+var footerRect = footer.getBoundingClientRect();
+var footerRealRect = footerReal.getBoundingClientRect();
+if (footerRect.top + footerRect.height >= footerRealRect.top) {
+	footerReal.classList.remove("footer");
+}	
+</script>
 </body>
-<footer><jsp:include
-					page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" />
-		</footer>
+
 </html>

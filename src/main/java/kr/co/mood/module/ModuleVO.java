@@ -9,7 +9,7 @@ public class ModuleVO {
 	private String searchId;
 	private String searchName;
 	private String phone;
-	private String orderNo;
+	private int orderNo;
 	private String date;
 	
 	
@@ -20,10 +20,10 @@ public class ModuleVO {
 	public void setPhone(String phone) {
 		this.phone = phone;
 	}
-	public String getOrderNo() {
+	public int getOrderNo() {
 		return orderNo;
 	}
-	public void setOrderNo(String orderNo) {
+	public void setOrderNo(int orderNo) {
 		this.orderNo = orderNo;
 	}
 	public String getDate() {
@@ -56,5 +56,12 @@ public class ModuleVO {
 	public void setEndNo(int endNo) {
 		this.endNo = endNo;
 	}
+	@Override
+	public String toString() {
+		return "ModuleVO [startNo=" + startNo + ", endNo=" + endNo + ", searchId=" + searchId + ", searchName="
+				+ searchName + ", phone=" + phone + ", orderNo=" + orderNo + ", date=" + date + "]";
+	}
+	
+	
 	
 }

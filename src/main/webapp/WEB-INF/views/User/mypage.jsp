@@ -20,6 +20,7 @@ section {
 }
 input {
 	padding:10px;
+	
 }
  body tr td:first-child {
 	font-weight:bold;
@@ -66,15 +67,15 @@ input {
     margin: 0 auto;
 ">
 
-	<form action="/users/update?id=${login_info.id}" method="post" name="mypage" id="mypage" style="width:950px;border:2px solid#323232;padding-bottom: 10px;">
+	<form action="/users/update?id=${login_info.id}" method="post" name="mypage" id="mypage" style="width:900px;border:2px solid#323232;padding-bottom: 10px;">
 		<table>
 		<tr style="border-top:20px solid white;">
-			<td style="padding-left: 80px;"><label for="id">아이디</label></td>
-			<td style="padding-left: 150px;" id="login_id">${login_info.id}<br></td>
+			<td style="padding-left: 80px; border: none"><label for="id">아이디</label></td>
+			<td style="padding-left: 50px;" id="login_id">${login_info.id}<br></td>
 		</tr>
 		<tr style="border-top:20px solid white;">
 			<td style="padding-left: 80px;"><label for="pwd">비밀번호</label></td>
-			<td style="padding-left: 150px;"><input type="password" class="pwd" id="pwd" name="pwd" required><br>
+			<td style="padding-left: 50px;"><input type="password" class="pwd" id="pwd" name="pwd" style="width: 340px;" required><br>
 			</td>
 			
 		</tr>
@@ -82,48 +83,48 @@ input {
 		<tr style="border-top:20px solid white;">
 			<td style="padding-left: 80px;"><label for="pwd">비밀번호 확인</label></td>
 
-			<td style="padding-left: 150px;"><input type="password" id="pwd2" name="pwd2" required onkeyup="passConfirm()"><br><span id="confirmMsg"></span></td>
+			<td style="padding-left: 50px;"><input type="password" id="pwd2" name="pwd2" style="width: 340px;" required onkeyup="passConfirm()"><br><span id="confirmMsg"></span></td>
 			
 			
 		</tr>
 		<tr style="border-top:20px solid white;">
 			<td style="padding-left: 80px;"><label for="name">이름</label></td>
-			<td style="padding-left: 150px;">${login_info.name}<br></td>
+			<td style="padding-left: 50px;">${login_info.name}<br></td>
 		</tr>
 		<tr style="border-top:20px solid white;">
 			<td style="padding-left: 80px;"><label for="age">나이</label></td>
-			<td style="padding-left: 150px;">${login_info.age}<br></td>
+			<td style="padding-left: 50px;">${login_info.age}<br></td>
 		</tr>
 		<tr style="border-top:20px solid white;">
 			<td style="padding-left: 80px;"><label for="gender">성별</label></td>
-			<td style="padding-left: 150px;">${login_info.gender}<br></td>
+			<td style="padding-left: 50px;">${login_info.gender}<br></td>
 		</tr>
 		<tr style="border-top:20px solid white;">
 			<td style="padding-left: 80px;"><label for="email">이메일</label></td>
-			<td style="padding-left: 150px;"><input type="text" class="myinfo_email" id="myinfo_email" name="email" value="${login_info.email}"><br></td>
+			<td style="padding-left: 50px;"><input type="text" class="myinfo_email" id="myinfo_email" style="width: 340px;" name="email" value="${login_info.email}"><br></td>
 		</tr>
 		<tr style="border-top:20px solid white;">
 			<td  style="padding-left: 80px;"><label for="phone">휴대전화</label></td>
-			<td style="padding-left: 150px;"><input type="tel" name="phone" value="${login_info.phone}"><br></td>
+			<td style="padding-left: 50px;"><input type="tel" name="phone" style="width: 340px;" value="${login_info.phone}"><br></td>
 		</tr>
 		<tr style="border-top:20px solid white;">
 		
 			<td><label for="adr"></label></td>
-			<td style="width:310px;padding-left: 150px;"><input type="text" class="address_input_1" name=adr id="adr" placeholder="우편번호" value="${myinfo_adr1}" ><br></td>	
-			<td style="padding-left: 110px;"><input type="button" class="adrchk" onclick="sample6_execDaumPostcode()" style="background-color:#323232; color: white; border:#323232;" value="우편번호 찾기"><br></td>
+			<td style="width:340px;padding-left: 50px;"><input type="text" class="address_input_1" name=adr id="adr" placeholder="우편번호" style="width: 340px;" value="${myinfo_adr1}" ><br></td>	
+			<td style="padding-left: 10px;"><input type="button" class="adrchk" onclick="sample6_execDaumPostcode()" style="background-color:#323232; color: white; border:#323232; wid" value="우편번호 찾기"><br></td>
 		</tr>
 		<tr style="border-top:20px solid white;">
 			<td style="padding-left: 80px;">주소</td>
-			<td colspan="2" style="padding-left: 150px;"><input type="text" size="50" class="address_input_2" name="adr2" id="adr2" placeholder="주소" value="${myinfo_adr2}" required></td><br>
+			<td colspan="2" style="padding-left: 50px;"><input type="text" size="50" class="address_input_2" name="adr2" id="adr2" placeholder="주소" value="${myinfo_adr2}" required></td><br>
 			
 		</tr>
 		<tr style="border-top:20px solid white;">
 			<td><input type="hidden"id="sspwd" name="sspwd" value="${login_info.pwd}"/> </td>
-			<td colspan="2" style="padding-left: 150px;"><input type="text" size="50" class="address_input_3" name="adr3" id="adr3" placeholder="상세주소" value="${myinfo_adr3}" required></td>
+			<td colspan="2" style="padding-left: 50px;"><input type="text" size="50" class="address_input_3" name="adr3" id="adr3" placeholder="상세주소" value="${myinfo_adr3}" required></td>
 		</tr>
 		<tr style="border-top:20px solid white;">
 		<br>
-			<td colspan="2" style="padding-left: 150px;">
+			<td colspan="2" style="padding-left: 200px;">
 			<br><br>
 			<div class="row" style="display: block">
 

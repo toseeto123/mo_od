@@ -94,6 +94,20 @@ const data = {}
 		
 		tbody.appendChild(newRow);
 		} 
+		
+		var footer = document.querySelector('#modulePaging');
+			var footerReal = document.querySelector('footer');
+			footerReal.classList.add("footer");
+			
+			
+				setTimeout(function(){					
+					var footerRect = footer.getBoundingClientRect();
+					var footerRealRect = footerReal.getBoundingClientRect();
+					if (footerRect.top + footerRect.height >= footerRealRect.top) {
+						footerReal.classList.remove("footer");
+					}	
+				
+				}, 0);
 
 	}
 
