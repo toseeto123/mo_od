@@ -263,7 +263,7 @@ width: 300px;
   
         <form action="/User/kakaoPayCancel" id="cancel-form">
     <c:forEach var="order" items="${orders}">
-      <c:if test="${order.orderId == orderid.orderId}">
+      <c:if test="${order.orderid == orderid.orderid}">
     <input type="hidden" value="${orderid.orderid }" name="orderId">
   	<input type="hidden" value="${order.tid }" name="tid">
     <input type="hidden" value="${order.pro_number }" name="pro_number">

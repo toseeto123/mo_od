@@ -19,11 +19,17 @@ public class KakaoPayApprovalVO {
     private Timestamp created_at, approved_at;
     private Timestamp successTime;
     private int orderid,row_count;
+    private String payment_method;
     
     
     
     
-    
+	public String getPayment_method() {
+		return payment_method;
+	}
+	public void setPayment_method(String payment_method) {
+		this.payment_method = payment_method;
+	}
 	public int getRow_count() {
 		return row_count;
 	}
