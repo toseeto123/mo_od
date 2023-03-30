@@ -21,9 +21,24 @@ public class KakaoPayApprovalVO {
     private int orderid,row_count;
     private String payment_method;
     
-    
-    
-    
+    //결제확인용값들
+    //product
+    private String pro_img1,pro_name,pro_maindesctitle,pro_option;
+    private int pro_number,price,total;
+    //user
+    private int userno;
+    //order
+    private int orderId;
+    private int count;
+    private String success;
+
+
+	public String getSuccess() {
+		return success;
+	}
+	public void setSuccess(String success) {
+		this.success = success;
+	}
 	public String getPayment_method() {
 		return payment_method;
 	}
@@ -48,17 +63,10 @@ public class KakaoPayApprovalVO {
 	public void setSuccessTime(Timestamp successTime) {
 		this.successTime = successTime;
 	}
-	//결제확인용값들
-    //product
-    private String pro_img1,pro_name,pro_maindesctitle,pro_option;
-    private int pro_number,price,total;
-    //user
-    private int userno;
-    //order
-    private int orderId;
-    private int count;
+	
     
     
+
 	public int getTotal() {
 		return total;
 	}

@@ -193,7 +193,8 @@ body {
                   <div class="carousel-container">
                      <div class="carousel-content">
                         <h2 class="animate__animated animate__fadeInDown">결제 완료</h2>
-                        <p class="animate__animated animate__fadeInUp" style="width: 100%;">"${login_info.name}"님 mo_od를 <br> 이용해주셔서 감사합니다.</p>
+                        <p class="animate__animated animate__fadeInUp" style="width: 100%;">"${login_info.name}"님 mo_od를 이용해주셔서 감사합니다.<br>
+                     *결제승인시간 기준 24시간 이후, 구매확정상태가되어, 결제취소가 불가능합니다.</p>
                         <div>
                            <a href="/products/payMypage" class="btn-get-started animate__animated animate__fadeInUp scrollto">결제 내역</a>
                         </div>
@@ -256,7 +257,7 @@ body {
                      <label for="address">결제 금액 : </label> <small><fmt:formatNumber value="${orders.price }" type="currency" currencySymbol="₩" />원</small>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="lastName">결제 방식 : </label> <c:if test="${orders.payment_method eq 'MONEY'}"><small>현금 결제</small></c:if><c:if test="${orders.payment_method eq 'CARD'}"><small>카드 결제</small></c:if>
+                     <label for="lastName">결제 방식 : </label> <c:if test="${orders.payment_method eq 'MONEY'}"><small>카카오페이머니</small></c:if><c:if test="${orders.payment_method eq 'CARD'}"><small>카드 결제</small></c:if>
                   </div>
                   <div class="col-md-6 mb-3">
                      <label for="lastName">결제승인시간 : </label> <small><fmt:formatDate value="${orders.successTime}" pattern="yyyy-MM-dd HH:mm:ss"/></small>
