@@ -11,6 +11,7 @@
 
 
 b{
+	padding-left:50px;
 	text-align: center;
 	font-family: 'SUIT-Regular', normal;font-weight:900;
 }
@@ -26,7 +27,7 @@ b{
 	display: grid;
 	grid-template-rows: auto;
 	grid-template-columns: repeat(2, 1fr);
-	column-gap: 40px;
+	column-gap: 100px;
 }
 .chart1, .chart2{
 background-color:#f5f6f7;
@@ -90,7 +91,7 @@ background-color:#f5f6f7;
 
 <div class="chart2">
   <div class="chart-container">
-    <div class="chartTitle"><b>상품별 장바구니 횟수</b></div>
+    <div class="chartTitle"><b style="padding-left:20px;">상품별 버킷 횟수</b></div>
     <div class="chart-item">
       <canvas id="myChart2"></canvas>
     </div>
@@ -99,7 +100,7 @@ background-color:#f5f6f7;
   
 <div class="chart3">
   <div class="chart-container">
-    <div class="chartTitle"><b>요일별 매출(올해 기준)</b></div>
+    <div class="chartTitle"><b>주간 매출</b></div>
     <div class="chart-item">
       <canvas id="myChart3"></canvas>
     </div>
@@ -108,7 +109,7 @@ background-color:#f5f6f7;
   
 <div class="chart4">
   <div class="chart-container">
-    <div class="chartTitle"><b>성별/연령별 구매분포도(카테고리)</b></div>
+    <div class="chartTitle"><b>카테고리별 구매분포도</b></div>
     <div class="chart-item">
       <canvas id="myChart4"></canvas>
     </div>
@@ -221,7 +222,7 @@ background-color:#f5f6f7;
 		          x:{
 		        	  title:{
 		        		  display:true,
-		        		  text:'상품코드',
+		        		  text:'상품명',
 		        		  font:{
 		        			  size:14,
 		        			  weight:'bold'
@@ -254,7 +255,7 @@ background-color:#f5f6f7;
 					data : {
 						labels : chartProduct2,
 						datasets : [ {
-							label : '장바구니횟수',
+							label : '버킷횟수',
 							data : chartBucketCount2,
 							backgroundColor : [ 'rgb(255, 99, 132)',
 									'rgb(54, 162, 235)', 'rgb(255, 205, 86)',
@@ -273,7 +274,7 @@ background-color:#f5f6f7;
 		const data3 = {
 			labels : chartWeek1,
 			datasets : [ {
-				label : '요일별 매출(올해)',
+				label : '주간 매출액',
 				data : chartData3,
 				fill : false,
 				borderColor : 'rgb(75, 192, 192)',
@@ -342,7 +343,7 @@ background-color:#f5f6f7;
 					labels: categorys,
 					title:{
 	        		  display:true,
-	        		  text:'카테고리(판매비율)',
+	        		  text:'상품 카테고리',
 	        		  font:{
 	        			  size:14,
 	        			  weight:'bold'
