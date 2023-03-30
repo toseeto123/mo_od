@@ -32,7 +32,7 @@ function JoinCheck(){
               return false;
            }
            if (!document.join.pwd.value.match(/^[a-z0-9]{10,20}$/)) {
-            alert("암호는 영문 대소문자와 숫자의 조합으로 10~20자리 이내로 입력해주세요.");
+            alert("암호는 영문과 숫자의 조합으로 10~20자리 이내로 입력해주세요.");
             join.pwd.focus();
             return false;
           }
@@ -105,7 +105,6 @@ function fn_idChk(){
 
 function emailCheck() {
     	  var email = $(".email").val(); 
-    	  console.log(email);
     	  var conemail = document.getElementById('conemail');
     	  var correctColor = "#00ff00"; 
     	  var wrongColor = "#ff0000"; 

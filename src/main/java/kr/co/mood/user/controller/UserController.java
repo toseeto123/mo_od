@@ -230,7 +230,7 @@ public class UserController {
 			} else if (path.contains("catelogin.do")) {
 				session.setAttribute("path", request.getRequestURI());
 				return "redirect:/users/bucket";
-			} else if (path.contains("proCatelogin.do")) {
+			} else if (path.contains("proCatelogin")) {
 				session.setAttribute("path", request.getRequestURI());
 				CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
 				int userid = vo1.getNo();
@@ -239,7 +239,7 @@ public class UserController {
 					cateService.addcate(sessionCvo, vo1, null);
 				}
 				return "redirect:/users/bucket";
-			} else if (path.contains("payBeLogin.do")) {
+			} else if (path.contains("payBeLogin")) {
 				session.setAttribute("path", request.getRequestURI());
 
 				userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
