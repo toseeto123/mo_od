@@ -44,11 +44,35 @@ public class AdminPaymentService {
 		boolean categoryFlag;
 		boolean ageFlag;
 		
-		for(AdminChartVO vo : chart4) {			
+		for(AdminChartVO vo : chart4) {
+			
+			if(vo.getCategorySerial().equals("A0")) {
+				vo.setCategorySerial("매트리스");
+			}else if(vo.getCategorySerial().equals("A1")) {
+				vo.setCategorySerial("침대프레임");
+			}else if(vo.getCategorySerial().equals("A2")) {
+				vo.setCategorySerial("소파");
+			}else if(vo.getCategorySerial().equals("B0")) {
+				vo.setCategorySerial("무드등");
+			}else if(vo.getCategorySerial().equals("B1")) {
+				vo.setCategorySerial("스탠스");
+			}else if(vo.getCategorySerial().equals("C0")) {
+				vo.setCategorySerial("옷장/행거");
+			}else if(vo.getCategorySerial().equals("C1")) {
+				vo.setCategorySerial("서랍");
+			}else if(vo.getCategorySerial().equals("D0")) {
+				vo.setCategorySerial("시공/침실");
+			}else if(vo.getCategorySerial().equals("D1")) {
+				vo.setCategorySerial("시공/거실");
+			}else if(vo.getCategorySerial().equals("D2")) {
+				vo.setCategorySerial("시공/주방");
+			}else if(vo.getCategorySerial().equals("D3")) {
+				vo.setCategorySerial("시공/욕실");
+			}			
 			
 			categoryFlag = true;
 			ageFlag = true;
-			for(String category : categorys) {
+			for(String category : categorys) {				
 				if(vo.getCategorySerial().equals(category)) {
 					categoryFlag = false;
 				}		

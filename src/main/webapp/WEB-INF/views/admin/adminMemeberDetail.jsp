@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html style="background-color:#f5f6f7;">
 <head>
 <meta charset="UTF-8">
 <title>Chart</title>
@@ -11,8 +11,7 @@
 input[type=button] {
 	line-height: 24px;
 	color: white;
-	background: #C39873;
-	border-radius: 10px;
+	background: #323232;
 	border: none;
 	width: 100px;
 	height: 30px;
@@ -20,7 +19,7 @@ input[type=button] {
 </style>
 </head>
 
-<body>
+<body style="background-color:#f5f6f7;">
 	<jsp:include
 		page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
 

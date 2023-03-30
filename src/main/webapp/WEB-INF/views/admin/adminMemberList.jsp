@@ -2,12 +2,19 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
-<html>
+<html style="background-color:#f5f6f7;">
 <head>
 <meta charset="UTF-8">
 <title>Chart</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style>
+a{
+	cursor: pointer;	
+	
+}
+a:hover {
+	color: #323232;
+}
 
 select, option{
 	height: 30px;
@@ -20,6 +27,7 @@ select, option{
 
 section.container{
 	margin-bottom: 20px;
+	background-color:#f5f6f7;
 }
 .searchParent{
 	text-align: center;
@@ -27,19 +35,12 @@ section.container{
 .search{
 	display: inline-block;
 }
-a{
-	color: #c8936ed4;
-}
-a:hover {
-	cursor: pointer;	
-	color: #78E150;
-}
+
 *:focus { outline: 0; }
 input[type=button]{
 	color: white;
-	background: #d2b48c;  
-	width:100px; 
-	border-radius:10px; 
+	background: #323232;
+	width:100px;  
 	border: none;
 	font-size: 20px;
 }
@@ -54,7 +55,7 @@ footer{
 </style>
 </head>
 
-<body>
+<body style="background-color:#f5f6f7;">
 	<jsp:include
 		page="${pageContext.request.contextPath}/WEB-INF/common/adminHeader.jsp" />
 	<section class="container">
@@ -93,7 +94,7 @@ footer{
 							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}'" scope="col">${user.name}</td>
 							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}'" scope="col">${user.phone}</td>
 							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}'" scope="col">${user.email}</td>
-							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}'" scope="col"><a
+							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}'" scope="col"><a style="color: #323232;"
 								href="/admin/adminMemberDetail/${user.no}">상세정보</a></td>
 						</tr>
 					</c:forEach>
@@ -104,7 +105,7 @@ footer{
 			<div id="modulePaging"
 				style="display: inline-block; position: absolute; left: 50%; transform: translateX(-50%); font-size: 20px;">
 				<c:if test="${prePage!=null }">
-					<a href="/admin/adminMemberList/${prePage}">&lt;</a>
+					<a style="color: #323232;" href="/admin/adminMemberList/${prePage}">&lt;</a>
 				</c:if>
 
 				<c:forEach items="${ pagingNo }" var="no">
@@ -114,13 +115,13 @@ footer{
 								href="/admin/adminMemberList/${no}">${no}</a>&nbsp;
                   </c:when>
 						<c:otherwise>
-                  &nbsp;<a href="/admin/adminMemberList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="color: #323232;" href="/admin/adminMemberList/${no}">${no}</a>&nbsp;
                   </c:otherwise>
 					</c:choose>
 				</c:forEach>
 
 				<c:if test="${nextPage != null }">
-					<a href="/admin/adminMemberList/${nextPage}">&gt;</a>
+					<a style="color: #323232;" href="/admin/adminMemberList/${nextPage}">&gt;</a>
 				</c:if>
 			</div>
 			
