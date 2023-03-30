@@ -175,8 +175,7 @@ public class UserController {
 	        return "redirect:/";
 	    } else {
 	        session.setAttribute("path", request.getRequestURI());
-	        if (path.contains("catelogin.do")) {
-	        	System.out.println("catelogin.do");
+	        if (path.contains("catelogin")) {
 	            return "redirect:/users/bucket";
 	        } else if (path.contains("proCatelogin")) {
 	        	System.out.println("proCatelogin ");
@@ -187,7 +186,8 @@ public class UserController {
 	                cateService.addcate(sessionCvo, userInfo, null);
 	            }
 	            return "redirect:/users/bucket";
-	        } else if(path.contains("payBeLogin")) {
+	        } else if(path.contains("payBeLogin")) 
+	        {
 	            userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
 	            userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
 	            int userid = userInfo.getNo();
@@ -227,7 +227,7 @@ public class UserController {
 
 			if (path == null) {
 				return "redirect:/";
-			} else if (path.contains("catelogin.do")) {
+			} else if (path.contains("catelogin")) {
 				session.setAttribute("path", request.getRequestURI());
 				return "redirect:/users/bucket";
 			} else if (path.contains("proCatelogin")) {
@@ -277,7 +277,7 @@ public class UserController {
 		return result;
 	}
 
-	@RequestMapping(value = "/catelogin.do", method = RequestMethod.GET)
+	@RequestMapping(value = "/catelogin", method = RequestMethod.GET)
 	public String catelogin(HttpSession session, HttpServletRequest request) {
 		session.setAttribute("path", request.getRequestURI()); 
 
