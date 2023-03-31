@@ -222,8 +222,7 @@ background: #f9bf00;
                      <div class="carousel-content">
                         <h2 class="animate__animated animate__fadeInDown">주문 | 결제</h2>
                         <p class="animate__animated animate__fadeInUp">주문하시기 전에
-                           회원정보와 결제금액을 반드시 확인하시기 바랍니다.<br>
-                           *결제승인시간 기준 24시간 이후, 구매확정상태가되어, 결제취소가 불가능합니다.</p>
+                           회원정보와 결제금액을 반드시 확인하시기 바랍니다.</p>
                         <div>
                         </div>
                      </div>
@@ -267,13 +266,9 @@ background: #f9bf00;
                   <div class="col-md-6 mb-3">
                      <label for="lastName" style="letter-spacing:1px;">E-mail : </label> <small>${login_info.email}</small>
                   </div>
-
+<span style="color: red;">*결제승인시간 기준 24시간 이후, 구매확정상태가되어 결제취소가 불가능합니다.</span>
                </div>
 
-               <div class="mb-3"><c:forEach var="orderprice" items="${orderprice}" begin="0" end="0">
-                  <label for="address">주문번호 : </label> <small>${orderprice.orderId }</small>
-                  </c:forEach>
-               </div>
 
                <hr class="mb-4" style="margin-bottom:2rem !important;">
 
