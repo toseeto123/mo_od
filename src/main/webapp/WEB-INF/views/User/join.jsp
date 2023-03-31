@@ -3,13 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-<style>
 
-.bt_submit:hover{
-background: #da8862;
-
-}
-</style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
 <section id="hero" style="height : 350px;">
       <div class="hero-container">
@@ -23,7 +17,7 @@ background: #da8862;
                <div class="carousel-item active"
                   style="background-image: url(/resources/assets/img/slide/joinimg.png); height: 500px;">
                   <div class="carousel-container">
-                     <div class="carousel-content">
+                     <div class="carousel-content" style="position: relative;bottom: 40px;">
                         <h2 class="animate__animated animate__fadeInDown">회원가입
                            </h2>
                         <p class="animate__animated animate__fadeInUp" style="display: inline-block; width: 150px;">전체 필수입력 값입니다　</p>
@@ -50,133 +44,198 @@ background: #da8862;
 .logo2 {
 	font-family: "굴림"
 }
+.join_title label {
+font-size: 20px;
+}
+.Btn {
+   background-color: #525252;
+   width: 100px;
+   height: 40px;
+   border : none;
+   border-radius: 5px;
+   box-shadow: 1px 1px 1px 1px lightgray;  
+   color:white;
+}
+.stBtn {
+   background-color: #525252;
+   width: 120px;
+   height: 70px;
+   border : none;
+   border-radius: 5px;
+   box-shadow: 1px 1px 1px 1px lightgray;  
+   color:white;
+   font-size:20px;
+   margin-right: 40px;
+   
+}
+
+@media screen and (max-width: 480px) {
+.stBtn {
+width: 80px;
+height: 50px;
+font-size: 16px;
+margin-right:10px;
+}
+.age {
+	font-size: 15px;
+}
+}
+div > label {
+	font-size: 20px;
+}
+.mt {
+	margin-top:40px;
+}
 </style>
 
 
 </head>
 <body>
    
-        <div id="wrapper">
-    <form action="/users/join" method="post" name="join" id="join">
-            <!-- content-->
-            <div id="content">
-
+         <div id="wrapper" class="container" style="margin-top:100px;margin-bottom:100px;">
+    <form action="/users/join" method="post" role="form" name="join" id="join" style="margin:0 auto;">
+    <!-- ======= Contact Section ======= -->
+   	
+            <div class="row justify-content-center">
+            	<div class="col-xl-5">
+            
+              <div class=" form-group">
+              <h3 class="join_title"><label for="id">* 아이디</label></h3>
+              <div class="row" >
+              		<div class="col-9 mail_check_wrap">
+                    	<input type="text" name="id" class="form-control" id="id" placeholder="아이디입력하세요" data-rule="minlen:6" autofocus>
+                    </div>
+                    <div class="col-3">
+                    	<button type="button" name="idChk" id="idChk" class="Btn" onclick="fn_idChk();" value="N" style="width:70px;" >중복확인</button>                       
+                    </div>
+               </div>
+              </div>
+              <div class=" form-group mt">
+             		<h3 class="join_title"><label for="pwd">* 비밀번호</label></h3>
+             		<input type="password" class="form-control" name="pwd" id="pwd" placeholder="비밀번호를 입력하세요" pattern="^[A-Za-z0-9]{10,20}$" data-rule="minlen:20">
+              </div>
+              <div class=" form-group mt">
+             		<h3 class="join_title"><label for="pwd">* 비밀번호 재확인</label></h3>
+             		<input type="password" class="form-control" name="pwd2" id="pwd2" placeholder="비밀번호를 재입력해주세요" pattern="^[A-Za-z0-9]{10,20}$" data-rule="minlen:20" onkeyup="passConfirm()">
+             		<span id="confirmMsg" style="font-size: 18px; display: block; margin-top: 13px;"></span>
+              </div>
               
-                <div>
-                    <h3 class="join_title">
-                        <label for="id" style="font-size: 20px;">* 아이디</label>
-                    </h3>
-
-                    <div class="box string_id">
-                        <input type="text" id="id" name="id" class="string" minlength="6"  autofocus placeholder="아이디입력하세요">
-                    </div>
-                    <button class="idChk btnhover" type="button" name="idChk" id="idChk" onclick="fn_idChk();" value="N">중복확인</button>
-                </div>
-
-                
-                <div>
-                    <h3 class="join_title"><label for="pwd" style="font-size: 20px;">* 비밀번호</label></h3>
-                    <span class="box int_pass">
-                        <input type="password" id="pwd" name="pwd" class="string" pattern="^[A-Za-z0-9]{10,20}$" maxlength="20"  placeholder="비밀번호를 입력하세요">
-                    </span>
-                </div>
-
-                
-                <div>
-                    <h3 class="join_title"><label for="pwd2" style="font-size: 20px;">* 비밀번호 재확인</label></h3>
-                    <span class="box int_string_check" >
-                        <input type="password" id="pwd2" name="pwd2" class="string" maxlength="20" pattern="^[A-Za-z0-9]{10,20}$" placeholder="비밀번호를 재입력해주세요" onkeyup="passConfirm()">
-                    </span> 
-                    <span id="confirmMsg" style="font-size: 18px; display: block; margin-top: 13px;"></span>
-                </div>
-
-                
-                <div>
-                    <h3 class="join_title"><label for="name" style="font-size: 20px;">* 이 름</label></h3>
-                    <span class="box string_name">
-                        <input type="text" id="name" name="name" class="string" maxlength="20" placeholder="이름을 입력하세요">
-                    </span>
-                    
-                </div>
-
-               
-                <div>
-                    <h3 class="join_title" style="font-size: 20px;">* 나 이</h3>
-                    <div id="bir_wrap">
-                        <div>
-                               <input type="radio" value="10-19" class="age" name="age" id="age" checked/>&ensp;<label for="age" style="font-size: 20px;">10대</label> &emsp;&emsp;&emsp;
-	                           <input type="radio" value="20-29" class="age" name="age" id="age1" />&ensp;<label for="age1" style="font-size: 20px;">20대</label> &emsp;&emsp;&emsp;
-	                           <input type="radio" value="30-39" class="age" name="age" id="age2" />&ensp;<label for="age2" style="font-size: 20px;">30대</label> &emsp;&emsp;&emsp;
-	                           <input type="radio" value="40-49" class="age" name="age" id="age3" />&ensp;<label for="age3" style="font-size: 20px;">40대</label> &emsp;&emsp;&emsp;
-	                           <input type="radio" value="50대이상" class="age" name="age" id="age4" />&ensp;<label for="age4" style="font-size: 20px;">50대 이상</label> 
-                        </div>
+              <div class=" form-group mt">
+             		<h3 class="join_title"><label for="name">* 이 름</label></h3>
+             		<input type="text" class="form-control" id="name" name="name" maxlength="20" placeholder="이름을 입력하세요">
+             		<span id="confirmMsg"></span>
+              </div>
+              <div class=" form-group mt">
+                    <h3 class="join_title"><label for="age">* 나 이</label></h3>
+                    <div>
+                               <input type="radio" value="10-19" class="age" name="age" id="age" checked/>&ensp;<label for="age">10대</label> 
+	                           <input type="radio" value="20-29" class="age" name="age" id="age1" />&ensp;<label for="age1">20대</label>
+	                           <input type="radio" value="30-39" class="age" name="age" id="age2" />&ensp;<label for="age2">30대</label> 
+	                           <input type="radio" value="40-49" class="age" name="age" id="age3" />&ensp;<label for="age3">40대</label> 
+	                           <input type="radio" value="50대이상" class="age" name="age" id="age4" />&ensp;<label for="age4">50대 이상</label> 
                     </div>
                 </div>
-
-             
-                <div>
-                    <h3 class="join_title"><label for="gender" style="font-size: 20px;">* 성 별</label></h3>
-                    <span class="box gender_code">
+              <div class="form-group mt">
+                    <h3 class="join_title"><label for="gender">* 성 별</label></h3>
+                    <span class="form-control">
                         <select id="gender" name="gender" class="sel" aria-label="성별">
                             <option value="M">남 자</option>
                             <option value="F">여 자</option>
                         </select>                            
                     </span>
-                    
-                </div>
-
-                
-                <div>
-                    <h3 class="join_title"><label for="email" style="font-size: 20px;">* 본인확인 이메일</label></h3>
-                    <div>
-                        <input type="text" id="email" name="email" class="email box string_email" maxlength="100" onkeyup="emailCheck()" placeholder="이메일을 입력하세요">
+              </div>
+              
+              
+              <div class=" form-group mt">
+                    <h3 class="join_title"><label for="email">* 본인확인 이메일</label></h3>
+                    	<div>x
+                        <input type="text" id="email" name="email" class="form-control email box string_email" maxlength="100" onkeyup="emailCheck()" placeholder="이메일을 입력하세요">
                         <input type="hidden" class="myinfo_email" id="myinfo_email" name="myinfo_email" value="${login_info.email}">
-                    </div>
-                    <span id="conemail"></span>
-                     <span class="final_mail_ck" style="display: block; margin: 19px 0 8px; font-size: 20px;">* 이메일 인증</span>
+                        </div>
+                    <div style="margin-top:20px;">
+                     <span class="final_mail_ck"> < 인증번호 > </span>
                      <span class="mail_input_box_warn"></span>
-             <div class="mail_check_wrap">
-               <div class="mail_check_input_box" id="mail_check_input_box_false">
-                  <input class="mail_check_input" id="email1" disabled="disabled" required>
-               </div>
-               <button class="mail_check_button btnhover">인증번호 전송</button>
-               <div class="clearfix"></div>
-               <span id="mail_check_input_box_warn" name="mail_check_input_box_warn"></span>
-            </div>   
-                </div>
-                
+             			<div class="mail_check_wrap">
+             				<div class="row" >
+              				 <div class="col-8 mail_check_input_box" id="mail_check_input_box_false">
+                  			<input class="mail_check_input form-control" id="email1" disabled="disabled" required>
+               				</div>
+               				<div  class="col-4">
+               				<button class="mail_check_button Btn">인증번호 전송</button>
+               				</div>
+               				</div>
+               				 <div class="clearfix"></div>
+               				<span id="mail_check_input_box_warn" name="mail_check_input_box_warn"></span>
+            			</div>   
+            		</div>
+             </div>
+             
+             <div class=" form-group mt">
+                    <h3 class="join_title"><label for="phone">* 휴대전화</label></h3>
+                    <input type="tel" id="phone" name="phone" class="form-control" pattern="[0-9]{2,3}[0-9]{3,4}[0-9]{3,4}" data-rule="minlen:13" placeholder="- 를 빼고 전화번호를 입력하세요" >
+             </div>
+             
+             
+             <div class=" form-group mt">
+                   <h3 class="join_title"><label for="adr">* 우편번호</label></h3>
 
-               
-                <div>
-                    <h3 class="join_title"><label for="phone" style="font-size: 20px;">* 휴대전화</label></h3>
-                    <div class="box string_mobile">
-                        <input type="tel" id="phone" name="phone" class="string" pattern="[0-9]{2,3}[0-9]{3,4}[0-9]{3,4}" maxlength="13" placeholder="- 를 빼고 전화번호를 입력하세요" >
-                    </div>
-                   
-                        
-                </div>
-                
-                <div>
-                   <h3 class="join_title"><label for="adr" style="font-size: 20px;">* 우편번호</label></h3>
-                   <input type="text" class="address_input_1" name=adr id="adr" placeholder="우편번호" required>
-                    <input type="button" class="adrchk btnhover" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
-                    <input type="text" class="address_input_2" name="adr2" id="adr2" placeholder="주소" required><br>
-                    <input type="text" class="address_input_3" name="adr3" id="adr3" placeholder="상세주소" required>
-                </div>
-
-
-                
-                <div class="btn_area">
-                    <input type="submit" value="가입하기" id="btnJoin" class="join_now bt_submit mainBgColor" onclick="return JoinCheck()">
-                    <input type="reset" value="취소" id="btnReset" class="join_now bt_submit mainBgColor">
-                    <input type="button" value="뒤로가기" id="btnBack" class="join_now bt_submit mainBgColor" onclick="location.href='/'">
-                </div>
-
-            </div> 
+							<div class="row" >
+                                 <div class="col-8 mail_check_wrap">
+                                    <input type="text" class="form-control" name=adr id="adr" placeholder="우편번호" required>
+                                 </div>
+                                 <div class="col-4">
+                                     <input type="button" class="adrchk Btn" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">                          
+                                 </div>
+                            </div>
+					<div style="margin-top:20px;">
+                   <input type="text" class="form-control" name="adr2" id="adr2" placeholder="주소" required>
+                   </div>
+                   <div style="margin-top:20px;">
+                   <input type="text" class="form-control" name="adr3" id="adr3" placeholder="상세주소" required>
+                   </div>
+             </div>
+             
+             
+             
+             
+              <div class=" form-group mt" style="margin-top:40px;margin-left:20px;">
+                    <input type="submit" value="가입하기" class="join_now bt_submit stBtn" onclick="return JoinCheck()" >
+                    <input type="reset" value="취소" class="join_now bt_submit stBtn" >
+                    <input type="button" value="뒤로가기" class="join_now bt_submit stBtn" onclick="location.href='/'">
+             </div>
+             
+             
+             
+             
+             
+             
+             </div>
             
-      </form>
-        </div> 
-      
+            </div>
+            	</form>
+            
+             </div>
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+
+
+
+                
+
+             
+                
+
+                
+              
+                
         
       <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
       
