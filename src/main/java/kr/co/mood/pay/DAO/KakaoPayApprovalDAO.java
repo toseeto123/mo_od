@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.mood.Payment.VO.KakaoPayApprovalVO;
+import kr.co.mood.module.ModuleVO;
 
 @Repository
 public class KakaoPayApprovalDAO {
@@ -17,6 +18,7 @@ public class KakaoPayApprovalDAO {
 	public void paymentinsert(KakaoPayApprovalVO kvo) {
 		sql.insert("KakaoPayApprovalDAO.insert", kvo);
 	}
+	
 
 	
 	public void paysuccessdelete(String userno) {
@@ -32,6 +34,16 @@ public class KakaoPayApprovalDAO {
 	public List<KakaoPayApprovalVO>selectorderid(int userno) {
 		return sql.selectList("KakaoPayApprovalDAO.selectorderid", userno);
 	}
+	
+	public List<KakaoPayApprovalVO>pageselectorderid(ModuleVO moduleVO) {
+		return sql.selectList("KakaoPayApprovalDAO.pageselectorderid", moduleVO);
+	}
+
+	public int getTotalRecords(int userno) {
+	    return sql.selectOne("KakaoPayApprovalDAO.totalRecords", userno);
+	}
+	
+	
 	public List<KakaoPayApprovalVO>selectsuccesslist(int orderid) {
 		return sql.selectList("KakaoPayApprovalDAO.selectsuccesslist", orderid);
 	}

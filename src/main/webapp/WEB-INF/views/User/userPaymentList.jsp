@@ -11,6 +11,7 @@
 <script
    src="https://cdnjs.cloudflare.com/ajax/libs/spring-webmvc/5.3.8/spring-webmvc.min.js"></script>
    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
 <meta charset="UTF-8">
 
 <title>결제상세</title>
@@ -26,7 +27,6 @@ dl, ul, ol, li {
 }
 
 .content_box {
-   float: left;
    width: 100%;
    background-color: white;
 
@@ -351,10 +351,34 @@ width: 300px;
     padding: 0.5rem 1rem;
   }
    section{ 
-   width: 450px; 
+   width: 350px; 
    margin: 0 auto; 
    } 
 }
+
+.pagination {
+  display: inline-block;
+    display: flex;
+  justify-content: center;
+margin: 50px 0 50px 0;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  margin: 0 5px;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
 
 
 </style>
@@ -435,7 +459,7 @@ session.removeAttribute("alertMessage");
     <button type="button" class="btn-primary" onclick="confirmCancel()"><fmt:formatNumber value="${orderid.total}" type="currency" currencySymbol="₩" />　주문취소</button>
     </c:if>
     <c:if test="${orderid.success eq '구매 확정'}">
-    <span style="white-space: nowrap;">구매확정 상태에는 결제취소가 불가능합니다.</span>
+    <span style="white-space: nowrap;">총금액 : <fmt:formatNumber value="${orderid.total}" type="currency" currencySymbol="₩" /> <br>구매확정 상태에는 결제취소가 불가능합니다.</span>
     </c:if>
     </div>
         </form>
@@ -444,7 +468,28 @@ session.removeAttribute("alertMessage");
 </div>
          </c:otherwise>
          </c:choose>
+         <div class="pagination">
+				<c:if test="${prePage!=null }">
+					<a href="/products/payMypage/${prePage}">&lt;</a>
+				</c:if>
+
+				<c:forEach items="${ pagingNo }" var="no">
+					<c:choose>
+						<c:when test="${selectPage == no}">
+                  &nbsp;<a href="/products/payMypage/${no}" style="background: lightgray;">${no}</a>&nbsp;
+                  </c:when>
+						<c:otherwise>
+                  &nbsp;<a href="/products/payMypage/${no}">${no}</a>&nbsp;
+                  </c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<c:if test="${nextPage != null }">
+					<a href="/products/payMypage/${nextPage}">&gt;</a>
+				</c:if>
+			</div>
       </div>
+
    </div>
 
 <script>

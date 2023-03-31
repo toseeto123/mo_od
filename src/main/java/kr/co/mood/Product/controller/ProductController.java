@@ -159,8 +159,7 @@ public class ProductController {
 	
     @RequestMapping(value = "/A0categoryList")
     public String ProductListA0(ArrayList<ProVO> vo, Model model) {
-       return "redirect:/products/A0categoryList/1";
-       
+       return "redirect:/products/A0categoryList/1";     
     }
 
 	@RequestMapping(value = "/A0categoryList/{page}") // FIX
