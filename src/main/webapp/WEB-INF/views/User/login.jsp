@@ -88,8 +88,8 @@ footer {
           <form action="/users/login" method="post" role="form" class="input-group ">
             <div class="row">
               <div class="col-md-6 form-group">
-                <input type="text" class="form-control" name="id" placeholder=" 아이디"  required autofocus style="border-radius: 3px;margin-bottom: 15px; width:352px; ">
-                <input type="password" class="form-control" name="pwd" id="pwd" placeholder=" 비밀번호"  required style="border-radius: 3px;margin-bottom: 15px; width:352px;">
+                <input type="text" class="form-control" name="id" placeholder=" 아이디"  required autofocus style="border-radius: 3px;margin-bottom: 15px; width:348px; ">
+                <input type="password" class="form-control" name="pwd" id="pwd" placeholder=" 비밀번호"  required style="border-radius: 3px;margin-bottom: 15px; width:348px;">
               </div>
 
               <c:if test="${ msg == false }">
@@ -97,8 +97,7 @@ footer {
 						<br>
 						<p style="color: red; font-size: 15px; margin: 20px 70px 0;">존재하지 않는 아이디 또는 비밀번호입니다</p>
 					</c:if>
-					
-					<button class="submit hover" style="color: white; height: 60px; width: 370px;">로그인</button>
+					<div class="text-center"><button class="submit hover" style="color: white; height: 60px; width: 350px;">로그인</button></div>
             </div>
             
           </form>
