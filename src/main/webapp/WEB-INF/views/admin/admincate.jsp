@@ -84,7 +84,12 @@ footer{
 							<th scope="col">${cateList.pro_name }</th>
 							<th scope="col">${cateList.pro_option }</th>
 							<th scope="col">${cateList.pro_price }</th>
-							<th scope="col">${cateList.amount }</th>
+							<th scope="col">
+								
+							
+							${cateList.amount }
+							
+							</th>
 							<th scope="col">${cateList.pro_serialnumber}</th>
 							<th scope="col"><button type="button"
 									onclick="deletecate(this)">삭제</button></th>
@@ -122,12 +127,14 @@ footer{
 	</section>
 	<!-- End Hero -->
 	<script type="text/javascript">
+
+	
 		 function deletecate(element){
 			  const cateId = element.closest('tr').querySelector('th:first-of-type').textContent;
 			  const data = { cateId: Number(cateId) };
 			  console.log(cateId,data)
 			    let xhr = new XMLHttpRequest();
-			   xhr.open('POST', '/catedelete.do', true);
+			   xhr.open('POST', '/users/catedelete', true);
 			   xhr.setRequestHeader('Content-Type', 'application/json');
 			   xhr.onreadystatechange = function() {
 				      if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
@@ -253,6 +260,8 @@ footer{
 				  search();
 			  }
 			});
+			
+			
 	</script>
 
 	<jsp:include page="../../common/footer.jsp" />
