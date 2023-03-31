@@ -114,7 +114,7 @@ input[type=text]:focus, input[type=email]:focus {
 									<input type="button" class="col-3" value="확인"
 										onClick="idValidate()">
 									<div class="col-3"></div>
-									<div class="col-7">
+									<div class="col-9">
 										<span class="span br" id="idCheck"></span>
 									</div>
 								</div>
@@ -131,7 +131,7 @@ input[type=text]:focus, input[type=email]:focus {
 									<input type="button" class="col-3" value="보내기"
 										onclick="emailValidate();">
 									<div class="col-3"></div>
-									<div class="col-6">
+									<div class="col-9">
 										<span class="span br" id="emailCheck"></span>
 									</div>
 								</div>
@@ -147,7 +147,7 @@ input[type=text]:focus, input[type=email]:focus {
 									<input type="button" class="col-3" value="확인"
 										onClick="numValidate()">
 									<div class="col-3"></div>
-									<div class="col-7">
+									<div class="col-9">
 										<span class="span br" id="time"></span> <input type="hidden"
 											id="status" value="pwd"> <input type="hidden"
 											id="storage">
