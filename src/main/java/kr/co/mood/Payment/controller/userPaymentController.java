@@ -116,7 +116,6 @@ public class userPaymentController {
 			@RequestParam("totalValue") int total,@RequestParam("adr") String address) {
 		UserVO uvo = (UserVO) session.getAttribute("login_info");
 		int userid = uvo.getNo();
-		System.out.println("占쎈�딉옙�싷옙��" + total);
 		String proid = pro_number;
 
 		userOrderVO ordervo = new userOrderVO();

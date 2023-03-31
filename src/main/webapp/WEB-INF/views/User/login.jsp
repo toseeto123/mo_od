@@ -37,7 +37,7 @@ footer {
 				<div class="carousel-item active"
 					style="background-image: url(/resources/assets/img/slide/loginimg.png); height: 500px;">
 					<div class="carousel-container">
-						<div class="carousel-content">
+						<div class="carousel-content" style="position: relative; bottom: 40px;">
 							<h2 class="animate__animated animate__fadeInDown">로그인</h2>
 							<p class="animate__animated animate__fadeInUp"> 회원만 서비스 이용이 가능합니다 </p>
 							<!--                         <div> -->
@@ -81,43 +81,36 @@ footer {
 
 	<div class="login">
 		<div class="form-login">
-
 			<div class="social-icons">
+			 <section id="contact" class="contact">
+      <div class="container">
+        <div class="form">
+          <form action="/users/login" method="post" role="form" class="input-group ">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <input type="text" class="form-control" name="id" placeholder=" 아이디"  required autofocus style="border-radius: 3px;margin-bottom: 15px; width:352px; ">
+                <input type="password" class="form-control" name="pwd" id="pwd" placeholder=" 비밀번호"  required style="border-radius: 3px;margin-bottom: 15px; width:352px;">
+              </div>
 
-				<form id="login" action="/users/login" class="input-group"
-					method="post" style="margin-bottom: 15px;">
-					<input type="text" name="id" class="input-field" placeholder=" 아이디" required autofocus style="border-radius: 3px;margin-bottom: 15px;">
-					<input type="password" name="pwd" class="input-field" placeholder=" 비밀번호" required style="border-radius: 3px;margin-bottom: 15px;">
-
-
-					<c:if test="${ msg == false }">
+              <c:if test="${ msg == false }">
 						<br>
 						<br>
 						<p style="color: red; font-size: 15px; margin: 20px 70px 0;">존재하지 않는 아이디 또는 비밀번호입니다</p>
 					</c:if>
-
 					
-
-					<button class="submit hover" style="color: white; height: 60px;">로그인</button>
-
-
-				</form>
-				<ul class="login_link_box">
+					<button class="submit hover" style="color: white; height: 60px; width: 370px;">로그인</button>
+            </div>
+            
+          </form>
+        </div>
+			<ul class="login_link_box">
 					<li class="login_li"style="margin-left: 0;"><a href="/users/searchId" class="fonthover">아이디
 							찾기</a> &nbsp;</li>
-
-					<li class="login_li"><a href="/users/searchPwd" class="fonthover">비밀번호
+		     		<li class="login_li"><a href="/users/searchPwd" class="fonthover">비밀번호
 							찾기</a> &nbsp;</li>
-
 					<li class="login_li"><a href="/users/join" class="fonthover">회원가입</a>
 						&nbsp;</li>
-
 				</ul>
-
-				<!-- 			<a href="index.jsp" class="" style="color: black;">메인 페이지</a>  -->
-				<!-- 			<a href="join.do" class="" style="color: black; margin: 0 15px 0 15px;">회원가입</a> -->
-				<!-- 			<a href="" class="" style="color: black;">비밀번호재설정</a> -->
-
 
 
 				<div class="social_login">
@@ -132,19 +125,12 @@ footer {
 								<img style="width: 50px;" src="/resources/user/img/naver.png"
 								alt="naver" class="imghover"> <span class="box_list_txt" style="color: #323232;">네이버</span>
 						</a></li>
-
-
 						<li class="box_list">
-
-<!-- 						 <a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/users/kakaoLogin&response_type=code"> -->
- 						<a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://mo-od.co.kr/users/kakaoLogin&response_type=code">  
-
-
-
+						 <a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/users/kakaoLogin&response_type=code">
+<!--  						<a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://mo-od.co.kr/users/kakaoLogin&response_type=code">   -->
 								<img style="width: 50px;" src="/resources/user/img/kakao.png"
 								alt="kakao" class="imghover"> <span class="box_list_txt" style="color: #323232;">카카오</span>
 						</a></li>
-
 						<li class="box_list">
 							<button
 								style="background: transparent; border-color: transparent;"
@@ -154,12 +140,11 @@ footer {
 									style="color: #323232;">구글</span>
 							</button>
 						</li>
-
-
 					</ul>
 					<br>
-
 				</div>
+      </div>
+    </section>	
 			</div>
 		</div>
 	</div>

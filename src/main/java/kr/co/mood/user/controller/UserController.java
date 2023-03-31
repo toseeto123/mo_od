@@ -100,7 +100,7 @@ public class UserController {
 		
 	}
 
-	@RequestMapping(value = "/naverLogin" , method = RequestMethod.GET)
+	@RequestMapping(value = "/naverLogin")
 	 public void naverLogin(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request,Model model) throws IOException {
 	       String access_Token = ms.getNaverAccessToken(code, session);
 	       UserVO naverUserInfo =  ms.getNaverUserInfo(access_Token, session);
@@ -124,7 +124,7 @@ public class UserController {
 	           }
 	           pathgo = "users/bucket";
 	       } else if (path.contains("payBeLogin")) {
-	    	   System.out.println("payBeLogin ");
+	    	   
 	           userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
 	           userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
 	           int userid = naverUserInfo.getNo();
@@ -135,15 +135,16 @@ public class UserController {
 	           sessionorderprovo.setOrderId(orderid);
 	           productPayService.insert(sessionorderprovo, naverUserInfo, null);
 	           model.addAttribute("onelist", productPayService.selectList(orderid));
-	           pathgo = "products/orders";
 	           
+	           pathgo = "User/userPay";
+	           System.out.println("dsssd");
 	       } else {
 	           pathgo = path;
 	       }
 		    }
 
-//	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080/"+pathgo;
-	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://mo-od.co.kr/" +pathgo;
+	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080/"+pathgo;
+//	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://mo-od.co.kr/" +pathgo;
 
 	       
 	       response.setContentType("text/html; charset=UTF-8");
