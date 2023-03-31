@@ -20,6 +20,7 @@ footer {
 }
 .box_list, .login_li {
    margin: 5px 5px;
+   display: inline-block;
 }
 </style>
 <head>
