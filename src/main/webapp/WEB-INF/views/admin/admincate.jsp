@@ -31,7 +31,7 @@ a:hover {
 *:focus { outline: 0; }
 input[type=button]{
 	color: white;
-	background: #d2b48c;  
+	background: #323232;  
 	width:100px; 
 	border-radius:10px; 
 	border: none;

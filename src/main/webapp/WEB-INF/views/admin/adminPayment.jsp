@@ -20,7 +20,7 @@ select, option{
 }
 .searchParent{
 	text-align: center;
-	margin: 50px 0;
+	margin: 110px 0;
 }
 .search{
 	display: inline-block;
@@ -40,6 +40,7 @@ input[type=button]{
 	width:100px; 
 	border: none;
 	font-size: 20px;
+	border-radius:10px;
 }
 input[type=search]{
 	font-size: 18px;
