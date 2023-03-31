@@ -8,7 +8,7 @@
 
     <div class="container" style="font-size:22px;">
       <div class="copyright">
-        &copy; Copyright <strong><span style="font-family:궁서;">묻:</span><a href="/adminLogin" style="color:white;">mo_od.</a></strong> 2023<br>김남수 　김지애 　장승연 　송준기 　이슬기 　최욱진
+        &copy; Copyright <strong><span style="font-family:궁서; line-height:2.5;">묻:</span><a href="/adminLogin" style="color:white;">mo_od.</a></strong> 2023<br><span style="line-height:2.5;">김남수 　김지애 　장승연 　송준기 　이슬기 　최욱진</span>
       </div>
     </div>
   </footer><!-- End Footer -->
