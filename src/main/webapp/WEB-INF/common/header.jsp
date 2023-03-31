@@ -71,29 +71,12 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
     <div class="container d-flex align-items-center justify-content-between">
 
        <h1 class="logo"><a href="/" style="font-family:'궁서'; font-size: 50px;">묻:<b class="logo2" style="font-family:'KimjungchulMyungjo-Bold'; font-size: 56px;">mo_od</b></a></h1>
- 
       <nav id="navbar" class="navbar">
         <ul>
 
-          <li class="dropdown"><a href="/products/A2categoryList"><b>가 구</b></a>
-                <ul>
-                <li><a href="/products/A2categoryList" style="margin: 0 auto;"><b>소 파</b></a></li>
-                 <li><a href="/products/A1categoryList" style="margin: 0 auto;"><b>침대 프레임</b></a></li>       
-                 <li><a href="/products/A0categoryList" style="margin: 0 auto;"><b>매트리스</b></a></li>
-                </ul>
-          </li>
-          <li class="dropdown"><a href="/products/B0categoryList"><b>조 명</b></a>
-                <ul>
-                  <li><a href="/products/B0categoryList"><b>무드등</b></a></li>
-                  <li><a href="/products/B1categoryList"><b>스탠드조명</b></a></li>
-                </ul>
-          </li>
-          <li class="dropdown"><a href="/products/C0categoryList"><b>수 납</b></a>
-                <ul>
-                  <li><a href="/products/C0categoryList"><b>옷장 | 행거</b></a></li>
-                  <li><a href="/products/C1categoryList"><b>서 랍</b></a></li>
-                </ul>
-          </li>
+          <li><a href="/products/A2categoryList"><b>가 구</b></a></li>
+          <li><a href="/products/B0categoryList"><b>조 명</b></a></li>
+          <li><a href="/products/C0categoryList"><b>수 납</b></a></li>
 			<c:if test="${!empty login_info.id}">
                <c:choose>
                <c:when test="${login_info.id == 'admin' }">
@@ -117,7 +100,7 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
         
         
         
-        <i class="bi bi-list mobile-nav-toggle"></i>
+        <i class="bi bi-list mobile-nav-toggle" style="color: white;"></i>
       </nav><!-- .navbar -->
 
     </div>

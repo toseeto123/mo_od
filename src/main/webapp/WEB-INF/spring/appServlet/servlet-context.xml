@@ -49,7 +49,7 @@
    </beans:bean>
    
    
-
+<!-- 
    <interceptors>
       <interceptor>
 
@@ -58,7 +58,7 @@
          <beans:bean   class="kr.co.mood.interceptor.Interceptor" />
       </interceptor>
    </interceptors>
-
+ -->
    <beans:bean id="multipartResolver"
       class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
       <beans:property name="maxUploadSize" value="200000000" />
