@@ -122,7 +122,7 @@ public class CateController {
    @RequestMapping(value = "/catedelete", method = RequestMethod.POST)
    public String deleteCate(HttpSession session, @RequestBody Map<String, Object> data, Model model, CateVO cvo) {
       int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
-
+      
       cservice.deletecate(cateId);
       return "bucket/bucket";
    }
