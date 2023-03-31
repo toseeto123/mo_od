@@ -181,17 +181,17 @@ div > label {
 
 							<div class="row" >
                                  <div class="col-8 mail_check_wrap">
-                                    <input type="text" class="form-control" name=adr id="adr" placeholder="우편번호" required>
+                                    <input type="text" class="form-control address_input_1" name=adr id="adr" placeholder="우편번호" required>
                                  </div>
                                  <div class="col-4">
                                      <input type="button" class="adrchk Btn" onclick="sample6_execDaumPostcode()" value="우편번호 찾기">                          
                                  </div>
                             </div>
 					<div style="margin-top:20px;">
-                   <input type="text" class="form-control" name="adr2" id="adr2" placeholder="주소" required>
+                   <input type="text" class="form-control address_input_2" name="adr2" id="adr2" placeholder="주소" required>
                    </div>
                    <div style="margin-top:20px;">
-                   <input type="text" class="form-control" name="adr3" id="adr3" placeholder="상세주소" required>
+                   <input type="text" class="form-control address_input_3" name="adr3" id="adr3" placeholder="상세주소" required>
                    </div>
              </div>
              
