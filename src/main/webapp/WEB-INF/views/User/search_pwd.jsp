@@ -13,6 +13,7 @@ body{
 }
 
 input[type=text], input[type=email]{
+
     height:50px;
     border: none;
     border-radius: 0;
@@ -34,7 +35,7 @@ label{
 
 input[type=button] {
     font-color:white;
-    font-size:27px;
+    font-size: 120%;
     cursor: pointer;
     color: white;
    	background: #323232;
@@ -67,6 +68,7 @@ input[type=text]:focus, input[type=email]:focus {
 	border: 1px solid #999;
   outline: none;
 }
+
 </style>
 <link rel="stylesheet"
 	href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css">
@@ -94,7 +96,7 @@ input[type=text]:focus, input[type=email]:focus {
 		</div>
 	</section>
 	<div class="d-flex align-items-center justify-content-center" style="background-color:#f5f6f7;">
-		<div class="row justify-content-center mt-5">
+		<div class="row justify-content-center mt-5" style="padding: 0;">
 			<div class="col-md-6">
 				<div class="card border-0" style="background-color:#f5f6f7;">
 					<div class="card-body">
@@ -104,12 +106,12 @@ input[type=text]:focus, input[type=email]:focus {
 
 							<div class="card-body">
 								<div class="form-group row">
-									<label style="font-size: 25px; line-height:25px;" class="col-3 col-form-label" for="id">아이디</label>
+									<label style="padding: 0; margin: 0; font-size: 120%;"  class="col-3 col-form-label" for="id">아이디</label>
 									<div class="col-6">
 										<input type="text" class="form-control" id="id" name="id"
-											placeholder="아이디를 입력해주세요" required autofocus>
+											placeholder="아이디 입력" required autofocus>
 									</div>
-									<input type="button" class="col-3" value="아이디 확인"
+									<input type="button" class="col-3" value="확인"
 										onClick="idValidate()">
 									<div class="col-3"></div>
 									<div class="col-7">
@@ -120,11 +122,11 @@ input[type=text]:focus, input[type=email]:focus {
 
 							<div class="card-body">
 								<div class="form-group row">
-									<label style="font-size: 25px; line-height:25px;" class="col-3 col-form-label" for="email">이메일</label>
+									<label style="padding: 0; margin: 0; font-size: 120%;"  class="col-3 col-form-label" for="email">이메일</label>
 
 									<div class="col-6">
 										<input type="text" class="form-control" id="email"
-											name="email" placeholder="이메일을 입력해주세요" required>
+											name="email" placeholder="이메일 입력" required>
 									</div>
 									<input type="button" class="col-3" value="보내기"
 										onclick="emailValidate();">
@@ -137,7 +139,7 @@ input[type=text]:focus, input[type=email]:focus {
 							</div>
 							<div class="card-body">
 								<div class="form-group row">
-									<label style="font-size: 25px; line-height:25px;" class="col-3 col-form-label" for="number">인증번호</label>
+									<label style="padding: 0; margin: 0; font-size: 120%;"  class="col-3 col-form-label" for="number">인증번호</label>
 									<div class="col-6">
 										<input type="text" class="form-control" id="number"
 											placeholder="인증번호 입력">
@@ -152,21 +154,19 @@ input[type=text]:focus, input[type=email]:focus {
 									</div>
 								</div>
 							</div>
-							<div class="card-body">
-
+							<div class="card-body" style="padding: 0;">
+								
 									<div class="form-group row">
-											<a class="col-4 fonthover"
-												onclick="location.href='/users/searchId'">아이디 찾기</a>
-										
-										<span class="col-6"></span>									
-											<a class="col-2 fonthover" href="/users/login"
-												>돌아가기</a>
-												
+									
+											<div class="col-4">
+											<a style="padding: 0; margin: 0; display: block; margin-left: 20px; position: absolute; left: 0;" href="/users/searchId" class="fonthover"
+												>아이디찾기</a>
+										</div>
+										<div class="col-4"></div>
+										<div class="col-4" style="position: relative;">
+											<a style="padding: 0; margin: 0; position: absolute; right: 20px;" href="/users/login" class="fonthover">돌아가기</a>
+										</div>
 									</div>
-
-							
-
-								</div>
 
 							</div>
 
@@ -175,7 +175,7 @@ input[type=text]:focus, input[type=email]:focus {
 				</div>
 			</div>
 		</div>
-
+</div>
 
 	<div class="modal fade" id="myModal" style="color: #323232;">
 		<div class="modal-dialog" role="document">
