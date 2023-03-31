@@ -75,7 +75,6 @@ background-color: #525252;
 
 @media only screen and (max-width: 768px) {
    ol {
-      position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;
@@ -171,6 +170,14 @@ body {
 }
 .returnbtn:hover{
 	background: #323232;
+}
+
+@media (max-width: 576px) {
+  .returnbtn {
+    padding: 10px 20px;
+    font-size: 16px;
+    width : 90%;
+  }
 }
 
 </style>

@@ -11,29 +11,30 @@
   }
   #footer .copyright {
     text-align: center;
-    font-size: 2vw; /* or use any other value depending on your preference */
+    font-size: 3.2vw; /* or use any other value depending on your preference */
   }
   #footer .names {
     line-height: 1.5;
-    font-size: 1.5vw; /* or use any other value depending on your preference */
+    font-size: 3.2vw; /* or use any other value depending on your preference */
   }
 }
 
 @media (min-width: 768px) and (max-width: 991px) {
   .back-to-top i {
-    font-size: 28px;
+    font-size: 18px;
   }
 }
 
 @media (min-width: 992px) and (max-width: 1199px) {
   .back-to-top i {
-    font-size: 32px;
+    font-size: 20px;
+    bottom:40px;
   }
 }
 
 @media (min-width: 1200px) {
   .back-to-top i {
-    font-size: 36px;
+    font-size: 24px;
   }
 }
 
