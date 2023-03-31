@@ -29,6 +29,7 @@ dl, ul, ol, li {
 .content_box {
    width: 100%;
    background-color: white;
+   height: 800px;
 
 }
 
@@ -379,7 +380,6 @@ margin: 50px 0 50px 0;
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
-
 
 </style>
 <jsp:include page="/WEB-INF/common/header.jsp" />

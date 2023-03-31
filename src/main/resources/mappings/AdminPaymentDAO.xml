@@ -161,9 +161,29 @@
 		order by orderNo desc
 	</select>
 
+
+	<select id="adminPaymentDetail" resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
+		select orderProduct.orderid as'orderNo',
+			(orderProduct.price/orderProduct.count) as 'price',
+			orderProduct.count as 'productCount',
+			product.pro_serialnumber as 'productNo',
+			product.pro_name as 'productName',
+			moodorder.address as 'address',
+			member.name as 'name',
+			member.phone as 'phone'
+		from orderProduct
+		inner join product
+			on product.pro_number = orderProduct.pro_number
+		inner join moodorder
+			on orderProduct.orderid = moodorder.orderid
+		inner join moodjoin as member
+			on member.no = moodorder.userNo
+		where orderProduct.orderid = #{no}
+	</select>
+
 	<select id="adminPaymentCancel"
 		resultType="kr.co.mood.Payment.VO.KakaoPayApprovalVO">
-		select payment.tid, orders.orderId, orders.price
+		select payment.tid as 'tid', payment.orderId as 'orderId', orders.price as 'price'
 		from
 		payment
 		inner join moodorder as orders

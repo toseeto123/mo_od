@@ -11,29 +11,33 @@
   }
   #footer .copyright {
     text-align: center;
-    font-size: 2vw; /* or use any other value depending on your preference */
+    font-size: 3.2vw; /* or use any other value depending on your preference */
   }
   #footer .names {
     line-height: 1.5;
-    font-size: 1.5vw; /* or use any other value depending on your preference */
+    font-size: 3.2vw; /* or use any other value depending on your preference */
   }
 }
 
-@media (min-width: 768px) and (max-width: 991px) {
-  .back-to-top i {
-    font-size: 28px;
+/* 중간 크기 화면에서 위치 변경 */
+@media (max-width: 992px) {
+  .back-to-top {
+    right: 20px;
+    bottom: 80px;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
   }
 }
 
-@media (min-width: 992px) and (max-width: 1199px) {
-  .back-to-top i {
-    font-size: 32px;
-  }
-}
-
-@media (min-width: 1200px) {
-  .back-to-top i {
-    font-size: 36px;
+/* 모바일 크기 화면에서 위치 변경 */
+@media (max-width: 576px) {
+  .back-to-top {
+    right: 15px;
+    bottom: 80px;
+    width: 25px;
+    height: 25px;
+    font-size: 16px;
   }
 }
 

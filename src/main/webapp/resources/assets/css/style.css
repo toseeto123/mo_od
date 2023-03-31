@@ -455,7 +455,7 @@ h6 {
 }
 
 #hero p {
-  width: 80%;
+  width: 100%;
   -webkit-animation-delay: 0.4s;
   animation-delay: 0.4s;
   margin: 0 auto 30px auto;

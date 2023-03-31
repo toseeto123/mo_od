@@ -62,18 +62,25 @@ public class AdminPaymentController {
 		return map;	
 	}
 	
-
-@RequestMapping(value = "/kakaoPayCancel" )
-public String payCancel(Model model, String orderid) {
+	@RequestMapping("/paymentDetail")
+	public String paymentDetail(Model model, int no) {
+		adminService.adminPaymentDetail(model, no);
+		return "admin/adminPaymentDetail";
+	}
+	
+	
+	@RequestMapping(value = "/kakaoPayCancel" )
+	public String payCancel(Model model, String orderid) {
 	
 		KakaoPayApprovalVO vo = adminService.adminPaymentCancel(Integer.parseInt(orderid));	
+		System.out.println(vo);
 		try {
-			kakaoPay.kakaoCancel(vo.getTid(),vo.getPrice(), null, vo.getOrderId());
+			kakaoPay.kakaoCancel(vo.getTid(),vo.getPrice(), null, Integer.parseInt(orderid));
 		}catch(Exception e) {
 			e.printStackTrace();
 			return "redirect:/admin/chart";
 		}
 	   return "redirect:/admin/payment";
-}
+	}
 
 }

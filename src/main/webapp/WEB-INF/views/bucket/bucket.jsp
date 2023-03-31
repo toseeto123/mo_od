@@ -211,7 +211,19 @@ background: #323232;
   font-size: 25px; 
   vertical-align:bottom;
   }
+    @media (max-width: 768px) {
+  .nav-pills {
+    flex-direction: column;
+  }
+  .nav-link {
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+  }
   
+   section{ 
+   	width: 350px; 
+	margin: 0 auto; 
+   } 
 
 
 </style>

@@ -4,16 +4,53 @@
 
 <!DOCTYPE html>
 <html>
-<head>
-<jsp:include page="/WEB-INF/common/header.jsp" />
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>회원 정보</title>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="/resources/user/js/main.js"></script>
    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 
 <style>
+/* 기본 스타일 */
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+}
+
+/* 768px 이하인 경우 */
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+  
+  .box {
+    margin: 10px 0;
+  }
+}
+
+/* 992px 이하인 경우 */
+@media screen and (max-width: 992px) {
+  .box {
+    width: 75px;
+    height: 75px;
+  }
+}
+
+/* 1200px 이하인 경우 */
+@media screen and (max-width: 1200px) {
+  .box {
+    width: 90px;
+    height: 90px;
+  }
+}
 section {
 	width: 1000px;
 	margin: 0 auto;
@@ -43,8 +80,75 @@ input {
   font-size: 25px; 
   vertical-align:bottom;
   }
+  @media (max-width: 768px) {
+  .nav-pills {
+    flex-direction: column;
+  }
+  .nav-link {
+    font-size: 14px;
+    padding: 0.5rem 1rem;
+  }
+   section{ 
+   	width: 350px; 
+	margin: 0 auto; 
+   } 
+}
+@media only screen and (max-width: 768px) {
+	.container {
+		max-width: 100%;
+	}
+}
+/* #mypage { */
+/*   width: 77%; */
+/*   max-width: 900px; */
+/*   border: 2px solid #323232; */
+/*   padding-bottom: 10px; */
+/*   box-sizing: border-box; /* 이 부분을 추가하여 border가 width를 넘치지 않도록 합니다 */ */
+/*   margin: 0; */
+/* } */
+  @media screen and (max-width: 600px) {
+    table {
+      width: 100%;
+    }
+    td {
+      display: block;
+    }
+    td:first-child {
+      margin-top: 20px;
+      margin-bottom: 5px;
+    }
+    input[type="password"],
+    input[type="text"],
+    input[type="tel"] {
+      width: 90%;
+      margin-bottom: 10px;
+    }
+    .adrchk {
+      margin-top: 10px;
+    }
+    .address_input_1 {
+      margin-bottom: 5px;
+    }
+  }
+@media (max-width: 768px) {
+  .btn {
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+@media (max-width: 768px) {
+  .col-md-4 {
+    width: 100%;
+  }
+}
+@media (max-width: 1200px) {
+  .container {
+    width: 100%;
+  }
+}
+
 </style>
-</head>
+<jsp:include page="/WEB-INF/common/header.jsp" />
 <body>
 	<section>
       <ul class="nav nav-pills nav-justified">
@@ -52,99 +156,82 @@ input {
           <a class="nav-link active" href="/users/mypage" style="background: #323232; color:white; font-weight: 700;"><i class="xi-profile" style="color:white;"></i> 회원 정보</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/users/bucket" style="background: #323232; color:white; font-weight: 700;"><i class="xi-cart" style="color:white;"></i> 장바 구니</a>
+          <a class="nav-link" href="/users/bucket" style="background: #525252; color:white; font-weight: 700;"><i class="xi-cart" style="color:white;"></i> 장바 구니</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/products/payMypage" style="background: #323232; color:white; font-weight: 700;"><i class="xi-list-dot" style="color:white;"></i> 결제 내역</a>
+          <a class="nav-link" href="/products/payMypage" style="background: #525252; color:white; font-weight: 700;"><i class="xi-list-dot" style="color:white;"></i> 결제 내역</a>
         </li>
       </ul>
    </section>
 
 
-	<div class="container" style="border-top:2px solid #323232;padding:40px 0; width: 1200px;">
-		<fieldset style="
-    width: fit-content;
-    margin: 0 auto;
-">
+	<form action="/users/update?id=${login_info.id}" method="post" name="mypage" id="mypage">
+	<div class="container" style="border-top:2px solid #323232; padding:60px 0; max-width: 1200px;">
+		<table class="table">
 
-	<form action="/users/update?id=${login_info.id}" method="post" name="mypage" id="mypage" style="width:900px;border:2px solid#323232;padding-bottom: 10px;">
-		<table>
-		<tr style="border-top:20px solid white;">
-			<td style="padding-left: 80px; border: none"><label for="id">아이디</label></td>
-			<td style="padding-left: 50px;" id="login_id">${login_info.id}<br></td>
+		<tr>
+			<td ><label for="id">아이디</label></td>
+			<td id="login_id">${login_info.id}<br></td>
 		</tr>
-		<tr style="border-top:20px solid white;">
-			<td style="padding-left: 80px;"><label for="pwd">비밀번호</label></td>
-			<td style="padding-left: 50px;"><input type="password" class="pwd" id="pwd" name="pwd" style="width: 340px;" required><br>
+		<tr >
+			<td><label for="pwd">비밀번호</label></td>
+			<td><input type="password" class="pwd" id="pwd" name="pwd" style="width: 340px;" required><br>
 			</td>
 			
 		</tr>
 		
-		<tr style="border-top:20px solid white;">
-			<td style="padding-left: 80px;"><label for="pwd">비밀번호 확인</label></td>
+		<tr >
+			<td><label for="pwd">비밀번호 확인</label></td>
 
-			<td style="padding-left: 50px;"><input type="password" id="pwd2" name="pwd2" style="width: 340px;" required onkeyup="passConfirm()"><br><span id="confirmMsg"></span></td>
+			<td><input type="password" id="pwd2" name="pwd2" style="width: 340px;" required onkeyup="passConfirm()"><br><span id="confirmMsg"></span></td>
 			
 			
 		</tr>
-		<tr style="border-top:20px solid white;">
-			<td style="padding-left: 80px;"><label for="name">이름</label></td>
-			<td style="padding-left: 50px;">${login_info.name}<br></td>
+		<tr >
+			<td><label for="name">이름</label></td>
+			<td>${login_info.name}<br></td>
 		</tr>
-		<tr style="border-top:20px solid white;">
-			<td style="padding-left: 80px;"><label for="age">나이</label></td>
-			<td style="padding-left: 50px;">${login_info.age}<br></td>
+		<tr >
+			<td><label for="age">나이</label></td>
+			<td>${login_info.age}<br></td>
 		</tr>
-		<tr style="border-top:20px solid white;">
-			<td style="padding-left: 80px;"><label for="gender">성별</label></td>
-			<td style="padding-left: 50px;">${login_info.gender}<br></td>
+		<tr >
+			<td><label for="gender">성별</label></td>
+			<td>${login_info.gender}<br></td>
 		</tr>
-		<tr style="border-top:20px solid white;">
-			<td style="padding-left: 80px;"><label for="email">이메일</label></td>
-			<td style="padding-left: 50px;"><input type="text" class="myinfo_email" id="myinfo_email" style="width: 340px;" name="email" value="${login_info.email}"><br></td>
+		<tr >
+			<td><label for="email">이메일</label></td>
+			<td><input type="text" class="myinfo_email" id="myinfo_email" style="width: 340px;" name="email" value="${login_info.email}"><br></td>
 		</tr>
-		<tr style="border-top:20px solid white;">
-			<td  style="padding-left: 80px;"><label for="phone">휴대전화</label></td>
-			<td style="padding-left: 50px;"><input type="tel" name="phone" style="width: 340px;" value="${login_info.phone}"><br></td>
+		<tr >
+			<td ><label for="phone">휴대전화</label></td>
+			<td><input type="tel" name="phone" style="width: 340px;" value="${login_info.phone}"><br></td>
 		</tr>
-		<tr style="border-top:20px solid white;">
+		<tr >
 		
 			<td><label for="adr"></label></td>
-			<td style="width:340px;padding-left: 50px;"><input type="text" class="address_input_1" name=adr id="adr" placeholder="우편번호" style="width: 340px;" value="${myinfo_adr1}" ><br></td>	
-			<td style="padding-left: 10px;"><input type="button" class="adrchk" onclick="sample6_execDaumPostcode()" style="background-color:#323232; color: white; border:#323232; wid" value="우편번호 찾기"><br></td>
+			<td><input type="button" class="adrchk" onclick="sample6_execDaumPostcode()" style="background-color:#323232; color: white; border:#323232;" value="우편번호 찾기">
+			<input type="text" class="address_input_1" name=adr id="adr" placeholder="우편번호" value="${myinfo_adr1}" size="4" ><br></td>	
 		</tr>
-		<tr style="border-top:20px solid white;">
-			<td style="padding-left: 80px;">주소</td>
-			<td colspan="2" style="padding-left: 50px;"><input type="text" size="50" class="address_input_2" name="adr2" id="adr2" placeholder="주소" value="${myinfo_adr2}" required></td><br>
+		<tr >
+			<td>주소</td>
+			<td colspan="2"><input type="text" class="address_input_2" name="adr2" id="adr2" size="34" placeholder="주소" value="${myinfo_adr2}" required></td><br>
 			
 		</tr>
-		<tr style="border-top:20px solid white;">
-			<td><input type="hidden"id="sspwd" name="sspwd" value="${login_info.pwd}"/> </td>
-			<td colspan="2" style="padding-left: 50px;"><input type="text" size="50" class="address_input_3" name="adr3" id="adr3" placeholder="상세주소" value="${myinfo_adr3}" required></td>
+		<tr >
+			<td><input type="hidden"id="sspwd" size="50" name="sspwd" value="${login_info.pwd}"/> </td>
+			<td colspan="2"><input type="text" size="34" class="address_input_3" name="adr3" id="adr3" placeholder="상세주소" value="${myinfo_adr3}" required></td>
 		</tr>
-		<tr style="border-top:20px solid white;">
-		<br>
-			<td colspan="2" style="padding-left: 200px;">
-			<br><br>
-			<div class="row" style="display: block">
-
-				<div class="col-md-4">
-				<input type="submit" id="updateBtn" class="btn btn-primary" value="수정하기" style="background:#323232;border:#323232;color:white; width: 416px; height: 50px; font-size: 20px; border-radius: 30px;" onclick="return UpdateCheck()">
-				</div>
-				<div class="col-md-4">
-				<button type="button" id="deleteBtn" class="btn btn-primary" style="background:#323232;border:#323232;color:white; width: 416px; height: 50px; margin: 10px 0; font-size: 20px; border-radius: 30px;" onclick="if (DeleteCheck()) $('#exampleModal').modal('show')">
-  					탈퇴하기
-				</button>
-				</div>
-				<div class="col-md-4">
-				<button type="button" class="btn btn-primary" style="background:#323232;border:#323232;color:white; width: 416px; height: 50px; font-size: 20px; border-radius: 30px;" onclick="location.href='/index.jsp'">
-  					메인으로
-				</button>
-				</div>
-			</div>
-			</td>
-		</tr>
+			<tr>
+				<td colspan="3"><input type="submit" id="updateBtn" class="btn btn-primary" value="수정하기" style="background:#323232;border:#323232;color:white; width: 350px; height: 50px; font-size: 20px; border-radius: 30px;" onclick="return UpdateCheck()">
+					<button type="button" id="deleteBtn" class="btn btn-primary" style="background:#323232;border:#323232;color:white; width: 350px; height: 50px; margin: 10px 0; font-size: 20px; border-radius: 30px;" onclick="if (DeleteCheck()) $('#exampleModal').modal('show')">탈퇴하기</button>
+					<button type="button" class="btn btn-primary" style="background:#323232;border:#323232;color:white; width: 350px; height: 50px; font-size: 20px; border-radius: 30px;" onclick="location.href='/index.jsp'">메인으로</button>
+				</td>
+			</tr>
 		</table>
+		
+		
+		
 		
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">
@@ -167,7 +254,6 @@ input {
     </div>
   	</div>
 	</div>
-	</form>
 	<div>
 				<c:choose>
 				<c:when test="${msg == false}">
@@ -175,15 +261,15 @@ input {
 				</c:when>
 				</c:choose>
 			</div>
-</fieldset>
 	</div>
+	</form>
 
 
 
 
-	<jsp:include page="/WEB-INF/common/footer.jsp" />
 	
 	
 </body>
+	<jsp:include page="/WEB-INF/common/footer.jsp" />
 
 </html>
