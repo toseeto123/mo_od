@@ -20,6 +20,56 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
 .animate__fadeInUp {
  font-size:22px;
 }
+
+@media (max-width: 991px) {
+  #hero .carousel-content h2 {
+    font-size: 6vw;
+    display: flex;
+  justify-content: center; /* 가로축 가운데 정렬 */
+  align-items: center; /* 세로축 가운데 정렬 */
+  }
+
+  #hero .carousel-content p {
+    font-size: 3vw;
+    white-space: nowrap;
+    display: flex;
+  justify-content: center; /* 가로축 가운데 정렬 */
+  align-items: center; /* 세로축 가운데 정렬 */
+  }
+}
+
+@media (max-width: 767px) {
+  #hero .carousel-content h2 {
+    font-size: 6vw;
+    display: flex;
+  justify-content: center; /* 가로축 가운데 정렬 */
+  align-items: center; /* 세로축 가운데 정렬 */
+  }
+
+  #hero .carousel-content p {
+    font-size: 3vw;
+    white-space: nowrap;
+    display: flex;
+  justify-content: center; /* 가로축 가운데 정렬 */
+  align-items: center; /* 세로축 가운데 정렬 */
+  }
+}
+
+#portfolio .carousel-item .carousel-content p {
+    font-size: 1.25rem;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  @media (max-width: 767px) {
+    #portfolio .carousel-item .carousel-content p {
+      font-size: 1.25rem;
+      line-height: 1.2;
+    }
+  }
+
+}
+
 </style>
 <body>
 
@@ -37,7 +87,7 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">나만의 작은 문명 mo_od </h2>
-                <p class="animate__animated animate__fadeInUp"> 여러분의 취향을 가득담은 mo_od를 통해 &nbsp; 나만의 문명을 완성해보세요</p>
+                <p class="animate__animated animate__fadeInUp"> 취향을 가득담은 mo_od를 통해 나만의 문명을 완성하기</p>
               </div>
             </div>
           </div>
@@ -47,7 +97,7 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">3월의 mo_od</h2>
-                <p class="animate__animated animate__fadeInUp">3월의 mo_od로 가득채워진 아이템들을 만나보세요</p>
+                <p class="animate__animated animate__fadeInUp">3월의 mo_od 아이템들을 만나보기</p>
               </div>
             </div>
           </div>
@@ -57,7 +107,7 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">컬러에 담겨진 mo_od </h2>
-                <p class="animate__animated animate__fadeInUp"> 여러분의 감성을 자극하는 mo_od의 컬러를 만나보세요 </p>
+                <p class="animate__animated animate__fadeInUp">감성을 자극하는 mo_od의 컬러와의 만남 </p>
                 
               </div>
             </div>
@@ -84,7 +134,7 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
     <section id="portfolio" class="portfolio" style="padding-bottom: 50px; padding-top: 50px;">
       <div class="container">
         <div class="section-title">
-          <b style="font-size: 30px; color: #323232; letter-spacing: 5px;">많은 사랑을 받고있는 상품</b>
+          <b style="color: #323232; letter-spacing: 5px;">많은 사랑을 받고있는 상품</b>
         </div>
 
        <!--  <div class="row">

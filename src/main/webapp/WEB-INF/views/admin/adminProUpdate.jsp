@@ -36,7 +36,7 @@
 }
 input[type=button] {
 	color: white;
-	background: #d2b48c;
+	background: #323232;
 	width: 100px;
 	border-radius: 10px;
 	border: none;
@@ -64,9 +64,32 @@ input[type=search] {
 .sbtn {
   width: 250px;
 }
+.aiccontainer{
+padding-top: 10px;
+}
+.aic{
+width: 800px;
+margin: 0 auto;
+
+
+}
+.align-items-center>a{
+margin: 0 auto;
+color : #323232;
+}
+
 </style>
 <body>
 <jsp:include page="../../common/adminHeader.jsp" />
+	      <section id="breadcrumbs" class="breadcrumbs" style="height: 70px; padding-bottom: 80px; font-size: 22px;">
+         <div class="container aiccontainer">
+            <div class="d-flex align-items-center aic">
+				<a href="/admin/adminProList">상품리스트</a>      
+				<a href="/admin/insert">상품등록</a>
+				<a href="/admin/adminProDetail?pro_number=${list.pro_number}" style="border-bottom: 2px solid #323232; font-size: 28px;">상품수정</a>
+            </div>
+         </div>
+      </section>
 <div class="warp">
 <c:if test="${list.pro_number eq list.pro_number }">
 <div style="margin-top: 80px; margin-left: 230px;">
@@ -79,7 +102,6 @@ input[type=search] {
 	<input type="hidden" id="" name="pro_number" value="${list.pro_number}"/>
 	 	<button type="submit" class="sbtn" >판매재개</button>
 	 </form>
-<input type="button" style="display: inline; width: 160px;" value="상품리스트 이동" onclick="location.href='/admin/adminProList.do'">
 </div>
 <form role="form" method="get" action="updatePro">
 <div class="top_Area">

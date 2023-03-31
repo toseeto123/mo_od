@@ -79,7 +79,10 @@ public class UserDAO {
 	public void updatePwd(UserVO vo) {
 		mybatis.update("UserDAO.updatePwd", vo);
 	}
-
+	
+	public void updateAdminMember(UserVO vo) {
+		mybatis.update("UserDAO.updateAdminMember", vo);
+	}
 
 	public void insertnaver(UserVO naver) {
 		mybatis.insert("UserDAO.insertnaver", naver);

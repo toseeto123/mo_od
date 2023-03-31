@@ -8,8 +8,8 @@
 
 <head>
 <script src="https://unpkg.com/phosphor-icons"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/spring-webmvc/5.3.8/spring-webmvc.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/spring-webmvc/5.3.8/spring-webmvc.min.js"></script> -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
 	rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -71,9 +71,6 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
         <ul>
 
           <li class="dropdown"><a href="/admin/adminProList"><b>상품관리</b></a>
-                <ul>
-                 <li><a href="/admin/insert"><b>상품등록</b></a></li>
-                </ul>
           </li>
           <li class="dropdown"><a href="/admin/adminMemberList"><b>회원관리</b></a>
           </li>

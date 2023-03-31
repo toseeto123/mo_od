@@ -34,7 +34,7 @@ a:hover {
 *:focus { outline: 0; }
 input[type=button]{
 	color: white;
-	background: #d2b48c;  
+	background: #323232;  
 	width:100px; 
 	border-radius:10px; 
 	border: none;
@@ -48,10 +48,30 @@ input[type=search]{
 	top: 130%;
 	width: 100%;
 }
+.aiccontainer{
+padding-top: 10px;
+}
+.aic{
+width: 800px;
+margin: 0 auto;
+
+
+}
+.align-items-center>a{
+margin: 0 auto;
+color : #323232;
+}
 </style>
 </head>
 <body>
-	
+	      <section id="breadcrumbs" class="breadcrumbs" style="height: 70px; padding-bottom: 80px; font-size: 22px;">
+         <div class="container aiccontainer">
+            <div class="d-flex align-items-center aic">
+				<a href="/admin/adminProList" style="border-bottom: 2px solid #323232; font-size: 28px;">상품리스트</a>      
+				<a href="/admin/insert">상품등록</a>
+            </div>
+         </div>
+      </section>
 	
 	<section id="hero" style="background: white; height: auto;" class="container">
 		<div class="searchParent">
@@ -69,7 +89,7 @@ input[type=search]{
 						<th scope="col">이미지</th>
 						<th scope="col">카테고리</th>
 						<th scope="col">상품일련번호</th>
-						<th scope="col">상품명</th>
+						<th scope="col"><span style="font-size: 12px;">*클릭시 상품수정</span><br>상품명</th>
 						<th scope="col">가격</th>
 						<th scope="col">품절여부(판매여부)</th>
 					</tr>

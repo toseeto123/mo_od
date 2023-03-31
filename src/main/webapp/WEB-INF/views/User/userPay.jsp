@@ -83,7 +83,6 @@ background-color: #525252;
 
 @media only screen and (max-width: 768px) {
    ol {
-      position: fixed;
       bottom: 0;
       left: 0;
       width: 100%;

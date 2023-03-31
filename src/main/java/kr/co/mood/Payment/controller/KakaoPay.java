@@ -1,5 +1,6 @@
 package kr.co.mood.Payment.controller;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.URISyntaxException;
 
@@ -68,12 +69,12 @@ public class KakaoPay {
 
 
 
-           params.add("approval_url", "http://localhost:8080/User/kakaoPaySuccess?orderId=" + orderIdstr + "&userno=" + userno + "&pro_number="+ pro_number);
-           params.add("cancel_url", "http://localhost:8080/users/bucket");
-           params.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");
-          // params.add("approval_url", "http://mo-od.co.kr/User/kakaoPaySuccess?orderId=" + orderIdstr + "&userno=" + userno + "&pro_number="+ pro_number);
-          // params.add("cancel_url", "http://mo-od.co.kr/users/bucket");
-           //params.add("fail_url", "http://mo-od.co.kr/kakaoPaySuccessFail");
+//           params.add("approval_url", "http://localhost:8080/User/kakaoPaySuccess?orderId=" + orderIdstr + "&userno=" + userno + "&pro_number="+ pro_number);
+//           params.add("cancel_url", "http://localhost:8080/users/bucket");
+//           params.add("fail_url", "http://localhost:8080/kakaoPaySuccessFail");
+           params.add("approval_url", "http://mo-od.co.kr/User/kakaoPaySuccess?orderId=" + orderIdstr + "&userno=" + userno + "&pro_number="+ pro_number);
+           params.add("cancel_url", "http://mo-od.co.kr/users/bucket");
+           params.add("fail_url", "http://mo-od.co.kr/kakaoPaySuccessFail");
 
 
 
@@ -137,6 +138,7 @@ public class KakaoPay {
     		   @RequestParam("pro_number") String pro_number,
     		   @RequestParam("orderId") int orderId
     		   ) {
+ 
     	   String total = Integer.toString(price);
     	   Integer orderidchk = orderId;
            HttpHeaders headers = new HttpHeaders();

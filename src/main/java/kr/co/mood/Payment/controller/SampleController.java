@@ -3,6 +3,9 @@ package kr.co.mood.Payment.controller;
 import java.util.List;
 import java.util.Set;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,6 +23,7 @@ public class SampleController {
    private KakaoPay kakaopay;
    @Autowired
    private KakaoPayApprovalService kakaoPayApprovalService;
+
    
    private KakaoPayApprovalVO kakaoPayApprovalVO;
    
@@ -54,18 +58,31 @@ public class SampleController {
       model.addAttribute("orders", kakaoPayApprovalService.selectsuccesslist(orderId));
       
    }
+   
+   @RequestMapping(value = "/User/kakaoPayCancelChk")
+   public String payCancelChk(Model model,
+                               @RequestParam("tid") Set<String> tids,
+                               @RequestParam("price") int price,
+                               @RequestParam("pro_number") String pro_number,
+                               @RequestParam("orderId") int orderId, HttpServletResponse response, HttpServletRequest request) {
+       List<KakaoPayApprovalVO> approvalList = kakaoPayApprovalService.selectsuccesslist(orderId);
+       for (KakaoPayApprovalVO approval : approvalList) {
+           if (approval.getSuccess().equals("구매 확정")) {
+               // 성공한 결제 중에서 구매 확정이 된 건이 있으면, 경고 메시지를 저장하고 payMypage.jsp로 리다이렉트합니다.
+               request.getSession().setAttribute("alertMessage", "결제취소불가");
+               return "redirect:/products/payMypage";
+           } else {
+               // 구매 확정이 아닌 건에 대해서만 결제 취소를 처리합니다.
+               payCancel(model, tids, price, pro_number, orderId, response);
+               return "/User/kakaoPayCancel";
+           }
+       }
+       return "/User/kakaoPayCancel";
+   }
 
-	   
    @RequestMapping(value = "/User/kakaoPayCancel")
-   public void payCancel(Model model,
-                         @RequestParam("tid") Set<String> tids,
-                         @RequestParam("price") int price,
-                         @RequestParam("pro_number") String pro_number,
-                         @RequestParam("orderId") int orderId) {
-	   kakaoPayApprovalService.selectsuccesslist(orderId);
-	   
+   public void payCancel(Model model, Set<String> tids, int price, String pro_number, int orderId, HttpServletResponse response) {
 
-       
        for (String tid : tids) {
            model.addAttribute("info", kakaopay.kakaoCancel(tid, price, pro_number, orderId));
        }

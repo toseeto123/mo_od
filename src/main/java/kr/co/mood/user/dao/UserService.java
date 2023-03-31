@@ -23,6 +23,8 @@ public interface UserService {
 		
 		public void updatePwd(UserVO vo);
 		
+		public void updateAdminMember(UserVO vo);
+		
 		public void delete(String id) throws Exception;
 
 		public UserVO selectId(UserVO vo);

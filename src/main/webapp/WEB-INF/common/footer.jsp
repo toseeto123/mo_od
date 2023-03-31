@@ -1,14 +1,55 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <jsp:include page="../../WEB-INF/common/RecentlyViewProduct.jsp"/>
+<!DOCTYPE>
+<html>
+<head>
+<style>
+@media (max-width: 767px) {
+  #footer .container {
+    padding: 10px;
+  }
+  #footer .copyright {
+    text-align: center;
+    font-size: 3.2vw; /* or use any other value depending on your preference */
+  }
+  #footer .names {
+    line-height: 1.5;
+    font-size: 3.2vw; /* or use any other value depending on your preference */
+  }
+}
 
+/* 중간 크기 화면에서 위치 변경 */
+@media (max-width: 992px) {
+  .back-to-top {
+    right: 20px;
+    bottom: 80px;
+    width: 30px;
+    height: 30px;
+    font-size: 20px;
+  }
+}
+
+/* 모바일 크기 화면에서 위치 변경 */
+@media (max-width: 576px) {
+  .back-to-top {
+    right: 15px;
+    bottom: 80px;
+    width: 25px;
+    height: 25px;
+    font-size: 16px;
+  }
+}
+
+</style>
+</head>
 <!-- ======= Footer ======= -->
   <footer id="footer">
 
 
     <div class="container" style="font-size:22px;">
       <div class="copyright">
-        &copy; Copyright <strong><span style="font-family:궁서;">묻:</span><a href="/adminLogin" style="color:white;">mo_od.</a></strong> 2023<br>김남수 　김지애 　장승연 　송준기 　이슬기 　최욱진
+        &copy; Copyright <strong><span style="font-family:궁서; line-height:2.5;">묻:</span><a href="/adminLogin" style="color:white;">mo_od.</a></strong> 2023<br><span style="line-height:2.5;">김남수 　김지애 　장승연 　송준기 　이슬기 　최욱진</span>
       </div>
     </div>
   </footer><!-- End Footer -->

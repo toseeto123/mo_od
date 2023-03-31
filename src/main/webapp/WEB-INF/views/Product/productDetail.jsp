@@ -114,6 +114,21 @@ margin-top: 0;
 .btnhover:hover{
 background: #323232;
 }
+
+@media (max-width: 768px) {
+  #cateinsert {
+    font-size: 16px;
+    padding: 8px 16px;
+    width: 90%;
+ }
+ 
+  .btn_buy {
+    font-size: 16px;
+    padding: 8px 16px;
+    width: 90%;
+  }
+}
+ 
 </style>
 <body>
 <jsp:include page="/WEB-INF/common/header.jsp" />
