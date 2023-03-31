@@ -120,16 +120,15 @@ background: #323232;
     font-size: 16px;
     padding: 8px 16px;
     width: 90%;
-}
-  }
-  
+ }
+ 
   .btn_buy {
     font-size: 16px;
     padding: 8px 16px;
     width: 90%;
-}
   }
 }
+ 
 </style>
 <body>
 <jsp:include page="/WEB-INF/common/header.jsp" />
