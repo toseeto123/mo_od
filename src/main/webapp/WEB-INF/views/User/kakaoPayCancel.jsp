@@ -10,6 +10,7 @@
 <meta name="author"
    content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
 <meta name="generator" content="Hugo 0.101.0">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <title>결제 취소</title>
 <style>
 
@@ -66,7 +67,7 @@ li .btnspan {
    color: #fff;
 }
 li .btnspan_on{
-background-color: #c8936ed4;
+background-color: #525252;
 }
 
 @media only screen and (max-width: 768px) {
@@ -110,7 +111,7 @@ background-color: #c8936ed4;
 
 .order_wrap .order_tit {
    overflow: hidden;
-   border-bottom: 2px solid #c8936ed4;
+   border-bottom: 2px solid #525252;
    margin-bottom: 10px;
 }
 
@@ -137,7 +138,7 @@ background-color: #c8936ed4;
 }
 
 .order_wrap .order_tit .page_on {
-   color: #c8936ed4;
+   color: #525252;
    font-weight: bold;
 }
 .content_box {
@@ -147,7 +148,7 @@ background-color: #c8936ed4;
  	font-size: 24px;
 }
 .btn-primary {
-	background-color:#c8936ed4;
+	background-color:#525252;
 }
 
 body {
@@ -155,7 +156,7 @@ body {
 }
 
 .returnbtn {
-   background-color: #c8936ed4;
+   background-color: #525252;
    width: 416px;
    height: 50px;
    border : none;
@@ -182,7 +183,7 @@ body {
                   <div class="carousel-container">
                      <div class="carousel-content">
                         <h2 class="animate__animated animate__fadeInDown">결제 취소</h2>
-                        <p class="animate__animated animate__fadeInUp">"${login_info.id}" 님 mo_od 를 이용해주셔서　 감사합니다.</p>
+                        <p class="animate__animated animate__fadeInUp">"${login_info.id}" 님 mo_od 를 이용해주셔서 감사합니다.</p>
                         <div>
                            <a href="/mypage.do" class="btn-get-started animate__animated animate__fadeInUp scrollto">결제 내역</a>
                         </div>
@@ -208,7 +209,7 @@ body {
 
       <div class="row">
             <div class="col-md-12 order-md-1">
-               <h4 class="mb-3">주문자 정보</h4>
+               <h2 class="mb-3" style="margin:18px 0 18px 0; color:#323232; font-size: 32px; font-weight: bold;"><i class="xi-user" style="color:#000;"></i> ${login_info.id}님주문 정보</h2>
                <div class="row">
                   <div class="col-md-6 mb-3">
                      <label for="firstName">성 함 : </label><strong>
@@ -232,7 +233,7 @@ body {
 				
 			  <hr>
          
-               <h4 class="mb-4">결제 상품정보</h4>
+               <h2 class="mb-3" style="margin:22px 0 22px 0; color:#323232; font-size: 32px; font-weight: bold;"><i class="xi-box" style="color:#000;"></i> 취소상품 정보</h2>
                <c:forEach var="info" items="${info}">
                	<div class="col-md-6 mb-3">
                      <label for="approved_at">결제승인시간 : </label> <strong>${info.approved_at}</strong>
@@ -242,17 +243,12 @@ body {
                         ${info.item_name}</strong>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="quantity">주문 수량 : </label> <strong>${info.quantity}</strong>
-                  </div>
-                  <div class="col-md-6 mb-3">
                      <label for="totalprice">총 결제 금액 : </label> <strong>${info.amount.total}</strong>
                   </div>
                   <div class="col-md-6 mb-3">
                      <label for="cancel_amount">취소된 금액 : </label> <strong>${info.approved_cancel_amount.total}</strong>
                   </div>
-                  <div class="col-md-6 mb-3">
-                     <label for="approved_at">남은 취소 가능 금액 : </label> <strong>${info.cancel_available_amount.total}</strong>
-                  </div>
+
                   
                </div>
               

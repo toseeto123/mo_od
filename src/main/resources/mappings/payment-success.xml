@@ -72,6 +72,34 @@ GROUP BY o.orderid, pa.SuccessTime, pa.amount
 ORDER BY o.orderid DESC;
 	</select>
 	
+<select id="pageselectorderid" resultType="kr.co.mood.Payment.VO.KakaoPayApprovalVO" parameterType="kr.co.mood.module.ModuleVO">
+SELECT o.orderid, pa.SuccessTime,pa.payment_id,pa.Success,
+op.price, SUM(op.count) as total_count,o.price as total
+FROM moodorder o
+JOIN orderProduct op ON op.orderid = o.orderid
+JOIN payment pa ON pa.orderid = o.orderid
+WHERE o.userno = #{orderNo}
+GROUP BY o.orderid, pa.SuccessTime, pa.amount
+ORDER BY o.orderid DESC 
+<if test="endNo != 0">
+LIMIT #{startNo}, #{endNo}
+</if>
+</select>
+
+<select id="totalRecords" resultType="int">
+SELECT COUNT(*) AS count
+FROM (
+  SELECT o.orderid, pa.SuccessTime,pa.payment_id,pa.Success,
+         op.price, SUM(op.count) as total_count,o.price as total
+  FROM moodorder o
+  JOIN orderProduct op ON op.orderid = o.orderid
+  JOIN payment pa ON pa.orderid = o.orderid
+  WHERE o.userno = #{userno}
+  GROUP BY o.orderid, pa.SuccessTime, pa.amount
+  ORDER BY o.orderid DESC
+) AS subquery;
+</select>
+	
 		<select id="selectsuccesslist"
 		resultType="kr.co.mood.Payment.VO.KakaoPayApprovalVO">
 SELECT o.orderid, p.pro_name, p.pro_img1,

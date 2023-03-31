@@ -3,6 +3,7 @@ package kr.co.mood.pay.DAO;
 import java.util.List;
 
 import kr.co.mood.Payment.VO.KakaoPayApprovalVO;
+import kr.co.mood.module.ModuleVO;
 
 public interface KakaoPayApprovalService {
 	
@@ -16,6 +17,10 @@ public interface KakaoPayApprovalService {
 	public List<KakaoPayApprovalVO>selectlist(int userno);
 	
 	public List<KakaoPayApprovalVO>selectorderid(int userno);
+	
+	public List<KakaoPayApprovalVO>pageselectorderid(ModuleVO moduleVO);
+	
+	public int getTotalRecords(int userno);
 	
 	public List<KakaoPayApprovalVO>selectsuccesslist(int orderid);
 	

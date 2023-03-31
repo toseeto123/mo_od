@@ -11,6 +11,7 @@
 <script
    src="https://cdnjs.cloudflare.com/ajax/libs/spring-webmvc/5.3.8/spring-webmvc.min.js"></script>
    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
 <meta charset="UTF-8">
 
 <title>결제상세</title>
@@ -26,9 +27,9 @@ dl, ul, ol, li {
 }
 
 .content_box {
-   float: left;
    width: 100%;
    background-color: white;
+   height: 800px;
 
 }
 
@@ -184,11 +185,7 @@ li .btnspan_on {
   padding: 30px;
 
 }
-footer{
-   width: 100%;
-   position: absolute;
-   bottom: 0;
-}
+
 .cancelbox{
 margin:0 auto;
 border-radius: 5px;
@@ -222,7 +219,131 @@ width: 300px;
   font-size: 25px; 
   vertical-align:bottom;
   }
-    @media (max-width: 768px) {
+  
+    /* 모바일 화면 스타일 */
+  @media only screen and (max-width: 767px) {
+    .order_wrap {
+      padding: 10px;
+    }
+    
+    .dropdown-menu {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      box-shadow: none;
+    }
+    
+    .deleteplz {
+      margin: 20px 0;
+      padding-bottom: 20px;
+      border-bottom: 1px solid lightgray;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+    
+    .deleteplz img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      margin-bottom: 10px;
+    }
+    
+    .deleteplz .total {
+      font-size: 1.2em;
+    }
+    
+    .deleteplz > div {
+      width: 100%;
+      margin: 10px 0;
+    }
+    
+    .cancelbox {
+      width: 100%;
+      text-align: center;
+    }
+    
+    .cancelbox button {
+      margin-top: 10px;
+      width: 100%;
+      max-width: 300px;
+      font-size: 1.2em;
+      white-space: nowrap;
+    }
+    
+    .cancelbox span {
+      display: block;
+      margin-top: 10px;
+      font-size: 1.2em;
+      white-space: nowrap;
+    }
+  }
+  
+  @media only screen and (max-width: 768px) {
+  /* 주문번호와 결제일을 수평 정렬로 */
+  .order_wrap .btn-secondary span {
+    display: inline-block;
+    margin: 0;
+    vertical-align: middle;
+  }
+  
+  /* 주문번호와 결제일을 수직 정렬로 */
+  .order_wrap .btn-secondary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    line-height: 1;
+  }
+
+  /* 버튼 크기 조절 */
+  .order_wrap .btn-secondary {
+    width: 100%;
+    margin-bottom: 15px;
+    font-size: 1.1em;
+  }
+
+  /* 주문 취소 버튼 디자인 변경 */
+  .order_wrap .btn-primary {
+    background-color: #525252;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* 주문 취소 버튼과 구매확정 메시지를 수직 정렬 */
+  .order_wrap .cancelbox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+  }
+
+  /* 제품 정보와 이미지를 수직 정렬로 */
+  .order_wrap .deleteplz {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  /* 제품 정보와 이미지를 수평 정렬로 */
+  .order_wrap .deleteplz > img {
+    margin-right: 0;
+    margin-bottom: 15px;
+  }
+  
+  /* 제품 정보와 이미지 간 간격 조절 */
+  .order_wrap .deleteplz > div {
+    margin: 0 0 0 20px;
+  }
+}
+  @media (max-width: 768px) {
   .nav-pills {
     flex-direction: column;
   }
@@ -230,12 +351,35 @@ width: 300px;
     font-size: 14px;
     padding: 0.5rem 1rem;
   }
-  
    section{ 
-   	width: 500px; 
-	margin: 0 auto; 
+   width: 350px; 
+   margin: 0 auto; 
    } 
+}
 
+.pagination {
+  display: inline-block;
+    display: flex;
+  justify-content: center;
+margin: 50px 0 50px 0;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  margin: 0 5px;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
 
 </style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
@@ -250,8 +394,6 @@ session.removeAttribute("alertMessage");
 
 </c:if>
 <body style="margin: 0 auto; overflow-y: scroll;">
-
-
    <section>
       <ul class="nav nav-pills nav-justified">
         <li class="nav-item" >
@@ -279,7 +421,6 @@ session.removeAttribute("alertMessage");
     <span>주문번호: ${orderid.orderid}</span>　<span style="margin: 0 60px 0 60px;">결제일:<fmt:formatDate value="${orderid.successTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span> <c:if test="${orderid.success eq '구매 확정'}"><span style="letter-spacing:8px;">구매확정</span></c:if><c:if test="${orderid.success eq '결제 완료'}"><span style="letter-spacing:1px;">결제취소가능</span></c:if>
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton${orderid.orderid}" style=" border: 2px solid #525252;">
-  
         <form action="/User/kakaoPayCancelChk" id="cancel-form">
     <c:forEach var="order" items="${orders}">
       <c:if test="${order.orderid == orderid.orderid}">
@@ -318,7 +459,7 @@ session.removeAttribute("alertMessage");
     <button type="button" class="btn-primary" onclick="confirmCancel()"><fmt:formatNumber value="${orderid.total}" type="currency" currencySymbol="₩" />　주문취소</button>
     </c:if>
     <c:if test="${orderid.success eq '구매 확정'}">
-    <span style="white-space: nowrap;">구매확정 상태에는 결제취소가 불가능합니다.</span>
+    <span style="white-space: nowrap;">총금액 : <fmt:formatNumber value="${orderid.total}" type="currency" currencySymbol="₩" /> <br>구매확정 상태에는 결제취소가 불가능합니다.</span>
     </c:if>
     </div>
         </form>
@@ -327,7 +468,28 @@ session.removeAttribute("alertMessage");
 </div>
          </c:otherwise>
          </c:choose>
+         <div class="pagination">
+				<c:if test="${prePage!=null }">
+					<a href="/products/payMypage/${prePage}">&lt;</a>
+				</c:if>
+
+				<c:forEach items="${ pagingNo }" var="no">
+					<c:choose>
+						<c:when test="${selectPage == no}">
+                  &nbsp;<a href="/products/payMypage/${no}" style="background: lightgray;">${no}</a>&nbsp;
+                  </c:when>
+						<c:otherwise>
+                  &nbsp;<a href="/products/payMypage/${no}">${no}</a>&nbsp;
+                  </c:otherwise>
+					</c:choose>
+				</c:forEach>
+
+				<c:if test="${nextPage != null }">
+					<a href="/products/payMypage/${nextPage}">&gt;</a>
+				</c:if>
+			</div>
       </div>
+
    </div>
 
 <script>

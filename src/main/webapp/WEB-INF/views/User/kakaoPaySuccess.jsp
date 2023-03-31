@@ -37,22 +37,26 @@ img {
 	height: 15vmin;
 }
 
-ol {
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	margin: 0;
-	padding: 0;
-	list-style: none;
-	margin-bottom: 0;
+
+
+.olchk {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   align-items: center;
+   margin: 0;
+   padding: 0;
+   list-style: none;
+   margin-bottom: 0;
+
 }
 
-li {
-	display: flex;
-	align-items: center;
-	margin: 10px;
-	margin-bottom: 0;
+
+.lichk {
+   display: flex;
+   align-items: center;
+   margin: 10px;
+   margin-bottom: 0;
 }
 
 li .btnspan {
@@ -197,42 +201,88 @@ body {
 
 				<div class="carousel-inner" role="listbox">
 
-					<!-- Slide 1 -->
-					<div class="carousel-item active"
-						style="background-image: url(resources/assets/img/slide/cate1.jpg); height: 500px;">
-						<div class="carousel-container">
-							<div class="carousel-content">
-								<h2 class="animate__animated animate__fadeInDown">결제 완료</h2>
-								<p class="animate__animated animate__fadeInUp"
-									style="width: 100%;">
-									"${login_info.name}"님 mo_od를 이용해주셔서 감사합니다.<br> *결제승인시간 기준
-									24시간 이후, 구매확정상태가되어, 결제취소가 불가능합니다.
-								</p>
-								<div>
-									<a href="/products/payMypage"
-										class="btn-get-started animate__animated animate__fadeInUp scrollto">결제
-										내역</a>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</section>
-	<div class="content_box">
-		<div class="order_wrap" style="position: relative;">
-			<div class="order_tit">
-				<ol>
-					<li><span class="btnspan">01</span>장바구니</li>
-					<li><span class="btnspan">02</span>주문서작성/결제</li>
-					<li class="page_on"><span class="btnspan btnspan_on">03</span>주문완료</li>
-				</ol>
-			</div>
+               <!-- Slide 1 -->
+               <div class="carousel-item active"
+                  style="background-image: url(resources/assets/img/slide/cate1.jpg); height: 500px;">
+                  <div class="carousel-container">
+                     <div class="carousel-content">
+                        <h2 class="animate__animated animate__fadeInDown">결제 완료</h2>
+                        <p class="animate__animated animate__fadeInUp" style="width: 100%;">"${login_info.name}"님 mo_od를 이용해주셔서 감사합니다.</p>
+                        <div>
+                           <a href="/products/payMypage" class="btn-get-started animate__animated animate__fadeInUp scrollto"><span>결제 내역</span></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </section>
+      <div class="content_box">
+      <div class="order_wrap" style="position: relative;">
+         <div class="order_tit">
+            <ol class="olchk">
+               <li class="lichk"><span class="btnspan">01</span>장바구니</li>
+               <li class="lichk"><span class="btnspan">02</span>주문서작성/결제</li>
+               <li class="page_on lichk"><span class="btnspan btnspan_on" >03</span>주문완료</li>
+            </ol>
+         </div>
+         
+         <div class="container">
+      <div class="row">
+            <div class="col-md-12 order-md-1">
+      
+               <h2 class="mb-3" style="margin:18px 0 18px 0; color:#323232; font-size: 32px; font-weight: bold;"><i class="xi-user" style="color:#000;"></i> ${login_info.id}님주문 정보</h2>
+               <div class="row">
+                  <div class="col-md-6 mb-3">
+                     <label for="firstName">성　　함 : </label><small>
+                        ${login_info.name}</small>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                     <label for="lastName">전화번호 : </label> <small>${login_info.phone}</small>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                     <label for="address">주　　소 : </label> <small>${login_info.adr}</small>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                     <label for="lastName" style="letter-spacing:1px;">E-mail : </label> <small>${login_info.email}</small>
+                  </div>
 
-			<div class="container">
-				<div class="row">
-					<div class="col-md-12 order-md-1">
+               </div>
+		
+               <div class="mb-3">
+                  <label for="address">주문 번호 : </label> <strong>${info.partner_order_id }</strong>
+               </div>
+		<span style="color: red;">*결제승인시간 기준 24시간 이후, 구매확정상태가되어 결제취소가 불가능합니다.</span>
+			  <hr>
+         
+               <h2 class="mb-3" style="margin:22px 0 22px 0; color:#323232; font-size: 32px; font-weight: bold;"><i class="xi-box" style="color:#000;"></i> 결제상품 정보</h2>
+               
+		<c:forEach var="orders" items="${orders}" begin="0" end="0">
+                 <div class="col-md-6 mb-3">
+                     <label for="firstName" style="letter-spacing:3px;">상 품 명 : </label><small>
+                        ${info.item_name}</small>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                     <label for="lastName" >주문 수량 : </label> <small>${orders.row_count }</small>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                     <label for="address">결제 금액 : </label> <small><fmt:formatNumber value="${orders.price }" type="currency" currencySymbol="₩" />원</small>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                     <label for="lastName">결제 방식 : </label> <c:if test="${orders.payment_method eq 'MONEY'}"><small>카카오페이머니</small></c:if><c:if test="${orders.payment_method eq 'CARD'}"><small>카드 결제</small></c:if>
+                  </div>
+                  <div class="col-md-6 mb-3">
+                     <label for="lastName">결제승인시간 : </label> <small><fmt:formatDate value="${orders.successTime}" pattern="yyyy-MM-dd HH:mm:ss"/></small>
+                  </div>
+                  
+               
+				
+            <hr>
+		</c:forEach>
+               </div>
+              
+                  </div>
 
 						<h2 class="mb-3"
 							style="margin: 18px 0 18px 0; color: #323232; font-size: 32px; font-weight: bold;">

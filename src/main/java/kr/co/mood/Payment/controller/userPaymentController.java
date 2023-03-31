@@ -1,21 +1,28 @@
 package kr.co.mood.Payment.controller;
 
+import java.util.List;
+
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import kr.co.mood.Payment.VO.KakaoPayApprovalVO;
 import kr.co.mood.Payment.VO.userOrderProductVO;
 import kr.co.mood.Payment.VO.userOrderVO;
 import kr.co.mood.Product.DAO.ProductService;
+import kr.co.mood.Product.VO.ProVO;
 import kr.co.mood.cate.DAO.CateService;
 import kr.co.mood.cate.vo.CateVO;
+import kr.co.mood.module.ModuleCommon;
+import kr.co.mood.module.ModuleVO;
 import kr.co.mood.pay.DAO.KakaoPayApprovalService;
 import kr.co.mood.pay.DAO.productPaymentService;
 import kr.co.mood.pay.DAO.userPaymentService;
@@ -38,6 +45,8 @@ public class userPaymentController {
 	ProductService productService;
 	@Autowired
 	KakaoPayApprovalService kakaoPayApprovalService;
+	@Autowired
+	ModuleCommon module;
 	
 	
 
@@ -154,11 +163,23 @@ public class userPaymentController {
 		return "/User/userPay";
 	}
 	@RequestMapping(value = "/payMypage")
-	public String payMypage(Model model , HttpSession session) {
+	public String payMypagedirect(Model model , HttpSession session) {
+		return "redirect:/products/payMypage/1";    
+	}
+	
+	@RequestMapping(value = "/payMypage/{page}")
+	public String payMypage(Model model , HttpSession session,@PathVariable String page) {
 		UserVO uvo = (UserVO) session.getAttribute("login_info");
 		int userno = uvo.getNo();
+		ModuleVO moduleVO = new ModuleVO();
+		
+		int allList = kakaoPayApprovalService.getTotalRecords(userno);
+		module.pagingModule(model, moduleVO, allList, page, 5);
+		moduleVO.setOrderNo(userno);
 		model.addAttribute("orders", kakaoPayApprovalService.selectlist(userno));
-		model.addAttribute("orderid", kakaoPayApprovalService.selectorderid(userno));
+		//model.addAttribute("orderid", kakaoPayApprovalService.selectorderid(moduleVO));
+		model.addAttribute("orderid", kakaoPayApprovalService.pageselectorderid(moduleVO));
+		
 		return "User/userPaymentList";
 	}
 

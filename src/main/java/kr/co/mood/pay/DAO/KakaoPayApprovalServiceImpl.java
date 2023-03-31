@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import kr.co.mood.Payment.VO.KakaoPayApprovalVO;
 import kr.co.mood.cate.vo.CateVO;
+import kr.co.mood.module.ModuleVO;
 
 @Service
 public class KakaoPayApprovalServiceImpl implements KakaoPayApprovalService{
@@ -36,6 +37,20 @@ public class KakaoPayApprovalServiceImpl implements KakaoPayApprovalService{
 	public List<KakaoPayApprovalVO> selectorderid(int userno) {
 		return kdao.selectorderid(userno);
 	}
+	
+
+	@Override
+	public List<KakaoPayApprovalVO> pageselectorderid(ModuleVO moduleVO) {
+		
+		return kdao.pageselectorderid(moduleVO);
+	}
+	@Override
+	public int getTotalRecords(int userno) {
+
+		return kdao.getTotalRecords(userno);
+	}
+	
+	
 	
 	@Override
 	public List<KakaoPayApprovalVO> selectsuccesslist(int orderid) {

@@ -9,7 +9,7 @@
 </head>
 <style type="text/css">
 .warp{
-	width: 600px;
+	width: 450px;
 	margin : 0 auto;
 }
 .inputArea {
@@ -36,30 +36,22 @@ input[type="file"] {
 margin-top: 5px;
 }
 	
-span {
+body>span {
 font-size: 12px;
 }
 	
 button {
+width:450px;
 padding: 10px 20px;
-background-color: #007bff;
+background-color: #525252;
 color: #fff;
 border: none;
-border-radius: 5px;
 font-size: 16px;
 cursor: pointer;
 }
 	
 button:hover {
-background-color: #0069d9;
-}
-input[type=button]{
-	color: white;
-	background: #d2b48c;  
-	width:100px; 
-	border-radius:10px; 
-	border: none;
-	font-size: 20px;
+background-color: #323232;
 }
 input[type=search]{
 	font-size: 18px;
@@ -99,7 +91,7 @@ color : #323232;
       </section>
 
 <div class="warp">
-<div class="inputArea" style="margin-top: 100px;"> 
+<div class="inputArea" style="margin-top: 50px;"> 
  <label for="mainCategory">1차 카테고리</label>
  <select class="category1" id="mainCategory" name="mainCategory" onclick="mainCategoryChange(this)">
   <option value="A">가구</option>
@@ -177,7 +169,7 @@ function subCategoryChange() {
 
 
 <div class="inputArea">
- <span style="color:red; font-size: 15px;">*이미지 사이즈 정사각형 권장 500px 이상, 800px 이하</span><br>
+ <span style="color:red; font-size: 15px;">*이미지 권장사이즈 : 500*500px</span><br>
  <label for="">이미지1</label>
  <input type="file" id="" name="file" /><span style="color:red; font-size: 15px;">*이미지1 필수, 제일이쁜사진</span><br>
 </div>
@@ -203,21 +195,21 @@ function subCategoryChange() {
 
 <div class="inputArea">
  <label for="">서브상품설명</label><span style="color:red; font-size: 15px;">ex) 수납/감성/공간활용</span><br>
- <input type="text" id="" name="pro_subdesc" />
+ <input type="text" id="" name="pro_subdesc" style="width: 450px;"/>
 </div>
 <div class="inputArea">
  <label for="">메인상품설명제목</label><span style="color:red; font-size: 15px;">ex) 당신의 잠자리를 포근하게</span><br>
- <input type="text" id="" name="pro_maindesctitle" />
+ <input type="text" id="" name="pro_maindesctitle" style="width: 450px;"/>
 </div>
 
 <div class="inputArea">
  <label for="">메인상품설명</label><span style="color:red; font-size: 15px;">*한문장 쓰고 엔터필수</span><br>
- <textarea rows="5" cols="50" id="" name="pro_maindesc"></textarea>
+ <textarea rows="5" cols="50" id="" name="pro_maindesc" style="width: 450px;"></textarea>
 </div>
 
 
-<div class="inputArea">
- <button type="submit" id="" class="btn btn-primary">등록</button>
+<div class="inputArea" style="margin-bottom: 50px;">
+ <button type="submit" id="" class="">등록</button>
 </div>
 
 
