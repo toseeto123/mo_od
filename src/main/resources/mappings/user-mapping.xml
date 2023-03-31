@@ -89,6 +89,19 @@
         ]]>
     </update>
     
+    <update id="updateAdminMember" parameterType="kr.co.mood.user.dao.UserVO">
+    	update moodjoin
+        set id=#{id}, name=#{name},
+        <if test="age != null">
+        age = #{age},
+        </if>
+         adr= concat_ws('   ',#{adr} , #{adr2} , #{adr3}), email=#{email}, phone=#{phone}
+         <if test="pwd != null"> 
+         , pwd=hex(aes_encrypt(#{pwd},'key'))
+         </if>
+        where id = #{id}
+    </update>
+    
     <update id="updatePwd" parameterType="kr.co.mood.user.dao.UserVO">
     	update moodjoin
     	set pwd = hex(aes_encrypt(#{pwd},'key'))
