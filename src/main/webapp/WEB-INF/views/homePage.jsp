@@ -43,7 +43,7 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
 
 @media (max-width: 768px) {
     .section-title b {
-      font-size: 5vw;
+      font-size: 3vw;
       letter-spacing: 3px;
     }
   }
