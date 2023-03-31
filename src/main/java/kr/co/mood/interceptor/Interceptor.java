@@ -27,13 +27,13 @@ public class Interceptor extends HandlerInterceptorAdapter {
 				if ("admin".matches(uriToken[i])) {
 					if (!((UserVO) session.getAttribute("login_info")).getId().equals("admin")) {
 						session.invalidate();
-						response.sendRedirect(request.getContextPath() + "/adminLogin.do");
+						response.sendRedirect(request.getContextPath() + "/adminLogin");
 						return false;
 					}
 				}
 			}
 		}else {
-			response.sendRedirect(request.getContextPath() + "/adminLogin.do");
+			response.sendRedirect(request.getContextPath() + "/adminLogin");
 			return false;
 		}
 

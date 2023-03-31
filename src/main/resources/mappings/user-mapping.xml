@@ -99,7 +99,7 @@
          <if test="pwd != null"> 
          , pwd=hex(aes_encrypt(#{pwd},'key'))
          </if>
-        where id = #{id}
+        where no = #{no}
     </update>
     
     <update id="updatePwd" parameterType="kr.co.mood.user.dao.UserVO">
