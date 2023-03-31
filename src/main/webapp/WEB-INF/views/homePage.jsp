@@ -20,6 +20,51 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
 .animate__fadeInUp {
  font-size:22px;
 }
+
+@media (max-width: 991px) {
+  #hero .carousel-content h2 {
+    font-size: 3rem;
+  }
+
+  #hero .carousel-content p {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 767px) {
+  #hero .carousel-content h2 {
+    font-size: 2.5rem;
+  }
+
+  #hero .carousel-content p {
+    font-size: 1.25rem;
+  }
+}
+
+@media (max-width: 768px) {
+    .section-title b {
+      font-size: 5vw;
+      letter-spacing: 3px;
+    }
+  }
+  @media (max-width: 768px) {
+    .carousel-content p {
+      font-size: 16px;
+    }
+  }
+  
+  @media (min-width: 768px) and (max-width: 992px) {
+    .carousel-content p {
+      font-size: 20px;
+    }
+  }
+  
+  @media (min-width: 992px) {
+    .carousel-content p {
+      font-size: 24px;
+    }
+  }
+
 </style>
 <body>
 
@@ -37,7 +82,7 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
             <div class="carousel-container">
               <div class="carousel-content">
                 <h2 class="animate__animated animate__fadeInDown">나만의 작은 문명 mo_od </h2>
-                <p class="animate__animated animate__fadeInUp"> 여러분의 취향을 가득담은 mo_od를 통해 &nbsp; 나만의 문명을 완성해보세요</p>
+                <p class="animate__animated animate__fadeInUp"> 여러분의 취향을 가득담은 mo_od를 통해 나만의 문명을 완성해보세요</p>
               </div>
             </div>
           </div>
