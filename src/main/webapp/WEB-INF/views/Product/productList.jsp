@@ -19,6 +19,14 @@ margin: 0 auto;
 color : #323232;
 }
 
+@media screen and (max-width: 768px) {
+    .aic a {
+      padding: 0 20px; /* 좌우 5px의 패딩값 */
+    }
+  }
+
+
+
 </style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
    <section id="hero" style="height: 400px;">
