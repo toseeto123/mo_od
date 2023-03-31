@@ -5,7 +5,7 @@
 <html style="background-color:#f5f6f7;">
 <head>
 <meta charset="UTF-8">
-<title>MemberDetail</title>
+<title>회원 상세</title>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script type="text/javascript" src="/resources/user/js/main.js"></script>
 <style>
@@ -28,6 +28,7 @@ input[type=button], input[type=submit] {
 
 	<div>
 	<form action="/admin/memberUpdate" method="post">
+	<input type="hidden" name="no" value="${userInfo.no}">
 	<input type="hidden" id="idCheck" value="${userInfo.id}"> 
 			<table class="table"
 				style="margin-top: 5%; margin-left: 15%; width: 70%;">
@@ -45,10 +46,6 @@ input[type=button], input[type=submit] {
 						<th scope="col">아이디</th>
 						<td><input type="text" name="id" id="id" value="${userInfo.id}" required>&nbsp;<input type="button" value="중복체크" onClick="checkingId()"></td>
 						
-					</tr>
-					<tr>
-						<td scope="col">비밀번호</td>
-						<td><input name="pwd" type="text" value="${userInfo.pwd}">
 					</tr>
 					<tr>
 						<th scope="col">이름</th>
@@ -143,79 +140,26 @@ input[type=button], input[type=submit] {
 	
 	<!-- End Hero -->
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
-	<script>
-	function goBack(){
-		const referrer = document.referrer;
-		const ref = referrer.split('/')
-		let indexNo;
-		var uri = '';
-		for(var count=0; count<ref.length; count++){
-			if(ref[count] == "admin"){
-				indexNo = count;
-			}
-		}
-		for(var index=indexNo; index<ref.length; index++){
-			uri = uri+'/'+ref[index];
-		}
-		location.href=uri;
-	}
-</script>
+<script src="/resources/user/js/adminMemberDetailList.js"></script>		
 <script>
 window.onload = function(){
-						if(${age} != '' && ${age} != null){
-								var age = ${age}.split('-')[0]
-								if(age == 10){
-									document.getElementById('age').checked = true;
-								}else if(age == 20){
-									document.getElementById('age1').checked = true;									
-								}else if(age == 30){
-									document.getElementById('age2').checked = true;
-								}else if(age == 40){
-									document.getElementById('age3').checked = true;
-								}else{
-									document.getElementById('age4').checked = true;
-								}
-								
+	if(${age} != '' && ${age} != null){
+			var age = ${age}.split('-')[0]
+			if(age == 10){
+				document.getElementById('age').checked = true;
+			}else if(age == 20){
+				document.getElementById('age1').checked = true;									
+			}else if(age == 30){
+				document.getElementById('age2').checked = true;
+			}else if(age == 40){
+				document.getElementById('age3').checked = true;
+			}else{
+				document.getElementById('age4').checked = true;
+			}
+			
+	}
 }
-}
-							</script>		
-							
-							<script>
-							let flag = false;
-								function updateMember(){
-									if(document.getElementById('id').value != document.getElementById('idCheck').value){
-										if(!flag){
-											alert('아이디 중복확인이 필요합니다');
-											return false;
-										}
-									}
-									
-								}
-								function checkingId(){
-									if($("#id").val().length < 6) {
-								        alert("아이디는 최소 6글자 이상이어야 합니다.");
-								        flag = true;
-								        return false;
-								    }
-								    $.ajax({
-								        url : "/admin/memberCheck",
-								        type : "get",
-								        data : {"id" : $("#id").val()},
-								        success : function(data){
-								            if(data == 1){
-								            	if(document.getElementById('id').value != document.getElementById('idCheck').value){
-								                	alert("중복된 아이디입니다.");
-								                	flag = true;
-								            	}else{
-								            		alert('사용가능한 아이디입니다.');
-								            	}
-								            } else if(data == 0){
-								                alert("사용가능한 아이디입니다.");
-								                flag = false;
-								            }
-								        }
-								    });
-								}
-							</script>
+</script>
+
 </body>
 </html>

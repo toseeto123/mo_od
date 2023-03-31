@@ -116,7 +116,7 @@ public class AdminPaymentService {
 	
 	public void adminPaymentList(Model model, String num) {
 		List<AdminPaymentVO> allMemberList = dao.adminPaymentMemberList(0,0);
-		int[] no = module.pagingModuleToAdminPayment(model, allMemberList, num, 1);
+		int[] no = module.pagingModuleToAdminPayment(model, allMemberList, num, 10);
 		List<AdminPaymentVO> showMemberList = dao.adminPaymentMemberList(no[0], no[1]);
 		List<AdminPaymentVO> payList = dao.adminPaymentList();
 		Map<Integer, List<AdminPaymentVO>> map = new HashMap<Integer, List<AdminPaymentVO>>();
@@ -155,13 +155,26 @@ public class AdminPaymentService {
 			   }
 		   }
 		   List<AdminPaymentVO> memberSearchingAllList = dao.adminPaymentSearchingList(moduleVO);
-		   ViewPagingVO viewVO = module.pagingModule(model, moduleVO, memberSearchingAllList, paging, 1);
+		   ViewPagingVO viewVO = module.pagingModule(model, moduleVO, memberSearchingAllList, paging, 10);
 		   List<AdminPaymentVO> memberSearchingShowList = dao.adminPaymentSearchingList(moduleVO);
 		   List<AdminPaymentVO> productList = dao.adminPaymentList();
 		   map.put("list", memberSearchingShowList);
 		   map.put("vo", viewVO);
 		   map.put("productList", productList);
 		   return map;
+	}
+	
+	public void adminPaymentDetail(Model model, int no) {
+		List<AdminPaymentVO> list= dao.adminPaymentDetail(no);
+		AdminPaymentVO member = new AdminPaymentVO();
+		member.setAddress(list.get(0).getAddress());
+		member.setName(list.get(0).getName());
+		member.setAmount(list.get(0).getAmount());
+		member.setOrderNo(list.get(0).getOrderNo());
+		member.setPayDate(list.get(0).getPayDate());
+		member.setPhone(list.get(0).getPhone());
+		model.addAttribute("member", member);
+		model.addAttribute("product", list);
 	}
 	
 	public KakaoPayApprovalVO adminPaymentCancel(int orderid) {

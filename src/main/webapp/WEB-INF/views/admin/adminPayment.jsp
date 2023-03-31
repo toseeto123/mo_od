@@ -84,7 +84,7 @@ section{
 				<option value="payDate">결제날짜</option>
 				<option value="phone">연락처</option>
 			</select> <input type="search" id="search">
-			
+
 			
 			<input type="button" 
 				id="searchBtn" value="찾기" onclick="search()">
@@ -93,91 +93,36 @@ section{
 			<section style="padding: 0;
 	margin: 0;">
 			<div id="tables">
-			<c:forEach var="member" items="${member}">
+			
               <table id="table" class="table">
                 <thead id="thead">
                 <tr>
-                	<th id="orderNo" style="width:20%;">주문번호 : ${member.orderNo}</th>
-                	<th colspan="3" ></th>
-                	<th>결제날짜 : ${member.payDate}</th>
+                	<th>주문번호</th>
+                	<th>이름</th>
+                	<th>연락처</th>
+                	<th>주소</th>
+                	<th>결제날짜</th>
+                	<th>총금액</th>
+                	<th>상세보기</th>
                 </tr>
-                <tr>
-                <th id="name" scope="col">이름 : ${member.name}</th>
-                <th id="address" colspan="3" scope="col">주소 : ${member.address}</th>
-                <th id="phone" scope="col">연락처 : ${member.phone}</th>
-                </tr>
-                  <tr>
-                    <th scope="col">상품번호</th>
-                    <th scope="col">상품명</th>
-                    <th scope="col">상품금액</th>
-                    <th scope="col">수량</th>
-                    <th scope="col">금액</th>
-                  </tr>
                 </thead>
                 
                 <tbody id="tbody">
-				
-				<c:forEach var="product" items="${map[member.orderNo]}">
-                  <tr id="product">
-                    <th id="productNo" scope="row">${product.productNo}</th>
-                    <td id="productNam">${product.productName}</</td>
-                    <td id="price">&#8361; ${product.price}</td>
-                    <td id="productCount"> ${product.productCount}</td>
-                    <td id="amount">&#8361; ${product.productCount*product.price}</td>
-                  </tr>
-                 </c:forEach> 
-                  
-                  <tr>
-                  	<td colspan="4" style="border-bottom:none;"></td>
-                  	<td id="memberAmount">총금액: &#8361; ${member.amount }</td>
-                  </tr>
-                  
-                  <tr>
-                  <td colspan="4" style="border-bottom:none"></td>
-                  <td style="border-bottom:none">
-                  	<form action="#" method="post">
-                  	<a onClick="$('#myModal${member.orderNo}').modal('show');" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated">주문취소</a>
-                  	</form>
-                  	</td>
-                  </tr>
-                  
-                </tbody>
+                <c:forEach var="member" items="${member}">
+                <tr>
+                <td>${member.orderNo}</td>
+                <td>${member.name}</td>
+                <td>${member.phone}</td>
+                <td>${member.address}</td>
+                <td>${member.payDate}</td>
+                <td>&#8361; ${member.amount}</td>
+                <td><a href="/admin/paymentDetail?no=${member.orderNo}">상세보기</a></td>
+                </tr>
+                  </c:forEach> 
+                  </tbody>
               </table>
               
-              	<div class="modal fade" id="myModal${member.orderNo}">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="myModalLabel">결제 취소</h5>
-					<button type="button" style="background: transparent; border: none;" class="close"
-						onClick="$('#myModal${member.orderNo}').modal('hide');" data-dismiss="modal"
-						aria-label="Close">
-						<span class="span" aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<div class="d-flex align-items-center justify-content-center">
-
-
-						<div class="card-body">
-							<div class="form-group">
-								
-							</div>
-							<div class="form-group">
-								<h5>결제를 취소하시겠습니까?</h5>
-							</div>
-							<div class="form-group text-center">
-							<input type="button" onClick="location.href = '/admin/kakaoPayCancel?orderid=${member.orderNo}';" value="결제 취소">
-								<input type="button" onClick="$('#myModal${member.orderNo}').modal('hide');" value="닫기">								
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-              
-              </c:forEach>
+   
               </div>
               
               </section>

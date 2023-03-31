@@ -62,9 +62,15 @@ public class AdminPaymentController {
 		return map;	
 	}
 	
-
-@RequestMapping(value = "/kakaoPayCancel" )
-public String payCancel(Model model, String orderid) {
+	@RequestMapping("/paymentDetail")
+	public String paymentDetail(Model model, int no) {
+		adminService.adminPaymentDetail(model, no);
+		return "admin/adminPaymentDetail";
+	}
+	
+	
+	@RequestMapping(value = "/kakaoPayCancel" )
+	public String payCancel(Model model, String orderid) {
 	
 		KakaoPayApprovalVO vo = adminService.adminPaymentCancel(Integer.parseInt(orderid));	
 		try {
@@ -74,6 +80,6 @@ public String payCancel(Model model, String orderid) {
 			return "redirect:/admin/chart";
 		}
 	   return "redirect:/admin/payment";
-}
+	}
 
 }
