@@ -21,7 +21,7 @@ color : #323232;
 
 @media screen and (max-width: 768px) {
     .aic a {
-      padding: 0 20px; /* 좌우 5px의 패딩값 */
+      padding: 0 17px; 
     }
   }
 
