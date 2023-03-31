@@ -71,9 +71,6 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
         <ul>
 
           <li class="dropdown"><a href="/admin/adminProList"><b>상품관리</b></a>
-                <ul>
-                 <li><a href="/admin/insert"><b>상품등록</b></a></li>
-                </ul>
           </li>
           <li class="dropdown"><a href="/admin/adminMemberList"><b>회원관리</b></a>
           </li>

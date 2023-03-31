@@ -71,13 +71,34 @@ input[type=search]{
   transform: translateX(-50%);
   width: 250px;
 }
+.aiccontainer{
+padding-top: 10px;
+}
+.aic{
+width: 800px;
+margin: 0 auto;
+
+
+}
+.align-items-center>a{
+margin: 0 auto;
+color : #323232;
+}
 </style>
 
 <body>
 	<jsp:include page="../../common/adminHeader.jsp" />
 <form role="form" method="post" action="insert.do"  enctype="multipart/form-data">
+	      <section id="breadcrumbs" class="breadcrumbs" style="height: 70px; padding-bottom: 80px; font-size: 22px;">
+         <div class="container aiccontainer">
+            <div class="d-flex align-items-center aic">
+				<a href="/admin/adminProList">상품리스트</a>      
+				<a href="/admin/insert" style="border-bottom: 2px solid #323232; font-size: 28px;">상품등록</a>
+            </div>
+         </div>
+      </section>
+
 <div class="warp">
-<input type="button" style="" id="searchBtn" value="상품리스트 이동" onclick="location.href='/admin/adminProList.do'">
 <div class="inputArea" style="margin-top: 100px;"> 
  <label for="mainCategory">1차 카테고리</label>
  <select class="category1" id="mainCategory" name="mainCategory" onclick="mainCategoryChange(this)">

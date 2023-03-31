@@ -31,8 +31,22 @@ public class KakaoPayApprovalVO {
     private int orderId;
     private int count;
     private String success;
+    
 
 
+	@Override
+	public String toString() {
+		return "KakaoPayApprovalVO [aid=" + aid + ", tid=" + tid + ", cid=" + cid + ", sid=" + sid
+				+ ", partner_order_id=" + partner_order_id + ", partner_user_id=" + partner_user_id
+				+ ", payment_method_type=" + payment_method_type + ", amount=" + amount + ", card_info=" + card_info
+				+ ", item_name=" + item_name + ", item_code=" + item_code + ", payload=" + payload + ", quantity="
+				+ quantity + ", tax_free_amount=" + tax_free_amount + ", vat_amount=" + vat_amount + ", created_at="
+				+ created_at + ", approved_at=" + approved_at + ", successTime=" + successTime + ", orderid=" + orderid
+				+ ", row_count=" + row_count + ", payment_method=" + payment_method + ", pro_img1=" + pro_img1
+				+ ", pro_name=" + pro_name + ", pro_maindesctitle=" + pro_maindesctitle + ", pro_option=" + pro_option
+				+ ", pro_number=" + pro_number + ", price=" + price + ", total=" + total + ", userno=" + userno
+				+ ", orderId=" + orderId + ", count=" + count + ", success=" + success + "]";
+	}
 	public String getSuccess() {
 		return success;
 	}

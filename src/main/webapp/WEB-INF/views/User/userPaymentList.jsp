@@ -227,6 +227,15 @@ width: 300px;
 </style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
 </head>
+<c:if test="${not empty alertMessage}">
+<script>
+alert("${alertMessage}");
+<%
+session.removeAttribute("alertMessage");
+%>
+</script>
+
+</c:if>
 <body style="margin: 0 auto; overflow-y: scroll;">
 
 
@@ -258,7 +267,7 @@ width: 300px;
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton${orderid.orderid}" style=" border: 2px solid #525252;">
   
-        <form action="/User/kakaoPayCancel" id="cancel-form">
+        <form action="/User/kakaoPayCancelChk" id="cancel-form">
     <c:forEach var="order" items="${orders}">
       <c:if test="${order.orderid == orderid.orderid}">
     <input type="hidden" value="${orderid.orderid }" name="orderId">
@@ -307,6 +316,7 @@ width: 300px;
          </c:choose>
       </div>
    </div>
+
 <script>
 function confirmCancel() {
     if (confirm("주문을 취소하시겠습니까? \n결제승인시간 기준 24시간 이후 자동 구매확정 상태가됩니다.")) {
