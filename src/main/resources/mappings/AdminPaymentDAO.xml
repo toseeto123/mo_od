@@ -183,7 +183,7 @@
 
 	<select id="adminPaymentCancel"
 		resultType="kr.co.mood.Payment.VO.KakaoPayApprovalVO">
-		select payment.tid, orders.orderId, orders.price
+		select payment.tid as 'tid', payment.orderId as 'orderId', orders.price as 'price'
 		from
 		payment
 		inner join moodorder as orders

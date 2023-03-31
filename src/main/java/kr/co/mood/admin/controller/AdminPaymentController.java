@@ -73,8 +73,9 @@ public class AdminPaymentController {
 	public String payCancel(Model model, String orderid) {
 	
 		KakaoPayApprovalVO vo = adminService.adminPaymentCancel(Integer.parseInt(orderid));	
+		System.out.println(vo);
 		try {
-			kakaoPay.kakaoCancel(vo.getTid(),vo.getPrice(), null, vo.getOrderId());
+			kakaoPay.kakaoCancel(vo.getTid(),vo.getPrice(), null, Integer.parseInt(orderid));
 		}catch(Exception e) {
 			e.printStackTrace();
 			return "redirect:/admin/chart";

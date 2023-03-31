@@ -75,7 +75,6 @@ section{
 
 <body style="background-color:#f5f6f7;">
 
-
 	
 			<section style="padding: 0; margin: 0;">
 			<div id="tables">
