@@ -1,7 +1,44 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
    pageEncoding="UTF-8"%>
 <jsp:include page="../../WEB-INF/common/RecentlyViewProduct.jsp"/>
+<!DOCTYPE>
+<html>
+<head>
+<style>
+@media (max-width: 767px) {
+  #footer .container {
+    padding: 10px;
+  }
+  #footer .copyright {
+    text-align: center;
+    font-size: 2vw; /* or use any other value depending on your preference */
+  }
+  #footer .names {
+    line-height: 1.5;
+    font-size: 1.5vw; /* or use any other value depending on your preference */
+  }
+}
 
+@media (min-width: 768px) and (max-width: 991px) {
+  .back-to-top i {
+    font-size: 28px;
+  }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) {
+  .back-to-top i {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .back-to-top i {
+    font-size: 36px;
+  }
+}
+
+</style>
+</head>
 <!-- ======= Footer ======= -->
   <footer id="footer">
 
