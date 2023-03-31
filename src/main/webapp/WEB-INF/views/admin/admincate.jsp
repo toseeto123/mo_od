@@ -17,6 +17,7 @@ font-size: 18px;
 }
 .searchParent{
 	text-align: center;
+	height : 100vh;
 }
 .search{
 	display: inline-block;
@@ -42,7 +43,7 @@ input[type=search]{
 }
 footer{
 	width: 100%;
-	position: absolute;
+	position: fixed;
 	bottom: 0;
 }
 </style>
@@ -51,8 +52,7 @@ footer{
 
 	<jsp:include page="../../common/adminHeader.jsp" />
 
-	<!-- ======= Hero Section ======= -->
-	<section id="hero" style="background: white;" class="container">
+	<section id="" style="background: white;" class="container">
 	<div class="searchParent">
 		<div class="search" style="margin-top: 110px; margin-bottom: 50px;">
 				<select id="searchWhat">
@@ -96,23 +96,23 @@ footer{
 			<div id="modulePaging"
 				style="display: inline-block; position: absolute; left: 50%; transform: translateX(-50%); font-size: 20px;">
 				<c:if test="${prePage!=null }">
-					<a href="/admin/admincate.do/${prePage}">&lt;</a>
+					<a href="/admin/admincate/${prePage}">&lt;</a>
 				</c:if>
 
 				<c:forEach items="${ pagingNo }" var="no">
 					<c:choose>
 						<c:when test="${selectPage == no}">
 				                  &nbsp;<a style="color: green"
-								href="/admin/admincate.do/${no}">${no}</a>&nbsp;
+								href="/admin/admincate/${no}">${no}</a>&nbsp;
 				                  </c:when>
 						<c:otherwise>
-				                  &nbsp;<a href="/admin/admincate.do/${no}">${no}</a>&nbsp;
+				                  &nbsp;<a href="/admin/admincate/${no}">${no}</a>&nbsp;
 				                  </c:otherwise>
 					</c:choose>
 				</c:forEach>
 
 				<c:if test="${nextPage != null }">
-					<a href="/admin/admincatet.do/${nextPage}">&gt;</a>
+					<a href="/admin/admincatet/${nextPage}">&gt;</a>
 				</c:if>
 			</div>
 
@@ -127,7 +127,7 @@ footer{
 			  const data = { cateId: Number(cateId) };
 			  console.log(cateId,data)
 			    let xhr = new XMLHttpRequest();
-			   xhr.open('POST', '/catedelete.do', true);
+			   xhr.open('POST', '/users/catedelete', true);
 			   xhr.setRequestHeader('Content-Type', 'application/json');
 			   xhr.onreadystatechange = function() {
 				      if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
@@ -234,7 +234,7 @@ footer{
 		
 		}
 
-		xhttp.open("GET", "/admin/admincate.do/"+data.page+ "/" + data.searchWhat + "/" + data.search, true);
+		xhttp.open("GET", "/admin/admincate/"+data.page+ "/" + data.searchWhat + "/" + data.search, true);
 		xhttp.send();
 		}
 		
