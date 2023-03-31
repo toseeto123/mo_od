@@ -103,16 +103,16 @@ input[type=text]:focus, input[type=email]:focus {
 
 							<div class="card-body">
 								<div class="form-group row">
-									<label style="font-size: 25px; line-height:25px;" class="col-3 col-form-label" for="email">이메일</label>
+									<label style="padding: 0; margin: 0; font-size: 120%;"   class="col-3 col-form-label" for="email">이메일</label>
 									<div class="col-6">
 										<input class="form-control" type="email" id="email"
-											placeholder="이메일을 입력해주세요" required autofocus>
+											placeholder="이메일 입력" required autofocus>
 
 									</div>
 									<input type="button" value="보내기" class="col-3"
 										onclick="emailValidate()">
 									<div class="col-3"></div>
-									<div class="col-6">
+									<div class="col-9">
 										<span class="span br" id="emailCheck"></span>
 									</div>
 								</div>
@@ -120,7 +120,7 @@ input[type=text]:focus, input[type=email]:focus {
 							</div>
 							<div class="card-body">
 								<div class="form-group row">
-									<label style="font-size: 25px; line-height:25px;" class="col-3 col-form-label" for="number">인증번호</label>
+									<label style="padding: 0; margin: 0; font-size: 120%;"   class="col-3 col-form-label" for="number">인증번호</label>
 									<div class="col-6">
 										<input class="form-control" type="text" id="number"
 											placeholder="인증번호 입력">
@@ -128,31 +128,35 @@ input[type=text]:focus, input[type=email]:focus {
 									<input type="button" value="확인" class="col-3"
 										onclick="numValidate()">
 									<div class="col-3"></div>
-									<div class="col-7">
+									<div class="col-9">
 										<span class="span" id="time"></span>
 									</div>
 								</div>
 							</div>
+							
 							<div class="card-body">
 								<div class="form-group row">
-									<div class="col-3"></div>
-									<div class="col-7">
-										<span class="span br" id="show"></span>
-									</div>
-								</div>
-								<div class="card-body">
-								
-									<div class="form-group row">
-										
-											<a href="/users/searchPwd" class="col-4 fonthover"
-												>비밀번호 찾기</a>
-										
-										<div class="col-6"></div>
-											<a href="/users/login" class="col-2 fonthover">돌아가기</a>
-										
-									</div>
+									<div class="col-12"></div>
 								</div>
 							</div>
+							
+							<div class="card-body" style="padding: 0;">
+								
+									<div class="form-group row">
+									
+											<div class="col-4">
+											<a href="/users/searchPwd" class="fonthover"
+												>비밀번호찾기</a>
+										</div>
+										<div class="col-4"></div>
+										<div class="col-4" style="position: relative;">
+											<a style="padding: 0; margin: 0; position: absolute; right: 20px;" href="/users/login" class="fonthover">돌아가기</a>
+										</div>
+									</div>
+
+							</div>
+							
+
 						</div>
 
 					</div>
