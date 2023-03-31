@@ -99,16 +99,15 @@ public class MemberService {
          e.printStackTrace();
       }
 
-      // catch �븘�옒 肄붾뱶 異붽�.
+
       UserVO result = userdao.findkakao(userInfo);
-      // �쐞 肄붾뱶�뒗 癒쇱� �젙蹂닿� ���옣�릺�엳�뒗吏� �솗�씤�븯�뒗 肄붾뱶.
+
       if(result==null) {
-      // result媛� null�씠硫� �젙蹂닿� ���옣�씠 �븞�릺�엳�뒗嫄곕�濡� �젙蹂대�� ���옣.
+
          userdao.kakaoinsert(userInfo);
-         // �쐞 肄붾뱶媛� �젙蹂대�� ���옣�븯湲� �쐞�빐 Repository濡� 蹂대궡�뒗 肄붾뱶�엫.
+
          return userdao.findkakao(userInfo);
-         // �쐞 肄붾뱶�뒗 �젙蹂� ���옣 �썑 而⑦듃濡ㅻ윭�뿉 �젙蹂대�� 蹂대궡�뒗 肄붾뱶�엫.
-         //  result瑜� 由ы꽩�쑝濡� 蹂대궡硫� null�씠 由ы꽩�릺誘�濡� �쐞 肄붾뱶瑜� �궗�슜.
+
       } else {
          return result;
          
@@ -125,10 +124,10 @@ public class MemberService {
                URL url = new URL(reqURL);
                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                
-               //POST �슂泥��쓣 �쐞�빐 湲곕낯媛믪씠 false�씤 setDoOutput�쓣 true濡�
+
                conn.setRequestMethod("POST");
                conn.setDoOutput(true);
-               //POST �슂泥��뿉 �븘�슂濡� �슂援ы븯�뒗 �뙆�씪誘명꽣 �뒪�듃由쇱쓣 �넻�빐 �쟾�넚
+
                BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
                StringBuilder sb = new StringBuilder();
                sb.append("grant_type=authorization_code");
@@ -147,10 +146,10 @@ public class MemberService {
                bw.flush();
                
                
-               //寃곌낵 肄붾뱶媛� 200�씠�씪硫� �꽦怨�
+               
                int responseCode = conn.getResponseCode();
                if(responseCode==200){
-                  //�슂泥��쓣 �넻�빐 �뼸�� JSON���엯�쓽 Response 硫붿꽭吏� �씫�뼱�삤湲�
+                  
                   BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                   String line = "";
                   String result = "";
@@ -159,7 +158,7 @@ public class MemberService {
                       result += line;
                   }
                   
-                  //Gson �씪�씠釉뚮윭由ъ뿉 �룷�븿�맂 �겢�옒�뒪濡� JSON�뙆�떛 媛앹껜 �깮�꽦
+               
                   JsonParser parser = new JsonParser();
                   JsonElement element = parser.parse(result);
                   
@@ -176,7 +175,7 @@ public class MemberService {
        }
    
    public UserVO getNaverUserInfo (String access_Token,HttpSession session) {
-       //�슂泥��븯�뒗 �겢�씪�씠�뼵�듃留덈떎 媛�吏� �젙蹂닿� �떎瑜� �닔 �엳湲곗뿉 HashMap���엯�쑝濡� �꽑�뼵
+       
        HashMap<String, Object> naverUserInfo = new HashMap<String, Object>();
        String reqURL = "https://openapi.naver.com/v1/nid/me";
        try {
@@ -184,7 +183,7 @@ public class MemberService {
            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
            conn.setRequestMethod("POST");
           
-           //�슂泥��뿉 �븘�슂�븳 Header�뿉 �룷�븿�맆 �궡�슜
+        
            conn.setRequestProperty("Authorization", "Bearer " + access_Token);
            
            int responseCode = conn.getResponseCode();
@@ -221,19 +220,16 @@ public class MemberService {
            e.printStackTrace();
            
        }
-    // catch �븘�옒 肄붾뱶 異붽�.
+
           UserVO result = userdao.findNaver(naverUserInfo);
-          // �쐞 肄붾뱶�뒗 癒쇱� �젙蹂닿� ���옣�릺�엳�뒗吏� �솗�씤�븯�뒗 肄붾뱶.
-          
+
           if(result==null) {
-          // result媛� null�씠硫� �젙蹂닿� ���옣�씠 �븞�릺�엳�뒗嫄곕�濡� �젙蹂대�� ���옣.
+         
              userdao.NaverInsert(naverUserInfo);
-             // �쐞 肄붾뱶媛� �젙蹂대�� ���옣�븯湲� �쐞�빐 Repository濡� 蹂대궡�뒗 肄붾뱶�엫.
-             
+
              
              return userdao.findNaver(naverUserInfo);
-             // �쐞 肄붾뱶�뒗 �젙蹂� ���옣 �썑 而⑦듃濡ㅻ윭�뿉 �젙蹂대�� 蹂대궡�뒗 肄붾뱶�엫.
-             //  result瑜� 由ы꽩�쑝濡� 蹂대궡硫� null�씠 由ы꽩�릺誘�濡� �쐞 肄붾뱶瑜� �궗�슜.
+          
              
              
           } else {
