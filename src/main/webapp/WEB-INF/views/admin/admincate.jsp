@@ -32,7 +32,7 @@ a:hover {
 *:focus { outline: 0; }
 input[type=button]{
 	color: white;
-	background: #d2b48c;  
+	background: #323232;  
 	width:100px; 
 	border-radius:10px; 
 	border: none;
@@ -84,7 +84,12 @@ footer{
 							<th scope="col">${cateList.pro_name }</th>
 							<th scope="col">${cateList.pro_option }</th>
 							<th scope="col">${cateList.pro_price }</th>
-							<th scope="col">${cateList.amount }</th>
+							<th scope="col">
+								
+							
+							${cateList.amount }
+							
+							</th>
 							<th scope="col">${cateList.pro_serialnumber}</th>
 							<th scope="col"><button type="button"
 									onclick="deletecate(this)">삭제</button></th>
@@ -122,6 +127,8 @@ footer{
 	</section>
 	<!-- End Hero -->
 	<script type="text/javascript">
+
+	
 		 function deletecate(element){
 			  const cateId = element.closest('tr').querySelector('th:first-of-type').textContent;
 			  const data = { cateId: Number(cateId) };
@@ -253,6 +260,8 @@ footer{
 				  search();
 			  }
 			});
+			
+			
 	</script>
 
 	<jsp:include page="../../common/footer.jsp" />

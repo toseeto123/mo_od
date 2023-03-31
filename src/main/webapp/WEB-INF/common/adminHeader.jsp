@@ -8,8 +8,8 @@
 
 <head>
 <script src="https://unpkg.com/phosphor-icons"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/spring-webmvc/5.3.8/spring-webmvc.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/spring-webmvc/5.3.8/spring-webmvc.min.js"></script> -->
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
 <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
 	rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -49,8 +49,8 @@ font-size: 20px;
 li {
    display: flex;
    align-items: center;
-   margin: 30px;
-   margin-bottom: 30px;
+   margin: 10px;
+   margin-bottom: 0;
 }
 *{
 font-family: 'SUIT-Regular', normal;font-weight:900;
@@ -79,7 +79,7 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
           
           <li class="dropdown"><a href="/admin/payment"><b>결 제</b></a>
           </li>
-          <li style="padding-left: 0px;margin: 30px 0px 30px 25px; width: 100px;"><a class="getstarted scrollto" href="/"><b>Client</b></a></li>
+          <li style="padding-left: 0px;margin: 40px 0px 30px 25px; width: 100px;"><a class="getstarted scrollto" href="/"><b>Client</b></a></li>
           <li><a class="getstarted scrollto" href="/adminLogout"><b>Logout</b></a></li>
 		
         </ul>

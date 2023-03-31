@@ -19,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import kr.co.mood.Payment.DAO.AdminPaymentService;
 import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.Product.VO.ProVO;
@@ -97,8 +99,44 @@ public class AdminController {
    @RequestMapping("/adminMemberDetail/{userNo}")
    public String adminMemberDetail(@PathVariable String userNo, UserVO vo, Model model){
 	   UserVO vo1 = userService.selectMemberNo(Integer.parseInt(userNo));
-	   model.addAttribute("userInfo", vo1);
+	   ObjectMapper objectMapper = new ObjectMapper();
+	   try {
+		   model.addAttribute("userInfo",vo1);
+		   model.addAttribute("age", objectMapper.writeValueAsString(vo1.getAge()));
+	   }catch(Exception e) {
+		   e.printStackTrace();
+	   }
 	   return "admin/adminMemeberDetail";
+   }
+   
+   @RequestMapping("/memberCheck")
+   @ResponseBody
+   public int adminMemberCheck(@RequestParam String id) {
+	   UserVO vo = new UserVO();
+	   vo.setId(id);
+	   int check = 0;
+	   try {
+		   check = userService.idChk(vo);
+	   }catch(Exception e) {
+		   e.printStackTrace();
+	   }
+	   return check;
+   }
+   
+   @RequestMapping("/memberUpdate")
+   public String adminMemberUpdate(UserVO vo) {
+	   userService.updateAdminMember(vo);
+	   return "redirect:/admin/adminMemberList/1";
+   }
+   
+   @RequestMapping("/deleteMember")
+   public String adminMemberDelete(String id) {
+	   try {
+		   userService.delete(id);
+	   }catch(Exception e) {
+		   e.printStackTrace();
+	   }
+	   return "redirect:/admin/adminMemberList/1";
    }
    
    @RequestMapping("/admincate")

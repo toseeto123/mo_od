@@ -15,7 +15,7 @@
 			on orderProduct.pro_number = product.pro_number
 		inner join payment
 			on payment.orderid = orderProduct.orderid
-		where payment.Success = '결제 완료'
+		where (payment.Success = '결제 완료' or payment.Success = '구매 확정')
 		group by product.pro_name
 		order by payCount desc
 		limit 0, 5
@@ -47,8 +47,8 @@
          		ELSE '유효한 날짜가 아닙니다.' END as week, 
          	Amount as sales 
          	from payment 
-         	where Success = '결제 완료'
-					and SuccessTime like concat('2023', '%')
+         	where (Success = '결제 완료' or payment.Success = '구매 확정')
+					and SuccessTime like concat(#{year}, '%')
 			group by orderid
          	order by DAYOFWEEK(SuccessTime)
          	]]>
@@ -77,7 +77,7 @@
 					group by product.pro_categoryserial
 					limit 0, 5) as category
 			on category.categoryserial = product.pro_categoryserial	
-		where payment.Success = '결제 완료'
+		where (payment.Success = '결제 완료' or payment.Success = '구매 확정')
 		and payment.SuccessTime like concat('%' ,#{year}, '%')
 		group by member.gender,product.pro_categoryserial, member.age
 		order by productCount desc
@@ -101,7 +101,7 @@
 		inner join payment
 		on
 		payment.orderid = moodorder.orderid
-		where payment.Success = '결제 완료'
+		where (payment.Success = '결제 완료' or payment.Success = '구매 확정')
 		group by orderNo
 		order by orderNo desc
 		<if test="endNo != 0">
@@ -128,7 +128,7 @@
 		inner join payment
 		on
 		payment.orderid = moodorder.orderid
-		where payment.Success = '결제 완료'
+		where (payment.Success = '결제 완료' or payment.Success = '구매 확정')
 		<if test="searchName != null">
 			and member.name like concat('%', #{searchName}, '%')
 		</if>
@@ -151,14 +151,13 @@
 	<select id="adminPaymentList"
 		resultType="kr.co.mood.Payment.VO.AdminPaymentVO">
 		select orderProduct.orderid as'orderNo',
-		(orderProduct.price/orderProduct.count) as 'price',
-		orderProduct.count
-		as 'productCount',
-		product.pro_serialnumber as 'productNo',
-		product.pro_name as 'productName'
+			(orderProduct.price/orderProduct.count) as 'price',
+			orderProduct.count as 'productCount',
+			product.pro_serialnumber as 'productNo',
+			product.pro_name as 'productName'
 		from orderProduct
 		inner join product
-		on product.pro_number = orderProduct.pro_number
+			on product.pro_number = orderProduct.pro_number
 		order by orderNo desc
 	</select>
 
@@ -170,10 +169,10 @@
 		inner join moodorder as orders
 		on payment.orderid =
 		orders.orderid
-		where orders.orderid = #{orderid} and
-		payment.Success =
-		'결제 완료'
-		group by payment.tid;
+		where orders.orderid = #{orderid} 
+			and	(payment.Success = '결제 완료'
+			or payment.Success = '구매 확정')
+		group by payment.tid
 	</select>
 
 

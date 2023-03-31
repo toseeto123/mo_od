@@ -100,7 +100,7 @@ public class UserController {
 		
 	}
 
-	@RequestMapping("/naverLogin")
+	@RequestMapping(value = "/naverLogin" , method = RequestMethod.GET)
 	 public void naverLogin(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request,Model model) throws IOException {
 	       String access_Token = ms.getNaverAccessToken(code, session);
 	       UserVO naverUserInfo =  ms.getNaverUserInfo(access_Token, session);
@@ -115,6 +115,7 @@ public class UserController {
 	       if (path.contains("catelogin")) {
 	           pathgo = "users/bucket";
 	       } else if (path.contains("proCatelogin")) {
+	    	   System.out.println("proCatelogin ");
 	           CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
 	           int userid = naverUserInfo.getNo();
 	           sessionCvo.setUser_no(userid);
@@ -123,6 +124,7 @@ public class UserController {
 	           }
 	           pathgo = "users/bucket";
 	       } else if (path.contains("payBeLogin")) {
+	    	   System.out.println("payBeLogin ");
 	           userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
 	           userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
 	           int userid = naverUserInfo.getNo();
@@ -156,8 +158,8 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
 	public String login(ModelMap model) {
 
-//		String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
-		String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://mo-od.co.kr/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
+		String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
+//		String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://mo-od.co.kr/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
 
 		model.addAttribute("naverUrl", naverUrl);
 		return "User/login";
@@ -262,6 +264,7 @@ public class UserController {
 			}
 		}
 	}
+
 	@ResponseBody
 	@RequestMapping(value = "/idChk", method = RequestMethod.POST)
 	public int idChk(UserVO vo) throws Exception {
@@ -294,6 +297,7 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/payBeLogin", method = RequestMethod.GET)
+	
 	public String payBeLogin(@ModelAttribute("ordervo") userOrderVO ordervo,
 			@ModelAttribute("orderProVo") userOrderProductVO orderProVo, HttpSession session, ModelAndView mav,
 			HttpServletRequest request) {
