@@ -46,7 +46,7 @@
 <style>
 	p{
 		display: inline-block;
-		font-size: 45px;
+		font-size: 35px;
 		font-weight: bold;
 	}
 	input[type=button], input[type=submit]{
@@ -61,11 +61,7 @@
 		margin-top: 35px;
 	}
 	
-	footer{
-		width: 100%;
-		position: absolute;
-		bottom: 0;
-	}
+
 
 </style>
 
@@ -112,7 +108,7 @@
 			</div>
 		</div>
  
- 
+ </div>
  
  
 

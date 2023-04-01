@@ -4,10 +4,10 @@
 <!DOCTYPE html>
 <html style="background-color:#f5f6f7;">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta charset="UTF-8">
 <title>회원 상세</title>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script type="text/javascript" src="/resources/user/js/main.js"></script>
+
 <style>
 input[type=button], input[type=submit] {
 	line-height: 24px;
@@ -94,7 +94,7 @@ input[type=button], input[type=submit] {
 						<input type="text" class="address_input_1" name="adr" id="adr" placeholder="우편번호" style="width: 80px;" value="${userInfo.adr.split('   ')[0]}" required>
 						<input type="text" style="width: 340px;" class="address_input_2" name="adr2" id="adr2" placeholder="주소" value="${userInfo.adr.split('   ')[1]}" required>
 						<input type="text" style="width: 200px;" class="address_input_3" name="adr3" id="adr3" placeholder="상세주소" value="${userInfo.adr.split('   ')[2]}" required>
-						<input type="button" class="adrchk" onclick="sample6_execDaumPostcode()" style="background-color:#323232; color: white; border:#323232; wid" value="우편번호 찾기"><br>
+						<input type="button" class="adrchk" onclick="sample6_execDaumPostcode()" style="background-color:#323232; color: white; border:#323232;" value="우편번호 찾기"><br>
 						</td>
 						
 					</tr>
@@ -134,12 +134,14 @@ input[type=button], input[type=submit] {
 			<!-- End Default Table Example -->
 
 
-			<div style="position: absolute; bottom:0; width:100%;"><jsp:include
+			<div style="margin-top: 120px;"><jsp:include
 					page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" /></div>
 		</div>
 	
 	<!-- End Hero -->
 	<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+	<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script type="text/javascript" src="/resources/user/js/main.js"></script>
 <script src="/resources/user/js/adminMemberDetailList.js"></script>		
 <script>
 window.onload = function(){

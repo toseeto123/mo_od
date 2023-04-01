@@ -181,5 +181,10 @@ public class AdminPaymentService {
 		return dao.adminPaymentCancel(orderid);
 	}
 	
+	public void updateAddress(AdminPaymentVO vo) {
+		dao.updateAddress(vo);
+	}
+	
+	
 	
 }
