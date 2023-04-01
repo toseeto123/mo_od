@@ -51,11 +51,11 @@ footer{
 }
 </style>
 </head>
-<body>
+<body style="background-color:#f5f6f7;">
 
 	<jsp:include page="../../common/adminHeader.jsp" />
 
-	<section id="" style="background: white;" class="container">
+	<section id="" style="background: #f5f6f7;" class="container">
 	<div class="searchParent">
 		<div class="search" style="margin-top: 110px; margin-bottom: 50px;">
 				<select id="searchWhat">

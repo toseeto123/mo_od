@@ -420,7 +420,7 @@ session.removeAttribute("alertMessage");
   <button style="background: #525252; border: none;"class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${orderid.orderid}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     <span>주문번호: ${orderid.orderid}</span>　<span style="margin: 0 60px 0 60px;">결제일:<fmt:formatDate value="${orderid.successTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span> 
     <c:if test="${orderid.success eq '구매 확정'}"><span style="letter-spacing:8px; color:#3c8df0;">구매확정</span></c:if>
-    <c:if test="${orderid.success eq '결제 완료'}"><span style="letter-spacing:1px;">결제취소가능</span></c:if>
+    <c:if test="${orderid.success eq '결제 완료'}"><span style="letter-spacing:8px;">결제완료</span></c:if>
     <c:if test="${orderid.success eq '결제 취소'}"><span style="letter-spacing:8px; color:#f54c4c;">결제취소</span></c:if>
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton${orderid.orderid}" style=" border: 2px solid #525252;">

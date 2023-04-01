@@ -20,6 +20,7 @@ select, option{
 }
 .searchParent{
 	text-align: center;
+	background-color:#f5f6f7;
 }
 .search{
 	display: inline-block;
@@ -76,9 +77,9 @@ body {
          </div>
       </section>
 	
-	<section id="hero" style="background: white; height: auto;" class="container">
+	<section id="hero" style="background: #f5f6f7; height: auto;" class="container">
 		<div class="searchParent">
-			<div class="search" style="margin-top: 110px; margin-bottom: 50px;">
+			<div class="search" style="margin-top: 74px; margin-bottom: 30px; margin-left: 90px;">
 				<select id="searchWhat">
 					<option value="name">상품명</option>
 					<option value="id">일련번호</option>
