@@ -418,7 +418,10 @@ session.removeAttribute("alertMessage");
             <div class="dropdown">
  <c:forEach var="orderid" items="${orderid}">
   <button style="background: #525252; border: none;"class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton${orderid.orderid}" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-    <span>주문번호: ${orderid.orderid}</span>　<span style="margin: 0 60px 0 60px;">결제일:<fmt:formatDate value="${orderid.successTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span> <c:if test="${orderid.success eq '구매 확정'}"><span style="letter-spacing:8px;">구매확정</span></c:if><c:if test="${orderid.success eq '결제 완료'}"><span style="letter-spacing:1px;">결제취소가능</span></c:if>
+    <span>주문번호: ${orderid.orderid}</span>　<span style="margin: 0 60px 0 60px;">결제일:<fmt:formatDate value="${orderid.successTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span> 
+    <c:if test="${orderid.success eq '구매 확정'}"><span style="letter-spacing:8px; color:#3c8df0;">구매확정</span></c:if>
+    <c:if test="${orderid.success eq '결제 완료'}"><span style="letter-spacing:1px;">결제취소가능</span></c:if>
+    <c:if test="${orderid.success eq '결제 취소'}"><span style="letter-spacing:8px; color:#f54c4c;">결제취소</span></c:if>
   </button>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton${orderid.orderid}" style=" border: 2px solid #525252;">
         <form action="/User/kakaoPayCancelChk" id="cancel-form">
@@ -460,6 +463,9 @@ session.removeAttribute("alertMessage");
     </c:if>
     <c:if test="${orderid.success eq '구매 확정'}">
     <span style="white-space: nowrap;">총금액 : <fmt:formatNumber value="${orderid.total}" type="currency" currencySymbol="₩" /> <br>구매확정 상태에는 결제취소가 불가능합니다.</span>
+    </c:if>
+    <c:if test="${orderid.success eq '결제 취소'}">
+    <span style="white-space: nowrap;">취소 금액 : <fmt:formatNumber value="${orderid.total}" type="currency" currencySymbol="₩" /> <br>취소일시 : <fmt:formatDate value="${orderid.cancelTime}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
     </c:if>
     </div>
         </form>

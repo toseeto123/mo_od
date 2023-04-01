@@ -17,11 +17,11 @@ public class KakaoPayApprovalVO {
     private String item_name, item_code, payload;
     private Integer quantity, tax_free_amount, vat_amount;
     private Timestamp created_at, approved_at;
-    private Timestamp successTime;
+    private Timestamp successTime,cancelTime;
     private int orderid,row_count;
     private String payment_method;
     
-    //결제확인용값들
+    //寃곗젣�솗�씤�슜媛믩뱾
     //product
     private String pro_img1,pro_name,pro_maindesctitle,pro_option;
     private int pro_number,price,total;
@@ -32,7 +32,6 @@ public class KakaoPayApprovalVO {
     private int count;
     private String success;
     
-
 
 	@Override
 	public String toString() {
@@ -77,10 +76,12 @@ public class KakaoPayApprovalVO {
 	public void setSuccessTime(Timestamp successTime) {
 		this.successTime = successTime;
 	}
-	
-    
-    
-
+	public Timestamp getCancelTime() {
+		return cancelTime;
+	}
+	public void setCancelTime(Timestamp cancelTime) {
+		this.cancelTime = cancelTime;
+	}
 	public int getTotal() {
 		return total;
 	}

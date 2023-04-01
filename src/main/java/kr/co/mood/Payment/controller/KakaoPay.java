@@ -164,7 +164,7 @@ public class KakaoPay {
                    requestEntity,
                    KakaoCancelResponseVO.class);
 
-			kservice.paycancelDelete(orderId);
+			//kservice.paycancelDelete(orderId);
 
 			kservice.paySuccessStatusUpdate(orderId);
            return cancelResponse;
