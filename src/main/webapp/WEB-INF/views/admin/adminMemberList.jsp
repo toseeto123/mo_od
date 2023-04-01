@@ -18,7 +18,7 @@ select, option{
 }
 .searchParent{
 	text-align: center;
-	margin: 40px 0;
+	margin: 170px 0 40px;
 }
 .search{
 	display: inline-block;

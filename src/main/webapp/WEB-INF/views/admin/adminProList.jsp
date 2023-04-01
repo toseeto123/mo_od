@@ -61,6 +61,9 @@ margin: 0 auto;
 margin: 0 auto;
 color : #323232;
 }
+body {
+   background-color:#f5f6f7;
+}
 </style>
 </head>
 <body>

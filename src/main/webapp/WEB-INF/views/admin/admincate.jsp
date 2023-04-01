@@ -8,6 +8,9 @@
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <style>
+body {
+   background-color:#f5f6f7;
+}
 section.container{
 	margin-bottom: 20px;
 }
