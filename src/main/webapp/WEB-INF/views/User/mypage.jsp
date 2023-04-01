@@ -175,7 +175,7 @@ input {
 		</tr>
 		<tr >
 			<td><label for="pwd">비밀번호</label></td>
-			<td><input type="password" class="pwd" id="pwd" name="pwd" style="width: 340px;" required><br>
+			<td><input type="password" class="pwd" id="pwd" name="pwd" style="width: 100%; max-width: 280px;" required><br>
 			</td>
 			
 		</tr>
@@ -183,12 +183,12 @@ input {
 		<tr >
 			<td><label for="pwd">비밀번호 확인</label></td>
 
-			<td><input type="password" id="pwd2" name="pwd2" style="width: 340px;" required onkeyup="passConfirm()"><br><span id="confirmMsg"></span></td>
+			<td><input type="password" id="pwd2" name="pwd2" style="width: 100%; max-width: 280px;" required onkeyup="passConfirm()"><br><span id="confirmMsg"></span></td>
 			
 			
 		</tr>
 		<tr >
-			<td><label for="name">이름</label></td>
+			<td style="min-width: 100px;"><label for="name">이름</label></td>
 			<td>${login_info.name}<br></td>
 		</tr>
 		<tr >
@@ -201,11 +201,11 @@ input {
 		</tr>
 		<tr >
 			<td><label for="email">이메일</label></td>
-			<td><input type="text" class="myinfo_email" id="myinfo_email" style="width: 340px;" name="email" value="${login_info.email}"><br></td>
+			<td><input type="text" class="myinfo_email" id="myinfo_email" style="width: 100%; max-width: 280px;" name="email" value="${login_info.email}"><br></td>
 		</tr>
 		<tr >
 			<td ><label for="phone">휴대전화</label></td>
-			<td><input type="tel" name="phone" style="width: 340px;" value="${login_info.phone}"><br></td>
+			<td><input type="tel" name="phone" style="width: 100%; max-width: 280px;" value="${login_info.phone}"><br></td>
 		</tr>
 		<tr >
 		
@@ -215,17 +215,17 @@ input {
 		</tr>
 		<tr >
 			<td>주소</td>
-			<td colspan="2"><input type="text" class="address_input_2" name="adr2" id="adr2" size="34" placeholder="주소" value="${myinfo_adr2}" required></td><br>
+			<td colspan="2"><input type="text" style="width: 100%; max-width: 350px;" class="address_input_2" name="adr2" id="adr2" placeholder="주소" value="${myinfo_adr2}" required></td><br>
 			
 		</tr>
 		<tr >
 			<td><input type="hidden"id="sspwd" size="50" name="sspwd" value="${login_info.pwd}"/> </td>
-			<td colspan="2"><input type="text" size="34" class="address_input_3" name="adr3" id="adr3" placeholder="상세주소" value="${myinfo_adr3}" required></td>
+			<td colspan="2"><input type="text" style="width: 100%; max-width: 350px;" class="address_input_3" name="adr3" id="adr3" placeholder="상세주소" value="${myinfo_adr3}" required></td>
 		</tr>
 			<tr>
-				<td colspan="3"><input type="submit" id="updateBtn" class="btn btn-primary" value="수정하기" style="background:#323232;border:#323232;color:white; width: 350px; height: 50px; font-size: 20px; border-radius: 30px;" onclick="return UpdateCheck()">
-					<button type="button" id="deleteBtn" class="btn btn-primary" style="background:#323232;border:#323232;color:white; width: 350px; height: 50px; margin: 10px 0; font-size: 20px; border-radius: 30px;" onclick="if (DeleteCheck()) $('#exampleModal').modal('show')">탈퇴하기</button>
-					<button type="button" class="btn btn-primary" style="background:#323232;border:#323232;color:white; width: 350px; height: 50px; font-size: 20px; border-radius: 30px;" onclick="location.href='/index.jsp'">메인으로</button>
+				<td colspan="3"><input type="submit" id="updateBtn" class="btn btn-primary" value="수정하기" style="background:#323232;border:#323232;color:white; width: 35%; height: 50px; font-size: 20px; border-radius: 30px;" onclick="return UpdateCheck()">
+					<button type="button" id="deleteBtn" class="btn btn-primary" style="background:#323232;border:#323232;color:white; width: 35%; height: 50px; margin: 10px 0; font-size: 20px; border-radius: 30px;" onclick="if (DeleteCheck()) $('#exampleModal').modal('show')">탈퇴하기</button>
+					<button type="button" class="btn btn-primary" style="background:#323232;border:#323232;color:white; width: 35%; height: 50px; font-size: 20px; border-radius: 30px;" onclick="location.href='/index.jsp'">메인으로</button>
 				</td>
 			</tr>
 		</table>
