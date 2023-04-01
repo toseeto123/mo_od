@@ -41,6 +41,20 @@ color : #323232;
 }
 
 .pagination a:hover:not(.active) {background-color: #ddd;}
+@media screen and (max-width: 767px) {
+  .member-info-content a {
+    display: block;
+    clear: both;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  .member-info-content span {
+    display: block;
+    clear: both;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+}
 
 </style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
@@ -82,7 +96,7 @@ color : #323232;
                   </c:if>
         </c:forEach>
                         </h2>
-                        <p class="animate__animated animate__fadeInUp">묻:mo_od</p>
+                        <p class="animate__animated animate__fadeInUp"></p>
                         <div>
                         </div>
                      </div>
@@ -158,9 +172,10 @@ color : #323232;
 
         <div class="row">
 		<c:forEach var="list" items="${list}">
-          <div class="col-xl-3 col-lg-4 col-md-6">
-            <div class="member" style="background-color: white; cursor: pointer;" onclick="location.href='/products/${list.pro_number}/${list.pro_name}/${list.pro_img1.substring(0, list.pro_img1.lastIndexOf('.'))}'">  
- 				<img src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" alt="${list.pro_name}" title="${list.pro_maindesc}" class="img-fluid" style="width: 306px; height: 306px;">
+          <div class="col-xl-3 col-lg-4 col-md-6"style="margin-bottom: 50px;">
+            <div class="member" style="background-color: white; cursor: pointer; max-width: 306px; margin: 0 auto;" onclick="location.href='/products/${list.pro_number}/${list.pro_name}/${list.pro_img1.substring(0, list.pro_img1.lastIndexOf('.'))}'">  
+ 				<img src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" alt="${list.pro_name}" title="${list.pro_maindesc}" class="img-fluid" style="width: 100%; height: 306px;">
+              <a style="float: left; font-size: 21px;">${list.pro_name}</a><a style="float: right; font-size: 21px;"><fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></a>
  				
               <div class="member-info">
                 <div class="member-info-content">

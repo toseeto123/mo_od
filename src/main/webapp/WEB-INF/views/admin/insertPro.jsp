@@ -8,9 +8,11 @@
 <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
 </head>
 <style type="text/css">
+
 .warp{
 	width: 450px;
 	margin : 0 auto;
+	background-color:#f5f6f7;
 }
 .inputArea {
 width : 1000px;
@@ -77,12 +79,12 @@ margin: 0 auto;
 color : #323232;
 }
 
-body {
-   background-color:#f5f6f7;
+body{
+background-color:#f5f6f7;
 }
 </style>
 
-<body>
+<body style="background-color:#f5f6f7;">
 	<jsp:include page="../../common/adminHeader.jsp" />
 <form role="form" method="post" action="insert.do"  enctype="multipart/form-data">
 	      <section id="breadcrumbs" class="breadcrumbs" style="height: 70px; padding-bottom: 80px; font-size: 22px;">
