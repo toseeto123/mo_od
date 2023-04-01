@@ -61,6 +61,11 @@
 		margin-top: 35px;
 	}
 	
+	footer{
+		width: 100%;
+		position: fixed;
+		bottom: 0;
+	}
 
 </style>
 
