@@ -116,6 +116,7 @@ section{
                   	<form action="#" method="post">
                   	<a onClick="$('#myModal${member.orderNo}').modal('show');" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated">주문취소</a>
                   	<a href="javascript:location.href=document.referrer" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated">돌아가기</a>
+                  	<a href="" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated">수정하기</a>
                   	</form>
                   	</td>
                   </tr>
