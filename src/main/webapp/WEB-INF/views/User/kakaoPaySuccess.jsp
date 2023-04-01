@@ -203,7 +203,7 @@ body {
 
                <!-- Slide 1 -->
                <div class="carousel-item active"
-                  style="background-image: url(resources/assets/img/slide/cate1.jpg); height: 500px;">
+                  style="background-image: url(/resources/assets/img/slide/paysuc.png); height: 500px;">
                   <div class="carousel-container">
                      <div class="carousel-content">
                         <h2 class="animate__animated animate__fadeInDown">결제 완료</h2>
@@ -284,74 +284,7 @@ body {
               
                   </div>
 
-						<h2 class="mb-3"
-							style="margin: 18px 0 18px 0; color: #323232; font-size: 32px; font-weight: bold;">
-							<i class="xi-user" style="color: #000;"></i> ${login_info.id}님주문
-							정보
-						</h2>
-						<div class="row">
-							<div class="col-md-6 mb-3">
-								<label for="firstName">성 함 : </label><small>
-									${login_info.name}</small>
-							</div>
-							<div class="col-md-6 mb-3">
-								<label for="lastName">전화번호 : </label> <small>${login_info.phone}</small>
-							</div>
-							<div class="col-md-6 mb-3">
-								<label for="address">주 소 : </label> <small>${login_info.adr}</small>
-							</div>
-							<div class="col-md-6 mb-3">
-								<label for="lastName" style="letter-spacing: 1px;">E-mail
-									: </label> <small>${login_info.email}</small>
-							</div>
-
-						</div>
-
-						<div class="mb-3">
-							<label for="address">주문 번호 : </label> <strong>${info.partner_order_id }</strong>
-						</div>
-
-						<hr>
-
-						<h2 class="mb-3"
-							style="margin: 22px 0 22px 0; color: #323232; font-size: 32px; font-weight: bold;">
-							<i class="xi-box" style="color: #000;"></i> 결제상품 정보
-						</h2>
-
-						<c:forEach var="orders" items="${orders}" begin="0" end="0">
-							<div class="col-md-6 mb-3">
-								<label for="firstName" style="letter-spacing: 3px;">상 품
-									명 : </label><small> ${info.item_name}</small>
-							</div>
-							<div class="col-md-6 mb-3">
-								<label for="lastName">주문 수량 : </label> <small>${orders.row_count }</small>
-							</div>
-							<div class="col-md-6 mb-3">
-								<label for="address">결제 금액 : </label> <small><fmt:formatNumber
-										value="${orders.price }" type="currency" currencySymbol="₩" />원</small>
-							</div>
-							<div class="col-md-6 mb-3">
-								<label for="lastName">결제 방식 : </label>
-								<c:if test="${orders.payment_method eq 'MONEY'}">
-									<small>카카오페이머니</small>
-								</c:if>
-								<c:if test="${orders.payment_method eq 'CARD'}">
-									<small>카드 결제</small>
-								</c:if>
-							</div>
-							<div class="col-md-6 mb-3">
-								<label for="lastName">결제승인시간 : </label> <small><fmt:formatDate
-										value="${orders.successTime}" pattern="yyyy-MM-dd HH:mm:ss" /></small>
-							</div>
-
-
-
-							<hr>
-						</c:forEach>
-					</div>
-
-				</div>
-
+						
 				<label class="returnbtnbox"><a href="/"><button
 							class="returnbtn">mo_od의 또 다른 상품 구경하기</button></a></label> <br>
 				<br>

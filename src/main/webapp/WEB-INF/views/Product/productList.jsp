@@ -25,7 +25,22 @@ color : #323232;
     }
   }
 
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  border: 1px solid #ddd;
+  margin: 0 5px;
+}
 
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
 
 </style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
@@ -63,7 +78,7 @@ color : #323232;
                   옷장 | 행거
                   </c:if>
                   <c:if test="${list.pro_categoryserial  eq 'C1' }">
-                  서랍
+                  서 랍
                   </c:if>
         </c:forEach>
                         </h2>
@@ -173,7 +188,7 @@ color : #323232;
 <!-- A0번 카테고리 -->
                   <c:if test="${list.pro_categoryserial  eq 'A0' }">
                   
-                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;">
+                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;" class="pagination">
                   
                   
                   <c:if test="${prePage!=null }">
@@ -183,7 +198,7 @@ color : #323232;
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:#FF9500" href="/products/A0categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="background: lightgray;" href="/products/A0categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
                   &nbsp;<a href="/products/A0categoryList/${no}">${no}</a>&nbsp;
@@ -202,7 +217,7 @@ color : #323232;
 <!-- A1번 카테고리 -->                  
                   <c:if test="${list.pro_categoryserial  eq 'A1' }">
                   
-                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;">
+                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;" class="pagination">
                   
                   
                   <c:if test="${prePage!=null }">
@@ -212,7 +227,7 @@ color : #323232;
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:#323232;" href="/products/A1categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="background: lightgray;" href="/products/A1categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
                   &nbsp;<a href="/products/A1categoryList/${no}">${no}</a>&nbsp;
@@ -231,7 +246,7 @@ color : #323232;
 <!-- A2번 카테고리 -->                  
                   <c:if test="${list.pro_categoryserial  eq 'A2' }">
                   
-                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;">
+                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;" class="pagination">
                   
                   
                   <c:if test="${prePage!=null }">
@@ -241,7 +256,7 @@ color : #323232;
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:#323232;" href="/products/A2categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="background: lightgray;" href="/products/A2categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
                   &nbsp;<a href="/products/A2categoryList/${no}">${no}</a>&nbsp;
@@ -259,7 +274,7 @@ color : #323232;
 <!-- B0번 카테고리 -->                  
                   <c:if test="${list.pro_categoryserial  eq 'B0' }">
                   
-                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;">
+                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;" class="pagination">
                   
                   
                   <c:if test="${prePage!=null }">
@@ -269,7 +284,7 @@ color : #323232;
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:#323232;" href="/products/B0categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="background: lightgray;" href="/products/B0categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
                   &nbsp;<a href="/products/B0categoryList/${no}">${no}</a>&nbsp;
@@ -288,7 +303,7 @@ color : #323232;
 <!-- B1번 카테고리 -->                  
                   <c:if test="${list.pro_categoryserial  eq 'B1' }">
                   
-                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;">
+                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;" class="pagination">
                   
                   
                   <c:if test="${prePage!=null }">
@@ -298,7 +313,7 @@ color : #323232;
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:#323232;" href="/products/B1categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="background: lightgray;" href="/products/B1categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
                   &nbsp;<a href="/products/B1categoryList/${no}">${no}</a>&nbsp;
@@ -316,7 +331,7 @@ color : #323232;
 <!-- C0번 카테고리 -->                  
                   <c:if test="${list.pro_categoryserial  eq 'C0' }">
                   
-                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;">
+                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;" class="pagination">
                   
                   
                   <c:if test="${prePage!=null }">
@@ -326,7 +341,7 @@ color : #323232;
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:#323232;" href="/products/C0categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="background: lightgray;" href="/products/C0categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
                   &nbsp;<a href="/products/C0categoryList/${no}">${no}</a>&nbsp;
@@ -344,7 +359,7 @@ color : #323232;
 <!-- C1번 카테고리 -->                  
                   <c:if test="${list.pro_categoryserial  eq 'C1' }">
                   
-                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;">
+                  <div style="display:inline-block;  position:absolute; left:50%; transform:translateX(-50%); font-size:20px;" class="pagination">
                   
                   
                   <c:if test="${prePage!=null }">
@@ -354,7 +369,7 @@ color : #323232;
                   <c:forEach items="${ pagingNo }" var="no">
                   <c:choose>
                   <c:when test="${selectPage == no}">
-                  &nbsp;<a style="color:#323232;" href="/products/C1categoryList/${no}">${no}</a>&nbsp;
+                  &nbsp;<a style="background: lightgray;" href="/products/C1categoryList/${no}">${no}</a>&nbsp;
                   </c:when>
                   <c:otherwise>
                   &nbsp;<a href="/products/C1categoryList/${no}">${no}</a>&nbsp;
