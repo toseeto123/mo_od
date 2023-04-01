@@ -22,6 +22,7 @@ import org.springframework.web.multipart.MultipartFile;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import kr.co.mood.Payment.DAO.AdminPaymentService;
+import kr.co.mood.Payment.VO.AdminPaymentVO;
 import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.Product.VO.ProVO;
 import kr.co.mood.cate.DAO.CateService;
@@ -107,6 +108,14 @@ public class AdminController {
 		   e.printStackTrace();
 	   }
 	   return "admin/adminMemeberDetail";
+   }
+   
+   @RequestMapping("/paymentModify/{orderNo}/{adr}/{adr2}/{adr3}")
+   public String adminPaymentModify(@PathVariable int orderNo,@PathVariable String adr,@PathVariable String adr2, @PathVariable String adr3, String path, AdminPaymentVO vo, HttpServletRequest request) {
+	   String address = adr + "   " + adr2 + "   " + adr3;
+	   vo.setAddress(address);
+	   adminPaymentService.updateAddress(vo);
+	   return "redirect:"+path;	   
    }
    
    @RequestMapping("/memberCheck")
