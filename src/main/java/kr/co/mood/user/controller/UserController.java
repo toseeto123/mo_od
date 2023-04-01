@@ -101,68 +101,53 @@ public class UserController {
 	}
 
 	@RequestMapping(value = "/naverLogin")
-	 public void naverLogin(@RequestParam("code") String code, HttpSession session, HttpServletResponse response, HttpServletRequest request,Model model) throws IOException {
-	       String access_Token = ms.getNaverAccessToken(code, session);
+	 public String naverLogin(@RequestParam("code") String code, @RequestParam("state") String state,HttpSession session, HttpServletResponse response, HttpServletRequest request,Model model) throws IOException {
+
+			String access_Token = ms.getNaverAccessToken(code, session, state);
 	       UserVO naverUserInfo =  ms.getNaverUserInfo(access_Token, session);
 	       session.setAttribute("login_info", naverUserInfo);
-	       session.setAttribute("access_token", access_Token);
+	//     session.setAttribute("access_token", access_Token);
 	       String path = (String) session.getAttribute("path");
-	      
-	       String pathgo = "";
-	       if (path == null) {
-		        pathgo = "";
+		    session.setAttribute("login_info", naverUserInfo);
+		    System.out.println(path);
+		    
+		    if (path == null || path.equals("")) {
+		        return "redirect:/";
 		    } else {
-	       if (path.contains("catelogin")) {
-	           pathgo = "users/bucket";
-	       } else if (path.contains("proCatelogin")) {
-	    	   System.out.println("proCatelogin ");
-	           CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
-	           int userid = naverUserInfo.getNo();
-	           sessionCvo.setUser_no(userid);
-	           if (sessionCvo != null) {
-	               cateService.addcate(sessionCvo, naverUserInfo, null);
-	           }
-	           pathgo = "users/bucket";
-	       } else if (path.contains("payBeLogin")) {
-	    	   
-	           userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
-	           userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
-	           int userid = naverUserInfo.getNo();
-	           sessionordervo.setUserNo(userid);
-	           payService.insert(sessionordervo, naverUserInfo, null);
-	           int orderid = sessionordervo.getOrderId();
-	           sessionorderprovo.setUserno(userid);
-	           sessionorderprovo.setOrderId(orderid);
-	           productPayService.insert(sessionorderprovo, naverUserInfo, null);
-	           model.addAttribute("onelist", productPayService.selectList(orderid));
-	           
-	           pathgo = "User/userPay";
-	           System.out.println("dsssd");
-	       } else {
-	           pathgo = path;
-	       }
+		        session.setAttribute("path", request.getRequestURI());
+		        if (path.contains("catelogin")) {
+		            return "redirect:/users/bucket";
+		        } else if (path.contains("proCatelogin")) {
+		        	System.out.println("proCatelogin ");
+		            CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
+		            int userid = naverUserInfo.getNo();
+		            sessionCvo.setUser_no(userid);
+		            if (sessionCvo != null) {
+		                cateService.addcate(sessionCvo, naverUserInfo, null);
+		            }
+		            return "redirect:/users/bucket";
+		        } else if(path.contains("payBeLogin")) 
+		        {
+		            userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
+		            userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
+		            int userid = naverUserInfo.getNo();
+		            sessionordervo.setUserNo(userid);
+		            payService.insert(sessionordervo, naverUserInfo, null);
+		            int orderid = sessionordervo.getOrderId();
+		            sessionorderprovo.setUserno(userid);
+		            sessionorderprovo.setOrderId(orderid);
+		            productPayService.insert(sessionorderprovo, naverUserInfo, null);
+		            model.addAttribute("onelist", productPayService.selectList(orderid));
+		            return "/User/userPay";
+		        } else {
+		            return "redirect:" + path;
+		        }
 		    }
+		}
 
-//	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://localhost:8080/"+pathgo;
-	       String referer = request.getHeader("Referer") != null ? request.getHeader("Referer") : "http://mo-od.co.kr/" +pathgo;
-
-	       
-	       response.setContentType("text/html; charset=UTF-8");
-	       PrintWriter out = response.getWriter();
-	       out.println("<script>");
-	       out.println("window.opener.location.href='" + referer + "';");
-	       out.println("window.close();");
-	       out.println("</script>");
-	       out.flush();
-	}
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public String login(ModelMap model) {
-
-//		String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
-		String naverUrl = "https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://mo-od.co.kr/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301";
-
-		model.addAttribute("naverUrl", naverUrl);
+	public String login() {
 		return "User/login";
 	}
 
