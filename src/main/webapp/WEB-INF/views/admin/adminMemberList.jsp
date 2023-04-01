@@ -18,7 +18,7 @@ select, option{
 }
 .searchParent{
 	text-align: center;
-	margin: 110px 0;
+	margin: 40px 0;
 }
 .search{
 	display: inline-block;
@@ -59,7 +59,7 @@ section{
 }
 #modulePaging{
 	display: inline-block;
-	padding: 20px 0 26px;
+	padding: 30px 0;
 }
 
 .footer{
@@ -108,11 +108,11 @@ section{
 				<tbody id="tbody" style="font-weight: normal;">
 					<c:forEach var="user" items="${userList}">
 						<tr>
-							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}'" scope="col">${user.no}</td>
-							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}'" scope="col">${user.id}</td>
-							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}'" scope="col">${user.name}</td>
-							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}'" scope="col">${user.phone}</td>
-							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}'" scope="col">${user.email}</td>
+							<td scope="col">${user.no}</td>
+							<td scope="col">${user.id}</td>
+							<td scope="col">${user.name}</td>
+							<td scope="col">${user.phone}</td>
+							<td scope="col">${user.email}</td>
 							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}'" scope="col"><a style="color: #323232;"
 								href="/admin/adminMemberDetail/${user.no}">상세정보</a></td>
 						</tr>

@@ -170,7 +170,9 @@
 			product.pro_name as 'productName',
 			moodorder.address as 'address',
 			member.name as 'name',
-			member.phone as 'phone'
+			member.phone as 'phone',
+			payment.SuccessTime as 'payDate',
+			moodorder.price as 'amount'
 		from orderProduct
 		inner join product
 			on product.pro_number = orderProduct.pro_number
@@ -178,6 +180,8 @@
 			on orderProduct.orderid = moodorder.orderid
 		inner join moodjoin as member
 			on member.no = moodorder.userNo
+		inner join payment
+			on payment.orderid = moodorder.orderid
 		where orderProduct.orderid = #{no}
 	</select>
 

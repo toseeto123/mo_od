@@ -18,13 +18,7 @@ select, option{
 #hero{
 	height: auto;
 }
-.searchParent{
-	text-align: center;
-	margin: 110px 0;
-}
-.search{
-	display: inline-block;
-}
+
 a{
 	color: #323232;
 	cursor: pointer;
@@ -53,7 +47,7 @@ section{
 #tables{
 	display: inline-block;
 	padding: 0;
-	margin: 0;
+	margin: 100px 0;
 }
 #table{
 	width: 1200px;
@@ -121,13 +115,14 @@ section{
                   <td style="border-bottom:none">
                   	<form action="#" method="post">
                   	<a onClick="$('#myModal${member.orderNo}').modal('show');" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated">주문취소</a>
+                  	<a href="javascript:location.href=document.referrer" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated">돌아가기</a>
                   	</form>
                   	</td>
                   </tr>
                   
                 </tbody>
               </table>
-              
+              <div class="bottom" style="height: 30px;"></div>
               	<div class="modal fade" id="myModal${member.orderNo}">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -176,7 +171,15 @@ section{
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="/resources/user/js/adminPaymentSearching.js"></script> 
-
+<script defer>
+var footer = document.querySelector('.bottom');
+var footerReal = document.querySelector('footer');
+var footerRect = footer.getBoundingClientRect();
+var footerRealRect = footerReal.getBoundingClientRect();
+if (footerRect.top + footerRect.height >= footerRealRect.top) {
+	footerReal.classList.remove("footer");
+}	
+</script>
 </body>
 
 </html>

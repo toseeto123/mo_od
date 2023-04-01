@@ -100,7 +100,8 @@ function mainPagingEngine(){
                 +"<td>" + tableData.list[i].address + "</td>"
                 +"<td>" + date + "</td>"
                 +"<td>&#8361; " + tableData.list[i].amount + "</td>"
-                +"<td><a href='/admin/paymentDetail?no='+no>상세보기</a></td>"
+                +"<td><a href='/admin/paymentDetail?no="+no+"'>상세보기</a></td>"
+                
 				
 
 				
