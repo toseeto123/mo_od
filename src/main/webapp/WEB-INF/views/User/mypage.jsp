@@ -210,8 +210,8 @@ input {
 		<tr >
 		
 			<td><label for="adr"></label></td>
-			<td><input type="button" class="adrchk" onclick="sample6_execDaumPostcode()" style="background-color:#323232; color: white; border:#323232;" value="우편번호 찾기">
-			<input type="text" class="address_input_1" name=adr id="adr" placeholder="우편번호" value="${myinfo_adr1}" size="4" ><br></td>	
+			<td><input type="text" class="address_input_1" name=adr id="adr" placeholder="우편번호" value="${myinfo_adr1}" size="5" >
+			<input type="button" class="adrchk" onclick="sample6_execDaumPostcode()" style="background-color:#323232; color: white; border:#323232;" value="우편번호 찾기"><br></td>
 		</tr>
 		<tr >
 			<td>주소</td>
