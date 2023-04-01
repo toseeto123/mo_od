@@ -79,13 +79,14 @@ const data = {}
 		for(var t=0; t<6; t++){
 			newCell.push(document.createElement("td"));
 			newCell[t].setAttribute("scope", "col");
-			newCell[t].setAttribute("onClick", "location.href='/admin/adminMemberDetail/"+ tableData.list[i].no +"'")
+			
 		}				
 		newCell[0].innerHTML = tableData.list[i].no;
 		newCell[1].innerHTML = tableData.list[i].id;
 		newCell[2].innerHTML = tableData.list[i].name;
 		newCell[3].innerHTML = tableData.list[i].phone;
 		newCell[4].innerHTML = tableData.list[i].email;
+		newCell[5].setAttribute("onClick", "location.href='/admin/adminMemberDetail/"+ tableData.list[i].no +"'")
 		aTag.innerHTML = '상세보기';
 		newCell[5].appendChild(aTag);
 		for(var x=0; x<6; x++){

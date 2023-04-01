@@ -20,7 +20,7 @@ select, option{
 }
 .searchParent{
 	text-align: center;
-	margin: 110px 0;
+	margin: 40px 0;
 }
 .search{
 	display: inline-block;
@@ -61,7 +61,7 @@ section{
 }
 #modulePaging{
 	display: inline-block;
-	padding: 20px 0 26px;
+	padding: 30px 0;
 }
 
 .footer{
