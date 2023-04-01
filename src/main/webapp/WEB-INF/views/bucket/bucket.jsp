@@ -172,13 +172,6 @@ li .btnspan_on {
 	font-weight: bold;
 	margin: 0 1px;
 }
-.delete_btn{
-float: right;
-margin-right: 50px;
-width: 40px;
-height: 40px;
-margin-bottom: 40px;
-}
 
 .plus_btn:hover, .minus_btn:hover, .delete_btn:hover {
 	background-color: #FFA500;
@@ -225,6 +218,18 @@ background: #323232;
 	margin: 0 auto; 
    } 
 
+@media (max-width: 650px) {
+	.img-fluid {
+		right: 10px !important;
+	}
+	
+	.proname, .promain , .counts , .webprice , .option{
+		margin-left: 10px !important;
+	}
+	.price_sum{
+	border : none;
+	}
+}
 
 </style>
 <jsp:include page="../../common/header.jsp" />
@@ -548,25 +553,28 @@ function deletecate(element) {
 
 							<input type="hidden" value="${map.user_no}" name="user_no"> <input
 								type="hidden" value="${map.pro_number}" name="pro_number">
-						<a href="/products/${map.pro_number }/${map.pro_name }/${map.pro_img1}"><h2 style="margin-left: 100px;">${map.pro_name}</h2></a>
-						<p style="margin-left: 100px;">${map.pro_maindesctitle }</p>
-						<span style="margin-left: 100px;">수 량 : </span>
+						<a href="/products/${map.pro_number }/${map.pro_name }/${map.pro_img1}">
+						<h2 class="proname" style="margin-left: 100px;">${map.pro_name}</h2>
+						</a>
+						<p class="promain" style="margin-left: 100px;">${map.pro_maindesctitle }</p>
+						<span class="counts" style="margin-left: 100px;">수 량 : </span>
 						<div class="amount" style="display: inline;">${map.amount}</div>
 						<input type="hidden" value="${map.cate_id}" name="cateId"
-							class="cate_id" /> <span class="btnspan">
+							class="cate_id" /> <span class="btnspan" style="display: inline-flex;">
 							<button type="button" class="plus_btn"
 								onclick='flush("plus", this)' title="수량 추가">+</button>
 							<button type="button" class="minus_btn"
 								onclick='minus("minus", this)' title="수량 감소">-</button>
+								
 							<button class="delete_btn" type="button"
 								onclick='deletecate(this)' title="상품 삭제">
-								<i class="ph ph-trash"></i>
+								<i class="ph ph-trash" style="font-size: 19px;"></i>
 							</button>
 
 						</span> <input type="hidden" value="${map.pro_price}" name="pro_price"
 							class="pro_price" /> <br>
-						<span style="margin-left: 100px;">옵 션 : </span>${map.pro_option }
-						<p style="margin-left: 100px;">
+						<span class="option" style="margin-left: 100px;">옵 션 : </span>${map.pro_option }
+						<p class="webprice" style="margin-left: 100px;">
 							가 격 : <span class="total"><fmt:formatNumber
 									value="${map.total}" type="currency" currencySymbol="₩" /></span>
 						</p>
@@ -596,10 +604,9 @@ function deletecate(element) {
 										class="totalValueInput">
 								</dd>
 							</dl>
-							<input type="hidden" value="${login_info.adr }" name="address">
-							<input type="submit" value="주문하기" class="btn_buy btnhover"> <br>
-							<br> <input type="button" value="더보러가기"
-								class="cancelbtn btnhover" onclick="window.location='/';">
+							<input type="hidden" value="${login_info.adr }" name="address" >
+							<input type="submit" value="주문하기" class="btn_buy btnhover" style="width:300px;">
+							<input type="button" value="더보러가기" class="cancelbtn btnhover" style="width:300px;" onclick="window.location='/';">
 
 						</div>
 					</div>

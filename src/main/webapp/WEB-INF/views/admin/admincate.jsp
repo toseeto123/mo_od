@@ -46,7 +46,7 @@ input[type=search]{
 }
 footer{
 	width: 100%;
-	position: fixed;
+	/* position: fixed; */
 	bottom: 0;
 }
 </style>

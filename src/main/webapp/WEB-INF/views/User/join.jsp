@@ -140,7 +140,7 @@ div>label {
 							</div>
 							<div class="col-3">
 								<button type="button" name="idChk" id="idChk" class="Btn"
-									onclick="fn_idChk();" value="N" style="width: 70px;">중복확인</button>
+									onclick="fn_idChk();" value="N" style="width: 100%; max-width: 70px;">중복확인</button>
 							</div>
 						</div>
 					</div>
@@ -205,7 +205,7 @@ div>label {
 							<label for="email">* 본인확인 이메일</label>
 						</h3>
 						<div>
-							x <input type="text" id="email" name="email"
+							<input type="text" id="email" name="email"
 								class="form-control email box string_email" maxlength="100"
 								onkeyup="emailCheck()" placeholder="이메일을 입력하세요"> <input
 								type="hidden" class="myinfo_email" id="myinfo_email"
@@ -222,7 +222,7 @@ div>label {
 											disabled="disabled" required>
 									</div>
 									<div class="col-4">
-										<button class="mail_check_button Btn">인증번호 전송</button>
+										<button class="mail_check_button Btn"><p style="margin-top: 8px;">인증번호 전송</p></button>
 									</div>
 								</div>
 								<div class="clearfix"></div>
