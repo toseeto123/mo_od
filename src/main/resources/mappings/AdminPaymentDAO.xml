@@ -199,6 +199,9 @@
 		group by payment.tid
 	</select>
 
+	<update id="updateAddress" parameterType="kr.co.mood.Payment.VO.AdminPaymentVO">
+		update moodorder set address = #{address} where orderId = #{orderNo};
+	</update>
 
 
 </mapper>

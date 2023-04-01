@@ -5,7 +5,7 @@
 <html style="background-color:#f5f6f7;">
 <head>
 <meta charset="UTF-8">
-<title>Chart</title>
+<title>회원 관리</title>
 <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style>
 select, option{
