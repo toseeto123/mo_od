@@ -116,7 +116,7 @@ public class MemberService {
    }
    
 
-   public String getNaverAccessToken (String authorize_code,HttpSession session) {
+   public String getNaverAccessToken (String authorize_code,HttpSession session, String state) {
          String access_Token = "";
          String reqURL = "https://nid.naver.com/oauth2.0/token";
         
@@ -134,30 +134,27 @@ public class MemberService {
                sb.append("&client_id=dClx55_VYi9U61rOGPS2");
                sb.append("&client_secret=MtrUDxfIj0");
 
-//             sb.append("&redirect_uri=http://localhost:8080/users/login");
-               sb.append("&redirect_uri=http://mo-od.co.kr/users/login");
+             sb.append("&redirect_uri=http://localhost:8080/users/login");
+//               sb.append("&redirect_uri=http://mo-od.co.kr/users/login");
 
                sb.append("&code="+authorize_code);
-               sb.append("&state=url_parameter");
+               sb.append("&state="+state);
 
                
                session.setAttribute("sb", sb);
                bw.write(sb.toString());
                bw.flush();
-               
-               
-               
                int responseCode = conn.getResponseCode();
+               System.out.println(responseCode);
                if(responseCode==200){
                   
                   BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                   String line = "";
                   String result = "";
-                  
+                 
                   while ((line = br.readLine()) != null) {
                       result += line;
                   }
-                  
                
                   JsonParser parser = new JsonParser();
                   JsonElement element = parser.parse(result);
