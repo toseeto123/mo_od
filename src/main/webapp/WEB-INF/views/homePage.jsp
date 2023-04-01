@@ -70,6 +70,20 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
 
 }
 
+@media screen and (max-width: 767px) {
+  .member-info-content a {
+    display: block;
+    clear: both;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+  .member-info-content span {
+    display: block;
+    clear: both;
+    font-size: 16px;
+    margin-top: 10px;
+  }
+}
 </style>
 <body>
 
@@ -151,7 +165,7 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
         <div class="row portfolio-container">
         
 		<c:forEach var="Alist" items="${Alist}" begin="0" end="0">
-          <div class="col-lg-4 col-md-6 portfolio-item filter-app" onclick="location.href='/products/${Alist.pro_number }/${Alist.pro_name}/${Alist.pro_img1.substring(0, Alist.pro_img1.lastIndexOf('.'))}'" style="cursor: pointer">
+          <div class="col-lg-4 col-md-6 portfolio-item filter-app" onclick="location.href='/products/${Alist.pro_number }/${Alist.pro_name}/${Alist.pro_img1.substring(0, Alist.pro_img1.lastIndexOf('.'))}'" style="cursor: pointer; margin-bottom: 50px;">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Alist.pro_img1 }" class="img-fluid" alt="">
               <div class="portfolio-info">
@@ -161,7 +175,14 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
                 </div>
               </div>
             </div>
-          </div>
+						<div class="member-info">
+							<div class="member-info-content">
+								<span style="float: left; font-size:21px;">${Alist.pro_name}</span>
+								<span style="float: right; font-size:21px;"><fmt:formatNumber value="${Alist.pro_price}"
+										type="currency" currencySymbol="₩" /></span>
+							</div>
+						</div>
+					</div>
           </c:forEach>
 
 		<c:forEach var="Blist" items="${Blist}" begin="0" end="0">
@@ -175,6 +196,14 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
                 </div>
               </div>
             </div>
+            
+						<div class="member-info">
+							<div class="member-info-content">
+								<span style="float: left; font-size:21px;">${Blist.pro_name}</span>
+								<span style="float: right; font-size:21px;"><fmt:formatNumber value="${Blist.pro_price}"
+										type="currency" currencySymbol="₩" /></span>
+							</div>
+						</div>
           </div>
           </c:forEach>
 		<c:forEach var="Clist" items="${Clist}" begin="0" end="0">
@@ -188,6 +217,14 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
                 </div>
               </div>
             </div>
+            
+						<div class="member-info">
+							<div class="member-info-content">
+								<span style="float: left; font-size:21px;">${Clist.pro_name}</span>
+								<span style="float: right; font-size:21px;"><fmt:formatNumber value="${Clist.pro_price}"
+										type="currency" currencySymbol="₩" /></span>
+							</div>
+						</div>
           </div>
           </c:forEach>
 
@@ -202,6 +239,14 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
                 </div>
               </div>
             </div>
+            
+						<div class="member-info">
+							<div class="member-info-content">
+								<span style="float: left; font-size:21px;">${Alist.pro_name}</span>
+								<span style="float: right; font-size:21px;"><fmt:formatNumber value="${Alist.pro_price}"
+										type="currency" currencySymbol="₩" /></span>
+							</div>
+						</div>
           </div>
           </c:forEach>
 
@@ -216,6 +261,14 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
                 </div>
               </div>
             </div>
+            
+						<div class="member-info">
+							<div class="member-info-content">
+								<span style="float: left; font-size:21px;">${Blist.pro_name}</span>
+								<span style="float: right; font-size:21px;"><fmt:formatNumber value="${Blist.pro_price}"
+										type="currency" currencySymbol="₩" /></span>
+							</div>
+						</div>
           </div>
           </c:forEach>
           
@@ -230,6 +283,14 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
                 </div>
               </div>
             </div>
+            
+						<div class="member-info">
+							<div class="member-info-content">
+								<span style="float: left; font-size:21px;">${Clist.pro_name}</span>
+								<span style="float: right; font-size:21px;"><fmt:formatNumber value="${Clist.pro_price}"
+										type="currency" currencySymbol="₩" /></span>
+							</div>
+						</div>
           </div>
           </c:forEach>
           
