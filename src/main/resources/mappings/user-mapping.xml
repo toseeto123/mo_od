@@ -21,7 +21,9 @@
       <![CDATA[and name like concat('%', #{searchName}, '%')]]>
       </if>
       <if test="startNo != null and endNo != 0">
+      order by no desc
       limit #{startNo}, #{endNo}
+      
       </if>
    </select>
    
