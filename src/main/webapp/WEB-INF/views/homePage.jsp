@@ -7,7 +7,7 @@
 
 <html lang="en">
  <script src="https://unpkg.com/@phosphor-icons/web"></script>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <jsp:include page="/WEB-INF/common/header.jsp" />
 <style>
 *{
@@ -148,7 +148,7 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
     <section id="portfolio" class="portfolio" style="padding-bottom: 50px; padding-top: 50px;">
       <div class="container">
         <div class="section-title">
-          <b style="color: #323232; letter-spacing: 5px;">많은 사랑을 받고있는 상품</b>
+          <b style="color: #323232; letter-spacing: 5px;">많은 사랑을 받고있는 상품<i class="fa-solid fa-fire"></i></b>
         </div>
 
        <!--  <div class="row">
