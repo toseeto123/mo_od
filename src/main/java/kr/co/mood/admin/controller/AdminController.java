@@ -110,8 +110,8 @@ public class AdminController {
 	   return "admin/adminMemeberDetail";
    }
    
-   @RequestMapping("/paymentModify/{orderNo}/{adr}/{adr2}/{adr3}")
-   public String adminPaymentModify(@PathVariable int orderNo,@PathVariable String adr,@PathVariable String adr2, @PathVariable String adr3, String path, AdminPaymentVO vo, HttpServletRequest request) {
+   @RequestMapping("/paymentModify/{orderNo}")
+   public String adminPaymentModify(@PathVariable int orderNo, String adr, String adr2,String adr3, String path, AdminPaymentVO vo, HttpServletRequest request) {
 	   String address = adr + "   " + adr2 + "   " + adr3;
 	   vo.setAddress(address);
 	   adminPaymentService.updateAddress(vo);
@@ -144,6 +144,7 @@ public class AdminController {
 		   userService.delete(id);
 	   }catch(Exception e) {
 		   e.printStackTrace();
+		   return "redirect:/";
 	   }
 	   return "redirect:/admin/adminMemberList/1";
    }

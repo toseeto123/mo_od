@@ -61,10 +61,10 @@
 		margin-top: 35px;
 	}
 	
-	footer{
+	.footer{
 		width: 100%;
-		position: fixed;
-		bottom: 0;
+		position: absolute;
+		bottom:0;		
 	}
 
 </style>
@@ -73,13 +73,9 @@
 </head>
 <body style="background-color:#f5f6f7;">
  <% session.invalidate(); %>
- 
- 
 
- 
- 
- 
- 	<div class="login" style="margin: 127px 0; ">
+	<div style="height: 30px;"></div>
+ 	<div class="login" id="login" style="margin: 0 auto;">
 		<div class="form-login">
 
 			<div>
@@ -113,13 +109,30 @@
 		</div>
  
  </div>
- 
- 
-
-
-
-
-<footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
+ <div class="dong" style="height: 30px;"></div>
+<footer class="footer"><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
+ <script src="http://code.jquery.com/jquery-latest.min.js"></script>
 	<script type="text/javascript" src="/resources/user/js/main.js"></script>
+
+
+
+
+
+
 </body>
+ 
+<script>
+window.addEventListener("DOMContentLoaded", function() {
+	  var login = document.querySelector(".dong");
+	  var footer = document.querySelector("footer");
+	  var footerTop = footer.getBoundingClientRect().top;
+	var loginBottom = login.getBoundingClientRect().bottom;
+	console.log(loginBottom)
+	console.log(footerTop);
+	  if(footerTop <= loginBottom){
+		footer.classList.remove("footer");
+	  }
+});
+</script>
+
 </html>

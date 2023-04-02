@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Chart</title>
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <style>
 
 
@@ -147,6 +147,8 @@ background-color:#f5f6f7;
 	<jsp:include
 		page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" />
 		</footer>
+		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script>
 	let sum;
 	const chartProduct1 = [];
