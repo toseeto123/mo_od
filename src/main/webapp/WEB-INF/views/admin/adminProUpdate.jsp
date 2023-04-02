@@ -192,15 +192,13 @@ body {
 </div>
 
 
-
-
-</form>
-</c:if>
-
 <div class="inputArea">
  <input type="submit" id="" class="btn btn-primary" value="수정완료">
  <button type="reset" id="" class="btn btn-primary">초기화</button>
 </div>
+
+</form>
+</c:if>
 
 
 </div>
