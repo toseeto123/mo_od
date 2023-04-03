@@ -114,7 +114,7 @@ public class UserController {
 				 String alertMessage = "필수입력정보를 입력해주세요.";
 				 model.addAttribute("alertMessage", alertMessage);
 				 return "/User/mypage";
-		    }else {
+		    }
 		    if (path == null || path.equals("")) {
 		        return "redirect:/";
 		    } else {
@@ -148,7 +148,7 @@ public class UserController {
 		        }
 		    	}
 		    }
-		}
+		
 
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -163,7 +163,10 @@ public class UserController {
 	    UserVO userInfo = ms.getUserInfo(access_Token);
 	    String path = (String) session.getAttribute("path");
 	    session.setAttribute("login_info", userInfo);
-	    System.out.println(userInfo);
+	    if(userInfo.getAdr()==null) {
+	    	  model.addAttribute("errorMessage", "필수정보를 입력해주세요.");
+	          return "/User/mypage";
+	    }else {
 	    if (path == null) {
 	        return "redirect:/";
 	    } else {
@@ -195,6 +198,7 @@ public class UserController {
 	        } else {
 	            return "redirect:" + path;
 	        }
+	    }
 	    }
 	}
 
