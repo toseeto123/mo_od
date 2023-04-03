@@ -21,8 +21,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.Product.VO.ProVO;
+import kr.co.mood.cate.DAO.CateService;
 import kr.co.mood.module.ModuleCommon;
 import kr.co.mood.module.ModuleVO;
+import kr.co.mood.user.dao.UserVO;
 
 @RequestMapping("/products")
 @Controller
@@ -33,6 +35,9 @@ public class ProductController {
 	
 	@Autowired
 	ModuleCommon module;
+	
+	@Autowired
+	private CateService cateService;
 	
 
 	@RequestMapping(value = "/proList.do")
@@ -163,7 +168,14 @@ public class ProductController {
     }
 
 	@RequestMapping(value = "/A0categoryList/{page}") // FIX
-	public String ProductListPageA0(@PathVariable String page, ArrayList<ProVO> voa0, Model model) {
+	public String ProductListPageA0(@PathVariable String page, ArrayList<ProVO> voa0, Model model,HttpSession session) {
+		session.getAttribute("login_info");
+		UserVO uvo = (UserVO) session.getAttribute("login_info");
+		int userno = 0; // 디폴트 값 설정
+		if (uvo != null) {
+		    userno = uvo.getNo();
+		}	
+		model.addAttribute("cateList", cateService.selectCateList(userno));
 		ModuleVO moduleVO = new ModuleVO();
 		List<ProVO> allList = ps.A0selectCategoryProList(voa0);
 		module.pagingModule(model, moduleVO, allList, page, 8);
@@ -181,7 +193,14 @@ public class ProductController {
     }
 
 	@RequestMapping(value = "/A1categoryList/{page}") // FIX
-	public String ProductListPageA1(@PathVariable String page, ArrayList<ProVO> voa1, Model model) {
+	public String ProductListPageA1(@PathVariable String page, ArrayList<ProVO> voa1, Model model,HttpSession session) {
+		session.getAttribute("login_info");
+		UserVO uvo = (UserVO) session.getAttribute("login_info");
+		int userno = 0; // 디폴트 값 설정
+		if (uvo != null) {
+		    userno = uvo.getNo();
+		}	
+		model.addAttribute("cateList", cateService.selectCateList(userno));
 		ModuleVO moduleVO = new ModuleVO();
 		List<ProVO> allList = ps.A1selectCategoryProList(voa1);
 		module.pagingModule(model, moduleVO, allList, page, 8);
@@ -197,7 +216,15 @@ public class ProductController {
     }
 
 	@RequestMapping(value = "/A2categoryList/{page}") // FIX
-	public String ProductListPageA2(@PathVariable String page, ArrayList<ProVO> voa2, Model model) {
+	public String ProductListPageA2(@PathVariable String page, ArrayList<ProVO> voa2, Model model,HttpSession session) {
+		session.getAttribute("login_info");
+		UserVO uvo = (UserVO) session.getAttribute("login_info");
+		int userno = 0; // 디폴트 값 설정
+		if (uvo != null) {
+		    userno = uvo.getNo();
+		}	
+		model.addAttribute("cateList", cateService.selectCateList(userno));
+		
 		ModuleVO moduleVO = new ModuleVO();
 		List<ProVO> allList = ps.A2selectCategoryProList(voa2);
 		module.pagingModule(model, moduleVO, allList, page, 8);
@@ -214,7 +241,14 @@ public class ProductController {
     }
 
 	@RequestMapping(value = "/B0categoryList/{page}") // FIX
-	public String ProductListPageB0(@PathVariable String page, ArrayList<ProVO> vob0, Model model) {
+	public String ProductListPageB0(@PathVariable String page, ArrayList<ProVO> vob0, Model model,HttpSession session) {
+		session.getAttribute("login_info");
+		UserVO uvo = (UserVO) session.getAttribute("login_info");
+		int userno = 0; // 디폴트 값 설정
+		if (uvo != null) {
+		    userno = uvo.getNo();
+		}	
+		model.addAttribute("cateList", cateService.selectCateList(userno));
 		ModuleVO moduleVO = new ModuleVO();
 		List<ProVO> allList = ps.B0selectCategoryProList(vob0);
 		module.pagingModule(model, moduleVO, allList, page, 8);
@@ -231,7 +265,14 @@ public class ProductController {
     }
 
 	@RequestMapping(value = "/B1categoryList/{page}") // FIX
-	public String ProductListPageB1(@PathVariable String page, ArrayList<ProVO> vob1, Model model) {
+	public String ProductListPageB1(@PathVariable String page, ArrayList<ProVO> vob1, Model model,HttpSession session) {
+		session.getAttribute("login_info");
+		UserVO uvo = (UserVO) session.getAttribute("login_info");
+		int userno = 0; // 디폴트 값 설정
+		if (uvo != null) {
+		    userno = uvo.getNo();
+		}	
+		model.addAttribute("cateList", cateService.selectCateList(userno));
 		ModuleVO moduleVO = new ModuleVO();
 		List<ProVO> allList = ps.B1selectCategoryProList(vob1);
 		module.pagingModule(model, moduleVO, allList, page, 8);
@@ -248,7 +289,14 @@ public class ProductController {
     }
 
 	@RequestMapping(value = "/C0categoryList/{page}") // FIX
-	public String ProductListPageC0(@PathVariable String page, ArrayList<ProVO> voc0, Model model) {
+	public String ProductListPageC0(@PathVariable String page, ArrayList<ProVO> voc0, Model model,HttpSession session) {
+		session.getAttribute("login_info");
+		UserVO uvo = (UserVO) session.getAttribute("login_info");
+		int userno = 0; // 디폴트 값 설정
+		if (uvo != null) {
+		    userno = uvo.getNo();
+		}	
+		model.addAttribute("cateList", cateService.selectCateList(userno));
 		ModuleVO moduleVO = new ModuleVO();
 		List<ProVO> allList = ps.C0selectCategoryProList(voc0);
 		module.pagingModule(model, moduleVO, allList, page, 8);
@@ -264,7 +312,14 @@ public class ProductController {
     }
 
 	@RequestMapping(value = "/C1categoryList/{page}") // FIX
-	public String ProductListPageC1(@PathVariable String page, ArrayList<ProVO> voc1, Model model) {
+	public String ProductListPageC1(@PathVariable String page, ArrayList<ProVO> voc1, Model model,HttpSession session) {
+		session.getAttribute("login_info");
+		UserVO uvo = (UserVO) session.getAttribute("login_info");
+		int userno = 0; // 디폴트 값 설정
+		if (uvo != null) {
+		    userno = uvo.getNo();
+		}	
+		model.addAttribute("cateList", cateService.selectCateList(userno));
 		ModuleVO moduleVO = new ModuleVO();
 		List<ProVO> allList = ps.C1selectCategoryProList(voc1);
 		module.pagingModule(model, moduleVO, allList, page, 8);
