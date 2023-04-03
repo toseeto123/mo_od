@@ -46,7 +46,7 @@
 <style>
 	p{
 		display: inline-block;
-		font-size: 35px;
+		font-size: 45px;
 		font-weight: bold;
 	}
 	input[type=button], input[type=submit]{
@@ -61,9 +61,9 @@
 		margin-top: 35px;
 	}
 	
-	footer{
+	.footer{
 		width: 100%;
-		position: fixed;
+		position: absolute;
 		bottom: 0;
 	}
 
@@ -78,8 +78,8 @@
 
  
  
- 
- 	<div class="login" style="margin: 127px 0; ">
+ 	<div style="height: 60px;"></div>
+ 	<div class="login">
 		<div class="form-login">
 
 			<div>
@@ -112,14 +112,31 @@
 			</div>
 		</div>
  
- </div>
  
  
+ 	</div>
+
+<div class="bottom" style="height: 60px;"></div>
 
 
-
-
-<footer><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
-	<script type="text/javascript" src="/resources/user/js/main.js"></script>
+<footer class="footer"><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
+<script type="text/javascript" src="/resources/user/js/main.js"></script>
+<script>
+	var footer = document.querySelector('footer');
+	var bottom = document.querySelector('.bottom');
+	window.addEventListener('wheel', function(){
+		if(footer.getBoundingClientRect().top < bottom.getBoundingClientRect().bottom){
+			footer.classList.remove('footer');	
+		}else{
+			footer.classList.add('footer');
+		}
+	})
+	if(footer.getBoundingClientRect().top < bottom.getBoundingClientRect().bottom){
+		footer.classList.remove('footer');	
+	}else{
+		footer.classList.add('footer');
+	}
+	
+</script>
 </body>
 </html>
