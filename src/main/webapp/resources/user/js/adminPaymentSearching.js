@@ -92,7 +92,6 @@ function mainPagingEngine(){
 			var month = (fullDate.getMonth() < 9 ? '0' : '') + (fullDate.getMonth()+1);
 			var date = fullDate.getFullYear() + '-' + month + '-' + fullDate.getDate();
 			var no = tableData.list[i].orderNo;
-			console.log(tableData.list);
 				text = text
 				+ "<tr>"
 				+"<td>" + no + "</td>"
@@ -121,6 +120,8 @@ function mainPagingEngine(){
 				var footerRealRect = footerReal.getBoundingClientRect();
 				if (footerRect.top + footerRect.height >= footerRealRect.top) {
 					footerReal.classList.remove("footer");
+				}else{
+					footerReal.classList.add("footer");
 				}	
 			 }, 0);
 				

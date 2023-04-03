@@ -6,7 +6,6 @@ const data = {}
 		data.page = 1,
 		data.searchWhat = document.getElementById("searchWhat").value,
 		data.search = document.getElementById("search").value
-		console.log(searchWhat,search)
 		if(data.search.trim() == '' || data.search == null){
 			data.search = '(none)'
 		}
@@ -38,11 +37,6 @@ const data = {}
 	
 		const tableData = JSON.parse(this.responseText);
 		let pagingNumber = "";
-		console.log(tableData.vo)
-		console.log(tableData.vo.page)
-		console.log(tableData.vo.pagingNo)
-		console.log(tableData.vo.nextPage)
-		console.log(tableData.vo.prePage)
 	
 		if(tableData.vo.prePage > 0){
 				pagingNumber += "<a "+"id='preView'"+" style='color:#323232;' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>&lt;</a> ";
@@ -106,6 +100,8 @@ const data = {}
 					var footerRealRect = footerReal.getBoundingClientRect();
 					if (footerRect.top + footerRect.height >= footerRealRect.top) {
 						footerReal.classList.remove("footer");
+					}else{
+						footerReal.classList.add("footer");
 					}	
 				
 				}, 0);
