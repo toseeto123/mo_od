@@ -44,7 +44,7 @@ function mainPagingEngine(){
 			let pagingNumber = "";
 	  
 		  	if(tableData.vo.prePage > 0){
-				pagingNumber += "<a "+"id='preView'"+" style='color:#323232;' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>&lt;</a> ";
+				pagingNumber += "<a "+"id='preView'"+" style='color:#323232;' onclick='pageView(this)'>&lt;</a> ";
 				preView = tableData.vo.prePage;
 			}
 
@@ -52,13 +52,13 @@ function mainPagingEngine(){
 				if(data.page == tableData.vo.pagingNo[q]){
 					pagingNumber += " &nbsp;<a "+"id='page"+q+"'"+" style='color:green' onclick='pageView(this)'>"+tableData.vo.pagingNo[q]+"</a>&nbsp; ";
 				}else{
-					pagingNumber += " &nbsp;<a "+"id='page"+q+"'"+" style='color:#323232;' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>"+tableData.vo.pagingNo[q]+"</a>&nbsp; ";
+					pagingNumber += " &nbsp;<a "+"id='page"+q+"'"+" style='color:#323232;' onclick='pageView(this)'>"+tableData.vo.pagingNo[q]+"</a>&nbsp; ";
 				}		
 				pagingNo.push(tableData.vo.pagingNo[q]);
 			}
 			
 			if(tableData.vo.nextPage > 0){
-				pagingNumber += " <a "+"id='nextView'"+" style='color:#323232;' onMouseover='colorChangeOver(this)' onMouseout='colorChangeOut(this)' onclick='pageView(this)'>&gt;</a>"
+				pagingNumber += " <a "+"id='nextView'"+" style='color:#323232;' onclick='pageView(this)'>&gt;</a>"
 				nextView = tableData.vo.nextPage;
 			}	
 			paging.innerHTML = pagingNumber;
@@ -84,7 +84,7 @@ function mainPagingEngine(){
                 +"</tr>"
                 +"</thead>"
                 +"<tbody id='tbody'>"
-                + "<tr>"
+                
                 
 			for(var i=0; i<tableData.list.length; i++){
 			
@@ -92,8 +92,8 @@ function mainPagingEngine(){
 			var month = (fullDate.getMonth() < 9 ? '0' : '') + (fullDate.getMonth()+1);
 			var date = fullDate.getFullYear() + '-' + month + '-' + fullDate.getDate();
 			var no = tableData.list[i].orderNo;
-			console.log(tableData.list);
 				text = text
+				+ "<tr>"
 				+"<td>" + no + "</td>"
                 +"<td>" + tableData.list[i].name + "</td>"
                 +"<td>" + tableData.list[i].phone + "</td>"
@@ -101,18 +101,31 @@ function mainPagingEngine(){
                 +"<td>" + date + "</td>"
                 +"<td>&#8361; " + tableData.list[i].amount + "</td>"
                 +"<td><a href='/admin/paymentDetail?no="+no+"'>상세보기</a></td>"
+                +"</tr>"
                 
 				
 
 				
 						
 			}
-			text = text +
-				"</tr>"
-				+"</tbody>"			
+			text = text 
+				+"</tbody>"
+				+"</table>"			
 			tables.innerHTML = text;				
 				
-			 
+			 setTimeout(function(){
+			 	var footer = document.querySelector('#modulePaging');
+				var footerReal = document.querySelector('footer');
+				var footerRect = footer.getBoundingClientRect();
+				var footerRealRect = footerReal.getBoundingClientRect();
+				if (footerRect.top + footerRect.height >= footerRealRect.top) {
+					footerReal.classList.remove("footer");
+				}else{
+					footerReal.classList.add("footer");
+				}	
+			 }, 0);
+				
+			
 			 
 			 
 			 
