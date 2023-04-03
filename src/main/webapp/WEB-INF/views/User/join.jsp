@@ -150,7 +150,7 @@ div>label {
                   </h3>
                   <span class="box int_pass">
                   <input type="password" class="form-control string" name="pwd" id="pwd"
-                     placeholder="비밀번호를 입력하세요" pattern="^[A-Za-z0-9!@#$%^&*()_+{}[\]:;<>,.?/~`]{10,20}$">
+                     placeholder="비밀번호를 입력하세요">
                    </span>
                </div>
                
