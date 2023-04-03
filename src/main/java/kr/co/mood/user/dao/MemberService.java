@@ -138,7 +138,7 @@ public class MemberService {
                sb.append("&client_secret=MtrUDxfIj0");
 
 
-   //          sb.append("&redirect_uri=http://localhost:8080/users/login");
+  //           sb.append("&redirect_uri=http://localhost:8080/users/login");
                sb.append("&redirect_uri=http://mo-od.co.kr/users/login");
 
 

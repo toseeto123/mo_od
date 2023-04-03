@@ -10,6 +10,9 @@
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 <script type="text/javascript" src="/resources/user/js/main.js"></script>
    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
+
+
+
 <style>
 /* 기본 스타일 */
 .container {
@@ -264,13 +267,19 @@ input {
 	</form>
 
 
-    
-    <% if (request.getAttribute("errorMessage") != null) { %>
-        <script>
-            alert("${errorMessage}");
-        </script>
-    <% } %>
-	 
+<script>
+    $(document).ready(function(){
+        var message = "${message}";
+        if(message != null && message !== ""){
+            alert(message);
+        }
+    });
+</script>
+
+
+	
+	
+
 </body>
 	<jsp:include page="/WEB-INF/common/footer.jsp" />
 
