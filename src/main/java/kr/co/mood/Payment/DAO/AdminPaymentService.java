@@ -82,7 +82,7 @@ public class AdminPaymentService {
 			}			
 		
 			for(String age: ages) {
-				if(vo.getAge().equals(age) || vo.getAge().trim().equals("") || vo.getAge()== null) {
+				if(vo.getAge()== null || vo.getAge().equals(age) || vo.getAge().trim().equals("")) {
 					ageFlag = false;
 				}
 			}			
