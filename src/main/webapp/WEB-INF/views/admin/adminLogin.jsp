@@ -46,7 +46,7 @@
 <style>
 	p{
 		display: inline-block;
-		font-size: 45px;
+		font-size: 37px;
 		font-weight: bold;
 	}
 	input[type=button], input[type=submit]{
