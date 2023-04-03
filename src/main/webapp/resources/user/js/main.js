@@ -31,8 +31,8 @@ function JoinCheck(){
               join.pwd.focus();
               return false;
            }
-           if (!document.join.pwd.value.match(/^[a-z0-9]{10,20}$/)) {
-            alert("암호는 특수문자를 제외한 영문과 숫자의 조합으로 10~20자리 이내로 입력해주세요.");
+           if (!document.join.pwd.value.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~])[A-Za-z\d!@#$%^&*()_+{}[\]:;<>,.?/~]{10,20}$/)) {
+            alert("암호는 대소문자, 숫자, 특수문자를 조합으로 10~20자리 이내로 입력해주세요.");
             join.pwd.focus();
             return false;
           }
@@ -257,17 +257,17 @@ function emailCheck() {
               return false;
            }   
  			if (document.mypage.adr.value == "  "){
-              alert("주소를 반드시 입력해주세여");
+              alert("주소를 반드시 입력해주세요");
               mypage.adr.focus();
               return false;
             }
             if (document.mypage.adr2.value == "  "){
-              alert("주소를 반드시 입력해주세여");
+              alert("주소를 반드시 입력해주세요");
               mypage.adr2.focus();
               return false;
             }
             if (document.mypage.adr3.value == "  "){
-              alert("주소를 반드시 입력해주세여");
+              alert("주소를 반드시 입력해주세요");
               mypage.adr3.focus();
               return false;
             }

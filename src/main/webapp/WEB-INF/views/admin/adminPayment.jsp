@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html style="background-color:#f5f6f7;">
 <head>
@@ -115,14 +116,19 @@ section{
                 <td>${member.phone}</td>
                 <td>${member.address}</td>
                 <td>${member.payDate}</td>
-                <td>&#8361; ${member.amount}</td>
-                <td><a href="/admin/paymentDetail?no=${member.orderNo}">상세보기</a></td>
+                <c:set var="amount" value="0" />
+                <c:forEach var="product" items="${map[member.orderNo]}">
+                <input type="hidden" value="${amount = amount + (product.price*product.productCount)}">
+                </c:forEach>
+                <td>&#8361; ${amount}</td>
+                <td><a href="/admin/paymentDetail?no=${member.orderNo}">상세보기</a>
+                </td>
                 </tr>
                   </c:forEach> 
                   </tbody>
               </table>
               
-   
+             
               </div>
               
               </section>
