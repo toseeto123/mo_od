@@ -207,7 +207,7 @@ div>label {
                      <label for="email">* 본인확인 이메일</label>
                   </h3>
                   <div>
-                     x <input type="text" id="email" name="email"
+                       <input type="text" id="email" name="email"
                         class="form-control email box string_email" maxlength="100"
                         onkeyup="emailCheck()" placeholder="이메일을 입력하세요"> <input
                         type="hidden" class="myinfo_email" id="myinfo_email"

@@ -124,7 +124,7 @@ input[type=button], input[type=submit] {
       		탈퇴하시겠습니까?<br>
       	</div>
       	<div class="modal-footer">
-	        <input type="button" id="modal_delbtn" value="탈퇴하기" onclick="location.href = '/admin/deleteMember?id=${userInfo.id}'">
+	        <input type="button" id="modal_delbtn" value="탈퇴하기" onclick="location.href = '/admin/deleteMember?id=${userInfo.id}';">
     	    <input type="button" value="닫기"  onclick="$('#exampleModal').modal('hide')">
       			</div>
     		</div>

@@ -6,7 +6,6 @@
 <head>
 <meta charset="UTF-8">
 <title>회원 관리</title>
-<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <style>
 select, option{
 	height: 30px;
@@ -153,7 +152,7 @@ section{
 	<footer class="footer"><jsp:include
 					page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" />
 		</footer>
-	
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 
 <script type="text/javascript" src="/resources/user/js/adminMemberListSearching.js"></script>
 <script defer>

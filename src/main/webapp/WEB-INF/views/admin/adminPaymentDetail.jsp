@@ -70,9 +70,10 @@ section{
 
 <body style="background-color:#f5f6f7;">
 
-	
+		
 			<section style="padding: 0; margin: 0;">
 			<div id="tables">
+			<form action="/admin/paymentModify/${member.orderNo}">
               <table id="table" class="table">
                 <thead id="thead">
                 <tr>
@@ -117,16 +118,19 @@ section{
                   <tr>
                   <td colspan="4" style="border-bottom:none"></td>
                   <td style="border-bottom:none">
-                  	<form action="#" method="post">
+                  	
                   	<a onClick="$('#myModal${member.orderNo}').modal('show');" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated">주문취소</a>
                   	<a href="javascript:location.href=document.referrer" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated">돌아가기</a>
-                  	<a onClick="location.href='/admin/paymentModify/${member.orderNo}/'+document.getElementById('adr').value+'/'+document.getElementById('adr2').value+'/'+document.getElementById('adr3').value+'?path='+route" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated">수정하기</a>
-                  	</form>
+                  	<input type="submit" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated" value="수정하기">
+             		<input type="hidden" name="path" id="path">     	
                   	</td>
                   </tr>
                   
                 </tbody>
+                
+             
               </table>
+              </form>
               <div class="bottom" style="height: 30px;"></div>
               	<div class="modal fade" id="myModal${member.orderNo}">
 		<div class="modal-dialog" role="document">
@@ -192,6 +196,7 @@ let route = '';
 for(var j=q; j<document.referrer.split('/').length; j++){
 	route = route +'/' + document.referrer.split('/')[j];
 }
+document.getElementById('path').value = route;
 </script>
 </body>
 

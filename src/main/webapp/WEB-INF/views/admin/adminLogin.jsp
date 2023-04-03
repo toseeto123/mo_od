@@ -64,7 +64,9 @@
 	.footer{
 		width: 100%;
 		position: absolute;
+
 		bottom: 0;
+
 	}
 
 </style>
@@ -73,13 +75,14 @@
 </head>
 <body style="background-color:#f5f6f7;">
  <% session.invalidate(); %>
- 
- 
+
 
  
  
  	<div style="height: 60px;"></div>
- 	<div class="login">
+
+ 	<div class="login" id="login" style="margin: 0 auto;">
+
 		<div class="form-login">
 
 			<div>
@@ -112,6 +115,7 @@
 			</div>
 		</div>
  
+
  
  
  	</div>
@@ -120,6 +124,7 @@
 
 
 <footer class="footer"><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script type="text/javascript" src="/resources/user/js/main.js"></script>
 <script>
 	var footer = document.querySelector('footer');
@@ -138,5 +143,8 @@
 	}
 	
 </script>
+
 </body>
+
+
 </html>
