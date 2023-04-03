@@ -3,7 +3,6 @@ package kr.co.mood.module;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.ui.Model;
@@ -73,7 +72,6 @@ public class ModuleCommon {
 
 		if (nextStartPageNo < realEndPageNo) {
 			model.addAttribute("nextPage", nextStartPageNo);
-			System.out.println(nextStartPageNo);
 			viewVO.setNextPage(nextStartPageNo);
 		}else {
 			viewVO.setNextPage(0);
@@ -140,7 +138,6 @@ public class ModuleCommon {
 
 		if (nextStartPageNo < realEndPageNo) {
 			model.addAttribute("nextPage", nextStartPageNo);
-			System.out.println(nextStartPageNo);
 			viewVO.setNextPage(nextStartPageNo);
 		}else {
 			viewVO.setNextPage(0);

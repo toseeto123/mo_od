@@ -161,7 +161,7 @@ public class UserController {
 	    UserVO userInfo = ms.getUserInfo(access_Token);
 	    String path = (String) session.getAttribute("path");
 	    session.setAttribute("login_info", userInfo);
-	    System.out.println(path);
+	    System.out.println(userInfo);
 	    if (path == null) {
 	        return "redirect:/";
 	    } else {
