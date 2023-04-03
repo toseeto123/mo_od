@@ -283,7 +283,6 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
                 </div>
               </div>
             </div>
-            
 						<div class="member-info">
 							<div class="member-info-content">
 								<span style="float: left; font-size:21px;">${Clist.pro_name}</span>
