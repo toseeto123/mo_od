@@ -74,6 +74,8 @@ footer {
 	if (result === "loginmsg") {
 		alert('로그인이 필요한 서비스입니다. 로그인페이지로 이동합니다.');
 	}
+	
+
 </script>
 
 </head>
@@ -121,7 +123,7 @@ footer {
 					<ul class="social_logo" style="height: 80px; margin-left: -20px;">
 						<li class="box_list">
 						<!--  <a id="custom-login-btn" 
-						href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301">  -->
+						href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://localhost:8080/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301"> --> 
 						<a id="custom-login-btn" 
 						href="https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=dClx55_VYi9U61rOGPS2&redirect_uri=http://mo-od.co.kr/users/naverLogin&state=bd5ab073-7709-4a54-b537-86cd901cf301">
 								<img style="width: 50px;" src="/resources/user/img/naver.png"
@@ -129,6 +131,7 @@ footer {
 						</a>
 						</li>
 						<li class="box_list">
+
 
 <!-- 						<a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/users/kakaoLogin&response_type=code">  -->
  						 <a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://mo-od.co.kr/users/kakaoLogin&response_type=code">  
