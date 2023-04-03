@@ -107,7 +107,7 @@ body {
 	 	<button type="submit" class="sbtn" >판매재개</button>
 	 </form>
 </div>
-<form role="form" method="get" action="updatePro">
+<form role="form" method="get" action="/updatePro" enctype="multipart/form-data">
 <div class="top_Area">
 	<div class="inputArea" style="margin-top: 50px;">
 	 <label for="">상품명</label>
@@ -140,35 +140,35 @@ body {
 <hr>
 <div class="inputArea">
  <label for="">이미지1</label>
- <input type="file" id="" name="pro_img1" onchange="readURL(this);" />
+ <input type="file" id="" name="file1" onchange="readURL(this);" />
  <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" style="width: 100px; height: 100px;"> >>변경후>>
  <img id="preview" style="width: 100px; height: 100px;"/>
 </div><hr>
 
 <div class="inputArea">
 <label for="">이미지2</label>
- <input type="file" id="" name="pro_img2" onchange="readURL(this);" />
+ <input type="file" id="" name="file2" onchange="readURL(this);" />
  <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img2}" style="width: 100px; height: 100px;"> >>변경후>>
  <img id="preview" style="width: 100px; height: 100px;"/>
 </div><hr>
 
 <div class="inputArea">
 <label for="">이미지3</label>
- <input type="file" id="" name="pro_img3" onchange="readURL(this);" />
+ <input type="file" id="" name="file3" onchange="readURL(this);" />
  <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img3}" style="width: 100px; height: 100px;"> >>변경후>>
  <img id="preview" style="width: 100px; height: 100px;"/>
 </div><hr>
 
 <div class="inputArea">
 <label for="">이미지4</label>
- <input type="file" id="" name="pro_img4" onchange="readURL(this);" />
+ <input type="file" id="" name="file4" onchange="readURL(this);" />
  <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img4}" style="width: 100px; height: 100px;"> >>변경후>>
  <img id="preview" style="width: 100px; height: 100px;"/>
 </div><hr>
 
 <div class="inputArea">
 <label for="">이미지5</label>
- <input type="file" id="" name="pro_img5" onchange="readURL(this);" />
+ <input type="file" id="" name="file5" onchange="readURL(this);" />
  <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img5}" style="width: 100px; height: 100px;"> >>변경후>>
  <img id="preview" style="width: 100px; height: 100px;"/>
 </div><hr>

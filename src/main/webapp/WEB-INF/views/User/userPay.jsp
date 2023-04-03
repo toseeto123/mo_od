@@ -331,7 +331,7 @@ background: #f9bf00;
    				 	<input type="hidden" value="${onelist.orderId}" name="orderId"> 
    				 	<input type="hidden" value="${onelist.userno }" name="userno">
     				<button class="paybtn btnhover" type="submit" id="apibtn"><i class="xi-kakaotalk"></i>결제하기 <fmt:formatNumber value="${totalPrice}" type="currency" currencySymbol="₩" />원</button>
-    				<button class="btnhover" type="button" id="cancelbtn" onclick="history.go(-1)">주문 취소</button>
+    				<button class="btnhover" type="button" id="cancelbtn" onclick="location.href='/products/${onelist.pro_number}/${onelist.pro_name}/${onelist.pro_img1.substring(0, onelist.pro_img1.lastIndexOf('.'))}'">주문 취소</button>
                </c:forEach>
 
                <c:set var="totalPrice" value="0" />

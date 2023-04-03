@@ -200,44 +200,58 @@ public class AdminController {
       return "admin/insertPro";
    }
    
-   @RequestMapping(value="/insert" ,method=RequestMethod.POST)
-   public String insertProduct(@RequestParam MultipartFile file,
-                           @RequestParam MultipartFile file1,
+   @RequestMapping(value="insert" ,method=RequestMethod.POST)
+   public String insertProduct(@RequestParam MultipartFile file1,
                            @RequestParam MultipartFile file2,
                            @RequestParam MultipartFile file3,
                            @RequestParam MultipartFile file4,
-                           HttpServletRequest req,ProVO vo) throws IOException{
-         String fileRealName1 = file.getOriginalFilename(); 
-         String fileRealName2 = file1.getOriginalFilename();
-         String fileRealName3 = file2.getOriginalFilename();
-         String fileRealName4 = file3.getOriginalFilename();
-         String fileRealName5 = file4.getOriginalFilename();
-         
-         String webPath = "/home/tomcat/apache-tomcat-9.0.73/webapps/mo_od/resources/assets/img/product/";
-         File saveFile1 = new File(webPath, fileRealName1);
-         file.transferTo(saveFile1);
-         File saveFile2 = new File(webPath, fileRealName2);
-         file1.transferTo(saveFile2);
-         File saveFile3 = new File(webPath, fileRealName3);
-         File saveFile4 = new File(webPath, fileRealName4);
-         
-         File saveFile5 = new File(webPath, fileRealName5);
-         
-         
-         try {
-            vo.setPro_img1(fileRealName1);
-            vo.setPro_img2(fileRealName2);
-            vo.setPro_img3(fileRealName3);
-            vo.setPro_img4(fileRealName4);
-            vo.setPro_img5(fileRealName5);
-            
-         } catch (IllegalStateException e) {
-            e.printStackTrace();
-         } catch (Exception e) {
-            e.printStackTrace();
-         }
+                           @RequestParam MultipartFile file5,
+                           ProVO vo) throws IOException{
+
+      String fileRealName1 = file1.getOriginalFilename();
+      String fileRealName2 = file2.getOriginalFilename();
+      String fileRealName3 = file3.getOriginalFilename();
+      String fileRealName4 = file4.getOriginalFilename();
+      String fileRealName5 = file5.getOriginalFilename();
+      String webPath = "/home/tomcat/apache-tomcat-9.0.73/webapps/mo_od/resources/assets/img/product/";
+      
+       if (!file1.isEmpty()) {
+          File saveFile1 = new File(webPath, fileRealName1);
+           file1.transferTo(saveFile1);
+           vo.setPro_img1(fileRealName1);
+       } else {
+           vo.setPro_img1(null);
+       }
+       if (!file2.isEmpty()) {
+           File saveFile2 = new File(webPath, fileRealName2);
+           file2.transferTo(saveFile2);
+           vo.setPro_img2(fileRealName2);
+       } else {
+           vo.setPro_img2(null);
+       }
+       if (!file3.isEmpty()) {
+           File saveFile3 = new File(webPath, fileRealName3);
+           file3.transferTo(saveFile3);
+           vo.setPro_img3(fileRealName3);
+       } else {
+           vo.setPro_img3(null);
+       }
+       if (!file4.isEmpty()) {
+           File saveFile4 = new File(webPath, fileRealName4);
+           file4.transferTo(saveFile4);
+           vo.setPro_img4(fileRealName4);
+       } else {
+           vo.setPro_img4(null);
+       }
+       if (!file5.isEmpty()) {
+           File saveFile5 = new File(webPath, fileRealName5);
+           file5.transferTo(saveFile5);
+           vo.setPro_img5(fileRealName5);
+       } else {
+           vo.setPro_img5(null);
+       }
          ps.insertPro(vo);
-         return "/admin/adminProList";
+         return "admin/adminProList";
       }
    
 
@@ -300,40 +314,53 @@ public class AdminController {
    
    @RequestMapping(value = "/updatePro", method = RequestMethod.GET)
    public String proDetails(@RequestParam("pro_number") int pro_number,
-		   @RequestParam MultipartFile file,
-           @RequestParam MultipartFile file1,
+		   @RequestParam MultipartFile file1,
            @RequestParam MultipartFile file2,
            @RequestParam MultipartFile file3,
-           @RequestParam MultipartFile file4,ProVO vo) throws IllegalStateException, IOException {
-	   String fileRealName1 = file.getOriginalFilename(); 
-       String fileRealName2 = file1.getOriginalFilename();
-       String fileRealName3 = file2.getOriginalFilename();
-       String fileRealName4 = file3.getOriginalFilename();
-       String fileRealName5 = file4.getOriginalFilename();
-       
-       String webPath = "/home/tomcat/apache-tomcat-9.0.73/webapps/mo_od/resources/assets/img/product/";
-       File saveFile1 = new File(webPath, fileRealName1);
-       file.transferTo(saveFile1);
-       File saveFile2 = new File(webPath, fileRealName2);
-       file1.transferTo(saveFile2);
-       File saveFile3 = new File(webPath, fileRealName3);
-       File saveFile4 = new File(webPath, fileRealName4);
-       
-       File saveFile5 = new File(webPath, fileRealName5);
-       
-       
-       try {
-          vo.setPro_img1(fileRealName1);
-          vo.setPro_img2(fileRealName2);
-          vo.setPro_img3(fileRealName3);
-          vo.setPro_img4(fileRealName4);
-          vo.setPro_img5(fileRealName5);
-          
-       } catch (IllegalStateException e) {
-          e.printStackTrace();
-       } catch (Exception e) {
-          e.printStackTrace();
-       }
+           @RequestParam MultipartFile file4,
+           @RequestParam MultipartFile file5,ProVO vo) throws IllegalStateException, IOException {
+	   String fileRealName1 = file1.getOriginalFilename();
+	      String fileRealName2 = file2.getOriginalFilename();
+	      String fileRealName3 = file3.getOriginalFilename();
+	      String fileRealName4 = file4.getOriginalFilename();
+	      String fileRealName5 = file5.getOriginalFilename();
+	      String webPath = "/home/tomcat/apache-tomcat-9.0.73/webapps/mo_od/resources/assets/img/product/";
+	      
+	       if (!file1.isEmpty()) {
+	          File saveFile1 = new File(webPath, fileRealName1);
+	           file1.transferTo(saveFile1);
+	           vo.setPro_img1(fileRealName1);
+	       } else {
+	           vo.setPro_img1(null);
+	       }
+	       if (!file2.isEmpty()) {
+	           File saveFile2 = new File(webPath, fileRealName2);
+	           file2.transferTo(saveFile2);
+	           vo.setPro_img2(fileRealName2);
+	       } else {
+	           vo.setPro_img2(null);
+	       }
+	       if (!file3.isEmpty()) {
+	           File saveFile3 = new File(webPath, fileRealName3);
+	           file3.transferTo(saveFile3);
+	           vo.setPro_img3(fileRealName3);
+	       } else {
+	           vo.setPro_img3(null);
+	       }
+	       if (!file4.isEmpty()) {
+	           File saveFile4 = new File(webPath, fileRealName4);
+	           file4.transferTo(saveFile4);
+	           vo.setPro_img4(fileRealName4);
+	       } else {
+	           vo.setPro_img4(null);
+	       }
+	       if (!file5.isEmpty()) {
+	           File saveFile5 = new File(webPath, fileRealName5);
+	           file5.transferTo(saveFile5);
+	           vo.setPro_img5(fileRealName5);
+	       } else {
+	           vo.setPro_img5(null);
+	       }
       ps.updatePro(vo);
       
       return "/admin/adminProList";

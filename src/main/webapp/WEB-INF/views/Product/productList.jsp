@@ -4,6 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <style>
 .aiccontainer{
 padding-top: 10px;
@@ -55,10 +56,30 @@ color : #323232;
     margin-top: 10px;
   }
 }
+.img-fluid {
+  position: relative;
+}
+
+.xi-heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 999;
+  font-size: 25px;
+  color:#fa0542;
+}
+.xi-heart-o {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 25px;
+
+}
 
 </style>
 <jsp:include page="/WEB-INF/common/header.jsp" />
    <section id="hero" style="height: 400px;">
+   <input type="hidden" id="userNo" name="userNo" value="${login_info.no}">
       <div class="hero-container">
          <div id="heroCarousel" data-bs-interval="5000"
             class="carousel slide carousel-fade" data-bs-ride="carousel">
@@ -175,6 +196,12 @@ color : #323232;
           <div class="col-xl-3 col-lg-4 col-md-6"style="margin-bottom: 50px;">
             <div class="member" style="background-color: white; cursor: pointer; max-width: 306px; margin: 0 auto;" onclick="location.href='/products/${list.pro_number}/${list.pro_name}/${list.pro_img1.substring(0, list.pro_img1.lastIndexOf('.'))}'">  
  				<img src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" alt="${list.pro_name}" title="${list.pro_maindesc}" class="img-fluid" style="width: 100%; height: 306px;">
+               <c:forEach var="cateList" items="${cateList}">
+               <c:if test="${cateList.pro_number eq list.pro_number}">
+              <i class="xi-heart" style="z-index: 999;"></i>
+              </c:if>
+              </c:forEach>
+              <i class="xi-heart-o" style="z-index: 99;"></i>
               <a style="float: left; font-size: 21px;">${list.pro_name}</a><a style="float: right; font-size: 21px;"><fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></a>
  				
               <div class="member-info">

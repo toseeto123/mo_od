@@ -2,11 +2,12 @@
     pageEncoding="UTF-8"%>
  <%@ taglib prefix="c"   uri="http://java.sun.com/jsp/jstl/core" %>
  <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
- 
+ <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <!DOCTYPE html>
 
 <html lang="en">
  <script src="https://unpkg.com/@phosphor-icons/web"></script>
+ <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <jsp:include page="/WEB-INF/common/header.jsp" />
 <style>
@@ -84,6 +85,25 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
     margin-top: 10px;
   }
 }
+.img-fluid {
+  position: relative;
+}
+
+.xi-heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 999;
+  font-size: 25px;
+  color:#fa0542;
+}
+.xi-heart-o {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 25px;
+}
+
 </style>
 <body>
 
@@ -115,7 +135,7 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
               </div>
             </div>
           </div>
-
+<input type="hidden" id="userNo" name="userNo" value="${login_info.no}">
           <!-- Slide 3 -->
           <div class="carousel-item" style="background-image: url(resources/assets/img/slide/mood3.png);">
             <div class="carousel-container">
@@ -168,6 +188,12 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
           <div class="col-lg-4 col-md-6 portfolio-item filter-app" onclick="location.href='/products/${Alist.pro_number }/${Alist.pro_name}/${Alist.pro_img1.substring(0, Alist.pro_img1.lastIndexOf('.'))}'" style="cursor: pointer; margin-bottom: 50px;">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Alist.pro_img1 }" class="img-fluid" alt="">
+               <c:forEach var="cateList" items="${cateList}">
+               <c:if test="${cateList.pro_number eq Alist.pro_number}">
+              <i class="xi-heart" style="z-index: 999;"></i>
+              </c:if>
+              </c:forEach>
+              <i class="xi-heart-o" style="z-index: 99;" onclick="bucketalert(event)"></i>
               <div class="portfolio-info">
                 <h4>${Alist.pro_name }</h4>
                 <p><fmt:formatNumber value="${Alist.pro_price}" type="currency" currencySymbol="₩" /></p>
@@ -189,6 +215,12 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
           <div class="col-lg-4 col-md-6 portfolio-item filter-card" onclick="location.href='/products/${Blist.pro_number }/${Blist.pro_name}/${Blist.pro_img1.substring(0, Blist.pro_img1.lastIndexOf('.'))}'" style="cursor: pointer">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Blist.pro_img1 }" class="img-fluid" alt="">
+               <c:forEach var="cateList" items="${cateList}">
+               <c:if test="${cateList.pro_number eq Blist.pro_number}">
+              <i class="xi-heart" style="z-index: 999;"></i>
+              </c:if>            
+              </c:forEach>
+              <i class="xi-heart-o" style="z-index: 99;" onclick="bucketalert(event)"></i>
               <div class="portfolio-info">
                 <h4>${Blist.pro_name }</h4>
                 <p><fmt:formatNumber value="${Blist.pro_price}" type="currency" currencySymbol="₩" /></p>
@@ -210,6 +242,12 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
           <div class="col-lg-4 col-md-6 portfolio-item filter-web" onclick="location.href='/products/${Clist.pro_number }/${Clist.pro_name}/${Clist.pro_img1.substring(0, Clist.pro_img1.lastIndexOf('.'))}'" style="cursor: pointer">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Clist.pro_img1 }" class="img-fluid" alt="">
+               <c:forEach var="cateList" items="${cateList}">
+               <c:if test="${cateList.pro_number eq Clist.pro_number}">
+              <i class="xi-heart" style="z-index: 999;"></i>
+              </c:if>
+              </c:forEach>
+              <i class="xi-heart-o" style="z-index: 99;" onclick="bucketalert(event)"></i>
               <div class="portfolio-info">
                 <h4>${Clist.pro_name }</h4>
                 <p><fmt:formatNumber value="${Clist.pro_price}" type="currency" currencySymbol="₩" /></p>
@@ -232,6 +270,12 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
           <div class="col-lg-4 col-md-6 portfolio-item filter-app" onclick="location.href='/products/${Alist.pro_number }/${Alist.pro_name}/${Alist.pro_img1.substring(0, Alist.pro_img1.lastIndexOf('.'))}'" style="cursor: pointer">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Alist.pro_img1 }" class="img-fluid" alt="">
+               <c:forEach var="cateList" items="${cateList}">
+               <c:if test="${cateList.pro_number eq Alist.pro_number}">
+              <i class="xi-heart" style="z-index: 999;"></i>
+              </c:if>
+              </c:forEach>
+              <i class="xi-heart-o" style="z-index: 99;" onclick="bucketalert(event)"></i>
               <div class="portfolio-info">
                 <h4>${Alist.pro_name }</h4>
                 <p><fmt:formatNumber value="${Alist.pro_price}" type="currency" currencySymbol="₩" /></p>
@@ -254,6 +298,12 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
           <div class="col-lg-4 col-md-6 portfolio-item filter-card" onclick="location.href='/products/${Blist.pro_number }/${Blist.pro_name}/${Blist.pro_img1.substring(0, Blist.pro_img1.lastIndexOf('.'))}'" style="cursor: pointer">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Blist.pro_img1 }" class="img-fluid" alt="">
+              <c:forEach var="cateList" items="${cateList}">
+               <c:if test="${cateList.pro_number eq Blist.pro_number}">
+              <i class="xi-heart" style="z-index: 999;"></i>
+              </c:if>
+              </c:forEach>
+              <i class="xi-heart-o" style="z-index: 99;" onclick="bucketalert(event)"></i>
               <div class="portfolio-info">
                 <h4>${Blist.pro_name }</h4>
                 <p><fmt:formatNumber value="${Blist.pro_price}" type="currency" currencySymbol="₩" /></p>
@@ -276,6 +326,12 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
           <div class="col-lg-4 col-md-6 portfolio-item filter-web" onclick="location.href='/products/${Clist.pro_number }/${Clist.pro_name}/${Clist.pro_img1.substring(0, Clist.pro_img1.lastIndexOf('.'))}'" style="cursor: pointer">
             <div class="portfolio-wrap">
               <img src="resources/assets/img/product/${Clist.pro_img1 }" class="img-fluid" alt="">
+              <c:forEach var="cateList" items="${cateList}">
+               <c:if test="${cateList.pro_number eq Clist.pro_number}">
+              <i class="xi-heart" style="z-index: 999;"></i>
+              </c:if>
+              </c:forEach>
+              <i class="xi-heart-o" style="z-index: 99;" onclick="bucketalert(event)"></i>
               <div class="portfolio-info">
                 <h4>${Clist.pro_name }</h4>
                 <p><fmt:formatNumber value="${Clist.pro_price}" type="currency" currencySymbol="₩" /></p>
@@ -342,5 +398,18 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
 
   </main><!-- End #main -->
 </body>
+<script>
+var userNo = $('#userNo').val();
+function bucketalert(event) {
+	  if (userNo == "") {
+	    var login_chk = confirm('장바구니는 로그인이 필요한 서비스입니다.\n로그인페이지로 이동하시겠습니까?');
+	    if (login_chk) {
+	      
+	    } else {
+	      event.stopPropagation(); 
+	    }
+	  }
+	}
+</script>
 	<jsp:include page="../../WEB-INF/common/footer.jsp" />
 </html>

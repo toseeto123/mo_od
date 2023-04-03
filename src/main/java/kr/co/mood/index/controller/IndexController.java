@@ -14,17 +14,26 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import kr.co.mood.Product.DAO.ProductService;
 import kr.co.mood.Product.VO.ProVO;
+import kr.co.mood.cate.DAO.CateService;
+import kr.co.mood.user.dao.UserVO;
 
 @Controller
 public class IndexController {
 	
 	@Autowired
 	ProductService ps;
-	
+	@Autowired
+	private CateService cateService;
 	
 	@RequestMapping(value = "/home", method = RequestMethod.GET)
-	public String indexPage(Model model, ArrayList<ProVO> vo) {
-
+	public String indexPage(Model model, ArrayList<ProVO> vo,HttpSession session) {
+		session.getAttribute("login_info");
+		UserVO uvo = (UserVO) session.getAttribute("login_info");
+		int userno = 0; // 디폴트 값 설정
+		if (uvo != null) {
+		    userno = uvo.getNo();
+		}	
+		model.addAttribute("cateList", cateService.selectCateList(userno));
 		List<ProVO> Alist = ps.AselectProListByPayCount(vo);
 		List<ProVO> Blist = ps.BselectProListByPayCount(vo);
 		List<ProVO> Clist = ps.CselectProListByPayCount(vo);
@@ -45,8 +54,10 @@ public class IndexController {
 	}
 	
 	@RequestMapping(value = "/home",method = RequestMethod.POST)
-	public String viewProPage(Model model, ArrayList<ProVO> vo,HttpServletRequest request) {
-
+	public String viewProPage(Model model, ArrayList<ProVO> vo,HttpServletRequest request,HttpSession session) {
+		session.getAttribute("login_info");
+		System.out.println("ddddddddddddddddddddd"+session.getAttribute("login_info"));
+		
 		List<ProVO> Alist = ps.AselectProListByPayCount(vo);
 		List<ProVO> Blist = ps.BselectProListByPayCount(vo);
 		List<ProVO> Clist = ps.CselectProListByPayCount(vo);
