@@ -65,7 +65,7 @@ public class AdminController {
   
    @RequestMapping("/adminMemberList/{paging}/{searchWhat}/{search}")
    @ResponseBody
-   public Map<String, Object> adminMemberList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//�빊遺쏙옙占쎈쭆 �겫占썽겫占�
+   public Map<String, Object> adminMemberList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//占쎈퉲�겫�룞�삕�뜝�럥彛� 占쎄껀�뜝�띂寃ュ뜝占�
 	   ModuleVO moduleVO = new ModuleVO();
 	   Map<String, Object> map = new HashMap<String, Object>();
 	   if(search.equals("(none)")) {
@@ -88,7 +88,7 @@ public class AdminController {
    
    
    @RequestMapping("/adminMemberList/{paging}")
-   public String adminMemberList(@PathVariable String paging, Model model) {//�빊遺쏙옙占쎈쭆 �겫占썽겫占�
+   public String adminMemberList(@PathVariable String paging, Model model) {//占쎈퉲�겫�룞�삕�뜝�럥彛� 占쎄껀�뜝�띂寃ュ뜝占�
 	   ModuleVO moduleVO = new ModuleVO();
 	   List<UserVO> userList = userService.selectAll(null);
 	   module.pagingModule(model, moduleVO, userList, paging, 10);
@@ -107,7 +107,7 @@ public class AdminController {
 	   }catch(Exception e) {
 		   e.printStackTrace();
 	   }
-	   return "admin/adminMemeberDetail";
+	   return "/admin/adminMemeberDetail";
    }
    
    @RequestMapping("/paymentModify/{orderNo}")
@@ -195,19 +195,18 @@ public class AdminController {
 	   return map;
    }
    
-   @RequestMapping(value="insert" ,method=RequestMethod.GET)
+   @RequestMapping(value="/insert" ,method=RequestMethod.GET)
    public String insertProductPage(){
       return "admin/insertPro";
    }
    
-   @RequestMapping(value="insert" ,method=RequestMethod.POST)
+   @RequestMapping(value="/insert" ,method=RequestMethod.POST)
    public String insertProduct(@RequestParam MultipartFile file,
                            @RequestParam MultipartFile file1,
                            @RequestParam MultipartFile file2,
                            @RequestParam MultipartFile file3,
                            @RequestParam MultipartFile file4,
-                           HttpServletRequest req,
-                                                         ProVO vo) throws IOException{
+                           HttpServletRequest req,ProVO vo) throws IOException{
          String fileRealName1 = file.getOriginalFilename(); 
          String fileRealName2 = file1.getOriginalFilename();
          String fileRealName3 = file2.getOriginalFilename();
@@ -238,21 +237,21 @@ public class AdminController {
             e.printStackTrace();
          }
          ps.insertPro(vo);
-         return "admin/adminProList";
+         return "/admin/adminProList";
       }
    
 
    
    
 
-      @RequestMapping(value = "adminProList")
+      @RequestMapping(value = "/adminProList")
       public String ProductList() {
          return "redirect:/admin/adminProList/1";
       }
 
       @RequestMapping("/adminProList/{paging}/{searchWhat}/{search}")
       @ResponseBody
-      public Map<String, Object> adminProList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//�빊遺쏙옙占쎈쭆 �겫占썽겫占�
+      public Map<String, Object> adminProList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//占쎈퉲�겫�룞�삕�뜝�럥彛� 占쎄껀�뜝�띂寃ュ뜝占�
    	   ModuleVO moduleVO = new ModuleVO();
    	   Map<String, Object> map = new HashMap<String, Object>();
    	   if(search.equals("(none)")) {
@@ -296,12 +295,45 @@ public class AdminController {
       pro_number = Integer.parseInt(id);
       
       model.addAttribute("list", ps.selectProOne(pro_number));
-      return "admin/adminProUpdate";
+      return "/admin/adminProUpdate";
    }
    
    @RequestMapping(value = "/updatePro", method = RequestMethod.GET)
-   public String proDetails(@RequestParam("pro_number") int pro_number,ProVO vo) {
-      System.out.println(vo);
+   public String proDetails(@RequestParam("pro_number") int pro_number,
+		   @RequestParam MultipartFile file,
+           @RequestParam MultipartFile file1,
+           @RequestParam MultipartFile file2,
+           @RequestParam MultipartFile file3,
+           @RequestParam MultipartFile file4,ProVO vo) throws IllegalStateException, IOException {
+	   String fileRealName1 = file.getOriginalFilename(); 
+       String fileRealName2 = file1.getOriginalFilename();
+       String fileRealName3 = file2.getOriginalFilename();
+       String fileRealName4 = file3.getOriginalFilename();
+       String fileRealName5 = file4.getOriginalFilename();
+       
+       String webPath = "/home/tomcat/apache-tomcat-9.0.73/webapps/mo_od/resources/assets/img/product/";
+       File saveFile1 = new File(webPath, fileRealName1);
+       file.transferTo(saveFile1);
+       File saveFile2 = new File(webPath, fileRealName2);
+       file1.transferTo(saveFile2);
+       File saveFile3 = new File(webPath, fileRealName3);
+       File saveFile4 = new File(webPath, fileRealName4);
+       
+       File saveFile5 = new File(webPath, fileRealName5);
+       
+       
+       try {
+          vo.setPro_img1(fileRealName1);
+          vo.setPro_img2(fileRealName2);
+          vo.setPro_img3(fileRealName3);
+          vo.setPro_img4(fileRealName4);
+          vo.setPro_img5(fileRealName5);
+          
+       } catch (IllegalStateException e) {
+          e.printStackTrace();
+       } catch (Exception e) {
+          e.printStackTrace();
+       }
       ps.updatePro(vo);
       
       return "/admin/adminProList";
