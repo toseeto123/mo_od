@@ -136,7 +136,8 @@ input[type=text]:focus, input[type=email]:focus {
 							
 							<div class="card-body">
 								<div class="form-group row">
-									<div class="col-12"></div>
+									<div class="col-3"></div>
+									<div class="col-9"><span id="show"></span></div>
 								</div>
 							</div>
 							
