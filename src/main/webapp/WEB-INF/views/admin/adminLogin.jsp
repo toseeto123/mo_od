@@ -46,7 +46,7 @@
 <style>
 	p{
 		display: inline-block;
-		font-size: 35px;
+		font-size: 37px;
 		font-weight: bold;
 	}
 	input[type=button], input[type=submit]{
@@ -64,7 +64,9 @@
 	.footer{
 		width: 100%;
 		position: absolute;
-		bottom:0;		
+
+		bottom: 0;
+
 	}
 
 </style>
@@ -74,8 +76,13 @@
 <body style="background-color:#f5f6f7;">
  <% session.invalidate(); %>
 
-	<div style="height: 30px;"></div>
+
+ 
+ 
+ 	<div style="height: 60px;"></div>
+
  	<div class="login" id="login" style="margin: 0 auto;">
+
 		<div class="form-login">
 
 			<div>
@@ -108,31 +115,36 @@
 			</div>
 		</div>
  
- </div>
- <div class="dong" style="height: 30px;"></div>
+
+ 
+ 
+ 	</div>
+
+<div class="bottom" style="height: 60px;"></div>
+
+
 <footer class="footer"><jsp:include page="/WEB-INF/common/footer.jsp" /></footer>
- <script src="http://code.jquery.com/jquery-latest.min.js"></script>
-	<script type="text/javascript" src="/resources/user/js/main.js"></script>
-
-
-
-
-
+<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+<script type="text/javascript" src="/resources/user/js/main.js"></script>
+<script>
+	var footer = document.querySelector('footer');
+	var bottom = document.querySelector('.bottom');
+	window.addEventListener('wheel', function(){
+		if(footer.getBoundingClientRect().top < bottom.getBoundingClientRect().bottom){
+			footer.classList.remove('footer');	
+		}else{
+			footer.classList.add('footer');
+		}
+	})
+	if(footer.getBoundingClientRect().top < bottom.getBoundingClientRect().bottom){
+		footer.classList.remove('footer');	
+	}else{
+		footer.classList.add('footer');
+	}
+	
+</script>
 
 </body>
- 
-<script>
-window.addEventListener("DOMContentLoaded", function() {
-	  var login = document.querySelector(".dong");
-	  var footer = document.querySelector("footer");
-	  var footerTop = footer.getBoundingClientRect().top;
-	var loginBottom = login.getBoundingClientRect().bottom;
-	console.log(loginBottom)
-	console.log(footerTop);
-	  if(footerTop <= loginBottom){
-		footer.classList.remove("footer");
-	  }
-});
-</script>
+
 
 </html>
