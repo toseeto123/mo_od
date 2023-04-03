@@ -12,6 +12,7 @@
 <meta content="" name="description">
 <meta content="" name="keywords">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <!-- Favicons -->
 <link href="${pageContext.request.contextPath}/resources/assets/img/favicon.png" rel="icon">
 <link href="${pageContext.request.contextPath}/resources/assets/img/apple-touch-icon.png" rel="apple-touch-icon">
@@ -127,6 +128,24 @@ background: #323232;
     padding: 8px 16px;
     width: 90%;
   }
+  
+}
+.img-fluid {
+  position: relative;
+}
+.xi-heart {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 999;
+  font-size: 25px;
+  color:#fa0542;
+}
+.xi-heart-o {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 25px;
 }
  
 </style>
@@ -334,6 +353,12 @@ background: #323232;
           <div class="col-xl-3 col-lg-4 col-md-6">
             <div class="member" style="cursor: pointer;" onclick="location.href='/products/${randomList.pro_number}/${randomList.pro_name}/${randomList.pro_img1}'">
               <img src="${pageContext.request.contextPath}/resources/assets/img/product/${randomList.pro_img1}" class="img-fluid" alt="">
+              <c:forEach var="cateList" items="${cateList}">
+               <c:if test="${cateList.pro_number eq randomList.pro_number}">
+              <i class="xi-heart" style="z-index: 999;"></i>
+              </c:if>
+              </c:forEach>
+              <i class="xi-heart-o" style="z-index: 99;"></i>
               <div class="member-info">
                 <div class="member-info-content">
                   <h4>${randomList.pro_name}</h4>

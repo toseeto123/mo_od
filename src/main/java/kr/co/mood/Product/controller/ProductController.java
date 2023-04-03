@@ -91,6 +91,13 @@ public class ProductController {
 		}
 		// �꽭�뀡�뿉 ���옣
 		session.setAttribute(sessionKey, productList);
+		session.getAttribute("login_info");
+		UserVO uvo = (UserVO) session.getAttribute("login_info");
+		int userno = 0; // 디폴트 값 설정
+		if (uvo != null) {
+		    userno = uvo.getNo();
+		}	
+		model.addAttribute("cateList", cateService.selectCateList(userno));
 
 		return "Product/productDetail";
 	}
