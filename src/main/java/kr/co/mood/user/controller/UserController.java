@@ -107,11 +107,13 @@ public class UserController {
 	       UserVO naverUserInfo =  ms.getNaverUserInfo(access_Token, session);
 	       session.setAttribute("login_info", naverUserInfo);
 		    session.setAttribute("login_info", naverUserInfo);
+
 			
 		        String path = (String) session.getAttribute("path");
 		        session.setAttribute("login_info", naverUserInfo);
 		        if (path == null || path.equals("")) {
 		            return "redirect:/";
+
 		        } else {
 		            session.setAttribute("path", request.getRequestURI());
 		            if (path.contains("catelogin")) {
@@ -167,9 +169,11 @@ public class UserController {
 	    UserVO userInfo = ms.getUserInfo(access_Token);
 	    String path = (String) session.getAttribute("path");
 	    session.setAttribute("login_info", userInfo);
+
 	    System.out.println(userInfo);
 	    
 	    if (path == null || path.equals("")) {
+
 	        return "redirect:/";
 	    } else {
 	        session.setAttribute("path", request.getRequestURI());
@@ -210,6 +214,7 @@ public class UserController {
 	        } else {
 	            return "redirect:" + path;
 	        }
+	    }
 	    }
 	}
 
