@@ -32,7 +32,7 @@ function JoinCheck(){
               return false;
            }
            if (!document.join.pwd.value.match(/^[a-z0-9]{10,20}$/)) {
-            alert("암호는 영문과 숫자의 조합으로 10~20자리 이내로 입력해주세요.");
+            alert("암호는 특수문자를 제외한 영문과 숫자의 조합으로 10~20자리 이내로 입력해주세요.");
             join.pwd.focus();
             return false;
           }

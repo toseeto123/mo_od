@@ -111,6 +111,8 @@ public class UserController {
 		    session.setAttribute("login_info", naverUserInfo);
 		    if(naverUserInfo.getAdr()==null) {
 				 System.out.println(naverUserInfo.getAdr());
+				 String alertMessage = "필수입력정보를 입력해주세요.";
+				 model.addAttribute("alertMessage", alertMessage);
 				 return "/User/mypage";
 		    }else {
 		    if (path == null || path.equals("")) {
