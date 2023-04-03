@@ -234,14 +234,12 @@ function emailCheck() {
 
 
   function UpdateCheck(){
-  if (document.mypage.address_input_1.value == ""){
-              alert("주소를 반드시 입력해주세여");
+  			if (document.mypage.pwd.value == ""){
+              alert("암호를 반드시 입력해주세여");
               mypage.pwd.focus();
               return false;
            }
-  
-  
-           if (document.mypage.pwd.value == ""){
+           if (document.mypage.pwd2.value == ""){
               alert("암호를 반드시 입력해주세여");
               mypage.pwd.focus();
               return false;
@@ -252,18 +250,33 @@ function emailCheck() {
               mypage.pwd2.value="";
               mypage.pwd.focus();
               return false;
-             
-           }
-           if (document.mypage.email.value == "") {
-              alert("이메일을 입력해주세요");
-              mypage.email.focus();
-              return false;
            }
            if (document.mypage.phone.value == "") {
               alert("전화번호를 입력해주세요");
               mypage.phone.focus();
               return false;
            }   
+ 			if (document.mypage.adr.value == "  "){
+              alert("주소를 반드시 입력해주세여");
+              mypage.adr.focus();
+              return false;
+            }
+            if (document.mypage.adr2.value == "  "){
+              alert("주소를 반드시 입력해주세여");
+              mypage.adr2.focus();
+              return false;
+            }
+            if (document.mypage.adr3.value == "  "){
+              alert("주소를 반드시 입력해주세여");
+              mypage.adr3.focus();
+              return false;
+            }
+           if (document.mypage.email.value == "") {
+              alert("이메일을 입력해주세요");
+              mypage.email.focus();
+              return false;
+           }
+           
            return true;   
         }
        
