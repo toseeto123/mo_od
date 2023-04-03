@@ -37,9 +37,7 @@ public class MemberService {
          BufferedWriter bw = new BufferedWriter(new OutputStreamWriter(conn.getOutputStream()));
          StringBuilder sb = new StringBuilder();
          sb.append("grant_type=authorization_code");
-         sb.append("&client_id=e862dc15e41ee83edaac20240a8bc9e5"); //蹂몄씤�씠 諛쒓툒諛쏆� key
-
-
+         sb.append("&client_id=e862dc15e41ee83edaac20240a8bc9e5"); 
 //         sb.append("&redirect_uri=http://localhost:8080/users/kakaoLogin"); 
          sb.append("&redirect_uri=http://mo-od.co.kr/users/kakaoLogin");
 
@@ -89,10 +87,13 @@ public class MemberService {
          String nickname = properties.getAsJsonObject().get("nickname").getAsString();
          String email = kakao_account.getAsJsonObject().get("email").getAsString();
          String age_range = kakao_account.getAsJsonObject().get("age_range").getAsString();
+         String gender = kakao_account.getAsJsonObject().get("gender").getAsString();
          
          userInfo.put("nickname", nickname);
          userInfo.put("email", email);
          userInfo.put("age_range", age_range);
+         userInfo.put("gender", gender);
+         System.out.println("userInfo"+userInfo);
          
          
       } catch (IOException e) {
@@ -101,7 +102,7 @@ public class MemberService {
 
 
       UserVO result = userdao.findkakao(userInfo);
-
+      System.out.println("result"+result);
       if(result==null) {
 
          userdao.kakaoinsert(userInfo);
@@ -134,7 +135,7 @@ public class MemberService {
                sb.append("&client_id=dClx55_VYi9U61rOGPS2");
                sb.append("&client_secret=MtrUDxfIj0");
 
-//             sb.append("&redirect_uri=http://localhost:8080/users/login");
+ //            sb.append("&redirect_uri=http://localhost:8080/users/login");
                sb.append("&redirect_uri=http://mo-od.co.kr/users/login");
 
                sb.append("&code="+authorize_code);

@@ -113,14 +113,14 @@
     <select id="findKakao" parameterType="kr.co.mood.user.dao.UserVO" resultType="kr.co.mood.user.dao.UserVO">
     <![CDATA[
 		select no, id, AES_DECRYPT(unhex(pwd), 'key') as pwd, name, age, gender, adr, email, phone, day
-		from moodjoin where name=#{nickname} and age=#{age_range} and email=#{email} and id=#{email}
+		from moodjoin where name=#{nickname} and age=CONCAT(SUBSTR(#{age_range},1,2), '-', SUBSTR(#{age_range},1,2)+9) and email=#{email} and id=#{email} and gender= CASE WHEN #{gender} = 'male' THEN 'M' ELSE 'F' END
 		]]>
 	</select>
 
 	
 	<insert id="kakaoInsert" parameterType="kr.co.mood.user.dao.UserVO">
 	<![CDATA[
-		insert into moodjoin(no,id,name,age,email,day) values(no,#{email},#{nickname}, #{age_range} , #{email}, now())
+		insert into moodjoin(no,id,name,age,email,gender,day) values(no,#{email},#{nickname}, CONCAT(SUBSTR(#{age_range},1,2), '-', SUBSTR(#{age_range},1,2)+9) , #{email},CASE WHEN #{gender} = 'male' THEN 'M' ELSE 'F' END, now())
 		 ]]>
 	</insert>
     
