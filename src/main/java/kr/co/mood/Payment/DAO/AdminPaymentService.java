@@ -82,14 +82,14 @@ public class AdminPaymentService {
 			}			
 		
 			for(String age: ages) {
-				if(vo.getAge().equals(age) || vo.getAge().trim().equals("")||vo.getAge()== null) {
+				if(vo.getAge().equals(age) || vo.getAge().trim().equals("") || vo.getAge()== null) {
 					ageFlag = false;
 				}
 			}			
 			if(ageFlag) {
 				ages.add(vo.getAge());
 			}
-			if(!vo.getAge().trim().equals("")&&vo.getAge() != null) {
+			if(vo.getAge() != null && !vo.getAge().trim().equals("") && vo.getGender() != null && !vo.getGender().trim().equals("")) {
 				if(vo.getGender().equals("F")) {
 					woman.add(vo);
 				}else if(vo.getGender().equals("M")) {
