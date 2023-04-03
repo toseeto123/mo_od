@@ -74,7 +74,7 @@ public class UserController {
 		JsonNode jsonParsing;
 		jsonParsing = mapper.readTree(googleJsonData);
 		int age = Integer.parseInt(jsonParsing.get("age").asText()) / 10;
-
+		
 		UserVO googleVO = new UserVO();
 		googleVO.setEmail(jsonParsing.get("email").asText());
 		googleVO.setId(jsonParsing.get("email").asText());
@@ -106,49 +106,53 @@ public class UserController {
 			String access_Token = ms.getNaverAccessToken(code, session, state);
 	       UserVO naverUserInfo =  ms.getNaverUserInfo(access_Token, session);
 	       session.setAttribute("login_info", naverUserInfo);
-	//     session.setAttribute("access_token", access_Token);
-	       String path = (String) session.getAttribute("path");
 		    session.setAttribute("login_info", naverUserInfo);
-		    if(naverUserInfo.getAdr()==null) {
-				 System.out.println(naverUserInfo.getAdr());
-				 String alertMessage = "필수입력정보를 입력해주세요.";
-				 model.addAttribute("alertMessage", alertMessage);
-				 return "/User/mypage";
-		    }else {
-		    if (path == null || path.equals("")) {
-		        return "redirect:/";
-		    } else {
-		        session.setAttribute("path", request.getRequestURI());
-		        if (path.contains("catelogin")) {
-		            return "redirect:/users/bucket";
-		        } else if (path.contains("proCatelogin")) {
-		        	System.out.println("proCatelogin ");
-		            CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
-		            int userid = naverUserInfo.getNo();
-		            sessionCvo.setUser_no(userid);
-		            if (sessionCvo != null) {
-		                cateService.addcate(sessionCvo, naverUserInfo, null);
-		            }
-		            return "redirect:/users/bucket";
-		        } else if(path.contains("payBeLogin")) 
-		        {
-		            userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
-		            userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
-		            int userid = naverUserInfo.getNo();
-		            sessionordervo.setUserNo(userid);
-		            payService.insert(sessionordervo, naverUserInfo, null);
-		            int orderid = sessionordervo.getOrderId();
-		            sessionorderprovo.setUserno(userid);
-		            sessionorderprovo.setOrderId(orderid);
-		            productPayService.insert(sessionorderprovo, naverUserInfo, null);
-		            model.addAttribute("onelist", productPayService.selectList(orderid));
-		            return "/User/userPay";
+			
+		        String path = (String) session.getAttribute("path");
+		        session.setAttribute("login_info", naverUserInfo);
+		        if (path == null || path.equals("")) {
+		            return "redirect:/";
 		        } else {
-		            return "redirect:" + path;
+		            session.setAttribute("path", request.getRequestURI());
+		            if (path.contains("catelogin")) {
+		                return "redirect:/users/bucket";
+		            } else if (path.contains("proCatelogin")) {
+		                System.out.println("proCatelogin ");
+		                if (naverUserInfo.getAdr() == null) {
+		    		        // 필수입력값 alert 창 띄우기
+		    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
+		    		        return "/User/mypage";
+		            	}
+		                CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
+		                int userid = naverUserInfo.getNo();
+		                sessionCvo.setUser_no(userid);
+		                if (sessionCvo != null) {
+		                    cateService.addcate(sessionCvo, naverUserInfo, null);
+		                }
+		                return "redirect:/users/bucket";
+		            } else if (path.contains("payBeLogin")) {
+		            	if (naverUserInfo.getAdr() == null) {
+		    		        // 필수입력값 alert 창 띄우기
+		    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
+		    		        return "/User/mypage";
+		            	}
+		                userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
+		                userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
+		                int userid = naverUserInfo.getNo();
+		                sessionordervo.setUserNo(userid);
+		                payService.insert(sessionordervo, naverUserInfo, null);
+		                int orderid = sessionordervo.getOrderId();
+		                sessionorderprovo.setUserno(userid);
+		                sessionorderprovo.setOrderId(orderid);
+		                productPayService.insert(sessionorderprovo, naverUserInfo, null);
+		                model.addAttribute("onelist", productPayService.selectList(orderid));
+		                return "/User/userPay";
+		            } else {
+		                return "redirect:" + path;
+		            }
 		        }
-		    	}
 		    }
-		}
+		
 
 	
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
@@ -164,7 +168,8 @@ public class UserController {
 	    String path = (String) session.getAttribute("path");
 	    session.setAttribute("login_info", userInfo);
 	    System.out.println(userInfo);
-	    if (path == null) {
+	    
+	    if (path == null || path.equals("")) {
 	        return "redirect:/";
 	    } else {
 	        session.setAttribute("path", request.getRequestURI());
@@ -172,6 +177,11 @@ public class UserController {
 	            return "redirect:/users/bucket";
 	        } else if (path.contains("proCatelogin")) {
 	        	System.out.println("proCatelogin ");
+	        	 if (userInfo.getAdr() == null) {
+	    		        // 필수입력값 alert 창 띄우기
+	    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
+	    		        return "/User/mypage";
+	            	}
 	            CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
 	            int userid = userInfo.getNo();
 	            sessionCvo.setUser_no(userid);
@@ -181,6 +191,11 @@ public class UserController {
 	            return "redirect:/users/bucket";
 	        } else if(path.contains("payBeLogin")) 
 	        {
+	        	 if (userInfo.getAdr() == null) {
+	    		        // 필수입력값 alert 창 띄우기
+	    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
+	    		        return "/User/mypage";
+	            	}
 	            userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
 	            userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
 	            int userid = userInfo.getNo();

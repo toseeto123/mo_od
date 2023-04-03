@@ -39,8 +39,8 @@ public class MemberService {
          sb.append("grant_type=authorization_code");
 
          sb.append("&client_id=e862dc15e41ee83edaac20240a8bc9e5"); 
- //        sb.append("&redirect_uri=http://localhost:8080/users/kakaoLogin"); 
-         sb.append("&redirect_uri=http://mo-od.co.kr/users/kakaoLogin");
+         sb.append("&redirect_uri=http://localhost:8080/users/kakaoLogin"); 
+//         sb.append("&redirect_uri=http://mo-od.co.kr/users/kakaoLogin");
 
 
 
@@ -138,8 +138,8 @@ public class MemberService {
                sb.append("&client_secret=MtrUDxfIj0");
 
 
-   //          sb.append("&redirect_uri=http://localhost:8080/users/login");
-               sb.append("&redirect_uri=http://mo-od.co.kr/users/login");
+             sb.append("&redirect_uri=http://localhost:8080/users/login");
+  //             sb.append("&redirect_uri=http://mo-od.co.kr/users/login");
 
 
                sb.append("&code="+authorize_code);
