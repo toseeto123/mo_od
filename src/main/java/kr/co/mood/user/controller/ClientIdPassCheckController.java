@@ -108,7 +108,6 @@ public class ClientIdPassCheckController {
 
 			} catch (Exception e) {
 				e.printStackTrace();
-				System.out.println("에러야");
 			}
 			List<UserVO> list = userService.findEmail(email);
 			for(int i=0; i<list.size(); i++) {
