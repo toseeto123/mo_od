@@ -45,11 +45,11 @@
          		WHEN 7 THEN '토요일' 
          		WHEN 1 THEN '일요일' 
          		ELSE '유효한 날짜가 아닙니다.' END as week, 
-         	Amount as sales 
+         	SUM(Amount) as sales 
          	from payment 
          	where (Success = '결제 완료' or payment.Success = '구매 확정')
 					and SuccessTime like concat(#{year}, '%')
-			group by orderid
+			group by DAYOFWEEK(SuccessTime)
          	order by DAYOFWEEK(SuccessTime)
          	]]>
 	</select>
@@ -183,6 +183,7 @@
 		inner join payment
 			on payment.orderid = moodorder.orderid
 		where orderProduct.orderid = #{no}
+		group by product.pro_serialnumber
 	</select>
 
 	<select id="adminPaymentCancel"
