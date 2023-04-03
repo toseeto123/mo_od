@@ -216,7 +216,8 @@ public class UserController {
 	        }
 	    }
 	    }
-	}
+
+
 
 
 	@RequestMapping(value = "/join", method = RequestMethod.GET)

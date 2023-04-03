@@ -257,17 +257,17 @@ function emailCheck() {
               return false;
            }   
  			if (document.mypage.adr.value == "  "){
-              alert("주소를 반드시 입력해주세여");
+              alert("주소를 반드시 입력해주세요");
               mypage.adr.focus();
               return false;
             }
             if (document.mypage.adr2.value == "  "){
-              alert("주소를 반드시 입력해주세여");
+              alert("주소를 반드시 입력해주세요");
               mypage.adr2.focus();
               return false;
             }
             if (document.mypage.adr3.value == "  "){
-              alert("주소를 반드시 입력해주세여");
+              alert("주소를 반드시 입력해주세요");
               mypage.adr3.focus();
               return false;
             }
