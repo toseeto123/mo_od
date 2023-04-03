@@ -1,8 +1,8 @@
 package kr.co.mood.user.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.net.URLDecoder;
+import java.util.Map;
 import java.util.Random;
 
 import javax.mail.internet.MimeMessage;
@@ -10,13 +10,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import org.apache.ibatis.reflection.SystemMetaObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -163,7 +161,6 @@ public class UserController {
 	    UserVO userInfo = ms.getUserInfo(access_Token);
 	    String path = (String) session.getAttribute("path");
 	    session.setAttribute("login_info", userInfo);
-	    System.out.println(userInfo);
 	    if (path == null) {
 	        return "redirect:/";
 	    } else {
@@ -207,9 +204,8 @@ public class UserController {
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String loginAction(@ModelAttribute("cvo") CateVO cvo, UserVO vo, HttpSession session,
 			HttpServletRequest request, RedirectAttributes ra, Model model) {
-		System.out.println("post");
 		UserVO vo1 = userservice.selectId(vo);
-
+		
 		if (vo1 == null || vo1.getId().equals("admin")) {
 			session.setAttribute("login_info", null);
 			ra.addFlashAttribute("msg", false);
@@ -217,7 +213,6 @@ public class UserController {
 		} else {
 			session.setAttribute("login_info", vo1);
 			String path = (String) session.getAttribute("path");
-
 			if (path == null) {
 				return "redirect:/";
 			} else if (path.contains("catelogin")) {

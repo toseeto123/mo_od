@@ -84,7 +84,7 @@ color : #323232;
          <div id="heroCarousel" data-bs-interval="5000"
             class="carousel slide carousel-fade" data-bs-ride="carousel">
             <ol class="carousel-indicators" id="hero-carousel-indicators"></ol>
-
+<input type="hidden" id="userNo" name="userNo" value="${login_info.no}">
             <div class="carousel-inner" role="listbox">
 
                <!-- Slide 1 -->
@@ -201,7 +201,7 @@ color : #323232;
               <i class="xi-heart" style="z-index: 999;"></i>
               </c:if>
               </c:forEach>
-              <i class="xi-heart-o" style="z-index: 99;"></i>
+              <i class="xi-heart-o" style="z-index: 99;" onclick="bucketalert(event)"></i>
               <a style="float: left; font-size: 21px;">${list.pro_name}</a><a style="float: right; font-size: 21px;"><fmt:formatNumber value="${list.pro_price}" type="currency" currencySymbol="₩" /></a>
  				
               <div class="member-info">
@@ -429,4 +429,27 @@ color : #323232;
                   
   </c:forEach>
 </section>
+<script type="text/javascript">
+var userNo = $('#userNo').val();
+function bucketalert(event) {
+	  if (userNo == "") {
+	    var login_chk = confirm('장바구니는 로그인이 필요한 서비스입니다.\n로그인페이지로 이동하시겠습니까?');
+	    if (login_chk) {
+	      event.stopPropagation(); 
+	      $.ajax({
+	        url: '/users/login',
+	        type: 'POST',
+	        success: function() {
+	        	window.location.replace('/users/login');
+	        },
+	        error: function(xhr, status, error) {
+	          console.log("에러 발생:", error,status,xhr);
+	        }
+	      });
+	    } else {
+	      event.stopPropagation(); 
+	    }
+	  }
+	}
+</script>
 <jsp:include page="/WEB-INF/common/footer.jsp" />

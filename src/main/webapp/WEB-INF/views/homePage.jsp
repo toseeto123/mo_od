@@ -209,6 +209,9 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
 							</div>
 						</div>
 					</div>
+					<input type="hidden" value="${Alist.pro_number }" id="pro_number">
+<input type="hidden" value="${Alist.pro_name }" id="pro_name">
+<input type="hidden" value="${Alist.pro_img1.substring(0, Alist.pro_img1.lastIndexOf('.'))}" id="pro_img">
           </c:forEach>
 
 		<c:forEach var="Blist" items="${Blist}" begin="0" end="0">
@@ -398,13 +401,28 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
 
   </main><!-- End #main -->
 </body>
-<script>
+
+<script type="text/javascript">
 var userNo = $('#userNo').val();
+var pro_number = document.getElementById("pro_number").value;
+var pro_name = document.getElementById("pro_name").value;
+var pro_img = document.getElementById("pro_img").value;
 function bucketalert(event) {
 	  if (userNo == "") {
 	    var login_chk = confirm('장바구니는 로그인이 필요한 서비스입니다.\n로그인페이지로 이동하시겠습니까?');
 	    if (login_chk) {
+	      event.stopPropagation(); 
 	      
+	      $.ajax({
+	    	  url: '/users/login',
+	    	  type: 'POST',
+	    	  success: function() {
+	    	    window.location.replace('/users/login');
+	    	  },
+	    	  error: function(xhr, status, error) {
+	    	    console.log(status,error,xhr);
+	    	  }
+	    	});
 	    } else {
 	      event.stopPropagation(); 
 	    }
