@@ -99,20 +99,22 @@ section{
                 </thead>
                 
                 <tbody id="tbody">
-				
+				<c:set var="amount" value="0" />
 				<c:forEach var="product" items="${product}">
                   <tr id="product">
                     <th id="productNo" scope="row">${product.productNo}</th>
                     <td id="productNam">${product.productName}</</td>
                     <td id="price">&#8361; ${product.price}</td>
                     <td id="productCount"> ${product.productCount}</td>
-                    <td id="amount">&#8361; ${product.productCount*product.price}</td>
+                    <td id="amount">&#8361; ${product.productCount*product.price}
+                    <input type="hidden" value="${amount = amount+ product.productCount*product.price }">
+                    </td>
                   </tr>
                  </c:forEach> 
                   
                   <tr>
                   	<td colspan="4" style="border-bottom:none;"></td>
-                  	<td id="memberAmount">총금액: &#8361; ${member.amount }</td>
+                  	<td id="memberAmount">총금액: &#8361; ${amount}</td>
                   </tr>
                   
                   <tr>
