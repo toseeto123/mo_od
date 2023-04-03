@@ -183,7 +183,7 @@
 		inner join payment
 			on payment.orderid = moodorder.orderid
 		where orderProduct.orderid = #{no}
-		group by product.pro_serialnumber
+		group by product.pro_number
 	</select>
 
 	<select id="adminPaymentCancel"
