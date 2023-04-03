@@ -96,7 +96,7 @@ footer {
               <c:if test="${ msg == false }">
 						<br>
 						<br>
-						<p style="color: red; font-size: 15px; margin: 20px 70px 0;">존재하지 않는 아이디 또는 비밀번호입니다</p>
+						<p style="color: red; font-size: 15px; margin: 10px 35px 5px;">존재하지 않는 아이디 또는 비밀번호입니다</p>
 					</c:if>
 					<div class="text-center" style="padding: 0;"><button class="submit hover" style="color: white; height: 60px; width: 340px;">로그인</button></div>
             </div>
@@ -130,7 +130,7 @@ footer {
 						</li>
 						<li class="box_list">
 
-						<!-- <a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/users/kakaoLogin&response_type=code"> --> 
+<!-- 						<a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://localhost:8080/users/kakaoLogin&response_type=code">  -->
  						 <a href="https://kauth.kakao.com/oauth/authorize?client_id=e862dc15e41ee83edaac20240a8bc9e5&redirect_uri=http://mo-od.co.kr/users/kakaoLogin&response_type=code">  
 
 								<img style="width: 50px;" src="/resources/user/img/kakao.png"
