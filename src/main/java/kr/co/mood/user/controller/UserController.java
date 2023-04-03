@@ -109,8 +109,10 @@ public class UserController {
 	//     session.setAttribute("access_token", access_Token);
 	       String path = (String) session.getAttribute("path");
 		    session.setAttribute("login_info", naverUserInfo);
-		    System.out.println(path);
-		    
+		    if(naverUserInfo.getAdr()==null) {
+				 System.out.println(naverUserInfo.getAdr());
+				 return "/User/mypage";
+		    }else {
 		    if (path == null || path.equals("")) {
 		        return "redirect:/";
 		    } else {
@@ -142,6 +144,7 @@ public class UserController {
 		        } else {
 		            return "redirect:" + path;
 		        }
+		    	}
 		    }
 		}
 
