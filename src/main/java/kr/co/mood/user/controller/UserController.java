@@ -215,8 +215,11 @@ public class UserController {
 	            return "redirect:" + path;
 	        }
 	    }
-	    
-	}
+
+	    }
+
+
+
 
 
 	@RequestMapping(value = "/join", method = RequestMethod.GET)
