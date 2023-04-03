@@ -183,7 +183,7 @@ body {
 	.returnbtn {
 		font-size: 90%;
 		display: block;
-		width: 180%;
+		width: 100%;
 		margin: 0 auto;
 	}
 }

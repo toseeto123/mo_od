@@ -605,9 +605,35 @@ function deletecate(element) {
 								</dd>
 							</dl>
 							<input type="hidden" value="${login_info.adr }" name="address" >
-							<input type="submit" value="주문하기" class="btn_buy btnhover" style="width:300px;">
+							<input type="submit" id="btn_order" value="주문하기" class="btn_buy btnhover" style="width:300px;">
 							<input type="button" value="더보러가기" class="cancelbtn btnhover" style="width:300px;" onclick="window.location='/';">
+							<script type="text/javascript">
+							//장바 구니 담김 체크 script
+							const btnOrder = document.getElementById("btn_order");
 
+							function isCartNotEmpty() {
+							  const categoryItem = document.querySelectorAll('.deleteplz'); 
+
+							  if (categoryItem.length > 0) {
+							    return true;
+							  }
+
+							  return false;
+							}
+
+							btnOrder.addEventListener("click", function(event) {
+							  event.preventDefault(); 
+							  
+							  const isCartExist = isCartNotEmpty();
+
+							  if (isCartExist) {
+							    const form = btnOrder.closest("form");
+							    form.submit();
+							  } else {
+							    alert("장바구니에 담긴 상품이 없습니다.");
+							  }
+							});
+							</script>
 						</div>
 					</div>
 				</div>
