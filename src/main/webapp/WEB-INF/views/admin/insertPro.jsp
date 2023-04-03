@@ -86,7 +86,7 @@ background-color:#f5f6f7;
 
 <body style="background-color:#f5f6f7;">
 	<jsp:include page="../../common/adminHeader.jsp" />
-<form role="form" method="post" action="insert.do"  enctype="multipart/form-data">
+<form role="form" method="post" action="/insert"  enctype="multipart/form-data">
 	      <section id="breadcrumbs" class="breadcrumbs" style="height: 70px; padding-bottom: 80px; font-size: 22px;">
          <div class="container aiccontainer">
             <div class="d-flex align-items-center aic">

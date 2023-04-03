@@ -166,14 +166,16 @@ section{
 		src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
 
 <script src="/resources/user/js/adminPaymentSearching.js"></script> 
-<script defer>
-var footer = document.querySelector('#modulePaging');
-var footerReal = document.querySelector('footer');
-var footerRect = footer.getBoundingClientRect();
-var footerRealRect = footerReal.getBoundingClientRect();
-if (footerRect.top + footerRect.height >= footerRealRect.top) {
-	footerReal.classList.remove("footer");
-}	
+<script>
+window.onload = function(){
+	var footer = document.querySelector('#modulePaging');
+	var footerReal = document.querySelector('footer');
+	var footerRect = footer.getBoundingClientRect();
+	var footerRealRect = footerReal.getBoundingClientRect();
+	if (footerRect.top + footerRect.height >= footerRealRect.top) {
+		footerReal.classList.remove("footer");
+	}	
+}
 </script>
 </body>
 

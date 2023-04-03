@@ -193,7 +193,7 @@ h6 {
 
 .navbar .getstarted:hover,
 .navbar .getstarted:focus:hover {
-  color: #fff;
+
 }
 
 .navbar .getstarted:hover:before,
@@ -360,7 +360,7 @@ h6 {
 .navbar-mobile .getstarted:focus {
   margin: 15px;
   color: #323233;
-  padding-left: 15px;
+  padding-left: 7px;
 }
 
 .navbar-mobile .dropdown ul {
