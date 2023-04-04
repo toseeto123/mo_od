@@ -133,7 +133,7 @@ public class UserController {
 	
 	@RequestMapping("/toGoMypage")
 	public String toGoMyPage(Model model) {
-		model.addAttribute("message", "필수 입력값을 입력해주세요.");
+		model.addAttribute("message", "�븘�닔 �엯�젰媛믪쓣 �엯�젰�빐二쇱꽭�슂.");
 		return "User/mypage";
 	}
 	@RequestMapping("/toGoPayment")
@@ -171,8 +171,8 @@ public class UserController {
 		            } else if (path.contains("proCatelogin")) {
 		                System.out.println("proCatelogin ");
 		                if (naverUserInfo.getAdr() == null) {
-		    		        // 필수입력값 alert 창 띄우기
-		    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
+		    		        // �븘�닔�엯�젰媛� alert 李� �쓣�슦湲�
+		    		        model.addAttribute("message", "�븘�닔 �엯�젰媛믪쓣 �엯�젰�빐二쇱꽭�슂.");
 		    		        return "/User/mypage";
 		            	}
 		                CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
@@ -184,8 +184,8 @@ public class UserController {
 		                return "redirect:/users/bucket";
 		            } else if (path.contains("payBeLogin")) {
 		            	if (naverUserInfo.getAdr() == null) {
-		    		        // 필수입력값 alert 창 띄우기
-		    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
+		    		        // �븘�닔�엯�젰媛� alert 李� �쓣�슦湲�
+		    		        model.addAttribute("message", "�븘�닔 �엯�젰媛믪쓣 �엯�젰�빐二쇱꽭�슂.");
 		    		        return "/User/mypage";
 		            	}
 		                userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
@@ -232,8 +232,8 @@ public class UserController {
 	        } else if (path.contains("proCatelogin")) {
 	        	System.out.println("proCatelogin ");
 	        	 if (userInfo.getAdr() == null) {
-	    		        // 필수입력값 alert 창 띄우기
-	    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
+	    		        // �븘�닔�엯�젰媛� alert 李� �쓣�슦湲�
+	    		        model.addAttribute("message", "�븘�닔 �엯�젰媛믪쓣 �엯�젰�빐二쇱꽭�슂.");
 	    		        return "/User/mypage";
 	            	}
 	            CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
@@ -246,8 +246,8 @@ public class UserController {
 	        } else if(path.contains("payBeLogin")) 
 	        {
 	        	 if (userInfo.getAdr() == null) {
-	    		        // 필수입력값 alert 창 띄우기
-	    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
+	    		        // �븘�닔�엯�젰媛� alert 李� �쓣�슦湲�
+	    		        model.addAttribute("message", "�븘�닔 �엯�젰媛믪쓣 �엯�젰�빐二쇱꽭�슂.");
 	    		        return "/User/mypage";
 	            	}
 	            userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
@@ -424,7 +424,7 @@ public class UserController {
 		String ssid = ssvo.getId();
 		userservice.delete(ssid);
 		session.invalidate();
-		return "redirect:/";
+		return "redirect:/users/login";
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -443,9 +443,9 @@ public class UserController {
 
 		String setFrom = "cwj9799@naver.com";
 		String toMail = email;
-		String title = "회원가입 인증 이메일 입니다.";
-		String content = "홈페이지를 방문해주셔서 감사합니다." + "<br><br>" + "인증 번호는 " + checkNum + "입니다." + "<br>"
-				+ "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+		String title = "�쉶�썝媛��엯 �씤利� �씠硫붿씪 �엯�땲�떎.";
+		String content = "�솃�럹�씠吏�瑜� 諛⑸Ц�빐二쇱뀛�꽌 媛먯궗�빀�땲�떎." + "<br><br>" + "�씤利� 踰덊샇�뒗 " + checkNum + "�엯�땲�떎." + "<br>"
+				+ "�빐�떦 �씤利앸쾲�샇瑜� �씤利앸쾲�샇 �솗�씤���뿉 湲곗엯�븯�뿬 二쇱꽭�슂.";
 
 		try {
 

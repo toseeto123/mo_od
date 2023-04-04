@@ -235,11 +235,13 @@ input {
 		</tr>
 			<tr>
 				<td colspan="3"><input type="submit" id="updateBtn" class="btn btn-primary" value="수정하기" style="background:#323232;border:#323232;color:white; width: 35%; height: 50px; font-size: 20px; border-radius: 30px;" onclick="return UpdateCheck()">
-					<button type="button" id="deleteBtn" class="btn btn-primary" style="background:#323232;border:#323232;color:white; width: 35%; height: 50px; margin: 10px 0; font-size: 20px; border-radius: 30px;" onclick="if (DeleteCheck()) $('#exampleModal').modal('show')">탈퇴하기</button>
+					<button type="button" id="deleteBtn" class="btn btn-primary" style="background:#323232;border:#323232;color:white; width: 35%; height: 50px; margin: 10px 0; font-size: 20px; border-radius: 30px;" onclick="if(DeleteCheck()) showAlert()">탈퇴하기</button>
 					<button type="button" class="btn btn-primary" style="background:#323232;border:#323232;color:white; width: 35%; height: 50px; font-size: 20px; border-radius: 30px;" onclick="location.href='/index.jsp'">메인으로</button>
 				</td>
 			</tr>
 		</table>
+		<script type="text/javascript">
+		</script>
 		
 		
 		
@@ -254,13 +256,18 @@ input {
         </button>
       </div>
       <div class="modal-body">
-      	탙퇴시 모든 버킷내역, 주문내역, 결제내역이 삭제됩니다. <br>
-        또한, 삭제된 정보는 다시 되돌릴 수 없습니다. <br>
-        탈퇴하시겠습니까?
+      	
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary"id="modal_delbtn"  style="background:#c8936ed4;border:#c8936ed4;color:white;" onclick="location.href = '/users/delete'">탈퇴하기</button>
-        <button type="button" class="btn btn-secondary" style="background:#c8936ed4;border:#c8936ed4;color:white;" onclick="$('#exampleModal').modal('hide')">닫기</button>
+        <button type="button" class="btn btn-secondary" style="background:#525252;border:#525252;color:white;" onclick="$('#exampleModal').modal('hide')">닫기</button>
+        <script>
+        function showAlert() {
+			  if (confirm("탙퇴시 모든 버킷내역, 주문내역, 결제내역이 삭제됩니다.\n또한, 삭제된 정보는 다시 되돌릴 수 없습니다.\n탈퇴하시겠습니까?")) {
+				alert("탈퇴가 완료 되었습니다.")		  
+			    location.href = '/users/delete';
+			  }
+			}
+		</script>
       </div>
     </div>
   	</div>
