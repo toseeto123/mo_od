@@ -99,11 +99,15 @@ background-color:#f5f6f7;
   
 <div class="chart3">
   <div class="chart-container">
-    <div class="chartTitle"><b style="padding-left:50px;">주간 매출</b></div>
-    <div class="chart-item">
+    <div class="chartTitle"><b style="padding-left:25px;"><input type="button" id="byWeek" value="주간"></b><b style="padding-left:25px;"><input type="button" id="byMonth" value="월간"></b></div>
+    <div class="chart-item" id="week">
       <canvas id="myChart3"></canvas>
     </div>
+    <div class="chart-item" id="month">
+      <canvas id="myChart5"></canvas>
+    </div>
   </div>
+ 
 </div>
   
 <div class="chart4">
@@ -150,6 +154,41 @@ background-color:#f5f6f7;
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script>
+	console.log(${chart5}[0].month)
+	console.log(${chart5}[0].sales)
+	
+	const chartMonth5 = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
+	const chartSales5 = [0,0,0,0,0,0,0,0,0,0,0,0];
+	for(var i=0; i<${chart5}.length; i++){
+		if(${chart5}[i].month==1){
+			chartSales5[0]=${chart5}[i].sales;
+		}else if(${chart5}[i].month==2){
+			chartSales5[1]=${chart5}[i].sales;
+		}else if(${chart5}[i].month==3){
+			chartSales5[2]=${chart5}[i].sales;
+		}else if(${chart5}[i].month==4){
+			chartSales5[3]=${chart5}[i].sales;
+		}else if(${chart5}[i].month==5){
+			chartSales5[4]=${chart5}[i].sales;
+		}else if(${chart5}[i].month==6){
+			chartSales5[5]=${chart5}[i].sales;
+		}else if(${chart5}[i].month==7){
+			chartSales5[6]=${chart5}[i].sales;
+		}else if(${chart5}[i].month==8){
+			chartSales5[7]=${chart5}[i].sales;
+		}else if(${chart5}[i].month==9){
+			chartSales5[8]=${chart5}[i].sales;
+		}else if(${chart5}[i].month==10){
+			chartSales5[9]=${chart5}[i].sales;
+		}else if(${chart5}[i].month==11){
+			chartSales5[10]=${chart5}[i].sales;
+		}else if(${chart5}[i].month==12){
+			chartSales5[11]=${chart5}[i].sales;
+		}
+		
+	}
+	
+	
 	let sum;
 	const chartProduct1 = [];
 	const chartPaycount1 = [];
@@ -375,6 +414,68 @@ background-color:#f5f6f7;
 			data : data4,
 			options : options4
 		}); 
+		
+		
+		
+		const data5 = {
+				labels : chartMonth5,
+				datasets : [ {
+					label : '월간 매출액',
+					data : chartSales5,
+					fill : false,
+					borderColor : 'rgb(75, 192, 192)',
+					tension : 0.1,
+					borderWidth : 1
+				} ]
+			};
+
+			// Line chart의 옵션을 정의합니다.
+			const options5 = {
+					 
+					scales: {
+				          x:{
+				        	  title:{
+				        		  display:true,
+				        		  text:'월',
+				        		  font:{
+				        			  size:14,
+				        			  weight:'bold'
+				        		  }
+				        	  }
+				          },
+				          y:{
+				        	  title:{
+				        		  display:true,
+				        		  text:'매출',
+				        		  font:{
+				        			  size:14,
+				        			  weight:'bold'
+				        		  }
+				        	  }
+				          }
+				        }
+			};
+
+			const ctx5 = document.getElementById('myChart5').getContext('2d');
+			const myChart5 = new Chart(ctx5, {
+				type : 'line',
+				data : data5,
+				options : options5
+			});
+	</script>
+	
+	<script>
+	document.getElementById('month').style.display = 'none';
+		var weekButton = document.getElementById('byWeek');
+		var monthButton = document.getElementById('byMonth');
+		weekButton.addEventListener("click", function() {
+			  document.getElementById('month').style.display = 'none';
+			  document.getElementById('week').style.display = 'block';
+		});
+		monthButton.addEventListener("click", function() {
+			document.getElementById('month').style.display = 'block';
+			 document.getElementById('week').style.display = 'none';
+		});
 	</script>
 </body>
 
