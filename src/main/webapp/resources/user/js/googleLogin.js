@@ -100,6 +100,10 @@
   						location.href='/';
   					}else if(googleXHT.responseText=='Success'){				
   						location.href=document.referrer
+  					}else if(googleXHT.responseText=='bucket'){
+  						location.href='/users/bucket'
+  					}else if(googleXHT.responseText=='pay'){
+  						location.href='/users/toGoPayment'
   					}else{
   							window.location.href = "/users/toGoMypage";
   					}

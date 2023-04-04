@@ -206,6 +206,11 @@
 	</update>
 
 
+ <insert id="insert">
+      insert into cate(pro_number, user_no,cate_pro_price,total,pro_option)
+      values(#{vo.pro_number},#{user_no},#{vo.cate_pro_price},#{vo.total},#{vo.pro_option}) ON DUPLICATE KEY UPDATE amount = amount+1, total = total + cate_pro_price
+   </insert>
+
 </mapper>
 
 
