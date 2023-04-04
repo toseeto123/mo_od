@@ -55,7 +55,7 @@ public class AdminController {
    @RequestMapping("/chart")
    public String adminIndex(Model model) {
 	   adminPaymentService.getCategoryChart(model);
-      return "admin/chart";   
+      return "/admin/chart";   
    }
    
    @RequestMapping("/adminMemberList")
@@ -94,7 +94,7 @@ public class AdminController {
 	   module.pagingModule(model, moduleVO, userList, paging, 10);
 	   List<UserVO> showUserList = userService.selectAll(moduleVO);
 	   model.addAttribute("userList", showUserList);
-	   return "admin/adminMemberList";
+	   return "/admin/adminMemberList";
    }
   
    @RequestMapping("/adminMemberDetail/{userNo}")
@@ -167,7 +167,7 @@ public class AdminController {
 	   List<CateVO> showCatelist = cateService.selectAll(moduleVO,userid);
 	   model.addAttribute("cateList", showCatelist);	   
 	   
-	   return "admin/admincate";
+	   return "/admin/admincate";
    }
    @RequestMapping("/admincate/{paging}/{searchWhat}/{search}")
    @ResponseBody
@@ -197,7 +197,7 @@ public class AdminController {
    
    @RequestMapping(value="/insert" ,method=RequestMethod.GET)
    public String insertProductPage(){
-      return "admin/insertPro";
+      return "/admin/insertPro";
    }
    
    @RequestMapping(value="/insert" ,method=RequestMethod.POST)
@@ -251,7 +251,8 @@ public class AdminController {
            vo.setPro_img5(null);
        }
          ps.insertPro(vo);
-         return "admin/adminProList";
+
+         return "redirect:/admin/adminProList";
       }
    
 
@@ -363,17 +364,17 @@ public class AdminController {
 	       }
       ps.updatePro(vo);
       
-      return "/admin/adminProList";
+      return "redirect:/admin/adminProList";
    }
    @RequestMapping(value = "/updateSoldOut", method = RequestMethod.POST)
 	   public String proSoldOutUpdate(@RequestParam("pro_number") int pro_number,ProVO vo) {
 		   ps.updateSoludOut(vo);
-		   return "/admin/adminProList";
+		   return "redirect:/admin/adminProList";
 	   }
    @RequestMapping(value = "/updateOnSale", method = RequestMethod.POST)
    public String proSoldOnSale(@RequestParam("pro_number") int pro_number,ProVO vo) {
 	   ps.updateOnSale(vo);
-	   return "/admin/adminProList";
+	   return "redirect:/admin/adminProList";
    }
    }
    
