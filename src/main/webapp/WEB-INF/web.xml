@@ -39,8 +39,8 @@
 
   	
 	 <error-page>
-    <exception-type>java.lang.Throwable</exception-type> 모든 예외와 에러 처리
-    <location>/WEB-INF/views/error/error.jsp</location> 에러 페이지의 경로를 지정
+    <exception-type>java.lang.Throwable</exception-type>
+    <location>/WEB-INF/views/error/error.jsp</location> 
   </error-page> 
 
 		<filter>
