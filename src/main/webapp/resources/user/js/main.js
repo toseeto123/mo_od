@@ -223,24 +223,25 @@ function emailCheck() {
 
 
 
-  function UpdateCheck(){
-  			if (document.mypage.pwd.value == ""){
-              alert("암호를 반드시 입력해주세요");
-              mypage.pwd.focus();
-              return false;
-           }
-           if (document.mypage.pwd2.value == ""){
-              alert("암호를 반드시 입력해주세요");
-              mypage.pwd.focus();
-              return false;
-           }
-           if(document.mypage.pwd.value != document.mypage.pwd2.value){
-              alert("암호가 일치하지 않습니다");
-              mypage.pwd.value="";
-              mypage.pwd2.value="";
-              mypage.pwd.focus();
-              return false;
-           }
+   function UpdateCheck(){
+  			if (document.mypage.pwd.disabled === false && document.mypage.pwd.value === "") {
+               alert("현재비밀번호를 반드시 입력해주세요");
+               mypage.pwd1.focus();
+               return false;
+            }
+           if (document.mypage.pwd.disabled === false && document.mypage.pwd.value !== document.mypage.sspwd.value) {
+               alert("현재비밀번호가 일치하지 않습니다");
+               mypage.pwd1.focus();
+               return false;
+              }
+              if (document.mypage.pwd1.value !== "" && document.mypage.pwd1.value !== document.mypage.pwd2.value) {
+                 alert("변경할 암호가 일치하지 않습니다");
+                 mypage.pwd1.value = "";
+                 mypage.pwd2.value = "";
+                 mypage.pwd1.focus();
+                 return false;
+               } 
+	     
            if (document.mypage.phone.value == "") {
               alert("전화번호를 입력해주세요");
               mypage.phone.focus();
