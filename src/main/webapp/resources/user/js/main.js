@@ -31,7 +31,7 @@ function JoinCheck(){
               join.pwd.focus();
               return false;
            }
-           if (!document.join.pwd.value.match(/^([A-Za-z\d!@#$%^&*()\-_=+\\\|\[\]{};:'",.<>\/?]){10,20}$/)) {
+           if (!document.join.pwd.value.match(/^(?=.*[!@#$%])([A-Za-z\d!@#$%]){10,20}$/)) {
                alert("암호는 대소문자, 숫자, 특수문자를 조합으로 10~20자리 이내로 입력해주세요.");
                join.pwd.focus();
                return false;
