@@ -108,12 +108,14 @@ section{
                 	<th>상세보기</th>
                 </tr>
                 </thead>
-                
+                <c:set var="value" value="0" />
                 <tbody id="tbody">
                 <c:forEach var="member" items="${member}">
                 <tr>
                 <td>${member.orderNo}</td>
-				<td><span id="status">${member.status}</span></td>
+				<td><span id="status${value}">${member.status}</span>
+				<input type="hidden" value="${value = value+1}">
+				</td>
                 <td>${member.name}</td>
                 <td>${member.phone}</td>
                 <td>${member.address}</td>
@@ -130,7 +132,7 @@ section{
                   </tbody>
               </table>
               
-             
+             <input type="hidden" id="index" value="${value}">
               </div>
               
               </section>
@@ -186,13 +188,15 @@ window.onload = function(){
 }
 </script>
 <script>
-	if(document.getElementById('status').innerHTML == '결제 취소'){
-		document.getElementById('status').style.color = "#f54c4c";
-	}else if(document.getElementById('status').innerHTML == '구매 확정'){
-		document.getElementById('status').style.color = "#3c8df0";
+for(var i=0; i<document.getElementById('index').value; i++){
+	if(document.getElementById('status'+i).innerHTML == '결제 취소'){
+		document.getElementById('status'+i).style.color = "#f54c4c";
+	}else if(document.getElementById('status'+i).innerHTML == '구매 확정'){
+		document.getElementById('status'+i).style.color = "#3c8df0";
 	}else{
-		document.getElementById('status').style.color = "black";
+		document.getElementById('status'+i).style.color = "black";
 	}
+}
 </script>
 </body>
 
