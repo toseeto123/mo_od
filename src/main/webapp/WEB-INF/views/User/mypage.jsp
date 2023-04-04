@@ -175,21 +175,30 @@ input {
 			<td ><label for="id">아이디</label></td>
 			<td id="login_id">${login_info.id}<br></td>
 		</tr>
-		<tr >
-			<td><label for="pwd">비밀번호</label></td>
-			<td><input type="password" class="pwd" id="pwd" name="pwd" style="width: 100%; max-width: 280px;" required><br>
-			</td>
-			
-		</tr>
-		
-		<tr >
-			<td><label for="pwd">비밀번호 확인</label></td>
 
-			<td><input type="password" id="pwd2" name="pwd2" style="width: 100%; max-width: 280px;" required onkeyup="passConfirm()"><br><span id="confirmMsg"></span></td>
-			
-			
-		</tr>
-		<tr >
+				<tr>
+					<td><label for="pwd">현재 비밀번호</label></td>
+					<td><input type="password" class="pwd" id="pwd" name="pwd" style="width: 100%; max-width: 280px;"
+					${login_info.pwd == null ? 'disabled' : 'required'}><br>
+					<td><input type="hidden" id="sspwd" size="50" name="sspwd"
+						value="${login_info.pwd != null ? login_info.pwd : ''}" /></td>
+				</tr>
+				<tr>
+					<td><label for="pwd1">변경할 비밀번호</label></td>
+					<td><input type="password" class="pwd1" id="pwd1" name="pwd1"
+						style="width: 100%; max-width: 280px;"
+						${login_info.pwd == null ? 'required' : ''}><br></td>
+				</tr>
+				<tr>
+					<td><label for="pwd2">변경할 비밀번호 확인</label></td>
+					<td><input type="password" id="pwd2" name="pwd2"
+						style="width: 100%; max-width: 280px;"
+						${login_info.pwd == null ? 'required' : ''}
+						onkeyup="passmy()"><br>
+					<span id="confirmMsg"></span></td>
+				</tr>
+
+		<tr>
 			<td style="min-width: 100px;"><label for="name">이름</label></td>
 			<td>${login_info.name}<br></td>
 		</tr>
@@ -221,16 +230,18 @@ input {
 			
 		</tr>
 		<tr >
-			<td><input type="hidden"id="sspwd" size="50" name="sspwd" value="${login_info.pwd}"/> </td>
+			<td><label for="adr3"></label></td>
 			<td colspan="2"><input type="text" style="width: 100%; max-width: 350px;" class="address_input_3" name="adr3" id="adr3" placeholder="상세주소" value="${myinfo_adr3}" required></td>
 		</tr>
 			<tr>
 				<td colspan="3"><input type="submit" id="updateBtn" class="btn btn-primary" value="수정하기" style="background:#323232;border:#323232;color:white; width: 35%; height: 50px; font-size: 20px; border-radius: 30px;" onclick="return UpdateCheck()">
-					<button type="button" id="deleteBtn" class="btn btn-primary" style="background:#323232;border:#323232;color:white; width: 35%; height: 50px; margin: 10px 0; font-size: 20px; border-radius: 30px;" onclick="if (DeleteCheck()) $('#exampleModal').modal('show')">탈퇴하기</button>
+					<button type="button" id="deleteBtn" class="btn btn-primary" style="background:#323232;border:#323232;color:white; width: 35%; height: 50px; margin: 10px 0; font-size: 20px; border-radius: 30px;" onclick="if(DeleteCheck()) showAlert()">탈퇴하기</button>
 					<button type="button" class="btn btn-primary" style="background:#323232;border:#323232;color:white; width: 35%; height: 50px; font-size: 20px; border-radius: 30px;" onclick="location.href='/index.jsp'">메인으로</button>
 				</td>
 			</tr>
 		</table>
+		<script type="text/javascript">
+		</script>
 		
 		
 		
@@ -245,13 +256,18 @@ input {
         </button>
       </div>
       <div class="modal-body">
-      	탈퇴시 모든 버킷내역 및 주문내역이 삭제됩니다.<br> 
-      	또한, 삭제된 정보는 다시 되돌릴 수 없습니다.<br>
-      	탈퇴하시겠습니까?<br>
+      	
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-primary"id="modal_delbtn"  style="background:#c8936ed4;border:#c8936ed4;color:white;" onclick="location.href = '/users/delete'">탈퇴하기</button>
-        <button type="button" class="btn btn-secondary" style="background:#c8936ed4;border:#c8936ed4;color:white;" onclick="$('#exampleModal').modal('hide')">닫기</button>
+        <button type="button" class="btn btn-secondary" style="background:#525252;border:#525252;color:white;" onclick="$('#exampleModal').modal('hide')">닫기</button>
+        <script>
+        function showAlert() {
+			  if (confirm("탙퇴시 모든 버킷내역, 주문내역, 결제내역이 삭제됩니다.\n또한, 삭제된 정보는 다시 되돌릴 수 없습니다.\n탈퇴하시겠습니까?")) {
+				alert("탈퇴가 완료 되었습니다.")		  
+			    location.href = '/users/delete';
+			  }
+			}
+		</script>
       </div>
     </div>
   	</div>

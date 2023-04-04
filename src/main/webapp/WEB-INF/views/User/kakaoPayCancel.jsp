@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <!DOCTYPE html>
 <html>
 <head>
@@ -243,10 +244,10 @@ body {
                         ${info.item_name}</strong>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="totalprice">총 결제 금액 : </label> <strong>${info.amount.total}</strong>
+                     <label for="totalprice">총 결제 금액 : </label> <strong><fmt:formatNumber value="${info.amount.total}" type="currency" currencySymbol="₩" /></strong>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="cancel_amount">취소된 금액 : </label> <strong>${info.approved_cancel_amount.total}</strong>
+                     <label for="cancel_amount">취소된 금액 : </label> <strong><fmt:formatNumber value="${info.approved_cancel_amount.total}" type="currency" currencySymbol="₩" /></strong>
                   </div>
 
                   

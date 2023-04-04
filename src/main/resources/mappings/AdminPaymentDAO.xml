@@ -77,12 +77,24 @@
 					group by product.pro_categoryserial
 					limit 0, 5) as category
 			on category.categoryserial = product.pro_categoryserial	
-		where (payment.Success = '결제 완료' or payment.Success = '구매 확정')
+		where (payment.Success = '결제 완료' or payment.Success = '구매 확정' )
 		and payment.SuccessTime like concat('%' ,#{year}, '%')
 		group by member.gender,product.pro_categoryserial, member.age
 		order by productCount desc
 
 			]]>
+	</select>
+	
+	<select id="getCategoryChart5" resultType="kr.co.mood.Payment.VO.AdminChartVO">
+		         <![CDATA[
+          SELECT MONTH(SuccessTime) as 'month',
+         	SUM(Amount) as sales 
+         	from payment 
+         	where (Success = '결제 완료' or payment.Success = '구매 확정')
+					and SuccessTime like concat(#{year}, '%')
+			group by MONTH(SuccessTime)
+         	order by MONTH(SuccessTime)
+         	]]>
 	</select>
 
 	<select id="adminPaymentMemberList"
@@ -93,7 +105,8 @@
 		member.phone as 'phone',
 		moodorder.price as
 		'amount',
-		payment.SuccessTime as 'payDate'
+		payment.SuccessTime as 'payDate',
+		payment.Success as 'status'
 		from moodorder
 		inner join
 		moodjoin as member
@@ -101,7 +114,7 @@
 		inner join payment
 		on
 		payment.orderid = moodorder.orderid
-		where (payment.Success = '결제 완료' or payment.Success = '구매 확정')
+		where (payment.Success = '결제 완료' or payment.Success = '구매 확정' or payment.Success = '결제 취소')
 		group by orderNo
 		order by orderNo desc
 		<if test="endNo != 0">
@@ -120,7 +133,8 @@
 		member.phone as 'phone',
 		moodorder.price as
 		'amount',
-		payment.SuccessTime as 'payDate'
+		payment.SuccessTime as 'payDate',
+		payment.Success as 'status'
 		from moodorder
 		inner join
 		moodjoin as member
@@ -128,7 +142,7 @@
 		inner join payment
 		on
 		payment.orderid = moodorder.orderid
-		where (payment.Success = '결제 완료' or payment.Success = '구매 확정')
+		where (payment.Success = '결제 완료' or payment.Success = '구매 확정' or payment.Success = '결제 취소')
 		<if test="searchName != null">
 			and member.name like concat('%', #{searchName}, '%')
 		</if>
@@ -158,6 +172,7 @@
 		from orderProduct
 		inner join product
 			on product.pro_number = orderProduct.pro_number
+		group by orderNo, product.pro_number
 		order by orderNo desc
 	</select>
 
@@ -172,6 +187,7 @@
 			member.name as 'name',
 			member.phone as 'phone',
 			payment.SuccessTime as 'payDate',
+			payment.Success as 'status',
 			moodorder.price as 'amount'
 		from orderProduct
 		inner join product
@@ -204,6 +220,11 @@
 		update moodorder set address = #{address} where orderId = #{orderNo};
 	</update>
 
+
+ <insert id="insert">
+      insert into cate(pro_number, user_no,cate_pro_price,total,pro_option)
+      values(#{vo.pro_number},#{user_no},#{vo.cate_pro_price},#{vo.total},#{vo.pro_option}) ON DUPLICATE KEY UPDATE amount = amount+1, total = total + cate_pro_price
+   </insert>
 
 </mapper>
 

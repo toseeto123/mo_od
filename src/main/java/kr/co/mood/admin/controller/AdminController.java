@@ -55,7 +55,7 @@ public class AdminController {
    @RequestMapping("/chart")
    public String adminIndex(Model model) {
 	   adminPaymentService.getCategoryChart(model);
-      return "admin/chart";   
+      return "/admin/chart";   
    }
    
    @RequestMapping("/adminMemberList")
@@ -65,7 +65,7 @@ public class AdminController {
   
    @RequestMapping("/adminMemberList/{paging}/{searchWhat}/{search}")
    @ResponseBody
-   public Map<String, Object> adminMemberList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//占쎈퉲�겫�룞�삕�뜝�럥彛� 占쎄껀�뜝�띂寃ュ뜝占�
+   public Map<String, Object> adminMemberList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//�뜝�럥�돯占쎄껀占쎈짗占쎌굲占쎈쐻占쎈윥壤쏉옙 �뜝�럡猿�占쎈쐻占쎈쓡野껁깷�쐻�뜝占�
 	   ModuleVO moduleVO = new ModuleVO();
 	   Map<String, Object> map = new HashMap<String, Object>();
 	   if(search.equals("(none)")) {
@@ -88,13 +88,13 @@ public class AdminController {
    
    
    @RequestMapping("/adminMemberList/{paging}")
-   public String adminMemberList(@PathVariable String paging, Model model) {//占쎈퉲�겫�룞�삕�뜝�럥彛� 占쎄껀�뜝�띂寃ュ뜝占�
+   public String adminMemberList(@PathVariable String paging, Model model) {//�뜝�럥�돯占쎄껀占쎈짗占쎌굲占쎈쐻占쎈윥壤쏉옙 �뜝�럡猿�占쎈쐻占쎈쓡野껁깷�쐻�뜝占�
 	   ModuleVO moduleVO = new ModuleVO();
 	   List<UserVO> userList = userService.selectAll(null);
 	   module.pagingModule(model, moduleVO, userList, paging, 10);
 	   List<UserVO> showUserList = userService.selectAll(moduleVO);
 	   model.addAttribute("userList", showUserList);
-	   return "admin/adminMemberList";
+	   return "/admin/adminMemberList";
    }
   
    @RequestMapping("/adminMemberDetail/{userNo}")
@@ -167,7 +167,7 @@ public class AdminController {
 	   List<CateVO> showCatelist = cateService.selectAll(moduleVO,userid);
 	   model.addAttribute("cateList", showCatelist);	   
 	   
-	   return "admin/admincate";
+	   return "/admin/admincate";
    }
    @RequestMapping("/admincate/{paging}/{searchWhat}/{search}")
    @ResponseBody
@@ -197,10 +197,10 @@ public class AdminController {
    
    @RequestMapping(value="/insert" ,method=RequestMethod.GET)
    public String insertProductPage(){
-      return "admin/insertPro";
+      return "/admin/insertPro";
    }
    
-   @RequestMapping(value="insert" ,method=RequestMethod.POST)
+   @RequestMapping(value="/insert" ,method=RequestMethod.POST)
    public String insertProduct(@RequestParam MultipartFile file1,
                            @RequestParam MultipartFile file2,
                            @RequestParam MultipartFile file3,
@@ -251,7 +251,8 @@ public class AdminController {
            vo.setPro_img5(null);
        }
          ps.insertPro(vo);
-         return "admin/adminProList";
+
+         return "redirect:/admin/adminProList";
       }
    
 
@@ -265,7 +266,7 @@ public class AdminController {
 
       @RequestMapping("/adminProList/{paging}/{searchWhat}/{search}")
       @ResponseBody
-      public Map<String, Object> adminProList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//占쎈퉲�겫�룞�삕�뜝�럥彛� 占쎄껀�뜝�띂寃ュ뜝占�
+      public Map<String, Object> adminProList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//�뜝�럥�돯占쎄껀占쎈짗占쎌굲占쎈쐻占쎈윥壤쏉옙 �뜝�럡猿�占쎈쐻占쎈쓡野껁깷�쐻�뜝占�
    	   ModuleVO moduleVO = new ModuleVO();
    	   Map<String, Object> map = new HashMap<String, Object>();
    	   if(search.equals("(none)")) {
@@ -312,7 +313,7 @@ public class AdminController {
       return "/admin/adminProUpdate";
    }
    
-   @RequestMapping(value = "/updatePro", method = RequestMethod.GET)
+   @RequestMapping(value = "/updatePro", method = RequestMethod.POST)
    public String proDetails(@RequestParam("pro_number") int pro_number,
 		   @RequestParam MultipartFile file1,
            @RequestParam MultipartFile file2,
@@ -363,17 +364,17 @@ public class AdminController {
 	       }
       ps.updatePro(vo);
       
-      return "/admin/adminProList";
+      return "redirect:/admin/adminProList";
    }
    @RequestMapping(value = "/updateSoldOut", method = RequestMethod.POST)
 	   public String proSoldOutUpdate(@RequestParam("pro_number") int pro_number,ProVO vo) {
 		   ps.updateSoludOut(vo);
-		   return "/admin/adminProList";
+		   return "redirect:/admin/adminProList";
 	   }
    @RequestMapping(value = "/updateOnSale", method = RequestMethod.POST)
    public String proSoldOnSale(@RequestParam("pro_number") int pro_number,ProVO vo) {
 	   ps.updateOnSale(vo);
-	   return "/admin/adminProList";
+	   return "redirect:/admin/adminProList";
    }
    }
    

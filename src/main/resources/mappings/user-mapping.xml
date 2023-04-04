@@ -86,7 +86,7 @@
     <update id ="update" parameterType="kr.co.mood.user.dao.UserVO">
     <![CDATA[
         update moodjoin
-        set adr= concat_ws('   ',#{adr} , #{adr2} , #{adr3}), email=#{email}, phone=#{phone}, pwd=hex(aes_encrypt(#{pwd},'key'))
+        set adr= concat_ws('   ',#{adr} , #{adr2} , #{adr3}), email=#{email}, phone=#{phone}, pwd=hex(aes_encrypt(#{pwd1},'key'))
         where id = #{id}
         ]]>
     </update>

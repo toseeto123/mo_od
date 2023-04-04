@@ -16,8 +16,15 @@ public class AdminPaymentVO {
 	private int amount;
 	private Date payDate;
 	private int productCount;
+	private String status;
 	
 	
+	public String getStatus() {
+		return status;
+	}
+	public void setStatus(String status) {
+		this.status = status;
+	}
 	public int getProductCount() {
 		return productCount;
 	}
@@ -78,13 +85,14 @@ public class AdminPaymentVO {
 	public void setAmount(int amount) {
 		this.amount = amount;
 	}
-	
 	@Override
 	public String toString() {
 		return "AdminPaymentVO [orderNo=" + orderNo + ", name=" + name + ", address=" + address + ", phone=" + phone
 				+ ", productNo=" + productNo + ", productName=" + productName + ", price=" + price + ", amount="
-				+ amount + ", payDate=" + payDate + ", productCount=" + productCount + "]";
+				+ amount + ", payDate=" + payDate + ", productCount=" + productCount + ", status=" + status + "]";
 	}
+	
+	
 	
 	
 }

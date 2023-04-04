@@ -6,6 +6,7 @@ public class AdminChartVO {
 	 private int bucketCount;
 	 private String serialNumber;
 	 private String week;
+	 private String month;
 	 private int sales;
 	 private int productCount;
 	 private String categorySerial;
@@ -13,7 +14,14 @@ public class AdminChartVO {
 	 private String age;
 	 
 	 
-	 	
+	
+	 
+	public String getMonth() {
+		return month;
+	}
+	public void setMonth(String month) {
+		this.month = month;
+	}
 	public String getAge() {
 		return age;
 	}
@@ -71,9 +79,10 @@ public class AdminChartVO {
 	@Override
 	public String toString() {
 		return "AdminChartVO [payCount=" + payCount + ", bucketCount=" + bucketCount + ", serialNumber=" + serialNumber
-				+ ", week=" + week + ", sales=" + sales + ", productCount=" + productCount + ", categorySerial="
-				+ categorySerial + ", gender=" + gender + ", age=" + age + "]";
+				+ ", week=" + week + ", month=" + month + ", sales=" + sales + ", productCount=" + productCount
+				+ ", categorySerial=" + categorySerial + ", gender=" + gender + ", age=" + age + "]";
 	}
+	
 
 	
 	

@@ -107,7 +107,7 @@ body {
 	 	<button type="submit" class="sbtn" >판매재개</button>
 	 </form>
 </div>
-<form role="form" method="get" action="/updatePro" enctype="multipart/form-data">
+<form role="form" method="POST" action="/admin/updatePro" enctype="multipart/form-data">
 <div class="top_Area">
 	<div class="inputArea" style="margin-top: 50px;">
 	 <label for="">상품명</label>
@@ -140,37 +140,37 @@ body {
 <hr>
 <div class="inputArea">
  <label for="">이미지1</label>
- <input type="file" id="" name="file1" onchange="readURL(this);" />
+ <input type="file" id="file1" name="file1" onchange="readURL(this);" />
  <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" style="width: 100px; height: 100px;"> >>변경후>>
- <img id="preview" style="width: 100px; height: 100px;"/>
+ <img class="preview-img" id="preview1" style="width: 100px; height: 100px;"/>
 </div><hr>
 
 <div class="inputArea">
 <label for="">이미지2</label>
- <input type="file" id="" name="file2" onchange="readURL(this);" />
+ <input type="file" id="file2" name="file2" onchange="readURL(this);" />
  <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img2}" style="width: 100px; height: 100px;"> >>변경후>>
- <img id="preview" style="width: 100px; height: 100px;"/>
+ <img class="preview-img" id="preview2" style="width: 100px; height: 100px;"/>
 </div><hr>
 
 <div class="inputArea">
 <label for="">이미지3</label>
- <input type="file" id="" name="file3" onchange="readURL(this);" />
+ <input type="file" id="file3" name="file3" onchange="readURL(this);" />
  <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img3}" style="width: 100px; height: 100px;"> >>변경후>>
- <img id="preview" style="width: 100px; height: 100px;"/>
+ <img class="preview-img" id="preview3" style="width: 100px; height: 100px;"/>
 </div><hr>
 
 <div class="inputArea">
 <label for="">이미지4</label>
- <input type="file" id="" name="file4" onchange="readURL(this);" />
+ <input type="file" id="file4" name="file4" onchange="readURL(this);" />
  <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img4}" style="width: 100px; height: 100px;"> >>변경후>>
- <img id="preview" style="width: 100px; height: 100px;"/>
+ <img class="preview-img" id="preview4" style="width: 100px; height: 100px;"/>
 </div><hr>
 
 <div class="inputArea">
 <label for="">이미지5</label>
- <input type="file" id="" name="file5" onchange="readURL(this);" />
+ <input type="file" id="file5" name="file5" onchange="readURL(this);" />
  <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img5}" style="width: 100px; height: 100px;"> >>변경후>>
- <img id="preview" style="width: 100px; height: 100px;"/>
+ <img class="preview-img" id="preview5" style="width: 100px; height: 100px;"/>
 </div><hr>
 
 
@@ -206,12 +206,17 @@ body {
 
 <script type="text/javascript">
 function readURL(input) {
-	  if (input.files && input.files[0]) {
-	    var reader = new FileReader();
-	    reader.onload = function(e) {
-	      document.getElementById('preview').src = e.target.result;
-	    };
-	    reader.readAsDataURL(input.files[0]);
+	  if (input.files) {
+		var filesAmount = input.files.length;
+		for (i = 0; i < filesAmount; i++) {
+			var reader = new FileReader();
+			reader.onload = function(e) {
+		        var img = document.createElement('img');
+		        var img = input.parentNode.querySelector('.preview-img');
+		        img.src = e.target.result;
+		 };
+		 reader.readAsDataURL(input.files[i]); 
+		}
 	  } else {
 	    document.getElementById('preview').src = "";
 	  }

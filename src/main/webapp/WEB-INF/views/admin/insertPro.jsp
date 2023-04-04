@@ -86,7 +86,7 @@ background-color:#f5f6f7;
 
 <body style="background-color:#f5f6f7;">
 	<jsp:include page="../../common/adminHeader.jsp" />
-<form role="form" method="post" action="/insert"  enctype="multipart/form-data">
+<form role="form" method="post" action="/admin/insert"  enctype="multipart/form-data">
 	      <section id="breadcrumbs" class="breadcrumbs" style="height: 70px; padding-bottom: 80px; font-size: 22px;">
          <div class="container aiccontainer">
             <div class="d-flex align-items-center aic">
@@ -177,23 +177,23 @@ function subCategoryChange() {
 <div class="inputArea">
  <span style="color:red; font-size: 15px;">*이미지 권장사이즈 : 500*500px</span><br>
  <label for="">이미지1</label>
- <input type="file" id="" name="file" /><span style="color:red; font-size: 15px;">*이미지1 필수, 제일이쁜사진</span><br>
+ <input type="file" id="" name="file1" /><span style="color:red; font-size: 15px;">*이미지1 필수, 제일이쁜사진</span><br>
 </div>
 <div class="inputArea">
  <label for="">이미지2</label>
- <input type="file" id="" name="file1" />
-</div>
-<div class="inputArea">
- <label for="">이미지3</label>
  <input type="file" id="" name="file2" />
 </div>
 <div class="inputArea">
- <label for="">이미지4</label>
+ <label for="">이미지3</label>
  <input type="file" id="" name="file3" />
 </div>
 <div class="inputArea">
- <label for="">이미지5</label>
+ <label for="">이미지4</label>
  <input type="file" id="" name="file4" />
+</div>
+<div class="inputArea">
+ <label for="">이미지5</label>
+ <input type="file" id="" name="file5" />
 </div>
 
 

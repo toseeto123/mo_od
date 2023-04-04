@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.co.mood.Payment.VO.AdminChartVO;
 import kr.co.mood.Payment.VO.AdminPaymentVO;
 import kr.co.mood.Payment.VO.KakaoPayApprovalVO;
+import kr.co.mood.cate.vo.CateVO;
 import kr.co.mood.module.ModuleCommon;
 import kr.co.mood.module.ModuleVO;
 import kr.co.mood.module.ViewPagingVO;
@@ -35,6 +36,7 @@ public class AdminPaymentService {
 		List<AdminChartVO> chart2 = dao.getCategoryChart2();
 		List<AdminChartVO> chart3 = dao.getCategoryChart3(year);
 		List<AdminChartVO> chart4 = dao.getCategoryChart4(year);
+		List<AdminChartVO> chart5 = dao.getCategoryChart5(year);
 		
 		List<String> categorys = new ArrayList<String>();
 		List<String> ages = new ArrayList<String>();
@@ -110,6 +112,7 @@ public class AdminPaymentService {
 			model.addAttribute("chart4Man", objectMapper.writeValueAsString(man));
 			model.addAttribute("chart4Age", objectMapper.writeValueAsString(ages));
 			model.addAttribute("chart4Category", objectMapper.writeValueAsString(categorys));
+			model.addAttribute("chart5", objectMapper.writeValueAsString(chart5));
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
@@ -117,6 +120,7 @@ public class AdminPaymentService {
 		model.addAttribute("chart1", chart1);
 		model.addAttribute("chart2", chart2);
 		model.addAttribute("chart3", chart3);
+		
 		
 	}
 	
@@ -179,6 +183,8 @@ public class AdminPaymentService {
 		member.setOrderNo(list.get(0).getOrderNo());
 		member.setPayDate(list.get(0).getPayDate());
 		member.setPhone(list.get(0).getPhone());
+		member.setStatus(list.get(0).getStatus());
+		System.out.println(member.getStatus());
 		model.addAttribute("member", member);
 		model.addAttribute("product", list);
 	}
@@ -189,6 +195,10 @@ public class AdminPaymentService {
 	
 	public void updateAddress(AdminPaymentVO vo) {
 		dao.updateAddress(vo);
+	}
+	
+	public void insert(int user_no, CateVO vo) {
+		dao.insert(user_no, vo);
 	}
 	
 	

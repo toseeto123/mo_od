@@ -30,6 +30,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import kr.co.mood.Payment.DAO.AdminPaymentService;
 import kr.co.mood.Payment.VO.userOrderProductVO;
 import kr.co.mood.Payment.VO.userOrderVO;
 import kr.co.mood.cate.DAO.CateService;
@@ -65,11 +66,17 @@ public class UserController {
 //	private SqlSessionTemplate mybatis;
 //	private UserVO vo;
 //	private ModelAndView mav;
+	@Autowired
+	private AdminPaymentService adminPayService;
 
 	@RequestMapping(value = "/googleSave", method = RequestMethod.POST)
 	@ResponseBody
-	public String googleSave(@RequestBody String googleJsonData, HttpSession session, HttpServletRequest request) throws Exception {
-
+	public String googleSave(@RequestBody String googleJsonData, HttpSession session) throws Exception {
+		String path = ((String) session.getAttribute("path"));
+		CateVO cartVO = (CateVO) session.getAttribute("cvo");
+		String payPath = (String)session.getAttribute("paypath");
+		System.out.println(payPath);
+		System.out.println(cartVO);
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode jsonParsing;
 		jsonParsing = mapper.readTree(googleJsonData);
@@ -79,25 +86,68 @@ public class UserController {
 		googleVO.setEmail(jsonParsing.get("email").asText());
 		googleVO.setId(jsonParsing.get("email").asText());
 		googleVO.setName(jsonParsing.get("name").asText());
-		googleVO.setAge((age * 10) + "~" + ((age * 10) + 9));
-
+		googleVO.setAge((age * 10) + "-" + ((age * 10) + 9));
+		
 		int result = userservice.idChk(googleVO);
-
+		
 		if (result == 0) {
 			userservice.googleInsert(googleVO);
 			session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
 		} else {
 			session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
 		}
+		String url[] = URLDecoder.decode(jsonParsing.get("url").asText(), "UTF-8").split("/");
+		
+		
+		int j = 0;
 		if(jsonParsing.get("url").asText() != null){
-			for(String url : URLDecoder.decode(jsonParsing.get("url").asText(), "UTF-8").split("/")) {
-				if(url.equals("products")) {
+			for(int i=0; i<url.length; i++) {
+				if(url[i].equals("products")) {
+					j=i+1;					
+				}
+			}
+			try {
+				Double.parseDouble(url[j]);
+				if(userservice.selectIdCheck(googleVO.getId()).getAdr()==null || userservice.selectIdCheck(googleVO.getId()).getAdr().trim().equals("")) {
+					 return "None";					
+				}else {
+
+					for(String splitPath : path.split("/")) {
+						
+						if (splitPath.equals("proCatelogin")) {
+							adminPayService.insert(userservice.selectIdCheck(googleVO.getId()).getNo(), cartVO);
+							return "bucket";
+			            } else if (splitPath.equals("payBeLogin")) {
+			            	return "pay";
+			            }
+					}
 					return "Success";
 				}
+			}catch(Exception e) {
+				return "";
 			}
 		}
 		return "";
 		
+	}
+	
+	@RequestMapping("/toGoMypage")
+	public String toGoMyPage(Model model) {
+		model.addAttribute("message", "�븘�닔 �엯�젰媛믪쓣 �엯�젰�빐二쇱꽭�슂.");
+		return "User/mypage";
+	}
+	@RequestMapping("/toGoPayment")
+	public String toGoPayment(Model model) {
+		userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
+		userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
+        sessionordervo.setUserNo(((UserVO)(session.getAttribute("login_info"))).getNo());
+        payService.insert(sessionordervo, userservice.selectIdCheck(((UserVO)(session.getAttribute("login_info"))).getId()), null);
+        int orderid = sessionordervo.getOrderId();
+        sessionorderprovo.setUserno(((UserVO)(session.getAttribute("login_info"))).getNo());
+        sessionorderprovo.setOrderId(orderid);
+        productPayService.insert(sessionorderprovo, userservice.selectIdCheck(((UserVO)(session.getAttribute("login_info"))).getId()), null);
+        model.addAttribute("onelist", productPayService.selectList(orderid));
+        return "User/userPay";
 	}
 
 	@RequestMapping(value = "/naverLogin")
@@ -121,8 +171,8 @@ public class UserController {
 		            } else if (path.contains("proCatelogin")) {
 		                System.out.println("proCatelogin ");
 		                if (naverUserInfo.getAdr() == null) {
-		    		        // 필수입력값 alert 창 띄우기
-		    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
+		    		        // �븘�닔�엯�젰媛� alert 李� �쓣�슦湲�
+		    		        model.addAttribute("message", "�븘�닔 �엯�젰媛믪쓣 �엯�젰�빐二쇱꽭�슂.");
 		    		        return "/User/mypage";
 		            	}
 		                CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
@@ -134,8 +184,8 @@ public class UserController {
 		                return "redirect:/users/bucket";
 		            } else if (path.contains("payBeLogin")) {
 		            	if (naverUserInfo.getAdr() == null) {
-		    		        // 필수입력값 alert 창 띄우기
-		    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
+		    		        // �븘�닔�엯�젰媛� alert 李� �쓣�슦湲�
+		    		        model.addAttribute("message", "�븘�닔 �엯�젰媛믪쓣 �엯�젰�빐二쇱꽭�슂.");
 		    		        return "/User/mypage";
 		            	}
 		                userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
@@ -182,8 +232,8 @@ public class UserController {
 	        } else if (path.contains("proCatelogin")) {
 	        	System.out.println("proCatelogin ");
 	        	 if (userInfo.getAdr() == null) {
-	    		        // 필수입력값 alert 창 띄우기
-	    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
+	    		        // �븘�닔�엯�젰媛� alert 李� �쓣�슦湲�
+	    		        model.addAttribute("message", "�븘�닔 �엯�젰媛믪쓣 �엯�젰�빐二쇱꽭�슂.");
 	    		        return "/User/mypage";
 	            	}
 	            CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
@@ -196,8 +246,8 @@ public class UserController {
 	        } else if(path.contains("payBeLogin")) 
 	        {
 	        	 if (userInfo.getAdr() == null) {
-	    		        // 필수입력값 alert 창 띄우기
-	    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
+	    		        // �븘�닔�엯�젰媛� alert 李� �쓣�슦湲�
+	    		        model.addAttribute("message", "�븘�닔 �엯�젰媛믪쓣 �엯�젰�빐二쇱꽭�슂.");
 	    		        return "/User/mypage";
 	            	}
 	            userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
@@ -374,7 +424,7 @@ public class UserController {
 		String ssid = ssvo.getId();
 		userservice.delete(ssid);
 		session.invalidate();
-		return "redirect:/";
+		return "redirect:/users/login";
 	}
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -393,9 +443,9 @@ public class UserController {
 
 		String setFrom = "cwj9799@naver.com";
 		String toMail = email;
-		String title = "회원가입 인증 이메일 입니다.";
-		String content = "홈페이지를 방문해주셔서 감사합니다." + "<br><br>" + "인증 번호는 " + checkNum + "입니다." + "<br>"
-				+ "해당 인증번호를 인증번호 확인란에 기입하여 주세요.";
+		String title = "�쉶�썝媛��엯 �씤利� �씠硫붿씪 �엯�땲�떎.";
+		String content = "�솃�럹�씠吏�瑜� 諛⑸Ц�빐二쇱뀛�꽌 媛먯궗�빀�땲�떎." + "<br><br>" + "�씤利� 踰덊샇�뒗 " + checkNum + "�엯�땲�떎." + "<br>"
+				+ "�빐�떦 �씤利앸쾲�샇瑜� �씤利앸쾲�샇 �솗�씤���뿉 湲곗엯�븯�뿬 二쇱꽭�슂.";
 
 		try {
 
