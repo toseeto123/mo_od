@@ -151,7 +151,6 @@ function emailCheck() {
     
       
    function passConfirm() {
-  
       var pwd = document.getElementById('pwd');                
       var pwd2 = document.getElementById('pwd2');  
       var confirmMsg = document.getElementById('confirmMsg');     
@@ -159,6 +158,23 @@ function emailCheck() {
       var wrongColor ="#CD1039";   
       
       if(pwd.value == pwd2.value){       
+        confirmMsg.style.color = correctColor;
+        confirmMsg.innerHTML = "비밀번호 일치";
+      }else{
+         confirmMsg.style.color = wrongColor;
+         confirmMsg.innerHTML ="비밀번호 불일치";
+      }
+   }
+   
+   
+   function passmy() {
+      var pwd1 = document.getElementById('pwd1');                
+      var pwd2 = document.getElementById('pwd2');  
+      var confirmMsg = document.getElementById('confirmMsg');     
+      var correctColor = "#64CD3C";  
+      var wrongColor ="#CD1039";   
+      
+      if(pwd1.value == pwd2.value){       
         confirmMsg.style.color = correctColor;
         confirmMsg.innerHTML = "비밀번호 일치";
       }else{
