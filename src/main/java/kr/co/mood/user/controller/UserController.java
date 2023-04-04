@@ -68,7 +68,7 @@ public class UserController {
 
 	@RequestMapping(value = "/googleSave", method = RequestMethod.POST)
 	@ResponseBody
-	public String googleSave(@RequestBody String googleJsonData, HttpSession session, HttpServletRequest request) throws Exception {
+	public String googleSave(@RequestBody String googleJsonData, HttpSession session, Model model) throws Exception {
 
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode jsonParsing;
@@ -79,8 +79,8 @@ public class UserController {
 		googleVO.setEmail(jsonParsing.get("email").asText());
 		googleVO.setId(jsonParsing.get("email").asText());
 		googleVO.setName(jsonParsing.get("name").asText());
-		googleVO.setAge((age * 10) + "~" + ((age * 10) + 9));
-
+		googleVO.setAge((age * 10) + "-" + ((age * 10) + 9));
+		
 		int result = userservice.idChk(googleVO);
 
 		if (result == 0) {
@@ -89,16 +89,36 @@ public class UserController {
 		} else {
 			session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
 		}
+		String url[] = URLDecoder.decode(jsonParsing.get("url").asText(), "UTF-8").split("/");
+		System.out.println(userservice.selectIdCheck(googleVO.getId()));
+		int j = 0;
 		if(jsonParsing.get("url").asText() != null){
-			for(String url : URLDecoder.decode(jsonParsing.get("url").asText(), "UTF-8").split("/")) {
-				if(url.equals("products")) {
+			for(int i=0; i<url.length; i++) {
+				if(url[i].equals("products")) {
+					j=i+1;					
+				}
+			}
+			try {
+				Double.parseDouble(url[j]);
+				if(userservice.selectIdCheck(googleVO.getId()).getAdr()==null || userservice.selectIdCheck(googleVO.getId()).getAdr().trim().equals("")) {
+					 return "None";					
+				}else {
 					return "Success";
 				}
+			}catch(Exception e) {
+				return "";
 			}
 		}
 		return "";
 		
 	}
+	
+	@RequestMapping("/toGoMypage")
+	public String toGoMyPage(Model model) {
+		model.addAttribute("message", "필수 입력값을 입력해주세요.");
+		return "User/mypage";
+	}
+	
 
 	@RequestMapping(value = "/naverLogin")
 	 public String naverLogin(@RequestParam("code") String code, @RequestParam("state") String state,HttpSession session, HttpServletResponse response, HttpServletRequest request,Model model) throws IOException {

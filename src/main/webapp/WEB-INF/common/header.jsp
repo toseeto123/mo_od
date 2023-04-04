@@ -126,4 +126,4 @@ $(document).ready(function() {
     });
 });
 </script>
-<jsp:include page="/WEB-INF/common/RecentlyViewProduct.jsp"/>
+<%-- <jsp:include page="/WEB-INF/common/RecentlyViewProduct.jsp"/> --%>
