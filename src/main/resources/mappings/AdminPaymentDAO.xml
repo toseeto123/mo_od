@@ -158,6 +158,7 @@
 		from orderProduct
 		inner join product
 			on product.pro_number = orderProduct.pro_number
+		group by orderNo, product.pro_number
 		order by orderNo desc
 	</select>
 
