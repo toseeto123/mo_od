@@ -68,6 +68,12 @@ background-color:#f5f6f7;
 	grid-row: 2;
 	grid-column: 2;
 }
+
+input[type=button]{
+	background: #e9e9e9;
+}
+
+
 </style>
 </head>
 <header>
@@ -99,7 +105,7 @@ background-color:#f5f6f7;
   
 <div class="chart3">
   <div class="chart-container">
-    <div class="chartTitle"><b style="padding-left:25px;"><input type="button" id="byWeek" value="주간"></b><b style="padding-left:25px;"><input type="button" id="byMonth" value="월간"></b></div>
+    <div class="chartTitle"><b style="padding-left:25px;"><input class="act" type="button" id="byWeek" value="주간" style="border-radius: 5px; border: none; border: 1px solid #a9a9a9;"></b><b style="padding-left:25px;"><input class="act" type="button" id="byMonth" value="월간" style="border-radius: 5px; border: none; border: 1px solid #a9a9a9;"></b></div>
     <div class="chart-item" id="week">
       <canvas id="myChart3"></canvas>
     </div>
@@ -466,14 +472,20 @@ background-color:#f5f6f7;
 	document.getElementById('month').style.display = 'none';
 		var weekButton = document.getElementById('byWeek');
 		var monthButton = document.getElementById('byMonth');
+		
 		weekButton.addEventListener("click", function() {
+			weekButton.style.background='#d3d3d3';
+			monthButton.style.background='#e9e9e9';
 			  document.getElementById('month').style.display = 'none';
 			  document.getElementById('week').style.display = 'block';
 		});
 		monthButton.addEventListener("click", function() {
+			weekButton.style.background='#e9e9e9';
+			monthButton.style.background='#d3d3d3';
 			document.getElementById('month').style.display = 'block';
 			 document.getElementById('week').style.display = 'none';
 		});
+		
 	</script>
 </body>
 
