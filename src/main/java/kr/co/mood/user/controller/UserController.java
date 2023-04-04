@@ -68,7 +68,7 @@ public class UserController {
 
 	@RequestMapping(value = "/googleSave", method = RequestMethod.POST)
 	@ResponseBody
-	public String googleSave(@RequestBody String googleJsonData, HttpSession session, Model model) throws Exception {
+	public String googleSave(@RequestBody String googleJsonData, HttpSession session) throws Exception {
 
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode jsonParsing;
