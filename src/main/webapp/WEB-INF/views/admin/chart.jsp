@@ -154,8 +154,6 @@ background-color:#f5f6f7;
 		<script src="http://code.jquery.com/jquery-latest.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 	<script>
-	console.log(${chart5}[0].month)
-	console.log(${chart5}[0].sales)
 	
 	const chartMonth5 = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
 	const chartSales5 = [0,0,0,0,0,0,0,0,0,0,0,0];
