@@ -6,7 +6,6 @@
 	let googleTokenClient;
 	let googleGapiInited = false;
 	let googleGisInited = false;
-
 	
 
 	function googleGapiLoaded() {
@@ -96,10 +95,13 @@
             			google.accounts.oauth2.revoke(token.access_token);
             			gapi.client.setToken('');
           			}
+          			
   					if(googleXHT.responseText.trim()=='' || googleXHT.responseText == null){
   						location.href='/';
-  					}else{  						
+  					}else if(googleXHT.responseText=='Success'){				
   						location.href=document.referrer
+  					}else{
+  							window.location.href = "/users/toGoMypage";
   					}
   				} else {
     				console.error(googleXHT.statusText);
