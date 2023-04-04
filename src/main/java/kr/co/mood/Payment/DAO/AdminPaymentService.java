@@ -180,6 +180,8 @@ public class AdminPaymentService {
 		member.setOrderNo(list.get(0).getOrderNo());
 		member.setPayDate(list.get(0).getPayDate());
 		member.setPhone(list.get(0).getPhone());
+		member.setStatus(list.get(0).getStatus());
+		System.out.println(member.getStatus());
 		model.addAttribute("member", member);
 		model.addAttribute("product", list);
 	}
