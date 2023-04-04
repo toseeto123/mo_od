@@ -107,7 +107,7 @@ body {
 	 	<button type="submit" class="sbtn" >판매재개</button>
 	 </form>
 </div>
-<form role="form" method="get" action="/updatePro" enctype="multipart/form-data">
+<form role="form" method="get" action="/admin/updatePro" enctype="multipart/form-data">
 <div class="top_Area">
 	<div class="inputArea" style="margin-top: 50px;">
 	 <label for="">상품명</label>
