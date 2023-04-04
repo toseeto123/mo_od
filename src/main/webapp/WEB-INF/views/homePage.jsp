@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 
 <html lang="en">
- <script src="https://unpkg.com/@phosphor-icons/web"></script>
+<script src="https://unpkg.com/phosphor-icons"></script>
  <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/xeicon@2.3.3/xeicon.min.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <jsp:include page="/WEB-INF/common/header.jsp" />
@@ -130,8 +130,8 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
           <div class="carousel-item" style="background-image: url(resources/assets/img/slide/mood2.png);">
             <div class="carousel-container">
               <div class="carousel-content">
-                <h2 class="animate__animated animate__fadeInDown">3월의 mo_od</h2>
-                <p class="animate__animated animate__fadeInUp">3월의 mo_od 아이템들을 만나보기</p>
+                <h2 class="animate__animated animate__fadeInDown">April & mo_od <i class="fa-solid fa-seedling" style="color: #4bdb12;"></i></h2>
+                <p class="animate__animated animate__fadeInUp">4월의 mo_od 아이템들을 만나보기</p>
               </div>
             </div>
           </div>
@@ -168,7 +168,7 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
     <section id="portfolio" class="portfolio" style="padding-bottom: 50px; padding-top: 50px;">
       <div class="container">
         <div class="section-title">
-          <b style="color: #323232; letter-spacing: 5px;">많은 사랑을 받고있는 상품<i class="fa-solid fa-fire"></i></b>
+          <b style="color: #323232; letter-spacing: 5px;">많은 사랑을 받고있는 상품<i class="fa-solid fa-fire" style="color: #fc490d;"></i></b>
         </div>
 
        <!--  <div class="row">

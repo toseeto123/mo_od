@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -192,7 +193,7 @@ body {
 </head>
 
 <body>
-
+<c:set var="processed_item_name" value="${fn:replace(info.item_name, ' ', '')}"/>
 	<section id="hero" style="height: 400px;">
 		<div class="hero-container">
 			<div id="heroCarousel" data-bs-interval="5000"
@@ -239,7 +240,7 @@ body {
                         ${login_info.name}</small>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="lastName">전화번호 : </label> <small>${login_info.phone}</small>
+                     <label for="lastName">전화번호 : </label> <small>${processed_item_name}</small>
                   </div>
                   <div class="col-md-6 mb-3">
                      <label for="address">주　　소 : </label> <small>${login_info.adr}</small>
@@ -260,8 +261,7 @@ body {
                
 		<c:forEach var="orders" items="${orders}" begin="0" end="0">
                  <div class="col-md-6 mb-3">
-                     <label for="firstName" style="letter-spacing:3px;">상 품 명 : </label><small>
-                        ${info.item_name}</small>
+                     <label for="firstName" style="letter-spacing:3px;">상 품 명 : </label><small>${info.item_name}</small>
                   </div>
                   <div class="col-md-6 mb-3">
                      <label for="lastName" >주문 수량 : </label> <small>${orders.row_count }</small>
