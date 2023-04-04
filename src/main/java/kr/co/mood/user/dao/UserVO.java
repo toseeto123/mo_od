@@ -11,6 +11,7 @@ public class UserVO {
    private Integer partner_user_id;
    private String id;
    private String pwd;
+   private String pwd1;
    private String name;
    private String age;
    private String gender;
@@ -100,17 +101,24 @@ public String getPhone() {
 public void setPhone(String phone) {
    this.phone = phone;
 }
-@Override
-public String toString() {
-   return "UserVO [no=" + no + ", id=" + id + ", pwd=" + pwd + ", name=" + name + ", age=" + age + ", gender=" + gender
-         + ", adr=" + adr + ", adr2=" + adr2 + ", adr3=" + adr3 + ", email=" + email + ", phone=" + phone + "]";
+
+
+public String getPwd1() {
+	return pwd1;
 }
 
-   
+
+public void setPwd1(String pwd1) {
+	this.pwd1 = pwd1;
+}
 
 
-
-
+@Override
+public String toString() {
+	return "UserVO [no=" + no + ", id=" + id + ", pwd=" + pwd + ", pwd1=" + pwd1 + ", name=" + name + ", age=" + age
+			+ ", gender=" + gender + ", adr=" + adr + ", adr2=" + adr2 + ", adr3=" + adr3 + ", email=" + email
+			+ ", phone=" + phone + "]";
+}
   
 
 }

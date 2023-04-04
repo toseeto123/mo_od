@@ -194,7 +194,7 @@ input {
 					<td><input type="password" id="pwd2" name="pwd2"
 						style="width: 100%; max-width: 280px;"
 						${login_info.pwd == null ? 'required' : ''}
-						onkeyup="passConfirm()"><br>
+						onkeyup="passmy()"><br>
 					<span id="confirmMsg"></span></td>
 				</tr>
 
