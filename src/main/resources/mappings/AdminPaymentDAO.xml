@@ -84,6 +84,18 @@
 
 			]]>
 	</select>
+	
+	<select id="getCategoryChart5" resultType="kr.co.mood.Payment.VO.AdminChartVO">
+		         <![CDATA[
+          SELECT MONTH(SuccessTime) as 'month',
+         	SUM(Amount) as sales 
+         	from payment 
+         	where (Success = '결제 완료' or payment.Success = '구매 확정')
+					and SuccessTime like concat(#{year}, '%')
+			group by MONTH(SuccessTime)
+         	order by MONTH(SuccessTime)
+         	]]>
+	</select>
 
 	<select id="adminPaymentMemberList"
 		resultType="kr.co.mood.Payment.VO.AdminPaymentVO">

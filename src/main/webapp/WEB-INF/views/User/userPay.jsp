@@ -298,7 +298,6 @@ background: #f9bf00;
                </c:forEach>
                
                <c:forEach var="onelist" items="${onelist}">
-                  <input type="hidden" name="pro_name" value=${onelist.pro_name }>
                   <input type="hidden" name="pro_number" value="${onelist.pro_number }">
 
                   <div class="row">

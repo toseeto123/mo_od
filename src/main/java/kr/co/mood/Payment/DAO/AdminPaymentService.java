@@ -36,6 +36,7 @@ public class AdminPaymentService {
 		List<AdminChartVO> chart2 = dao.getCategoryChart2();
 		List<AdminChartVO> chart3 = dao.getCategoryChart3(year);
 		List<AdminChartVO> chart4 = dao.getCategoryChart4(year);
+		List<AdminChartVO> chart5 = dao.getCategoryChart5(year);
 		
 		List<String> categorys = new ArrayList<String>();
 		List<String> ages = new ArrayList<String>();
@@ -111,6 +112,7 @@ public class AdminPaymentService {
 			model.addAttribute("chart4Man", objectMapper.writeValueAsString(man));
 			model.addAttribute("chart4Age", objectMapper.writeValueAsString(ages));
 			model.addAttribute("chart4Category", objectMapper.writeValueAsString(categorys));
+			model.addAttribute("chart5", objectMapper.writeValueAsString(chart5));
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
@@ -118,6 +120,7 @@ public class AdminPaymentService {
 		model.addAttribute("chart1", chart1);
 		model.addAttribute("chart2", chart2);
 		model.addAttribute("chart3", chart3);
+		
 		
 	}
 	
