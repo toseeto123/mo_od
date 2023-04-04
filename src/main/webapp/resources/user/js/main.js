@@ -1,6 +1,6 @@
 function JoinCheck(){
            if (document.join.id.value == "") {
-              alert("아이디를 써주세요");
+              alert("아이디를 입력해주세요");
               join.id.focus();
               return false;
            }
@@ -15,12 +15,12 @@ function JoinCheck(){
                return false;
                }
            if (document.join.pwd.value == ""){
-              alert("암호를 반드시 입력해주세여");
+              alert("암호를 반드시 입력해주세요");
               join.pwd.focus();
               return false;
            }
             if (document.join.pwd2.value == ""){
-              alert("암호를 반드시 입력해주세여");
+              alert("암호를 반드시 입력해주세요");
               join.pwd2.focus();
               return false;
            }
@@ -39,16 +39,6 @@ function JoinCheck(){
            if (document.join.name.value == "") {
               alert("이름을 써주세요");
               join.name.focus();
-              return false;
-           }
-           if (document.join.age.value == "") {
-              alert("연령을 입력해주세요");
-              join.age.focus();
-              return false;
-           }
-           if (document.join.gender.value == 0) {
-              alert("성별을 입력해주세요");
-              join.gender.focus();
               return false;
            }
            if (document.join.email.value == "") {
