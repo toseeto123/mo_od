@@ -123,7 +123,7 @@ section{
                   	
                   	<a onClick="$('#myModal${member.orderNo}').modal('show');" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated">주문취소</a>
                   	<a href="javascript:location.href=document.referrer" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated">돌아가기</a>
-                  	<input type="submit" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated" value="수정하기">
+                  	<!-- <input type="submit" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated" value="수정하기"> -->
              		<input type="hidden" name="path" id="path">     	
                   	</td>
                   </tr>
