@@ -312,7 +312,7 @@ public class AdminController {
       return "/admin/adminProUpdate";
    }
    
-   @RequestMapping(value = "/updatePro", method = RequestMethod.GET)
+   @RequestMapping(value = "/updatePro", method = RequestMethod.POST)
    public String proDetails(@RequestParam("pro_number") int pro_number,
 		   @RequestParam MultipartFile file1,
            @RequestParam MultipartFile file2,
