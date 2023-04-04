@@ -21,7 +21,7 @@ public class KakaoPayApprovalVO {
     private int orderid,row_count;
     private String payment_method;
     
-    //寃곗젣�솗�씤�슜媛믩뱾
+    //野껉퀣�젫占쎌넇占쎌뵥占쎌뒠揶쏅�⑸굶
     //product
     private String pro_img1,pro_name,pro_maindesctitle,pro_option;
     private int pro_number,price,total;

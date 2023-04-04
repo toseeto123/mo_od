@@ -46,7 +46,6 @@ public class KakaoPay {
     		   @RequestParam("pro_number") String pro_number
     		   ) {
 
-    
            RestTemplate restTemplate = new RestTemplate();
 
            HttpHeaders headers = new HttpHeaders();
@@ -64,10 +63,7 @@ public class KakaoPay {
            params.add("item_name", pro_name);
            params.add("quantity", "1");
            params.add("total_amount", pro_pricestr);
-           
            params.add("tax_free_amount", "100");
-
-
 
 //           params.add("approval_url", "http://localhost:8080/User/kakaoPaySuccess?orderId=" + orderIdstr + "&userno=" + userno + "&pro_number="+ pro_number);
 //           params.add("cancel_url", "http://localhost:8080/users/bucket");
