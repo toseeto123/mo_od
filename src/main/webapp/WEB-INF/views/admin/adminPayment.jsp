@@ -99,6 +99,7 @@ section{
                 <thead id="thead">
                 <tr>
                 	<th>주문번호</th>
+                	<th>결제상태</th>
                 	<th>이름</th>
                 	<th>연락처</th>
                 	<th>주소</th>
@@ -112,6 +113,7 @@ section{
                 <c:forEach var="member" items="${member}">
                 <tr>
                 <td>${member.orderNo}</td>
+				<td><span id="status">${member.status}</span></td>
                 <td>${member.name}</td>
                 <td>${member.phone}</td>
                 <td>${member.address}</td>
@@ -182,6 +184,15 @@ window.onload = function(){
 		footerReal.classList.remove("footer");
 	}	
 }
+</script>
+<script>
+	if(document.getElementById('status').innerHTML == '결제 취소'){
+		document.getElementById('status').style.color = "#f54c4c";
+	}else if(document.getElementById('status').innerHTML == '구매 확정'){
+		document.getElementById('status').style.color = "#3c8df0";
+	}else{
+		document.getElementById('status').style.color = "black";
+	}
 </script>
 </body>
 

@@ -77,7 +77,7 @@
 					group by product.pro_categoryserial
 					limit 0, 5) as category
 			on category.categoryserial = product.pro_categoryserial	
-		where (payment.Success = '결제 완료' or payment.Success = '구매 확정')
+		where (payment.Success = '결제 완료' or payment.Success = '구매 확정' )
 		and payment.SuccessTime like concat('%' ,#{year}, '%')
 		group by member.gender,product.pro_categoryserial, member.age
 		order by productCount desc
@@ -93,7 +93,8 @@
 		member.phone as 'phone',
 		moodorder.price as
 		'amount',
-		payment.SuccessTime as 'payDate'
+		payment.SuccessTime as 'payDate',
+		payment.Success as 'status'
 		from moodorder
 		inner join
 		moodjoin as member
@@ -101,7 +102,7 @@
 		inner join payment
 		on
 		payment.orderid = moodorder.orderid
-		where (payment.Success = '결제 완료' or payment.Success = '구매 확정')
+		where (payment.Success = '결제 완료' or payment.Success = '구매 확정' or payment.Success = '결제 취소')
 		group by orderNo
 		order by orderNo desc
 		<if test="endNo != 0">
@@ -120,7 +121,8 @@
 		member.phone as 'phone',
 		moodorder.price as
 		'amount',
-		payment.SuccessTime as 'payDate'
+		payment.SuccessTime as 'payDate',
+		payment.Success as 'status'
 		from moodorder
 		inner join
 		moodjoin as member
@@ -128,7 +130,7 @@
 		inner join payment
 		on
 		payment.orderid = moodorder.orderid
-		where (payment.Success = '결제 완료' or payment.Success = '구매 확정')
+		where (payment.Success = '결제 완료' or payment.Success = '구매 확정' or payment.Success = '결제 취소')
 		<if test="searchName != null">
 			and member.name like concat('%', #{searchName}, '%')
 		</if>
@@ -173,6 +175,7 @@
 			member.name as 'name',
 			member.phone as 'phone',
 			payment.SuccessTime as 'payDate',
+			payment.Success as 'status',
 			moodorder.price as 'amount'
 		from orderProduct
 		inner join product

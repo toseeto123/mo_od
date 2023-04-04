@@ -70,14 +70,13 @@ section{
 
 <body style="background-color:#f5f6f7;">
 
-		
 			<section style="padding: 0; margin: 0;">
 			<div id="tables">
 			<form action="/admin/paymentModify/${member.orderNo}">
               <table id="table" class="table">
                 <thead id="thead">
                 <tr>
-                	<th id="orderNo" style="width:20%;">주문번호 : ${member.orderNo}</th>
+                	<th id="orderNo" style="width:20%;">주문번호 : ${member.orderNo} / <span id="status">${member.status}</span></th>
                 	<th colspan="3" ></th>
                 	<th>결제날짜 : ${member.payDate}</th>
                 </tr>
@@ -120,10 +119,11 @@ section{
                   <tr>
                   <td colspan="4" style="border-bottom:none"></td>
                   <td style="border-bottom:none">
-                  	
+                  <c:if test="${member.status == '구매 확정'}">
                   	<a onClick="$('#myModal${member.orderNo}').modal('show');" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated">주문취소</a>
-                  	<a href="javascript:location.href=document.referrer" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated">돌아가기</a>
+                  	</c:if>                  	
                   	<input type="submit" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated" value="수정하기">
+                  	<a href="javascript:location.href=document.referrer" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated">돌아가기</a>
              		<input type="hidden" name="path" id="path">     	
                   	</td>
                   </tr>
@@ -199,6 +199,15 @@ for(var j=q; j<document.referrer.split('/').length; j++){
 	route = route +'/' + document.referrer.split('/')[j];
 }
 document.getElementById('path').value = route;
+</script>
+<script>
+	if(document.getElementById('status').innerHTML == '결제 취소'){
+		document.getElementById('status').style.color = "#f54c4c";
+	}else if(document.getElementById('status').innerHTML == '구매 확정'){
+		document.getElementById('status').style.color = "#3c8df0";
+	}else{
+		document.getElementById('status').style.color = "black";
+	}
 </script>
 </body>
 
