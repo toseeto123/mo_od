@@ -150,7 +150,7 @@ div>label {
                   </h3>
                   <span class="box int_pass">
                   <input type="password" class="form-control string" name="pwd" id="pwd"
-                     placeholder="비밀번호를 입력하세요">
+                     placeholder="특수문자를 포함한 비밀번호를 입력하세요">
                    </span>
                </div>
                
@@ -160,7 +160,7 @@ div>label {
                   </h3>
                   <span class="box int_string_check" >
                   <input type="password" class="form-control string" name="pwd2" id="pwd2"
-                     placeholder="비밀번호를 재입력해주세요" pattern="^[A-Za-z0-9]{10,20}$" onkeyup="passConfirm()">
+                     placeholder="비밀번호를 재입력해주세요" onkeyup="passConfirm()">
                    </span> 
                   <span id="confirmMsg" style="font-size: 18px; display: block; margin-top: 13px;"></span>
                </div>
