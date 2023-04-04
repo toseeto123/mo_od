@@ -7,6 +7,7 @@ import org.apache.ibatis.annotations.Param;
 import kr.co.mood.Payment.VO.AdminChartVO;
 import kr.co.mood.Payment.VO.AdminPaymentVO;
 import kr.co.mood.Payment.VO.KakaoPayApprovalVO;
+import kr.co.mood.cate.vo.CateVO;
 import kr.co.mood.module.ModuleVO;
 
 public interface AdminPaymentDAO {
@@ -20,4 +21,5 @@ public interface AdminPaymentDAO {
 	public KakaoPayApprovalVO adminPaymentCancel(int orderid);
 	public List<AdminPaymentVO> adminPaymentDetail(int no);
 	public void updateAddress(AdminPaymentVO vo);
+	public void insert(@Param("user_no") int user_no,@Param("vo") CateVO vo);
 }

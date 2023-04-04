@@ -30,6 +30,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import kr.co.mood.Payment.DAO.AdminPaymentService;
 import kr.co.mood.Payment.VO.userOrderProductVO;
 import kr.co.mood.Payment.VO.userOrderVO;
 import kr.co.mood.cate.DAO.CateService;
@@ -65,11 +66,17 @@ public class UserController {
 //	private SqlSessionTemplate mybatis;
 //	private UserVO vo;
 //	private ModelAndView mav;
+	@Autowired
+	private AdminPaymentService adminPayService;
 
 	@RequestMapping(value = "/googleSave", method = RequestMethod.POST)
 	@ResponseBody
 	public String googleSave(@RequestBody String googleJsonData, HttpSession session) throws Exception {
-
+		String path = ((String) session.getAttribute("path"));
+		CateVO cartVO = (CateVO) session.getAttribute("cvo");
+		String payPath = (String)session.getAttribute("paypath");
+		System.out.println(payPath);
+		System.out.println(cartVO);
 		ObjectMapper mapper = new ObjectMapper();
 		JsonNode jsonParsing;
 		jsonParsing = mapper.readTree(googleJsonData);
@@ -82,7 +89,7 @@ public class UserController {
 		googleVO.setAge((age * 10) + "-" + ((age * 10) + 9));
 		
 		int result = userservice.idChk(googleVO);
-
+		
 		if (result == 0) {
 			userservice.googleInsert(googleVO);
 			session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
@@ -90,7 +97,8 @@ public class UserController {
 			session.setAttribute("login_info", userservice.selectIdCheck(googleVO.getId()));
 		}
 		String url[] = URLDecoder.decode(jsonParsing.get("url").asText(), "UTF-8").split("/");
-		System.out.println(userservice.selectIdCheck(googleVO.getId()));
+		
+		
 		int j = 0;
 		if(jsonParsing.get("url").asText() != null){
 			for(int i=0; i<url.length; i++) {
@@ -103,6 +111,16 @@ public class UserController {
 				if(userservice.selectIdCheck(googleVO.getId()).getAdr()==null || userservice.selectIdCheck(googleVO.getId()).getAdr().trim().equals("")) {
 					 return "None";					
 				}else {
+
+					for(String splitPath : path.split("/")) {
+						
+						if (splitPath.equals("proCatelogin")) {
+							adminPayService.insert(userservice.selectIdCheck(googleVO.getId()).getNo(), cartVO);
+							return "bucket";
+			            } else if (splitPath.equals("payBeLogin")) {
+			            	return "pay";
+			            }
+					}
 					return "Success";
 				}
 			}catch(Exception e) {
@@ -118,7 +136,19 @@ public class UserController {
 		model.addAttribute("message", "필수 입력값을 입력해주세요.");
 		return "User/mypage";
 	}
-	
+	@RequestMapping("/toGoPayment")
+	public String toGoPayment(Model model) {
+		userOrderProductVO sessionorderprovo = (userOrderProductVO) session.getAttribute("orderProVo");
+		userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
+        sessionordervo.setUserNo(((UserVO)(session.getAttribute("login_info"))).getNo());
+        payService.insert(sessionordervo, userservice.selectIdCheck(((UserVO)(session.getAttribute("login_info"))).getId()), null);
+        int orderid = sessionordervo.getOrderId();
+        sessionorderprovo.setUserno(((UserVO)(session.getAttribute("login_info"))).getNo());
+        sessionorderprovo.setOrderId(orderid);
+        productPayService.insert(sessionorderprovo, userservice.selectIdCheck(((UserVO)(session.getAttribute("login_info"))).getId()), null);
+        model.addAttribute("onelist", productPayService.selectList(orderid));
+        return "User/userPay";
+	}
 
 	@RequestMapping(value = "/naverLogin")
 	 public String naverLogin(@RequestParam("code") String code, @RequestParam("state") String state,HttpSession session, HttpServletResponse response, HttpServletRequest request,Model model) throws IOException {

@@ -17,6 +17,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import kr.co.mood.Payment.VO.AdminChartVO;
 import kr.co.mood.Payment.VO.AdminPaymentVO;
 import kr.co.mood.Payment.VO.KakaoPayApprovalVO;
+import kr.co.mood.cate.vo.CateVO;
 import kr.co.mood.module.ModuleCommon;
 import kr.co.mood.module.ModuleVO;
 import kr.co.mood.module.ViewPagingVO;
@@ -189,6 +190,10 @@ public class AdminPaymentService {
 	
 	public void updateAddress(AdminPaymentVO vo) {
 		dao.updateAddress(vo);
+	}
+	
+	public void insert(int user_no, CateVO vo) {
+		dao.insert(user_no, vo);
 	}
 	
 	
