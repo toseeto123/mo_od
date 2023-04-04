@@ -117,7 +117,7 @@ function emailCheck() {
        }
 
 
-      function DeleteCheck() {
+function DeleteCheck() {
   var sspwd = $('input#sspwd').val();
   
   if (sspwd != document.mypage.pwd.value) {
@@ -141,14 +141,8 @@ function emailCheck() {
     mypage.pwd.focus();
     return false;
   }
-  
-  $(document.mypage).ready(function() {
-    $('#exampleModal').modal('show');
-  });
-  
   return true;
 }
-    
       
    function passConfirm() {
       var pwd = document.getElementById('pwd');                
@@ -283,7 +277,7 @@ function emailCheck() {
               mypage.email.focus();
               return false;
            }
-           
-           return true;   
+           alert("수정이 완료 됬습니다. 다시 로그인 해주세요.")
+           return true;
         }
        
