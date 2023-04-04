@@ -260,8 +260,7 @@ body {
                
 		<c:forEach var="orders" items="${orders}" begin="0" end="0">
                  <div class="col-md-6 mb-3">
-                     <label for="firstName" style="letter-spacing:3px;">상 품 명 : </label><small>
-                        ${info.item_name}</small>
+                 		<label for="firstName" style="letter-spacing:3px;">상 품 명 : </label><small>${info.item_name}</small>
                   </div>
                   <div class="col-md-6 mb-3">
                      <label for="lastName" >주문 수량 : </label> <small>${orders.row_count }</small>
@@ -275,9 +274,6 @@ body {
                   <div class="col-md-6 mb-3">
                      <label for="lastName">결제승인시간 : </label> <small><fmt:formatDate value="${orders.successTime}" pattern="yyyy-MM-dd HH:mm:ss"/></small>
                   </div>
-                  
-               
-				
             <hr>
 		</c:forEach>
                </div>
