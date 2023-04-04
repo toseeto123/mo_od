@@ -31,11 +31,11 @@ function JoinCheck(){
               join.pwd.focus();
               return false;
            }
-           if (!document.join.pwd.value.match(/^[A-Za-z0-9]{10,20}$/)) {
-            alert("암호는 대소문자, 숫자, 특수문자를 조합으로 10~20자리 이내로 입력해주세요.");
-            join.pwd.focus();
-            return false;
-          }
+           if (!document.join.pwd.value.match(/^([A-Za-z\d!@#$%^&*()\-_=+\\\|\[\]{};:'",.<>\/?]){10,20}$/)) {
+               alert("암호는 대소문자, 숫자, 특수문자를 조합으로 10~20자리 이내로 입력해주세요.");
+               join.pwd.focus();
+               return false;
+            }
            if (document.join.name.value == "") {
               alert("이름을 써주세요");
               join.name.focus();
@@ -235,12 +235,12 @@ function emailCheck() {
 
   function UpdateCheck(){
   			if (document.mypage.pwd.value == ""){
-              alert("암호를 반드시 입력해주세여");
+              alert("암호를 반드시 입력해주세요");
               mypage.pwd.focus();
               return false;
            }
            if (document.mypage.pwd2.value == ""){
-              alert("암호를 반드시 입력해주세여");
+              alert("암호를 반드시 입력해주세요");
               mypage.pwd.focus();
               return false;
            }
