@@ -132,7 +132,9 @@ function DeleteCheck() {
     alert("암호를 반드시 입력해주세요.");
     mypage.pwd.focus();
     return false;
-  }
+
+  }  
+
   return true;
 }
       
