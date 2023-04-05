@@ -258,12 +258,11 @@ function DeleteCheck() {
                  mypage.pwd1.focus();
                  return false;
                } 
-               if (!document.mypage.pwd1.value.match(/^(?=.*[!@#$%])([A-Za-z\d!@#$%]){10,20}$/)) {
+               if (document.mypage.pwd1.value !== "" && !document.mypage.pwd1.value.match(/^(?=.*[!@#$%])([A-Za-z\d!@#$%]){10,20}$/)) {
                alert("암호는 대소문자, 숫자, 특수문자를 조합으로 10~20자리 이내로 입력해주세요.");
                mypage.pwd1.focus();
                return false;
-            }
-	     
+             }  
            if (document.mypage.phone.value == "") {
               alert("전화번호를 입력해주세요");
               mypage.phone.focus();
