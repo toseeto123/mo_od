@@ -75,6 +75,7 @@ function mainPagingEngine(){
                 +"<thead id='thead'>"
                 +"<tr>"
                 	+"<th>주문번호</th>"
+                	+"<th>결제상태</th>"
                 	+"<th>이름</th>"
                 	+"<th>연락처</th>"
                 	+"<th>주소</th>"
@@ -95,6 +96,17 @@ function mainPagingEngine(){
 				text = text
 				+ "<tr>"
 				+"<td>" + no + "</td>"
+				if(tableData.list[i].status == '결제 취소'){
+					text = text + "<td style='color:#f54c4c;'>" + tableData.list[i].status + "</td>" 
+				}else if(tableData.list[i].status == '구매 확정'){
+					text = text + "<td style='color:#3c8df0;'>" + tableData.list[i].status + "</td>"
+				}else{
+					text = text + "<td>" + tableData.list[i].status + "</td>"
+				}
+				
+				
+                
+                text = text
                 +"<td>" + tableData.list[i].name + "</td>"
                 +"<td>" + tableData.list[i].phone + "</td>"
                 +"<td>" + tableData.list[i].address + "</td>"
