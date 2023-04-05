@@ -1,11 +1,40 @@
 let flag = false;
+const urls = document.referrer
+			const url = urls.split("/")
+			let j = url.length;
+			let goUrl = '';
+			
+	function memberDelete(){
+	for(var i=0; i<url.length; i++){
+		if(url[i] == 'admin'){
+			j = i;
+		}
+	} 
+	for(var k=j; k<url.length; k++){
+		goUrl = goUrl + '/' + url[k];
+	}
+	
+	location.href = '/admin/deleteMember?id='+document.getElementById('whatId').value+'&url='+goUrl;;
+}
+			
 	function updateMember(){
 		if(document.getElementById('id').value != document.getElementById('idCheck').value){
 			if(!flag){
 				alert('아이디 중복확인이 필요합니다');
 				return false;
-			}
+			}			
 		}
+			
+			for(var i=0; i<url.length; i++){
+				if(url[i] == 'admin'){
+					j = i;
+				}
+			} 
+			for(var k=j; k<url.length; k++){
+				goUrl = goUrl + '/' + url[k];
+			}
+			document.getElementById('url').value = goUrl;
+			
 }
 
 function checkingId(){

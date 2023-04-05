@@ -144,12 +144,10 @@ public class AdminPaymentService {
 	
 		}
 	
-	public Map<String, Object> adminPaymentSearchingList(Model model, String paging, String searchWhat, String search) {
+	public void adminPaymentSearchingList(Model model, String paging, String searchWhat, String search) {
 		   ModuleVO moduleVO = new ModuleVO();
-		   Map<String, Object> map = new HashMap<String, Object>();
-		   if(search.equals("(none)")) {
-			   search = null;		   
-		   }else {
+		  
+		  
 			   if(searchWhat.equals("name")) {
 				   moduleVO.setSearchName(search);
 			   }else if(searchWhat.equals("orderNo")) {
@@ -163,15 +161,28 @@ public class AdminPaymentService {
 			   }else if(searchWhat.equals("phone")) {
 				   moduleVO.setPhone(search);
 			   }
-		   }
+			   
+		   
 		   List<AdminPaymentVO> memberSearchingAllList = dao.adminPaymentSearchingList(moduleVO);
-		   ViewPagingVO viewVO = module.pagingModule(model, moduleVO, memberSearchingAllList, paging, 10);
+		   module.pagingModule(model, moduleVO, memberSearchingAllList, paging, 10);
 		   List<AdminPaymentVO> memberSearchingShowList = dao.adminPaymentSearchingList(moduleVO);
 		   List<AdminPaymentVO> productList = dao.adminPaymentList();
-		   map.put("list", memberSearchingShowList);
-		   map.put("vo", viewVO);
-		   map.put("productList", productList);
-		   return map;
+		   
+		   Map<Integer, List<AdminPaymentVO>> map = new HashMap<Integer, List<AdminPaymentVO>>();
+			for(AdminPaymentVO memberVO : memberSearchingShowList) {
+				List<AdminPaymentVO> list = new ArrayList<AdminPaymentVO>();
+				for(AdminPaymentVO payVO : productList) {
+					if(memberVO.getOrderNo() == payVO.getOrderNo()) {
+						list.add(payVO);
+					}
+				}
+				map.put(memberVO.getOrderNo(), list);
+			}
+		   
+			model.addAttribute("searchWhat", searchWhat);
+			model.addAttribute("search", search);
+			model.addAttribute("member", memberSearchingShowList);
+			model.addAttribute("map", map);
 	}
 	
 	public void adminPaymentDetail(Model model, int no) {
