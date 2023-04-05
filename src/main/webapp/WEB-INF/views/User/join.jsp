@@ -136,7 +136,7 @@ div>label {
                   <div class="row">
                      <div class="col-9 mail_check_wrap">
                         <input type="text" name="id" class="form-control" id="id"
-                           placeholder="아이디입력하세요" data-rule="minlen:6" autofocus>
+                           placeholder="아이디입력하세요" data-rule="minlen:6" required autofocus>
                      </div>
                      <div class="col-3">
                         <button type="button" name="idChk" id="idChk" class="Btn"
@@ -220,7 +220,7 @@ div>label {
                         <div class="row">
                            <div class="col-8 mail_check_input_box"
                               id="mail_check_input_box_false">
-                              <input class="mail_check_input form-control" id="email1"
+                              <input class="mail_check_input form-control" id="email1" name="email1"
                                  disabled="disabled" required>
                            </div>
                            <div class="col-4">
@@ -312,6 +312,7 @@ div>label {
          if (mailFormCheck(email)) {
             warnMsg.html("이메일이 전송 되었습니다. 이메일을 확인해주세요.");
             warnMsg.css("display", "inline-block");
+            join.email1.focus();
          } else {
             warnMsg.html("올바르지 못한 이메일 형식입니다.");
             warnMsg.css("display", "inline-block");

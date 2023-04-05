@@ -48,6 +48,7 @@ function JoinCheck(){
            }
            if ($(".mail_check_input").val() == "") { // 인증번호 입력란이 비어있을 경우
                alert("이메일 인증이 필요합니다."); // 경고창 띄우기
+               join.mail_check_input.focus();
              return false;
             }
              if(!mailnumCheck){
@@ -55,6 +56,7 @@ function JoinCheck(){
                $(".mail_check_input").focus();
                return false;
             }
+            
            if (document.join.phone.value == "") {
               alert("전화번호를 입력해주세요");
               join.phone.focus();
@@ -67,6 +69,17 @@ function JoinCheck(){
             alert("전화번호를 정확히 입력하여 주십시오.");
              return false;
             }
+            if (document.join.adr.value == "") {
+              alert("주소를 입력해주세요");
+              join.adr.focus();
+              return false;
+           }
+           if (document.join.adr3.value == "") {
+              alert("상세주소를 입력해주세요");
+              join.adr3.focus();
+              return false;
+           }
+            
            return true;   
         }
 
@@ -243,6 +256,11 @@ function DeleteCheck() {
                  mypage.pwd1.focus();
                  return false;
                } 
+               if (!document.mypage.pwd1.value.match(/^(?=.*[!@#$%])([A-Za-z\d!@#$%]){10,20}$/)) {
+               alert("암호는 대소문자, 숫자, 특수문자를 조합으로 10~20자리 이내로 입력해주세요.");
+               mypage.pwd1.focus();
+               return false;
+            }
 	     
            if (document.mypage.phone.value == "") {
               alert("전화번호를 입력해주세요");
