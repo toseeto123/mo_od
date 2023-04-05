@@ -21,6 +21,8 @@ public interface UserService {
 		
 		public void update(UserVO vo) throws Exception;
 		
+		public void updatepp(UserVO vo) throws Exception;
+		
 		public void updatePwd(UserVO vo);
 		
 		public void updateAdminMember(UserVO vo);

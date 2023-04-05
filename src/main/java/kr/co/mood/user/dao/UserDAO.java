@@ -107,6 +107,13 @@ public class UserDAO {
 				mybatis.insert("UserDAO.NaverInsert",naverUserInfo);
 			}
 
+			public void updatepp(UserVO vo) {
+				// TODO Auto-generated method stub
+				mybatis.update("UserDAO.updatepp", vo);
+				System.out.println(vo);
+				
+			}
+
 			
 
 }

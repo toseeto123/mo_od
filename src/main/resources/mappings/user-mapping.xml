@@ -86,11 +86,17 @@
     <update id ="update" parameterType="kr.co.mood.user.dao.UserVO">
     <![CDATA[
         update moodjoin
+        set adr= concat_ws('   ',#{adr} , #{adr2} , #{adr3}), email=#{email}, phone=#{phone}, pwd=hex(aes_encrypt(#{pwd},'key'))
+        where id = #{id}
+        ]]>
+    </update>
+     <update id ="updatepp" parameterType="kr.co.mood.user.dao.UserVO">
+    <![CDATA[
+        update moodjoin
         set adr= concat_ws('   ',#{adr} , #{adr2} , #{adr3}), email=#{email}, phone=#{phone}, pwd=hex(aes_encrypt(#{pwd1},'key'))
         where id = #{id}
         ]]>
     </update>
-    
     <update id="updateAdminMember" parameterType="kr.co.mood.user.dao.UserVO">
     	update moodjoin
         set id=#{id}, name=#{name},
