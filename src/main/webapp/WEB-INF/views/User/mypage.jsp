@@ -187,7 +187,7 @@ input {
 					<td><label for="pwd1">변경할 비밀번호</label></td>
 					<td><input type="password" class="pwd1" id="pwd1" name="pwd1"
 						style="width: 100%; max-width: 280px;"
-						${login_info.pwd == null ? 'required' : ''}><br></td>
+						value="${login_info.pwd == null ? 'required' : ''}"><br></td>
 				</tr>
 				<tr>
 					<td><label for="pwd2">변경할 비밀번호 확인</label></td>

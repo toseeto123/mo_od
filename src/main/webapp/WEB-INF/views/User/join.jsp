@@ -224,7 +224,8 @@ div>label {
                                  disabled="disabled" required>
                            </div>
                            <div class="col-4">
-                              <button class="mail_check_button Btn">인증번호 전송</button>
+                           <input type="button" class="mail_check_bt Btn" value="인증번호 전송">
+<!--                               <button class="mail_check_bt Btn">인증번호 전송</button> -->
                            </div>
                         </div>
                         <div class="clearfix"></div>
@@ -274,8 +275,7 @@ div>label {
 
                <div class=" form-group mt"
                   style="margin-top: 40px; margin-left: 20px;">
-                  <input type="submit" value="가입하기" class="join_now bt_submit stBtn"
-                     onclick="return JoinCheck()"> <input type="reset"
+                  <input type="submit" value="가입하기" class="join_now bt_submit stBtn" onclick="return JoinCheck()"> <input type="reset"
                      value="취소" class="join_now bt_submit stBtn"> <input
                      type="button" value="뒤로가기" class="join_now bt_submit stBtn"
                      onclick="location.href='/'">
@@ -301,7 +301,7 @@ div>label {
 
    <script type="text/javascript">
       /* 인증번호 이메일 전송 */
-      $(".mail_check_button").click(function() {
+      $(".mail_check_bt").click(function() {
 
          var email = $(".email").val(); // 입력한 이메일
          var cehckBox = $(".mail_check_input"); // 인증번호 입력란
