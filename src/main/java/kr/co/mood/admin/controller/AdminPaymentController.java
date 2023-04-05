@@ -55,11 +55,10 @@ public class AdminPaymentController {
 		return "admin/adminPayment";
 	}
 	
-	@RequestMapping("/payment/{paging}/{searchWhat}/{search}")
-	@ResponseBody
-	public Map<String, Object> adminPaymentPagingSearching(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model){
-		   Map<String, Object> map = adminService.adminPaymentSearchingList(model, paging, searchWhat, search);
-		return map;	
+	@RequestMapping("/payment/{paging}/{searchWhat}/{search}")	
+	public String adminPaymentPagingSearching(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model){
+		   adminService.adminPaymentSearchingList(model, paging, searchWhat, search);
+		return "admin/adminPayment";	
 	}
 	
 	@RequestMapping("/paymentDetail")
@@ -70,14 +69,16 @@ public class AdminPaymentController {
 	
 	
 	@RequestMapping(value = "/kakaoPayCancel" )
-	public String payCancel(Model model, String orderid) {
+	public String payCancel(Model model, String orderid, String url) {
 	
 		KakaoPayApprovalVO vo = adminService.adminPaymentCancel(Integer.parseInt(orderid));	
 		try {
 			kakaoPay.kakaoCancel(vo.getTid(),vo.getPrice(), null, Integer.parseInt(orderid));
 		}catch(Exception e) {
 			e.printStackTrace();
-			return "redirect:/admin/chart";
+		}
+		if(url != null && !url.trim().equals("")) {
+			return "redirect:"+url;
 		}
 	   return "redirect:/admin/payment";
 	}

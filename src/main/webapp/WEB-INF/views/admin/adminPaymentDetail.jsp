@@ -122,7 +122,7 @@ section{
                   <c:if test="${member.status != '결제 취소'}">
                   	<a onClick="$('#myModal${member.orderNo}').modal('show');" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated">주문취소</a>
                   	</c:if>                  	
-                  	<!-- <input type="submit" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated" value="수정하기"> -->
+                  	<input type="submit" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated" onClick="modifying()" value="수정하기">
                   	<a href="javascript:location.href=document.referrer" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated">돌아가기</a>
              		<input type="hidden" name="path" id="path">     	
                   	</td>
@@ -132,6 +132,7 @@ section{
                 
              
               </table>
+              <input type="hidden" id="url" name="url">
               </form>
               <div class="bottom" style="height: 30px;"></div>
               	<div class="modal fade" id="myModal${member.orderNo}">
@@ -157,7 +158,7 @@ section{
 								<h5>결제를 취소하시겠습니까?</h5>
 							</div>
 							<div class="form-group text-center">
-							<input type="button" onClick="location.href = '/admin/kakaoPayCancel?orderid=${member.orderNo}';" value="결제 취소">
+							<input type="button" onClick="paymentCancel()" value="결제 취소">
 								<input type="button" onClick="$('#myModal${member.orderNo}').modal('hide');" value="닫기">								
 							</div>
 						</div>
@@ -186,19 +187,7 @@ var footerRealRect = footerReal.getBoundingClientRect();
 if (footerRect.top + footerRect.height >= footerRealRect.top) {
 	footerReal.classList.remove("footer");
 }	
-console.log(document.referrer.split('/'))
-const path = [];
-var q = document.referrer.split('/').length;
-for(var i=0; i<document.referrer.split('/').length; i++){
-	if(document.referrer.split('/')[i] == 'admin'){
-		q = i;
-	}
-}
-let route = '';
-for(var j=q; j<document.referrer.split('/').length; j++){
-	route = route +'/' + document.referrer.split('/')[j];
-}
-document.getElementById('path').value = route;
+
 </script>
 <script>
 	if(document.getElementById('status').innerHTML == '결제 취소'){
@@ -208,6 +197,28 @@ document.getElementById('path').value = route;
 	}else{
 		document.getElementById('status').style.color = "black";
 	}
+</script>
+<script>
+const urls = document.referrer
+const url = urls.split("/")
+let j = url.length;
+let goUrl = '';
+function modifying(){
+for(var i=0; i<url.length; i++){
+	if(url[i] == 'admin'){
+		j = i;
+	}
+} 
+for(var k=j; k<url.length; k++){
+	goUrl = goUrl + '/' + url[k];
+}
+document.getElementById('url').value = goUrl;
+}
+function paymentCancel(){
+	
+	modifying();
+	location.href = '/admin/kakaoPayCancel?orderid=${member.orderNo}&url='+goUrl;
+}
 </script>
 </body>
 

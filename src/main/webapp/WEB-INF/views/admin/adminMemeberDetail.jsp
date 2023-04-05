@@ -108,6 +108,7 @@ input[type=button], input[type=submit] {
 					</tr>
 				</tbody>
 			</table>
+			<input type="hidden" name="url" id="url">
 			</form>
 	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   		<div class="modal-dialog modal-dialog-centered" role="document">

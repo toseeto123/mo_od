@@ -4,8 +4,22 @@ let flag = false;
 			if(!flag){
 				alert('아이디 중복확인이 필요합니다');
 				return false;
-			}
+			}			
 		}
+			const urls = document.referrer
+			const url = urls.split("/")
+			let j = url.length;
+			let goUrl = '';
+			for(var i=0; i<url.length; i++){
+				if(url[i] == 'admin'){
+					j = i;
+				}
+			} 
+			for(var k=j; k<url.length; k++){
+				goUrl = goUrl + '/' + url[k];
+			}
+			document.getElementById('url').value = goUrl;
+			
 }
 
 function checkingId(){

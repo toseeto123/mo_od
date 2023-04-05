@@ -110,22 +110,22 @@ section{
                 </thead>
                 <c:set var="value" value="0" />
                 <tbody id="tbody">
-                <c:forEach var="member" items="${member}">
+                <c:forEach var="mem" items="${member}">
                 <tr>
-                <td>${member.orderNo}</td>
-				<td><span id="status${value}">${member.status}</span>
+                <td>${mem.orderNo}</td>
+				<td><span id="status${value}">${mem.status}</span>
 				<input type="hidden" value="${value = value+1}">
 				</td>
-                <td>${member.name}</td>
-                <td>${member.phone}</td>
-                <td>${member.address}</td>
-                <td>${member.payDate}</td>
+                <td>${mem.name}</td>
+                <td>${mem.phone}</td>
+                <td>${mem.address}</td>
+                <td>${mem.payDate}</td>
                 <c:set var="amount" value="0" />
-                <c:forEach var="product" items="${map[member.orderNo]}">
+                <c:forEach var="product" items="${map[mem.orderNo]}">
                 <input type="hidden" value="${amount = amount + (product.price*product.productCount)}">
                 </c:forEach>
                 <td>&#8361; ${amount}</td>
-                <td><a href="/admin/paymentDetail?no=${member.orderNo}">상세보기</a>
+                <td><a href="/admin/paymentDetail?no=${mem.orderNo}">상세보기</a>
                 </td>
                 </tr>
                   </c:forEach> 
@@ -143,23 +143,23 @@ section{
 			<div id="modulePaging"
 				style="display: inline-block;">
 				<c:if test="${prePage!=null }">
-					<a href="/admin/payment/${prePage}">&lt;</a>
+					<a href="/admin/payment/${prePage}/${searchWhat}/${search}">&lt;</a>
 				</c:if>
 
 				<c:forEach items="${ pagingNo }" var="no">
 					<c:choose>
 						<c:when test="${selectPage == no}">
                   &nbsp;<a style="color: green"
-								href="/admin/payment/${no}">${no}</a>&nbsp;
+								href="/admin/payment/${no}/${searchWhat}/${search}">${no}</a>&nbsp;
                   </c:when>
 						<c:otherwise>
-                  &nbsp;<a href="/admin/payment/${no}">${no}</a>&nbsp;
+                  &nbsp;<a href="/admin/payment/${no}/${searchWhat}/${search}">${no}</a>&nbsp;
                   </c:otherwise>
 					</c:choose>
 				</c:forEach>
 
 				<c:if test="${nextPage != null }">
-					<a href="/admin/payment/${nextPage}">&gt;</a>
+					<a href="/admin/payment/${nextPage}/${searchWhat}/${search}">&gt;</a>
 				</c:if>
 			</div>
 			</section>

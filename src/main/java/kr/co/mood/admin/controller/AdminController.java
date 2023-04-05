@@ -63,32 +63,29 @@ public class AdminController {
 	   return "redirect:/admin/adminMemberList/1";
    }
   
-   @RequestMapping("/adminMemberList/{paging}/{searchWhat}/{search}")
-   @ResponseBody
-   public Map<String, Object> adminMemberList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {//�뜝�럥�돯占쎄껀占쎈짗占쎌굲占쎈쐻占쎈윥壤쏉옙 �뜝�럡猿�占쎈쐻占쎈쓡野껁깷�쐻�뜝占�
+   @RequestMapping("/adminMemberList/{paging}/{searchWhat}/{search}")  
+   public String adminMemberList(@PathVariable String paging,@PathVariable String searchWhat,@PathVariable String search, Model model) {
 	   ModuleVO moduleVO = new ModuleVO();
-	   Map<String, Object> map = new HashMap<String, Object>();
-	   if(search.equals("(none)")) {
-		   search = null;		   
-	   }else {
+	 
 	   if(searchWhat.equals("id")) {
 		   moduleVO.setSearchId(search);
 	   }else if(searchWhat.equals("name")) {
 		   moduleVO.setSearchName(search);
 	   }
-	   }
+	   
+	   
 	   List<UserVO> userList = userService.selectAll(moduleVO);
-	   ViewPagingVO viewVO = module.pagingModule(model, moduleVO, userList, paging, 10);
+	   module.pagingModule(model, moduleVO, userList, paging, 10);
 	   List<UserVO> showUserList = userService.selectAll(moduleVO);
 	   model.addAttribute("userList", showUserList);
-	   map.put("list", showUserList);
-	   map.put("vo", viewVO);
-	   return map;
+	   model.addAttribute("searchWhat", searchWhat);
+	   model.addAttribute("search", search);
+	   return "/admin/adminMemberList";
    }
    
    
    @RequestMapping("/adminMemberList/{paging}")
-   public String adminMemberList(@PathVariable String paging, Model model) {//�뜝�럥�돯占쎄껀占쎈짗占쎌굲占쎈쐻占쎈윥壤쏉옙 �뜝�럡猿�占쎈쐻占쎈쓡野껁깷�쐻�뜝占�
+   public String adminMemberList(@PathVariable String paging, Model model) {
 	   ModuleVO moduleVO = new ModuleVO();
 	   List<UserVO> userList = userService.selectAll(null);
 	   module.pagingModule(model, moduleVO, userList, paging, 10);
@@ -107,15 +104,16 @@ public class AdminController {
 	   }catch(Exception e) {
 		   e.printStackTrace();
 	   }
+	   
 	   return "/admin/adminMemeberDetail";
    }
    
    @RequestMapping("/paymentModify/{orderNo}")
-   public String adminPaymentModify(@PathVariable int orderNo, String adr, String adr2,String adr3, String path, AdminPaymentVO vo, HttpServletRequest request) {
+   public String adminPaymentModify(@PathVariable int orderNo, String url, String adr, String adr2,String adr3, AdminPaymentVO vo, HttpServletRequest request) {
 	   String address = adr + "   " + adr2 + "   " + adr3;
 	   vo.setAddress(address);
 	   adminPaymentService.updateAddress(vo);
-	   return "redirect:"+path;	   
+	   return "redirect:"+url;	   
    }
    
    @RequestMapping("/memberCheck")
@@ -133,8 +131,11 @@ public class AdminController {
    }
    
    @RequestMapping("/memberUpdate")
-   public String adminMemberUpdate(UserVO vo) {
+   public String adminMemberUpdate(UserVO vo, String url) {
 	   userService.updateAdminMember(vo);
+	   if(url != null && !url.trim().equals("")) {
+		   return "redirect:"+url;
+	   }
 	   return "redirect:/admin/adminMemberList/1";
    }
    
