@@ -115,8 +115,8 @@ public class AdminController {
 	   vo.setAddress(address);
 	   adminPaymentService.updateAddress(vo);
 	   try {
-		   String encodedUrl = URLEncoder.encode(search, "UTF-8");
-		   return "redirect:"+url+"/"+encodedUrl;	
+		  
+		   return "redirect:"+url+"/"+search;	
 	   }catch(Exception e) {
 		   e.printStackTrace();
 	   }
@@ -141,11 +141,8 @@ public class AdminController {
    public String adminMemberUpdate(UserVO vo, String search, String url) {
 	   userService.updateAdminMember(vo);
 	   try {
-		   String encodedUrl = URLEncoder.encode(search, "UTF-8");
-		   System.out.println("두둥");
-		   System.out.println(url);
-		   System.out.println(encodedUrl);
-		   return "redirect:"+url+"/"+encodedUrl;	
+		
+		   return "redirect:"+url+"/"+search;	
 	   }catch(Exception e) {
 		   e.printStackTrace();
 	   }
