@@ -119,7 +119,7 @@ section{
                   <tr>
                   <td colspan="4" style="border-bottom:none"></td>
                   <td style="border-bottom:none">
-                  <c:if test="${member.status == '결제 완료'}">
+                  <c:if test="${member.status != '결제 취소'}">
                   	<a onClick="$('#myModal${member.orderNo}').modal('show');" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated">주문취소</a>
                   	</c:if>                  	
                   	<input type="submit" style="padding: 4px 20px; background: #323232; border: none; color: white;" class="btn-get-started animate__animated" value="수정하기">
