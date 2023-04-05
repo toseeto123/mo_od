@@ -80,11 +80,34 @@ section{
 	<div class="searchParent">
 			<div class="search">
 			<select id="searchWhat">
+			<c:choose>
+				<c:when test="${searchWhat == 'orderNo'}">
+				<option value="name">이름</option>
+				<option value="orderNo" selected>주문번호</option>
+				<option value="payDate">결제날짜</option>
+				<option value="phone">연락처</option>
+				</c:when>
+				<c:when test="${searchWhat == 'payDate'}">
+				<option value="name">이름</option>
+				<option value="orderNo">주문번호</option>
+				<option value="payDate" selected>결제날짜</option>
+				<option value="phone">연락처</option>
+				</c:when>
+				<c:when test="${searchWhat == 'phone'}">
+				<option value="name">이름</option>
+				<option value="orderNo">주문번호</option>
+				<option value="payDate">결제날짜</option>
+				<option value="phone" selected>연락처</option>
+				</c:when>
+				<c:otherwise>
 				<option value="name">이름</option>
 				<option value="orderNo">주문번호</option>
 				<option value="payDate">결제날짜</option>
 				<option value="phone">연락처</option>
-			</select> <input type="search" id="search">
+				</c:otherwise>
+			</c:choose>
+				
+			</select> <input type="search" id="search" value="${search}">
 
 			
 			<input type="button" 
