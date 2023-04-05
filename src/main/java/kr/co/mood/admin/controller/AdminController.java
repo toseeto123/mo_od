@@ -140,14 +140,14 @@ public class AdminController {
    }
    
    @RequestMapping("/deleteMember")
-   public String adminMemberDelete(String id) {
+   public String adminMemberDelete(String id, String url) {
 	   try {
 		   userService.delete(id);
+		   return "redirect:"+url;
 	   }catch(Exception e) {
 		   e.printStackTrace();
 		   return "redirect:/";
 	   }
-	   return "redirect:/admin/adminMemberList/1";
    }
    
    @RequestMapping("/admincate")

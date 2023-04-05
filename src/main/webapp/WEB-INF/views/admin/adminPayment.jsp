@@ -164,12 +164,21 @@ section{
 					<!-- End Default Table Example -->
 			<section>
 			<div id="modulePaging"
-				style="display: inline-block;">
+				style="display: inline-block;">				
 				<c:if test="${prePage!=null }">
-					<a href="/admin/payment/${prePage}/${searchWhat}/${search}">&lt;</a>
+				<c:choose>
+					<c:when test="${search != null}">
+						<a href="/admin/payment/${prePage}/${searchWhat}/${search}">&lt;</a>
+					</c:when>
+				</c:choose>
+					<c:otherwise>
+					<a href="/admin/payment/${prePage}">&lt;</a>
+					</c:otherwise>
 				</c:if>
 
 				<c:forEach items="${ pagingNo }" var="no">
+					<c:choose>
+					<c:when test="${searh != null}">
 					<c:choose>
 						<c:when test="${selectPage == no}">
                   &nbsp;<a style="color: green"
@@ -179,10 +188,31 @@ section{
                   &nbsp;<a href="/admin/payment/${no}/${searchWhat}/${search}">${no}</a>&nbsp;
                   </c:otherwise>
 					</c:choose>
+					</c:when>
+					<c:otherwise>
+					<c:choose>
+						<c:when test="${selectPage == no}">
+                  &nbsp;<a style="color: green"
+								href="/admin/payment/${no}">${no}</a>&nbsp;
+                  </c:when>
+						<c:otherwise>
+                  &nbsp;<a href="/admin/payment/${no}">${no}</a>&nbsp;
+                  </c:otherwise>
+					</c:choose>
+					</c:otherwise>
+					
+					</c:choose>
 				</c:forEach>
 
 				<c:if test="${nextPage != null }">
-					<a href="/admin/payment/${nextPage}/${searchWhat}/${search}">&gt;</a>
+					<c:choose>
+					<c:when test="${search != null}">
+						<a href="/admin/payment/${nextPage}/${searchWhat}/${search}">&gt;</a>
+					</c:when>
+					<c:otherwise>
+						<a href="/admin/payment/${nextPage}">&gt;</a>
+					</c:otherwise>
+					</c:choose>
 				</c:if>
 			</div>
 			</section>

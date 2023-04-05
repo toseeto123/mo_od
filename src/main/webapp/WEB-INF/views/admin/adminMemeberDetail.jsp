@@ -125,7 +125,7 @@ input[type=button], input[type=submit] {
       		탈퇴하시겠습니까?<br>
       	</div>
       	<div class="modal-footer">
-	        <input type="button" id="modal_delbtn" value="탈퇴하기" onclick="location.href = '/admin/deleteMember?id=${userInfo.id}';">
+	        <input type="button" id="modal_delbtn" value="탈퇴하기" onclick="memberDelete();">
     	    <input type="button" value="닫기"  onclick="$('#exampleModal').modal('hide')">
       			</div>
     		</div>
@@ -133,7 +133,7 @@ input[type=button], input[type=submit] {
 	</div>
 
 			<!-- End Default Table Example -->
-
+<input type="hidden" value="${userInfo.id}" id="whatId">
 
 			<div style="margin-top: 120px;"><jsp:include
 					page="${pageContext.request.contextPath}/WEB-INF/common/footer.jsp" /></div>
@@ -162,6 +162,7 @@ window.onload = function(){
 			
 	}
 }
+
 </script>
 
 </body>

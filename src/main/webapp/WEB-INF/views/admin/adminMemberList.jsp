@@ -120,7 +120,7 @@ section{
 							<td scope="col">${user.name}</td>
 							<td scope="col">${user.phone}</td>
 							<td scope="col">${user.email}</td>
-							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}?search=${search}'" scope="col"><a style="color: #323232;"
+							<td onClick="location.href = '/admin/adminMemberDetail/${user.no}'" scope="col"><a style="color: #323232;"
 								href="/admin/adminMemberDetail/${user.no}">상세정보</a></td>
 						</tr>
 					</c:forEach>
@@ -135,12 +135,22 @@ section{
 	text-align: center;">
 			<div id="modulePaging" style="display: inline-block;">
 				<c:if test="${prePage!=null }">
-					<a style="color: #323232;" href="/admin/adminMemberList/${prePage}/${searchWhat}/${search}">&lt;</a>
+				<c:choose>
+				<c:when test="${search != null}">
+				<a style="color: #323232;" href="/admin/adminMemberList/${prePage}/${searchWhat}/${search}">&lt;</a>
+				</c:when>
+				<c:otherwise>
+					<a style="color: #323232;" href="/admin/adminMemberList/${prePage}">&lt;</a>
+					</c:otherwise>
+					</c:choose>
 				</c:if>
 
 				<c:forEach items="${ pagingNo }" var="no">
+				<c:choose>
+					<c:when test="${search != null}">
 					<c:choose>
 						<c:when test="${selectPage == no}">
+						
                   &nbsp;<a style="color: green"
 								href="/admin/adminMemberList/${no}/${searchWhat}/${search}">${no}</a>&nbsp;
                   </c:when>
@@ -148,10 +158,35 @@ section{
                   &nbsp;<a style="color: #323232;" href="/admin/adminMemberList/${no}/${searchWhat}/${search}">${no}</a>&nbsp;
                   </c:otherwise>
 					</c:choose>
+					</c:when>
+					<c:otherwise>
+					<c:choose>
+						<c:when test="${selectPage == no}">
+						
+                  &nbsp;<a style="color: green"
+								href="/admin/adminMemberList/${no}">${no}</a>&nbsp;
+                  </c:when>
+						<c:otherwise>
+                  &nbsp;<a style="color: #323232;" href="/admin/adminMemberList/${no}">${no}</a>&nbsp;
+                  </c:otherwise>
+					</c:choose>
+					</c:otherwise>
+				
+				
+					
+					</c:choose>
 				</c:forEach>
 
 				<c:if test="${nextPage != null }">
-					<a style="color: #323232;" href="/admin/adminMemberList/${nextPage}/${searchWhat}/${search}">&gt;</a>
+				<c:choose>
+				<c:when test="${search != null}">
+				<a style="color: #323232;" href="/admin/adminMemberList/${nextPage}/${searchWhat}/${search}">&gt;</a>
+				</c:when>
+					<c:otherwise>
+					<a style="color: #323232;" href="/admin/adminMemberList/${nextPage}">&gt;</a>
+					</c:otherwise>
+				</c:choose>
+					
 				</c:if>
 			</div>
 			</section>
