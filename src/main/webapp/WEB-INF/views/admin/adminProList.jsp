@@ -147,7 +147,7 @@ body {
 				</tbody>
 			</table>
 			<div id="modulePaging"
-				style="display: inline-block; position: absolute; left: 50%; transform: translateX(-50%);  font-size: 20px;">
+				style="display: inline-block; position: absolute; left: 50%; transform: translateX(-50%);  font-size: 20px; color:#323232;">
 				<c:if test="${prePage!=null }">
 					<a href="/admin/adminProList/${prePage}">&lt;</a>
 				</c:if>
@@ -155,7 +155,7 @@ body {
 				<c:forEach items="${ pagingNo }" var="no">
 					<c:choose>
 						<c:when test="${selectPage == no}">
-                  &nbsp;<a style="color: green"
+                  &nbsp;<a style="color: #323232"
 								href="/admin/adminProList/${no}">${no}</a>&nbsp;
                   </c:when>
 						<c:otherwise>
