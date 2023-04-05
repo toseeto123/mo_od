@@ -1,5 +1,6 @@
 package kr.co.mood.admin.controller;
 
+import java.net.URLEncoder;
 import java.util.List;
 import java.util.Map;
 
@@ -69,17 +70,17 @@ public class AdminPaymentController {
 	
 	
 	@RequestMapping(value = "/kakaoPayCancel" )
-	public String payCancel(Model model, String orderid, String url) {
+	public String payCancel(Model model, String orderid, String url, String search) {
 	
 		KakaoPayApprovalVO vo = adminService.adminPaymentCancel(Integer.parseInt(orderid));	
 		try {
 			kakaoPay.kakaoCancel(vo.getTid(),vo.getPrice(), null, Integer.parseInt(orderid));
+			String encodedUrl = URLEncoder.encode(search, "UTF-8");
+			return "redirect:"+url+"/"+encodedUrl;			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		if(url != null && !url.trim().equals("")) {
-			return "redirect:"+url;
-		}
+		
 	   return "redirect:/admin/payment";
 	}
 
