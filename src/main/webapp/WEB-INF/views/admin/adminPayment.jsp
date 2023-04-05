@@ -80,11 +80,34 @@ section{
 	<div class="searchParent">
 			<div class="search">
 			<select id="searchWhat">
+			<c:choose>
+				<c:when test="${searchWhat == 'orderNo'}">
+				<option value="name">이름</option>
+				<option value="orderNo" selected>주문번호</option>
+				<option value="payDate">결제날짜</option>
+				<option value="phone">연락처</option>
+				</c:when>
+				<c:when test="${searchWhat == 'payDate'}">
+				<option value="name">이름</option>
+				<option value="orderNo">주문번호</option>
+				<option value="payDate" selected>결제날짜</option>
+				<option value="phone">연락처</option>
+				</c:when>
+				<c:when test="${searchWhat == 'phone'}">
+				<option value="name">이름</option>
+				<option value="orderNo">주문번호</option>
+				<option value="payDate">결제날짜</option>
+				<option value="phone" selected>연락처</option>
+				</c:when>
+				<c:otherwise>
 				<option value="name">이름</option>
 				<option value="orderNo">주문번호</option>
 				<option value="payDate">결제날짜</option>
 				<option value="phone">연락처</option>
-			</select> <input type="search" id="search">
+				</c:otherwise>
+			</c:choose>
+				
+			</select> <input type="search" id="search" value="${search}">
 
 			
 			<input type="button" 
@@ -110,22 +133,22 @@ section{
                 </thead>
                 <c:set var="value" value="0" />
                 <tbody id="tbody">
-                <c:forEach var="member" items="${member}">
+                <c:forEach var="mem" items="${member}">
                 <tr>
-                <td>${member.orderNo}</td>
-				<td><span id="status${value}">${member.status}</span>
+                <td>${mem.orderNo}</td>
+				<td><span id="status${value}">${mem.status}</span>
 				<input type="hidden" value="${value = value+1}">
 				</td>
-                <td>${member.name}</td>
-                <td>${member.phone}</td>
-                <td>${member.address}</td>
-                <td>${member.payDate}</td>
+                <td>${mem.name}</td>
+                <td>${mem.phone}</td>
+                <td>${mem.address}</td>
+                <td>${mem.payDate}</td>
                 <c:set var="amount" value="0" />
-                <c:forEach var="product" items="${map[member.orderNo]}">
+                <c:forEach var="product" items="${map[mem.orderNo]}">
                 <input type="hidden" value="${amount = amount + (product.price*product.productCount)}">
                 </c:forEach>
                 <td>&#8361; ${amount}</td>
-                <td><a href="/admin/paymentDetail?no=${member.orderNo}">상세보기</a>
+                <td><a href="/admin/paymentDetail?no=${mem.orderNo}">상세보기</a>
                 </td>
                 </tr>
                   </c:forEach> 
@@ -141,12 +164,32 @@ section{
 					<!-- End Default Table Example -->
 			<section>
 			<div id="modulePaging"
-				style="display: inline-block;">
+				style="display: inline-block;">				
 				<c:if test="${prePage!=null }">
+				<c:choose>
+					<c:when test="${search != null}">
+						<a href="/admin/payment/${prePage}/${searchWhat}/${search}">&lt;</a>
+					</c:when>
+				</c:choose>
+					<c:otherwise>
 					<a href="/admin/payment/${prePage}">&lt;</a>
+					</c:otherwise>
 				</c:if>
 
 				<c:forEach items="${ pagingNo }" var="no">
+					<c:choose>
+					<c:when test="${searh != null}">
+					<c:choose>
+						<c:when test="${selectPage == no}">
+                  &nbsp;<a style="color: green"
+								href="/admin/payment/${no}/${searchWhat}/${search}">${no}</a>&nbsp;
+                  </c:when>
+						<c:otherwise>
+                  &nbsp;<a href="/admin/payment/${no}/${searchWhat}/${search}">${no}</a>&nbsp;
+                  </c:otherwise>
+					</c:choose>
+					</c:when>
+					<c:otherwise>
 					<c:choose>
 						<c:when test="${selectPage == no}">
                   &nbsp;<a style="color: green"
@@ -156,10 +199,20 @@ section{
                   &nbsp;<a href="/admin/payment/${no}">${no}</a>&nbsp;
                   </c:otherwise>
 					</c:choose>
+					</c:otherwise>
+					
+					</c:choose>
 				</c:forEach>
 
 				<c:if test="${nextPage != null }">
-					<a href="/admin/payment/${nextPage}">&gt;</a>
+					<c:choose>
+					<c:when test="${search != null}">
+						<a href="/admin/payment/${nextPage}/${searchWhat}/${search}">&gt;</a>
+					</c:when>
+					<c:otherwise>
+						<a href="/admin/payment/${nextPage}">&gt;</a>
+					</c:otherwise>
+					</c:choose>
 				</c:if>
 			</div>
 			</section>

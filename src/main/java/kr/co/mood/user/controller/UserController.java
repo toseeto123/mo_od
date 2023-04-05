@@ -133,7 +133,7 @@ public class UserController {
 	
 	@RequestMapping("/toGoMypage")
 	public String toGoMyPage(Model model) {
-		model.addAttribute("message", "필수 입력값을 입력해주세요.");
+		model.addAttribute("message", "�븘�닔 �엯�젰媛믪쓣 �엯�젰�빐二쇱꽭�슂.");
 		return "User/mypage";
 	}
 	@RequestMapping("/toGoPayment")
@@ -171,7 +171,7 @@ public class UserController {
 		            } else if (path.contains("proCatelogin")) {
 		                System.out.println("proCatelogin ");
 		                if (naverUserInfo.getAdr() == null) {
-		    		        // 필수입력값 alert 창 띄우기
+		    		        
 		    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
 		    		        return "/User/mypage";
 		            	}
@@ -184,7 +184,7 @@ public class UserController {
 		                return "redirect:/users/bucket";
 		            } else if (path.contains("payBeLogin")) {
 		            	if (naverUserInfo.getAdr() == null) {
-		    		        // 필수입력값 alert 창 띄우기
+		    		       
 		    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
 		    		        return "/User/mypage";
 		            	}
@@ -232,7 +232,7 @@ public class UserController {
 	        } else if (path.contains("proCatelogin")) {
 	        	System.out.println("proCatelogin ");
 	        	 if (userInfo.getAdr() == null) {
-	    		        // 필수입력값 alert 창 띄우기
+	    		        
 	    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
 	    		        return "/User/mypage";
 	            	}
@@ -246,7 +246,6 @@ public class UserController {
 	        } else if(path.contains("payBeLogin")) 
 	        {
 	        	 if (userInfo.getAdr() == null) {
-	    		        // 필수입력값 alert 창 띄우기
 	    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
 	    		        return "/User/mypage";
 	            	}
@@ -424,12 +423,19 @@ public class UserController {
 		String ssid = ssvo.getId();
 		userservice.delete(ssid);
 		session.invalidate();
-		return "redirect:/";
+		return "redirect:/users/login";
 	}
 
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	@RequestMapping(value = {"/update", "/password"}, method = RequestMethod.POST)
 	public String update(UserVO vo, HttpSession session) throws Exception {
-		userservice.update(vo);
+		System.out.println(vo.getPwd1());
+		System.out.println(vo.getPwd());
+		if(vo.getPwd1()== null ||vo.getPwd1()=="") {
+			userservice.update(vo);
+		} else if(vo.getPwd1()!=null) {
+		System.out.println("ssss");
+			userservice.password(vo);
+		}
 		session.invalidate();
 		return "User/login";
 	}
