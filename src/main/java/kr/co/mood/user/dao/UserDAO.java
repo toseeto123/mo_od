@@ -72,7 +72,13 @@ public class UserDAO {
 
 	public void update(UserVO vo) {
 		mybatis.update("UserDAO.update", vo);
-		System.out.println(vo);
+		System.out.println("update"+vo);
+		
+	}
+	
+	public void password(UserVO vo) {
+		mybatis.update("UserDAO.password", vo);
+		System.out.println("password"+vo);
 		
 	}
 	
@@ -107,12 +113,7 @@ public class UserDAO {
 				mybatis.insert("UserDAO.NaverInsert",naverUserInfo);
 			}
 
-			public void updatepp(UserVO vo) {
-				// TODO Auto-generated method stub
-				mybatis.update("UserDAO.updatepp", vo);
-				System.out.println(vo);
-				
-			}
+			
 
 			
 

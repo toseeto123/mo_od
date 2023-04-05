@@ -246,7 +246,6 @@ public class UserController {
 	        } else if(path.contains("payBeLogin")) 
 	        {
 	        	 if (userInfo.getAdr() == null) {
-	    		        // �븘�닔�엯�젰媛� alert 李� �쓣�슦湲�
 	    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
 	    		        return "/User/mypage";
 	            	}
@@ -427,13 +426,15 @@ public class UserController {
 		return "redirect:/users/login";
 	}
 
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	@RequestMapping(value = {"/update", "/password"}, method = RequestMethod.POST)
 	public String update(UserVO vo, HttpSession session) throws Exception {
-		UserVO ssvo = (UserVO) session.getAttribute("login_info");
-		if(ssvo.getPwd()==null) {
-			userservice.updatepp(vo);
-		} else {
+		System.out.println(vo.getPwd1());
+		System.out.println(vo.getPwd());
+		if(vo.getPwd1()== null ||vo.getPwd1()=="") {
 			userservice.update(vo);
+		} else if(vo.getPwd1()!=null) {
+		System.out.println("ssss");
+			userservice.password(vo);
 		}
 		session.invalidate();
 		return "User/login";
