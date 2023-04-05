@@ -46,6 +46,9 @@ public class UserServiceImpl implements UserService{
 	public void update(UserVO vo) throws Exception{
 		userdao.update(vo);
 	}
+	public void updatepp(UserVO vo) throws Exception{
+		userdao.updatepp(vo);
+	}
 	
 	public void updateAdminMember(UserVO vo) {
 		userdao.updateAdminMember(vo);

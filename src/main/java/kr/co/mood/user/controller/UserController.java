@@ -171,8 +171,8 @@ public class UserController {
 		            } else if (path.contains("proCatelogin")) {
 		                System.out.println("proCatelogin ");
 		                if (naverUserInfo.getAdr() == null) {
-		    		        // �븘�닔�엯�젰媛� alert 李� �쓣�슦湲�
-		    		        model.addAttribute("message", "�븘�닔 �엯�젰媛믪쓣 �엯�젰�빐二쇱꽭�슂.");
+		    		        
+		    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
 		    		        return "/User/mypage";
 		            	}
 		                CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
@@ -184,8 +184,8 @@ public class UserController {
 		                return "redirect:/users/bucket";
 		            } else if (path.contains("payBeLogin")) {
 		            	if (naverUserInfo.getAdr() == null) {
-		    		        // �븘�닔�엯�젰媛� alert 李� �쓣�슦湲�
-		    		        model.addAttribute("message", "�븘�닔 �엯�젰媛믪쓣 �엯�젰�빐二쇱꽭�슂.");
+		    		       
+		    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
 		    		        return "/User/mypage";
 		            	}
 		                userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
@@ -232,8 +232,8 @@ public class UserController {
 	        } else if (path.contains("proCatelogin")) {
 	        	System.out.println("proCatelogin ");
 	        	 if (userInfo.getAdr() == null) {
-	    		        // �븘�닔�엯�젰媛� alert 李� �쓣�슦湲�
-	    		        model.addAttribute("message", "�븘�닔 �엯�젰媛믪쓣 �엯�젰�빐二쇱꽭�슂.");
+	    		        
+	    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
 	    		        return "/User/mypage";
 	            	}
 	            CateVO sessionCvo = (CateVO) session.getAttribute("cvo");
@@ -247,7 +247,7 @@ public class UserController {
 	        {
 	        	 if (userInfo.getAdr() == null) {
 	    		        // �븘�닔�엯�젰媛� alert 李� �쓣�슦湲�
-	    		        model.addAttribute("message", "�븘�닔 �엯�젰媛믪쓣 �엯�젰�빐二쇱꽭�슂.");
+	    		        model.addAttribute("message", "필수 입력값을 입력해주세요.");
 	    		        return "/User/mypage";
 	            	}
 	            userOrderVO sessionordervo = (userOrderVO) session.getAttribute("ordervo");
@@ -429,7 +429,12 @@ public class UserController {
 
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String update(UserVO vo, HttpSession session) throws Exception {
-		userservice.update(vo);
+		UserVO ssvo = (UserVO) session.getAttribute("login_info");
+		if(ssvo.getPwd()==null) {
+			userservice.updatepp(vo);
+		} else {
+			userservice.update(vo);
+		}
 		session.invalidate();
 		return "User/login";
 	}
