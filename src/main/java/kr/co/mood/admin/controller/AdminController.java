@@ -2,6 +2,7 @@ package kr.co.mood.admin.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -109,11 +110,17 @@ public class AdminController {
    }
    
    @RequestMapping("/paymentModify/{orderNo}")
-   public String adminPaymentModify(@PathVariable int orderNo, String url, String adr, String adr2,String adr3, AdminPaymentVO vo, HttpServletRequest request) {
+   public String adminPaymentModify(@PathVariable int orderNo, String search, String url, String adr, String adr2,String adr3, AdminPaymentVO vo, HttpServletRequest request) {
 	   String address = adr + "   " + adr2 + "   " + adr3;
 	   vo.setAddress(address);
 	   adminPaymentService.updateAddress(vo);
-	   return "redirect:"+url;	   
+	   try {
+		   String encodedUrl = URLEncoder.encode(search, "UTF-8");
+		   return "redirect:"+url+"/"+encodedUrl;	
+	   }catch(Exception e) {
+		   e.printStackTrace();
+	   }
+	   return "redirect:/";	   
    }
    
    @RequestMapping("/memberCheck")
@@ -131,19 +138,26 @@ public class AdminController {
    }
    
    @RequestMapping("/memberUpdate")
-   public String adminMemberUpdate(UserVO vo, String url) {
+   public String adminMemberUpdate(UserVO vo, String search, String url) {
 	   userService.updateAdminMember(vo);
-	   if(url != null && !url.trim().equals("")) {
-		   return "redirect:"+url;
+	   try {
+		   String encodedUrl = URLEncoder.encode(search, "UTF-8");
+		   System.out.println("두둥");
+		   System.out.println(url);
+		   System.out.println(encodedUrl);
+		   return "redirect:"+url+"/"+encodedUrl;	
+	   }catch(Exception e) {
+		   e.printStackTrace();
 	   }
 	   return "redirect:/admin/adminMemberList/1";
    }
    
    @RequestMapping("/deleteMember")
-   public String adminMemberDelete(String id, String url) {
+   public String adminMemberDelete(String id, String url, String search) {
 	   try {
 		   userService.delete(id);
-		   return "redirect:"+url;
+		   String encodedUrl = URLEncoder.encode(search, "UTF-8");
+		   return "redirect:"+url+"/"+encodedUrl;
 	   }catch(Exception e) {
 		   e.printStackTrace();
 		   return "redirect:/";
