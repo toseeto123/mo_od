@@ -215,7 +215,7 @@ function subCategoryChange() {
 
 
 <div class="inputArea" style="margin-bottom: 50px;">
- <button type="submit" id="" class="">등록</button>
+ <button type="submit" id="" class="" onclick="insertalert()">등록</button>
 </div>
 
 
@@ -223,4 +223,9 @@ function subCategoryChange() {
 </form>
 	<jsp:include page="../../common/footer.jsp" />
 </body>
+<script>
+function insertalert() {
+  alert('상품등록이 완료되었습니다.');
+}
+</script>
 </html>

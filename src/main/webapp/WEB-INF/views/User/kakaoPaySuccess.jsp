@@ -240,7 +240,7 @@ body {
                         ${login_info.name}</small>
                   </div>
                   <div class="col-md-6 mb-3">
-                     <label for="lastName">전화번호 : </label> <small>${processed_item_name}</small>
+                     <label for="lastName">전화번호 : </label> <small>${login_info.phone}</small>
                   </div>
                   <div class="col-md-6 mb-3">
                      <label for="address">주　　소 : </label> <small>${login_info.adr}</small>
