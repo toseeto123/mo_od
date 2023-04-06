@@ -141,35 +141,35 @@ body {
 <div class="inputArea">
  <label for="">이미지1</label>
  <input type="file" id="file1" name="file1" onchange="readURL(this);" />
- <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" style="width: 100px; height: 100px;"> >>변경후>>
+ <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img1}" style="width: 100px; height: 100px;" onerror="this.src='${pageContext.request.contextPath}/resources/assets/img/product/white.jpg'"> >>변경후>>
  <img class="preview-img" id="preview1" style="width: 100px; height: 100px;"/>
 </div><hr>
 
 <div class="inputArea">
 <label for="">이미지2</label>
  <input type="file" id="file2" name="file2" onchange="readURL(this);" />
- <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img2}" style="width: 100px; height: 100px;"> >>변경후>>
+ <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img2}" style="width: 100px; height: 100px;" onerror="this.src='${pageContext.request.contextPath}/resources/assets/img/product/white.jpg'"> >>변경후>>
  <img class="preview-img" id="preview2" style="width: 100px; height: 100px;"/>
 </div><hr>
 
 <div class="inputArea">
 <label for="">이미지3</label>
  <input type="file" id="file3" name="file3" onchange="readURL(this);" />
- <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img3}" style="width: 100px; height: 100px;"> >>변경후>>
+ <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img3}" style="width: 100px; height: 100px;" onerror="this.src='${pageContext.request.contextPath}/resources/assets/img/product/white.jpg'"> >>변경후>>
  <img class="preview-img" id="preview3" style="width: 100px; height: 100px;"/>
 </div><hr>
 
 <div class="inputArea">
 <label for="">이미지4</label>
  <input type="file" id="file4" name="file4" onchange="readURL(this);" />
- <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img4}" style="width: 100px; height: 100px;"> >>변경후>>
+ <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img4}" style="width: 100px; height: 100px;" onerror="this.src='${pageContext.request.contextPath}/resources/assets/img/product/white.jpg'"> >>변경후>>
  <img class="preview-img" id="preview4" style="width: 100px; height: 100px;"/>
 </div><hr>
 
 <div class="inputArea">
 <label for="">이미지5</label>
  <input type="file" id="file5" name="file5" onchange="readURL(this);" />
- <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img5}" style="width: 100px; height: 100px;"> >>변경후>>
+ <img alt="" src="${pageContext.request.contextPath}/resources/assets/img/product/${list.pro_img5}" style="width: 100px; height: 100px;" onerror="this.src='${pageContext.request.contextPath}/resources/assets/img/product/white.jpg'"> >>변경후>>
  <img class="preview-img" id="preview5" style="width: 100px; height: 100px;"/>
 </div><hr>
 
