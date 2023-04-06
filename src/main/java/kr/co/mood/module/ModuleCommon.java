@@ -39,7 +39,7 @@ public class ModuleCommon {
 
 	public void pagingModuleMain(Model model, String page, List allList) {
 
-		int pageCount = 9;
+		int pageCount = 10;
 		int quotient = Integer.parseInt(page) / pageCount;
 		int remainder = Integer.parseInt(page) % pageCount;
 		indexNo = (Integer.parseInt(page) - 1) * showCount;
@@ -105,7 +105,7 @@ public class ModuleCommon {
 	
 	public void pagingModuleMain2(Model model, String page, int allList) {
 
-		int pageCount = 9;
+		int pageCount = 10;
 		int quotient = Integer.parseInt(page) / pageCount;
 		int remainder = Integer.parseInt(page) % pageCount;
 		indexNo = (Integer.parseInt(page) - 1) * showCount;

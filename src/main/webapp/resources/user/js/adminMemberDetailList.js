@@ -1,22 +1,30 @@
 let flag = false;
-const urls = document.referrer
-			const url = urls.split("/")
-			let j = url.length;
-			let goUrl = '';
+let goUrl = '';
+const urls = document.referrer;
+const url = urls.split("/")
+function referer(){
+			let j = url.length;			
 			
-	function memberDelete(){
 	for(var i=0; i<url.length; i++){
 		if(url[i] == 'admin'){
 			j = i;
 		}
 	} 
 	for(var k=j; k<url.length; k++){
-		goUrl = goUrl + '/' + url[k];
+		if(k != url.length-1){
+			goUrl = goUrl + '/' + url[k];
+		}
 	}
 	
-	location.href = '/admin/deleteMember?id='+document.getElementById('whatId').value+'&url='+goUrl;;
+	
 }
-			
+referer();
+
+	function memberDelete(){
+	
+	
+	location.href = '/admin/deleteMember?id='+document.getElementById('whatId').value+'&url='+goUrl+'&search='+url[url.length-1];
+}
 	function updateMember(){
 		if(document.getElementById('id').value != document.getElementById('idCheck').value){
 			if(!flag){
@@ -24,15 +32,8 @@ const urls = document.referrer
 				return false;
 			}			
 		}
-			
-			for(var i=0; i<url.length; i++){
-				if(url[i] == 'admin'){
-					j = i;
-				}
-			} 
-			for(var k=j; k<url.length; k++){
-				goUrl = goUrl + '/' + url[k];
-			}
+
+			document.getElementById('search').value = url[url.length - 1];
 			document.getElementById('url').value = goUrl;
 			
 }

@@ -92,7 +92,14 @@ font-family: 'SUIT-Regular', normal;font-weight:900;
                <li style="padding-left: 0px;margin: 30px 0px 30px 25px;width: 100px;"><a class="getstarted scrollto" href="/users/mypage"><b>Mypage</b></a></li>
                </c:otherwise>
                </c:choose>
+               	<c:choose>
+               <c:when test="${login_info.id == 'admin' }">
+               <li><a class="getstarted scrollto" href="/adminLogin"><b>Logout</b></a></li>
+               </c:when>
+               <c:otherwise>
                <li><a class="getstarted scrollto" href="/users/logout"><b>Logout</b></a></li>
+               </c:otherwise>
+               </c:choose>
                
 
             </c:if>

@@ -133,6 +133,7 @@ section{
              
               </table>
               <input type="hidden" id="url" name="url">
+              <input type="hidden" id="search" name="search">
               </form>
               <div class="bottom" style="height: 30px;"></div>
               	<div class="modal fade" id="myModal${member.orderNo}">
@@ -199,25 +200,36 @@ if (footerRect.top + footerRect.height >= footerRealRect.top) {
 	}
 </script>
 <script>
-const urls = document.referrer
-const url = urls.split("/")
-let j = url.length;
 let goUrl = '';
-function modifying(){
-for(var i=0; i<url.length; i++){
-	if(url[i] == 'admin'){
-		j = i;
+const urls = document.referrer;
+const url = urls.split("/")
+function referer(){
+			let j = url.length;			
+			
+	for(var i=0; i<url.length; i++){
+		if(url[i] == 'admin'){
+			j = i;
+		}
+	} 
+	for(var k=j; k<url.length; k++){
+		if(k != url.length-1){
+			goUrl = goUrl + '/' + url[k];
+		}
 	}
-} 
-for(var k=j; k<url.length; k++){
-	goUrl = goUrl + '/' + url[k];
-}
-document.getElementById('url').value = goUrl;
-}
-function paymentCancel(){
 	
-	modifying();
-	location.href = '/admin/kakaoPayCancel?orderid=${member.orderNo}&url='+goUrl;
+	
+}
+referer();
+
+function modifying(){
+	document.getElementById('url').value = goUrl;
+	document.getElementById('search').value = url[url.length -1];
+}
+
+
+function paymentCancel(){
+
+	location.href = '/admin/kakaoPayCancel?orderid=${member.orderNo}&url='+goUrl+'&search='+url[url.length -1];
 }
 </script>
 </body>
