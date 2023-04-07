@@ -157,8 +157,8 @@ body {
 }
 
 .returnbtn {
+   color: white;
    background-color: #525252;
-   color:white;
    width: 416px;
    height: 50px;
    border : none;
