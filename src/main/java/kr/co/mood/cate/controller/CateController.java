@@ -124,7 +124,7 @@ public class CateController {
       int cateId = Integer.parseInt(String.valueOf(data.get("cateId")));
       
       cservice.deletecate(cateId);
-      return "bucket/bucket";
+      return "/bucket/bucket";
    }
    
 }
