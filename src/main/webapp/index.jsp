@@ -10,7 +10,7 @@
 <body>
 
  <%
-  request.getRequestDispatcher("/home").forward(request,response);
+  request.getRequestDispatcher("/home").forward(request,response); 
  %>
 
 </body>
