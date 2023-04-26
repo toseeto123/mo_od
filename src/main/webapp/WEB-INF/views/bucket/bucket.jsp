@@ -464,7 +464,7 @@ function deletecate(element) {
          totalSpan.innerText = parseCurrency(totalPrice);
        }
    let xhr = new XMLHttpRequest();
-   xhr.open('POST', 'catedelete.do', true);
+   xhr.open('POST', 'catedelete', true);
    xhr.setRequestHeader('Content-Type', 'application/json'); // JSON 형태의 데이터 전송을 위한 설정
 
    xhr.onreadystatechange = function() {
@@ -605,8 +605,8 @@ function deletecate(element) {
 								</dd>
 							</dl>
 							<input type="hidden" value="${login_info.adr }" name="address" >
-							<input type="button" value="더보러가기" class="cancelbtn btnhover" style="width:300px;" onclick="window.location='/';">
 							<input type="submit" id="btn_order" value="주문하기" class="btn_buy btnhover" style="width:300px;">
+							<input type="button" value="더보러가기" class="cancelbtn btnhover" style="width:300px;" onclick="window.location='/';">
 							<script type="text/javascript">
 							//장바 구니 담김 체크 script
 							const btnOrder = document.getElementById("btn_order");
